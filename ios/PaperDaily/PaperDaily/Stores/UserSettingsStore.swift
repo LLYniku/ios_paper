@@ -2,6 +2,8 @@ import Foundation
 import Combine
 
 final class UserSettingsStore: ObservableObject {
+    static let defaultFeedURLString = "https://llyniku.github.io/ios_paper/data/latest.json"
+
     enum Keys {
         static let feedURLString = "feedURLString"
         static let notificationsEnabled = "notificationsEnabled"
@@ -34,7 +36,7 @@ final class UserSettingsStore: ObservableObject {
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
-        self.feedURLString = defaults.string(forKey: Keys.feedURLString) ?? ""
+        self.feedURLString = defaults.string(forKey: Keys.feedURLString) ?? Self.defaultFeedURLString
         self.notificationsEnabled = defaults.bool(forKey: Keys.notificationsEnabled)
         let storedHour = defaults.object(forKey: Keys.reminderHour) as? Int
         let storedMinute = defaults.object(forKey: Keys.reminderMinute) as? Int

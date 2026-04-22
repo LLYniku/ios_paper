@@ -9,7 +9,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             Section("数据源") {
-                TextField("https://example.github.io/your-feed/latest.json", text: $settings.feedURLString)
+                TextField(UserSettingsStore.defaultFeedURLString, text: $settings.feedURLString)
                     .textInputAutocapitalization(.never)
                     .keyboardType(.URL)
                     .autocorrectionDisabled(true)
