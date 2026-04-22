@@ -63,12 +63,34 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def looks_like_inline_config(config_arg: str) -> bool:
+    stripped = config_arg.strip()
+    if not stripped:
+        return False
+    if "\n" in config_arg or "\r" in config_arg:
+        return True
+    if stripped.startswith(("{", "[")):
+        return True
+    if ": " in stripped or stripped.endswith(":"):
+        return True
+    return False
+
+
 def load_optional_config(config_arg: str | None) -> DictConfig | None:
     if not config_arg:
         return None
+    if looks_like_inline_config(config_arg):
+        try:
+            return OmegaConf.create(config_arg)
+        except Exception as exc:
+            raise ValueError(f"Unable to parse --config value as inline config: {config_arg}") from exc
+
     config_path = Path(config_arg)
-    if config_path.exists():
-        return OmegaConf.load(config_path)
+    try:
+        if config_path.exists():
+            return OmegaConf.load(config_path)
+    except OSError:
+        pass
     try:
         return OmegaConf.create(config_arg)
     except Exception as exc:
