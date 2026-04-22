@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-04-22T10:00:00Z",
+  "recommendation_date": "2026-04-22",
+  "timezone": "Asia/Shanghai",
+  "language": "zh-Hans",
+  "config": {
+    "max_item_num": 30,
+    "summary_top_n": 20,
+    "platforms": ["github", "openreview", "youtube"]
+  },
+  "stats": {
+    "total_candidates": 96,
+    "recommended_count": 3,
+    "llm_summary_count": 3
+  },
+  "items": [
+    {
+      "id": "github:repo:mit-han-lab/streamingllm",
+      "platform": "github",
+      "content_type": "repository",
+      "title": "streaming-llm",
+      "creator": "mit-han-lab",
+      "source_label": "mit-han-lab/streaming-llm",
+      "published_at": "2026-04-21T09:30:00Z",
+      "url": "https://github.com/mit-han-lab/streaming-llm",
+      "raw_excerpt": "StreamingLLM explores efficient long-context serving with attention sink and KV-cache friendly decoding.",
+      "summary_zh": "这个仓库围绕长上下文推理中的 KV Cache 管理与高效解码展开，重点是降低流式生成时的显存和吞吐压力。它对研究推理阶段压缩、缓存重用和部署优化都很有参考价值。",
+      "tldr": "一个聚焦长上下文推理与 KV Cache 优化的 GitHub 仓库。",
+      "recommendation_reason": "它和高效推理、KV Cache 压缩、部署优化等主题高度相关。",
+      "relevance_score": 0.93,
+      "tags": ["llm", "kv-cache", "inference"],
+      "thumbnail_url": "https://avatars.githubusercontent.com/u/117613435?v=4",
+      "venue": null,
+      "year": 2026
+    },
+    {
+      "id": "openreview:demo-openreview-paper",
+      "platform": "openreview",
+      "content_type": "paper",
+      "title": "Adaptive KV Budgeting for Efficient Long-Context Inference",
+      "creator": "Ada Zhang, Kai Chen, Lin Liu",
+      "source_label": "ICLR.cc/2026/Conference",
+      "published_at": "2026-04-20T14:00:00Z",
+      "url": "https://openreview.net/forum?id=demo-openreview-paper",
+      "raw_excerpt": "We study adaptive allocation of key-value cache budget for long-context language model inference and show a strong trade-off frontier between latency and fidelity.",
+      "summary_zh": "这篇 OpenReview 论文讨论长上下文推理中的 KV Cache 预算分配问题，目标是在延迟、显存与生成质量之间找到更优平衡。论文重点和你的高效 LLM 推理方向非常贴近。",
+      "tldr": "一篇研究长上下文 KV Cache 预算分配的 OpenReview 论文。",
+      "recommendation_reason": "它直接覆盖了高效推理、缓存分配和压缩策略这些核心主题。",
+      "relevance_score": 0.91,
+      "tags": ["kv-cache", "long-context", "efficiency"],
+      "thumbnail_url": null,
+      "venue": "ICLR.cc/2026/Conference",
+      "year": 2026
+    },
+    {
+      "id": "youtube:demo-video-1",
+      "platform": "youtube",
+      "content_type": "video",
+      "title": "LLM Quantization in Practice",
+      "creator": "Efficient AI Lab",
+      "source_label": "Efficient AI Lab",
+      "published_at": "2026-04-18T02:00:00Z",
+      "url": "https://www.youtube.com/watch?v=demo-video-1",
+      "raw_excerpt": "A practical walkthrough of post-training quantization, activation-aware weight quantization, and deployment trade-offs for modern LLMs.",
+      "summary_zh": "这条视频内容偏工程实践，系统梳理了后训练量化、激活感知权重量化以及真实部署中的精度和速度权衡。对快速掌握量化落地路线很有帮助。",
+      "tldr": "一条讲解 LLM 量化实践与部署权衡的 YouTube 视频。",
+      "recommendation_reason": "它和模型压缩、量化部署以及推理优化的研究兴趣直接相关。",
+      "relevance_score": 0.88,
+      "tags": ["quantization", "deployment", "llm"],
+      "thumbnail_url": null,
+      "venue": null,
+      "year": 2026
+    }
+  ]
+}

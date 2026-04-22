@@ -33,3 +33,9 @@ app_export:
   output_dir: ${oc.env:APP_EXPORT_OUTPUT_DIR,public/data}
   language: ${oc.env:APP_EXPORT_LANGUAGE,zh-Hans}
   summary_top_n: ${oc.env:APP_EXPORT_SUMMARY_TOP_N,20}
+
+network:
+  output_dir: ${oc.env:NETWORK_OUTPUT_DIR,public/data/network}
+  language: ${oc.env:NETWORK_LANGUAGE,zh-Hans}
+  max_item_num: ${oc.env:NETWORK_MAX_ITEM_NUM,30}
+  summary_top_n: ${oc.env:NETWORK_SUMMARY_TOP_N,20}

@@ -9,6 +9,7 @@ struct ClassicPaperListView: View {
     let contextNote: ((ClassicPaper) -> String?)?
     let onToggleFavorite: (ClassicPaper) -> Void
     let onToggleRead: (ClassicPaper) -> Void
+    let onOpenDetail: (ClassicPaper) -> Void
 
     var body: some View {
         if papers.isEmpty {
@@ -22,7 +23,8 @@ struct ClassicPaperListView: View {
                         isRead: readPaperIDs.contains(paper.id),
                         contextNote: contextNote?(paper),
                         onToggleFavorite: { onToggleFavorite(paper) },
-                        onToggleRead: { onToggleRead(paper) }
+                        onToggleRead: { onToggleRead(paper) },
+                        onOpenDetail: { onOpenDetail(paper) }
                     )
                 }
             }

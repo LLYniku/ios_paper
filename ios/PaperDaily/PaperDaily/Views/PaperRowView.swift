@@ -7,6 +7,7 @@ struct PaperRowView: View {
     let contextNote: String?
     let onToggleFavorite: () -> Void
     let onToggleRead: () -> Void
+    let onOpenDetail: () -> Void
 
     @Environment(\.openURL) private var openURL
 
@@ -66,14 +67,8 @@ struct PaperRowView: View {
                     }
                 }
 
-                NavigationLink("详情") {
-                    PaperDetailView(
-                        paper: paper,
-                        isFavorite: isFavorite,
-                        isRead: isRead,
-                        onToggleFavorite: onToggleFavorite,
-                        onToggleRead: onToggleRead
-                    )
+                Button("详情") {
+                    onOpenDetail()
                 }
             }
             .font(.footnote.weight(.semibold))
@@ -82,6 +77,10 @@ struct PaperRowView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
         .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onOpenDetail()
+        }
     }
 
     private var tags: some View {

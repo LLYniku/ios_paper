@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "latest": "latest.json",
+  "latest_date": "2026-04-22",
+  "archive": [
+    {
+      "date": "2026-04-22",
+      "path": "archive/2026-04-22.json",
+      "item_count": 3
+    }
+  ]
+}

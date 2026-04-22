@@ -8,6 +8,7 @@ struct TodayView: View {
     @State private var selectedCategory: String?
     @State private var showUnreadOnly = false
     @State private var showFavoritesOnly = false
+    @State private var selectedPaper: PaperItem?
 
     var body: some View {
         let papers = store.papers(
@@ -35,7 +36,8 @@ struct TodayView: View {
                     emptyMessage: "可以稍后刷新，或者调整搜索和筛选条件。",
                     contextNote: { _ in nil },
                     onToggleFavorite: { store.toggleFavorite($0) },
-                    onToggleRead: { store.toggleRead($0.id) }
+                    onToggleRead: { store.toggleRead($0.id) },
+                    onOpenDetail: { selectedPaper = $0 }
                 )
             }
             .padding(16)
@@ -47,6 +49,15 @@ struct TodayView: View {
         }
         .task {
             showUnreadOnly = settings.defaultUnreadOnly
+        }
+        .navigationDestination(item: $selectedPaper) { paper in
+            PaperDetailView(
+                paper: paper,
+                isFavorite: store.isFavorite(paper.id),
+                isRead: store.isRead(paper.id),
+                onToggleFavorite: { store.toggleFavorite(paper) },
+                onToggleRead: { store.toggleRead(paper.id) }
+            )
         }
     }
 

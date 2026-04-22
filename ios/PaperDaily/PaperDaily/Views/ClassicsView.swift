@@ -7,6 +7,7 @@ struct ClassicsView: View {
     @State private var selectedCategory: String?
     @State private var showUnreadOnly = false
     @State private var showFavoritesOnly = false
+    @State private var selectedPaper: ClassicPaper?
 
     var body: some View {
         let papers = classicsStore.papers(
@@ -34,7 +35,8 @@ struct ClassicsView: View {
                     emptyMessage: "可以稍后刷新，或者调整搜索和筛选条件。",
                     contextNote: { _ in nil },
                     onToggleFavorite: { classicsStore.toggleFavorite($0) },
-                    onToggleRead: { classicsStore.toggleRead($0.id) }
+                    onToggleRead: { classicsStore.toggleRead($0.id) },
+                    onOpenDetail: { selectedPaper = $0 }
                 )
             }
             .padding(16)
@@ -43,6 +45,15 @@ struct ClassicsView: View {
         .searchable(text: $searchText, prompt: "搜索标题、会议、类别")
         .refreshable {
             await classicsStore.refresh()
+        }
+        .navigationDestination(item: $selectedPaper) { paper in
+            ClassicDetailView(
+                paper: paper,
+                isFavorite: classicsStore.isFavorite(paper.id),
+                isRead: classicsStore.isRead(paper.id),
+                onToggleFavorite: { classicsStore.toggleFavorite(paper) },
+                onToggleRead: { classicsStore.toggleRead(paper.id) }
+            )
         }
     }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct ClassicPaperRowView: View {
-    let paper: ClassicPaper
+struct NetworkRowView: View {
+    let item: NetworkItem
     let isFavorite: Bool
     let isRead: Bool
     let contextNote: String?
@@ -15,19 +15,23 @@ struct ClassicPaperRowView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(paper.title)
+                    Text(item.title)
                         .font(.headline)
-                    Text(paper.cardSummary)
+                    Text(item.displaySummary)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
                 Spacer(minLength: 12)
-                Label(isRead ? "已读" : "未读", systemImage: isRead ? "eye.fill" : "eye.slash")
-                    .font(.caption)
-                    .foregroundStyle(isRead ? .secondary : .primary)
+                if let score = item.relevanceScore {
+                    Text(String(format: "%.2f", score))
+                        .font(.caption.monospacedDigit())
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(Color.blue.opacity(0.12), in: Capsule())
+                }
             }
 
-            Text(paper.publicationLine)
+            Text(item.creator)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
 
@@ -35,21 +39,25 @@ struct ClassicPaperRowView: View {
                 Text(contextNote)
                     .font(.caption)
                     .foregroundStyle(.secondary)
+            } else {
+                Text(item.publicationLine)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
             HStack(spacing: 8) {
-                Text(paper.category)
+                Text(item.platformLabel)
                     .font(.caption)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 6)
                     .background(Color(.tertiarySystemFill), in: Capsule())
 
-                if let year = paper.year {
-                    Text(String(year))
-                        .font(.caption.monospacedDigit())
+                ForEach(item.tags.prefix(2), id: \.self) { tag in
+                    Text(tag)
+                        .font(.caption)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 6)
-                        .background(Color.blue.opacity(0.12), in: Capsule())
+                        .background(Color.green.opacity(0.12), in: Capsule())
                 }
             }
 
@@ -66,8 +74,8 @@ struct ClassicPaperRowView: View {
                     Label(isRead ? "标未读" : "标已读", systemImage: isRead ? "eye.slash" : "eye")
                 }
 
-                Button("论文") {
-                    openURL(paper.paperURL)
+                Button("链接") {
+                    openURL(item.url)
                 }
 
                 Button("详情") {

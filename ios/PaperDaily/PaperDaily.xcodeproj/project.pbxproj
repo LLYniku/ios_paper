@@ -32,6 +32,17 @@
 		A1B1C1D1E1F1010101010109 /* sample_classics.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010118 /* sample_classics.json */; };
 		A1B1C1D1E1F1010101010119 /* ClassicPaperListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010120 /* ClassicPaperListView.swift */; };
 		A1B1C1D1E1F1010101010121 /* ClassicsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010122 /* ClassicsStoreTests.swift */; };
+		B20000000000000000000101 /* NetworkFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000201 /* NetworkFeed.swift */; };
+		B20000000000000000000102 /* NetworkFeedAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000202 /* NetworkFeedAPIClient.swift */; };
+		B20000000000000000000103 /* NetworkFeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000203 /* NetworkFeedCache.swift */; };
+		B20000000000000000000104 /* NetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000204 /* NetworkStore.swift */; };
+		B20000000000000000000105 /* NetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000205 /* NetworkView.swift */; };
+		B20000000000000000000106 /* NetworkItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000206 /* NetworkItemListView.swift */; };
+		B20000000000000000000107 /* NetworkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000207 /* NetworkRowView.swift */; };
+		B20000000000000000000108 /* NetworkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000208 /* NetworkDetailView.swift */; };
+		B20000000000000000000109 /* sample_network.json in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000209 /* sample_network.json */; };
+		B2000000000000000000010A /* sample_network.json in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000209 /* sample_network.json */; };
+		B2000000000000000000010B /* NetworkStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000000000000000000020A /* NetworkStoreTests.swift */; };
 		A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
 		B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */; };
 		B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A170830E50A17B10819 /* ErrorStateView.swift */; };
@@ -79,6 +90,16 @@
 		A1B1C1D1E1F1010101010118 /* sample_classics.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_classics.json; path = Resources/sample_classics.json; sourceTree = "<group>"; };
 		A1B1C1D1E1F1010101010120 /* ClassicPaperListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicPaperListView.swift; path = Views/ClassicPaperListView.swift; sourceTree = "<group>"; };
 		A1B1C1D1E1F1010101010122 /* ClassicsStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ClassicsStoreTests.swift; sourceTree = "<group>"; };
+		B20000000000000000000201 /* NetworkFeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkFeed.swift; path = Models/NetworkFeed.swift; sourceTree = "<group>"; };
+		B20000000000000000000202 /* NetworkFeedAPIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkFeedAPIClient.swift; path = Services/NetworkFeedAPIClient.swift; sourceTree = "<group>"; };
+		B20000000000000000000203 /* NetworkFeedCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkFeedCache.swift; path = Services/NetworkFeedCache.swift; sourceTree = "<group>"; };
+		B20000000000000000000204 /* NetworkStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkStore.swift; path = Stores/NetworkStore.swift; sourceTree = "<group>"; };
+		B20000000000000000000205 /* NetworkView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkView.swift; path = Views/NetworkView.swift; sourceTree = "<group>"; };
+		B20000000000000000000206 /* NetworkItemListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkItemListView.swift; path = Views/NetworkItemListView.swift; sourceTree = "<group>"; };
+		B20000000000000000000207 /* NetworkRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkRowView.swift; path = Views/NetworkRowView.swift; sourceTree = "<group>"; };
+		B20000000000000000000208 /* NetworkDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkDetailView.swift; path = Views/NetworkDetailView.swift; sourceTree = "<group>"; };
+		B20000000000000000000209 /* sample_network.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_network.json; path = Resources/sample_network.json; sourceTree = "<group>"; };
+		B2000000000000000000020A /* NetworkStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkStoreTests.swift; sourceTree = "<group>"; };
 		B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
 		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
@@ -136,22 +157,30 @@
 				742EF8C21168D41A9FBE217D /* PaperFeed.swift */,
 				3089D02FDF1B5F9E9646E861 /* PaperItem.swift */,
 				A1B1C1D1E1F1010101010111 /* ClassicPaper.swift */,
+				B20000000000000000000201 /* NetworkFeed.swift */,
 				192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */,
 				A1B1C1D1E1F1010101010112 /* ClassicFeedAPIClient.swift */,
+				B20000000000000000000202 /* NetworkFeedAPIClient.swift */,
 				565789DB7959B6343A075549 /* FeedCache.swift */,
 				A1B1C1D1E1F1010101010113 /* ClassicFeedCache.swift */,
+				B20000000000000000000203 /* NetworkFeedCache.swift */,
 				2F85395A90B496F5F72A9A2A /* LinkRouter.swift */,
 				DB989D15B65941804BD68529 /* UserSettingsStore.swift */,
 				BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */,
 				A1B1C1D1E1F1010101010114 /* ClassicsStore.swift */,
+				B20000000000000000000204 /* NetworkStore.swift */,
 				F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */,
 				A1B1C1D1E1F1010101010117 /* ClassicsView.swift */,
+				B20000000000000000000205 /* NetworkView.swift */,
 				A1B1C1D1E1F1010101010120 /* ClassicPaperListView.swift */,
+				B20000000000000000000206 /* NetworkItemListView.swift */,
 				D37DEBBF35877495957F3E29 /* TodayView.swift */,
 				4ECCD0C3657E1E93CE96D1B1 /* PaperListView.swift */,
 				A1B1C1D1E1F1010101010115 /* ClassicPaperRowView.swift */,
+				B20000000000000000000207 /* NetworkRowView.swift */,
 				33651183D741090D37A4C5F0 /* PaperRowView.swift */,
 				A1B1C1D1E1F1010101010116 /* ClassicDetailView.swift */,
+				B20000000000000000000208 /* NetworkDetailView.swift */,
 				CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */,
 				24A12EF63123D0C175EBF6A6 /* SettingsView.swift */,
 				C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */,
@@ -160,6 +189,7 @@
 				B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */,
 				BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */,
 				A1B1C1D1E1F1010101010118 /* sample_classics.json */,
+				B20000000000000000000209 /* sample_network.json */,
 			);
 			path = PaperDaily;
 			sourceTree = "<group>";
@@ -179,6 +209,7 @@
 				6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */,
 				13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */,
 				A1B1C1D1E1F1010101010122 /* ClassicsStoreTests.swift */,
+				B2000000000000000000020A /* NetworkStoreTests.swift */,
 			);
 			path = PaperDailyTests;
 			sourceTree = "<group>";
@@ -273,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B1C1D1E1F1010101010109 /* sample_classics.json in Resources */,
+				B2000000000000000000010A /* sample_network.json in Resources */,
 				D147E448EC4BAED1FC2E95C2 /* sample_latest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +316,7 @@
 				B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */,
 				A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */,
 				A1B1C1D1E1F1010101010108 /* sample_classics.json in Resources */,
+				B20000000000000000000109 /* sample_network.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +330,7 @@
 				9D959AB097A27867D06AA61E /* FeedParsingTests.swift in Sources */,
 				38CA7CB55628CAD23C178C54 /* PaperStoreTests.swift in Sources */,
 				A1B1C1D1E1F1010101010121 /* ClassicsStoreTests.swift in Sources */,
+				B2000000000000000000010B /* NetworkStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,22 +342,30 @@
 				5C9DFE559AABD1865897D733 /* PaperFeed.swift in Sources */,
 				DE768BB5C3C88F0B013AAD4A /* PaperItem.swift in Sources */,
 				A1B1C1D1E1F1010101010101 /* ClassicPaper.swift in Sources */,
+				B20000000000000000000101 /* NetworkFeed.swift in Sources */,
 				93B56759B8FF5B42888BBA0C /* FeedAPIClient.swift in Sources */,
 				A1B1C1D1E1F1010101010102 /* ClassicFeedAPIClient.swift in Sources */,
+				B20000000000000000000102 /* NetworkFeedAPIClient.swift in Sources */,
 				F701A1E49B913740DCA4F165 /* FeedCache.swift in Sources */,
 				A1B1C1D1E1F1010101010103 /* ClassicFeedCache.swift in Sources */,
+				B20000000000000000000103 /* NetworkFeedCache.swift in Sources */,
 				DB8BD05C92978EA74E8F7BCD /* LinkRouter.swift in Sources */,
 				C1BBD1CEF1FAB52527B59DCE /* UserSettingsStore.swift in Sources */,
 				3F867870CF8A5DB5421D67A4 /* PaperStore.swift in Sources */,
 				A1B1C1D1E1F1010101010104 /* ClassicsStore.swift in Sources */,
+				B20000000000000000000104 /* NetworkStore.swift in Sources */,
 				836F1D2C1F18E384B3B848A0 /* LocalNotificationScheduler.swift in Sources */,
 				A1B1C1D1E1F1010101010107 /* ClassicsView.swift in Sources */,
+				B20000000000000000000105 /* NetworkView.swift in Sources */,
 				A1B1C1D1E1F1010101010119 /* ClassicPaperListView.swift in Sources */,
+				B20000000000000000000106 /* NetworkItemListView.swift in Sources */,
 				2C7273633B8E040B1EA08E17 /* TodayView.swift in Sources */,
 				8ECB89C9B53DF5DA6EE9AC4B /* PaperListView.swift in Sources */,
 				A1B1C1D1E1F1010101010105 /* ClassicPaperRowView.swift in Sources */,
+				B20000000000000000000107 /* NetworkRowView.swift in Sources */,
 				1DC629CDD717D926A9858B29 /* PaperRowView.swift in Sources */,
 				A1B1C1D1E1F1010101010106 /* ClassicDetailView.swift in Sources */,
+				B20000000000000000000108 /* NetworkDetailView.swift in Sources */,
 				C022567B71B0CEB87C253E2F /* PaperDetailView.swift in Sources */,
 				620FAF0D1F814472E038AD8A /* SettingsView.swift in Sources */,
 				8CD1532620F4B1F280A26D28 /* FavoritesView.swift in Sources */,

@@ -56,3 +56,29 @@ app_export:
   output_dir: public/data
   language: zh-Hans
   summary_top_n: 20
+
+network:
+  output_dir: public/data/network
+  language: zh-Hans
+  max_item_num: 30
+  summary_top_n: 20
+  source: ["github", "openreview", "youtube"]
+  github:
+    per_query: 20
+    search_days: 21
+    queries:
+      - llm compression
+      - efficient llm
+      - kv cache compression
+      - llm quantization
+      - distillation for llm
+  openreview:
+    per_venue: 25
+    venues:
+      - ICLR.cc/2026/Conference
+      - ICML.cc/2026/Conference
+      - NeurIPS.cc/2025/Conference
+      - ACLweb.org/ACL/2025/Conference
+  youtube:
+    per_channel: 10
+    channels: []

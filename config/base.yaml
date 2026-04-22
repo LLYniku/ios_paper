@@ -58,3 +58,29 @@ app_export:
   output_dir: public/data # Directory for app JSON output. Example: public/data
   language: zh-Hans # Language code for app summaries. Example: zh-Hans
   summary_top_n: 20 # Only run rich LLM summaries for the top N papers. Example: 20
+
+network:
+  output_dir: public/data/network # Directory for network JSON output. Example: public/data/network
+  language: zh-Hans # Language code for network summaries. Example: zh-Hans
+  max_item_num: 30 # Maximum number of ranked network items. Example: 30
+  summary_top_n: 20 # Only run rich LLM summaries for the top N network items. Example: 20
+  source: ["github", "openreview", "youtube"] # Enabled network sources. Example: ["github","openreview"]
+  github:
+    per_query: 20 # Candidate count per GitHub repository query. Example: 20
+    search_days: 14 # Restrict GitHub search to recently updated repos. Example: 14
+    queries:
+      - llm compression
+      - model compression
+      - efficient llm
+      - kv cache compression
+      - llm quantization
+  openreview:
+    per_venue: 25 # Candidate count per OpenReview venue. Example: 25
+    venues:
+      - ICLR.cc/2026/Conference
+      - ICML.cc/2026/Conference
+      - NeurIPS.cc/2025/Conference
+      - ACLweb.org/ACL/2025/Conference
+  youtube:
+    per_channel: 10 # Candidate count per configured YouTube channel. Example: 10
+    channels: [] # Channel IDs used for public RSS feeds. Example: ["UCbfYPyITQ-7l4upoX8nvctg"]
