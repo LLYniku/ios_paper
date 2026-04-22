@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00BF4B6A4C27476923F798F7 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6814601A651CBB8B368D4785 /* EmptyStateView.swift */; };
+		1DC629CDD717D926A9858B29 /* PaperRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33651183D741090D37A4C5F0 /* PaperRowView.swift */; };
+		2C7273633B8E040B1EA08E17 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DEBBF35877495957F3E29 /* TodayView.swift */; };
+		38CA7CB55628CAD23C178C54 /* PaperStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */; };
+		3F867870CF8A5DB5421D67A4 /* PaperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */; };
+		5C9DFE559AABD1865897D733 /* PaperFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF8C21168D41A9FBE217D /* PaperFeed.swift */; };
+		620FAF0D1F814472E038AD8A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A12EF63123D0C175EBF6A6 /* SettingsView.swift */; };
+		64CB4245AEACACCDFCDB01CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */; };
+		836F1D2C1F18E384B3B848A0 /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */; };
+		8CD1532620F4B1F280A26D28 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */; };
+		8ECB89C9B53DF5DA6EE9AC4B /* PaperListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCD0C3657E1E93CE96D1B1 /* PaperListView.swift */; };
+		93B56759B8FF5B42888BBA0C /* FeedAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */; };
+		96186D099A471AF4880B43A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */; };
+		9D959AB097A27867D06AA61E /* FeedParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */; };
+		A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
+		B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A170830E50A17B10819 /* ErrorStateView.swift */; };
+		C022567B71B0CEB87C253E2F /* PaperDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */; };
+		C1BBD1CEF1FAB52527B59DCE /* UserSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB989D15B65941804BD68529 /* UserSettingsStore.swift */; };
+		D147E448EC4BAED1FC2E95C2 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
+		D961C8D55F614CD0E3C77940 /* PaperDailyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C889D56BAFC7E64F2D170B /* PaperDailyApp.swift */; };
+		DB8BD05C92978EA74E8F7BCD /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F85395A90B496F5F72A9A2A /* LinkRouter.swift */; };
+		DE768BB5C3C88F0B013AAD4A /* PaperItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089D02FDF1B5F9E9646E861 /* PaperItem.swift */; };
+		F701A1E49B913740DCA4F165 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565789DB7959B6343A075549 /* FeedCache.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		118CC9114307B33A4ECE09D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2750495A20EBF91BE1C4C51D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 627D9A67E459D8E2808ECBD3;
+			remoteInfo = PaperDaily;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaperStoreTests.swift; sourceTree = "<group>"; };
+		192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeedAPIClient.swift; path = Services/FeedAPIClient.swift; sourceTree = "<group>"; };
+		24A12EF63123D0C175EBF6A6 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Views/SettingsView.swift; sourceTree = "<group>"; };
+		2F85395A90B496F5F72A9A2A /* LinkRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinkRouter.swift; path = Services/LinkRouter.swift; sourceTree = "<group>"; };
+		3089D02FDF1B5F9E9646E861 /* PaperItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperItem.swift; path = Models/PaperItem.swift; sourceTree = "<group>"; };
+		33651183D741090D37A4C5F0 /* PaperRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperRowView.swift; path = Views/PaperRowView.swift; sourceTree = "<group>"; };
+		49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4ECCD0C3657E1E93CE96D1B1 /* PaperListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperListView.swift; path = Views/PaperListView.swift; sourceTree = "<group>"; };
+		565789DB7959B6343A075549 /* FeedCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeedCache.swift; path = Services/FeedCache.swift; sourceTree = "<group>"; };
+		67FA1A170830E50A17B10819 /* ErrorStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorStateView.swift; path = Views/ErrorStateView.swift; sourceTree = "<group>"; };
+		6814601A651CBB8B368D4785 /* EmptyStateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmptyStateView.swift; path = Views/EmptyStateView.swift; sourceTree = "<group>"; };
+		6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedParsingTests.swift; sourceTree = "<group>"; };
+		742EF8C21168D41A9FBE217D /* PaperFeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperFeed.swift; path = Models/PaperFeed.swift; sourceTree = "<group>"; };
+		75E662AEC5897181D23DEE28 /* PaperDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaperDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
+		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
+		C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = Views/FavoritesView.swift; sourceTree = "<group>"; };
+		CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperDetailView.swift; path = Views/PaperDetailView.swift; sourceTree = "<group>"; };
+		D37DEBBF35877495957F3E29 /* TodayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TodayView.swift; path = Views/TodayView.swift; sourceTree = "<group>"; };
+		D5CD49796E9456BE75552160 /* PaperDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaperDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB989D15B65941804BD68529 /* UserSettingsStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserSettingsStore.swift; path = Stores/UserSettingsStore.swift; sourceTree = "<group>"; };
+		F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocalNotificationScheduler.swift; path = Notifications/LocalNotificationScheduler.swift; sourceTree = "<group>"; };
+		F8C889D56BAFC7E64F2D170B /* PaperDailyApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperDailyApp.swift; path = App/PaperDailyApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F72DD2FFAF848AD8F80804F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64CB4245AEACACCDFCDB01CA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88CBEA5E2757E88B9E2BE9D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96186D099A471AF4880B43A6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16E77A7CB171841E1346B035 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE186FBDE7C84DF306498400 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CFE01527477BB71CCDE8C81 = {
+			isa = PBXGroup;
+			children = (
+				692E96EDEC5A201C17AF354C /* Products */,
+				16E77A7CB171841E1346B035 /* Frameworks */,
+				4E0F2E7A6E9F920FF64B21E3 /* PaperDaily */,
+				A769B1384A5C420D55527FA2 /* PaperDailyTests */,
+			);
+			sourceTree = "<group>";
+		};
+		4E0F2E7A6E9F920FF64B21E3 /* PaperDaily */ = {
+			isa = PBXGroup;
+			children = (
+				F8C889D56BAFC7E64F2D170B /* PaperDailyApp.swift */,
+				742EF8C21168D41A9FBE217D /* PaperFeed.swift */,
+				3089D02FDF1B5F9E9646E861 /* PaperItem.swift */,
+				192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */,
+				565789DB7959B6343A075549 /* FeedCache.swift */,
+				2F85395A90B496F5F72A9A2A /* LinkRouter.swift */,
+				DB989D15B65941804BD68529 /* UserSettingsStore.swift */,
+				BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */,
+				F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */,
+				D37DEBBF35877495957F3E29 /* TodayView.swift */,
+				4ECCD0C3657E1E93CE96D1B1 /* PaperListView.swift */,
+				33651183D741090D37A4C5F0 /* PaperRowView.swift */,
+				CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */,
+				24A12EF63123D0C175EBF6A6 /* SettingsView.swift */,
+				C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */,
+				6814601A651CBB8B368D4785 /* EmptyStateView.swift */,
+				67FA1A170830E50A17B10819 /* ErrorStateView.swift */,
+				BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */,
+			);
+			name = PaperDaily;
+			path = PaperDaily;
+			sourceTree = "<group>";
+		};
+		692E96EDEC5A201C17AF354C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5CD49796E9456BE75552160 /* PaperDaily.app */,
+				75E662AEC5897181D23DEE28 /* PaperDailyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A769B1384A5C420D55527FA2 /* PaperDailyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */,
+				13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */,
+			);
+			name = PaperDailyTests;
+			path = PaperDailyTests;
+			sourceTree = "<group>";
+		};
+		AE186FBDE7C84DF306498400 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F0F466088C8EC9375DD0E25 /* PaperDailyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7579A12A5998A0AFF3E52E8 /* Build configuration list for PBXNativeTarget "PaperDailyTests" */;
+			buildPhases = (
+				4D566C36068256D9307627DE /* Sources */,
+				88CBEA5E2757E88B9E2BE9D4 /* Frameworks */,
+				75263AFBCD81462018430F66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8AA12B171A4217039584BD1 /* PBXTargetDependency */,
+			);
+			name = PaperDailyTests;
+			productName = PaperDailyTests;
+			productReference = 75E662AEC5897181D23DEE28 /* PaperDailyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		627D9A67E459D8E2808ECBD3 /* PaperDaily */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D06F989D24DCDD2C8FCDFED /* Build configuration list for PBXNativeTarget "PaperDaily" */;
+			buildPhases = (
+				EA9E764E2C0E490816925D74 /* Sources */,
+				5F72DD2FFAF848AD8F80804F /* Frameworks */,
+				7CCDAE33E243D3C33A5525EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaperDaily;
+			productName = PaperDaily;
+			productReference = D5CD49796E9456BE75552160 /* PaperDaily.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2750495A20EBF91BE1C4C51D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+			};
+			buildConfigurationList = 14816EF7187592850702CA27 /* Build configuration list for PBXProject "PaperDaily" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2CFE01527477BB71CCDE8C81;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 692E96EDEC5A201C17AF354C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				627D9A67E459D8E2808ECBD3 /* PaperDaily */,
+				0F0F466088C8EC9375DD0E25 /* PaperDailyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75263AFBCD81462018430F66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D147E448EC4BAED1FC2E95C2 /* sample_latest.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCDAE33E243D3C33A5525EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D566C36068256D9307627DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D959AB097A27867D06AA61E /* FeedParsingTests.swift in Sources */,
+				38CA7CB55628CAD23C178C54 /* PaperStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9E764E2C0E490816925D74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D961C8D55F614CD0E3C77940 /* PaperDailyApp.swift in Sources */,
+				5C9DFE559AABD1865897D733 /* PaperFeed.swift in Sources */,
+				DE768BB5C3C88F0B013AAD4A /* PaperItem.swift in Sources */,
+				93B56759B8FF5B42888BBA0C /* FeedAPIClient.swift in Sources */,
+				F701A1E49B913740DCA4F165 /* FeedCache.swift in Sources */,
+				DB8BD05C92978EA74E8F7BCD /* LinkRouter.swift in Sources */,
+				C1BBD1CEF1FAB52527B59DCE /* UserSettingsStore.swift in Sources */,
+				3F867870CF8A5DB5421D67A4 /* PaperStore.swift in Sources */,
+				836F1D2C1F18E384B3B848A0 /* LocalNotificationScheduler.swift in Sources */,
+				2C7273633B8E040B1EA08E17 /* TodayView.swift in Sources */,
+				8ECB89C9B53DF5DA6EE9AC4B /* PaperListView.swift in Sources */,
+				1DC629CDD717D926A9858B29 /* PaperRowView.swift in Sources */,
+				C022567B71B0CEB87C253E2F /* PaperDetailView.swift in Sources */,
+				620FAF0D1F814472E038AD8A /* SettingsView.swift in Sources */,
+				8CD1532620F4B1F280A26D28 /* FavoritesView.swift in Sources */,
+				00BF4B6A4C27476923F798F7 /* EmptyStateView.swift in Sources */,
+				B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8AA12B171A4217039584BD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PaperDaily;
+			target = 627D9A67E459D8E2808ECBD3 /* PaperDaily */;
+			targetProxy = 118CC9114307B33A4ECE09D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5FAE78ECF5FAA04ED1B7A971 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdailyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaperDaily.app/PaperDaily";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68E15A2602E13BE7F9312F76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9535DB540F9764B8455CF593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "每日论文";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdaily;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE27700426D75D4DD821E401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdailyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaperDaily.app/PaperDaily";
+			};
+			name = Debug;
+		};
+		EA43544D2CBA3AB18F57D484 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "每日论文";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdaily;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F5265BC63D9D00A85A4AEEFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14816EF7187592850702CA27 /* Build configuration list for PBXProject "PaperDaily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68E15A2602E13BE7F9312F76 /* Debug */,
+				F5265BC63D9D00A85A4AEEFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D06F989D24DCDD2C8FCDFED /* Build configuration list for PBXNativeTarget "PaperDaily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA43544D2CBA3AB18F57D484 /* Release */,
+				9535DB540F9764B8455CF593 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7579A12A5998A0AFF3E52E8 /* Build configuration list for PBXNativeTarget "PaperDailyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FAE78ECF5FAA04ED1B7A971 /* Release */,
+				CE27700426D75D4DD821E401 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2750495A20EBF91BE1C4C51D /* Project object */;
+}

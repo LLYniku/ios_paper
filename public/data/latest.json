@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-04-22T22:00:00Z",
+  "recommendation_date": "2026-04-23",
+  "timezone": "Asia/Taipei",
+  "source": [
+    "arxiv"
+  ],
+  "language": "zh-Hans",
+  "config": {
+    "categories": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CL",
+      "cs.CV"
+    ],
+    "max_paper_num": 100,
+    "model": "gpt-5.4-mini"
+  },
+  "stats": {
+    "total_candidates": 12,
+    "recommended_count": 2,
+    "llm_summary_count": 0
+  },
+  "papers": [
+    {
+      "id": "arxiv:2604.22001",
+      "source": "arxiv",
+      "title": "Agentic Retrieval for Scientific Discovery",
+      "authors": [
+        "Lin Liu",
+        "Ada Zhang",
+        "Kai Chen",
+        "Ming Xu"
+      ],
+      "abstract": "We introduce an agentic retrieval workflow for scientific discovery that combines iterative literature search, evidence tracking, and synthesis over daily arXiv updates.",
+      "summary_zh": null,
+      "tldr": "We introduce an agentic retrieval workflow for scientific discovery that combines iterative literature search, evidence tracking, and synthesis over daily arXiv",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.IR主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 0.9231,
+      "published_at": "2026-04-22T00:00:00Z",
+      "updated_at": "2026-04-22T00:00:00Z",
+      "categories": [
+        "cs.AI",
+        "cs.IR"
+      ],
+      "keywords": [
+        "agent",
+        "retrieval",
+        "scientific discovery"
+      ],
+      "affiliations": [
+        "University X",
+        "Institute Y"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2604.22001.pdf",
+      "abs_url": "https://arxiv.org/abs/2604.22001v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2604.22002",
+      "source": "arxiv",
+      "title": "Benchmarking Multimodal Paper Assistants",
+      "authors": [
+        "Qian Wu",
+        "Irene Sun",
+        "Bo Yang"
+      ],
+      "abstract": "This paper benchmarks multimodal assistants for reading long scientific papers, focusing on citation grounding, figure understanding, and recommendation quality.",
+      "summary_zh": null,
+      "tldr": "This paper benchmarks multimodal assistants for reading long scientific papers, focusing on citation grounding, figure understanding, and recommendation quality",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.CV主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 0.8875,
+      "published_at": "2026-04-22T02:00:00Z",
+      "updated_at": "2026-04-22T02:00:00Z",
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "keywords": [
+        "multimodal",
+        "benchmark",
+        "paper assistant"
+      ],
+      "affiliations": [
+        "Lab A"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2604.22002.pdf",
+      "abs_url": "https://arxiv.org/abs/2604.22002v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    }
+  ]
+}

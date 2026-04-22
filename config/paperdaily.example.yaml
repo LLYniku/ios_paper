@@ -1,0 +1,56 @@
+zotero:
+  user_id: ${oc.env:ZOTERO_ID}
+  api_key: ${oc.env:ZOTERO_KEY}
+  include_path: null # Example: ["2026/survey/**", "2026/reading-group/**"]
+  ignore_path: null # Example: ["archive/**", "misc/**"]
+
+source:
+  arxiv:
+    category: ["cs.AI", "cs.LG", "cs.CL", "cs.CV"]
+    include_cross_list: false
+  biorxiv:
+    category: null
+  medrxiv:
+    category: null
+
+email:
+  enabled: false
+  sender: ${oc.env:SENDER,null}
+  receiver: ${oc.env:RECEIVER,null}
+  smtp_server: ${oc.env:SMTP_SERVER,null}
+  smtp_port: ${oc.env:SMTP_PORT,465}
+  sender_password: ${oc.env:SENDER_PASSWORD,null}
+
+llm:
+  api:
+    key: ${oc.env:OPENAI_API_KEY,null}
+    base_url: ${oc.env:OPENAI_API_BASE,https://api.openai.com/v1}
+  generation_kwargs:
+    model: ${oc.env:OPENAI_MODEL,gpt-5.4-mini}
+    max_tokens: 4096
+  language: 简体中文
+
+reranker:
+  local:
+    model: jinaai/jina-embeddings-v5-text-nano-retrieval
+    encode_kwargs:
+      task: retrieval
+      prompt_name: document
+  api:
+    key: ${oc.env:EMBEDDING_API_KEY,null}
+    base_url: ${oc.env:EMBEDDING_API_BASE,null}
+    model: ${oc.env:EMBEDDING_MODEL,null}
+    batch_size: ${oc.env:EMBEDDING_BATCH_SIZE,null}
+
+executor:
+  debug: ${oc.env:DEBUG,false}
+  send_empty: true
+  max_paper_num: 30
+  source: ["arxiv"]
+  reranker: local
+
+app_export:
+  enabled: true
+  output_dir: public/data
+  language: zh-Hans
+  summary_top_n: 20

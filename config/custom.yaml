@@ -1,0 +1,33 @@
+zotero:
+  user_id: ${oc.env:ZOTERO_ID}
+  api_key: ${oc.env:ZOTERO_KEY}
+  include_path: null # Or set a list of glob patterns, e.g. ["2026/survey/**","2026/reading-group/**"]
+
+email:
+  enabled: ${oc.env:EMAIL_ENABLED,true}
+  sender: ${oc.env:SENDER}
+  receiver: ${oc.env:RECEIVER}
+  smtp_server: smtp.qq.com
+  smtp_port: 465
+  sender_password: ${oc.env:SENDER_PASSWORD}
+
+llm:
+  api:
+    key: ${oc.env:OPENAI_API_KEY}
+    base_url: ${oc.env:OPENAI_API_BASE}
+  generation_kwargs:
+    model: ${oc.env:OPENAI_MODEL,gpt-4o-mini}
+
+source:
+  arxiv:
+    category: ["cs.AI","cs.CV","cs.LG","cs.CL"]
+
+executor:
+  debug: ${oc.env:DEBUG,null}
+  source: ['arxiv']
+
+app_export:
+  enabled: ${oc.env:APP_EXPORT_ENABLED,true}
+  output_dir: ${oc.env:APP_EXPORT_OUTPUT_DIR,public/data}
+  language: ${oc.env:APP_EXPORT_LANGUAGE,zh-Hans}
+  summary_top_n: ${oc.env:APP_EXPORT_SUMMARY_TOP_N,20}

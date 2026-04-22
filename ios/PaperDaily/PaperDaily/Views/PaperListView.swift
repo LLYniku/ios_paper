@@ -1,0 +1,29 @@
+import SwiftUI
+
+struct PaperListView: View {
+    let papers: [PaperItem]
+    let favoritePaperIDs: Set<String>
+    let readPaperIDs: Set<String>
+    let emptyTitle: String
+    let emptyMessage: String
+    let onToggleFavorite: (PaperItem) -> Void
+    let onToggleRead: (PaperItem) -> Void
+
+    var body: some View {
+        if papers.isEmpty {
+            EmptyStateView(title: emptyTitle, message: emptyMessage)
+        } else {
+            LazyVStack(spacing: 12) {
+                ForEach(papers) { paper in
+                    PaperRowView(
+                        paper: paper,
+                        isFavorite: favoritePaperIDs.contains(paper.id),
+                        isRead: readPaperIDs.contains(paper.id),
+                        onToggleFavorite: { onToggleFavorite(paper) },
+                        onToggleRead: { onToggleRead(paper) }
+                    )
+                }
+            }
+        }
+    }
+}
