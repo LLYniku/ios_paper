@@ -118,5 +118,119 @@
     "summary_zh": "这是一个面向 AI 工程实践的 GitHub 仓库，主题覆盖 agents、LLM、生成式 AI、计算机视觉、强化学习、MCP、Transformer 等多个方向。仓库强调从零构建与动手实现，定位更偏教程和课程资源，适合希望系统学习 AI 工程落地流程的读者。项目主要使用 Python，同时也涉及 Rust 和 TypeScript 等技术栈。当前热度较高，说明其在 AI 开发学习社区中具有一定关注度和传播性。",
     "tldr": "这是一个覆盖 AI 工程多方向、强调从零实现与实践入门的 Python 教程型 GitHub 仓库。",
     "recommendation_reason": "它与科研主题相关，因为它汇集了 agents、LLM、强化学习和多模态等研究与工程交叉方向的入门与实现资源，适合用于了解相关技术路线。"
+  },
+  "github:repo:vllm-project/vllm": {
+    "fingerprint": "8fb860468b0a5aed67f1081043484342d1a4fb81",
+    "summary_zh": "这是一个面向大语言模型推理与在线服务的高吞吐、内存高效引擎项目。仓库聚焦于 LLM serving 场景，支持多种硬件与模型生态，包括 CUDA、AMD、TPU 以及多类主流开源模型。其定位非常适合需要部署、评测或优化大模型推理性能的研究与工程工作。",
+    "tldr": "这是一个用于大语言模型高性能推理与服务部署的开源引擎。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理系统、资源效率优化和模型服务架构等研究与实验常用基础设施。"
+  },
+  "github:repo:labyrinthine-saltiness744/turboquant-mlx": {
+    "fingerprint": "79bd89df6318ac8c3b6b4742047786d565e18763",
+    "summary_zh": "这是一个面向 Apple Silicon 的 Python 仓库，核心功能是用 TurboQuant 混合精度和融合的 Metal 内核压缩 MLX 的 KV cache，以降低显存占用并提升解码速度。项目与大模型推理、量化、LLM inference、MoE 和检索等主题相关，并涉及 PyTorch、Transformers、Qwen 等生态。当前仓库星标数为 0，说明还处于较早期或受关注度较低的状态。整体来看，它更偏向推理优化与系统实现，而非模型训练或算法理论研究。",
+    "tldr": "该仓库聚焦于 Apple Silicon 上的 LLM 推理加速，通过量化与 Metal 内核优化降低 KV cache 内存占用并提升 decode 性能。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、量化压缩和高效缓存管理，这些都是当前机器学习系统研究中的重要方向。"
+  },
+  "github:repo:anpendyal/kv-cache-experiments": {
+    "fingerprint": "230b2151bb1860d1cf718b532114565c8a4efa19",
+    "summary_zh": "这是一个与 MIT-IBM Watson AI Lab 相关的 Python 仓库，主要工作是为 Case.law 数据库中的约 670 万份美国法院判决生成 KV cache，以支持在法律语料上的低延迟大模型推理。项目关注的是大规模法学文本场景下的推理效率问题，适用于超大规模语料的检索增强与推理加速研究。当前还在工程化探索 KV cache 压缩技术，用于进一步优化 HPC 集群上的资源利用。整体上它体现了将大模型推理基础设施应用到法律文档海量处理中的实践方向。",
+    "tldr": "该仓库聚焦于为海量法律语料预生成和压缩 KV cache，以提升大模型在大规模法学文本上的推理效率。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、KV cache 优化以及在超大规模专业语料上的系统工程实践。"
+  },
+  "github:repo:bojobh609/turboquant": {
+    "fingerprint": "79f34deb9bff9018083d7b88f9d13204c99d51ee",
+    "summary_zh": "TurboQuant 是一个面向向量检索场景的开源仓库，核心目标是优化与 FAISS 兼容的向量量化，以提升检索速度并尽量保持精度。项目标签显示它与注意力机制、嵌入表示、近似最近邻检索、RAG、KV cache 压缩以及推理优化等主题相关。实现语言为 Python，强调可在消费级 GPU 和 Metal/MLX 环境下使用。当前仓库星标数为 0，说明项目可能较新或关注度尚低。",
+    "tldr": "TurboQuant 聚焦于高效、准确的向量量化与检索优化，适合关注 RAG、近似最近邻和推理加速的研究者。",
+    "recommendation_reason": "该仓库直接涉及向量量化、检索优化和推理加速，与机器学习系统和高效向量搜索研究主题高度相关。"
+  },
+  "github:repo:feriel12fr/crom-context-rot-mitigation--efficientllm": {
+    "fingerprint": "33bd5cb83fb086e4852c19305c2eb549172612cf",
+    "summary_zh": "这是一个 Python 仓库，主题是为大语言模型优化上下文管理，重点围绕高效的重排序和检索技术。仓库名称显示其关注“Context Rot Mitigation”，即缓解长上下文使用中可能出现的信息退化问题。当前信息显示该项目的热度较低，Stars 为 0。整体上，它更像是一个面向 LLM 检索增强与上下文优化的实验性实现或工具集合。",
+    "tldr": "一个用 Python 实现的、用于改进大语言模型上下文管理与检索重排序的仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型的上下文处理、检索增强和效率优化，这些都是当前 NLP 与 LLM 研究中的重要方向。"
+  },
+  "github:repo:cdeust/cortex": {
+    "fingerprint": "f5a9b79ca0964f0105b5e70f4ee3c762cddaf129",
+    "summary_zh": "这是一个面向 Claude Code 的持久化记忆系统仓库，核心目标是在长上下文和多轮交互中提供长期、可检索的记忆支持。项目结合了 PostgreSQL、pgvector、阶段化上下文组装和向量检索，并宣称在 LongMemEval、LoCoMo 等基准上取得较高的召回表现。其内容明显借鉴了神经科学与认知科学中的记忆机制，如海马体式记忆、预测编码和 Hopfield 网络，并将这些思想映射到 LLM 记忆架构中。",
+    "tldr": "这是一个将神经科学记忆机制与向量检索结合、为 Claude Code 提供长期记忆能力的 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及长期记忆、认知架构、神经科学启发的人工智能设计以及检索增强生成等研究方向。"
+  },
+  "github:repo:vllm-project/llm-compressor": {
+    "fingerprint": "15730304dd53dfba71242a3d57e3b4b1ebd6a6b9",
+    "summary_zh": "这是一个面向大语言模型部署优化的 Transformers 兼容压缩库，支持对 LLM 应用多种压缩算法。项目重点围绕模型压缩与量化展开，目标是与 vLLM 配合实现更高效的推理部署。仓库使用 Python 开发，且已获得较多关注。",
+    "tldr": "这是一个用于 LLM 压缩与量化、并面向 vLLM 部署优化的 Python 开源库。",
+    "recommendation_reason": "它与科研中的模型压缩、量化和高效推理部署研究直接相关，可用于实验不同压缩算法对大模型性能与资源占用的影响。"
+  },
+  "github:repo:michaelkarachewski/inferencelatencyblog": {
+    "fingerprint": "3eb440eea6869380ffe71d4e312029c9a933abbb",
+    "summary_zh": "这是一个以 Python 为主要语言的 GitHub 仓库，当前公开信息显示星标数为 0。仓库名称指向与推理延迟相关的内容，可能围绕模型推理性能、响应时间或相关实验分析展开。由于提供的信息有限，无法进一步确认其具体实现细节、数据集或实验结论。整体上，它更像是一个面向推理性能主题的技术项目或笔记型仓库。",
+    "tldr": "这是一个与推理延迟主题相关的 Python 仓库，可能适合关注模型性能与延迟优化的研究者。",
+    "recommendation_reason": "该仓库与模型推理延迟这一科研主题直接相关，可能为性能评估、延迟分析或优化方法研究提供参考。"
+  },
+  "github:repo:nvidia-nemo/megatron-bridge": {
+    "fingerprint": "c46ab5b2eb1746c9d13afe389467ac48b5160f97",
+    "summary_zh": "这是一个用于 Megatron 系列模型训练的 Python 库，重点支持与 Hugging Face 之间的双向转换。项目由 NVIDIA-NeMo 维护，面向大模型训练与模型格式互操作场景。仓库热度较高，说明其在开源社区中具有一定关注度和实用性。对于需要在不同训练框架之间迁移或复用大模型权重的研究工作，它可能提供直接的工程支持。",
+    "tldr": "这是一个支持 Megatron 模型训练及与 Hugging Face 双向转换的开源库。",
+    "recommendation_reason": "它与大模型训练、模型迁移和框架互操作研究直接相关，适合用于比较不同训练生态下的实现与权重转换方案。"
+  },
+  "github:repo:blaizzy/mlx-vlm": {
+    "fingerprint": "7ccce07caf3693df03b40897938d0fa561ae0655",
+    "summary_zh": "这是一个面向 Mac 上 Apple Silicon 环境的视觉语言模型（VLM）推理与微调工具包，基于 MLX 框架实现。它支持多种主流 VLM 架构与模型生态，适合在本地进行图像-文本联合任务的实验与部署。项目以 Python 编写，且在开源社区中具有较高关注度。对于希望在苹果硬件上研究或复现 VLM 的用户，这个仓库提供了较实用的工程基础。",
+    "tldr": "这是一个可在 Mac/Apple Silicon 上用 MLX 进行视觉语言模型推理和微调的开源工具包。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上实验、复现和微调视觉语言模型的实现框架，便于开展多模态模型研究。"
+  },
+  "github:repo:pestopoppa/epyc-orchestrator": {
+    "fingerprint": "42d712dceddafc01104215c140248108b441b987",
+    "summary_zh": "这是一个基于 Python 的 GitHub 仓库，项目名为 epyc-orchestrator，核心目标是为本地大语言模型推理提供分层的多模型编排能力。它强调 hierarchical multi-model orchestration，说明该工具可能用于在不同模型之间进行路由、协调或级联推理，以提升本地推理效率或效果。仓库当前星标为 0，表明这是一个较新的或关注度较低的项目，但主题明确且偏向 LLM 系统工程方向。",
+    "tldr": "这是一个面向本地 LLM 推理的分层多模型编排工具仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大语言模型推理系统中的多模型调度与编排，这类能力常用于研究模型协同、推理优化和系统架构设计。"
+  },
+  "github:repo:yuhe-zzy/llm_sampling": {
+    "fingerprint": "793c36b5c2d6ba3513dcc7617474500ea7b8fe2b",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，名称为 LLM_Sampling，当前公开信息显示星标数为 0。仅从仓库标题和语言来看，它可能与大语言模型的采样方法或相关实验代码有关，但摘录内容未提供更多项目说明、功能细节或文档。由于缺少 README、代码结构和使用场景信息，无法进一步判断其具体研究价值或实现内容。",
+    "tldr": "这是一个与大语言模型采样相关的 Python 仓库，但当前可见信息很有限。",
+    "recommendation_reason": "该仓库的主题可能涉及大语言模型采样方法，属于机器学习与生成式模型研究中常见的实验方向，因此与科研检索相关。"
+  },
+  "github:repo:ryanwreid/memcore": {
+    "fingerprint": "6f91ee4fd94b047e13ed9afd3d00bb33a43f0cc0",
+    "summary_zh": "这是一个面向 AI agent 的受治理记忆系统仓库，核心目标是提升记忆写入与检索的可信度和可控性。项目描述提到包含 epistemic write gate、cross-encoder reranking 和事实抽取等机制，说明它不仅关注存储，还关注信息筛选与排序。仓库使用 Python 实现，目前星标较少，整体更像是一个早期或实验性项目。其主题与 AI 记忆管理、检索增强和信息质量控制相关。",
+    "tldr": "这是一个为 AI agent 提供受治理记忆、事实抽取和重排序能力的 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI 记忆系统、检索排序和信息可信性控制等可用于智能体与知识管理研究的核心技术。"
+  },
+  "github:repo:sunkencity999/pre": {
+    "fingerprint": "a07de230f8abebb5c2c96caaeee6bcd5c4571fd8",
+    "summary_zh": "这是一个名为 pre 的开源仓库，定位为在 Apple Silicon 上本地运行的智能助理/推理引擎。项目强调使用 Gemma 4 驱动的 agentic assistant，支持本地推理、零云依赖，并提供 CLI 和 GUI 两种交互方式。仓库标签显示其关注点包括 Apple Silicon、Metal、LLM、本地 AI 和 mixture-of-experts，语言为 JavaScript。整体来看，它更偏向本地端 AI 应用与推理工程实现。",
+    "tldr": "这是一个面向 Apple Silicon 的本地 LLM/agent 助手项目，强调零云依赖和本地推理。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理、Apple Silicon 优化和 agentic AI 系统实现，适合研究边缘部署与高效推理方案。"
+  },
+  "github:repo:jhammant/llm-time-machine": {
+    "fingerprint": "7290270997b32aa99a77db07cba56b2fb8ae024c",
+    "summary_zh": "这是一个交互式微型网站，用来展示开源权重的大语言模型在同一台消费级 Mac 硬件上的能力如何从 2023 年持续提升到 2026 年，并进一步给出对 2028 年的预测。项目以 JavaScript 实现，强调在固定硬件条件下比较模型演进带来的性能变化。它适合用于观察 LLM 发展趋势、推理能力提升以及本地部署可行性的变化。",
+    "tldr": "该仓库展示了开源 LLM 在同一消费级 Mac 上从 2023 到 2026 的显著进步，并预测到 2028 的发展趋势。",
+    "recommendation_reason": "它与科研主题相关，因为它可用于分析开源大模型在固定硬件约束下的能力演进与趋势预测。"
+  },
+  "github:repo:dylan-okeefe/hestia": {
+    "fingerprint": "315b1a97c357838a2bfd8a06c3cc8f32732fb34c",
+    "summary_zh": "这是一个面向个人助手的代理框架，强调本地优先和在单块消费级 GPU 上运行。项目目标是适配受限硬件环境，以较低资源门槛部署智能代理能力。仓库使用 Python 开发，当前公开信息显示星标数为 0。整体上它更偏向轻量化、边缘/本地部署方向的基础工具。",
+    "tldr": "这是一个面向单 GPU 本地部署的个人助手代理框架，主打受限硬件环境下的可用性。",
+    "recommendation_reason": "该项目与科研主题相关，因为它涉及本地化智能代理、受限算力部署和低资源环境下的系统设计，这些都适合用于研究高效 AI 运行框架。"
+  },
+  "github:repo:tooldev22/llm-adaptive-learning": {
+    "fingerprint": "d8e0ba01548588a4817b9f45d1183f6b70b013e0",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，当前信息显示其语言为 Python、星标为 0。仓库名称表明它与大语言模型和自适应学习相关，可能用于探索基于 LLM 的个性化学习或动态调整学习策略的实现。由于提供的信息较少，无法判断其具体功能、代码质量或应用场景。整体上它更像是一个与智能教育和自适应系统相关的技术项目。",
+    "tldr": "这是一个与大语言模型驱动的自适应学习相关的 Python 仓库。",
+    "recommendation_reason": "该仓库与大语言模型、自适应学习和智能教育技术相关，适合关注科研中个性化学习系统与 LLM 应用的研究者参考。"
+  },
+  "github:repo:dp-web4/sage": {
+    "fingerprint": "883aef373d92b61f67fb1fe1d5856df371fb20e8",
+    "summary_zh": "这是一个名为 SAGE 的 Python 仓库，定位为“情境感知治理引擎”，强调信任感知的注意力编排、代谢状态以及分层记忆等机制。仓库主题涉及 AI、自治系统和具身智能，暗示其面向自主代理或复杂智能体架构的研究与实现。当前公开信息较少，但从描述看，它更偏向于探索可控、可解释的自主智能系统组件。仓库星标数较少，可能仍处于早期阶段。",
+    "tldr": "SAGE 是一个面向自主/具身智能的 Python 项目，聚焦情境感知治理、信任感知调度和分层记忆等机制。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及自主智能体与具身 AI 中的治理、记忆和注意力编排等核心架构问题，适合研究相关系统设计与实验实现。"
+  },
+  "github:repo:sbhooley/ainativelang": {
+    "fingerprint": "1392925be0868fb7d62983b1e28b7d244085120b",
+    "summary_zh": "这是一个面向 AI 工作流编排的 Python 仓库，提出了 AINL（AI Native Language）这种图结构、可编译的领域特定语言，用于把 AI 从“对话式智能”转为“结构化执行的工作者”。项目强调多步骤流程、状态与记忆、工具调用、可重复执行、验证与控制，适合构建多代理协作和确定性较强的 AI 系统。它还与 MCP、LLM 编排、工作流引擎等方向相关，并试图降低对长提示词循环的依赖。",
+    "tldr": "AINL 是一个用于构建可编排、可重复、带状态的 AI 工作流与多代理系统的 Python DSL/编译器项目。",
+    "recommendation_reason": "该仓库直接涉及 AI 代理编排、LLM 工作流控制和确定性执行等科研主题，适合研究新型 AI 编程语言与多智能体系统架构。"
   }
 }
