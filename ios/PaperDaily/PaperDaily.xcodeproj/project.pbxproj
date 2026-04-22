@@ -22,6 +22,7 @@
 		96186D099A471AF4880B43A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */; };
 		9D959AB097A27867D06AA61E /* FeedParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */; };
 		A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
+		B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */; };
 		B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A170830E50A17B10819 /* ErrorStateView.swift */; };
 		C022567B71B0CEB87C253E2F /* PaperDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */; };
 		C1BBD1CEF1FAB52527B59DCE /* UserSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB989D15B65941804BD68529 /* UserSettingsStore.swift */; };
@@ -58,7 +59,8 @@
 		742EF8C21168D41A9FBE217D /* PaperFeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperFeed.swift; path = Models/PaperFeed.swift; sourceTree = "<group>"; };
 		75E662AEC5897181D23DEE28 /* PaperDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaperDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
-		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
+		B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
 		C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = Views/FavoritesView.swift; sourceTree = "<group>"; };
 		CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperDetailView.swift; path = Views/PaperDetailView.swift; sourceTree = "<group>"; };
 		D37DEBBF35877495957F3E29 /* TodayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TodayView.swift; path = Views/TodayView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */,
 				6814601A651CBB8B368D4785 /* EmptyStateView.swift */,
 				67FA1A170830E50A17B10819 /* ErrorStateView.swift */,
+				B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */,
 				BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */,
 			);
 			name = PaperDaily;
@@ -240,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */,
 				A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +307,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdailyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llyniku.paperdailyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -393,7 +397,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdaily;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llyniku.paperdaily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -413,7 +417,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdailyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llyniku.paperdailyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -441,7 +445,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.paperdaily;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llyniku.paperdaily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -6,7 +6,8 @@ env:
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 22 * * *"
+    # 21:00 UTC = 05:00 Asia/Shanghai (next day)
+    - cron: "0 21 * * *"
 
 permissions:
   contents: write

@@ -98,6 +98,11 @@ uv run python scripts/run_app_feed.py \
 3. 将 JSON commit 回当前分支。
 4. 把 `public/` 部署到 GitHub Pages。
 
+当前默认定时是：
+
+- 每天 `21:00 UTC`
+- 对应北京时间 `Asia/Shanghai` 次日 `05:00`
+
 ## 8. 如何启用 GitHub Pages
 
 本仓库的 workflow 已包含 `deploy-pages` job。

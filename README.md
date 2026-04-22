@@ -178,7 +178,7 @@ That's all! Now you can test the workflow by manually triggering it:
 
 Then check the log and the receiver email after it finishes.
 
-By default, the main workflow runs on 22:00 UTC everyday. You can change this time by editting the workflow config `.github/workflows/main.yml`.
+By default, the PaperDaily feed workflow runs at 21:00 UTC everyday, which is 05:00 the next day in Asia/Shanghai. You can change this time by editing `.github/workflows/daily-app-feed.yml`.
 
 ### Local Running
 Supported by [uv](https://github.com/astral-sh/uv), this workflow can easily run on your local device if uv is installed:
