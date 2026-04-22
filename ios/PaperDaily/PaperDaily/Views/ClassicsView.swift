@@ -57,6 +57,8 @@ struct ClassicsView: View {
             if let feed = classicsStore.feed {
                 Text("论文数量：\(feed.paperCount)")
                     .foregroundStyle(.secondary)
+                Text("已读数量：\(readCount(in: feed))")
+                    .foregroundStyle(.secondary)
                 Text("Schema：\(feed.schemaVersion)")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
@@ -87,6 +89,11 @@ struct ClassicsView: View {
                 }
             }
         }
+    }
+
+    private func readCount(in feed: ClassicsFeed) -> Int {
+        let paperIDs = Set(feed.papers.map(\.id))
+        return classicsStore.readClassicIDs.intersection(paperIDs).count
     }
 
     private func categoryChip(title: String, category: String?) -> some View {
