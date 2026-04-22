@@ -1,0 +1,70 @@
+name: Generate Classics Feed
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: paperdaily-classics-pages
+  cancel-in-progress: false
+
+jobs:
+  generate-classics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Generate classics feed
+        run: |
+          uv run python scripts/run_classics_feed.py \
+            --readme-path Awesome-LLM-Compression-main/README.md \
+            --output public/data/classics.json \
+            --bundle-output ios/PaperDaily/PaperDaily/Resources/sample_classics.json
+
+      - name: Commit generated classics feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/classics.json ios/PaperDaily/PaperDaily/Resources/sample_classics.json
+          git diff --cached --quiet || git commit -m "chore: update classics feed"
+          git push origin HEAD:${GITHUB_REF_NAME}
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy-pages:
+    needs: generate-classics
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

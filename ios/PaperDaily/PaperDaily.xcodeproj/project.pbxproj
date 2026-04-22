@@ -21,6 +21,15 @@
 		93B56759B8FF5B42888BBA0C /* FeedAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */; };
 		96186D099A471AF4880B43A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */; };
 		9D959AB097A27867D06AA61E /* FeedParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */; };
+		A1B1C1D1E1F1010101010101 /* ClassicPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010111 /* ClassicPaper.swift */; };
+		A1B1C1D1E1F1010101010102 /* ClassicFeedAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010112 /* ClassicFeedAPIClient.swift */; };
+		A1B1C1D1E1F1010101010103 /* ClassicFeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010113 /* ClassicFeedCache.swift */; };
+		A1B1C1D1E1F1010101010104 /* ClassicsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010114 /* ClassicsStore.swift */; };
+		A1B1C1D1E1F1010101010105 /* ClassicPaperRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010115 /* ClassicPaperRowView.swift */; };
+		A1B1C1D1E1F1010101010106 /* ClassicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010116 /* ClassicDetailView.swift */; };
+		A1B1C1D1E1F1010101010107 /* ClassicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010117 /* ClassicsView.swift */; };
+		A1B1C1D1E1F1010101010108 /* sample_classics.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010118 /* sample_classics.json */; };
+		A1B1C1D1E1F1010101010109 /* sample_classics.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010118 /* sample_classics.json */; };
 		A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
 		B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */; };
 		B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A170830E50A17B10819 /* ErrorStateView.swift */; };
@@ -58,8 +67,16 @@
 		6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedParsingTests.swift; sourceTree = "<group>"; };
 		742EF8C21168D41A9FBE217D /* PaperFeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperFeed.swift; path = Models/PaperFeed.swift; sourceTree = "<group>"; };
 		75E662AEC5897181D23DEE28 /* PaperDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaperDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010111 /* ClassicPaper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicPaper.swift; path = Models/ClassicPaper.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010112 /* ClassicFeedAPIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicFeedAPIClient.swift; path = Services/ClassicFeedAPIClient.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010113 /* ClassicFeedCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicFeedCache.swift; path = Services/ClassicFeedCache.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010114 /* ClassicsStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicsStore.swift; path = Stores/ClassicsStore.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010115 /* ClassicPaperRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicPaperRowView.swift; path = Views/ClassicPaperRowView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010116 /* ClassicDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicDetailView.swift; path = Views/ClassicDetailView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010117 /* ClassicsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicsView.swift; path = Views/ClassicsView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010118 /* sample_classics.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_classics.json; path = Resources/sample_classics.json; sourceTree = "<group>"; };
 		B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
 		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
 		C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = Views/FavoritesView.swift; sourceTree = "<group>"; };
 		CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperDetailView.swift; path = Views/PaperDetailView.swift; sourceTree = "<group>"; };
@@ -114,15 +131,22 @@
 				F8C889D56BAFC7E64F2D170B /* PaperDailyApp.swift */,
 				742EF8C21168D41A9FBE217D /* PaperFeed.swift */,
 				3089D02FDF1B5F9E9646E861 /* PaperItem.swift */,
+				A1B1C1D1E1F1010101010111 /* ClassicPaper.swift */,
 				192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */,
+				A1B1C1D1E1F1010101010112 /* ClassicFeedAPIClient.swift */,
 				565789DB7959B6343A075549 /* FeedCache.swift */,
+				A1B1C1D1E1F1010101010113 /* ClassicFeedCache.swift */,
 				2F85395A90B496F5F72A9A2A /* LinkRouter.swift */,
 				DB989D15B65941804BD68529 /* UserSettingsStore.swift */,
 				BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */,
+				A1B1C1D1E1F1010101010114 /* ClassicsStore.swift */,
 				F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */,
+				A1B1C1D1E1F1010101010117 /* ClassicsView.swift */,
 				D37DEBBF35877495957F3E29 /* TodayView.swift */,
 				4ECCD0C3657E1E93CE96D1B1 /* PaperListView.swift */,
+				A1B1C1D1E1F1010101010115 /* ClassicPaperRowView.swift */,
 				33651183D741090D37A4C5F0 /* PaperRowView.swift */,
+				A1B1C1D1E1F1010101010116 /* ClassicDetailView.swift */,
 				CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */,
 				24A12EF63123D0C175EBF6A6 /* SettingsView.swift */,
 				C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */,
@@ -130,8 +154,8 @@
 				67FA1A170830E50A17B10819 /* ErrorStateView.swift */,
 				B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */,
 				BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */,
+				A1B1C1D1E1F1010101010118 /* sample_classics.json */,
 			);
-			name = PaperDaily;
 			path = PaperDaily;
 			sourceTree = "<group>";
 		};
@@ -150,7 +174,6 @@
 				6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */,
 				13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */,
 			);
-			name = PaperDailyTests;
 			path = PaperDailyTests;
 			sourceTree = "<group>";
 		};
@@ -208,6 +231,16 @@
 			attributes = {
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					0F0F466088C8EC9375DD0E25 = {
+						DevelopmentTeam = 45J6FHZ9KU;
+						ProvisioningStyle = Automatic;
+					};
+					627D9A67E459D8E2808ECBD3 = {
+						DevelopmentTeam = 45J6FHZ9KU;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 14816EF7187592850702CA27 /* Build configuration list for PBXProject "PaperDaily" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -218,8 +251,6 @@
 				Base,
 			);
 			mainGroup = 2CFE01527477BB71CCDE8C81;
-			minimizedProjectReferenceProxies = 0;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 692E96EDEC5A201C17AF354C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B1C1D1E1F1010101010109 /* sample_classics.json in Resources */,
 				D147E448EC4BAED1FC2E95C2 /* sample_latest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +277,7 @@
 			files = (
 				B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */,
 				A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */,
+				A1B1C1D1E1F1010101010108 /* sample_classics.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,15 +300,22 @@
 				D961C8D55F614CD0E3C77940 /* PaperDailyApp.swift in Sources */,
 				5C9DFE559AABD1865897D733 /* PaperFeed.swift in Sources */,
 				DE768BB5C3C88F0B013AAD4A /* PaperItem.swift in Sources */,
+				A1B1C1D1E1F1010101010101 /* ClassicPaper.swift in Sources */,
 				93B56759B8FF5B42888BBA0C /* FeedAPIClient.swift in Sources */,
+				A1B1C1D1E1F1010101010102 /* ClassicFeedAPIClient.swift in Sources */,
 				F701A1E49B913740DCA4F165 /* FeedCache.swift in Sources */,
+				A1B1C1D1E1F1010101010103 /* ClassicFeedCache.swift in Sources */,
 				DB8BD05C92978EA74E8F7BCD /* LinkRouter.swift in Sources */,
 				C1BBD1CEF1FAB52527B59DCE /* UserSettingsStore.swift in Sources */,
 				3F867870CF8A5DB5421D67A4 /* PaperStore.swift in Sources */,
+				A1B1C1D1E1F1010101010104 /* ClassicsStore.swift in Sources */,
 				836F1D2C1F18E384B3B848A0 /* LocalNotificationScheduler.swift in Sources */,
+				A1B1C1D1E1F1010101010107 /* ClassicsView.swift in Sources */,
 				2C7273633B8E040B1EA08E17 /* TodayView.swift in Sources */,
 				8ECB89C9B53DF5DA6EE9AC4B /* PaperListView.swift in Sources */,
+				A1B1C1D1E1F1010101010105 /* ClassicPaperRowView.swift in Sources */,
 				1DC629CDD717D926A9858B29 /* PaperRowView.swift in Sources */,
+				A1B1C1D1E1F1010101010106 /* ClassicDetailView.swift in Sources */,
 				C022567B71B0CEB87C253E2F /* PaperDetailView.swift in Sources */,
 				620FAF0D1F814472E038AD8A /* SettingsView.swift in Sources */,
 				8CD1532620F4B1F280A26D28 /* FavoritesView.swift in Sources */,
@@ -303,7 +343,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 45J6FHZ9KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
@@ -387,7 +427,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 45J6FHZ9KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "每日论文";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -413,7 +453,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 45J6FHZ9KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
@@ -435,7 +475,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 45J6FHZ9KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "每日论文";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -503,8 +543,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

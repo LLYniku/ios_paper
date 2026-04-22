@@ -6,6 +6,7 @@ struct PaperListView: View {
     let readPaperIDs: Set<String>
     let emptyTitle: String
     let emptyMessage: String
+    let contextNote: ((PaperItem) -> String?)?
     let onToggleFavorite: (PaperItem) -> Void
     let onToggleRead: (PaperItem) -> Void
 
@@ -19,6 +20,7 @@ struct PaperListView: View {
                         paper: paper,
                         isFavorite: favoritePaperIDs.contains(paper.id),
                         isRead: readPaperIDs.contains(paper.id),
+                        contextNote: contextNote?(paper),
                         onToggleFavorite: { onToggleFavorite(paper) },
                         onToggleRead: { onToggleRead(paper) }
                     )

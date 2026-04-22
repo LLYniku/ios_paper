@@ -8,11 +8,12 @@ struct FavoritesView: View {
     @State private var showUnreadOnly = false
 
     var body: some View {
-        let papers = store.papers(
+        let records = store.favoritePapers(
             searchText: searchText,
-            unreadOnly: showUnreadOnly,
-            favoritesOnly: true
+            unreadOnly: showUnreadOnly
         )
+        let papers = records.map(\.paper)
+        let contextByID = Dictionary(uniqueKeysWithValues: records.map { ($0.id, $0.contextNote) })
 
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -32,7 +33,8 @@ struct FavoritesView: View {
                     readPaperIDs: store.readPaperIDs,
                     emptyTitle: "还没有收藏的论文",
                     emptyMessage: "在今日推荐页点星标后，这里会自动汇总。",
-                    onToggleFavorite: { store.toggleFavorite($0.id) },
+                    contextNote: { contextByID[$0.id] },
+                    onToggleFavorite: { store.toggleFavorite($0) },
                     onToggleRead: { store.toggleRead($0.id) }
                 )
             }

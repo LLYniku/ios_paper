@@ -8,10 +8,12 @@ final class PaperStoreTests: XCTestCase {
         let defaults = try makeDefaults()
         let store = makeStore(defaults: defaults)
 
+        await store.bootstrap()
         store.toggleFavorite("arxiv:2604.22001")
 
         XCTAssertEqual(Set(defaults.stringArray(forKey: PaperStore.Keys.favoritePaperIDs) ?? []), ["arxiv:2604.22001"])
         XCTAssertTrue(store.isFavorite("arxiv:2604.22001"))
+        XCTAssertEqual(store.favoritePapers().map(\.id), ["arxiv:2604.22001"])
     }
 
     func testReadStatePersists() async throws {
@@ -24,6 +26,34 @@ final class PaperStoreTests: XCTestCase {
         XCTAssertTrue(store.isRead("arxiv:2604.22001"))
     }
 
+    func testFavoritePaperPersistsAcrossFeedRefreshes() async throws {
+        let defaults = try makeDefaults()
+        let apiClient = MutableMockFeedAPIClient(feed: MockFeedAPIClient.sampleFeed)
+        let store = makeStore(defaults: defaults, apiClient: apiClient)
+
+        await store.bootstrap()
+        store.toggleFavorite("arxiv:2604.22001")
+
+        apiClient.feed = MockFeedAPIClient.emptyFeed
+        await store.refresh()
+
+        let favorites = store.favoritePapers()
+        XCTAssertEqual(favorites.count, 1)
+        XCTAssertEqual(favorites.first?.paper.id, "arxiv:2604.22001")
+        XCTAssertEqual(favorites.first?.recommendationDate, "2026-04-23")
+    }
+
+    func testFavoritePaperKeepsContextNote() async throws {
+        let defaults = try makeDefaults()
+        let store = makeStore(defaults: defaults)
+
+        await store.bootstrap()
+        store.toggleFavorite("arxiv:2604.22001")
+
+        let favorite = try XCTUnwrap(store.favoritePapers().first)
+        XCTAssertEqual(favorite.contextNote, "arXiv：2026-04-22 · 收藏自：2026-04-23")
+    }
+
     private func makeDefaults() throws -> UserDefaults {
         let suiteName = "PaperStoreTests.\(UUID().uuidString)"
         guard let defaults = UserDefaults(suiteName: suiteName) else {
@@ -33,11 +63,14 @@ final class PaperStoreTests: XCTestCase {
         return defaults
     }
 
-    private func makeStore(defaults: UserDefaults) -> PaperStore {
+    private func makeStore(
+        defaults: UserDefaults,
+        apiClient: FeedFetching = MockFeedAPIClient()
+    ) -> PaperStore {
         let settings = UserSettingsStore(defaults: defaults)
         let cache = FeedCache(baseDirectory: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString))
         return PaperStore(
-            apiClient: MockFeedAPIClient(),
+            apiClient: apiClient,
             cache: cache,
             settings: settings,
             userDefaults: defaults,
@@ -95,6 +128,27 @@ private struct MockFeedAPIClient: FeedFetching {
         return try! FeedAPIClient().decodeFeed(from: Data(json.utf8))
     }()
 
+    static let emptyFeed: PaperFeed = {
+        let json = """
+        {
+          "schema_version": "1.0",
+          "generated_at": "2026-04-23T22:00:00Z",
+          "recommendation_date": "2026-04-24",
+          "timezone": "Asia/Taipei",
+          "source": ["arxiv"],
+          "language": "zh-Hans",
+          "config": null,
+          "stats": {
+            "total_candidates": 0,
+            "recommended_count": 0,
+            "llm_summary_count": 0
+          },
+          "papers": []
+        }
+        """
+        return try! FeedAPIClient().decodeFeed(from: Data(json.utf8))
+    }()
+
     func fetchLatestFeed(from url: URL) async throws -> PaperFeed {
         Self.sampleFeed
     }
@@ -108,4 +162,20 @@ private struct MockNotificationScheduler: LocalNotificationScheduling {
     func requestAuthorization() async throws {}
     func scheduleDailyReminder(hour: Int, minute: Int) async throws {}
     func cancelDailyReminder() {}
+}
+
+private final class MutableMockFeedAPIClient: FeedFetching {
+    var feed: PaperFeed
+
+    init(feed: PaperFeed) {
+        self.feed = feed
+    }
+
+    func fetchLatestFeed(from url: URL) async throws -> PaperFeed {
+        feed
+    }
+
+    func decodeFeed(from data: Data) throws -> PaperFeed {
+        try FeedAPIClient().decodeFeed(from: data)
+    }
 }

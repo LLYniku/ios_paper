@@ -33,7 +33,8 @@ struct TodayView: View {
                     readPaperIDs: store.readPaperIDs,
                     emptyTitle: "今日暂无匹配论文",
                     emptyMessage: "可以稍后刷新，或者调整搜索和筛选条件。",
-                    onToggleFavorite: { store.toggleFavorite($0.id) },
+                    contextNote: { _ in nil },
+                    onToggleFavorite: { store.toggleFavorite($0) },
                     onToggleRead: { store.toggleRead($0.id) }
                 )
             }

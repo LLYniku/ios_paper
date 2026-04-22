@@ -4,6 +4,7 @@ import SwiftUI
 struct PaperDailyApp: App {
     @StateObject private var settings: UserSettingsStore
     @StateObject private var store: PaperStore
+    @StateObject private var classicsStore: ClassicsStore
 
     init() {
         let settingsStore = UserSettingsStore()
@@ -14,11 +15,24 @@ struct PaperDailyApp: App {
                 sampleFeedLoader: PaperStore.makeSampleFeedLoader(bundle: .main)
             )
         )
+        _classicsStore = StateObject(
+            wrappedValue: ClassicsStore(
+                settings: settingsStore,
+                sampleFeedLoader: ClassicsStore.makeSampleFeedLoader(bundle: .main)
+            )
+        )
     }
 
     var body: some Scene {
         WindowGroup {
             TabView {
+                NavigationStack {
+                    ClassicsView()
+                }
+                .tabItem {
+                    Label("经典", systemImage: "books.vertical")
+                }
+
                 NavigationStack {
                     TodayView()
                 }
@@ -42,7 +56,9 @@ struct PaperDailyApp: App {
             }
             .environmentObject(settings)
             .environmentObject(store)
+            .environmentObject(classicsStore)
             .task {
+                await classicsStore.bootstrap()
                 await store.bootstrap()
             }
         }

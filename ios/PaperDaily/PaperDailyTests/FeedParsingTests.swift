@@ -105,4 +105,17 @@ final class FeedParsingTests: XCTestCase {
             XCTAssertFalse(message.isEmpty)
         }
     }
+
+    func testParsesSampleClassicsJSON() throws {
+        let bundle = Bundle(for: Self.self)
+        let url = try XCTUnwrap(bundle.url(forResource: "sample_classics", withExtension: "json"))
+        let data = try Data(contentsOf: url)
+
+        let feed = try ClassicFeedAPIClient().decodeFeed(from: data)
+
+        XCTAssertEqual(feed.schemaVersion, "1.0")
+        XCTAssertEqual(feed.sourceTitle, "Awesome LLM Compression")
+        XCTAssertFalse(feed.papers.isEmpty)
+        XCTAssertEqual(feed.papers.first?.category, "Survey")
+    }
 }

@@ -4,6 +4,7 @@ struct PaperRowView: View {
     let paper: PaperItem
     let isFavorite: Bool
     let isRead: Bool
+    let contextNote: String?
     let onToggleFavorite: () -> Void
     let onToggleRead: () -> Void
 
@@ -37,6 +38,12 @@ struct PaperRowView: View {
             Text(paper.authorSummary)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
+
+            if let contextNote, !contextNote.isEmpty {
+                Text(contextNote)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
 
             tags
 

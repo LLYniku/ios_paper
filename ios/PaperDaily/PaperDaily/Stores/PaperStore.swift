@@ -10,12 +10,14 @@ protocol LocalNotificationScheduling {
 final class PaperStore: ObservableObject {
     enum Keys {
         static let favoritePaperIDs = "favoritePaperIDs"
+        static let favoritePaperRecords = "favoritePaperRecords"
         static let readPaperIDs = "readPaperIDs"
     }
 
     @Published private(set) var feed: PaperFeed?
     @Published private(set) var isLoading = false
     @Published private(set) var favoritePaperIDs: Set<String> = []
+    @Published private(set) var favoritePaperRecords: [FavoritePaperRecord] = []
     @Published private(set) var readPaperIDs: Set<String> = []
     @Published var lastErrorMessage: String?
     @Published var statusMessage: String?
@@ -45,15 +47,19 @@ final class PaperStore: ObservableObject {
     }
 
     func bootstrap() async {
-        favoritePaperIDs = Set(userDefaults.stringArray(forKey: Keys.favoritePaperIDs) ?? [])
+        favoritePaperRecords = loadFavoritePaperRecords()
+        favoritePaperIDs = Set(favoritePaperRecords.map(\.id))
+            .union(userDefaults.stringArray(forKey: Keys.favoritePaperIDs) ?? [])
         readPaperIDs = Set(userDefaults.stringArray(forKey: Keys.readPaperIDs) ?? [])
 
         do {
             if let cachedFeed = try cache.load() {
                 feed = cachedFeed
+                syncFavoriteRecords(with: cachedFeed)
             } else if let sampleFeed = sampleFeedLoader?() {
                 feed = sampleFeed
                 statusMessage = "当前展示的是示例数据。"
+                syncFavoriteRecords(with: sampleFeed)
             }
         } catch {
             lastErrorMessage = "读取本地缓存失败：\(error.localizedDescription)"
@@ -77,6 +83,7 @@ final class PaperStore: ObservableObject {
         do {
             let remoteFeed = try await apiClient.fetchLatestFeed(from: url)
             feed = remoteFeed
+            syncFavoriteRecords(with: remoteFeed)
             try cache.save(remoteFeed)
             lastErrorMessage = nil
             statusMessage = "已刷新到 \(remoteFeed.recommendationDate) 的推荐。"
@@ -130,6 +137,25 @@ final class PaperStore: ObservableObject {
         }
     }
 
+    func favoritePapers(
+        searchText: String = "",
+        unreadOnly: Bool = false
+    ) -> [FavoritePaperRecord] {
+        favoritePaperRecords
+            .filter { record in
+                if unreadOnly && readPaperIDs.contains(record.id) {
+                    return false
+                }
+                return record.paper.matches(searchText: searchText)
+            }
+            .sorted { lhs, rhs in
+                if lhs.recommendationDate != rhs.recommendationDate {
+                    return lhs.recommendationDate > rhs.recommendationDate
+                }
+                return lhs.favoritedAt > rhs.favoritedAt
+            }
+    }
+
     var availableCategories: [String] {
         let categories = Set(feed?.papers.flatMap(\.categories) ?? [])
         return categories.sorted()
@@ -143,13 +169,36 @@ final class PaperStore: ObservableObject {
         readPaperIDs.contains(paperID)
     }
 
-    func toggleFavorite(_ paperID: String) {
+    func toggleFavorite(_ paper: PaperItem) {
+        let paperID = paper.id
         if favoritePaperIDs.contains(paperID) {
             favoritePaperIDs.remove(paperID)
+            favoritePaperRecords.removeAll { $0.id == paperID }
         } else {
             favoritePaperIDs.insert(paperID)
+            upsertFavoriteRecord(
+                FavoritePaperRecord(
+                    paper: paper,
+                    recommendationDate: feed?.recommendationDate ?? FeedDisplay.localDateString(from: Date()),
+                    favoritedAt: Date()
+                )
+            )
         }
         persistFavoriteIDs()
+        persistFavoritePaperRecords()
+    }
+
+    func toggleFavorite(_ paperID: String) {
+        if let paper = feed?.papers.first(where: { $0.id == paperID }) {
+            toggleFavorite(paper)
+            return
+        }
+        if favoritePaperIDs.contains(paperID) {
+            favoritePaperIDs.remove(paperID)
+            favoritePaperRecords.removeAll { $0.id == paperID }
+            persistFavoriteIDs()
+            persistFavoritePaperRecords()
+        }
     }
 
     func toggleRead(_ paperID: String) {
@@ -219,7 +268,74 @@ final class PaperStore: ObservableObject {
         userDefaults.set(Array(favoritePaperIDs).sorted(), forKey: Keys.favoritePaperIDs)
     }
 
+    private func persistFavoritePaperRecords() {
+        do {
+            let data = try FeedCoding.encoder.encode(favoritePaperRecords)
+            userDefaults.set(data, forKey: Keys.favoritePaperRecords)
+        } catch {
+            lastErrorMessage = "保存收藏失败：\(error.localizedDescription)"
+        }
+    }
+
     private func persistReadIDs() {
         userDefaults.set(Array(readPaperIDs).sorted(), forKey: Keys.readPaperIDs)
+    }
+
+    private func loadFavoritePaperRecords() -> [FavoritePaperRecord] {
+        guard let data = userDefaults.data(forKey: Keys.favoritePaperRecords) else {
+            return []
+        }
+        do {
+            return try FeedCoding.decoder.decode([FavoritePaperRecord].self, from: data)
+        } catch {
+            lastErrorMessage = "读取收藏失败：\(error.localizedDescription)"
+            return []
+        }
+    }
+
+    private func syncFavoriteRecords(with feed: PaperFeed) {
+        var didChange = false
+        for paper in feed.papers where favoritePaperIDs.contains(paper.id) {
+            if let index = favoritePaperRecords.firstIndex(where: { $0.id == paper.id }) {
+                let current = favoritePaperRecords[index]
+                let updated = FavoritePaperRecord(
+                    paper: paper,
+                    recommendationDate: current.recommendationDate,
+                    favoritedAt: current.favoritedAt
+                )
+                if updated != current {
+                    favoritePaperRecords[index] = updated
+                    didChange = true
+                }
+            } else {
+                favoritePaperRecords.append(
+                    FavoritePaperRecord(
+                        paper: paper,
+                        recommendationDate: feed.recommendationDate,
+                        favoritedAt: Date()
+                    )
+                )
+                didChange = true
+            }
+        }
+
+        let filteredRecords = favoritePaperRecords.filter { favoritePaperIDs.contains($0.id) }
+        if filteredRecords != favoritePaperRecords {
+            favoritePaperRecords = filteredRecords
+            didChange = true
+        }
+
+        if didChange {
+            persistFavoriteIDs()
+            persistFavoritePaperRecords()
+        }
+    }
+
+    private func upsertFavoriteRecord(_ record: FavoritePaperRecord) {
+        if let index = favoritePaperRecords.firstIndex(where: { $0.id == record.id }) {
+            favoritePaperRecords[index] = record
+        } else {
+            favoritePaperRecords.append(record)
+        }
     }
 }

@@ -22,6 +22,7 @@
    - [public/data/archive/2026-04-23.json](/Users/liuliaoyuan/dl_code/zotero-arxiv-daily-main/public/data/archive/2026-04-23.json)
 4. 同一个 workflow 可把 `public/` 发布到 GitHub Pages，Pages 地址下的 feed 路径通常是 `/data/latest.json`。
 5. iOS 工程 [ios/PaperDaily/PaperDaily.xcodeproj](/Users/liuliaoyuan/dl_code/zotero-arxiv-daily-main/ios/PaperDaily/PaperDaily.xcodeproj) 读取远程 feed，失败时回退到缓存或内置 sample。
+6. 经典论文库通过 [scripts/run_classics_feed.py](/Users/liuliaoyuan/dl_code/zotero-arxiv-daily-main/scripts/run_classics_feed.py) 解析 [Awesome-LLM-Compression-main/README.md](/Users/liuliaoyuan/dl_code/zotero-arxiv-daily-main/Awesome-LLM-Compression-main/README.md)，生成固定的 [public/data/classics.json](/Users/liuliaoyuan/dl_code/zotero-arxiv-daily-main/public/data/classics.json)。
 
 ## 3. Python 改造点
 
@@ -102,6 +103,14 @@ uv run python scripts/run_app_feed.py \
 
 - 每天 `21:00 UTC`
 - 对应北京时间 `Asia/Shanghai` 次日 `05:00`
+
+如果要更新“经典”页的数据，手动运行：
+
+1. `Actions`
+2. `Generate Classics Feed`
+3. `Run workflow`
+
+它会重新解析 `Awesome-LLM-Compression-main/README.md`，更新 `public/data/classics.json` 和 iOS 内置 `sample_classics.json`。
 
 ## 8. 如何启用 GitHub Pages
 
@@ -244,6 +253,7 @@ ChatGPT 订阅和 OpenAI API 是分开计费、分开管理的。这个项目运
 ## 16. 已实现的 App 功能
 
 - 今日推荐列表
+- 经典论文列表
 - 详情页
 - 搜索标题 / 作者 / 关键词
 - 分类过滤
