@@ -56,6 +56,8 @@
   建议用成本更稳的 `gpt-5.4-mini`
 - `OPENAI_WIRE_API`
   默认 `chat_completions`；如果你的兼容服务要求走 Responses API，则填 `responses`
+- `OPENAI_DISABLE_RESPONSE_STORAGE`
+  如果你的兼容服务建议关闭响应存储，可填 `true`
 - `CUSTOM_CONFIG`
   可以填 `config/custom.yaml`，也可以填一段内联 YAML 覆盖
 

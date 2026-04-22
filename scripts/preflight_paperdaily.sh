@@ -69,12 +69,16 @@ check_env ZOTERO_KEY
 check_env OPENAI_API_KEY
 check_env OPENAI_API_BASE
 check_env OPENAI_MODEL
+check_env OPENAI_WIRE_API
+check_env OPENAI_DISABLE_RESPONSE_STORAGE
 check_env CUSTOM_CONFIG
 say ""
 
 say "Recommended GitHub Actions variable values"
 say "OPENAI_API_BASE=https://api.openai.com/v1"
 say "OPENAI_MODEL=gpt-5.4-mini"
+say "OPENAI_WIRE_API=chat_completions"
+say "OPENAI_DISABLE_RESPONSE_STORAGE=false"
 say "CUSTOM_CONFIG=config/paperdaily.example.yaml"
 say ""
 
@@ -89,6 +93,6 @@ say ""
 say "Manual steps you still need to do"
 say "1. Connect this folder to your GitHub repository and push to the dev branch."
 say "2. In GitHub, add Secrets: ZOTERO_ID, ZOTERO_KEY, OPENAI_API_KEY."
-say "3. In GitHub, add Variables: OPENAI_API_BASE, OPENAI_MODEL, CUSTOM_CONFIG."
+say "3. In GitHub, add Variables: OPENAI_API_BASE, OPENAI_MODEL, OPENAI_WIRE_API, OPENAI_DISABLE_RESPONSE_STORAGE, CUSTOM_CONFIG."
 say "4. In GitHub Settings > Pages, set Source to GitHub Actions."
 say "5. In Xcode, open ios/PaperDaily/PaperDaily.xcodeproj and set your Team and Bundle Identifier."

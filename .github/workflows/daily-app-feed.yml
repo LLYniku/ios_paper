@@ -41,6 +41,8 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ vars.OPENAI_API_BASE }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_WIRE_API: ${{ vars.OPENAI_WIRE_API }}
+          OPENAI_DISABLE_RESPONSE_STORAGE: ${{ vars.OPENAI_DISABLE_RESPONSE_STORAGE }}
           CUSTOM_CONFIG: ${{ vars.CUSTOM_CONFIG }}
           TZ: Asia/Taipei
         run: |
