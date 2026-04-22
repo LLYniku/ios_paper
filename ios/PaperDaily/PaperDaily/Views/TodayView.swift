@@ -116,7 +116,7 @@ struct TodayView: View {
     }
 }
 
-private struct ToggleChip: View {
+struct ToggleChip: View {
     let title: String
     @Binding var isOn: Bool
 

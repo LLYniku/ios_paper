@@ -30,6 +30,8 @@
 		A1B1C1D1E1F1010101010107 /* ClassicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010117 /* ClassicsView.swift */; };
 		A1B1C1D1E1F1010101010108 /* sample_classics.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010118 /* sample_classics.json */; };
 		A1B1C1D1E1F1010101010109 /* sample_classics.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010118 /* sample_classics.json */; };
+		A1B1C1D1E1F1010101010119 /* ClassicPaperListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010120 /* ClassicPaperListView.swift */; };
+		A1B1C1D1E1F1010101010121 /* ClassicsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1010101010122 /* ClassicsStoreTests.swift */; };
 		A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
 		B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */; };
 		B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A170830E50A17B10819 /* ErrorStateView.swift */; };
@@ -75,6 +77,8 @@
 		A1B1C1D1E1F1010101010116 /* ClassicDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicDetailView.swift; path = Views/ClassicDetailView.swift; sourceTree = "<group>"; };
 		A1B1C1D1E1F1010101010117 /* ClassicsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicsView.swift; path = Views/ClassicsView.swift; sourceTree = "<group>"; };
 		A1B1C1D1E1F1010101010118 /* sample_classics.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_classics.json; path = Resources/sample_classics.json; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010120 /* ClassicPaperListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClassicPaperListView.swift; path = Views/ClassicPaperListView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1010101010122 /* ClassicsStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ClassicsStoreTests.swift; sourceTree = "<group>"; };
 		B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
 		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				A1B1C1D1E1F1010101010114 /* ClassicsStore.swift */,
 				F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */,
 				A1B1C1D1E1F1010101010117 /* ClassicsView.swift */,
+				A1B1C1D1E1F1010101010120 /* ClassicPaperListView.swift */,
 				D37DEBBF35877495957F3E29 /* TodayView.swift */,
 				4ECCD0C3657E1E93CE96D1B1 /* PaperListView.swift */,
 				A1B1C1D1E1F1010101010115 /* ClassicPaperRowView.swift */,
@@ -173,6 +178,7 @@
 			children = (
 				6B97C9B989F18705681DE0DF /* FeedParsingTests.swift */,
 				13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */,
+				A1B1C1D1E1F1010101010122 /* ClassicsStoreTests.swift */,
 			);
 			path = PaperDailyTests;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 			files = (
 				9D959AB097A27867D06AA61E /* FeedParsingTests.swift in Sources */,
 				38CA7CB55628CAD23C178C54 /* PaperStoreTests.swift in Sources */,
+				A1B1C1D1E1F1010101010121 /* ClassicsStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +318,7 @@
 				A1B1C1D1E1F1010101010104 /* ClassicsStore.swift in Sources */,
 				836F1D2C1F18E384B3B848A0 /* LocalNotificationScheduler.swift in Sources */,
 				A1B1C1D1E1F1010101010107 /* ClassicsView.swift in Sources */,
+				A1B1C1D1E1F1010101010119 /* ClassicPaperListView.swift in Sources */,
 				2C7273633B8E040B1EA08E17 /* TodayView.swift in Sources */,
 				8ECB89C9B53DF5DA6EE9AC4B /* PaperListView.swift in Sources */,
 				A1B1C1D1E1F1010101010105 /* ClassicPaperRowView.swift in Sources */,

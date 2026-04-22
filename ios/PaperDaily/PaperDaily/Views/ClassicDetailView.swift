@@ -2,6 +2,10 @@ import SwiftUI
 
 struct ClassicDetailView: View {
     let paper: ClassicPaper
+    let isFavorite: Bool
+    let isRead: Bool
+    let onToggleFavorite: () -> Void
+    let onToggleRead: () -> Void
 
     @Environment(\.openURL) private var openURL
 
@@ -17,6 +21,10 @@ struct ClassicDetailView: View {
 
                 actionButtons
 
+                detailSection(title: "卡片简介", content: paper.chineseAbstract)
+                detailSection(title: "简单介绍", content: paper.simpleIntro ?? "暂无")
+                detailSection(title: "一句话 TL;DR", content: paper.tldr ?? "暂无")
+                detailSection(title: "英文原始摘要", content: paper.abstract ?? "暂无")
                 detailSection(title: "所属方向", content: paper.category)
                 detailSection(title: "顶会 / 期刊", content: paper.venue ?? paper.publication)
                 detailSection(title: "年份", content: paper.year.map(String.init) ?? "未标注")
@@ -37,6 +45,17 @@ struct ClassicDetailView: View {
             }
             HStack {
                 actionButton(title: "打开项目页", url: paper.projectURL)
+            }
+            HStack {
+                Button(isFavorite ? "取消收藏" : "加入收藏") {
+                    onToggleFavorite()
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button(isRead ? "标记未读" : "标记已读") {
+                    onToggleRead()
+                }
+                .buttonStyle(.bordered)
             }
         }
     }

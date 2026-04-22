@@ -5,11 +5,15 @@ struct ClassicsView: View {
 
     @State private var searchText = ""
     @State private var selectedCategory: String?
+    @State private var showUnreadOnly = false
+    @State private var showFavoritesOnly = false
 
     var body: some View {
         let papers = classicsStore.papers(
             searchText: searchText,
-            category: selectedCategory
+            category: selectedCategory,
+            unreadOnly: showUnreadOnly,
+            favoritesOnly: showFavoritesOnly
         )
 
         ScrollView {
@@ -22,18 +26,16 @@ struct ClassicsView: View {
 
                 filters
 
-                if papers.isEmpty {
-                    EmptyStateView(
-                        title: "暂无经典论文",
-                        message: "可以稍后刷新，或者调整搜索和筛选条件。"
-                    )
-                } else {
-                    LazyVStack(spacing: 12) {
-                        ForEach(papers) { paper in
-                            ClassicPaperRowView(paper: paper)
-                        }
-                    }
-                }
+                ClassicPaperListView(
+                    papers: papers,
+                    favoritePaperIDs: classicsStore.favoriteClassicIDs,
+                    readPaperIDs: classicsStore.readClassicIDs,
+                    emptyTitle: "暂无经典论文",
+                    emptyMessage: "可以稍后刷新，或者调整搜索和筛选条件。",
+                    contextNote: { _ in nil },
+                    onToggleFavorite: { classicsStore.toggleFavorite($0) },
+                    onToggleRead: { classicsStore.toggleRead($0.id) }
+                )
             }
             .padding(16)
         }
@@ -67,9 +69,13 @@ struct ClassicsView: View {
 
     private var filters: some View {
         VStack(alignment: .leading, spacing: 12) {
-            if classicsStore.isLoading {
-                ProgressView()
-                    .controlSize(.small)
+            HStack(spacing: 10) {
+                ToggleChip(title: "仅未读", isOn: $showUnreadOnly)
+                ToggleChip(title: "仅收藏", isOn: $showFavoritesOnly)
+                if classicsStore.isLoading {
+                    ProgressView()
+                        .controlSize(.small)
+                }
             }
 
             ScrollView(.horizontal, showsIndicators: false) {
