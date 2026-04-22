@@ -25,6 +25,8 @@ llm:
   api:
     key: ${oc.env:OPENAI_API_KEY,null}
     base_url: ${oc.env:OPENAI_API_BASE,https://api.openai.com/v1}
+    wire_api: ${oc.env:OPENAI_WIRE_API,chat_completions}
+    disable_response_storage: ${oc.env:OPENAI_DISABLE_RESPONSE_STORAGE,false}
   generation_kwargs:
     model: ${oc.env:OPENAI_MODEL,gpt-5.4-mini}
     max_tokens: 4096

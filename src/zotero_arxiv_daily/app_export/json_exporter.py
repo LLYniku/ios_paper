@@ -12,6 +12,7 @@ from zoneinfo import ZoneInfo
 from loguru import logger
 from omegaconf import DictConfig
 
+from ..llm import generate_text
 from ..protocol import Paper
 from .models import AppFeed, AppFeedConfig, AppFeedManifest, AppFeedStats, AppManifestEntry, AppPaper
 
@@ -160,20 +161,15 @@ class JSONFeedExporter:
             f"Abstract: {paper.abstract}\n"
         )
         try:
-            response = self.openai_client.chat.completions.create(
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            f"你是科研论文推荐助手。输出语言为{_language_label(self.language)}。"
-                            "必须返回合法 JSON。"
-                        ),
-                    },
-                    {"role": "user", "content": prompt},
-                ],
-                **self.config.llm.generation_kwargs,
+            content = generate_text(
+                self.openai_client,
+                self.config.llm,
+                system_prompt=(
+                    f"你是科研论文推荐助手。输出语言为{_language_label(self.language)}。"
+                    "必须返回合法 JSON。"
+                ),
+                user_prompt=prompt,
             )
-            content = response.choices[0].message.content or ""
             payload = self._extract_json_object(content)
             summary = str(payload.get("summary_zh") or "").strip() or None
             tldr = str(payload.get("tldr") or "").strip() or paper.tldr or None

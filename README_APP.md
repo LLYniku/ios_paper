@@ -54,6 +54,8 @@
   默认可用 `https://api.openai.com/v1`
 - `OPENAI_MODEL`
   建议用成本更稳的 `gpt-5.4-mini`
+- `OPENAI_WIRE_API`
+  默认 `chat_completions`；如果你的兼容服务要求走 Responses API，则填 `responses`
 - `CUSTOM_CONFIG`
   可以填 `config/custom.yaml`，也可以填一段内联 YAML 覆盖
 

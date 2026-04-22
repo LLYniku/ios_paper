@@ -15,8 +15,10 @@ llm:
   api:
     key: ${oc.env:OPENAI_API_KEY}
     base_url: ${oc.env:OPENAI_API_BASE}
+    wire_api: ${oc.env:OPENAI_WIRE_API,chat_completions}
+    disable_response_storage: ${oc.env:OPENAI_DISABLE_RESPONSE_STORAGE,false}
   generation_kwargs:
-    model: ${oc.env:OPENAI_MODEL,gpt-4o-mini}
+    model: ${oc.env:OPENAI_MODEL,gpt-5.4-mini}
 
 source:
   arxiv:

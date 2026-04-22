@@ -31,12 +31,27 @@ def _make_chat_response(content: str) -> SimpleNamespace:
     )
 
 
+def _make_responses_response(content: str) -> SimpleNamespace:
+    return SimpleNamespace(
+        id="resp-stub",
+        model="gpt-5.4-mini",
+        output_text=content,
+    )
+
+
 def _stub_chat_create(**kwargs):
     messages = kwargs.get("messages", [])
     request_str = str(messages)
     if _AFFILIATION_MARKER in request_str:
         return _make_chat_response(_AFFILIATION_RESPONSE)
     return _make_chat_response(_TLDR_RESPONSE)
+
+
+def _stub_responses_create(**kwargs):
+    request_str = f"{kwargs.get('instructions', '')}\n{kwargs.get('input', '')}"
+    if _AFFILIATION_MARKER in request_str:
+        return _make_responses_response(_AFFILIATION_RESPONSE)
+    return _make_responses_response(_TLDR_RESPONSE)
 
 
 def _stub_embeddings_create(**kwargs):
@@ -59,6 +74,7 @@ def make_stub_openai_client():
         chat=SimpleNamespace(
             completions=SimpleNamespace(create=_stub_chat_create),
         ),
+        responses=SimpleNamespace(create=_stub_responses_create),
         embeddings=SimpleNamespace(create=_stub_embeddings_create),
     )
 

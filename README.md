@@ -101,7 +101,7 @@ llm:
     key: ${oc.env:OPENAI_API_KEY}
     base_url: ${oc.env:OPENAI_API_BASE}
   generation_kwargs:
-    model: gpt-4o-mini
+    model: gpt-5.4-mini
 
 source:
   arxiv:

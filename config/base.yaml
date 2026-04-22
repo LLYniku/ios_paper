@@ -25,6 +25,8 @@ llm:
   api:
     key: ??? # API Key of your LLM API. Example: sk-xxx
     base_url: ??? # API URL of your LLM API. Example: https://api.openai.com/v1
+    wire_api: chat_completions # Request style for OpenAI-compatible providers. Example: chat_completions or responses
+    disable_response_storage: false # Whether to request store=false when using the Responses API. Example: true
   generation_kwargs:
   # Arguments for the LLM API. See [here](https://platform.openai.com/docs/api-reference/chat/create) for more details.
     max_tokens: 16384

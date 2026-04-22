@@ -6,6 +6,7 @@ import tiktoken
 from openai import OpenAI
 from loguru import logger
 import json
+from .llm import generate_text
 RawPaperItem = TypeVar('RawPaperItem')
 
 @dataclass
@@ -52,17 +53,15 @@ class Paper:
         prompt_tokens = prompt_tokens[:4000]  # truncate to 4000 tokens
         prompt = enc.decode(prompt_tokens)
         
-        response = openai_client.chat.completions.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": f"You are an assistant who perfectly summarizes scientific paper, and gives the core idea of the paper to the user. Your answer should be in {lang}.",
-                },
-                {"role": "user", "content": prompt},
-            ],
-            **llm_params.get('generation_kwargs', {})
+        tldr = generate_text(
+            openai_client,
+            llm_params,
+            system_prompt=(
+                "You are an assistant who perfectly summarizes scientific paper, "
+                f"and gives the core idea of the paper to the user. Your answer should be in {lang}."
+            ),
+            user_prompt=prompt,
         )
-        tldr = response.choices[0].message.content
         return tldr
     
     def generate_tldr(self, openai_client:OpenAI,llm_params:dict) -> str:
@@ -84,17 +83,21 @@ class Paper:
             prompt_tokens = enc.encode(prompt)
             prompt_tokens = prompt_tokens[:2000]  # truncate to 2000 tokens
             prompt = enc.decode(prompt_tokens)
-            affiliations = openai_client.chat.completions.create(
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are an assistant who perfectly extracts affiliations of authors from a paper. You should return a python list of affiliations sorted by the author order, like [\"TsingHua University\",\"Peking University\"]. If an affiliation is consisted of multi-level affiliations, like 'Department of Computer Science, TsingHua University', you should return the top-level affiliation 'TsingHua University' only. Do not contain duplicated affiliations. If there is no affiliation found, you should return an empty list [ ]. You should only return the final list of affiliations, and do not return any intermediate results.",
-                    },
-                    {"role": "user", "content": prompt},
-                ],
-                **llm_params.get('generation_kwargs', {})
+            affiliations = generate_text(
+                openai_client,
+                llm_params,
+                system_prompt=(
+                    "You are an assistant who perfectly extracts affiliations of authors from a paper. "
+                    "You should return a python list of affiliations sorted by the author order, like "
+                    "[\"TsingHua University\",\"Peking University\"]. If an affiliation is consisted of "
+                    "multi-level affiliations, like 'Department of Computer Science, TsingHua University', "
+                    "you should return the top-level affiliation 'TsingHua University' only. Do not contain "
+                    "duplicated affiliations. If there is no affiliation found, you should return an empty "
+                    "list [ ]. You should only return the final list of affiliations, and do not return any "
+                    "intermediate results."
+                ),
+                user_prompt=prompt,
             )
-            affiliations = affiliations.choices[0].message.content
 
             affiliations = re.search(r'\[.*?\]', affiliations, flags=re.DOTALL).group(0)
             affiliations = json.loads(affiliations)
