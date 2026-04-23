@@ -33,7 +33,6 @@ struct ClassicsView: View {
                     readPaperIDs: classicsStore.readClassicIDs,
                     emptyTitle: "暂无经典论文",
                     emptyMessage: "可以稍后刷新，或者调整搜索和筛选条件。",
-                    contextNote: { _ in nil },
                     onToggleFavorite: { classicsStore.toggleFavorite($0) },
                     onToggleRead: { classicsStore.toggleRead($0.id) },
                     onOpenDetail: { selectedPaper = $0 }

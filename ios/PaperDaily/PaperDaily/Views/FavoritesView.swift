@@ -28,6 +28,7 @@ struct FavoritesView: View {
         )
         let todayPapers = todayRecords.map(\.paper)
         let todayContextByID = Dictionary(uniqueKeysWithValues: todayRecords.map { ($0.id, $0.contextNote) })
+        let todayRatingByID = Dictionary(uniqueKeysWithValues: todayRecords.map { ($0.id, $0.rating) })
 
         let classicRecords = classicsStore.favoritePapers(
             searchText: searchText,
@@ -35,6 +36,7 @@ struct FavoritesView: View {
         )
         let classicPapers = classicRecords.map(\.paper)
         let classicContextByID = Dictionary(uniqueKeysWithValues: classicRecords.map { ($0.id, $0.contextNote) })
+        let classicRatingByID = Dictionary(uniqueKeysWithValues: classicRecords.map { ($0.id, $0.rating) })
 
         let networkRecords = networkStore.favoriteItems(
             searchText: searchText,
@@ -42,6 +44,7 @@ struct FavoritesView: View {
         )
         let networkItems = networkRecords.map(\.item)
         let networkContextByID = Dictionary(uniqueKeysWithValues: networkRecords.map { ($0.id, $0.contextNote) })
+        let networkRatingByID = Dictionary(uniqueKeysWithValues: networkRecords.map { ($0.id, $0.rating) })
 
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -70,6 +73,8 @@ struct FavoritesView: View {
                         emptyTitle: "还没有收藏的今日论文",
                         emptyMessage: "在今日推荐页点星标后，这里会自动汇总。",
                         contextNote: { todayContextByID[$0.id] },
+                        rating: { todayRatingByID[$0.id] ?? 0 },
+                        onSetRating: { store.setFavoriteRating($0.id, rating: $1) },
                         onToggleFavorite: { store.toggleFavorite($0) },
                         onToggleRead: { store.toggleRead($0.id) },
                         onOpenDetail: { selectedPaper = $0 }
@@ -82,6 +87,8 @@ struct FavoritesView: View {
                         emptyTitle: "还没有收藏的经典论文",
                         emptyMessage: "在经典页点收藏后，这里会长期保留。",
                         contextNote: { classicContextByID[$0.id] },
+                        rating: { classicRatingByID[$0.id] ?? 0 },
+                        onSetRating: { classicsStore.setFavoriteRating($0.id, rating: $1) },
                         onToggleFavorite: { classicsStore.toggleFavorite($0) },
                         onToggleRead: { classicsStore.toggleRead($0.id) },
                         onOpenDetail: { selectedClassicPaper = $0 }
@@ -94,6 +101,8 @@ struct FavoritesView: View {
                         emptyTitle: "还没有收藏的网络内容",
                         emptyMessage: "在网络页点收藏后，这里会长期保留。",
                         contextNote: { networkContextByID[$0.id] },
+                        rating: { networkRatingByID[$0.id] ?? 0 },
+                        onSetRating: { networkStore.setFavoriteRating($0.id, rating: $1) },
                         onToggleFavorite: { networkStore.toggleFavorite($0) },
                         onToggleRead: { networkStore.toggleRead($0.id) },
                         onOpenDetail: { selectedNetworkItem = $0 }

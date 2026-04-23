@@ -7,9 +7,37 @@ struct PaperListView: View {
     let emptyTitle: String
     let emptyMessage: String
     let contextNote: ((PaperItem) -> String?)?
+    let rating: ((PaperItem) -> Int)?
+    let onSetRating: ((PaperItem, Int) -> Void)?
     let onToggleFavorite: (PaperItem) -> Void
     let onToggleRead: (PaperItem) -> Void
     let onOpenDetail: (PaperItem) -> Void
+
+    init(
+        papers: [PaperItem],
+        favoritePaperIDs: Set<String>,
+        readPaperIDs: Set<String>,
+        emptyTitle: String,
+        emptyMessage: String,
+        contextNote: ((PaperItem) -> String?)? = nil,
+        rating: ((PaperItem) -> Int)? = nil,
+        onSetRating: ((PaperItem, Int) -> Void)? = nil,
+        onToggleFavorite: @escaping (PaperItem) -> Void,
+        onToggleRead: @escaping (PaperItem) -> Void,
+        onOpenDetail: @escaping (PaperItem) -> Void
+    ) {
+        self.papers = papers
+        self.favoritePaperIDs = favoritePaperIDs
+        self.readPaperIDs = readPaperIDs
+        self.emptyTitle = emptyTitle
+        self.emptyMessage = emptyMessage
+        self.contextNote = contextNote
+        self.rating = rating
+        self.onSetRating = onSetRating
+        self.onToggleFavorite = onToggleFavorite
+        self.onToggleRead = onToggleRead
+        self.onOpenDetail = onOpenDetail
+    }
 
     var body: some View {
         if papers.isEmpty {
@@ -22,6 +50,8 @@ struct PaperListView: View {
                         isFavorite: favoritePaperIDs.contains(paper.id),
                         isRead: readPaperIDs.contains(paper.id),
                         contextNote: contextNote?(paper),
+                        rating: rating?(paper),
+                        onSetRating: onSetRating.map { handler in { handler(paper, $0) } },
                         onToggleFavorite: { onToggleFavorite(paper) },
                         onToggleRead: { onToggleRead(paper) },
                         onOpenDetail: { onOpenDetail(paper) }

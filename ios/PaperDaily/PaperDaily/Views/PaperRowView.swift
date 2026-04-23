@@ -5,6 +5,8 @@ struct PaperRowView: View {
     let isFavorite: Bool
     let isRead: Bool
     let contextNote: String?
+    let rating: Int?
+    let onSetRating: ((Int) -> Void)?
     let onToggleFavorite: () -> Void
     let onToggleRead: () -> Void
     let onOpenDetail: () -> Void
@@ -44,6 +46,13 @@ struct PaperRowView: View {
                 Text(contextNote)
                     .font(.caption)
                     .foregroundStyle(.secondary)
+            }
+
+            if let rating, let onSetRating {
+                FavoriteRatingControl(
+                    rating: rating,
+                    onSetRating: onSetRating
+                )
             }
 
             tags
@@ -92,6 +101,32 @@ struct PaperRowView: View {
                         .padding(.horizontal, 10)
                         .padding(.vertical, 6)
                         .background(Color(.tertiarySystemFill), in: Capsule())
+                }
+            }
+        }
+    }
+}
+
+struct FavoriteRatingControl: View {
+    let rating: Int
+    let onSetRating: (Int) -> Void
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Text("评分")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: 4) {
+                ForEach(1...5, id: \.self) { level in
+                    Button {
+                        onSetRating(rating == level ? 0 : level)
+                    } label: {
+                        Image(systemName: level <= rating ? "star.fill" : "star")
+                            .font(.callout)
+                            .foregroundStyle(level <= rating ? Color.yellow : Color.secondary)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }

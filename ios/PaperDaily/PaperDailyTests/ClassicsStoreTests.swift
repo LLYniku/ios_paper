@@ -62,6 +62,22 @@ final class ClassicsStoreTests: XCTestCase {
         XCTAssertNil(store.lastErrorMessage)
     }
 
+    func testFavoriteClassicRatingPersistsAndSortsHigherFirst() async throws {
+        let defaults = try makeDefaults()
+        let store = makeStore(defaults: defaults)
+
+        await store.bootstrap()
+        let papers = try XCTUnwrap(store.feed?.papers)
+        store.toggleFavorite(papers[0])
+        store.toggleFavorite(papers[1])
+        store.setFavoriteRating(papers[1].id, rating: 5)
+        store.setFavoriteRating(papers[0].id, rating: 2)
+
+        let favorites = store.favoritePapers()
+        XCTAssertEqual(favorites.map(\.id), [papers[1].id, papers[0].id])
+        XCTAssertEqual(favorites.map(\.rating), [5, 2])
+    }
+
     private func makeDefaults() throws -> UserDefaults {
         let suiteName = "ClassicsStoreTests.\(UUID().uuidString)"
         guard let defaults = UserDefaults(suiteName: suiteName) else {

@@ -54,6 +54,21 @@ final class PaperStoreTests: XCTestCase {
         XCTAssertEqual(favorite.contextNote, "arXiv：2026-04-22 · 收藏自：2026-04-23")
     }
 
+    func testFavoriteRatingPersistsAndSortsHigherFirst() async throws {
+        let defaults = try makeDefaults()
+        let store = makeStore(defaults: defaults)
+
+        await store.bootstrap()
+        store.toggleFavorite("arxiv:2604.22001")
+        store.toggleFavorite("arxiv:2604.22002")
+        store.setFavoriteRating("arxiv:2604.22002", rating: 5)
+        store.setFavoriteRating("arxiv:2604.22001", rating: 3)
+
+        let favorites = store.favoritePapers()
+        XCTAssertEqual(favorites.map(\.id), ["arxiv:2604.22002", "arxiv:2604.22001"])
+        XCTAssertEqual(favorites.map(\.rating), [5, 3])
+    }
+
     private func makeDefaults() throws -> UserDefaults {
         let suiteName = "PaperStoreTests.\(UUID().uuidString)"
         guard let defaults = UserDefaults(suiteName: suiteName) else {
@@ -96,9 +111,9 @@ private struct MockFeedAPIClient: FeedFetching {
             "model": "gpt-5.4-mini"
           },
           "stats": {
-            "total_candidates": 1,
-            "recommended_count": 1,
-            "llm_summary_count": 1
+            "total_candidates": 2,
+            "recommended_count": 2,
+            "llm_summary_count": 2
           },
           "papers": [
             {
@@ -118,6 +133,27 @@ private struct MockFeedAPIClient: FeedFetching {
               "affiliations": ["University X"],
               "pdf_url": "https://arxiv.org/pdf/2604.22001.pdf",
               "abs_url": "https://arxiv.org/abs/2604.22001",
+              "code_url": null,
+              "project_url": null,
+              "doi": null
+            },
+            {
+              "id": "arxiv:2604.22002",
+              "source": "arxiv",
+              "title": "Sample Two",
+              "authors": ["C", "D"],
+              "abstract": "Abstract Two",
+              "summary_zh": "总结二",
+              "tldr": "第二句",
+              "recommendation_reason": "推荐理由二",
+              "relevance_score": 0.8,
+              "published_at": "2026-04-21T00:00:00Z",
+              "updated_at": "2026-04-21T01:00:00Z",
+              "categories": ["cs.LG"],
+              "keywords": ["compression"],
+              "affiliations": ["University Y"],
+              "pdf_url": "https://arxiv.org/pdf/2604.22002.pdf",
+              "abs_url": "https://arxiv.org/abs/2604.22002",
               "code_url": null,
               "project_url": null,
               "doi": null

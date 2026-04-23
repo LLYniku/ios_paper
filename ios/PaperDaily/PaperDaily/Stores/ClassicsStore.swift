@@ -127,12 +127,7 @@ final class ClassicsStore: ObservableObject {
                 }
                 return record.paper.matches(searchText: searchText)
             }
-            .sorted { lhs, rhs in
-                if lhs.paper.year != rhs.paper.year {
-                    return (lhs.paper.year ?? Int.min) > (rhs.paper.year ?? Int.min)
-                }
-                return lhs.favoritedAt > rhs.favoritedAt
-            }
+            .sorted(by: Self.sortFavoriteRecords)
     }
 
     var availableCategories: [String] {
@@ -163,7 +158,8 @@ final class ClassicsStore: ObservableObject {
             upsertFavoriteRecord(
                 FavoriteClassicRecord(
                     paper: paper,
-                    favoritedAt: Date()
+                    favoritedAt: Date(),
+                    rating: 0
                 )
             )
         }
@@ -191,6 +187,24 @@ final class ClassicsStore: ObservableObject {
             readClassicIDs.insert(paperID)
         }
         persistReadIDs()
+    }
+
+    func favoriteRating(_ paperID: String) -> Int {
+        favoriteClassicRecords.first(where: { $0.id == paperID })?.rating ?? 0
+    }
+
+    func setFavoriteRating(_ paperID: String, rating: Int) {
+        guard let index = favoriteClassicRecords.firstIndex(where: { $0.id == paperID }) else {
+            return
+        }
+        let record = favoriteClassicRecords[index]
+        favoriteClassicRecords[index] = FavoriteClassicRecord(
+            paper: record.paper,
+            favoritedAt: record.favoritedAt,
+            rating: rating
+        )
+        favoriteClassicRecords.sort(by: Self.sortFavoriteRecords)
+        persistFavoriteRecords()
     }
 
     static func makeSampleFeedLoader(bundle: Bundle) -> () -> ClassicsFeed? {
@@ -251,7 +265,8 @@ final class ClassicsStore: ObservableObject {
                 let current = favoriteClassicRecords[index]
                 let updated = FavoriteClassicRecord(
                     paper: paper,
-                    favoritedAt: current.favoritedAt
+                    favoritedAt: current.favoritedAt,
+                    rating: current.rating
                 )
                 if updated != current {
                     favoriteClassicRecords[index] = updated
@@ -261,7 +276,8 @@ final class ClassicsStore: ObservableObject {
                 favoriteClassicRecords.append(
                     FavoriteClassicRecord(
                         paper: paper,
-                        favoritedAt: Date()
+                        favoritedAt: Date(),
+                        rating: 0
                     )
                 )
                 didChange = true
@@ -273,6 +289,7 @@ final class ClassicsStore: ObservableObject {
         }
 
         if didChange {
+            favoriteClassicRecords.sort(by: Self.sortFavoriteRecords)
             persistFavoriteRecords()
         }
     }
@@ -283,6 +300,20 @@ final class ClassicsStore: ObservableObject {
         } else {
             favoriteClassicRecords.append(record)
         }
+        favoriteClassicRecords.sort(by: Self.sortFavoriteRecords)
+    }
+
+    private static func sortFavoriteRecords(lhs: FavoriteClassicRecord, rhs: FavoriteClassicRecord) -> Bool {
+        if lhs.rating != rhs.rating {
+            return lhs.rating > rhs.rating
+        }
+        if lhs.paper.year != rhs.paper.year {
+            return (lhs.paper.year ?? Int.min) > (rhs.paper.year ?? Int.min)
+        }
+        if lhs.favoritedAt != rhs.favoritedAt {
+            return lhs.favoritedAt > rhs.favoritedAt
+        }
+        return lhs.paper.title.localizedCaseInsensitiveCompare(rhs.paper.title) == .orderedAscending
     }
 
     private func richerFeed(current: ClassicsFeed?, incoming: ClassicsFeed) -> ClassicsFeed {

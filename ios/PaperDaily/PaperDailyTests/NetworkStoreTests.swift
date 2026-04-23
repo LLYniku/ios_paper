@@ -40,6 +40,22 @@ final class NetworkStoreTests: XCTestCase {
         XCTAssertEqual(Set(defaults.stringArray(forKey: NetworkStore.Keys.readNetworkIDs) ?? []), [itemID])
     }
 
+    func testFavoriteNetworkRatingPersistsAndSortsHigherFirst() async throws {
+        let defaults = try makeDefaults()
+        let store = makeStore(defaults: defaults)
+
+        await store.bootstrap()
+        let items = try XCTUnwrap(store.feed?.items)
+        store.toggleFavorite(items[0])
+        store.toggleFavorite(items[1])
+        store.setFavoriteRating(items[1].id, rating: 4)
+        store.setFavoriteRating(items[0].id, rating: 1)
+
+        let favorites = store.favoriteItems()
+        XCTAssertEqual(favorites.map(\.id), [items[1].id, items[0].id])
+        XCTAssertEqual(favorites.map(\.rating), [4, 1])
+    }
+
     private func makeDefaults() throws -> UserDefaults {
         let suiteName = "NetworkStoreTests.\(UUID().uuidString)"
         guard let defaults = UserDefaults(suiteName: suiteName) else {

@@ -33,7 +33,6 @@ struct NetworkView: View {
                     readItemIDs: networkStore.readNetworkIDs,
                     emptyTitle: "暂无网络内容",
                     emptyMessage: "可以稍后刷新，或者调整搜索和筛选条件。",
-                    contextNote: { _ in nil },
                     onToggleFavorite: { networkStore.toggleFavorite($0) },
                     onToggleRead: { networkStore.toggleRead($0.id) },
                     onOpenDetail: { selectedItem = $0 }

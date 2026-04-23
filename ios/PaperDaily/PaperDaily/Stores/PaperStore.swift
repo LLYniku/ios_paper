@@ -148,12 +148,7 @@ final class PaperStore: ObservableObject {
                 }
                 return record.paper.matches(searchText: searchText)
             }
-            .sorted { lhs, rhs in
-                if lhs.recommendationDate != rhs.recommendationDate {
-                    return lhs.recommendationDate > rhs.recommendationDate
-                }
-                return lhs.favoritedAt > rhs.favoritedAt
-            }
+            .sorted(by: Self.sortFavoriteRecords)
     }
 
     var availableCategories: [String] {
@@ -180,7 +175,8 @@ final class PaperStore: ObservableObject {
                 FavoritePaperRecord(
                     paper: paper,
                     recommendationDate: feed?.recommendationDate ?? FeedDisplay.localDateString(from: Date()),
-                    favoritedAt: Date()
+                    favoritedAt: Date(),
+                    rating: 0
                 )
             )
         }
@@ -208,6 +204,25 @@ final class PaperStore: ObservableObject {
             readPaperIDs.insert(paperID)
         }
         persistReadIDs()
+    }
+
+    func favoriteRating(_ paperID: String) -> Int {
+        favoritePaperRecords.first(where: { $0.id == paperID })?.rating ?? 0
+    }
+
+    func setFavoriteRating(_ paperID: String, rating: Int) {
+        guard let index = favoritePaperRecords.firstIndex(where: { $0.id == paperID }) else {
+            return
+        }
+        let record = favoritePaperRecords[index]
+        favoritePaperRecords[index] = FavoritePaperRecord(
+            paper: record.paper,
+            recommendationDate: record.recommendationDate,
+            favoritedAt: record.favoritedAt,
+            rating: rating
+        )
+        favoritePaperRecords.sort(by: Self.sortFavoriteRecords)
+        persistFavoritePaperRecords()
     }
 
     func setNotifications(enabled: Bool) async {
@@ -301,7 +316,8 @@ final class PaperStore: ObservableObject {
                 let updated = FavoritePaperRecord(
                     paper: paper,
                     recommendationDate: current.recommendationDate,
-                    favoritedAt: current.favoritedAt
+                    favoritedAt: current.favoritedAt,
+                    rating: current.rating
                 )
                 if updated != current {
                     favoritePaperRecords[index] = updated
@@ -312,7 +328,8 @@ final class PaperStore: ObservableObject {
                     FavoritePaperRecord(
                         paper: paper,
                         recommendationDate: feed.recommendationDate,
-                        favoritedAt: Date()
+                        favoritedAt: Date(),
+                        rating: 0
                     )
                 )
                 didChange = true
@@ -326,6 +343,7 @@ final class PaperStore: ObservableObject {
         }
 
         if didChange {
+            favoritePaperRecords.sort(by: Self.sortFavoriteRecords)
             persistFavoriteIDs()
             persistFavoritePaperRecords()
         }
@@ -337,5 +355,19 @@ final class PaperStore: ObservableObject {
         } else {
             favoritePaperRecords.append(record)
         }
+        favoritePaperRecords.sort(by: Self.sortFavoriteRecords)
+    }
+
+    private static func sortFavoriteRecords(lhs: FavoritePaperRecord, rhs: FavoritePaperRecord) -> Bool {
+        if lhs.rating != rhs.rating {
+            return lhs.rating > rhs.rating
+        }
+        if lhs.recommendationDate != rhs.recommendationDate {
+            return lhs.recommendationDate > rhs.recommendationDate
+        }
+        if lhs.favoritedAt != rhs.favoritedAt {
+            return lhs.favoritedAt > rhs.favoritedAt
+        }
+        return lhs.paper.title.localizedCaseInsensitiveCompare(rhs.paper.title) == .orderedAscending
     }
 }

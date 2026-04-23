@@ -120,12 +120,7 @@ final class NetworkStore: ObservableObject {
                 }
                 return record.item.matches(searchText: searchText)
             }
-            .sorted { lhs, rhs in
-                if lhs.recommendationDate != rhs.recommendationDate {
-                    return lhs.recommendationDate > rhs.recommendationDate
-                }
-                return lhs.favoritedAt > rhs.favoritedAt
-            }
+            .sorted(by: Self.sortFavoriteRecords)
     }
 
     var availablePlatforms: [String] {
@@ -157,7 +152,8 @@ final class NetworkStore: ObservableObject {
                 FavoriteNetworkRecord(
                     item: item,
                     recommendationDate: feed?.recommendationDate ?? FeedDisplay.localDateString(from: Date()),
-                    favoritedAt: Date()
+                    favoritedAt: Date(),
+                    rating: 0
                 )
             )
         }
@@ -185,6 +181,25 @@ final class NetworkStore: ObservableObject {
             readNetworkIDs.insert(itemID)
         }
         persistReadIDs()
+    }
+
+    func favoriteRating(_ itemID: String) -> Int {
+        favoriteNetworkRecords.first(where: { $0.id == itemID })?.rating ?? 0
+    }
+
+    func setFavoriteRating(_ itemID: String, rating: Int) {
+        guard let index = favoriteNetworkRecords.firstIndex(where: { $0.id == itemID }) else {
+            return
+        }
+        let record = favoriteNetworkRecords[index]
+        favoriteNetworkRecords[index] = FavoriteNetworkRecord(
+            item: record.item,
+            recommendationDate: record.recommendationDate,
+            favoritedAt: record.favoritedAt,
+            rating: rating
+        )
+        favoriteNetworkRecords.sort(by: Self.sortFavoriteRecords)
+        persistFavoriteRecords()
     }
 
     static func makeSampleFeedLoader(bundle: Bundle) -> () -> NetworkFeed? {
@@ -236,7 +251,8 @@ final class NetworkStore: ObservableObject {
                 let updated = FavoriteNetworkRecord(
                     item: item,
                     recommendationDate: current.recommendationDate,
-                    favoritedAt: current.favoritedAt
+                    favoritedAt: current.favoritedAt,
+                    rating: current.rating
                 )
                 if updated != current {
                     favoriteNetworkRecords[index] = updated
@@ -247,7 +263,8 @@ final class NetworkStore: ObservableObject {
                     FavoriteNetworkRecord(
                         item: item,
                         recommendationDate: feed.recommendationDate,
-                        favoritedAt: Date()
+                        favoritedAt: Date(),
+                        rating: 0
                     )
                 )
                 didChange = true
@@ -255,12 +272,7 @@ final class NetworkStore: ObservableObject {
         }
 
         if didChange {
-            favoriteNetworkRecords.sort { lhs, rhs in
-                if lhs.recommendationDate != rhs.recommendationDate {
-                    return lhs.recommendationDate > rhs.recommendationDate
-                }
-                return lhs.favoritedAt > rhs.favoritedAt
-            }
+            favoriteNetworkRecords.sort(by: Self.sortFavoriteRecords)
             persistFavoriteRecords()
         }
     }
@@ -271,12 +283,20 @@ final class NetworkStore: ObservableObject {
         } else {
             favoriteNetworkRecords.append(record)
         }
-        favoriteNetworkRecords.sort { lhs, rhs in
-            if lhs.recommendationDate != rhs.recommendationDate {
-                return lhs.recommendationDate > rhs.recommendationDate
-            }
+        favoriteNetworkRecords.sort(by: Self.sortFavoriteRecords)
+    }
+
+    private static func sortFavoriteRecords(lhs: FavoriteNetworkRecord, rhs: FavoriteNetworkRecord) -> Bool {
+        if lhs.rating != rhs.rating {
+            return lhs.rating > rhs.rating
+        }
+        if lhs.recommendationDate != rhs.recommendationDate {
+            return lhs.recommendationDate > rhs.recommendationDate
+        }
+        if lhs.favoritedAt != rhs.favoritedAt {
             return lhs.favoritedAt > rhs.favoritedAt
         }
+        return lhs.item.title.localizedCaseInsensitiveCompare(rhs.item.title) == .orderedAscending
     }
 
     private func isCancellation(_ error: Error) -> Bool {

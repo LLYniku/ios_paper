@@ -5,6 +5,8 @@ struct ClassicPaperRowView: View {
     let isFavorite: Bool
     let isRead: Bool
     let contextNote: String?
+    let rating: Int?
+    let onSetRating: ((Int) -> Void)?
     let onToggleFavorite: () -> Void
     let onToggleRead: () -> Void
     let onOpenDetail: () -> Void
@@ -35,6 +37,13 @@ struct ClassicPaperRowView: View {
                 Text(contextNote)
                     .font(.caption)
                     .foregroundStyle(.secondary)
+            }
+
+            if let rating, let onSetRating {
+                FavoriteRatingControl(
+                    rating: rating,
+                    onSetRating: onSetRating
+                )
             }
 
             HStack(spacing: 8) {
