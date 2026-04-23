@@ -40,6 +40,7 @@ struct ClassicsView: View {
             }
             .padding(16)
         }
+        .desktopPageContainer()
         .navigationTitle("经典")
         .searchable(text: $searchText, prompt: "搜索标题、会议、类别")
         .refreshable {

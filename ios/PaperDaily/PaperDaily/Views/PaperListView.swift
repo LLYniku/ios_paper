@@ -43,21 +43,33 @@ struct PaperListView: View {
         if papers.isEmpty {
             EmptyStateView(title: emptyTitle, message: emptyMessage)
         } else {
-            LazyVStack(spacing: 12) {
-                ForEach(papers) { paper in
-                    PaperRowView(
-                        paper: paper,
-                        isFavorite: favoritePaperIDs.contains(paper.id),
-                        isRead: readPaperIDs.contains(paper.id),
-                        contextNote: contextNote?(paper),
-                        rating: rating?(paper),
-                        onSetRating: onSetRating.map { handler in { handler(paper, $0) } },
-                        onToggleFavorite: { onToggleFavorite(paper) },
-                        onToggleRead: { onToggleRead(paper) },
-                        onOpenDetail: { onOpenDetail(paper) }
-                    )
+            if DesktopLayout.isDesktop {
+                LazyVGrid(columns: DesktopLayout.adaptiveColumns, alignment: .leading, spacing: DesktopLayout.cardSpacing) {
+                    ForEach(papers) { paper in
+                        row(for: paper)
+                    }
+                }
+            } else {
+                LazyVStack(spacing: 12) {
+                    ForEach(papers) { paper in
+                        row(for: paper)
+                    }
                 }
             }
         }
+    }
+
+    private func row(for paper: PaperItem) -> some View {
+        PaperRowView(
+            paper: paper,
+            isFavorite: favoritePaperIDs.contains(paper.id),
+            isRead: readPaperIDs.contains(paper.id),
+            contextNote: contextNote?(paper),
+            rating: rating?(paper),
+            onSetRating: onSetRating.map { handler in { handler(paper, $0) } },
+            onToggleFavorite: { onToggleFavorite(paper) },
+            onToggleRead: { onToggleRead(paper) },
+            onOpenDetail: { onOpenDetail(paper) }
+        )
     }
 }

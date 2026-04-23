@@ -6,30 +6,30 @@ import XCTest
 final class PaperStoreTests: XCTestCase {
     func testFavoriteStatePersists() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, syncStore) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         store.toggleFavorite("arxiv:2604.22001")
 
-        XCTAssertEqual(Set(defaults.stringArray(forKey: PaperStore.Keys.favoritePaperIDs) ?? []), ["arxiv:2604.22001"])
+        XCTAssertEqual(syncStore.paperFavoriteRecords.map(\.id), ["arxiv:2604.22001"])
         XCTAssertTrue(store.isFavorite("arxiv:2604.22001"))
         XCTAssertEqual(store.favoritePapers().map(\.id), ["arxiv:2604.22001"])
     }
 
     func testReadStatePersists() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, syncStore) = makeStore(defaults: defaults)
 
         store.toggleRead("arxiv:2604.22001")
 
-        XCTAssertEqual(Set(defaults.stringArray(forKey: PaperStore.Keys.readPaperIDs) ?? []), ["arxiv:2604.22001"])
+        XCTAssertEqual(syncStore.paperReadIDs, ["arxiv:2604.22001"])
         XCTAssertTrue(store.isRead("arxiv:2604.22001"))
     }
 
     func testFavoritePaperPersistsAcrossFeedRefreshes() async throws {
         let defaults = try makeDefaults()
         let apiClient = MutableMockFeedAPIClient(feed: MockFeedAPIClient.sampleFeed)
-        let store = makeStore(defaults: defaults, apiClient: apiClient)
+        let (store, _) = makeStore(defaults: defaults, apiClient: apiClient)
 
         await store.bootstrap()
         store.toggleFavorite("arxiv:2604.22001")
@@ -45,7 +45,7 @@ final class PaperStoreTests: XCTestCase {
 
     func testFavoritePaperKeepsContextNote() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, _) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         store.toggleFavorite("arxiv:2604.22001")
@@ -56,7 +56,7 @@ final class PaperStoreTests: XCTestCase {
 
     func testFavoriteRatingPersistsAndSortsHigherFirst() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, _) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         store.toggleFavorite("arxiv:2604.22001")
@@ -81,17 +81,20 @@ final class PaperStoreTests: XCTestCase {
     private func makeStore(
         defaults: UserDefaults,
         apiClient: FeedFetching = MockFeedAPIClient()
-    ) -> PaperStore {
-        let settings = UserSettingsStore(defaults: defaults)
+    ) -> (PaperStore, AppSyncStore) {
+        let syncStore = AppSyncStore(defaults: defaults)
+        syncStore.start()
+        let settings = UserSettingsStore(syncStore: syncStore)
         let cache = FeedCache(baseDirectory: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString))
-        return PaperStore(
+        let store = PaperStore(
             apiClient: apiClient,
             cache: cache,
             settings: settings,
-            userDefaults: defaults,
+            syncStore: syncStore,
             notificationScheduler: MockNotificationScheduler(),
             sampleFeedLoader: { MockFeedAPIClient.sampleFeed }
         )
+        return (store, syncStore)
     }
 }
 

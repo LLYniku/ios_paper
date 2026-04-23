@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 protocol LocalNotificationScheduling {
     func requestAuthorization() async throws
@@ -26,32 +27,33 @@ final class PaperStore: ObservableObject {
 
     private let apiClient: FeedFetching
     private let cache: FeedCache
-    private let userDefaults: UserDefaults
+    private let syncStore: AppSyncStore
     private let notificationScheduler: LocalNotificationScheduling
     private let sampleFeedLoader: (() -> PaperFeed?)?
+    private var cancellables = Set<AnyCancellable>()
 
     init(
         apiClient: FeedFetching = FeedAPIClient(),
         cache: FeedCache = FeedCache(),
         settings: UserSettingsStore,
-        userDefaults: UserDefaults = .standard,
+        syncStore: AppSyncStore,
         notificationScheduler: LocalNotificationScheduling = LocalNotificationScheduler(),
         sampleFeedLoader: (() -> PaperFeed?)? = nil
     ) {
         self.apiClient = apiClient
         self.cache = cache
         self.settings = settings
-        self.userDefaults = userDefaults
+        self.syncStore = syncStore
         self.notificationScheduler = notificationScheduler
         self.sampleFeedLoader = sampleFeedLoader
+
+        favoritePaperRecords = syncStore.paperFavoriteRecords
+        favoritePaperIDs = Set(syncStore.paperFavoriteRecords.map(\.id))
+        readPaperIDs = syncStore.paperReadIDs
+        bindSyncState()
     }
 
     func bootstrap() async {
-        favoritePaperRecords = loadFavoritePaperRecords()
-        favoritePaperIDs = Set(favoritePaperRecords.map(\.id))
-            .union(userDefaults.stringArray(forKey: Keys.favoritePaperIDs) ?? [])
-        readPaperIDs = Set(userDefaults.stringArray(forKey: Keys.readPaperIDs) ?? [])
-
         do {
             if let cachedFeed = try cache.load() {
                 feed = cachedFeed
@@ -280,32 +282,15 @@ final class PaperStore: ObservableObject {
     }
 
     private func persistFavoriteIDs() {
-        userDefaults.set(Array(favoritePaperIDs).sorted(), forKey: Keys.favoritePaperIDs)
+        syncStore.setPaperFavoriteRecords(favoritePaperRecords)
     }
 
     private func persistFavoritePaperRecords() {
-        do {
-            let data = try FeedCoding.encoder.encode(favoritePaperRecords)
-            userDefaults.set(data, forKey: Keys.favoritePaperRecords)
-        } catch {
-            lastErrorMessage = "保存收藏失败：\(error.localizedDescription)"
-        }
+        syncStore.setPaperFavoriteRecords(favoritePaperRecords)
     }
 
     private func persistReadIDs() {
-        userDefaults.set(Array(readPaperIDs).sorted(), forKey: Keys.readPaperIDs)
-    }
-
-    private func loadFavoritePaperRecords() -> [FavoritePaperRecord] {
-        guard let data = userDefaults.data(forKey: Keys.favoritePaperRecords) else {
-            return []
-        }
-        do {
-            return try FeedCoding.decoder.decode([FavoritePaperRecord].self, from: data)
-        } catch {
-            lastErrorMessage = "读取收藏失败：\(error.localizedDescription)"
-            return []
-        }
+        syncStore.setPaperReadIDs(readPaperIDs)
     }
 
     private func syncFavoriteRecords(with feed: PaperFeed) {
@@ -369,5 +354,22 @@ final class PaperStore: ObservableObject {
             return lhs.favoritedAt > rhs.favoritedAt
         }
         return lhs.paper.title.localizedCaseInsensitiveCompare(rhs.paper.title) == .orderedAscending
+    }
+
+    private func bindSyncState() {
+        syncStore.$paperFavoriteRecords
+            .receive(on: RunLoop.main)
+            .sink { [weak self] records in
+                self?.favoritePaperRecords = records
+                self?.favoritePaperIDs = Set(records.map(\.id))
+            }
+            .store(in: &cancellables)
+
+        syncStore.$paperReadIDs
+            .receive(on: RunLoop.main)
+            .sink { [weak self] readIDs in
+                self?.readPaperIDs = readIDs
+            }
+            .store(in: &cancellables)
     }
 }

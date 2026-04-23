@@ -1,0 +1,15 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "paperdaily-sync",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-04-23",
+	"kv_namespaces": [
+		{
+			"binding": "PAPERDAILY_SYNC",
+			"id": "95d2ca65e00042259b008d010c2804f0"
+		}
+	],
+	"observability": {
+		"enabled": true
+	}
+}

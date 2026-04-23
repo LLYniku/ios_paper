@@ -12,7 +12,7 @@ final class ClassicsStoreTests: XCTestCase {
 
     func testClassicsAreSortedNewestFirst() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, _) = makeStore(defaults: defaults)
 
         await store.bootstrap()
 
@@ -23,7 +23,7 @@ final class ClassicsStoreTests: XCTestCase {
     func testFavoriteClassicPersistsAcrossRefreshes() async throws {
         let defaults = try makeDefaults()
         let apiClient = MutableMockClassicsFeedAPIClient(feed: MockClassicsFeedAPIClient.sampleFeed)
-        let store = makeStore(defaults: defaults, apiClient: apiClient)
+        let (store, _) = makeStore(defaults: defaults, apiClient: apiClient)
 
         await store.bootstrap()
         let paper = try XCTUnwrap(store.feed?.papers.first)
@@ -40,19 +40,19 @@ final class ClassicsStoreTests: XCTestCase {
 
     func testReadClassicPersists() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, syncStore) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         let paperID = try XCTUnwrap(store.feed?.papers.first?.id)
         store.toggleRead(paperID)
 
         XCTAssertTrue(store.isRead(paperID))
-        XCTAssertEqual(Set(defaults.stringArray(forKey: ClassicsStore.Keys.readClassicIDs) ?? []), [paperID])
+        XCTAssertEqual(syncStore.classicReadIDs, [paperID])
     }
 
     func testCancelledRefreshDoesNotShowError() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(
+        let (store, _) = makeStore(
             defaults: defaults,
             apiClient: CancelledMockClassicsFeedAPIClient()
         )
@@ -64,7 +64,7 @@ final class ClassicsStoreTests: XCTestCase {
 
     func testFavoriteClassicRatingPersistsAndSortsHigherFirst() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, _) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         let papers = try XCTUnwrap(store.feed?.papers)
@@ -90,16 +90,19 @@ final class ClassicsStoreTests: XCTestCase {
     private func makeStore(
         defaults: UserDefaults,
         apiClient: ClassicsFeedFetching = MockClassicsFeedAPIClient()
-    ) -> ClassicsStore {
-        let settings = UserSettingsStore(defaults: defaults)
+    ) -> (ClassicsStore, AppSyncStore) {
+        let syncStore = AppSyncStore(defaults: defaults)
+        syncStore.start()
+        let settings = UserSettingsStore(syncStore: syncStore)
         let cache = ClassicFeedCache(baseDirectory: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString))
-        return ClassicsStore(
+        let store = ClassicsStore(
             settings: settings,
             apiClient: apiClient,
             cache: cache,
-            userDefaults: defaults,
+            syncStore: syncStore,
             sampleFeedLoader: { MockClassicsFeedAPIClient.sampleFeed }
         )
+        return (store, syncStore)
     }
 }
 

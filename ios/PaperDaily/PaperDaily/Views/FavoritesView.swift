@@ -111,6 +111,7 @@ struct FavoritesView: View {
             }
             .padding(16)
         }
+        .desktopPageContainer()
         .navigationTitle("收藏")
         .searchable(text: $searchText, prompt: "搜索收藏内容")
         .task {

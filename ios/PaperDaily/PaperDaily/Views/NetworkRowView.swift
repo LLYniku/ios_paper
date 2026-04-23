@@ -96,10 +96,11 @@ struct NetworkRowView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .desktopInteractiveCard()
         .contentShape(Rectangle())
         .onTapGesture {
             onOpenDetail()
         }
     }
+
 }

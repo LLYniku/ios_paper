@@ -2,29 +2,39 @@ import SwiftUI
 
 @main
 struct PaperDailyApp: App {
+    @Environment(\.scenePhase) private var scenePhase
+    @StateObject private var syncStore: AppSyncStore
     @StateObject private var settings: UserSettingsStore
     @StateObject private var store: PaperStore
     @StateObject private var classicsStore: ClassicsStore
     @StateObject private var networkStore: NetworkStore
 
     init() {
-        let settingsStore = UserSettingsStore()
+        let syncedStateStore = AppSyncStore()
+        let settingsStore = UserSettingsStore(syncStore: syncedStateStore)
+        syncedStateStore.configureRemote {
+            settingsStore.resolvedSyncConfiguration()
+        }
+        _syncStore = StateObject(wrappedValue: syncedStateStore)
         _settings = StateObject(wrappedValue: settingsStore)
         _store = StateObject(
             wrappedValue: PaperStore(
                 settings: settingsStore,
+                syncStore: syncedStateStore,
                 sampleFeedLoader: PaperStore.makeSampleFeedLoader(bundle: .main)
             )
         )
         _classicsStore = StateObject(
             wrappedValue: ClassicsStore(
                 settings: settingsStore,
+                syncStore: syncedStateStore,
                 sampleFeedLoader: ClassicsStore.makeSampleFeedLoader(bundle: .main)
             )
         )
         _networkStore = StateObject(
             wrappedValue: NetworkStore(
                 settings: settingsStore,
+                syncStore: syncedStateStore,
                 sampleFeedLoader: NetworkStore.makeSampleFeedLoader(bundle: .main)
             )
         )
@@ -68,14 +78,26 @@ struct PaperDailyApp: App {
                     Label("设置", systemImage: "gearshape")
                 }
             }
+            .environmentObject(syncStore)
             .environmentObject(settings)
             .environmentObject(store)
             .environmentObject(classicsStore)
             .environmentObject(networkStore)
+            .frame(
+                minWidth: DesktopLayout.isDesktop ? DesktopLayout.minWindowWidth : nil,
+                minHeight: DesktopLayout.isDesktop ? DesktopLayout.minWindowHeight : nil
+            )
             .task {
+                syncStore.start()
+                syncStore.refreshFromRemote()
                 await classicsStore.bootstrap()
                 await networkStore.bootstrap()
                 await store.bootstrap()
+            }
+            .onChange(of: scenePhase) { _, newPhase in
+                guard newPhase == .active else { return }
+                syncStore.refreshFromCloud()
+                syncStore.refreshFromRemote()
             }
         }
     }

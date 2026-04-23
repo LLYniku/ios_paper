@@ -41,6 +41,7 @@ struct TodayView: View {
             }
             .padding(16)
         }
+        .desktopPageContainer()
         .navigationTitle("每日论文")
         .searchable(text: $searchText, prompt: "搜索标题、作者、关键词")
         .refreshable {

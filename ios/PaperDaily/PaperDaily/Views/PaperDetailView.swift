@@ -7,6 +7,7 @@ struct PaperDetailView: View {
     let onToggleFavorite: () -> Void
     let onToggleRead: () -> Void
 
+    @EnvironmentObject private var syncStore: AppSyncStore
     @Environment(\.openURL) private var openURL
 
     var body: some View {
@@ -39,8 +40,18 @@ struct PaperDetailView: View {
             }
             .padding(16)
         }
+        .desktopPageContainer(maxWidth: DesktopLayout.detailMaxWidth)
         .navigationTitle("论文详情")
         .navigationBarTitleDisplayMode(.inline)
+        .task(id: paper.id) {
+            syncStore.recordOpen(
+                kind: .today,
+                itemID: paper.id,
+                title: paper.title,
+                subtitle: paper.authorSummary,
+                url: LinkRouter.url(for: .abstract, in: paper) ?? LinkRouter.url(for: .pdf, in: paper)
+            )
+        }
     }
 
     private var actionButtons: some View {
@@ -80,7 +91,7 @@ struct PaperDetailView: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title)
                 .font(.headline)
-            Text(content)
+            SelectableTextView(text: content)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(12)
                 .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14, style: .continuous))

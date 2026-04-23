@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 @MainActor
 final class NetworkStore: ObservableObject {
@@ -20,29 +21,30 @@ final class NetworkStore: ObservableObject {
 
     private let apiClient: NetworkFeedFetching
     private let cache: NetworkFeedCache
-    private let userDefaults: UserDefaults
+    private let syncStore: AppSyncStore
     private let sampleFeedLoader: (() -> NetworkFeed?)?
+    private var cancellables = Set<AnyCancellable>()
 
     init(
         settings: UserSettingsStore,
         apiClient: NetworkFeedFetching = NetworkFeedAPIClient(),
         cache: NetworkFeedCache = NetworkFeedCache(),
-        userDefaults: UserDefaults = .standard,
+        syncStore: AppSyncStore,
         sampleFeedLoader: (() -> NetworkFeed?)? = nil
     ) {
         self.settings = settings
         self.apiClient = apiClient
         self.cache = cache
-        self.userDefaults = userDefaults
+        self.syncStore = syncStore
         self.sampleFeedLoader = sampleFeedLoader
+
+        favoriteNetworkRecords = syncStore.networkFavoriteRecords
+        favoriteNetworkIDs = Set(syncStore.networkFavoriteRecords.map(\.id))
+        readNetworkIDs = syncStore.networkReadIDs
+        bindSyncState()
     }
 
     func bootstrap() async {
-        favoriteNetworkRecords = loadFavoriteNetworkRecords()
-        favoriteNetworkIDs = Set(favoriteNetworkRecords.map(\.id))
-            .union(userDefaults.stringArray(forKey: Keys.favoriteNetworkIDs) ?? [])
-        readNetworkIDs = Set(userDefaults.stringArray(forKey: Keys.readNetworkIDs) ?? [])
-
         do {
             if let cachedFeed = try cache.load() {
                 feed = cachedFeed
@@ -215,32 +217,15 @@ final class NetworkStore: ObservableObject {
     }
 
     private func persistFavoriteIDs() {
-        userDefaults.set(Array(favoriteNetworkIDs).sorted(), forKey: Keys.favoriteNetworkIDs)
+        syncStore.setNetworkFavoriteRecords(favoriteNetworkRecords)
     }
 
     private func persistFavoriteRecords() {
-        do {
-            let data = try FeedCoding.encoder.encode(favoriteNetworkRecords)
-            userDefaults.set(data, forKey: Keys.favoriteNetworkRecords)
-        } catch {
-            lastErrorMessage = "保存网络收藏失败：\(error.localizedDescription)"
-        }
+        syncStore.setNetworkFavoriteRecords(favoriteNetworkRecords)
     }
 
     private func persistReadIDs() {
-        userDefaults.set(Array(readNetworkIDs).sorted(), forKey: Keys.readNetworkIDs)
-    }
-
-    private func loadFavoriteNetworkRecords() -> [FavoriteNetworkRecord] {
-        guard let data = userDefaults.data(forKey: Keys.favoriteNetworkRecords) else {
-            return []
-        }
-        do {
-            return try FeedCoding.decoder.decode([FavoriteNetworkRecord].self, from: data)
-        } catch {
-            lastErrorMessage = "读取网络收藏失败：\(error.localizedDescription)"
-            return []
-        }
+        syncStore.setNetworkReadIDs(readNetworkIDs)
     }
 
     private func syncFavoriteRecords(with feed: NetworkFeed) {
@@ -305,5 +290,22 @@ final class NetworkStore: ObservableObject {
             return true
         }
         return false
+    }
+
+    private func bindSyncState() {
+        syncStore.$networkFavoriteRecords
+            .receive(on: RunLoop.main)
+            .sink { [weak self] records in
+                self?.favoriteNetworkRecords = records
+                self?.favoriteNetworkIDs = Set(records.map(\.id))
+            }
+            .store(in: &cancellables)
+
+        syncStore.$networkReadIDs
+            .receive(on: RunLoop.main)
+            .sink { [weak self] readIDs in
+                self?.readNetworkIDs = readIDs
+            }
+            .store(in: &cancellables)
     }
 }

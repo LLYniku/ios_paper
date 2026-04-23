@@ -14,6 +14,8 @@
 		3F867870CF8A5DB5421D67A4 /* PaperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */; };
 		5C9DFE559AABD1865897D733 /* PaperFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742EF8C21168D41A9FBE217D /* PaperFeed.swift */; };
 		620FAF0D1F814472E038AD8A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A12EF63123D0C175EBF6A6 /* SettingsView.swift */; };
+		62D0E1000000000000000001 /* DesktopLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D0E1000000000000000011 /* DesktopLayout.swift */; };
+		62D0E1000000000000000002 /* SelectableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D0E1000000000000000012 /* SelectableTextView.swift */; };
 		64CB4245AEACACCDFCDB01CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5BC5E5AA1CA864F5AFF66 /* Foundation.framework */; };
 		836F1D2C1F18E384B3B848A0 /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090346B4BC27AD3C44AE435 /* LocalNotificationScheduler.swift */; };
 		8CD1532620F4B1F280A26D28 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */; };
@@ -43,6 +45,9 @@
 		B20000000000000000000109 /* sample_network.json in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000209 /* sample_network.json */; };
 		B2000000000000000000010A /* sample_network.json in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000209 /* sample_network.json */; };
 		B2000000000000000000010B /* NetworkStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000000000000000000020A /* NetworkStoreTests.swift */; };
+		C30000000000000000000101 /* AppSyncModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000201 /* AppSyncModels.swift */; };
+		C30000000000000000000102 /* AppSyncStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000202 /* AppSyncStore.swift */; };
+		C30000000000000000000103 /* AppSyncRemoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000203 /* AppSyncRemoteClient.swift */; };
 		A8D9DEBAE2FFF5A377D3E1C5 /* sample_latest.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */; };
 		B14AC73E4A9B4A9A8B4F1001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */; };
 		B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A170830E50A17B10819 /* ErrorStateView.swift */; };
@@ -69,6 +74,8 @@
 		13EC60FF9F635801C25A72F5 /* PaperStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaperStoreTests.swift; sourceTree = "<group>"; };
 		192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeedAPIClient.swift; path = Services/FeedAPIClient.swift; sourceTree = "<group>"; };
 		24A12EF63123D0C175EBF6A6 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Views/SettingsView.swift; sourceTree = "<group>"; };
+		62D0E1000000000000000011 /* DesktopLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesktopLayout.swift; path = Views/DesktopLayout.swift; sourceTree = "<group>"; };
+		62D0E1000000000000000012 /* SelectableTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectableTextView.swift; path = Views/SelectableTextView.swift; sourceTree = "<group>"; };
 		2F85395A90B496F5F72A9A2A /* LinkRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinkRouter.swift; path = Services/LinkRouter.swift; sourceTree = "<group>"; };
 		3089D02FDF1B5F9E9646E861 /* PaperItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperItem.swift; path = Models/PaperItem.swift; sourceTree = "<group>"; };
 		33651183D741090D37A4C5F0 /* PaperRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperRowView.swift; path = Views/PaperRowView.swift; sourceTree = "<group>"; };
@@ -101,6 +108,9 @@
 		B20000000000000000000209 /* sample_network.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_network.json; path = Resources/sample_network.json; sourceTree = "<group>"; };
 		B2000000000000000000020A /* NetworkStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkStoreTests.swift; sourceTree = "<group>"; };
 		B14AC73E4A9B4A9A8B4F1002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		C30000000000000000000201 /* AppSyncModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppSyncModels.swift; path = Models/AppSyncModels.swift; sourceTree = "<group>"; };
+		C30000000000000000000202 /* AppSyncStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppSyncStore.swift; path = Stores/AppSyncStore.swift; sourceTree = "<group>"; };
+		C30000000000000000000203 /* AppSyncRemoteClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppSyncRemoteClient.swift; path = Services/AppSyncRemoteClient.swift; sourceTree = "<group>"; };
 		BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperStore.swift; path = Stores/PaperStore.swift; sourceTree = "<group>"; };
 		BE3B612BCA29A6E1A8AA6179 /* sample_latest.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = sample_latest.json; path = Resources/sample_latest.json; sourceTree = "<group>"; };
 		C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = Views/FavoritesView.swift; sourceTree = "<group>"; };
@@ -154,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				F8C889D56BAFC7E64F2D170B /* PaperDailyApp.swift */,
+				C30000000000000000000201 /* AppSyncModels.swift */,
 				742EF8C21168D41A9FBE217D /* PaperFeed.swift */,
 				3089D02FDF1B5F9E9646E861 /* PaperItem.swift */,
 				A1B1C1D1E1F1010101010111 /* ClassicPaper.swift */,
@@ -161,10 +172,12 @@
 				192CF21E96BBE3335EF49710 /* FeedAPIClient.swift */,
 				A1B1C1D1E1F1010101010112 /* ClassicFeedAPIClient.swift */,
 				B20000000000000000000202 /* NetworkFeedAPIClient.swift */,
+				C30000000000000000000203 /* AppSyncRemoteClient.swift */,
 				565789DB7959B6343A075549 /* FeedCache.swift */,
 				A1B1C1D1E1F1010101010113 /* ClassicFeedCache.swift */,
 				B20000000000000000000203 /* NetworkFeedCache.swift */,
 				2F85395A90B496F5F72A9A2A /* LinkRouter.swift */,
+				C30000000000000000000202 /* AppSyncStore.swift */,
 				DB989D15B65941804BD68529 /* UserSettingsStore.swift */,
 				BB0DF3C11EC84B067EE4E1C1 /* PaperStore.swift */,
 				A1B1C1D1E1F1010101010114 /* ClassicsStore.swift */,
@@ -183,6 +196,8 @@
 				B20000000000000000000208 /* NetworkDetailView.swift */,
 				CE9DF847510536B2C67D1B3F /* PaperDetailView.swift */,
 				24A12EF63123D0C175EBF6A6 /* SettingsView.swift */,
+				62D0E1000000000000000011 /* DesktopLayout.swift */,
+				62D0E1000000000000000012 /* SelectableTextView.swift */,
 				C999A6D1503CCEDD61B4EA21 /* FavoritesView.swift */,
 				6814601A651CBB8B368D4785 /* EmptyStateView.swift */,
 				67FA1A170830E50A17B10819 /* ErrorStateView.swift */,
@@ -339,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D961C8D55F614CD0E3C77940 /* PaperDailyApp.swift in Sources */,
+				C30000000000000000000101 /* AppSyncModels.swift in Sources */,
 				5C9DFE559AABD1865897D733 /* PaperFeed.swift in Sources */,
 				DE768BB5C3C88F0B013AAD4A /* PaperItem.swift in Sources */,
 				A1B1C1D1E1F1010101010101 /* ClassicPaper.swift in Sources */,
@@ -349,7 +365,9 @@
 				F701A1E49B913740DCA4F165 /* FeedCache.swift in Sources */,
 				A1B1C1D1E1F1010101010103 /* ClassicFeedCache.swift in Sources */,
 				B20000000000000000000103 /* NetworkFeedCache.swift in Sources */,
+				C30000000000000000000103 /* AppSyncRemoteClient.swift in Sources */,
 				DB8BD05C92978EA74E8F7BCD /* LinkRouter.swift in Sources */,
+				C30000000000000000000102 /* AppSyncStore.swift in Sources */,
 				C1BBD1CEF1FAB52527B59DCE /* UserSettingsStore.swift in Sources */,
 				3F867870CF8A5DB5421D67A4 /* PaperStore.swift in Sources */,
 				A1B1C1D1E1F1010101010104 /* ClassicsStore.swift in Sources */,
@@ -368,6 +386,8 @@
 				B20000000000000000000108 /* NetworkDetailView.swift in Sources */,
 				C022567B71B0CEB87C253E2F /* PaperDetailView.swift in Sources */,
 				620FAF0D1F814472E038AD8A /* SettingsView.swift in Sources */,
+				62D0E1000000000000000001 /* DesktopLayout.swift in Sources */,
+				62D0E1000000000000000002 /* SelectableTextView.swift in Sources */,
 				8CD1532620F4B1F280A26D28 /* FavoritesView.swift in Sources */,
 				00BF4B6A4C27476923F798F7 /* EmptyStateView.swift in Sources */,
 				B7B0762E83ACEF447A2BE8B4 /* ErrorStateView.swift in Sources */,
@@ -487,6 +507,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = com.llyniku.paperdaily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -535,6 +557,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = com.llyniku.paperdaily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

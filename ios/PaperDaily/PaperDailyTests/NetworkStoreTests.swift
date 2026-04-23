@@ -13,7 +13,7 @@ final class NetworkStoreTests: XCTestCase {
     func testFavoriteNetworkPersistsAcrossRefreshes() async throws {
         let defaults = try makeDefaults()
         let apiClient = MutableMockNetworkFeedAPIClient(feed: MockNetworkFeedAPIClient.sampleFeed)
-        let store = makeStore(defaults: defaults, apiClient: apiClient)
+        let (store, _) = makeStore(defaults: defaults, apiClient: apiClient)
 
         await store.bootstrap()
         let item = try XCTUnwrap(store.feed?.items.first)
@@ -30,19 +30,19 @@ final class NetworkStoreTests: XCTestCase {
 
     func testReadNetworkPersists() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, syncStore) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         let itemID = try XCTUnwrap(store.feed?.items.first?.id)
         store.toggleRead(itemID)
 
         XCTAssertTrue(store.isRead(itemID))
-        XCTAssertEqual(Set(defaults.stringArray(forKey: NetworkStore.Keys.readNetworkIDs) ?? []), [itemID])
+        XCTAssertEqual(syncStore.networkReadIDs, [itemID])
     }
 
     func testFavoriteNetworkRatingPersistsAndSortsHigherFirst() async throws {
         let defaults = try makeDefaults()
-        let store = makeStore(defaults: defaults)
+        let (store, _) = makeStore(defaults: defaults)
 
         await store.bootstrap()
         let items = try XCTUnwrap(store.feed?.items)
@@ -68,16 +68,19 @@ final class NetworkStoreTests: XCTestCase {
     private func makeStore(
         defaults: UserDefaults,
         apiClient: NetworkFeedFetching = MockNetworkFeedAPIClient()
-    ) -> NetworkStore {
-        let settings = UserSettingsStore(defaults: defaults)
+    ) -> (NetworkStore, AppSyncStore) {
+        let syncStore = AppSyncStore(defaults: defaults)
+        syncStore.start()
+        let settings = UserSettingsStore(syncStore: syncStore)
         let cache = NetworkFeedCache(baseDirectory: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString))
-        return NetworkStore(
+        let store = NetworkStore(
             settings: settings,
             apiClient: apiClient,
             cache: cache,
-            userDefaults: defaults,
+            syncStore: syncStore,
             sampleFeedLoader: { MockNetworkFeedAPIClient.sampleFeed }
         )
+        return (store, syncStore)
     }
 }
 

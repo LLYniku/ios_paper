@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 @MainActor
 final class ClassicsStore: ObservableObject {
@@ -20,29 +21,30 @@ final class ClassicsStore: ObservableObject {
 
     private let apiClient: ClassicsFeedFetching
     private let cache: ClassicFeedCache
-    private let userDefaults: UserDefaults
+    private let syncStore: AppSyncStore
     private let sampleFeedLoader: (() -> ClassicsFeed?)?
+    private var cancellables = Set<AnyCancellable>()
 
     init(
         settings: UserSettingsStore,
         apiClient: ClassicsFeedFetching = ClassicFeedAPIClient(),
         cache: ClassicFeedCache = ClassicFeedCache(),
-        userDefaults: UserDefaults = .standard,
+        syncStore: AppSyncStore,
         sampleFeedLoader: (() -> ClassicsFeed?)? = nil
     ) {
         self.settings = settings
         self.apiClient = apiClient
         self.cache = cache
-        self.userDefaults = userDefaults
+        self.syncStore = syncStore
         self.sampleFeedLoader = sampleFeedLoader
+
+        favoriteClassicRecords = syncStore.classicFavoriteRecords
+        favoriteClassicIDs = Set(syncStore.classicFavoriteRecords.map(\.id))
+        readClassicIDs = syncStore.classicReadIDs
+        bindSyncState()
     }
 
     func bootstrap() async {
-        favoriteClassicRecords = loadFavoriteClassicRecords()
-        favoriteClassicIDs = Set(favoriteClassicRecords.map(\.id))
-            .union(userDefaults.stringArray(forKey: Keys.favoriteClassicIDs) ?? [])
-        readClassicIDs = Set(userDefaults.stringArray(forKey: Keys.readClassicIDs) ?? [])
-
         do {
             if let cachedFeed = try cache.load() {
                 feed = cachedFeed
@@ -230,32 +232,15 @@ final class ClassicsStore: ObservableObject {
     }
 
     private func persistFavoriteIDs() {
-        userDefaults.set(Array(favoriteClassicIDs).sorted(), forKey: Keys.favoriteClassicIDs)
+        syncStore.setClassicFavoriteRecords(favoriteClassicRecords)
     }
 
     private func persistFavoriteRecords() {
-        do {
-            let data = try FeedCoding.encoder.encode(favoriteClassicRecords)
-            userDefaults.set(data, forKey: Keys.favoriteClassicRecords)
-        } catch {
-            lastErrorMessage = "保存经典收藏失败：\(error.localizedDescription)"
-        }
+        syncStore.setClassicFavoriteRecords(favoriteClassicRecords)
     }
 
     private func persistReadIDs() {
-        userDefaults.set(Array(readClassicIDs).sorted(), forKey: Keys.readClassicIDs)
-    }
-
-    private func loadFavoriteClassicRecords() -> [FavoriteClassicRecord] {
-        guard let data = userDefaults.data(forKey: Keys.favoriteClassicRecords) else {
-            return []
-        }
-        do {
-            return try FeedCoding.decoder.decode([FavoriteClassicRecord].self, from: data)
-        } catch {
-            lastErrorMessage = "读取经典收藏失败：\(error.localizedDescription)"
-            return []
-        }
+        syncStore.setClassicReadIDs(readClassicIDs)
     }
 
     private func syncFavoriteRecords(with feed: ClassicsFeed) {
@@ -356,5 +341,22 @@ final class ClassicsStore: ObservableObject {
             return message.localizedCaseInsensitiveContains("cancelled")
         }
         return error.localizedDescription.localizedCaseInsensitiveContains("cancelled")
+    }
+
+    private func bindSyncState() {
+        syncStore.$classicFavoriteRecords
+            .receive(on: RunLoop.main)
+            .sink { [weak self] records in
+                self?.favoriteClassicRecords = records
+                self?.favoriteClassicIDs = Set(records.map(\.id))
+            }
+            .store(in: &cancellables)
+
+        syncStore.$classicReadIDs
+            .receive(on: RunLoop.main)
+            .sink { [weak self] readIDs in
+                self?.readClassicIDs = readIDs
+            }
+            .store(in: &cancellables)
     }
 }

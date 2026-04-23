@@ -43,21 +43,33 @@ struct NetworkItemListView: View {
         if items.isEmpty {
             EmptyStateView(title: emptyTitle, message: emptyMessage)
         } else {
-            LazyVStack(spacing: 12) {
-                ForEach(items) { item in
-                    NetworkRowView(
-                        item: item,
-                        isFavorite: favoriteItemIDs.contains(item.id),
-                        isRead: readItemIDs.contains(item.id),
-                        contextNote: contextNote?(item),
-                        rating: rating?(item),
-                        onSetRating: onSetRating.map { handler in { handler(item, $0) } },
-                        onToggleFavorite: { onToggleFavorite(item) },
-                        onToggleRead: { onToggleRead(item) },
-                        onOpenDetail: { onOpenDetail(item) }
-                    )
+            if DesktopLayout.isDesktop {
+                LazyVGrid(columns: DesktopLayout.adaptiveColumns, alignment: .leading, spacing: DesktopLayout.cardSpacing) {
+                    ForEach(items) { item in
+                        row(for: item)
+                    }
+                }
+            } else {
+                LazyVStack(spacing: 12) {
+                    ForEach(items) { item in
+                        row(for: item)
+                    }
                 }
             }
         }
+    }
+
+    private func row(for item: NetworkItem) -> some View {
+        NetworkRowView(
+            item: item,
+            isFavorite: favoriteItemIDs.contains(item.id),
+            isRead: readItemIDs.contains(item.id),
+            contextNote: contextNote?(item),
+            rating: rating?(item),
+            onSetRating: onSetRating.map { handler in { handler(item, $0) } },
+            onToggleFavorite: { onToggleFavorite(item) },
+            onToggleRead: { onToggleRead(item) },
+            onOpenDetail: { onOpenDetail(item) }
+        )
     }
 }

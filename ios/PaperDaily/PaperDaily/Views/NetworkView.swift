@@ -40,6 +40,7 @@ struct NetworkView: View {
             }
             .padding(16)
         }
+        .desktopPageContainer()
         .navigationTitle("网络")
         .searchable(text: $searchText, prompt: "搜索标题、平台、标签")
         .refreshable {

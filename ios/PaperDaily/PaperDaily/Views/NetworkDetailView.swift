@@ -7,6 +7,7 @@ struct NetworkDetailView: View {
     let onToggleFavorite: () -> Void
     let onToggleRead: () -> Void
 
+    @EnvironmentObject private var syncStore: AppSyncStore
     @Environment(\.openURL) private var openURL
 
     var body: some View {
@@ -51,8 +52,18 @@ struct NetworkDetailView: View {
             }
             .padding(16)
         }
+        .desktopPageContainer(maxWidth: DesktopLayout.detailMaxWidth)
         .navigationTitle("网络内容")
         .navigationBarTitleDisplayMode(.inline)
+        .task(id: item.id) {
+            syncStore.recordOpen(
+                kind: .network,
+                itemID: item.id,
+                title: item.title,
+                subtitle: item.publicationLine,
+                url: item.url
+            )
+        }
     }
 
     private var actionButtons: some View {
@@ -84,9 +95,7 @@ struct NetworkDetailView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(.headline)
-            Text(body)
-                .font(.body)
-                .foregroundStyle(.secondary)
+            SelectableTextView(text: body)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
