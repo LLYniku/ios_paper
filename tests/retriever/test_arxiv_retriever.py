@@ -4,6 +4,7 @@ import time
 from types import SimpleNamespace
 
 import feedparser
+import arxiv
 
 from zotero_arxiv_daily.retriever.arxiv_retriever import ArxivRetriever, _run_with_hard_timeout
 import zotero_arxiv_daily.retriever.arxiv_retriever as arxiv_retriever
@@ -47,7 +48,12 @@ def test_arxiv_retriever(config, mock_feedparser, monkeypatch):
         def __init__(self, **kw):
             pass
         def results(self, search):
-            return iter(fake_results)
+            requested_ids = set(search.id_list)
+            filtered_results = [
+                result for result in fake_results
+                if result.entry_id.removeprefix("https://arxiv.org/abs/") in requested_ids
+            ]
+            return iter(filtered_results)
 
     monkeypatch.setattr(arxiv_retriever.arxiv, "Client", FakeClient)
 
@@ -61,6 +67,34 @@ def test_arxiv_retriever(config, mock_feedparser, monkeypatch):
 
     assert len(papers) == len(new_entries)
     assert set(p.title for p in papers) == set(e.title for e in new_entries)
+
+
+def test_arxiv_retriever_falls_back_to_rss_metadata_on_rate_limit(config, mock_feedparser, monkeypatch):
+    monkeypatch.setattr(arxiv_retriever.time, "sleep", lambda _: None)
+    monkeypatch.setattr(arxiv_retriever, "extract_text_from_html", lambda paper: None)
+    monkeypatch.setattr(arxiv_retriever, "extract_text_from_pdf", lambda paper: None)
+    monkeypatch.setattr(arxiv_retriever, "extract_text_from_tar", lambda paper: None)
+
+    class RateLimitedClient:
+        def __init__(self, **kw):
+            pass
+
+        def results(self, search):
+            raise arxiv.HTTPError("https://export.arxiv.org/api/query", 1, 429)
+
+    monkeypatch.setattr(arxiv_retriever.arxiv, "Client", RateLimitedClient)
+
+    retriever = ArxivRetriever(config)
+    papers = retriever.retrieve_papers()
+
+    new_entries = [
+        e for e in mock_feedparser.entries
+        if e.get("arxiv_announce_type", "new") == "new"
+    ]
+    assert len(papers) == len(new_entries)
+    assert papers[0].title == new_entries[0].title
+    assert papers[0].abstract
+    assert papers[0].url.startswith("http")
 
 
 def test_run_with_hard_timeout_returns_value():

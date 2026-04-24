@@ -8,7 +8,10 @@ import feedparser
 from tqdm import tqdm
 import multiprocessing
 import os
+import time
+from email.utils import parsedate_to_datetime
 from queue import Empty
+from types import SimpleNamespace
 from typing import Any, Callable, TypeVar
 from loguru import logger
 import requests
@@ -18,6 +21,10 @@ T = TypeVar("T")
 DOWNLOAD_TIMEOUT = (10, 60)
 PDF_EXTRACT_TIMEOUT = 180
 TAR_EXTRACT_TIMEOUT = 180
+ARXIV_ID_BATCH_SIZE = 10
+ARXIV_INTER_BATCH_DELAY_SECONDS = 2
+ARXIV_RETRYABLE_STATUS_CODES = {429, 503}
+ARXIV_BATCH_BACKOFF_SECONDS = (15, 30, 60)
 
 
 def _download_file(url: str, path: str) -> None:
@@ -76,6 +83,87 @@ def _run_with_hard_timeout(
     return None
 
 
+def _entry_value(entry: Any, key: str, default: Any = None) -> Any:
+    if hasattr(entry, "get"):
+        return entry.get(key, default)
+    return getattr(entry, key, default)
+
+
+def _parse_feed_datetime(value: str | None) -> Any:
+    if not value:
+        return None
+    try:
+        return parsedate_to_datetime(value)
+    except (TypeError, ValueError, IndexError):
+        return None
+
+
+def _build_rss_fallback_result(entry: Any) -> Any:
+    paper_id = _entry_value(entry, "id", "").removeprefix("oai:arXiv.org:")
+    paper_url = _entry_value(entry, "link") or f"https://arxiv.org/abs/{paper_id}"
+    author_entries = _entry_value(entry, "authors", []) or []
+    authors = []
+    for author in author_entries:
+        if hasattr(author, "get"):
+            name = author.get("name")
+        else:
+            name = getattr(author, "name", None)
+        if name:
+            authors.append(SimpleNamespace(name=name))
+    if not authors:
+        author_line = _entry_value(entry, "author")
+        if author_line:
+            authors = [SimpleNamespace(name=author_line)]
+
+    tags = _entry_value(entry, "tags", []) or []
+    categories = []
+    for tag in tags:
+        if hasattr(tag, "get"):
+            term = tag.get("term")
+        else:
+            term = getattr(tag, "term", None)
+        if term:
+            categories.append(term)
+
+    return SimpleNamespace(
+        title=_entry_value(entry, "title", "Untitled"),
+        authors=authors,
+        summary=_entry_value(entry, "summary", "") or _entry_value(entry, "description", ""),
+        pdf_url=f"https://arxiv.org/pdf/{paper_id}.pdf" if paper_id else None,
+        entry_id=paper_url,
+        published=_parse_feed_datetime(_entry_value(entry, "published")),
+        updated=_parse_feed_datetime(_entry_value(entry, "updated")),
+        categories=categories,
+        doi=_entry_value(entry, "arxiv_doi"),
+        source_url=lambda pid=paper_id: f"https://arxiv.org/e-print/{pid}" if pid else None,
+    )
+
+
+def _fetch_arxiv_batch(client: arxiv.Client, paper_ids: list[str], fallback_entries: list[Any]) -> list[Any]:
+    max_attempts = len(ARXIV_BATCH_BACKOFF_SECONDS) + 1
+    for attempt in range(1, max_attempts + 1):
+        try:
+            search = arxiv.Search(id_list=paper_ids)
+            return list(client.results(search))
+        except arxiv.HTTPError as exc:
+            if exc.status not in ARXIV_RETRYABLE_STATUS_CODES:
+                raise
+            if attempt >= max_attempts:
+                break
+            backoff = ARXIV_BATCH_BACKOFF_SECONDS[attempt - 1]
+            logger.warning(
+                f"arXiv API returned HTTP {exc.status} for batch {paper_ids[0]}..{paper_ids[-1]}; "
+                f"retrying in {backoff} seconds (attempt {attempt}/{max_attempts})"
+            )
+            time.sleep(backoff)
+
+    logger.warning(
+        f"arXiv API remained rate-limited for batch {paper_ids[0]}..{paper_ids[-1]}; "
+        "falling back to RSS metadata."
+    )
+    return [_build_rss_fallback_result(entry) for entry in fallback_entries]
+
+
 def _extract_text_from_pdf_worker(pdf_url: str) -> str:
     with TemporaryDirectory() as temp_dir:
         path = os.path.join(temp_dir, "paper.pdf")
@@ -113,7 +201,7 @@ class ArxivRetriever(BaseRetriever):
             raise ValueError("category must be specified for arxiv.")
 
     def _retrieve_raw_papers(self) -> list[ArxivResult]:
-        client = arxiv.Client(num_retries=10, delay_seconds=10)
+        client = arxiv.Client(num_retries=0, delay_seconds=ARXIV_INTER_BATCH_DELAY_SECONDS)
         query = '+'.join(self.config.source.arxiv.category)
         include_cross_list = self.config.source.arxiv.get("include_cross_list", False)
         # Get the latest paper from arxiv rss feed
@@ -122,21 +210,25 @@ class ArxivRetriever(BaseRetriever):
             raise Exception(f"Invalid ARXIV_QUERY: {query}.")
         raw_papers = []
         allowed_announce_types = {"new", "cross"} if include_cross_list else {"new"}
-        all_paper_ids = [
-            i.id.removeprefix("oai:arXiv.org:")
-            for i in feed.entries
+        selected_entries = [
+            i for i in feed.entries
             if i.get("arxiv_announce_type", "new") in allowed_announce_types
         ]
+        all_paper_ids = [i.id.removeprefix("oai:arXiv.org:") for i in selected_entries]
+        entry_by_id = {i.id.removeprefix("oai:arXiv.org:"): i for i in selected_entries}
         if self.config.executor.debug:
             all_paper_ids = all_paper_ids[:10]
 
         # Get full information of each paper from arxiv api
         bar = tqdm(total=len(all_paper_ids))
-        for i in range(0, len(all_paper_ids), 20):
-            search = arxiv.Search(id_list=all_paper_ids[i:i + 20])
-            batch = list(client.results(search))
-            bar.update(len(batch))
+        for i in range(0, len(all_paper_ids), ARXIV_ID_BATCH_SIZE):
+            batch_ids = all_paper_ids[i:i + ARXIV_ID_BATCH_SIZE]
+            fallback_entries = [entry_by_id[paper_id] for paper_id in batch_ids if paper_id in entry_by_id]
+            batch = _fetch_arxiv_batch(client, batch_ids, fallback_entries)
+            bar.update(len(batch_ids))
             raw_papers.extend(batch)
+            if i + ARXIV_ID_BATCH_SIZE < len(all_paper_ids):
+                time.sleep(ARXIV_INTER_BATCH_DELAY_SECONDS)
         bar.close()
 
         return raw_papers
