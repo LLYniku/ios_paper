@@ -64,6 +64,7 @@ jobs:
           git add public/data
           git diff --cached --quiet && exit 0
           git commit -m "chore: update daily app feed"
+          git stash push --include-untracked --message workflow-autostash || true
           git fetch origin ${GITHUB_REF_NAME}
           git rebase origin/${GITHUB_REF_NAME}
           git push origin HEAD:${GITHUB_REF_NAME}

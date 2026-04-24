@@ -66,6 +66,7 @@ jobs:
           git add public/data/network public/data/cache/network_summaries.json ios/PaperDaily/PaperDaily/Resources/sample_network.json
           git diff --cached --quiet && exit 0
           git commit -m "chore: update network feed"
+          git stash push --include-untracked --message workflow-autostash || true
           git fetch origin ${GITHUB_REF_NAME}
           git rebase origin/${GITHUB_REF_NAME}
           git push origin HEAD:${GITHUB_REF_NAME}

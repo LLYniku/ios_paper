@@ -57,6 +57,7 @@ jobs:
           git add public/data/classics.json public/data/cache/classics_summaries.json ios/PaperDaily/PaperDaily/Resources/sample_classics.json
           git diff --cached --quiet && exit 0
           git commit -m "chore: update classics feed"
+          git stash push --include-untracked --message workflow-autostash || true
           git fetch origin ${GITHUB_REF_NAME}
           git rebase origin/${GITHUB_REF_NAME}
           git push origin HEAD:${GITHUB_REF_NAME}
