@@ -120,10 +120,10 @@
     "recommendation_reason": "它与科研主题相关，因为它汇集了 agents、LLM、强化学习和多模态等研究与工程交叉方向的入门与实现资源，适合用于了解相关技术路线。"
   },
   "github:repo:vllm-project/vllm": {
-    "fingerprint": "8fb860468b0a5aed67f1081043484342d1a4fb81",
-    "summary_zh": "这是一个面向大语言模型推理与在线服务的高吞吐、内存高效引擎项目。仓库聚焦于 LLM serving 场景，支持多种硬件与模型生态，包括 CUDA、AMD、TPU 以及多类主流开源模型。其定位非常适合需要部署、评测或优化大模型推理性能的研究与工程工作。",
-    "tldr": "这是一个用于大语言模型高性能推理与服务部署的开源引擎。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理系统、资源效率优化和模型服务架构等研究与实验常用基础设施。"
+    "fingerprint": "f17098468bcdfb35fa95d54c19590d297b3116c2",
+    "summary_zh": "这是 vLLM 项目，一个面向大语言模型推理与部署的高吞吐、内存高效推理和服务引擎。仓库使用 Python 实现，主要面向 LLM serving、model serving 和 inference 场景，并支持多种硬件与后端，包括 CUDA、AMD、TPU 等。项目标签覆盖了多种主流模型与架构，如 Llama、Qwen、DeepSeek、MoE 等，说明其兼容性和应用范围较广。",
+    "tldr": "vLLM 是一个用于高效部署和推理大语言模型的开源服务引擎。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、服务化部署和系统性能优化，这些都是人工智能与机器学习研究中的重要方向。"
   },
   "github:repo:labyrinthine-saltiness744/turboquant-mlx": {
     "fingerprint": "79bd89df6318ac8c3b6b4742047786d565e18763",
@@ -232,5 +232,107 @@
     "summary_zh": "这是一个面向 AI 工作流编排的 Python 仓库，提出了 AINL（AI Native Language）这种图结构、可编译的领域特定语言，用于把 AI 从“对话式智能”转为“结构化执行的工作者”。项目强调多步骤流程、状态与记忆、工具调用、可重复执行、验证与控制，适合构建多代理协作和确定性较强的 AI 系统。它还与 MCP、LLM 编排、工作流引擎等方向相关，并试图降低对长提示词循环的依赖。",
     "tldr": "AINL 是一个用于构建可编排、可重复、带状态的 AI 工作流与多代理系统的 Python DSL/编译器项目。",
     "recommendation_reason": "该仓库直接涉及 AI 代理编排、LLM 工作流控制和确定性执行等科研主题，适合研究新型 AI 编程语言与多智能体系统架构。"
+  },
+  "github:repo:ahmedmagood/cpu-slm": {
+    "fingerprint": "d75d781fa3a1b7f684782d5240cc4b8c2830a7d5",
+    "summary_zh": "这是一个基于 Rust 的 CPU 侧 SLM/LLM 项目，主打在本地 CPU 上进行高效推理与聊天，尽量减少外部依赖。仓库标签显示它关注 AVX2、SIMD、量化、GGUF、llama-cpp、QLoRA、fine-tuning 等方向，覆盖了模型部署与轻量化推理相关技术。它面向本地优先的机器学习使用场景，适合研究 CPU 推理优化和小模型部署方案。当前仓库星标较少，说明项目仍较早期。",
+    "tldr": "一个用 Rust 实现、可在 CPU 上运行的本地 SLM/LLM 推理与聊天项目，关注量化和高效部署。",
+    "recommendation_reason": "该仓库与科研主题相关，因为它涉及 CPU 端大模型/小模型推理优化、量化部署和 Rust 高性能实现等可研究方向。"
+  },
+  "github:repo:blinkdl/rwkv-lm": {
+    "fingerprint": "d1ed0f2f86d03fdb6a4c69c9a0e5e2c5e3cabf79",
+    "summary_zh": "这是 BlinkDL 开源的 RWKV-LM 仓库，介绍了一种名为 RWKV 的语言模型架构。项目声称它兼具 RNN 的推理形式与 Transformer 的训练并行性，支持线性时间、常数空间、无需 kv-cache，并强调可扩展到长上下文和句向量能力。仓库主要面向大语言模型研究与实现，使用 Python 和 PyTorch 生态。",
+    "tldr": "RWKV-LM 提供了一种结合 RNN 与 Transformer 优点的高性能语言模型实现，适合研究线性注意力、长上下文和高效推理。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及新的序列建模架构和高效语言模型设计，适合用于研究替代 Transformer 的方法与性能优化。"
+  },
+  "github:repo:sharpai/swiftlm": {
+    "fingerprint": "c9d1840a000601c61a4b61692a5b80e9e6b98d95",
+    "summary_zh": "这是一个面向 Apple Silicon 的原生 Swift LLM 推理服务器项目，基于 MLX，提供与 OpenAI 兼容的 API。项目支持 SSD 流式传输，可用于 100B+ MoE 模型，并包含 TurboQuant KV cache 压缩等优化。它同时面向 macOS 和 iOS/iPhone 端部署，强调端侧/本地推理能力。该仓库主要聚焦于 Swift、Metal、MLX 和 on-device AI 场景。",
+    "tldr": "一个面向苹果生态的本地大模型推理项目，支持 OpenAI 兼容接口和端侧高效部署。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及端侧大模型推理、模型压缩与高效缓存优化等可用于系统研究和移动 AI 部署的技术。"
+  },
+  "github:repo:spitmaan/aneurooptimizedmodels": {
+    "fingerprint": "bc33f70f9f0c6300e5734276098cb9253725d685",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，主题聚焦于高级模型优化与部署。原始描述提到的内容包括 TurboQuant、TensorRT-LLM、Go serving、以及在 Jetson Orin Nano 上进行教师-学生蒸馏等方向，明显偏向推理加速与边缘设备部署。仓库目前星标较少，说明曝光度或成熟度可能有限，但主题本身与高效模型工程相关性较强。整体看，它更像是一个面向性能优化实践的技术项目而非通用应用仓库。",
+    "tldr": "这是一个围绕模型压缩、推理加速和边缘部署的 Python 优化项目仓库。",
+    "recommendation_reason": "它与科研主题相关，因为涉及模型优化、蒸馏和部署加速等可用于实验与工程验证的研究方向。"
+  },
+  "github:repo:samiralibabic/open-ended-agent": {
+    "fingerprint": "c77520e2572a08251de659db1bf6e89bdfa3c7d5",
+    "summary_zh": "这是一个面向本地优先（local-first）的开源代理框架，用于观察和研究开放式 LLM 行为。项目强调持久记忆、沙盒工具、互联网访问以及长时间运行的推理循环，适合做自主代理的实验与分析。它支持本地模型与 OpenAI 兼容接口，技术栈基于 JavaScript，并可与 bun、llama-cpp、ollama 等工具结合使用。整体上更偏向研究与原型验证，而不是面向通用生产部署的成品应用。",
+    "tldr": "这是一个用于研究开放式大模型代理行为的本地优先 JavaScript 代理框架，支持持久记忆、沙盒工具和长周期运行。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了可用于实验和观测自主代理行为的基础设施，便于研究长程推理、记忆机制和工具使用。"
+  },
+  "github:repo:smaugho/mempalace": {
+    "fingerprint": "2f356b66401bf67489b287b99769fdc8bf2c469c",
+    "summary_zh": "这是一个名为 mempalace 的 GitHub 仓库，使用 Python 实现，定位为 AI 记忆系统相关项目。其描述强调这是“有史以来在基准测试中得分最高的 AI memory system”，并且是免费开放的。仓库当前星标数为 0，说明社区关注度尚低，但项目主题与 AI 记忆机制、长期上下文管理等研究方向直接相关。",
+    "tldr": "一个面向 AI 记忆系统的 Python 开源仓库，主打高基准表现且免费提供。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI 记忆系统这一可用于研究长期记忆、上下文保持与基准评测的核心方向。"
+  },
+  "github:repo:kunjcr2/llms-from-scratch": {
+    "fingerprint": "6d3d49c5f4c52c769c03d2401383d25b40f33d53",
+    "summary_zh": "这是一个 GitHub 仓库，主要以 Jupyter Notebook 形式提供与大语言模型、机器学习、深度学习和自然语言处理相关的代码解释与示例。仓库内容还提到包含多种模型架构的实现，并少量涉及计算机视觉。整体定位更像是面向学习与入门的综合性代码笔记集合。",
+    "tldr": "这是一个面向 LLM 与机器学习入门的 Jupyter Notebook 代码讲解仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它汇集了大语言模型与相关深度学习方法的代码示例和架构实现，适合用于学习、复现与快速了解基础实验思路。"
+  },
+  "github:repo:wazionapps/nexo": {
+    "fingerprint": "2f4a8610a06564aa0f9417844419e1f739b46939",
+    "summary_zh": "这是一个面向 AI 代理的本地开源“共享大脑”项目，主打持久记忆、语义 RAG、自然遗忘、元认知控制和信任评分等能力。它通过 MCP 服务器与多种客户端协作，提供 150+ 工具，强调在 Claude Code、Codex、Claude Desktop 等环境中的通用接入。项目以 Python 实现，定位为帮助多个智能体共享和检索记忆的认知架构组件，且完全本地运行。",
+    "tldr": "一个为 AI 代理提供本地持久记忆、RAG 和信任控制的开源共享记忆系统。",
+    "recommendation_reason": "该仓库与科研中的智能体记忆、认知架构、检索增强生成和多代理协作研究直接相关，可作为实验性基础设施或对比实现参考。"
+  },
+  "github:repo:kenzzy69/rag-python-rag": {
+    "fingerprint": "088904dc16ba366d265c8e5c366ca2b1f1c7aee8",
+    "summary_zh": "这是一个用 Python 构建的 RAG 系统仓库，目标是简化文档检索与问答流程。它支持使用本地 LLM 模型进行智能检索和生成，并结合了 LangChain、Ollama、OpenAI、PostgreSQL 等技术栈。仓库标签还显示其与数据管道、ETL、流式处理、实时处理和时间序列分析等方向相关。整体上更偏向可复用的工程实现与实验性框架。",
+    "tldr": "这是一个面向文档检索与问答的 Python RAG 项目，集成了本地和云端模型及数据处理能力。",
+    "recommendation_reason": "该仓库直接涉及检索增强生成、向量/文档检索与大模型应用工程，适合用于科研中探索 RAG 架构、模型集成与数据处理流程。"
+  },
+  "github:repo:psyb0t/aigate": {
+    "fingerprint": "769cbe41e7431c99443d7bee6ae27f0659a2b21e",
+    "summary_zh": "这是一个自托管 AI 平台项目，旨在把推理、工具调用、浏览器自动化、图像生成、语音合成、转录、对象存储和代理式代码执行等能力整合到一个统一入口中。它提供 OpenAI 兼容接口，便于将不同模型和服务接入到同一套调用方式下。项目强调通过 docker-compose 快速部署，降低本地或私有环境搭建多功能 AI 网关的门槛。对于需要统一管理多模型后端、评估 AI 基础设施集成方案的研究者而言具有参考价值。",
+    "tldr": "这是一个可通过 Docker 一键部署的自托管 AI 网关，将多种 AI 能力统一为 OpenAI 兼容接口。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及多模型推理接口统一、AI 工具链集成和可复现的自托管部署方案，适合研究 AI 基础设施与系统集成。"
+  },
+  "github:repo:akitaonrails/llm-coding-benchmark": {
+    "fingerprint": "fccd73801f664ad3ad513c46d42e0ed8b4db0e4a",
+    "summary_zh": "这是一个用于评测主流开源和商业大模型的简单基准项目，核心思路是借助自动化的 OpenCode 流程来测试模型在代码任务上的表现。项目以 Python 实现，适合用于复现或对比不同 LLM 在编程场景中的能力差异。仓库当前 Star 数量不高，但主题明确，具有一定的实验参考价值。",
+    "tldr": "这是一个面向代码能力评测的 Python 基准仓库，用于对比开源与商业 LLM 的编程表现。",
+    "recommendation_reason": "它与科研主题相关，因为可用于构建和复现大模型代码能力评测实验，并为不同模型的横向比较提供参考。"
+  },
+  "github:repo:microsoft/foundry-local": {
+    "fingerprint": "4b688d7ecb246ea3e238b86d2accc3d9221082b1",
+    "summary_zh": "这是微软开源的 Foundry-Local 仓库，项目使用 TypeScript 开发，面向本地/端侧 AI 推理场景。其主题涵盖 AI SDK、聊天补全、本地 AI、GPU 加速、ONNX Runtime、以及语音转文字（Whisper）等能力，说明它主要用于在设备上运行和部署模型服务。仓库星标数约为 2228，表明其在本地推理与端侧 AI 方向具有一定关注度。整体上，它适合研究本地化大模型推理、端侧部署优化和多模态 AI 应用实现。",
+    "tldr": "Foundry-Local 是微软面向本地与端侧 AI 推理的开源 TypeScript 项目，支持聊天、语音识别和 GPU 加速等能力。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及本地推理、ONNX Runtime 和端侧 AI 部署等可用于研究模型高效运行与系统优化的重要技术方向。"
+  },
+  "github:repo:danthi123/neural-simulator": {
+    "fingerprint": "4bee9eb427a30838267b103a508fee68ddfd02a0",
+    "summary_zh": "这是一个基于 Python 的三维神经网络模拟器项目，主打 GPU 加速计算。项目强调可视化能力，支持实时显示模拟过程，适合观察神经网络动态行为。由于其定位偏向仿真与可视化，它可能适用于神经计算、动力系统或并行计算相关的研究探索。当前仓库热度较低，适合作为原型参考或技术验证。",
+    "tldr": "这是一个支持 GPU 加速和实时可视化的三维神经网络模拟器仓库。",
+    "recommendation_reason": "它与科研主题相关，因为可用于研究神经网络仿真、并行计算性能以及实时可视化方法。"
+  },
+  "github:repo:willjriley/dmx": {
+    "fingerprint": "aea0dc2053bd445e50b50e55b09e34592e90de90",
+    "summary_zh": "这是一个名为 dmx 的 GitHub 仓库，定位为“模型权重的 GitOps”工具，主要使用 Python 开发。它暗示项目目标是用类似 Git 的工作流来管理、同步或部署模型权重，适合关注机器学习工程化与模型版本管理的研究者。当前仓库星标数为 0，说明其公开关注度较低，可能仍处于早期阶段或影响范围有限。",
+    "tldr": "这是一个面向模型权重管理的 Python 仓库，主题与机器学习工程化和模型版本控制相关。",
+    "recommendation_reason": "它与科研主题相关，因为模型权重的版本管理、可追溯性和部署流程是机器学习实验复现与工程化落地的重要问题。"
+  },
+  "github:repo:simhadri-g/turboquant-simple-implementation": {
+    "fingerprint": "4dea4ff8737488d1cc1b5f72e8d7f0e732086752",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，作者表示自己出于好奇尝试实现 turboquant 的 KV 优化。项目内容看起来更偏向实验性和学习性质，而不是成熟的工程化实现。仓库当前星标很少，说明传播范围和社区验证都较有限。整体上它可能适合用于了解相关优化思路或作为进一步实验的起点。",
+    "tldr": "一个用于尝试实现 turboquant KV 优化的 Python 实验性仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理/存储优化中的 KV 相关技术实现，适合作为算法复现或性能优化研究的参考。"
+  },
+  "github:repo:lokmandev/codenex-ai-api-proxy": {
+    "fingerprint": "bf0336c236d05f633c7dea1a48080e0f4b1a7137",
+    "summary_zh": "这是一个基于 JavaScript 的 AI 接口代理仓库，目标是把多个大模型服务聚合到统一 API 中，方便通过兼容 OpenAI 的方式进行接入。项目强调流式处理、OAuth2、Docker/Docker Compose 部署，以及对 Claude、Gemini 等不同提供方的中间层适配。它适合用作多模型网关或统一调用层的参考实现，尤其关注跨供应商集成与接口标准化。",
+    "tldr": "这是一个将多个 LLM 提供方统一封装为兼容 API 的代理项目，便于快速集成和切换模型服务。",
+    "recommendation_reason": "它与科研主题相关，因为可用于研究多模型接口标准化、统一网关架构以及大模型服务中间层的设计与评估。"
+  },
+  "github:repo:albinojimy/neural-hive-mind": {
+    "fingerprint": "39ebe56e2522e66edeeb775dac341aed0817b7f5",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，名为 Neural-Hive-Mind，当前信息显示代码语言为 Python，且星标数为 0。由于提供的原始内容摘录非常有限，无法进一步判断其具体功能、模型结构或应用场景。仅从标题来看，它可能与神经网络、智能体协作或分布式智能相关，但这需要查看仓库代码和文档才能确认。",
+    "tldr": "这是一个内容信息较少的 Python 仓库，可能与神经网络或多智能体协作相关。",
+    "recommendation_reason": "它可能与人工智能、神经网络或分布式智能研究主题相关，值得进一步查看以确认其方法实现与实验价值。"
   }
 }
