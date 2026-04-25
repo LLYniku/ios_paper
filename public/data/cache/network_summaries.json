@@ -6,10 +6,10 @@
     "recommendation_reason": "它与科研主题相关，因为可作为研究大模型分布式推理、GPU调度优化和高并发系统设计的工程参考。"
   },
   "github:repo:ll4nc33/llama-tq": {
-    "fingerprint": "63a56447c8224398b2aec274cc12065301951c69",
-    "summary_zh": "KV-cache quantization research fork of llama.cpp. Asymmetric K/V dispatch, TurboQuant-based VTQ V-cache (1.5-4.5 bpw), Laplace-optimized codebooks. Tuned for NVIDIA Turing (sm_75).",
-    "tldr": "KV-cache quantization research fork of llama.cpp. Asymmetric K/V dispatch, Turbo",
-    "recommendation_reason": "与当前研究兴趣中的 cuda 主题相近。"
+    "fingerprint": "6c65cc6ae4485f9f50e5b8122599d3012e165e47",
+    "summary_zh": "这是一个基于 llama.cpp 的 C++ 仓库分支，主打通过改进 KV-cache 管理来显著降低显存占用。其说明中声称可在不损失效果的前提下将 KV-cache 的 VRAM 使用降低约 83%，从而让同一块 GPU 支持更长上下文。仓库标签涉及 CUDA、量化、kv-cache、polarquant、trellis-quantization 和 turboquant，表明它面向大模型推理加速与显存优化场景。当前星标数为 0，说明项目较新或尚未广泛传播。",
+    "tldr": "这是一个面向大模型推理的 llama.cpp 分支，重点在于通过 KV-cache 优化大幅减少 GPU 显存占用并支持更长上下文。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理中的显存优化、KV-cache 机制和量化方法，适合关注高效推理与系统优化的研究。"
   },
   "github:repo:robtand/prismaquant": {
     "fingerprint": "cda5629b53b510826897fa199267c7ed104779ca",
@@ -334,5 +334,113 @@
     "summary_zh": "这是一个 GitHub 上的 Python 仓库，名为 Neural-Hive-Mind，当前信息显示代码语言为 Python，且星标数为 0。由于提供的原始内容摘录非常有限，无法进一步判断其具体功能、模型结构或应用场景。仅从标题来看，它可能与神经网络、智能体协作或分布式智能相关，但这需要查看仓库代码和文档才能确认。",
     "tldr": "这是一个内容信息较少的 Python 仓库，可能与神经网络或多智能体协作相关。",
     "recommendation_reason": "它可能与人工智能、神经网络或分布式智能研究主题相关，值得进一步查看以确认其方法实现与实验价值。"
+  },
+  "github:repo:joao1pnm/awesome-llm-training-inference": {
+    "fingerprint": "2f914fe8d1f0534096122df5db4faf66c608adb8",
+    "summary_zh": "Explore frameworks, tools, and resources for efficient large language model training and inference, covering data processing to deployment. Topics: ai, deep-learning, distributed-t",
+    "tldr": "Explore frameworks, tools, and resources for efficient large language model trai",
+    "recommendation_reason": "与当前研究兴趣中的 ai 主题相近。"
+  },
+  "github:repo:omodaka9375/fade": {
+    "fingerprint": "b59fb8c4788e695ea2ff34ecd4b33e59973e2248",
+    "summary_zh": "这是一个名为 fade 的 GitHub 仓库，主题是面向大语言模型推理的 KV cache 压缩方案。项目提出了 Frequency-Adaptive Decay Encoding，用于结合注意力信息进行分层缓存压缩，以降低推理过程中的显存与计算开销。仓库语言为 Python，目前星标数为 0，说明项目可能还较新或曝光度较低。整体上，它更偏向于 LLM 系统优化与推理加速方向。",
+    "tldr": "这是一个面向 LLM 推理的注意力感知 KV cache 压缩项目，目标是减少显存占用并提升推理效率。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大语言模型推理优化、缓存压缩和注意力机制结合的系统方法，适合关注高效推理与模型部署的研究者。"
+  },
+  "github:repo:yashwanthmy15/qwen-3.5-16g-vram-local": {
+    "fingerprint": "5e3272856a7287249273958bd3535d6bd461564e",
+    "summary_zh": "该仓库提供了在单张 16GB NVIDIA GPU 上本地高效运行 Qwen 3.5 GGUF 模型的测试工具和配置，重点围绕 llama.cpp 生态展开。内容涉及本地推理、模型加载与性能优化，并结合了 benchmark、llama-server 和 local-llm 等实践场景。它还覆盖了多种相关主题，如 mixture-of-experts、vram 限制下的部署，以及与 Hugging Face、VLM 相关的使用方式。整体来看，这是一个面向本地大模型部署与推理效率优化的实践型代码仓库。",
+    "tldr": "这是一个面向 16GB 显存 NVIDIA GPU 的 Qwen 3.5 本地推理与配置优化仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了可复现的本地大模型部署、推理性能评估和显存受限条件下的优化实践，适合研究高效推理与系统部署。"
+  },
+  "github:repo:vini-trevelin/turboquant-mlx": {
+    "fingerprint": "f1ca40cc80462bbf8bb51ffc34b39f8c4b96e7e7",
+    "summary_zh": "这是一个面向本地研究的 Python 仓库，聚焦于在 Llama 家族模型上实现 TurboQuant 风格的 KV-cache 压缩。项目名称和简介表明其与 MLX 生态相关，目标是探索推理阶段的缓存压缩方法，以降低显存占用或提升推理效率。当前仓库星标为 0，说明其社区热度尚低，但主题本身具有明确的研究与实验价值。",
+    "tldr": "这是一个研究 Llama 模型 KV-cache 压缩与推理优化的 MLX 相关 Python 仓库。",
+    "recommendation_reason": "它与大模型推理加速、显存优化和 KV-cache 压缩等科研主题直接相关，适合作为实验或方法调研对象。"
+  },
+  "github:repo:moatasemmofadal/ssd": {
+    "fingerprint": "1a776ca90f3a758de129358d32f4a93c8a6b6a0f",
+    "summary_zh": "这是一个名为 ssd 的 GitHub 仓库，语言为 Python，标签涉及 Arduino、ESP32、图像识别、深度学习、SSD 模型和摄像头等。原文摘录提到的是通过并行的 speculative decoding 加速 LLM 推理，但这与仓库标题和标签展示的内容存在一定不一致。该仓库当前星标很少，整体看更像是一个与嵌入式设备和计算机视觉相关的实验性项目。",
+    "tldr": "该仓库主要与嵌入式设备上的深度学习/图像识别相关，但描述内容与标题和标签存在明显不一致。",
+    "recommendation_reason": "它与科研主题相关，因为涉及深度学习、图像识别和边缘设备部署等方向，可用于关注轻量化视觉推理与嵌入式 AI 的研究者筛选。"
+  },
+  "github:repo:byteanatomresearch/compliance-at-scale-tpu": {
+    "fingerprint": "66bcbc980f9a37894779f8ab83156edd4c36a1eb",
+    "summary_zh": "这是一个关于在 Cloud TPU v5e 上使用 vLLM 进行批量推理的教程型仓库，重点展示如何大规模并行执行责任 AI（RAI）合规检查。内容围绕使用 Gemma 4 作为 LLM-as-a-Judge，对模型输出或系统行为进行自动化评估。仓库语言为 Python，主题覆盖 batch inference、llm-evaluation、responsible-ai、tpu 和 vllm 等方向。",
+    "tldr": "这是一个演示如何借助 Cloud TPU 和 vLLM 进行大规模 RAI 合规评估的教程仓库。",
+    "recommendation_reason": "它直接涉及大规模模型评估、LLM 作为裁判以及责任 AI 合规检查，适合科研中研究高效推理与自动化评测方法。"
+  },
+  "github:repo:christopherdanie/govon": {
+    "fingerprint": "7e1e5ab25dac838d9e73230ea3a443611f1573ef",
+    "summary_zh": "这是一个面向工业现场使用的边缘AI项目，目标是开发可在设备本地运行的投诉处理与分析系统。项目强调使用轻量化、经过微调的大语言模型，并结合模型量化等技术以适配资源受限环境。仓库主要涉及Python、PyTorch和Transformers，主题覆盖on-device AI、NLP与LLM微调。整体上更像一个概念验证或毕业设计型项目，适合关注端侧部署与高效推理的研究者参考。",
+    "tldr": "这是一个研究如何将轻量化微调LLM部署到设备端以处理工业投诉的边缘AI项目。",
+    "recommendation_reason": "它直接涉及端侧大模型、量化与微调等与高效科研和工业落地密切相关的技术方向。"
+  },
+  "github:repo:emi0084/dust-llm-capacitor": {
+    "fingerprint": "d93b92a7edd1d47fb8861c5aa8e42f0a3c07c66c",
+    "summary_zh": "这是一个面向 Capacitor 应用的仓库，目标是将 Dust LLM 能力无缝集成到移动端应用中。它强调跨设备、统一的 AI 模型服务，并支持 Android 和 iOS 场景下的本地推理。仓库标签显示其关注点包括 GGUF、推理、移动端机器学习和端侧 AI。当前星标数为 0，说明项目可能较新或关注度较低。",
+    "tldr": "这是一个用于在 Capacitor 应用中集成端侧 LLM 推理能力的插件型项目。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及移动端端侧大模型推理、跨平台集成和模型服务架构，这些都是当前 AI 系统与移动计算研究中的重要方向。"
+  },
+  "github:repo:chenprof/scala-mlx": {
+    "fingerprint": "a07e636fdd79cdfc5b904f039294ed59ac1077fe",
+    "summary_zh": "这是一个用 Scala Native 在 Apple Silicon 上运行大语言模型的仓库，重点在于利用基于 Metal 的高效张量运算和原生分词来提升推理性能。项目语言为 Scala，适合关注函数式编程与系统级 AI 推理实现的研究者。当前仓库星标较少，说明它可能还处于早期或小众阶段，但技术方向明确。其标签还涉及语音识别、语音转文字和数据挖掘等相关主题，表明它可能面向更广泛的 AI 应用场景。",
+    "tldr": "这是一个面向 Apple Silicon 的 Scala Native 大模型推理项目，强调 Metal 加速和原生分词实现。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了在 Apple Silicon 上用 Scala Native 实现高效模型推理的系统方法，适合研究异构硬件加速与编程语言栈结合的方向。"
+  },
+  "github:repo:lalith0110/llm-scale": {
+    "fingerprint": "52879d0090b5eda2b486efa500e5a5f56f0e89cb",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，当前公开信息显示其名为 llm-scale，作者为 LALITH0110，且星标数为 0。由于给出的摘录中没有包含仓库的具体说明、目录结构或功能介绍，无法进一步确认其实现目标和使用场景。就现有信息来看，它可能与大语言模型相关的规模化处理、部署或实验工具有关，但这只是基于名称的推测。若需要更准确判断，还应查看仓库 README、代码结构和提交历史。",
+    "tldr": "这是一个名为 llm-scale 的 Python GitHub 仓库，但当前提供的信息不足以明确其具体功能。",
+    "recommendation_reason": "该仓库名称暗示与大语言模型规模化相关，可能对研究模型训练、推理或系统扩展具有参考价值。"
+  },
+  "github:repo:saurabhknp/air-gapped": {
+    "fingerprint": "ddb3edf17508580037e64d36f485210f0e90a81e",
+    "summary_zh": "这是一个 GitHub 仓库，目标是让 Kubernetes 运维在完全离线、隔离网络环境中也能通过本地 AI 代理完成操作。项目提到使用 llama.cpp 和兼容 OpenAI 的接口，并与工作流调度、durable execution 等场景相关。仓库标签涵盖区块链、DAG、LLM、LangChain、Qdrant 等，显示它更偏向实验性工具集成。当前星标为 0，且标记为 obsolete，说明可能已不再维护或适用性有限。",
+    "tldr": "这是一个面向离线 Kubernetes 运维的本地 AI 代理仓库，强调 air-gapped 环境下的自动化与工作流调度。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了在受限网络环境中结合本地大模型、工作流调度与自动化运维的实现思路，适合研究离线 AI 系统与基础设施自动化。"
+  },
+  "github:repo:nadya1992024/llm-parse": {
+    "fingerprint": "d46ab19b0a64d99ab93398e9eb521bb95c35a32a",
+    "summary_zh": "这是一个名为 llm-parse 的 GitHub 仓库，提供一个轻量级、单头文件的 C++ 库，用于离线解析 HTML 和 Markdown，并面向 LLM 基础设施中的文档处理场景。仓库标签显示它与文档分析、文本提取、JSON 解析、流式处理、OCR、RAG 和 OpenAI 集成等方向相关。项目强调高效、离线和可嵌入式使用，适合在数据摄取和预处理环节处理非结构化内容。当前仓库星标数为 0，说明其可见度或成熟度可能仍有限。",
+    "tldr": "这是一个面向 LLM 文档处理流程的轻量级 C++ 离线解析库，用于 HTML/Markdown 文档提取与结构化处理。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及面向大模型的数据摄取、文档解析和文本抽取等基础能力，可用于研究 LLM 预处理与信息抽取管线。"
+  },
+  "github:repo:tonyx79/clov-ai": {
+    "fingerprint": "f68ff3b3ebd21bba99bcabaa58aadebbd510910e",
+    "summary_zh": "这是一个基于 Rust 的本地工具仓库，目标是对 AI 上下文和输出进行管理与过滤，以便更精细地控制提示内容并提升响应质量。项目面向 agentic coding、agentic workflow 和 LLM 工具链场景，强调在本地进行上下文处理与 token 优化。其定位更偏向开发者工具和 AI 辅助编程基础设施，可与 CLI、MCP server 等工作流集成。整体上它关注减少无效上下文、提高输出稳定性和使用效率。",
+    "tldr": "这是一个用 Rust 实现的本地 AI 上下文过滤与 token 优化工具，面向 agent 工作流和开发者效率提升。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 LLM 上下文管理、token 优化和 agent 工作流控制，这些都可用于研究高效提示处理与 AI 系统工程。"
+  },
+  "github:repo:kellerjordan/modded-nanogpt": {
+    "fingerprint": "1b3b784fb55e61f44837b0da7b70f763559d7797",
+    "summary_zh": "这是一个基于 Python 的 GitHub 仓库，名称为 modded-nanogpt，指向对 NanoGPT 的改进版本。原始摘录强调该项目可在约 2 分钟内训练 NanoGPT（124M）规模模型，说明其重点在于高效训练与性能优化。当前信息显示它在社区中有较高关注度，Stars 为 5131。整体上，它更像是一个面向大模型训练效率与工程实践的代码仓库。",
+    "tldr": "这是一个聚焦于高效训练 NanoGPT 的 Python 开源仓库，适合关注语言模型训练加速与实现细节的研究者。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了可复现实验和训练优化的代码实现，便于研究者分析模型训练效率与工程优化方法。"
+  },
+  "github:repo:shantipriyap/llm_compression_icpr_workshop": {
+    "fingerprint": "ef7e1c689ce52b634682b56d10f0860746450740",
+    "summary_zh": "这是一个 GitHub 仓库，主要语言为 Python，主题指向大语言模型压缩相关的研究或工作坊资料。仓库当前信息显示星标数为 0，说明其公开关注度较低，但仍可能包含实验代码、整理资料或示例实现。结合仓库名称来看，它很可能围绕 LLM 压缩、模型轻量化或性能优化展开，适合关注相关方法的研究者浏览。",
+    "tldr": "这是一个与大语言模型压缩相关的 Python 仓库，可能包含研究资料或实现代码。",
+    "recommendation_reason": "它与科研主题相关，因为大语言模型压缩是当前机器学习与高效部署研究中的重要方向。"
+  },
+  "github:repo:dealfluence/adeu": {
+    "fingerprint": "3071fc1393c7c6e0fd3ac00f0b4e2efe36a6523a",
+    "summary_zh": "这是一个用于 DOCX 文档批注和修订的 Python 仓库，核心能力是让 LLM 读取 Word 文档并直接写入原生 Track Changes（如插入、删除）和评论，同时尽量保持原有格式不被破坏。项目面向法律科技和文档审阅场景，强调“agentic AI”式工作流，并提供了 Model Context Protocol（MCP）Server 以便与外部智能体或工具链集成。其主题标签覆盖 docx、redlining、track-changes、word-processing、legal-tech 和 llm，说明它主要聚焦于 AI 辅助文档编辑与审阅自动化。",
+    "tldr": "这是一个面向 DOCX 修订与批注自动化的 AI/法律科技 Python 仓库，支持保留格式的 Track Changes 和评论写入，并附带 MCP Server。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了 LLM、文档结构化编辑和智能体工具协议在法律文书与办公自动化中的实际集成方式。"
+  },
+  "github:repo:qaxim-0/claude-rolling-context": {
+    "fingerprint": "4d71819cfde1479634d12cabba4b958e696020d1",
+    "summary_zh": "这是一个面向 Claude Code 的 Python 仓库，核心功能是提供“滚动式上下文压缩”。它通过对较早的消息进行摘要、同时保留最近消息的完整细节，来延长对话可用长度并缓解上下文窗口限制。项目主题围绕上下文管理、提示压缩和大模型长期对话维护，适用于 AI 编程与智能体场景。当前仓库热度较低，星标数较少，但方向明确，具有实验与工具化价值。",
+    "tldr": "该仓库实现了为 Claude Code 提供滚动式上下文压缩，以延长长对话中的可用上下文。",
+    "recommendation_reason": "它与科研中的大模型上下文管理、提示压缩和长程记忆研究直接相关，适合作为实验性工具或参考实现。"
+  },
+  "github:repo:szesnasty/jarvis": {
+    "fingerprint": "723a48a4117ae1407bce3533c945767131ac3013",
+    "summary_zh": "Jarvis 是一个以本地优先为核心的知识系统，目标是把笔记、文件和 AI 对话转化为可长期保存的记忆。项目结合了知识图谱、语义搜索和 RAG 等技术，面向个人知识管理与 second brain 场景。其实现语言为 Python，适合用于构建本地化、可持续积累的智能记忆系统。",
+    "tldr": "这是一个将笔记、文件和对话整合为本地知识记忆的 Python 仓库，适合个人知识管理与检索增强研究。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及知识图谱、语义检索、RAG 和记忆系统等可用于研究智能知识管理与本地化 AI 助手的核心方法。"
   }
 }
