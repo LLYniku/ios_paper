@@ -6,10 +6,10 @@
     "recommendation_reason": "它与科研主题相关，因为可作为研究大模型分布式推理、GPU调度优化和高并发系统设计的工程参考。"
   },
   "github:repo:ll4nc33/llama-tq": {
-    "fingerprint": "6c65cc6ae4485f9f50e5b8122599d3012e165e47",
-    "summary_zh": "这是一个基于 llama.cpp 的 C++ 仓库分支，主打通过改进 KV-cache 管理来显著降低显存占用。其说明中声称可在不损失效果的前提下将 KV-cache 的 VRAM 使用降低约 83%，从而让同一块 GPU 支持更长上下文。仓库标签涉及 CUDA、量化、kv-cache、polarquant、trellis-quantization 和 turboquant，表明它面向大模型推理加速与显存优化场景。当前星标数为 0，说明项目较新或尚未广泛传播。",
-    "tldr": "这是一个面向大模型推理的 llama.cpp 分支，重点在于通过 KV-cache 优化大幅减少 GPU 显存占用并支持更长上下文。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理中的显存优化、KV-cache 机制和量化方法，适合关注高效推理与系统优化的研究。"
+    "fingerprint": "6b55128296ca5617af3f4132947063de148bfe78",
+    "summary_zh": "llama.cpp fork that cuts KV-cache VRAM by 83% without quality loss. Run longer contexts on the same GPU. Topics: cuda, kv-cache, llama-cpp, polarquant, quantization, trellis-quanti",
+    "tldr": "llama.cpp fork that cuts KV-cache VRAM by 83% without quality loss. Run longer c",
+    "recommendation_reason": "与当前研究兴趣中的 cuda 主题相近。"
   },
   "github:repo:robtand/prismaquant": {
     "fingerprint": "cda5629b53b510826897fa199267c7ed104779ca",
@@ -174,10 +174,10 @@
     "recommendation_reason": "它与大模型训练、模型迁移和框架互操作研究直接相关，适合用于比较不同训练生态下的实现与权重转换方案。"
   },
   "github:repo:blaizzy/mlx-vlm": {
-    "fingerprint": "7ccce07caf3693df03b40897938d0fa561ae0655",
-    "summary_zh": "这是一个面向 Mac 上 Apple Silicon 环境的视觉语言模型（VLM）推理与微调工具包，基于 MLX 框架实现。它支持多种主流 VLM 架构与模型生态，适合在本地进行图像-文本联合任务的实验与部署。项目以 Python 编写，且在开源社区中具有较高关注度。对于希望在苹果硬件上研究或复现 VLM 的用户，这个仓库提供了较实用的工程基础。",
-    "tldr": "这是一个可在 Mac/Apple Silicon 上用 MLX 进行视觉语言模型推理和微调的开源工具包。",
-    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上实验、复现和微调视觉语言模型的实现框架，便于开展多模态模型研究。"
+    "fingerprint": "2255c602883eca9d8fab1d33696099c21e27ad24",
+    "summary_zh": "MLX-VLM 是一个面向苹果芯片 Mac 的视觉语言模型工具包，支持基于 MLX 进行推理与微调。它覆盖多种 VLM 架构与任务场景，例如 LLaVA、Idefics、Florence-2、PaliGemma、Pixtral 和 Molmo 等。项目定位于本地 AI 与视觉-语言研究/应用开发，使用 Python 实现，并在 GitHub 上获得了较高关注度。",
+    "tldr": "这是一个可在 Mac Apple Silicon 上用 MLX 运行和微调多种视觉语言模型的开源仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上进行视觉语言模型推理和微调的实用框架，适合实验复现与原型研究。"
   },
   "github:repo:pestopoppa/epyc-orchestrator": {
     "fingerprint": "42d712dceddafc01104215c140248108b441b987",
@@ -198,10 +198,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及 AI 记忆系统、检索排序和信息可信性控制等可用于智能体与知识管理研究的核心技术。"
   },
   "github:repo:sunkencity999/pre": {
-    "fingerprint": "a07de230f8abebb5c2c96caaeee6bcd5c4571fd8",
-    "summary_zh": "这是一个名为 pre 的开源仓库，定位为在 Apple Silicon 上本地运行的智能助理/推理引擎。项目强调使用 Gemma 4 驱动的 agentic assistant，支持本地推理、零云依赖，并提供 CLI 和 GUI 两种交互方式。仓库标签显示其关注点包括 Apple Silicon、Metal、LLM、本地 AI 和 mixture-of-experts，语言为 JavaScript。整体来看，它更偏向本地端 AI 应用与推理工程实现。",
-    "tldr": "这是一个面向 Apple Silicon 的本地 LLM/agent 助手项目，强调零云依赖和本地推理。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理、Apple Silicon 优化和 agentic AI 系统实现，适合研究边缘部署与高效推理方案。"
+    "fingerprint": "c02958e77f6ea7812798d3e73bcd9cbcc7a82df6",
+    "summary_zh": "这是一个名为 pre 的 GitHub 仓库，定位为“Personal Reasoning Engine”，主打在 Apple Silicon 上本地运行的代理式助手。项目宣称基于 Gemma 4，采用 Objective-C 实现，提供丰富的 CLI 和 GUI，并且不依赖云端。其主题标签包括 apple-silicon、inference、llm、local-ai、metal 和 mixture-of-experts，语言标注为 JavaScript，当前星标较少。",
+    "tldr": "这是一个面向 Apple Silicon 的本地大模型代理助手项目，强调离线运行和零云依赖。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及本地推理、Apple Silicon 优化、LLM 代理架构和 MoE 等可用于系统研究与原型验证的技术方向。"
   },
   "github:repo:jhammant/llm-time-machine": {
     "fingerprint": "7290270997b32aa99a77db07cba56b2fb8ae024c",
@@ -442,5 +442,107 @@
     "summary_zh": "Jarvis 是一个以本地优先为核心的知识系统，目标是把笔记、文件和 AI 对话转化为可长期保存的记忆。项目结合了知识图谱、语义搜索和 RAG 等技术，面向个人知识管理与 second brain 场景。其实现语言为 Python，适合用于构建本地化、可持续积累的智能记忆系统。",
     "tldr": "这是一个将笔记、文件和对话整合为本地知识记忆的 Python 仓库，适合个人知识管理与检索增强研究。",
     "recommendation_reason": "它与科研主题相关，因为它涉及知识图谱、语义检索、RAG 和记忆系统等可用于研究智能知识管理与本地化 AI 助手的核心方法。"
+  },
+  "github:repo:sandermage/genesis-vllm-patches": {
+    "fingerprint": "1eb460db973eac2cefb294054890c9fd270ae430",
+    "summary_zh": "这是一个面向 vLLM 的生产级运行时补丁集合，提供 45+ 个补丁以增强推理性能和功能兼容性，重点覆盖 NVIDIA Ampere 架构上的长上下文、FP8、MoE、speculative decoding、结构化输出和 tool-calling 等场景。项目声称在特定模型与硬件配置下实现了较高的吞吐，并验证了 256K 上下文到 252K。其特点是无需修改源码即可通过补丁方式集成多种推理优化，适合研究推理加速与系统优化的人关注。",
+    "tldr": "这是一个针对 vLLM 的多项运行时优化补丁仓库，聚焦长上下文、高吞吐推理和结构化/工具调用场景。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理系统优化、长上下文处理、量化与 speculative decoding 等可复现实验方向。"
+  },
+  "github:repo:tokenpak/tokenpak": {
+    "fingerprint": "62b0df803a86f6055d2031b112e1b90bf7e296ff",
+    "summary_zh": "这是一个面向大模型调用的 Python 代理工具，主打在不改动 SDK 的前提下，对 LLM 上下文进行压缩、优化缓存命中、智能路由请求，并跟踪每次调用成本。它支持多家模型服务生态，定位于开发者工具和 token 优化。项目当前星标较少，说明可能还处于早期阶段。整体上它聚焦于降低上下文窗口压力和推理成本，适合用于大模型应用的基础设施层实验。",
+    "tldr": "这是一个可直接接入的 LLM HTTP 代理，用于压缩上下文、优化缓存与路由，并跟踪成本。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理中的上下文压缩、成本控制和请求路由等基础设施问题，适合研究 LLM 系统优化与效率提升。"
+  },
+  "github:repo:nolanaunadjusted728/finetuning-quantize-evaluate": {
+    "fingerprint": "c06c44779288dbce41297438280f1d28d1ca3792",
+    "summary_zh": "这是一个面向大模型、视觉语言模型和嵌入模型的学习型仓库，内容覆盖微调、量化和评估等关键环节。简介强调从理论到实践，适合了解 LoRA、QLoRA、知识蒸馏与量化评测流程。仓库使用 Typst 编写，当前热度较低，Stars 较少。",
+    "tldr": "一个讲解 LLM、VLM 与 embedding 模型微调、量化和评估的实践指南仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它汇总了模型微调、量化和评估方法，适合研究者快速了解相关实验与工程流程。"
+  },
+  "github:repo:gavin05239/fingpt_fine_tuning": {
+    "fingerprint": "e80b944582f443d2d87f02c4949633b4e974ca23",
+    "summary_zh": "该仓库提供了一个将金融推理能力蒸馏到开源大模型中的完整流程，面向 DeepSeek-R1 和 Llama-3 等模型。其方法结合了 GPT-4 生成或辅助标注、LoRA 微调以及 DeepSpeed 训练优化，以提高训练效率并降低资源需求。仓库还包含自动化数据抓取、8-bit 量化和算法回测等环节，覆盖了从数据到评估的较完整闭环。整体上更偏向金融 NLP 与大模型微调的实践型研究代码。",
+    "tldr": "这是一个用于将金融推理能力迁移到开源大模型的微调与评估流水线仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型微调、金融推理建模、量化训练和回测评估等可用于研究复现与方法比较的技术环节。"
+  },
+  "github:repo:born-ml/born": {
+    "fingerprint": "4e5608353bca0b229170e1ad615e6f2c43360ec7",
+    "summary_zh": "这是一个面向 Go 语言的机器学习框架，主打零依赖、纯 Go 实现和可直接部署为单文件二进制。它提供类似 PyTorch 的 API、类型安全的张量和自动微分能力，适用于训练与部署神经网络。项目强调跨平台与高性能 CPU 后端，定位偏生产可用。",
+    "tldr": "一个纯 Go、零依赖的机器学习框架，支持自动微分、类型安全张量和单文件部署。",
+    "recommendation_reason": "该项目与科研中的深度学习框架、自动微分实现、跨平台高性能计算和 Go 语言机器学习基础设施研究直接相关。"
+  },
+  "github:repo:christopherthompson81/llamacpp.bindings": {
+    "fingerprint": "26797532c21034178d5a707403c67bd8446cc1b2",
+    "summary_zh": "这是一个面向 C# 开发者的 llama.cpp 绑定库，目标是在进程内直接进行大语言模型推理。项目强调绑定层较为全面，并且适合快速维护和迭代。仓库当前以 C# 为主要语言，星标数为 0，说明还处于较早阶段或曝光度较低。整体上它更偏基础设施类工具，适合关注本地推理集成与 .NET 生态适配的研究者。",
+    "tldr": "这是一个用于在 C#/.NET 中集成 llama.cpp 的本地推理绑定项目。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了在 .NET 环境中实现本地大模型推理的接口基础，便于研究本地部署、性能评估和系统集成方案。"
+  },
+  "github:repo:t44402217-bot/llm-adaptive-learning": {
+    "fingerprint": "d8e0ba01548588a4817b9f45d1183f6b70b013e0",
+    "summary_zh": "这是一个名为 llm-adaptive-learning 的 GitHub 代码仓库，主要语言为 Python，目前星标数为 0。根据仓库名称推测，它与大语言模型自适应学习相关，可能包含相关实验代码、算法实现或学习流程示例。公开信息较少，无法仅凭摘录确认其具体功能与成熟度。",
+    "tldr": "这是一个与大语言模型自适应学习相关的 Python 仓库，但公开信息有限。",
+    "recommendation_reason": "该仓库主题涉及大语言模型的自适应学习方法，与机器学习和教育/个性化学习研究具有直接关联。"
+  },
+  "github:repo:hyeons-lab/wick": {
+    "fingerprint": "a688f001800039aa7ef1cba8e45ccc430dc23232",
+    "summary_zh": "这是一个用 Rust 实现的原生 LLM 推理引擎项目，定位于提供高性能、Rust 生态友好的模型推理能力。仓库当前星标较少，说明项目可能还处于早期阶段或关注度有限。其核心价值在于展示了用 Rust 构建大语言模型推理系统的思路与实现方向。对于研究者而言，它可作为评估 Rust 在 AI 推理基础设施中适用性的参考案例。",
+    "tldr": "这是一个面向大语言模型推理的 Rust 原生引擎仓库，适合关注 Rust 与 AI 推理系统的人参考。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 Rust 语言在大模型推理引擎中的实现，可用于研究高性能推理系统与系统工程设计。"
+  },
+  "github:repo:strikersam/local-llm-server": {
+    "fingerprint": "3c124fc2e3e2edfe936fb9a26962b8f8f8cd07b6",
+    "summary_zh": "这是一个自托管的本地大模型服务器与 AI 控制平面项目，基于 Python 和 FastAPI 构建。它提供 OpenAI 兼容代理、对 Ollama 的支持、多代理编排以及统一仪表盘，便于在本地部署和管理 LLM 服务。项目强调 self-hosted 和 zero API bills，适合希望减少云端依赖、提升数据可控性的场景。目前仓库星标较少，显示为较新的小型开源项目。",
+    "tldr": "一个面向本地部署的 OpenAI 兼容 LLM 服务与多代理编排项目，适合自建 AI 基础设施。",
+    "recommendation_reason": "该仓库与科研中的本地大模型部署、代理编排和可复现 AI 系统搭建直接相关，可作为实验平台或工程参考。"
+  },
+  "github:repo:amun-ai/hypha": {
+    "fingerprint": "4bdad3e6ecfd2c222bb8317613a011645f0c6121",
+    "summary_zh": "这是一个面向大规模数据管理和 AI 模型服务的分布式应用框架，项目以 Python 实现，适合构建需要跨节点协作和资源调度的系统。仓库当前星标数较少，但主题聚焦于分布式架构、数据管理与模型服务的结合，技术方向明确。对于关注 AI 基础设施、模型部署和数据平台的研究者而言，它可作为参考实现或原型系统。",
+    "tldr": "这是一个用于大规模数据管理和 AI 模型服务的 Python 分布式应用框架。",
+    "recommendation_reason": "它与科研主题相关，因为涉及分布式系统、AI 基础设施和模型服务等可用于实验与原型验证的关键技术方向。"
+  },
+  "github:repo:amitksinha/nanochat": {
+    "fingerprint": "be1deaaa177c33d408fef60b03602d9b5422c609",
+    "summary_zh": "这是一个与 Karpathy 的 nanochat 相关的 Transformer 学习笔记型仓库，主要语言为 Python。仓库当前星标数为 0，表明它可能是一个较新的或较小众的学习项目。内容重点更偏向于通过 notebook 形式进行 Transformer 机制与实现的学习和实验，而不是成熟的生产级聊天系统。整体上它更适合作为研究和教学参考，用于理解基础模型相关概念。",
+    "tldr": "这是一个用 Python 编写、聚焦 Transformer 学习与实验的 nanochat 笔记型仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 Transformer 与基础模型的学习实现，适合用于算法理解、教学参考和原型验证。"
+  },
+  "github:repo:eriirfos-eng/ternary-intelligence-stack": {
+    "fingerprint": "ce80eb256bf153034dc6b0254bcbde1bfe39d92e",
+    "summary_zh": "该仓库展示了一个面向三值/平衡三进制计算的原生编程语言与AI栈，包含编译器、运行时、CLI和IDE等组成部分。项目目标是支持可自主推理、适应不确定性的智能代理，并将三进制计算与节能AI、稀疏推理、系统编程等方向结合。仓库以 Rust 实现，主题标签覆盖 ternary computing、bitnet、post-quantum 和 sovereign AI 等前沿研究关键词。",
+    "tldr": "这是一个围绕三进制原生语言与AI基础设施的 Rust 仓库，聚焦节能推理、智能代理和未来计算架构。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及三进制计算、编译器和高效AI推理等前沿计算研究方向。"
+  },
+  "github:repo:bugmaker00/llm-adaptive-learning": {
+    "fingerprint": "d8e0ba01548588a4817b9f45d1183f6b70b013e0",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，项目名为 llm-adaptive-learning，发布者为 bugmaker00。当前可见信息显示该仓库星标数为 0，说明其关注度尚不高。由于原始摘录中没有提供 README、功能说明或代码细节，无法进一步判断其具体实现方向。",
+    "tldr": "这是一个与大语言模型自适应学习相关的 Python 仓库，但当前公开信息很少。",
+    "recommendation_reason": "该仓库名称显示其主题与大语言模型自适应学习有关，可能对相关研究中的方法实现、实验复现或原型开发具有参考价值。"
+  },
+  "github:repo:attevon-llc/opentranscribe": {
+    "fingerprint": "413edfaafd98ff7b09aeb46732184f007f0c3124",
+    "summary_zh": "OpenTranscribe 是一个可自托管的 AI 转录平台，提供语音转文字、说话人分离、搜索和协作等功能。它基于 Svelte、FastAPI 和 Docker 构建，便于部署，并支持 GPU/多 GPU 场景。项目面向音频和视频转录工作流，结合了 Whisper 等语音处理能力。",
+    "tldr": "这是一个面向自托管场景的开源 AI 语音转写与说话人分离平台。",
+    "recommendation_reason": "它与科研主题相关，因为可用于语音识别、说话人分离、音频分析及多模态数据处理等研究与实验场景。"
+  },
+  "github:repo:gabrielvuksani/wotann": {
+    "fingerprint": "ff1e9566d5c070a06246000422da082c2ed95e89",
+    "summary_zh": "该仓库是一个面向多模型、多通道的 AI agent harness/框架，强调一次安装即可接入不同模型与提供方，并支持更高程度的自动化执行。项目定位为 provider-agnostic，涵盖 Claude、OpenAI、Ollama、MCP、computer-use 等相关能力，说明其重点在于通用代理编排与模型接入层。仓库主要使用 TypeScript，并结合 Swift、Tauri 等技术栈，适合关注跨平台桌面端与 AI agent 工具链集成的研究者。",
+    "tldr": "这是一个主打“多模型通用接入 + 自动化执行”的 AI agent 框架仓库，适合研究代理编排、工具调用和跨平台集成。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI agent 框架、模型无关接入和自动化执行等当前重要研究方向，可用于分析通用代理架构与工具链设计。"
+  },
+  "github:repo:ariannamethod/notorch": {
+    "fingerprint": "e56177b3dcffa0ccf952653db4c3fe86b0d5c5f0",
+    "summary_zh": "这是一个名为 notorch 的 GitHub 仓库，定位为用纯 C 实现神经网络相关功能的项目，但仓库标签显示为 C++。从简介来看，它更偏向于深度学习/神经网络的底层实现或教学示例，而不是依赖现成框架的应用代码。该项目可能适合关注机器学习基础实现、轻量级推理或自研训练流程的研究者参考。仓库热度较低，当前星标数不高，说明它更像是一个小型实验性代码库。",
+    "tldr": "一个用纯 C 实现神经网络的轻量级 GitHub 仓库，适合作为机器学习底层实现的参考。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及神经网络的底层实现，可用于研究基础算法、系统实现或教学演示。"
+  },
+  "github:repo:monoes/monomind": {
+    "fingerprint": "2f11f070a15441018ee98d3a5447e89fbc44502e",
+    "summary_zh": "这是一个面向企业场景的 AI 代理编排平台，核心卖点包括 60+ 个专用代理、群体协同调度、MCP 服务器、自学习钩子和向量记忆。项目使用 TypeScript 实现，面向 Claude Code 相关工作流进行扩展。当前仓库星标数较低，说明它可能还处于早期阶段或尚未被广泛采用。",
+    "tldr": "这是一个用 TypeScript 构建的企业级 AI agent 编排与协同平台，提供多代理、记忆和自学习能力。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及多智能体编排、记忆机制与自学习框架等可用于研究 AI agent 系统设计与协同策略的基础能力。"
   }
 }
