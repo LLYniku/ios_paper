@@ -544,5 +544,119 @@
     "summary_zh": "这是一个面向企业场景的 AI 代理编排平台，核心卖点包括 60+ 个专用代理、群体协同调度、MCP 服务器、自学习钩子和向量记忆。项目使用 TypeScript 实现，面向 Claude Code 相关工作流进行扩展。当前仓库星标数较低，说明它可能还处于早期阶段或尚未被广泛采用。",
     "tldr": "这是一个用 TypeScript 构建的企业级 AI agent 编排与协同平台，提供多代理、记忆和自学习能力。",
     "recommendation_reason": "它与科研主题相关，因为它涉及多智能体编排、记忆机制与自学习框架等可用于研究 AI agent 系统设计与协同策略的基础能力。"
+  },
+  "github:repo:kevin046/vibeblade": {
+    "fingerprint": "33cdbe4f81aa78c39727977a124eefed18c0b05c",
+    "summary_zh": "这是一个名为 VibeBlade 的 GitHub 仓库，核心目标是让用户在本地硬件上运行大语言模型。它强调通过 CPU/RAM 推理、MOE 专家卸载、内存分层和 4-bit 量化来缓解显存限制，适合没有大显存 GPU 的场景。仓库主题涉及 constrained decoding、GGUF、OpenAI API 兼容接口、稀疏推理和本地 AI 部署，语言为 Python。当前项目热度较低，Stars 为 3。",
+    "tldr": "这是一个面向本地部署 LLM 的 Python 仓库，重点解决显存不足下的 CPU/RAM 推理与量化优化问题。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型本地推理、量化、稀疏计算和内存层级管理等可用于研究高效模型部署与资源受限推理的技术方向。"
+  },
+  "github:repo:benblak/memguard": {
+    "fingerprint": "b73d531319e8d8b8d030e86c8906f26c6c15aee2",
+    "summary_zh": "这是一个名为 Memguard 的 GitHub 仓库，语言为 Python，主题聚焦于在大语言模型微调过程中“在合适时机停止训练”，以节省计算资源。原始描述强调可节省约 56% 的计算量，说明其关注训练效率和资源优化。仓库当前星标为 0，表明可能较新或影响力尚未形成，但方向与高效训练相关。",
+    "tldr": "这是一个面向大模型微调早停与算力节省的 Python 仓库，核心卖点是可减少约 56% 计算开销。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及机器学习训练效率优化和大模型微调策略，这些都是当前人工智能研究中的重要方向。"
+  },
+  "github:repo:ai-hypercomputer/maxtext": {
+    "fingerprint": "5ef4b596f39a5e6419d1652ea1f793e56adc6c62",
+    "summary_zh": "这是 AI-Hypercomputer 维护的一个 GitHub 仓库，项目名为 MaxText，定位为“简单、高性能、可扩展的 JAX 大语言模型”训练与推理框架。仓库标签显示它面向多种主流 LLM 及其微调场景，包括 DeepSeek、Gemma、GPT、Llama、Mistral、Mixtral 等，并支持 SFT 和 fine-tuning。项目语言为 Python，说明其主要面向研究和工程实践中的模型训练管线构建。整体上它是一个围绕 JAX 生态的 LLM 研究与实验基础设施项目。",
+    "tldr": "MaxText 是一个基于 JAX 的高性能、可扩展大语言模型训练/微调仓库，覆盖多种主流 LLM 架构与 SFT 场景。",
+    "recommendation_reason": "该仓库直接涉及大语言模型、JAX 训练框架与微调方法，适合用于研究可扩展 LLM 训练和实验复现。"
+  },
+  "github:repo:nvidia/model-optimizer": {
+    "fingerprint": "73b0a36123fb6daffe147265dbfcc6a6ab304d35",
+    "summary_zh": "这是 NVIDIA 开源的一个统一模型优化库，集成了量化、剪枝、蒸馏、推测解码等多种主流优化技术。它主要面向深度学习模型的压缩与部署，帮助将模型适配到 TensorRT-LLM、TensorRT、vLLM 等推理框架。该仓库的目标是提升模型推理效率、降低计算开销，并支持下游部署场景。整体上，它更偏向于大模型推理优化与工程落地。",
+    "tldr": "NVIDIA 的 Model-Optimizer 是一个面向推理部署的统一模型优化库，用于提升深度学习模型的压缩率与推理速度。",
+    "recommendation_reason": "该项目与模型压缩、推理加速和部署优化等科研方向直接相关，适合关注高效深度学习与大模型推理技术的研究者参考。"
+  },
+  "github:repo:nvidia-nemo/automodel": {
+    "fingerprint": "06e48f8c71e212c358c64781d36ffc4ecc14be63",
+    "summary_zh": "这是 NVIDIA-NeMo 维护的一个 GitHub 仓库，提供面向大语言模型和视觉语言模型的 PyTorch 分布式原生训练库，并支持开箱即用的 Hugging Face 集成。仓库面向多种主流模型家族与训练场景，覆盖微调、训练与多模型适配需求。其标签显示它与当前主流开源 LLM/VLM 生态高度相关，适合关注大模型训练基础设施的研究者参考。",
+    "tldr": "这是一个支持多种 LLM/VLM 的 PyTorch 分布式训练与微调库，便于在 Hugging Face 生态中进行模型适配。",
+    "recommendation_reason": "它与科研主题相关，因为它直接提供了大模型分布式训练和微调的基础设施，可用于实验不同模型架构与训练策略。"
+  },
+  "github:repo:bong-water-water-bong/1bit-systems": {
+    "fingerprint": "57f350fc23c282ce31aadafab214ee5746c392be",
+    "summary_zh": "这是一个面向 AMD Strix Halo 平台的本地 LLM 推理仓库，主打三值/低比特权重模型推理。项目描述强调 Rust 负责上层逻辑、HIP 负责底层内核，并且运行时不依赖 Python。其标签覆盖了 1-bit/ternary-llm、rocm、npu、openai-api、local-ai 等方向，说明它关注的是高效本地推理与硬件加速实现。",
+    "tldr": "该仓库展示了在 AMD 硬件上实现低比特/三值 LLM 本地推理的工程实践。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及低比特模型推理、异构硬件加速和推理引擎实现，这些都是当前高效大模型部署与系统优化研究的关键方向。"
+  },
+  "github:repo:spicemonkey/llm_perf": {
+    "fingerprint": "285c0266e3ee9c5938e45eb6a035aa119b76e8b5",
+    "summary_zh": "这是一个用于评估大语言模型推理性能的 roofline 性能计算工具，主要帮助分析计算与带宽之间的瓶颈关系。仓库以 Jupyter Notebook 形式提供，适合进行交互式分析和实验。内容聚焦于 LLM inference 的性能建模与估算。",
+    "tldr": "这是一个面向大语言模型推理的 roofline 性能计算 Notebook，用于分析性能瓶颈。",
+    "recommendation_reason": "它与科研主题相关，因为可用于研究和比较 LLM 推理阶段的性能上限、计算/内存受限特性及优化方向。"
+  },
+  "github:repo:velospot/vllmserver": {
+    "fingerprint": "29c769ba384dae008726378ab2d345ee3237b6b9",
+    "summary_zh": "这是一个基于 Python 的 GitHub 仓库，提供用于大语言模型推理的 FastAPI 服务器方案，底层使用 vLLM，并兼容 OpenAI 风格接口。项目强调生产可用性，支持并发请求与流式响应，适合构建高吞吐的推理服务。它还提到可选的文本嵌入功能，说明不仅面向生成式推理，也覆盖部分检索/表示学习场景。",
+    "tldr": "这是一个面向 vLLM 的生产级 FastAPI 推理服务，支持 OpenAI 兼容接口、并发和流式输出。",
+    "recommendation_reason": "它与科研主题相关，因为它可作为大模型推理服务与系统性能评测的基础实现，便于研究接口兼容性、吞吐优化和在线推理部署。"
+  },
+  "github:repo:jaylfc/tinyagentos": {
+    "fingerprint": "3c27841019c3561cb444abd3c088ce4e9a5f0cd2",
+    "summary_zh": "这是一个面向低成本消费级硬件的自托管 AI Agent OS 项目，支持在 Raspberry Pi、Orange Pi、Mac 等设备上运行。项目强调自动聚类、桌面 shell、应用商店、Agent 部署和分布式计算集群等能力，并提到使用本地内存机制 taOSmd。它与本地大模型推理、边缘计算和分布式 Agent 系统的研究方向相关，且技术栈以 Python 为主。",
+    "tldr": "这是一个可在低成本设备上自托管并支持分布式部署的 AI Agent 操作系统项目。",
+    "recommendation_reason": "该仓库聚焦本地大模型推理、边缘设备部署和分布式 Agent 基础设施，适合研究低成本 AI 系统与自主智能体平台。"
+  },
+  "github:repo:xdit-project/xdit": {
+    "fingerprint": "b1afd1cfb7af210724799de109cde8fe67ffed04",
+    "summary_zh": "xDiT 是一个面向扩散 Transformer（DiT）的可扩展推理引擎，重点解决大规模并行推理场景下的效率与吞吐问题。项目以 Python 实现，强调在分布式或多卡环境中对 DiT 推理进行加速与扩展。其目标与图像生成、扩散模型部署以及高性能推理系统研究密切相关。仓库目前具有较高关注度，说明其在相关技术社区中具有一定影响力。",
+    "tldr": "xDiT 是一个用于加速扩散 Transformer 大规模并行推理的 Python 开源引擎。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于扩散模型推理加速、并行计算和高性能部署，这些都是生成式模型研究与系统优化的重要方向。"
+  },
+  "github:repo:enjector/microgpt-c": {
+    "fingerprint": "c0a7bc8683b858b06585dc8c7cc539670155bdea",
+    "summary_zh": "这是一个用 C99 实现的零依赖 GPT-2 引擎，面向边缘 AI 场景。项目主张参数量低于 100 万的小模型可以在设备端快速训练，并提出了 Organelle Pipeline Architecture（OPA）来协调多个专用微型模型。摘录中还声称，在 11 个逻辑游戏上以 3 万到 16 万参数规模取得了 91% 的胜率，强调“组合优于单纯增大容量”。",
+    "tldr": "这是一个面向边缘设备、强调超小参数模型与模块化协同的 C99 GPT-2 实现。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及小型语言模型、端侧训练、模型架构设计和性能权衡等可研究方向。"
+  },
+  "github:repo:catalinb13/dualcore-memory": {
+    "fingerprint": "eedea5d1262b37bbf53010a3a4bd58bee0b937b5",
+    "summary_zh": "这是一个名为 dualcore-memory 的 GitHub 仓库，语言为 Python，目前显示星标数为 0。根据提供的信息，仓库内容本身没有展开，因此无法从摘录中确认其具体功能、研究方法或应用场景。它可能与内存管理、数据处理或某种双核心相关的实验性实现有关，但这些都需要进一步查看仓库代码与说明才能判断。",
+    "tldr": "这是一个尚无明确说明、星标较少的 Python 仓库，具体研究或技术价值需进一步查看代码确认。",
+    "recommendation_reason": "该仓库可能涉及内存相关实现或系统级实验，适合作为检索相关算法、工程实现或原型代码的候选对象。"
+  },
+  "github:repo:pytorch/executorch": {
+    "fingerprint": "995e4896f21668d1211bffedb8b2605519d5b8db",
+    "summary_zh": "这是 PyTorch 生态中的一个开源仓库，面向移动端、嵌入式设备和边缘场景的端侧 AI 部署。它聚焦于把深度学习模型高效运行在资源受限的设备上，涉及机器学习、神经网络、张量计算以及 GPU/移动平台相关能力。仓库以 Python 为主要语言，说明其既适合作为研究原型，也可作为工程落地的参考实现。整体上，它与端侧推理、模型压缩、跨平台部署等方向高度相关。",
+    "tldr": "这是一个用于在移动、嵌入式和边缘设备上运行 PyTorch 模型的端侧 AI 开源仓库。",
+    "recommendation_reason": "该仓库直接关联端侧推理与跨设备部署研究，适合关注高效模型运行和资源受限环境优化的科研主题。"
+  },
+  "github:repo:scruff-ai/resonance_engine": {
+    "fingerprint": "148c659d087bc950b0d1196899101f8829d21718",
+    "summary_zh": "这是一个 GitHub 仓库，项目名为 Resonance_Engine，语言为 Python。其描述强调这是一个 GPU 加速的神经晶格系统，使用 CUDA 内核、适应性训练和“somatic intelligence”等概念，并带有大量涉及记忆、意识、量子力学、流体力学和统一场理论的主题标签。当前仓库星标数为 0，说明公开关注度很低。整体上，它更像是一个探索性或概念驱动的 AI/神经计算项目，而非已有广泛验证的成熟工具。",
+    "tldr": "一个以 CUDA 加速神经晶格和“记忆/意识”概念为核心的 Python 仓库，主题偏前沿探索且关注度较低。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 GPU 神经计算、记忆机制和复杂系统建模等可能用于探索性研究的方向。"
+  },
+  "github:repo:aeon-7/qwen3.6-27b-aeon-ultimate-uncensored-dflash": {
+    "fingerprint": "a4a8a6cb9bc6c11727fc4ee87866116baf222e50",
+    "summary_zh": "该仓库提供了对 Qwen3.6-27B 模型的无损“abliteration”处理与 NVFP4 硬件量化方案，面向 DGX Spark / Blackwell 平台部署。内容包含 BF16（约 51 GB）与 NVFP4（约 26 GB）两种部署说明，并附有 docker-compose 与 QuickStart 指南。仓库星标数为 57，表明已有一定社区关注度。整体看更偏向大模型部署、量化与推理工程实践资料。",
+    "tldr": "这是一个面向 DGX Spark/Blackwell 的 Qwen3.6-27B 量化部署仓库，提供 BF16/NVFP4 方案和快速上手指南。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大语言模型的量化、部署和推理优化，这些都是当前模型压缩与高效计算研究的重要方向。"
+  },
+  "github:repo:rocm/aiter": {
+    "fingerprint": "5dbe5dfd1d11e5b81dacffc35c7067ad32d3b35e",
+    "summary_zh": "这是一个名为 aiter 的 GitHub 仓库，隶属于 ROCm，面向 ROCm 平台上的 AI Tensor Engine。仓库使用 Python 语言开发，目前有一定社区关注度，Stars 为 418。整体来看，它更像是一个与 AMD ROCm 生态相关的深度学习/张量计算工具项目，适合关注 GPU 加速与高性能计算的研究者查看。",
+    "tldr": "ROCm 维护的 Python 仓库 aiter，面向 ROCm 生态中的 AI 张量引擎与加速计算。",
+    "recommendation_reason": "该项目与科研中的高性能计算、GPU 加速和深度学习基础设施研究相关，适合作为 ROCm 生态技术与实现参考。"
+  },
+  "github:repo:deepsheth3/omnistack-rs": {
+    "fingerprint": "75128df5ffc685e4babc94beeb5bdf0c1aef7c39",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，目前星标数为 0。根据提供的信息，仓库名称为 Omnistack-RS，发布者为 deepsheth3，但未给出更多代码功能、README 或应用场景细节。由于原始摘录信息有限，暂时无法判断其具体研究或工程用途。",
+    "tldr": "这是一个信息较少的 Python GitHub 仓库，当前无法确定其具体功能。",
+    "recommendation_reason": "它与科研主题相关，主要是因为它是一个可供进一步分析的 Python 代码仓库，可能包含可复现的方法、数据处理或实验实现。"
+  },
+  "github:repo:bitterbot-ai/bitterbot-desktop": {
+    "fingerprint": "028ab6e0ff582797bf7dab52b59646845ee1b637",
+    "summary_zh": "这是一个面向桌面端的本地优先 AI 代理项目，强调持久记忆、情感智能以及多通道交互能力。项目将个人 AI、认知架构和去中心化/P2P 机制结合，并提出了一个技能经济或技能市场的概念。其技术栈为 TypeScript，已获得一定关注度，适合作为研究 AI Agent 系统设计与本地化部署的参考实现。",
+    "tldr": "这是一个结合本地优先、长期记忆、情感智能和 P2P 技能经济的桌面 AI 代理开源仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI Agent 架构、记忆机制、去中心化协作和本地部署等值得研究的系统设计方向。"
+  },
+  "github:repo:jamie8johnson/cqs": {
+    "fingerprint": "222ee7d668390d051eac4c43e9a31bef86571c35",
+    "summary_zh": "这是一个面向 AI 代理的代码智能与 RAG 工具，提供语义搜索、调用图、影响分析、类型依赖分析和上下文组装等能力，支持单次工具调用完成多种检索任务。项目以 Rust 实现，强调本地优先和 GPU 加速，宣称支持 54 种语言与 29 类代码分块。介绍中还给出了在真实代码上的评测结果和毫秒级查询延迟，说明其更偏向工程可落地的代码检索基础设施。",
+    "tldr": "这是一个用于 AI 代理的高性能本地代码智能与语义检索工具，适合做代码理解、RAG 和调用关系分析。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及代码搜索、语义检索、RAG、调用图和代码智能评测等可直接用于研究与实验的核心技术。"
   }
 }
