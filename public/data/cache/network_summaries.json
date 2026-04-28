@@ -594,10 +594,10 @@
     "recommendation_reason": "它与科研主题相关，因为它可作为大模型推理服务与系统性能评测的基础实现，便于研究接口兼容性、吞吐优化和在线推理部署。"
   },
   "github:repo:jaylfc/tinyagentos": {
-    "fingerprint": "3c27841019c3561cb444abd3c088ce4e9a5f0cd2",
-    "summary_zh": "这是一个面向低成本消费级硬件的自托管 AI Agent OS 项目，支持在 Raspberry Pi、Orange Pi、Mac 等设备上运行。项目强调自动聚类、桌面 shell、应用商店、Agent 部署和分布式计算集群等能力，并提到使用本地内存机制 taOSmd。它与本地大模型推理、边缘计算和分布式 Agent 系统的研究方向相关，且技术栈以 Python 为主。",
-    "tldr": "这是一个可在低成本设备上自托管并支持分布式部署的 AI Agent 操作系统项目。",
-    "recommendation_reason": "该仓库聚焦本地大模型推理、边缘设备部署和分布式 Agent 基础设施，适合研究低成本 AI 系统与自主智能体平台。"
+    "fingerprint": "57c19f29fa642614cb18812a8d3b930d3bb656fb",
+    "summary_zh": "这是一个面向低成本消费级硬件的自托管 AI Agent OS 仓库，目标是在电脑、Orange Pi、Raspberry Pi 或 Mac 等设备上实现自动聚类、桌面壳层、应用商店、Agent 部署和分布式计算。项目强调本地化与自托管，适合搭建轻量级 LLM 推理与多代理系统，并结合内存管理与集群能力。仓库使用 Python 开发，标签覆盖了 agent 框架、本地 LLM、分布式计算、vLLM 和量化推理等方向。",
+    "tldr": "这是一个面向低成本硬件的自托管 AI Agent 平台，用于本地 LLM 推理、Agent 部署和分布式计算。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理、分布式系统和多智能体平台设计，适合研究边缘计算与低成本硬件上的 AI 系统实现。"
   },
   "github:repo:xdit-project/xdit": {
     "fingerprint": "b1afd1cfb7af210724799de109cde8fe67ffed04",
@@ -658,5 +658,101 @@
     "summary_zh": "这是一个面向 AI 代理的代码智能与 RAG 工具，提供语义搜索、调用图、影响分析、类型依赖分析和上下文组装等能力，支持单次工具调用完成多种检索任务。项目以 Rust 实现，强调本地优先和 GPU 加速，宣称支持 54 种语言与 29 类代码分块。介绍中还给出了在真实代码上的评测结果和毫秒级查询延迟，说明其更偏向工程可落地的代码检索基础设施。",
     "tldr": "这是一个用于 AI 代理的高性能本地代码智能与语义检索工具，适合做代码理解、RAG 和调用关系分析。",
     "recommendation_reason": "它与科研主题相关，因为它涉及代码搜索、语义检索、RAG、调用图和代码智能评测等可直接用于研究与实验的核心技术。"
+  },
+  "github:repo:aureolereadyreckoner325/turboquant": {
+    "fingerprint": "9b418ebbdc2233b45fd0d77cef4b356657125643",
+    "summary_zh": "Compress LLM KV cache to cut VRAM use and speed up long-context inference with 4-bit and 2-bit quantization Topics: ann, apple-silicon, consumer-gpu, deep-learning, faiss, gpu, kv-",
+    "tldr": "Compress LLM KV cache to cut VRAM use and speed up long-context inference with 4",
+    "recommendation_reason": "与当前研究兴趣中的 ann 主题相近。"
+  },
+  "github:repo:clareembattled960/turboquantplayground": {
+    "fingerprint": "d0157845c569afc34fccceacf7a6c41edadf43be",
+    "summary_zh": "这是一个面向 Apple Silicon 的研究型代码仓库，聚焦于使用 TurboQuant、MLX 和 PyTorch 内核来压缩 LLM 的 KV cache，以降低显存占用并加速注意力推理。仓库主题覆盖量化、LLM 推理、Metal/MPS 相关加速以及 transformer 计算优化，适合关注推理性能改进的研究者。当前信息显示其主要价值在于实验性实现与性能优化思路，而非成熟产品。",
+    "tldr": "该仓库提供了面向 Apple Silicon 的 KV cache 压缩与注意力加速实现，用于提升 LLM 推理效率。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理、缓存压缩和量化加速等可用于性能研究与系统优化的方向。"
+  },
+  "github:repo:bestselling-goliath423/turboquant_cutile": {
+    "fingerprint": "ba41fe0ef3b141929c0fa4ae1e61859cebf8d159",
+    "summary_zh": "这是一个面向大模型推理加速的 GitHub 仓库，核心方向是使用 TurboQuant KV cache 压缩与 NVIDIA cuTile 自定义 GPU 内核来提升性能。项目强调将缓存体积缩小到原来的约 1/5，同时尽量保持注意力计算的无偏性。其标签显示它还与向量检索、RAG、量化、SIMD、CUDA 和 GPU 编程等主题相关。",
+    "tldr": "该仓库研究如何通过 KV cache 压缩和自定义 GPU 内核来加速 LLM 推理并降低显存占用。",
+    "recommendation_reason": "它与科研中大模型推理优化、量化压缩、GPU 内核设计和高效检索系统等方向直接相关，适合关注高性能机器学习实现的研究者。"
+  },
+  "github:repo:whiteflagnorthplatte622/polarquant-kv": {
+    "fingerprint": "93371ce142dcf158791aeec15df3acd8651f75c3",
+    "summary_zh": "Compress LLM KV cache with PolarQuant K+V quantization for 73-99% VRAM savings on consumer GPUs with zero token loss Topics: ai, deep-learning, huggingface, inference, kernel, kv-c",
+    "tldr": "Compress LLM KV cache with PolarQuant K+V quantization for 73-99% VRAM savings o",
+    "recommendation_reason": "与当前研究兴趣中的 ai 主题相近。"
+  },
+  "github:repo:resmp-dev/exllamav3": {
+    "fingerprint": "664f2da7a8baae9d4282b7437e8e4700c8f7a6f3",
+    "summary_zh": "这是一个用于在现代消费级 GPU 上本地运行大语言模型的优化量化与推理库，主要面向提升推理效率和资源利用率。项目使用 Python 开发，属于面向本地部署与模型加速的基础工具类仓库。当前星标数较少，说明它可能还处于较早阶段或社区关注度有限，但主题明确且与 LLM 部署优化直接相关。",
+    "tldr": "这是一个面向本地 GPU 上 LLM 量化与高效推理的 Python 库。",
+    "recommendation_reason": "它与科研中关于大模型压缩、量化和高效推理加速的主题直接相关，可用于评估本地部署方案与性能优化方法。"
+  },
+  "github:repo:flashinfer-ai/flashinfer": {
+    "fingerprint": "e71eaa58a2e419a935405aa86fc7b084267350e7",
+    "summary_zh": "这是一个面向大语言模型推理服务的内核库项目，重点提供高性能的 attention 相关 CUDA kernel。仓库聚焦于 GPU、分布式推理、JIT、MoE 和 LLM inference 等场景，说明其目标是提升模型在线服务的吞吐与延迟表现。项目使用 Python 组织，并结合 NVIDIA CUDA 与 PyTorch 生态，适合用于构建或优化推理系统。",
+    "tldr": "这是一个用于提升大模型推理服务性能的高性能 CUDA 内核库，重点覆盖 attention、分布式推理和 MoE 场景。",
+    "recommendation_reason": "它直接涉及大模型推理加速与 GPU 内核优化，适合研究高效推理系统、attention 算子和分布式部署的科研主题。"
+  },
+  "github:repo:desmondgregarious958/quantumleap---llama.cpp-turboquant": {
+    "fingerprint": "0269f91822fc08ee2225ca17cc3a652b42c5a231",
+    "summary_zh": "该仓库面向本地大语言模型推理，结合了 llama.cpp、TurboQuant KV 压缩和 ExpertFlow MoE 调优，目标是在不同硬件上提升推理速度与效率。内容重点围绕量化、GPU 加速、ROCm/CUDA 支持以及混合专家模型优化，适用于本地部署场景。标签显示其关注 AMD GPU、OpenAI API 兼容、Ollama 集成和机器学习优化等方向。当前仓库星标数为 0，说明其社区影响力尚处于早期阶段。",
+    "tldr": "这是一个聚焦本地 LLM 推理加速与量化优化的 GitHub 仓库，强调 llama.cpp、KV 压缩和 MoE 调优在多硬件环境下的应用。",
+    "recommendation_reason": "它与科研主题相关，因为其涉及大模型推理加速、量化压缩、MoE 优化以及异构硬件上的性能改进，适合研究高效推理系统与模型部署技术。"
+  },
+  "github:repo:greaterburdockfiletdeboeufencroute188/rotorquant": {
+    "fingerprint": "878beec3e1e761678b938002df2bbc047eca15c7",
+    "summary_zh": "该仓库提出一种针对大语言模型 KV cache 的压缩方法，核心是通过块对角旋转实现更高效的量化。项目宣称这种方法可以加速解码和预填充，同时在作为即插即用量化方案时降低困惑度。仓库语言为 Python，当前星标数为 0，主题标签集中在 AI、隐私和若干模型相关实验上。",
+    "tldr": "这是一个关于用块对角旋转压缩 LLM KV cache、提升推理效率并改善量化效果的研究型 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型推理加速、量化和缓存压缩等可复现实验方向，适合关注模型效率优化的研究者。"
+  },
+  "github:repo:ac3v3d0/semafold": {
+    "fingerprint": "2f2a42463b060c96f98d6eaa0918b362101ebc2b",
+    "summary_zh": "这是一个名为 semafold 的 Python 仓库，面向 AI 工作负载中的向量与缓存压缩。它主打用 TurboQuant 编解码器压缩 embeddings、检索向量和 KV-cache，以实现更小的存储占用并支持 NumPy 优先的流程。仓库标签显示其与 LLM 推理、量化、向量数据库、检索和 MoE 等方向相关。整体来看，它更偏向基础设施与推理效率优化工具，而不是模型训练本身。",
+    "tldr": "该仓库提供面向 embeddings、检索向量和 KV-cache 的压缩方案，用于提升 AI 推理与存储效率。",
+    "recommendation_reason": "它与科研主题相关，因为涉及向量压缩、KV-cache 优化和大模型推理加速等可复现实验性基础技术。"
+  },
+  "github:repo:chopratejas/headroom": {
+    "fingerprint": "625d9090bd59368b3de4026c4ef6635e441a15be",
+    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是在对话、代理和检索增强生成等场景中提升上下文利用效率。仓库强调对上下文窗口、压缩、令牌优化和上下文工程的支持，并与 Anthropic、OpenAI、LangChain、MCP 等生态相关。项目使用 Python 和 FastAPI 构建，定位于作为 LLM 应用的代理或中间层来减少冗余上下文、提高响应效率。其标签显示它适合研究上下文压缩、token 预算管理和代理式 LLM 系统架构。",
+    "tldr": "这是一个用于优化 LLM 应用上下文与 token 使用效率的 Python 项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型的上下文压缩、token 优化和代理架构等关键研究方向。"
+  },
+  "github:repo:iamthegreatdestroyer/sigmalang": {
+    "fingerprint": "26dd1e044e28bc38f0df664a8db5613bcd7024ea",
+    "summary_zh": "这是一个名为 sigmalang 的 GitHub 仓库，作者为 iamthegreatdestroyer，主要语言是 Python。仓库描述强调它与“用于 LLM 压缩的亚线性算法神经字形语言”相关，显然围绕大语言模型压缩与表示方式展开。当前信息显示该项目星标数为 0，说明其公开关注度较低。由于只有仓库简介可见，无法进一步确认其具体方法、实现质量或实验结果。",
+    "tldr": "这是一个面向大语言模型压缩的 Python 项目，主题聚焦于亚线性算法与新型表示方法。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 LLM 压缩这一机器学习与高效计算方向。"
+  },
+  "github:repo:defilantech/llmkube": {
+    "fingerprint": "b1cd2d492d435b55654d63c1ec9b725d3dcfb0e5",
+    "summary_zh": "这是一个面向本地大模型推理的 Kubernetes Operator 项目，支持 llama.cpp、vLLM 和 TGI 等推理后端。它强调多 GPU、自动扩缩容、离线/隔离环境部署以及生产可用性，适用于边缘计算、homelab 和自托管场景。项目使用 Go 开发，并面向 NVIDIA GPU 和 Apple Silicon 等不同硬件环境。整体上，它更偏向于 LLM 基础设施与 MLOps 能力的工程化实现。",
+    "tldr": "这是一个用于在 Kubernetes 中部署和管理本地 LLM 推理服务的开源 Operator，支持多后端、多 GPU 和自动扩缩容。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了大模型推理基础设施、容器编排和自动化资源管理在真实部署场景中的实现方式。"
+  },
+  "github:repo:sleeved-fisherman408/tq": {
+    "fingerprint": "c0d9351b79e75458a06072abd44523eee90ac1df",
+    "summary_zh": "该仓库提供一个用于本地运行大语言模型的工具，核心卖点是通过 TurboQuant KV cache 压缩，在同一块 GPU 上获得 4 到 6 倍更长的上下文长度。项目还强调提供与 OpenAI 兼容的 API，便于接入现有应用与工作流。仓库当前星标数为 0，标签中包含 cli、terminal、parallel、protocol、quant 等，显示其偏向命令行与推理优化方向。",
+    "tldr": "这是一个面向本地大模型推理的工具，主打 KV cache 压缩以显著提升可用上下文并兼容 OpenAI API。",
+    "recommendation_reason": "它与科研主题相关，因为涉及大模型推理优化、上下文压缩和本地部署接口设计，适合关注高效推理与系统实现的研究者。"
+  },
+  "github:repo:anulum/director-ai": {
+    "fingerprint": "b920ff4c39029ad4ac02c88bc2585531a305a76c",
+    "summary_zh": "这是一个面向大语言模型的实时幻觉防护工具，结合 NLI 和 RAG 做事实核查，并支持在流式输出过程中按 token 级别中止生成。项目定位为可直接接入任意 LLM 后端的 guardrail 方案，重点关注事实一致性与幻觉检测。仓库使用 Python 实现，主题涵盖 AI 安全、LLM 监控、检索增强和自然语言推理。当前星标数为 0，说明项目较新或关注度较低。",
+    "tldr": "这是一个用 NLI+RAG 进行实时幻觉检测并可中止 LLM 输出的 Python 事实一致性护栏项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型幻觉检测、事实一致性评估和 AI 安全防护等可研究方向。"
+  },
+  "github:repo:josueortiz-fpga/fpga_llm": {
+    "fingerprint": "2a19f7cdc5893fa90129cea1948315f3ac08054b",
+    "summary_zh": "这是一个 GitHub 仓库，主题是“在 FPGA 硬件上逐步实现大语言模型”。从简介看，它更偏向工程实现和探索性开发，而不是面向论文式完整方案。仓库当前星标数为 0，说明公开关注度较低，但内容方向明确，聚焦于 LLM 与 FPGA 的结合。",
+    "tldr": "该仓库展示了在 FPGA 上逐步实现大语言模型的硬件探索项目。",
+    "recommendation_reason": "它与科研主题相关，因为涉及大语言模型在可重构硬件 FPGA 上的实现路径，适合关注模型加速、硬件部署与系统设计的研究。"
+  },
+  "github:repo:abderrahmanesd/ml-research-assistant": {
+    "fingerprint": "ecd88f9bda8218bace8463d3a055a61a1d4ba5c5",
+    "summary_zh": "RAG system over ML papers — LangChain, FAISS, Groq LLaMA 3, RAGAS evaluation Language: Jupyter Notebook Stars: 0",
+    "tldr": "RAG system over ML papers — LangChain, FAISS, Groq LLaMA 3, RAGAS evaluation Lan",
+    "recommendation_reason": "与当前研究兴趣中的 Jupyter Notebook 主题相近。"
   }
 }
