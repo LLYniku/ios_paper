@@ -1307,5 +1307,13 @@
       "可解释性",
       "注意力分析"
     ]
+  },
+  "arxiv:2604.10098|0d1cf05083d83e664be10ce0cf57ca1c81c91b1f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "这篇综述首次系统梳理了 Transformer 中“注意力沉淀（Attention Sink）”现象，围绕其利用、机理解释与缓解策略三方面总结研究进展，并旨在为提升模型可解释性、长上下文推理和鲁棒性提供指导。",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
   }
 }

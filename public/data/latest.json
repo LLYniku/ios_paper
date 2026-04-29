@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-04-29T09:00:39.108697Z",
+  "generated_at": "2026-04-29T09:09:17.310467Z",
   "recommendation_date": "2026-04-29",
   "timezone": "Asia/Taipei",
   "source": [
@@ -20,10 +20,56 @@
   },
   "stats": {
     "total_candidates": 369,
-    "recommended_count": 33,
+    "recommended_count": 34,
     "llm_summary_count": 20
   },
   "papers": [
+    {
+      "id": "arxiv:2604.10098",
+      "source": "arxiv",
+      "title": "Attention Sink in Transformers: A Survey on Utilization, Interpretation, and Mitigation",
+      "authors": [
+        "Zunhai Su",
+        "Hengyuan Zhang",
+        "Wei Wu",
+        "Yifan Zhang",
+        "Yaxiu Liu",
+        "He Xiao",
+        "Qingyao Yang",
+        "Yuxuan Sun",
+        "Rui Yang",
+        "Chao Zhang",
+        "Keyu Fan",
+        "Weihao Ye",
+        "Jing Xiong",
+        "Hui Shen",
+        "Chaofan Tao",
+        "Taiqiang Wu",
+        "Zhongwei Wan",
+        "Yulei Qian",
+        "Yuchen Xie",
+        "Ngai Wong"
+      ],
+      "abstract": "As the foundational architecture of modern machine learning, Transformers have driven remarkable progress across diverse AI domains. Despite their transformative impact, a persistent challenge across various Transformers is Attention Sink (AS), in which a disproportionate amount of attention is focused on a small subset of specific yet uninformative tokens. AS complicates interpretability, significantly affecting the training and inference dynamics, and exacerbates issues such as hallucinations. In recent years, substantial research has been dedicated to understanding and harnessing AS. However, a comprehensive survey that systematically consolidates AS-related research and offers guidance for future advancements remains lacking. To address this gap, we present the first survey on AS, structured around three key dimensions that define the current research landscape: Fundamental Utilization, Mechanistic Interpretation, and Strategic Mitigation. Our work provides a pivotal contribution by clarifying key concepts and guiding researchers through the evolution and trends of the field. We envision this survey as a definitive resource, empowering researchers and practitioners to effectively manage AS within the current Transformer paradigm, while simultaneously inspiring innovative advancements for the next generation of Transformers. The paper list of this work is available at https://github.com/ZunhaiSu/Awesome-Attention-Sink.",
+      "summary_zh": null,
+      "tldr": "这篇综述首次系统梳理了 Transformer 中“注意力沉淀（Attention Sink）”现象，围绕其利用、机理解释与缓解策略三方面总结研究进展，并旨在为提升模型可解释性、长上下文推理和鲁棒性提供指导。",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 1.0,
+      "published_at": "2026-04-11T08:41:33Z",
+      "updated_at": "2026-04-11T08:41:33Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2604.10098v1",
+      "abs_url": "http://arxiv.org/abs/2604.10098v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
     {
       "id": "arxiv:2601.03066",
       "source": "arxiv",
