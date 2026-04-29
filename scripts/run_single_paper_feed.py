@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import asdict
 from datetime import UTC, datetime
+from html import unescape
 import json
 import logging
 import os
@@ -10,10 +11,12 @@ from pathlib import Path
 import re
 import sys
 import time
+from types import SimpleNamespace
 from typing import Any
 
 import arxiv
 import dotenv
+import requests
 from hydra import compose, initialize_config_dir
 from hydra.core.global_hydra import GlobalHydra
 from loguru import logger
@@ -27,6 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ROOT / "config"
 ARXIV_URL_RE = re.compile(r"arxiv\.org/(?:abs|pdf|html)/([^/?#]+)", re.IGNORECASE)
 ARXIV_ID_RE = re.compile(r"^\d{4}\.\d{4,5}(?:v\d+)?$")
+ARXIV_HTML_TIMEOUT = (10, 30)
 
 
 def configure_logging(debug: bool) -> None:
@@ -122,7 +126,87 @@ def parse_arxiv_id(value: str) -> str:
     return paper_id
 
 
-def fetch_arxiv_result(paper_id: str) -> arxiv.Result:
+def strip_html_tags(value: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", value)
+    text = unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def extract_meta_values(html: str, name: str) -> list[str]:
+    pattern = re.compile(
+        rf"<meta\s+[^>]*name=[\"']{re.escape(name)}[\"'][^>]*content=[\"'](.*?)[\"'][^>]*>",
+        re.IGNORECASE | re.DOTALL,
+    )
+    return [unescape(match).strip() for match in pattern.findall(html)]
+
+
+def parse_arxiv_date(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    for fmt in ("%Y/%m/%d", "%Y-%m-%d", "%Y-%m-%dT%H:%M:%SZ"):
+        try:
+            parsed = datetime.strptime(value.strip(), fmt)
+            return parsed.replace(tzinfo=UTC)
+        except ValueError:
+            continue
+    return None
+
+
+def fetch_arxiv_abs_fallback(paper_id: str) -> Any:
+    abs_id = re.sub(r"v\d+$", "", paper_id)
+    abs_url = f"https://arxiv.org/abs/{paper_id}"
+    logger.warning("Falling back to arXiv abs page metadata for {}", paper_id)
+    response = requests.get(
+        abs_url,
+        timeout=ARXIV_HTML_TIMEOUT,
+        headers={"User-Agent": "PaperDaily/1.0 (single-paper metadata fallback)"},
+    )
+    response.raise_for_status()
+    html = response.text
+
+    title_values = extract_meta_values(html, "citation_title")
+    author_values = extract_meta_values(html, "citation_author")
+    pdf_values = extract_meta_values(html, "citation_pdf_url")
+    date_values = extract_meta_values(html, "citation_date")
+    doi_values = extract_meta_values(html, "citation_doi")
+
+    abstract_match = re.search(
+        r"<blockquote[^>]*class=[\"'][^\"']*abstract[^\"']*[\"'][^>]*>(.*?)</blockquote>",
+        html,
+        re.IGNORECASE | re.DOTALL,
+    )
+    abstract = strip_html_tags(abstract_match.group(1)) if abstract_match else ""
+    abstract = re.sub(r"^Abstract:\s*", "", abstract, flags=re.IGNORECASE).strip()
+
+    subjects_match = re.search(
+        r"<td[^>]*class=[\"']tablecell subjects[\"'][^>]*>(.*?)</td>",
+        html,
+        re.IGNORECASE | re.DOTALL,
+    )
+    categories: list[str] = []
+    if subjects_match:
+        subjects = strip_html_tags(subjects_match.group(1))
+        categories = re.findall(r"\(([a-z-]+\.[A-Z]{2}(?:\.[A-Z]{2})?)\)", subjects)
+
+    title = title_values[0] if title_values else f"arXiv:{paper_id}"
+    authors = [SimpleNamespace(name=author) for author in author_values]
+    published = parse_arxiv_date(date_values[0] if date_values else None)
+
+    return SimpleNamespace(
+        title=title,
+        authors=authors,
+        summary=abstract,
+        pdf_url=pdf_values[0] if pdf_values else f"https://arxiv.org/pdf/{abs_id}.pdf",
+        entry_id=f"https://arxiv.org/abs/{paper_id}",
+        published=published,
+        updated=published,
+        categories=categories,
+        doi=doi_values[0] if doi_values else None,
+        source_url=lambda pid=paper_id: f"https://arxiv.org/e-print/{pid}",
+    )
+
+
+def fetch_arxiv_result(paper_id: str) -> Any:
     client = arxiv.Client(num_retries=0, delay_seconds=8)
     backoffs = (0, 15, 30, 60)
     last_error: Exception | None = None
@@ -145,6 +229,8 @@ def fetch_arxiv_result(paper_id: str) -> arxiv.Result:
                 backoffs[attempt],
             )
     if last_error is not None:
+        if isinstance(last_error, arxiv.HTTPError) and last_error.status in {406, 429, 503}:
+            return fetch_arxiv_abs_fallback(paper_id)
         raise last_error
     raise ValueError(f"No arXiv paper found for {paper_id}")
 
