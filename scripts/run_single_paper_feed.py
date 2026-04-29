@@ -21,7 +21,7 @@ from omegaconf import DictConfig, OmegaConf, open_dict
 from openai import OpenAI
 
 from zotero_arxiv_daily.app_export import JSONFeedExporter
-from zotero_arxiv_daily.protocol import Paper
+from zotero_arxiv_daily.retriever.arxiv_retriever import ArxivRetriever
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ROOT / "config"
@@ -123,7 +123,6 @@ def parse_arxiv_id(value: str) -> str:
 
 
 def fetch_arxiv_result(paper_id: str) -> arxiv.Result:
-    logger.info("Fetching arXiv metadata for {}", paper_id)
     client = arxiv.Client(num_retries=0, delay_seconds=8)
     backoffs = (0, 15, 30, 60)
     last_error: Exception | None = None
@@ -134,7 +133,6 @@ def fetch_arxiv_result(paper_id: str) -> arxiv.Result:
             results = list(client.results(arxiv.Search(id_list=[paper_id])))
             if not results:
                 raise ValueError(f"No arXiv paper found for {paper_id}")
-            logger.info("Fetched arXiv metadata: {}", results[0].title)
             return results[0]
         except arxiv.HTTPError as exc:
             last_error = exc
@@ -159,22 +157,6 @@ def make_openai_client(config: DictConfig) -> OpenAI | None:
     return OpenAI(api_key=api_key, base_url=config.llm.api.get("base_url"))
 
 
-def convert_arxiv_result_to_paper(raw_paper: arxiv.Result) -> Paper:
-    return Paper(
-        source="arxiv",
-        title=raw_paper.title,
-        authors=[author.name for author in raw_paper.authors],
-        abstract=raw_paper.summary,
-        url=raw_paper.entry_id,
-        pdf_url=raw_paper.pdf_url,
-        full_text=None,
-        published_at=getattr(raw_paper, "published", None),
-        updated_at=getattr(raw_paper, "updated", None),
-        categories=list(getattr(raw_paper, "categories", []) or []),
-        doi=getattr(raw_paper, "doi", None),
-    )
-
-
 def build_single_paper_payload(
     config: DictConfig,
     *,
@@ -186,13 +168,14 @@ def build_single_paper_payload(
 ) -> dict[str, Any]:
     paper_id = parse_arxiv_id(paper_url)
     raw_paper = fetch_arxiv_result(paper_id)
-    paper = convert_arxiv_result_to_paper(raw_paper)
+    retriever = ArxivRetriever(config)
+    paper = retriever.convert_to_paper(raw_paper)
     paper.score = 1.0
 
     openai_client = make_openai_client(config)
     if openai_client is not None:
-        logger.info("Generating TL;DR for {}", paper.title)
         paper.generate_tldr(openai_client, config.llm)
+        paper.generate_affiliations(openai_client, config.llm)
     else:
         paper.tldr = paper.abstract
 
@@ -203,7 +186,6 @@ def build_single_paper_payload(
         language=language,
         openai_client=openai_client,
     )
-    logger.info("Generating app summary JSON for {}", paper.title)
     summaries = exporter._build_paper_summaries([paper])
     feed = exporter._build_feed(
         [paper],
