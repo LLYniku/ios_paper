@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-04-29T03:19:48.070324Z",
+  "generated_at": "2026-04-29T08:21:59.070899Z",
   "recommendation_date": "2026-04-29",
   "timezone": "Asia/Taipei",
   "source": [
@@ -20,10 +20,55 @@
   },
   "stats": {
     "total_candidates": 369,
-    "recommended_count": 30,
-    "llm_summary_count": 17
+    "recommended_count": 31,
+    "llm_summary_count": 18
   },
   "papers": [
+    {
+      "id": "arxiv:2604.22312",
+      "source": "arxiv",
+      "title": "Guess-Verify-Refine: Data-Aware Top-K for Sparse-Attention Decoding on Blackwell via Temporal Correlation",
+      "authors": [
+        "Long Cheng",
+        "Ritchie Zhao",
+        "Timmy Liu",
+        "Mindy Li",
+        "Xianjie Qiao",
+        "Kefeng Duan",
+        "Yu-Jung Chen",
+        "Xiaoming Chen",
+        "Bita Darvish Rouhani",
+        "June Yang"
+      ],
+      "abstract": "Sparse-attention decoders rely on exact Top-K selection to choose the most important key-value entries for each query token. In long-context LLM serving, this Top-K stage runs once per decode query and becomes a meaningful latency bottleneck even when the indexer and attention kernels are already highly optimized. We present \\textbf{Guess-Verify-Refine (GVR)}, a data-aware exact Top-K algorithm for sparse-attention decoding on NVIDIA Blackwell. GVR exploits temporal correlation across consecutive decode steps: it uses the previous step's Top-K as a prediction signal, computes pre-indexed statistics, narrows to a valid threshold by secant-style counting in 1-2 global passes, verifies candidates with a ballot-free collector, and finishes exact selection in shared memory. We connect this behavior to the Toeplitz / RoPE structure of DeepSeek Sparse Attention (DSA) indexer scores and validate the design on real DeepSeek-V3.2 workloads integrated into TensorRT-LLM. GVR achieves an average \\textbf{1.88x} single-operator speedup over the production radix-select kernel, with up to \\textbf{2.42x} per layer per step, while preserving bit-exact Top-K outputs. In controlled TEP8 min-latency deployment, it improves end-to-end TPOT by up to \\textbf{7.52%} at 100K context, with larger gains at longer contexts and smaller but still positive gains under speculative decoding. While implemented and validated in the current TensorRT-LLM DSA stack on Blackwell, the same principle may extend to sparse-attention decoders whose decode-phase Top-K exhibits temporal stability.",
+      "summary_zh": "本文针对长上下文大语言模型中的稀疏注意力解码，聚焦于每个解码步都需要执行的精确 Top-K 选择这一延迟瓶颈。作者提出 Guess-Verify-Refine（GVR）算法，利用连续解码步之间的时间相关性，以上一轮 Top-K 结果作为预测信号，并结合预计算统计量与阈值收敛策略来减少全局扫描次数。该方法在 NVIDIA Blackwell 上实现，并集成到 TensorRT-LLM 的实际工作负载中。实验表明，GVR 在保持 bit-exact 精确结果的同时，显著提升了单算子和端到端推理性能。",
+      "tldr": "GVR 利用解码步间的时间相关性加速稀疏注意力 Top-K 选择，并在 Blackwell 上实现了精确且高效的推理优化。",
+      "recommendation_reason": "该工作与高性能推理、稀疏注意力、Top-K 选择优化以及长上下文大模型服务等研究主题高度相关，特别适合关注 GPU 算法加速和解码阶段性能瓶颈的读者。",
+      "relevance_score": 1.0,
+      "published_at": "2026-04-24T07:46:25Z",
+      "updated_at": "2026-04-24T07:46:25Z",
+      "categories": [
+        "cs.DC",
+        "cs.AR",
+        "cs.PF"
+      ],
+      "keywords": [
+        "稀疏注意力",
+        "Top-K选择",
+        "长上下文推理",
+        "GPU加速",
+        "时间相关性",
+        "TensorRT-LLM"
+      ],
+      "affiliations": [
+        "NVIDIA"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2604.22312v1",
+      "abs_url": "http://arxiv.org/abs/2604.22312v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
     {
       "id": "arxiv:2604.22783",
       "source": "arxiv",
