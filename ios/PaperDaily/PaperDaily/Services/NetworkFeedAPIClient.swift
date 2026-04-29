@@ -45,7 +45,7 @@ final class NetworkFeedAPIClient: NetworkFeedFetching {
             }
         } else {
             do {
-                let result = try await URLSession.shared.data(from: url)
+                let result = try await URLSession.shared.data(for: FreshFeedRequest.make(for: url))
                 data = result.0
                 response = result.1
             } catch {

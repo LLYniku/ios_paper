@@ -1,5 +1,29 @@
 import Foundation
 
+enum FreshFeedRequest {
+    static func make(for url: URL) -> URLRequest {
+        let requestURL = cacheBustedURL(from: url)
+        var request = URLRequest(url: requestURL)
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        request.timeoutInterval = 30
+        request.setValue("no-cache", forHTTPHeaderField: "Cache-Control")
+        request.setValue("no-cache", forHTTPHeaderField: "Pragma")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        return request
+    }
+
+    private static func cacheBustedURL(from url: URL) -> URL {
+        guard !url.isFileURL, var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            return url
+        }
+        var queryItems = components.queryItems ?? []
+        queryItems.removeAll { $0.name == "_paperdaily_refresh" }
+        queryItems.append(URLQueryItem(name: "_paperdaily_refresh", value: String(Int(Date().timeIntervalSince1970 * 1000))))
+        components.queryItems = queryItems
+        return components.url ?? url
+    }
+}
+
 protocol FeedFetching {
     func fetchLatestFeed(from url: URL) async throws -> PaperFeed
     func decodeFeed(from data: Data) throws -> PaperFeed
@@ -45,7 +69,7 @@ final class FeedAPIClient: FeedFetching {
             }
         } else {
             do {
-                let result = try await URLSession.shared.data(from: url)
+                let result = try await URLSession.shared.data(for: FreshFeedRequest.make(for: url))
                 data = result.0
                 response = result.1
             } catch {
