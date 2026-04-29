@@ -1,6 +1,15 @@
 import Foundation
 
 enum FreshFeedRequest {
+    private static let session: URLSession = {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        configuration.urlCache = nil
+        configuration.timeoutIntervalForRequest = 30
+        configuration.timeoutIntervalForResource = 30
+        return URLSession(configuration: configuration)
+    }()
+
     static func make(for url: URL) -> URLRequest {
         let requestURL = cacheBustedURL(from: url)
         var request = URLRequest(url: requestURL)
@@ -21,6 +30,16 @@ enum FreshFeedRequest {
         queryItems.append(URLQueryItem(name: "_paperdaily_refresh", value: String(Int(Date().timeIntervalSince1970 * 1000))))
         components.queryItems = queryItems
         return components.url ?? url
+    }
+
+    static func fetch(_ url: URL) async throws -> (Data, URLResponse) {
+        do {
+            return try await session.data(for: make(for: url))
+        } catch is CancellationError {
+            throw CancellationError()
+        } catch let error as URLError where error.code == .cancelled {
+            throw CancellationError()
+        }
     }
 }
 
@@ -69,9 +88,11 @@ final class FeedAPIClient: FeedFetching {
             }
         } else {
             do {
-                let result = try await URLSession.shared.data(for: FreshFeedRequest.make(for: url))
+                let result = try await FreshFeedRequest.fetch(url)
                 data = result.0
                 response = result.1
+            } catch is CancellationError {
+                throw CancellationError()
             } catch {
                 throw FeedAPIClientError.networkError(error.localizedDescription)
             }

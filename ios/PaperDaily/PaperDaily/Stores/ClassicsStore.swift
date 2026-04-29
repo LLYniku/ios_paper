@@ -339,8 +339,11 @@ final class ClassicsStore: ObservableObject {
         }
         if case ClassicFeedAPIClientError.networkError(let message) = error {
             return message.localizedCaseInsensitiveContains("cancelled")
+                || message.localizedCaseInsensitiveContains("canceled")
         }
-        return error.localizedDescription.localizedCaseInsensitiveContains("cancelled")
+        let description = error.localizedDescription
+        return description.localizedCaseInsensitiveContains("cancelled")
+            || description.localizedCaseInsensitiveContains("canceled")
     }
 
     private func bindSyncState() {

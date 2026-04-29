@@ -94,6 +94,10 @@ final class PaperStore: ObservableObject {
             lastErrorMessage = nil
             statusMessage = "已刷新到 \(remoteFeed.recommendationDate) 的推荐。"
         } catch {
+            guard !isCancellation(error) else {
+                lastErrorMessage = nil
+                return
+            }
             lastErrorMessage = error.localizedDescription
         }
     }
@@ -109,6 +113,10 @@ final class PaperStore: ObservableObject {
             statusMessage = "连接成功，拿到了 \(remoteFeed.papers.count) 篇论文。"
             lastErrorMessage = nil
         } catch {
+            guard !isCancellation(error) else {
+                lastErrorMessage = nil
+                return
+            }
             lastErrorMessage = error.localizedDescription
         }
     }
@@ -385,6 +393,22 @@ final class PaperStore: ObservableObject {
             return lhs.favoritedAt > rhs.favoritedAt
         }
         return lhs.paper.title.localizedCaseInsensitiveCompare(rhs.paper.title) == .orderedAscending
+    }
+
+    private func isCancellation(_ error: Error) -> Bool {
+        if error is CancellationError {
+            return true
+        }
+        if let urlError = error as? URLError, urlError.code == .cancelled {
+            return true
+        }
+        if case FeedAPIClientError.networkError(let message) = error {
+            return message.localizedCaseInsensitiveContains("cancelled")
+                || message.localizedCaseInsensitiveContains("canceled")
+        }
+        let description = error.localizedDescription
+        return description.localizedCaseInsensitiveContains("cancelled")
+            || description.localizedCaseInsensitiveContains("canceled")
     }
 
     private func bindSyncState() {

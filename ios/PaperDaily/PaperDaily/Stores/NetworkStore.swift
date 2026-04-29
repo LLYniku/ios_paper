@@ -285,11 +285,19 @@ final class NetworkStore: ObservableObject {
     }
 
     private func isCancellation(_ error: Error) -> Bool {
-        let nsError = error as NSError
-        if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
+        if error is CancellationError {
             return true
         }
-        return false
+        if let urlError = error as? URLError, urlError.code == .cancelled {
+            return true
+        }
+        if case NetworkFeedAPIClientError.networkError(let message) = error {
+            return message.localizedCaseInsensitiveContains("cancelled")
+                || message.localizedCaseInsensitiveContains("canceled")
+        }
+        let description = error.localizedDescription
+        return description.localizedCaseInsensitiveContains("cancelled")
+            || description.localizedCaseInsensitiveContains("canceled")
     }
 
     private func bindSyncState() {

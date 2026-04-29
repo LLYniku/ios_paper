@@ -45,9 +45,11 @@ final class ClassicFeedAPIClient: ClassicsFeedFetching {
             }
         } else {
             do {
-                let result = try await URLSession.shared.data(for: FreshFeedRequest.make(for: url))
+                let result = try await FreshFeedRequest.fetch(url)
                 data = result.0
                 response = result.1
+            } catch is CancellationError {
+                throw CancellationError()
             } catch {
                 throw ClassicFeedAPIClientError.networkError(error.localizedDescription)
             }
