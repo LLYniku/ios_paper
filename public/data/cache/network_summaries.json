@@ -198,10 +198,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及 AI 记忆系统、检索排序和信息可信性控制等可用于智能体与知识管理研究的核心技术。"
   },
   "github:repo:sunkencity999/pre": {
-    "fingerprint": "c02958e77f6ea7812798d3e73bcd9cbcc7a82df6",
-    "summary_zh": "这是一个名为 pre 的 GitHub 仓库，定位为“Personal Reasoning Engine”，主打在 Apple Silicon 上本地运行的代理式助手。项目宣称基于 Gemma 4，采用 Objective-C 实现，提供丰富的 CLI 和 GUI，并且不依赖云端。其主题标签包括 apple-silicon、inference、llm、local-ai、metal 和 mixture-of-experts，语言标注为 JavaScript，当前星标较少。",
-    "tldr": "这是一个面向 Apple Silicon 的本地大模型代理助手项目，强调离线运行和零云依赖。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及本地推理、Apple Silicon 优化、LLM 代理架构和 MoE 等可用于系统研究与原型验证的技术方向。"
+    "fingerprint": "f55ee4c70ee050d523f3aeccbb2aaeb40a85c55d",
+    "summary_zh": "这是一个名为 pre 的开源仓库，定位为本地运行的“Personal Reasoning Engine”代理式助手，面向 Apple Silicon 设备。项目说明其基于 Gemma 4，并强调可在本地运行、无云端依赖，提供 CLI 和 GUI 两种交互方式。仓库标签显示其关注本地 AI 推理、Metal 加速、LLM 以及 mixture-of-experts 等方向，语言为 JavaScript。整体看，它更偏向个人/本地 AI 助手系统的工程实现与应用落地。",
+    "tldr": "这是一个面向 Apple Silicon 的本地大模型代理助手项目，强调零云依赖和本地推理。",
+    "recommendation_reason": "该仓库与本地大模型推理、Apple Silicon 优化和 agentic assistant 系统实现密切相关，适合科研中关注端侧 AI 与高效推理架构的主题。"
   },
   "github:repo:jhammant/llm-time-machine": {
     "fingerprint": "7290270997b32aa99a77db07cba56b2fb8ae024c",
@@ -558,10 +558,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及机器学习训练效率优化和大模型微调策略，这些都是当前人工智能研究中的重要方向。"
   },
   "github:repo:ai-hypercomputer/maxtext": {
-    "fingerprint": "5ef4b596f39a5e6419d1652ea1f793e56adc6c62",
-    "summary_zh": "这是 AI-Hypercomputer 维护的一个 GitHub 仓库，项目名为 MaxText，定位为“简单、高性能、可扩展的 JAX 大语言模型”训练与推理框架。仓库标签显示它面向多种主流 LLM 及其微调场景，包括 DeepSeek、Gemma、GPT、Llama、Mistral、Mixtral 等，并支持 SFT 和 fine-tuning。项目语言为 Python，说明其主要面向研究和工程实践中的模型训练管线构建。整体上它是一个围绕 JAX 生态的 LLM 研究与实验基础设施项目。",
-    "tldr": "MaxText 是一个基于 JAX 的高性能、可扩展大语言模型训练/微调仓库，覆盖多种主流 LLM 架构与 SFT 场景。",
-    "recommendation_reason": "该仓库直接涉及大语言模型、JAX 训练框架与微调方法，适合用于研究可扩展 LLM 训练和实验复现。"
+    "fingerprint": "357ff72b49c5489ff8e0a2bdae79cb210ffc9a03",
+    "summary_zh": "这是一个名为 maxtext 的开源仓库，由 AI-Hypercomputer 维护，定位为简单、高性能、可扩展的 JAX 版大语言模型训练与使用框架。仓库标签显示它支持多种主流 LLM 及相关模型家族，包括 GPT、Llama、Mistral、Mixtral、Gemma、DeepSeek 等，并覆盖 fine-tuning 和 SFT 等训练场景。它主要面向需要在 JAX 生态中进行大模型研发、训练和微调的开发者与研究者。当前仓库关注度较高，说明其在相关社区中具有一定影响力。",
+    "tldr": "这是一个面向 JAX 生态、支持多种主流大模型训练与微调的高性能开源框架。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了可用于大语言模型训练、微调和实验复现的基础设施，适合研究者开展模型与训练方法研究。"
   },
   "github:repo:nvidia/model-optimizer": {
     "fingerprint": "73b0a36123fb6daffe147265dbfcc6a6ab304d35",
@@ -714,10 +714,10 @@
     "recommendation_reason": "它与科研主题相关，因为涉及向量压缩、KV-cache 优化和大模型推理加速等可复现实验性基础技术。"
   },
   "github:repo:chopratejas/headroom": {
-    "fingerprint": "625d9090bd59368b3de4026c4ef6635e441a15be",
-    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是在对话、代理和检索增强生成等场景中提升上下文利用效率。仓库强调对上下文窗口、压缩、令牌优化和上下文工程的支持，并与 Anthropic、OpenAI、LangChain、MCP 等生态相关。项目使用 Python 和 FastAPI 构建，定位于作为 LLM 应用的代理或中间层来减少冗余上下文、提高响应效率。其标签显示它适合研究上下文压缩、token 预算管理和代理式 LLM 系统架构。",
-    "tldr": "这是一个用于优化 LLM 应用上下文与 token 使用效率的 Python 项目。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型的上下文压缩、token 优化和代理架构等关键研究方向。"
+    "fingerprint": "244154f3db72e3f1be2127c98eb02dddbfcd7e51",
+    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是通过压缩、裁剪和代理等方式减少上下文开销并提升推理效率。仓库使用 Python 实现，结合 FastAPI、LangChain、RAG、MCP 等生态，适用于构建 agent 和 LLM 相关服务。它关注上下文窗口管理、token 优化和多模型接入，具有较强的工程实用性。",
+    "tldr": "这是一个用于优化 LLM 上下文与 token 使用的 Python 工程项目。",
+    "recommendation_reason": "它直接涉及上下文工程、token 优化和 LLM 应用架构，适合研究大模型系统效率与代理框架设计的科研主题。"
   },
   "github:repo:iamthegreatdestroyer/sigmalang": {
     "fingerprint": "26dd1e044e28bc38f0df664a8db5613bcd7024ea",
@@ -754,5 +754,107 @@
     "summary_zh": "RAG system over ML papers — LangChain, FAISS, Groq LLaMA 3, RAGAS evaluation Language: Jupyter Notebook Stars: 0",
     "tldr": "RAG system over ML papers — LangChain, FAISS, Groq LLaMA 3, RAGAS evaluation Lan",
     "recommendation_reason": "与当前研究兴趣中的 Jupyter Notebook 主题相近。"
+  },
+  "github:repo:alstons/kv-cache-study": {
+    "fingerprint": "1440c962978864d85642d974c6446b0299a0facf",
+    "summary_zh": "KV Cache Paging, Compaction & Quantization for Memory-Efficient Long-Context LLM Inference Language: Python Stars: 2",
+    "tldr": "KV Cache Paging, Compaction & Quantization for Memory-Efficient Long-Context LLM",
+    "recommendation_reason": "与当前研究兴趣中的 Python 主题相近。"
+  },
+  "github:repo:infini-ai-lab/vortex_torch": {
+    "fingerprint": "db86f7c281c31045f6060f07e8655991e73d0d4a",
+    "summary_zh": "这是一个名为 vortex_torch 的 GitHub 仓库，核心方向是面向大语言模型推理的稀疏注意力框架。仓库描述强调其具备灵活性和效率，适用于需要降低计算与显存开销的注意力机制优化场景。项目使用 Python 实现，主题标签集中在 llm、llm-inference、sparse 和 sparse-attention。当前仓库关注度不高，但主题明确，适合用于相关算法与系统实现的参考。",
+    "tldr": "这是一个用于大语言模型推理的 Python 稀疏注意力框架仓库。",
+    "recommendation_reason": "它与科研中的高效注意力机制、稀疏计算和大模型推理优化主题直接相关，可作为方法实现与工程参考。"
+  },
+  "github:repo:foundation42/valkyr": {
+    "fingerprint": "4f0238e5a23c76ea7984da0ad9e50850caf05397",
+    "summary_zh": "这是一个名为 valkyr 的 GitHub 仓库，使用 Zig 语言开发，面向跨厂商的大模型推理。项目基于 TRiP 和 Vulkan compute，强调不依赖 CUDA，从而减少对单一硬件生态的锁定。仓库还提到结合了 TurboQuant，说明它关注推理效率与量化相关优化。当前仓库星标数为 0，属于较新的或尚未广泛传播的项目。",
+    "tldr": "这是一个用 Zig 和 Vulkan compute 实现跨厂商 LLM 推理、强调摆脱 CUDA 依赖的开源仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理系统、异构计算接口和高效量化优化等可用于研究和实验的基础设施。"
+  },
+  "github:repo:cryptopoly/chaosengineai": {
+    "fingerprint": "c4e52e33ff99123e61f214efe672019ae4fbf645",
+    "summary_zh": "这是一个面向本地 AI 工作站的开源仓库，支持发现、运行、聊天、基准测试以及基于开权重模型的图像生成。项目集成了 DFlash/DDTree 预测式解码，以及 RotorQuant、TriAttention、TurboQuant、ChaosEngine 等多种缓存压缩策略。它还支持 MLX、llama.cpp 和 vLLM 等后端，适合在 Apple Silicon 等环境中进行本地推理与性能优化。",
+    "tldr": "该仓库聚焦本地大模型推理、缓存压缩和预测式解码等研究方向，兼具桌面应用与多后端实现。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及本地 AI 推理加速、缓存压缩和预测式解码等可用于模型效率研究的技术。"
+  },
+  "github:repo:noonghunna/club-3090": {
+    "fingerprint": "9e5e393983f0632bf2b5ca57da35627f1376f669",
+    "summary_zh": "这是一个面向 RTX 3090 显卡部署大语言模型的社区配置仓库，提供了多引擎的服务方案，包括 vLLM、llama.cpp 和 SGLang。仓库强调模型无关性，便于针对不同模型进行统一部署与调优。目前主要提供了 Qwen3.6-27B 在 1 张和 2 张卡上的配置示例。整体上更像是可复用的部署配方集合，而不是单一模型代码项目。",
+    "tldr": "这是一个针对 RTX 3090 上部署和服务 LLM 的多引擎配置仓库，提供了 Qwen3.6-27B 的单卡和双卡示例。",
+    "recommendation_reason": "它与科研主题相关，因为它汇集了在消费级 GPU 上部署大模型的实用配置和工程经验，可用于研究模型推理性能、资源约束下的系统优化与部署方案。"
+  },
+  "github:repo:dl1683/moonshot-llm-genome": {
+    "fingerprint": "8e0efebd3f8641a9ac14b6aa6c256c77a0c5535f",
+    "summary_zh": "这是一个 Python 仓库，主题围绕“Neural Genome”，主要讨论如何映射已训练 AI 模型的几何结构，以支持零步能力迁移。仓库当前星标很少，说明还处于较早期或较小范围的分享状态。内容更偏向研究探索与方法验证，可能涉及模型表征、参数空间或能力迁移相关实验。整体上适合关注大模型机理、迁移学习和模型可解释性的研究者浏览。",
+    "tldr": "这是一个围绕已训练 AI 模型几何映射与零步能力迁移的 Python 研究型仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及模型表征、迁移机制和训练后能力转移等可用于学术研究的核心问题。"
+  },
+  "github:repo:guymanndude/mnemo-cortex": {
+    "fingerprint": "8427262f4d3d4163b17a480d1bc4742cdff78c5b",
+    "summary_zh": "这是一个面向 AI agent 的开源记忆协处理器项目，主打持久化回忆、语义检索和崩溃安全捕获。项目以 sidecar 方式工作，强调无需侵入式 hooks 即可为 agent 提供上下文管理与记忆能力。仓库使用 Python 实现，底层结合 SQLite，适合构建轻量、可持续的 agent memory 方案。",
+    "tldr": "这是一个为 AI agent 提供持久记忆、语义搜索和上下文管理的开源 Python 项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 AI agent 记忆架构、上下文管理和可扩展记忆系统的实现。"
+  },
+  "github:repo:nichcorez/gyaantra_docs": {
+    "fingerprint": "6668a030cdc91c135765f10758a9d50740727c36",
+    "summary_zh": "这是一个基于 Python 的文档问答项目，支持用户上传 PDF 并通过聊天方式提问，系统会借助大语言模型返回上下文相关的答案。项目标签显示它结合了 embeddings、FAISS、LangChain、Hugging Face、Groq 和 Llama 3 等组件，说明其核心是检索增强生成（RAG）式的智能文档助手。界面上还使用了 Streamlit，适合快速搭建交互式原型。该仓库当前星标数为 0，属于较新的或尚未广泛传播的实现。",
+    "tldr": "这是一个用 Python 和 RAG 技术实现的 PDF 聊天问答仓库，可用于快速了解文档智能问答系统的实践。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了基于向量检索与大模型结合的文档问答实现方式，适合研究信息检索、问答系统和 RAG 应用。"
+  },
+  "github:repo:ahta14/zeroshot-reasoning": {
+    "fingerprint": "b9c7a9702bc102e6eea2c33cf7d69d75df70c3dd",
+    "summary_zh": "这是一个基于 FastAPI 的交互式项目，使用 Ollama 展示零样本推理策略。项目支持可视化 AI 的思维过程，包括 Chain-of-Thought、Tree-of-Thought 和 Graph-of-Thought 等推理形式。它结合了后端、前端与可视化组件，面向大语言模型推理实验与演示。",
+    "tldr": "这是一个用于展示和可视化零样本推理策略的 FastAPI + Ollama 交互式项目。",
+    "recommendation_reason": "该仓库与科研主题相关，因为它直接涉及大语言模型推理方法的实现与可视化，适合用于研究零样本学习、思维链及图/树式推理机制。"
+  },
+  "github:repo:aeon-7/comfyui-aeon-spark": {
+    "fingerprint": "eee9d73b3e4e01f8f6d6d69e706bc2363274f0b1",
+    "summary_zh": "这是一个面向 NVIDIA DGX Spark（GB10/Blackwell/sm_121a）的 ComfyUI 发行版/整合仓库，主打“bleeding-edge”配置。其内容强调 CUDA 13、SageAttention v3、NVFP4，以及预打包的多个自定义节点包。仓库还提到预置了 Flux 2 Dev、LTX 2.3 22B、ACE-Step v1.5 XL Turbo 等模型/路径配置，适合探索新硬件与前沿推理栈的集成方式。",
+    "tldr": "这是一个针对 NVIDIA Blackwell 平台的前沿 ComfyUI 集成仓库，包含 CUDA、注意力优化和多种预置模型配置。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了新一代 GPU 架构上的生成式工作流、推理优化与模型部署整合实践。"
+  },
+  "github:repo:nexus-resonance-codex/phi-infinity-lattice-compression": {
+    "fingerprint": "ae3e5a98a0884cae1e173223d7bc8fb83438e9f5",
+    "summary_zh": "这是一个 GitHub 仓库，主题围绕“φ^∞ Lattice Compression”，宣称将无限上下文 AI、后量子比特币密码学以及蛋白质折叠加速结合在一起。仓库标签涵盖 bitcoin、golden-ratio、lattice-compression、post-quantum、protein-folding 和 quantum-encryption 等，语言为 Jupyter Notebook。当前可见信息主要来自项目标题与简介，内容更像跨学科概念性探索或实验性笔记，而非成熟工程项目。仓库星标数为 0，表明社区关注度较低。",
+    "tldr": "一个以黄金比例与格点压缩为核心概念、试图连接后量子密码学与蛋白质折叠加速的实验性 GitHub 笔记本仓库。",
+    "recommendation_reason": "该仓库涉及后量子密码学、量子加密和蛋白质折叠加速等科研相关方向，适合作为跨学科概念检索与趋势筛选的参考。"
+  },
+  "github:repo:gamma-seeds/tern-core": {
+    "fingerprint": "928196465fbd3cb4740e6cc2156d73b6a6870070",
+    "summary_zh": "这是一个名为 tern-core 的 GitHub 仓库，内容指向一个三元执行引擎。它强调 compare-and-add 算术、稀疏感知内存以及零跳过执行等机制，说明项目聚焦于高效计算或特定硬件/软件执行模型。仓库使用 Python 实现，目前星标数为 0。整体上，它更像是一个探索性或原型性质的技术项目。",
+    "tldr": "这是一个面向高效稀疏计算与零跳过执行的 Python 三元执行引擎仓库。",
+    "recommendation_reason": "它与科研中的计算体系结构、稀疏计算和执行引擎设计等主题相关，适合用于了解相关原型实现与算法思路。"
+  },
+  "github:repo:guahusni/ai-pdf-chatbot-langchain": {
+    "fingerprint": "7165fb6ffd357199fb2502c429596dedcd4bcc82",
+    "summary_zh": "这是一个基于 TypeScript 的开源仓库，目标是用 LangChain 和 LangGraph 构建 AI PDF 问答聊天机器人。项目支持文档导入、向量嵌入存储以及基于大模型的查询回答，适合研究文档检索增强生成（RAG）和多组件对话系统的实现方式。仓库标签显示它涉及 Gemini、Llama、Next.js、Streamlit 等多种技术栈，具有较强的实验性和集成参考价值。整体看，它更偏向应用原型与工程实践示例。",
+    "tldr": "这是一个展示如何用 LangChain/LangGraph 构建 PDF 问答机器人的开源示例仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及文档检索增强生成、向量嵌入和大模型问答系统的实现，可作为相关研究与原型开发的参考。"
+  },
+  "github:repo:markapfler01/zipora": {
+    "fingerprint": "b3e113465c87a2f4b602d646fffc3a4904e50856",
+    "summary_zh": "这是一个名为 zipora 的 Rust 数据工具库，主打高性能、零拷贝结构和内存安全的压缩能力。它还提供 C API，面向快速、安全的存储与实时数据处理场景。仓库标签显示其关注压缩、数据结构、SIMD 和 succinct data structures 等方向。当前项目星标数为 0。",
+    "tldr": "zipora 是一个面向高性能存储与数据处理的 Rust 零拷贝压缩工具库。",
+    "recommendation_reason": "它与科研中的数据压缩、内存安全、高性能数据结构和零拷贝系统设计等主题直接相关。"
+  },
+  "github:repo:megaboy12346/complex-rag-guide": {
+    "fingerprint": "d35c01c66adfffa7dc4027f0e73950a628c9c2e1",
+    "summary_zh": "这是一个面向构建生产级RAG系统的代码仓库，重点围绕数据准备、匿名化处理和大模型集成展开。内容强调如何建立更稳健的检索增强生成流程，并涉及最佳实践与评估指标。仓库标签覆盖chatbot、crewai、langchain、openai和rag，形式为Jupyter Notebook。整体更像是一个实践型指南或实验项目，适合用于学习和复现RAG系统搭建流程。",
+    "tldr": "这是一个关于生产级RAG系统构建、数据处理、匿名化和LLM集成的实践型GitHub仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及RAG系统设计、评估和实现，这些都是当前检索增强生成与大模型应用研究中的核心方向。"
+  },
+  "github:repo:affaan-m/everything-claude-code": {
+    "fingerprint": "71fa6790b92cbb535329a81cc148c465e9a8cc3e",
+    "summary_zh": "这是一个面向 Claude Code 及相关 AI 开发工具的代理增强项目，重点在于提升 agent 的执行效率与稳定性。它强调技能、直觉、记忆、安全和以研究为先的开发流程，适用于 Claude Code、Codex、OpenCode、Cursor 等工具。仓库主题覆盖 AI agents、LLM、MCP 和开发者生产力，说明它更像是一个通用的 agent harness 优化系统。项目使用 JavaScript 实现，并且热度很高，表明其在 AI 编程工具生态中有较强关注度。",
+    "tldr": "这是一个面向多种 AI 编程代理工具的性能与工作流优化仓库，聚焦于更高效、更安全的 agent 运行框架。",
+    "recommendation_reason": "该仓库与科研中关注的 AI agents、LLM 工具链优化和人机协作开发流程密切相关，适合用于研究代理系统设计与开发效率提升。"
+  },
+  "github:repo:s1ddh-rth/noether": {
+    "fingerprint": "c6e63688a890ac9d5ee4fb90f06800bf8e1dd60f",
+    "summary_zh": "这是一个面向工业 AI copilots 的开源参考架构，强调可在受限或离线环境中部署。项目支持对模拟工厂数据进行实时异常检测、预测以及基于自然语言的推理。它还突出物理约束、可隔离网络运行，并可在 k3s 上部署，适合工业场景中的边缘/本地化 AI 系统验证。",
+    "tldr": "这是一个用于工业 AI copilots 的开源参考架构，涵盖异常检测、预测和自然语言推理，并支持离线与 k3s 部署。",
+    "recommendation_reason": "该仓库与科研主题相关，因为它涉及工业 AI、时序异常检测、预测建模和可部署架构等研究方向。"
   }
 }
