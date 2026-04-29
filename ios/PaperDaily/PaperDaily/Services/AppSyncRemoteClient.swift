@@ -6,6 +6,7 @@ enum AppSyncRemoteClientError: LocalizedError {
     case invalidStatusCode(Int)
     case decodingFailed
     case invalidPaperURL
+    case serverMessage(String)
 
     var errorDescription: String? {
         switch self {
@@ -19,6 +20,8 @@ enum AppSyncRemoteClientError: LocalizedError {
             return "同步服务返回了无法解析的数据。"
         case .invalidPaperURL:
             return "论文链接无效，目前只支持 arXiv 的 abs/pdf/html 链接。"
+        case let .serverMessage(message):
+            return message
         }
     }
 }
@@ -53,7 +56,7 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
             token: configuration.token
         )
         let (data, response) = try await session.data(for: request)
-        try validate(response: response)
+        try validate(response: response, responseData: data)
 
         struct Response: Codable {
             let state: SyncedStateSnapshot?
@@ -90,7 +93,7 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
 
         request.httpBody = try FeedCoding.encoder.encode(Payload(paperURL: trimmedURL))
         let (data, response) = try await session.data(for: request)
-        try validate(response: response)
+        try validate(response: response, responseData: data)
 
         guard let decoded = try? FeedCoding.decoder.decode(PaperSubmissionResponse.self, from: data) else {
             throw AppSyncRemoteClientError.decodingFailed
@@ -111,7 +114,7 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
         request.httpBody = try FeedCoding.encoder.encode(snapshot)
 
         let (data, response) = try await session.data(for: request)
-        try validate(response: response)
+        try validate(response: response, responseData: data)
 
         struct Response: Codable {
             let state: SyncedStateSnapshot
@@ -136,7 +139,7 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
         return request
     }
 
-    private func validate(response: URLResponse) throws {
+    private func validate(response: URLResponse, responseData: Data? = nil) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw AppSyncRemoteClientError.invalidStatusCode(-1)
         }
@@ -147,7 +150,38 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
         case 401, 403:
             throw AppSyncRemoteClientError.unauthorized
         default:
+            if let message = decodeServerError(from: responseData) {
+                throw AppSyncRemoteClientError.serverMessage(message)
+            }
             throw AppSyncRemoteClientError.invalidStatusCode(httpResponse.statusCode)
         }
+    }
+
+    private func decodeServerError(from data: Data?) -> String? {
+        guard let data else { return nil }
+
+        struct ErrorResponse: Codable {
+            let error: String?
+            let message: String?
+            let status: Int?
+        }
+
+        guard let payload = try? FeedCoding.decoder.decode(ErrorResponse.self, from: data) else {
+            return nil
+        }
+
+        if payload.message == "missing_github_token" {
+            return "远端 Worker 缺少 GITHUB_TOKEN，暂时无法触发 GitHub Actions。请先在 Cloudflare Worker 中设置 GITHUB_TOKEN secret。"
+        }
+        if payload.error == "github_dispatch_failed" {
+            return "GitHub Actions 触发失败：\(payload.message ?? "请检查 GitHub token 权限。")"
+        }
+        if let message = payload.message, !message.isEmpty {
+            return "同步服务错误：\(message)"
+        }
+        if let error = payload.error, !error.isEmpty {
+            return "同步服务错误：\(error)"
+        }
+        return nil
     }
 }

@@ -115,8 +115,11 @@ struct TodayView: View {
             Text("输入 arXiv 论文链接后，会触发 GitHub Actions 分析并加入今日列表顶部。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
+            Text("链接示例：https://arxiv.org/pdf/2604.22312")
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.primary)
             HStack(spacing: 10) {
-                TextField("https://arxiv.org/pdf/2604.22312", text: $paperURLText)
+                TextField("粘贴 arXiv abs/pdf/html 论文链接", text: $paperURLText)
                     .textFieldStyle(.roundedBorder)
                     #if os(iOS)
                     .textInputAutocapitalization(.never)
@@ -136,7 +139,7 @@ struct TodayView: View {
                         ProgressView()
                             .controlSize(.small)
                     } else {
-                        Text("加入")
+                        Text("搜索并加入")
                     }
                 }
                 .buttonStyle(.borderedProminent)
