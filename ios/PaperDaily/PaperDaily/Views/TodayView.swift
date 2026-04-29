@@ -9,6 +9,7 @@ struct TodayView: View {
     @State private var showUnreadOnly = false
     @State private var showFavoritesOnly = false
     @State private var selectedPaper: PaperItem?
+    @State private var paperURLText = ""
 
     var body: some View {
         let papers = store.papers(
@@ -21,9 +22,14 @@ struct TodayView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 headerCard
+                submitPaperCard
 
                 if let lastErrorMessage = store.lastErrorMessage {
                     ErrorStateView(message: lastErrorMessage)
+                }
+
+                if let statusMessage = store.statusMessage {
+                    StatusMessageView(message: statusMessage)
                 }
 
                 filters
@@ -102,6 +108,45 @@ struct TodayView: View {
         }
     }
 
+    private var submitPaperCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("搜索并加入")
+                .font(.headline)
+            Text("输入 arXiv 论文链接后，会触发 GitHub Actions 分析并加入今日列表顶部。")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+            HStack(spacing: 10) {
+                TextField("https://arxiv.org/pdf/2604.22312", text: $paperURLText)
+                    .textFieldStyle(.roundedBorder)
+                    #if os(iOS)
+                    .textInputAutocapitalization(.never)
+                    .keyboardType(.URL)
+                    #endif
+                    .autocorrectionDisabled()
+
+                Button {
+                    Task {
+                        await store.submitPaperToToday(urlString: paperURLText)
+                        if store.lastErrorMessage == nil {
+                            paperURLText = ""
+                        }
+                    }
+                } label: {
+                    if store.isSubmittingPaper {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else {
+                        Text("加入")
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(store.isSubmittingPaper || paperURLText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+        }
+        .padding(16)
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
     private func categoryChip(title: String, category: String?) -> some View {
         Button {
             selectedCategory = category
@@ -124,6 +169,19 @@ struct TodayView: View {
             return "今日推荐"
         }
         return "当前数据为 \(feed.recommendationDate)，今日数据尚未更新"
+    }
+}
+
+struct StatusMessageView: View {
+    let message: String
+
+    var body: some View {
+        Label(message, systemImage: "checkmark.circle")
+            .font(.footnote)
+            .foregroundStyle(.green)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(14)
+            .background(Color.green.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 

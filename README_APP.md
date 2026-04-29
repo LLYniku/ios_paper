@@ -112,6 +112,16 @@ uv run python scripts/run_app_feed.py \
 
 它会重新解析 `Awesome-LLM-Compression-main/README.md`，更新 `public/data/classics.json` 和 iOS 内置 `sample_classics.json`。
 
+如果要从 App 的今日页手动加入单篇论文，使用 `搜索并加入`：
+
+1. 输入 arXiv 的 `abs`、`pdf` 或 `html` 链接，例如 `https://arxiv.org/pdf/2604.22312`。
+2. App 请求 Cloudflare Worker。
+3. Worker 触发 `Add Paper to Today Feed` workflow。
+4. workflow 使用 GitHub Actions 中配置的 OpenAI-compatible API 生成中文摘要、TL;DR 和推荐理由。
+5. 生成结果会插入 `public/data/latest.json` 顶部，并更新当天 archive 和 manifest。
+
+注意：不要把 GitHub token 放入 App。需要把有 `Actions: Read and write` 权限的 GitHub fine-grained token 保存为 Cloudflare Worker secret `GITHUB_TOKEN`。
+
 ## 8. 如何启用 GitHub Pages
 
 本仓库的 workflow 已包含 `deploy-pages` job。

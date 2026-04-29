@@ -1,0 +1,91 @@
+name: Add Paper to Today Feed
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      paper_url:
+        description: "arXiv abs/pdf/html URL to analyze and prepend to today's feed"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: paperdaily-pages
+  cancel-in-progress: false
+
+jobs:
+  add-paper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Analyze paper and prepend feed
+        env:
+          PAPER_URL: ${{ inputs.paper_url }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ vars.OPENAI_API_BASE }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_WIRE_API: ${{ vars.OPENAI_WIRE_API }}
+          OPENAI_DISABLE_RESPONSE_STORAGE: ${{ vars.OPENAI_DISABLE_RESPONSE_STORAGE }}
+          CUSTOM_CONFIG: ${{ vars.CUSTOM_CONFIG }}
+          TZ: Asia/Taipei
+        run: |
+          uv run python scripts/run_single_paper_feed.py \
+            --paper-url "$PAPER_URL" \
+            --config "$CUSTOM_CONFIG" \
+            --output-dir public/data \
+            --timezone Asia/Taipei \
+            --language zh-Hans
+
+      - name: Commit generated feed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: add paper to today feed"
+          git stash push --include-untracked --message workflow-autostash || true
+          git fetch origin ${GITHUB_REF_NAME}
+          git rebase origin/${GITHUB_REF_NAME}
+          git push origin HEAD:${GITHUB_REF_NAME}
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy-pages:
+    needs: add-paper
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

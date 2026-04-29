@@ -3,6 +3,12 @@
 	"name": "paperdaily-sync",
 	"main": "src/index.ts",
 	"compatibility_date": "2026-04-23",
+	"vars": {
+		"GITHUB_OWNER": "LLYniku",
+		"GITHUB_REPO": "ios_paper",
+		"GITHUB_WORKFLOW": "add-paper-to-today.yml",
+		"GITHUB_REF": "dev"
+	},
 	"kv_namespaces": [
 		{
 			"binding": "PAPERDAILY_SYNC",

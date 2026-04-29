@@ -1,6 +1,11 @@
 interface Env {
   PAPERDAILY_SYNC: KVNamespace;
   SYNC_TOKEN: string;
+  GITHUB_TOKEN?: string;
+  GITHUB_OWNER?: string;
+  GITHUB_REPO?: string;
+  GITHUB_WORKFLOW?: string;
+  GITHUB_REF?: string;
 }
 
 interface SyncedEnvelope<T> {
@@ -21,6 +26,11 @@ interface SyncedStateSnapshot {
 }
 
 const STATE_KEY = "state:default";
+const DEFAULT_GITHUB_OWNER = "LLYniku";
+const DEFAULT_GITHUB_REPO = "ios_paper";
+const DEFAULT_GITHUB_WORKFLOW = "add-paper-to-today.yml";
+const DEFAULT_GITHUB_REF = "dev";
+const ARXIV_URL_PATTERN = /^https:\/\/(?:www\.)?arxiv\.org\/(?:abs|pdf|html)\/\d{4}\.\d{4,5}(?:v\d+)?(?:\.pdf)?(?:[?#].*)?$/i;
 
 const json = (body: unknown, init?: ResponseInit) =>
   new Response(JSON.stringify(body, null, 2), {
@@ -42,6 +52,10 @@ function methodNotAllowed() {
 
 function badRequest(message: string) {
   return json({ error: "bad_request", message }, { status: 400 });
+}
+
+function serviceUnavailable(message: string) {
+  return json({ error: "service_unavailable", message }, { status: 503 });
 }
 
 function compareEnvelope<T>(localValue: SyncedEnvelope<T>, remoteValue: SyncedEnvelope<T>): SyncedEnvelope<T> {
@@ -75,6 +89,69 @@ async function loadSnapshot(env: Env): Promise<SyncedStateSnapshot | null> {
     return null;
   }
   return JSON.parse(raw) as SyncedStateSnapshot;
+}
+
+function normalizePaperURL(value: unknown): string | null {
+  if (typeof value !== "string") {
+    return null;
+  }
+  const trimmed = value.trim();
+  if (!ARXIV_URL_PATTERN.test(trimmed)) {
+    return null;
+  }
+  return trimmed;
+}
+
+async function dispatchAddPaperWorkflow(env: Env, paperURL: string): Promise<Response> {
+  if (!env.GITHUB_TOKEN) {
+    return serviceUnavailable("missing_github_token");
+  }
+
+  const owner = env.GITHUB_OWNER || DEFAULT_GITHUB_OWNER;
+  const repo = env.GITHUB_REPO || DEFAULT_GITHUB_REPO;
+  const workflow = env.GITHUB_WORKFLOW || DEFAULT_GITHUB_WORKFLOW;
+  const ref = env.GITHUB_REF || DEFAULT_GITHUB_REF;
+  const endpoint = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflow}/dispatches`;
+
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      accept: "application/vnd.github+json",
+      "content-type": "application/json",
+      "x-github-api-version": "2022-11-28",
+      "user-agent": "paperdaily-sync-worker",
+    },
+    body: JSON.stringify({
+      ref,
+      inputs: {
+        paper_url: paperURL,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    return json(
+      {
+        error: "github_dispatch_failed",
+        status: response.status,
+        message,
+      },
+      { status: 502 },
+    );
+  }
+
+  return json(
+    {
+      accepted: true,
+      owner,
+      repo,
+      workflow,
+      ref,
+    },
+    { status: 202 },
+  );
 }
 
 export default {
@@ -117,6 +194,26 @@ export default {
       const merged = existing ? mergeSnapshots(incoming, existing) : incoming;
       await env.PAPERDAILY_SYNC.put(STATE_KEY, JSON.stringify(merged));
       return json({ state: merged });
+    }
+
+    if (url.pathname === "/v1/paper-submissions") {
+      if (request.method !== "POST") {
+        return methodNotAllowed();
+      }
+
+      let payload: { paper_url?: unknown };
+      try {
+        payload = (await request.json()) as { paper_url?: unknown };
+      } catch {
+        return badRequest("invalid_json");
+      }
+
+      const paperURL = normalizePaperURL(payload.paper_url);
+      if (!paperURL) {
+        return badRequest("only_arxiv_abs_pdf_or_html_urls_are_supported");
+      }
+
+      return dispatchAddPaperWorkflow(env, paperURL);
     }
 
     return json({ error: "not_found" }, { status: 404 });

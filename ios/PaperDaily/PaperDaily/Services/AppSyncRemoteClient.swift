@@ -5,6 +5,7 @@ enum AppSyncRemoteClientError: LocalizedError {
     case unauthorized
     case invalidStatusCode(Int)
     case decodingFailed
+    case invalidPaperURL
 
     var errorDescription: String? {
         switch self {
@@ -16,8 +17,18 @@ enum AppSyncRemoteClientError: LocalizedError {
             return "同步服务返回异常状态码：\(code)"
         case .decodingFailed:
             return "同步服务返回了无法解析的数据。"
+        case .invalidPaperURL:
+            return "论文链接无效，目前只支持 arXiv 的 abs/pdf/html 链接。"
         }
     }
+}
+
+struct PaperSubmissionResponse: Codable, Hashable {
+    let accepted: Bool
+    let owner: String?
+    let repo: String?
+    let workflow: String?
+    let ref: String?
 }
 
 protocol AppSyncRemoteServing {
@@ -26,6 +37,7 @@ protocol AppSyncRemoteServing {
         _ snapshot: SyncedStateSnapshot,
         configuration: SyncRemoteConfiguration
     ) async throws -> SyncedStateSnapshot
+    func submitPaper(urlString: String, configuration: SyncRemoteConfiguration) async throws -> PaperSubmissionResponse
 }
 
 struct AppSyncRemoteClient: AppSyncRemoteServing {
@@ -51,6 +63,39 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
             throw AppSyncRemoteClientError.decodingFailed
         }
         return decoded.state
+    }
+
+    func submitPaper(urlString: String, configuration: SyncRemoteConfiguration) async throws -> PaperSubmissionResponse {
+        let trimmedURL = urlString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let parsedURL = URL(string: trimmedURL),
+              let host = parsedURL.host?.lowercased(),
+              host == "arxiv.org" || host == "www.arxiv.org" else {
+            throw AppSyncRemoteClientError.invalidPaperURL
+        }
+
+        var request = try makeRequest(
+            url: configuration.baseURL.appendingPathComponent("v1/paper-submissions"),
+            token: configuration.token
+        )
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        struct Payload: Codable {
+            let paperURL: String
+
+            enum CodingKeys: String, CodingKey {
+                case paperURL = "paper_url"
+            }
+        }
+
+        request.httpBody = try FeedCoding.encoder.encode(Payload(paperURL: trimmedURL))
+        let (data, response) = try await session.data(for: request)
+        try validate(response: response)
+
+        guard let decoded = try? FeedCoding.decoder.decode(PaperSubmissionResponse.self, from: data) else {
+            throw AppSyncRemoteClientError.decodingFailed
+        }
+        return decoded
     }
 
     func mergeSnapshot(
@@ -97,7 +142,7 @@ struct AppSyncRemoteClient: AppSyncRemoteServing {
         }
 
         switch httpResponse.statusCode {
-        case 200:
+        case 200..<300:
             return
         case 401, 403:
             throw AppSyncRemoteClientError.unauthorized

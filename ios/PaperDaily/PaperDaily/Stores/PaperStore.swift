@@ -20,6 +20,7 @@ final class PaperStore: ObservableObject {
     @Published private(set) var favoritePaperIDs: Set<String> = []
     @Published private(set) var favoritePaperRecords: [FavoritePaperRecord] = []
     @Published private(set) var readPaperIDs: Set<String> = []
+    @Published private(set) var isSubmittingPaper = false
     @Published var lastErrorMessage: String?
     @Published var statusMessage: String?
 
@@ -28,6 +29,7 @@ final class PaperStore: ObservableObject {
     private let apiClient: FeedFetching
     private let cache: FeedCache
     private let syncStore: AppSyncStore
+    private let syncRemoteClient: AppSyncRemoteServing
     private let notificationScheduler: LocalNotificationScheduling
     private let sampleFeedLoader: (() -> PaperFeed?)?
     private var cancellables = Set<AnyCancellable>()
@@ -37,6 +39,7 @@ final class PaperStore: ObservableObject {
         cache: FeedCache = FeedCache(),
         settings: UserSettingsStore,
         syncStore: AppSyncStore,
+        syncRemoteClient: AppSyncRemoteServing = AppSyncRemoteClient(),
         notificationScheduler: LocalNotificationScheduling = LocalNotificationScheduler(),
         sampleFeedLoader: (() -> PaperFeed?)? = nil
     ) {
@@ -44,6 +47,7 @@ final class PaperStore: ObservableObject {
         self.cache = cache
         self.settings = settings
         self.syncStore = syncStore
+        self.syncRemoteClient = syncRemoteClient
         self.notificationScheduler = notificationScheduler
         self.sampleFeedLoader = sampleFeedLoader
 
@@ -104,6 +108,33 @@ final class PaperStore: ObservableObject {
             let remoteFeed = try await apiClient.fetchLatestFeed(from: url)
             statusMessage = "连接成功，拿到了 \(remoteFeed.papers.count) 篇论文。"
             lastErrorMessage = nil
+        } catch {
+            lastErrorMessage = error.localizedDescription
+        }
+    }
+
+    func submitPaperToToday(urlString: String) async {
+        let trimmedURL = urlString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedURL.isEmpty else {
+            lastErrorMessage = "请先输入 arXiv 论文链接。"
+            return
+        }
+        guard let configuration = settings.resolvedSyncConfiguration() else {
+            lastErrorMessage = "请先在设置中配置远端同步的 Worker URL 和 Sync Token。"
+            return
+        }
+
+        isSubmittingPaper = true
+        defer { isSubmittingPaper = false }
+
+        do {
+            let response = try await syncRemoteClient.submitPaper(urlString: trimmedURL, configuration: configuration)
+            guard response.accepted else {
+                lastErrorMessage = "GitHub Actions 未接受本次论文分析请求。"
+                return
+            }
+            lastErrorMessage = nil
+            statusMessage = "已提交到 GitHub Actions。生成完成后，下拉刷新今日列表即可看到新论文。"
         } catch {
             lastErrorMessage = error.localizedDescription
         }

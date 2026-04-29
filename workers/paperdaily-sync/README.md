@@ -12,8 +12,9 @@ It is designed for a single-user setup:
 - `GET /health`
 - `GET /v1/state`
 - `POST /v1/state/merge`
+- `POST /v1/paper-submissions`
 
-`/v1/state` and `/v1/state/merge` require:
+All `/v1/*` endpoints require:
 
 ```text
 Authorization: Bearer <SYNC_TOKEN>
@@ -42,7 +43,15 @@ npx wrangler kv namespace create PAPERDAILY_SYNC
 npx wrangler secret put SYNC_TOKEN
 ```
 
-5. Deploy:
+5. If you want the app's "搜索并加入" button to trigger GitHub Actions, create a fine-grained GitHub token with access to this repo and `Actions: Read and write`, then store it in the Worker:
+
+```bash
+npx wrangler secret put GITHUB_TOKEN
+```
+
+The Worker dispatches `.github/workflows/add-paper-to-today.yml` on the `dev` branch. Repo, owner, workflow, and ref are configured in [wrangler.jsonc](/Users/liuliaoyuan/dl_code/zotero-arxiv-daily-main/workers/paperdaily-sync/wrangler.jsonc).
+
+6. Deploy:
 
 ```bash
 npx wrangler deploy
@@ -69,3 +78,5 @@ Once both iPhone and Mac use the same Worker URL and token, they will share:
 - favorite snapshots
 - recent opens
 - basic preferences
+
+The same Worker URL and token are also used by the Today tab's `搜索并加入` action. The GitHub token stays inside Cloudflare Worker secrets and is never stored in the app.
