@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-04-29T08:38:24.714757Z",
+  "generated_at": "2026-04-29T09:00:39.108697Z",
   "recommendation_date": "2026-04-29",
   "timezone": "Asia/Taipei",
   "source": [
@@ -20,10 +20,47 @@
   },
   "stats": {
     "total_candidates": 369,
-    "recommended_count": 32,
-    "llm_summary_count": 19
+    "recommended_count": 33,
+    "llm_summary_count": 20
   },
   "papers": [
+    {
+      "id": "arxiv:2601.03066",
+      "source": "arxiv",
+      "title": "Do LLMs Encode Functional Importance of Reasoning Tokens?",
+      "authors": [
+        "Janvijay Singh",
+        "Dilek Hakkani-Tür"
+      ],
+      "abstract": "Large language models solve complex tasks by generating long reasoning chains, achieving higher accuracy at the cost of increased computational cost and reduced ability to isolate functionally relevant reasoning. Prior work on compact reasoning shortens such chains through probabilistic sampling, heuristics, or supervision from frontier models, but offers limited insight into whether models internally encode token-level functional importance for answer generation. We address this gap diagnostically and propose greedy pruning, a likelihood-preserving deletion procedure that iteratively removes reasoning tokens whose removal minimally degrades model likelihood under a specified objective, yielding length-controlled reasoning chains. We evaluate pruned reasoning in a distillation framework and show that students trained on pruned chains outperform a frontier-model-supervised compression baseline at matched reasoning lengths. Finally, our analysis reveals systematic pruning patterns and shows that attention scores can predict greedy pruning ranks, further suggesting that models encode a nontrivial functional importance structure over reasoning tokens.",
+      "summary_zh": "这篇论文研究大语言模型在生成推理链时，是否会在内部编码不同推理 token 的功能重要性。作者提出了一种贪心剪枝方法，通过迭代删除对目标似然影响最小的推理 token，得到长度可控的推理链。实验表明，用剪枝后的推理链进行蒸馏训练时，学生模型在相同推理长度下优于基于前沿模型监督的压缩基线。分析结果还发现，注意力分数能够预测剪枝排序，说明模型确实存在一定的推理 token 功能重要性结构。",
+      "tldr": "作者提出贪心剪枝方法，证明大语言模型对推理 token 的功能重要性具有可预测的内部结构。",
+      "recommendation_reason": "该研究与大语言模型推理压缩、推理链蒸馏、token 级重要性分析以及模型内部可解释性等主题高度相关。",
+      "relevance_score": 1.0,
+      "published_at": "2026-01-06T14:50:02Z",
+      "updated_at": "2026-04-21T03:09:21Z",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "keywords": [
+        "大语言模型",
+        "推理链",
+        "贪心剪枝",
+        "知识蒸馏",
+        "可解释性",
+        "注意力分析"
+      ],
+      "affiliations": [
+        "University of Illinois Urbana Champaign"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2601.03066v3",
+      "abs_url": "http://arxiv.org/abs/2601.03066v3",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
     {
       "id": "arxiv:2510.01290",
       "source": "arxiv",
