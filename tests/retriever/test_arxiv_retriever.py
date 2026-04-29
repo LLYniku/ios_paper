@@ -70,6 +70,32 @@ def test_arxiv_retriever(config, mock_feedparser, monkeypatch):
 
 
 def test_arxiv_retriever_falls_back_to_rss_metadata_on_rate_limit(config, mock_feedparser, monkeypatch):
+    papers = _retrieve_with_arxiv_http_error(config, mock_feedparser, monkeypatch, 429)
+
+    new_entries = [
+        e for e in mock_feedparser.entries
+        if e.get("arxiv_announce_type", "new") == "new"
+    ]
+    assert len(papers) == len(new_entries)
+    assert papers[0].title == new_entries[0].title
+    assert papers[0].abstract
+    assert papers[0].url.startswith("http")
+
+
+def test_arxiv_retriever_falls_back_to_rss_metadata_on_not_acceptable(config, mock_feedparser, monkeypatch):
+    papers = _retrieve_with_arxiv_http_error(config, mock_feedparser, monkeypatch, 406)
+
+    new_entries = [
+        e for e in mock_feedparser.entries
+        if e.get("arxiv_announce_type", "new") == "new"
+    ]
+    assert len(papers) == len(new_entries)
+    assert papers[0].title == new_entries[0].title
+    assert papers[0].abstract
+    assert papers[0].url.startswith("http")
+
+
+def _retrieve_with_arxiv_http_error(config, mock_feedparser, monkeypatch, status_code):
     monkeypatch.setattr(arxiv_retriever.time, "sleep", lambda _: None)
     monkeypatch.setattr(arxiv_retriever, "extract_text_from_html", lambda paper: None)
     monkeypatch.setattr(arxiv_retriever, "extract_text_from_pdf", lambda paper: None)
@@ -80,21 +106,12 @@ def test_arxiv_retriever_falls_back_to_rss_metadata_on_rate_limit(config, mock_f
             pass
 
         def results(self, search):
-            raise arxiv.HTTPError("https://export.arxiv.org/api/query", 1, 429)
+            raise arxiv.HTTPError("https://export.arxiv.org/api/query", 1, status_code)
 
     monkeypatch.setattr(arxiv_retriever.arxiv, "Client", RateLimitedClient)
 
     retriever = ArxivRetriever(config)
-    papers = retriever.retrieve_papers()
-
-    new_entries = [
-        e for e in mock_feedparser.entries
-        if e.get("arxiv_announce_type", "new") == "new"
-    ]
-    assert len(papers) == len(new_entries)
-    assert papers[0].title == new_entries[0].title
-    assert papers[0].abstract
-    assert papers[0].url.startswith("http")
+    return retriever.retrieve_papers()
 
 
 def test_run_with_hard_timeout_returns_value():
