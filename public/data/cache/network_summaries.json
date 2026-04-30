@@ -120,10 +120,10 @@
     "recommendation_reason": "它与科研主题相关，因为它汇集了 agents、LLM、强化学习和多模态等研究与工程交叉方向的入门与实现资源，适合用于了解相关技术路线。"
   },
   "github:repo:vllm-project/vllm": {
-    "fingerprint": "f17098468bcdfb35fa95d54c19590d297b3116c2",
-    "summary_zh": "这是 vLLM 项目，一个面向大语言模型推理与部署的高吞吐、内存高效推理和服务引擎。仓库使用 Python 实现，主要面向 LLM serving、model serving 和 inference 场景，并支持多种硬件与后端，包括 CUDA、AMD、TPU 等。项目标签覆盖了多种主流模型与架构，如 Llama、Qwen、DeepSeek、MoE 等，说明其兼容性和应用范围较广。",
-    "tldr": "vLLM 是一个用于高效部署和推理大语言模型的开源服务引擎。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、服务化部署和系统性能优化，这些都是人工智能与机器学习研究中的重要方向。"
+    "fingerprint": "b41a5dc9ebb0f3ecb503cc5e31a3aa640809f4a7",
+    "summary_zh": "vLLM 是一个面向大语言模型推理与服务的高吞吐、内存高效引擎，重点解决在线推理的性能与资源利用问题。该仓库以 Python 为主，支持多种主流模型与框架生态，并覆盖 CUDA、AMD、TPU 等硬件平台。其应用场景包括 LLM serving、模型部署和高并发推理，在社区中具有很高关注度和活跃度。",
+    "tldr": "vLLM 是一个用于大语言模型高效推理与部署的开源服务引擎。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、系统优化和模型部署等研究方向。"
   },
   "github:repo:labyrinthine-saltiness744/turboquant-mlx": {
     "fingerprint": "79bd89df6318ac8c3b6b4742047786d565e18763",
@@ -444,10 +444,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及知识图谱、语义检索、RAG 和记忆系统等可用于研究智能知识管理与本地化 AI 助手的核心方法。"
   },
   "github:repo:sandermage/genesis-vllm-patches": {
-    "fingerprint": "1eb460db973eac2cefb294054890c9fd270ae430",
-    "summary_zh": "这是一个面向 vLLM 的生产级运行时补丁集合，提供 45+ 个补丁以增强推理性能和功能兼容性，重点覆盖 NVIDIA Ampere 架构上的长上下文、FP8、MoE、speculative decoding、结构化输出和 tool-calling 等场景。项目声称在特定模型与硬件配置下实现了较高的吞吐，并验证了 256K 上下文到 252K。其特点是无需修改源码即可通过补丁方式集成多种推理优化，适合研究推理加速与系统优化的人关注。",
-    "tldr": "这是一个针对 vLLM 的多项运行时优化补丁仓库，聚焦长上下文、高吞吐推理和结构化/工具调用场景。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理系统优化、长上下文处理、量化与 speculative decoding 等可复现实验方向。"
+    "fingerprint": "646668d3e3fa03f0b686f825efcd2d8df3b5316f",
+    "summary_zh": "这是一个面向 vLLM 的运行时补丁仓库，主打生产级推理优化，共包含 45+ 个补丁，强调无需修改源码即可提升性能。项目展示了在 NVIDIA Ampere（SM80-86）上对 Qwen3.6-35B-A3B-FP8 混合 GDN+MoE 的推理效果，覆盖长上下文、speculative decoding、structured output、tool calling 和 KV cache 优化等场景。仓库还验证了 256K 上下文与多种推理路径的吞吐表现，适合研究高性能大模型推理系统与解码策略优化。",
+    "tldr": "这是一个针对 vLLM 的高性能推理补丁集合，聚焦长上下文、MoE、FP8 和 speculative decoding 等优化。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、解码策略和长上下文系统优化等可复现实验方向。"
   },
   "github:repo:tokenpak/tokenpak": {
     "fingerprint": "62b0df803a86f6055d2031b112e1b90bf7e296ff",
@@ -594,10 +594,10 @@
     "recommendation_reason": "它与科研主题相关，因为它可作为大模型推理服务与系统性能评测的基础实现，便于研究接口兼容性、吞吐优化和在线推理部署。"
   },
   "github:repo:jaylfc/tinyagentos": {
-    "fingerprint": "57c19f29fa642614cb18812a8d3b930d3bb656fb",
-    "summary_zh": "这是一个面向低成本消费级硬件的自托管 AI Agent OS 仓库，目标是在电脑、Orange Pi、Raspberry Pi 或 Mac 等设备上实现自动聚类、桌面壳层、应用商店、Agent 部署和分布式计算。项目强调本地化与自托管，适合搭建轻量级 LLM 推理与多代理系统，并结合内存管理与集群能力。仓库使用 Python 开发，标签覆盖了 agent 框架、本地 LLM、分布式计算、vLLM 和量化推理等方向。",
-    "tldr": "这是一个面向低成本硬件的自托管 AI Agent 平台，用于本地 LLM 推理、Agent 部署和分布式计算。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理、分布式系统和多智能体平台设计，适合研究边缘计算与低成本硬件上的 AI 系统实现。"
+    "fingerprint": "8362a3e606eaad2c630fc4b803f999f9d1bb3396",
+    "summary_zh": "这是一个面向低成本消费级硬件的自托管 AI agent OS 项目，目标是在电脑、树莓派、橙派或 Mac 等设备上运行自动聚类的智能体系统。它提供桌面壳、应用商店、智能体部署和分布式计算集群等能力，并提到使用 taOSmd 作为记忆组件。项目与本地大模型推理、分布式计算、边缘设备部署以及 KV cache 量化等方向相关，适合关注轻量化 AI 基础设施的人群参考。",
+    "tldr": "这是一个可在低成本硬件上运行的自托管 AI agent 操作系统/平台，涵盖本地推理、分布式集群和智能体部署。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于本地大模型、边缘设备部署和分布式智能体基础设施，适合研究低资源环境下的 AI 系统设计与优化。"
   },
   "github:repo:xdit-project/xdit": {
     "fingerprint": "b1afd1cfb7af210724799de109cde8fe67ffed04",
@@ -856,5 +856,101 @@
     "summary_zh": "这是一个面向工业 AI copilots 的开源参考架构，强调可在受限或离线环境中部署。项目支持对模拟工厂数据进行实时异常检测、预测以及基于自然语言的推理。它还突出物理约束、可隔离网络运行，并可在 k3s 上部署，适合工业场景中的边缘/本地化 AI 系统验证。",
     "tldr": "这是一个用于工业 AI copilots 的开源参考架构，涵盖异常检测、预测和自然语言推理，并支持离线与 k3s 部署。",
     "recommendation_reason": "该仓库与科研主题相关，因为它涉及工业 AI、时序异常检测、预测建模和可部署架构等研究方向。"
+  },
+  "github:repo:nvidia/tensorrt-llm": {
+    "fingerprint": "ad14a9b7874ed5d064f752e6553264f7db3fa825",
+    "summary_zh": "TensorRT-LLM 是 NVIDIA 提供的开源仓库，面向大语言模型推理部署，强调在 NVIDIA GPU 上进行高效推理。它提供易用的 Python API 来定义 LLM，并集成多种最新优化技术以提升推理性能。项目还包含用于协调推理执行的 Python 和 C++ 运行时组件，适用于构建高性能 LLM serving 系统。标签显示其关注 Blackwell、CUDA、MoE、PyTorch 等相关方向。",
+    "tldr": "这是一个面向 NVIDIA GPU 的高性能大语言模型推理与服务框架，适合研究和实践 LLM serving 优化。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、GPU 优化和服务端运行时设计，适合用于研究高效 LLM 部署与系统优化。"
+  },
+  "github:repo:sgl-project/sglang": {
+    "fingerprint": "f8b13be826b217b7aee2901b1d2f234c2c6dba2d",
+    "summary_zh": "SGLang 是一个面向大语言模型和多模态模型的高性能推理与服务框架，主要用于提升模型部署和在线服务效率。该项目支持多种主流模型与任务类型，包括 LLM、VLM、MoE、扩散模型以及强化学习相关应用，并覆盖 CUDA、attention 等底层优化方向。其标签显示它与当前主流开源模型生态高度相关，适合用于研究模型推理加速、服务系统设计和多模态部署方案。",
+    "tldr": "SGLang 是一个用于大语言模型和多模态模型高性能部署与推理的开源框架。",
+    "recommendation_reason": "该仓库与科研中的模型推理优化、系统性能评测和多模态部署研究直接相关，适合作为实验平台或参考实现。"
+  },
+  "github:repo:legendarylibrorg/adaptive-rl-quantization": {
+    "fingerprint": "47ee921021ad5058c4b83ab1e8f9a8b3f4c28676",
+    "summary_zh": "RL framework for adaptive quantization of llama.cpp-style inference — hardware-aware, input-adaptive, MoE-capable, simulator-first, with an optional CUDA/PyTorch training path. Lan",
+    "tldr": "RL framework for adaptive quantization of llama.cpp-style inference — hardware-a",
+    "recommendation_reason": "与当前研究兴趣中的 Python 主题相近。"
+  },
+  "github:repo:scasella/talkie-quant-webgpu": {
+    "fingerprint": "28a4c2c8706c54afc74331644bc3a3fca495cce6",
+    "summary_zh": "这是一个非官方的 GitHub 仓库，提供了基于 ONNX 和 WebGPU 的浏览器端演示，用于运行 Talkie 1930 13B 的量化模型。项目强调快速的 KV-cache 浏览器推理路径，结合了 onnxruntime-web、transformers-js 和量化技术。整体上它展示了在网页环境中进行大模型文本生成的工程实现思路，带有历史模型与浏览器 AI 研究的实验性质。",
+    "tldr": "一个展示如何在浏览器中用 WebGPU 和 ONNX 运行量化大模型、并优化 KV-cache 推理的实验性仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及浏览器端大模型推理、量化、KV-cache 优化和 WebGPU 加速等可用于研究高效推理系统的关键技术。"
+  },
+  "github:repo:peytontolbert/model-stack": {
+    "fingerprint": "ddeb903208ab337f4b40453fc6e850937238852b",
+    "summary_zh": "这是一个用 Python 实现的模块化模型栈仓库，强调将大语言模型的训练、部署和评估职责清晰分离。项目目标是提供一套结构化的工程框架，便于组织不同环节的代码与流程。当前仓库星标数为 0，说明可能还处于较早阶段或曝光度较低。整体上，它更偏向于 LLM 工程化与系统架构方向，而不是单一模型算法实现。",
+    "tldr": "这是一个面向大语言模型训练、服务和评估的模块化 Python 工程框架仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大语言模型的工程化组织与评测流程设计，适合关注模型系统、训练部署一体化和实验平台搭建的研究者。"
+  },
+  "github:repo:sizzlecar/ferrum-infer-rs": {
+    "fingerprint": "4eefcb678e11a33f455bb600ad14bc23ff74f4dd",
+    "summary_zh": "这是一个用 Rust 实现的本地大语言模型推理引擎，强调单二进制、无需 Python 依赖。项目支持本地聊天，也可通过与 OpenAI 兼容的 API 提供服务，面向 CUDA 和 Metal 等推理后端。仓库当前热度较低，Stars 较少，但主题明确，适合关注 Rust 生态下高性能推理实现的研究者。",
+    "tldr": "这是一个 Rust 原生的本地 LLM 推理引擎，可用于聊天或以 OpenAI 兼容 API 提供服务。",
+    "recommendation_reason": "它与科研中对高性能、跨平台 LLM 推理系统以及 Rust 生态实现的研究主题直接相关。"
+  },
+  "github:repo:tlancas25/context-cooler": {
+    "fingerprint": "eb286d9936128007370937e5e7d47d588aa54833",
+    "summary_zh": "这是一个名为 context-cooler 的 GitHub 仓库，定位为用于减少 token 消耗的上下文管理/检索工具，强调“最酷的 MCP”能力。项目提供沙箱化执行，支持 11 种语言、FTS5 全文检索、多消息投递以及 5 个平台适配器。仓库采用 MIT 许可证，当前星标数较少，显示为较新的或小众项目。",
+    "tldr": "这是一个面向上下文检索与多平台交付的 Python 工具仓库，主打沙箱执行、全文搜索和降低 token 消耗。",
+    "recommendation_reason": "它与科研主题相关，因为其涉及上下文管理、检索增强和多平台集成等可用于研究原型或实验系统的基础能力。"
+  },
+  "github:repo:fkyah3/opencode-magic-context-fkyah3": {
+    "fingerprint": "d15cc670e1de4f5a97f3fc3706914c5c99963308",
+    "summary_zh": "这是一个面向 OpenCode 的插件项目，核心目标是为 AI 编程代理提供“Magic Context”能力。项目强调缓存感知的无限上下文、跨会话记忆以及后台历史压缩，用于改善长对话和长代码任务中的上下文管理。仓库使用 TypeScript 实现，当前星标数较少，说明项目较新或受众较小。整体上，它更偏向于开发者工具和 AI 编程工作流增强。",
+    "tldr": "这是一个为 AI 编程代理提供长上下文、跨会话记忆和历史压缩能力的 TypeScript 插件仓库。",
+    "recommendation_reason": "它与科研主题相关，因为涉及 AI 编程助手的上下文管理、记忆机制和对长序列信息压缩等研究方向。"
+  },
+  "github:repo:matharrismma/lighthouse": {
+    "fingerprint": "66c3990e9f477bfb2010b0efaab61f950b4bdcc1",
+    "summary_zh": "这是一个面向对齐优先的知识引擎项目，目标是把聊天记录、文档和数据集转化为可验证的证据与可复现的结论。它强调追加式证据账本，记录时间戳与哈希，并将主张与来源关联，同时对数学关系进行形式化处理。项目设计意图是减少矛盾、降低信息熵，并让研究进展更具不可逆性。仓库当前使用 Python 实现，主题涉及 AI 工具、决策引擎、验证与 LLM 工具链。",
+    "tldr": "这是一个将多源信息转化为可追溯、可验证研究证据的 Python 知识引擎仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于证据可追溯性、结论可复现性和主张验证，这些都是研究工作中的关键基础能力。"
+  },
+  "github:repo:jackyfl/vila": {
+    "fingerprint": "7cfbeaa8b3ecb7435bace0f6a619247018073f9f",
+    "summary_zh": "该仓库名为 VILA，由 JackYFL 发布，语言为 Python。项目简介显示，它是一个面向多模态人工智能任务的视觉语言模型（VLM）家族，覆盖边缘端、数据中心和云端等不同应用场景。根据当前信息，仓库星标数为 0，说明其公开关注度尚低，但主题本身与前沿多模态模型研究相关。",
+    "tldr": "VILA 是一个面向多场景多模态任务的视觉语言模型仓库。",
+    "recommendation_reason": "该仓库直接涉及视觉语言模型与多模态 AI 任务，适合用于跟踪相关科研方向的模型架构、应用场景和实现思路。"
+  },
+  "github:repo:integrity2077/openyggdrasil": {
+    "fingerprint": "a551dfbd9f19ff4f44e4fee8e4d0e74862c2f0b4",
+    "summary_zh": "这是一个名为 openyggdrasil 的 Python 仓库，描述为“memory forest engine”和 “Hermes router provider”。从标题和简介看，它更像是面向路由、内存管理或网络/消息转发相关功能的实验性项目。仓库当前星标很少，说明项目可能还处于早期阶段或受众较小。",
+    "tldr": "一个早期的 Python 仓库，涉及 memory forest engine 和路由提供器相关功能。",
+    "recommendation_reason": "它与科研主题相关，因为其内容可能涉及系统架构、路由机制或内存管理等可用于技术调研与原型分析的方向。"
+  },
+  "github:repo:abczsl520/caveman-agent": {
+    "fingerprint": "c989e215471fe466632103cc1e8f77a963a8e22f",
+    "summary_zh": "这是一个名为 caveman-agent 的 GitHub 仓库，定位为自我进化的 AI Agent 框架，强调“AI agent OS”和六引擎记忆飞轮机制。项目使用 Python 实现，目标是让智能体具备学习、记忆和持续改进的能力。当前仓库星标数为 0，说明它可能仍处于早期阶段或关注度较低。整体上，它更偏向智能体系统架构、记忆增强与自适应学习方向的探索性项目。",
+    "tldr": "这是一个面向自我进化与记忆增强的 Python AI Agent 框架仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI Agent 架构、长期记忆机制和自适应学习等可用于研究智能体系统与持续学习的方向。"
+  },
+  "github:repo:nielsya/tree-grpo": {
+    "fingerprint": "a244aba0f0d316ad22954a410cf850e0f6262630",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，主题是用 Tree-GRPO 提升 LLM agent 的表现。项目强调将树搜索方法与强化学习策略结合，以改进智能体在复杂任务中的训练与决策能力。当前仓库星标较少，但标签明确指向 agent、llm、reinforcement-learning 和 tree 等研究方向。整体上看，它更像是一个面向研究和实验的技术项目，而不是成熟的生产系统。",
+    "tldr": "这是一个结合树搜索与强化学习、用于提升 LLM agent 性能的研究型 Python 项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 LLM 智能体、树搜索和强化学习方法的结合，适合关注 agent 训练与决策优化的研究者。"
+  },
+  "github:repo:citedy/adclaw": {
+    "fingerprint": "8914639962134d5669e47d828dcd38ec11714582",
+    "summary_zh": "这是一个基于 Python 的开源仓库，定位为多智能体 AI 营销团队，强调多个代理协作、共享记忆、角色人格以及技能系统。项目支持 150+ 技能和 25+ LLM 提供方，并包含聊天机器人、内容生成、SEO、Telegram 机器人等应用场景。仓库还提到 Docker、React 和 MCP 等技术栈，说明它面向可部署的多模块 AI 应用开发。整体上，它更像一个用于构建和实验营销类 AI 代理系统的框架或样板项目。",
+    "tldr": "这是一个用于构建多智能体 AI 营销系统的 Python 开源仓库，集成了共享记忆、技能库和多模型支持。",
+    "recommendation_reason": "该仓库与科研主题相关，因为它体现了多智能体系统、共享记忆机制和大模型编排等当前 AI 研究与应用中的关键方向。"
+  },
+  "github:repo:mahmoudosama20/edgecompress": {
+    "fingerprint": "59ac7528076c313f1a411abb5b8c3dacf85ef6e3",
+    "summary_zh": "这是一个 GitHub 仓库，项目名为 EdgeCompress，当前可见信息显示其主要语言为 Jupyter Notebook，仓库星标数为 0。根据仓库名推测，该项目可能与边缘计算场景下的压缩方法、模型压缩或资源受限环境优化有关，但现有摘录未提供更具体的功能说明。由于缺少 README、代码结构或实验结果等内容，暂时无法进一步判断其具体研究方向和技术细节。",
+    "tldr": "这是一个与边缘场景压缩或优化相关的 Jupyter Notebook 仓库，但公开摘要信息较少。",
+    "recommendation_reason": "该仓库可能涉及边缘计算与压缩优化，这类主题与资源受限环境中的科研问题密切相关。"
+  },
+  "github:repo:canfieldjuan/atlas": {
+    "fingerprint": "62ae12bdffb0b1b036fef5b90b06217bdce6cf60",
+    "summary_zh": "这是一个基于 Python 的多模态 AI 平台仓库，面向 B2B 销售智能和语音助手等应用场景。项目强调通过 8 个 MCP servers、130+ 工具以及 57 个自治任务来编排复杂工作流，并使用 LangGraph 实现流程控制。它还提到支持 edge nodes，说明该平台可能兼顾分布式部署或边缘侧运行能力。当前仓库星标较少，整体看更像是一个早期或小规模开源项目。",
+    "tldr": "一个面向销售智能与语音助手的多模态 AI 平台项目，包含多工具和自治工作流能力。",
+    "recommendation_reason": "它与科研主题相关，因为可用于研究多模态智能体、工作流编排、MCP 工具集成以及边缘部署等方向的系统设计与实现。"
   }
 }
