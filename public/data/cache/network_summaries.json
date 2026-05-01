@@ -156,10 +156,10 @@
     "recommendation_reason": "它与科研主题相关，因为它直接涉及长期记忆、认知架构、神经科学启发的人工智能设计以及检索增强生成等研究方向。"
   },
   "github:repo:vllm-project/llm-compressor": {
-    "fingerprint": "15730304dd53dfba71242a3d57e3b4b1ebd6a6b9",
-    "summary_zh": "这是一个面向大语言模型部署优化的 Transformers 兼容压缩库，支持对 LLM 应用多种压缩算法。项目重点围绕模型压缩与量化展开，目标是与 vLLM 配合实现更高效的推理部署。仓库使用 Python 开发，且已获得较多关注。",
+    "fingerprint": "2d7f265a37bc2fc09c134d032637547e065e10c1",
+    "summary_zh": "这是一个面向大语言模型部署优化的 Transformers 兼容压缩库，支持对 LLM 应用多种压缩算法以提升推理效率。项目与 vLLM 生态结合，重点覆盖量化等模型压缩场景，适用于需要在实际部署中降低显存占用和提升吞吐的研究与工程工作。仓库使用 Python 开发，主题聚焦于 compression 和 quantization，说明其主要价值在于为模型压缩实验与部署提供可复用工具。",
     "tldr": "这是一个用于 LLM 压缩与量化、并面向 vLLM 部署优化的 Python 开源库。",
-    "recommendation_reason": "它与科研中的模型压缩、量化和高效推理部署研究直接相关，可用于实验不同压缩算法对大模型性能与资源占用的影响。"
+    "recommendation_reason": "它与科研主题相关，因为它直接提供了用于大模型压缩和量化的实现与实验基础，适合研究部署优化、推理效率和模型压缩方法。"
   },
   "github:repo:michaelkarachewski/inferencelatencyblog": {
     "fingerprint": "3eb440eea6869380ffe71d4e312029c9a933abbb",
@@ -714,10 +714,10 @@
     "recommendation_reason": "它与科研主题相关，因为涉及向量压缩、KV-cache 优化和大模型推理加速等可复现实验性基础技术。"
   },
   "github:repo:chopratejas/headroom": {
-    "fingerprint": "244154f3db72e3f1be2127c98eb02dddbfcd7e51",
-    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是通过压缩、裁剪和代理等方式减少上下文开销并提升推理效率。仓库使用 Python 实现，结合 FastAPI、LangChain、RAG、MCP 等生态，适用于构建 agent 和 LLM 相关服务。它关注上下文窗口管理、token 优化和多模型接入，具有较强的工程实用性。",
-    "tldr": "这是一个用于优化 LLM 上下文与 token 使用的 Python 工程项目。",
-    "recommendation_reason": "它直接涉及上下文工程、token 优化和 LLM 应用架构，适合研究大模型系统效率与代理框架设计的科研主题。"
+    "fingerprint": "bc1d8bd276b733491764b35dce33c045e2b280e7",
+    "summary_zh": "这是一个面向 LLM 应用的上下文优化层项目，核心目标是通过压缩、代理与上下文工程来提升大模型在有限上下文窗口中的使用效率。仓库主要聚焦于 agent、RAG、MCP、FastAPI、LangChain 以及 OpenAI/Anthropic 等生态的集成，强调 token 优化和上下文管理。整体来看，它更像是为开发者提供可落地的中间层工具，用于降低长上下文输入带来的成本与性能压力。项目为 Python 实现，且在 GitHub 上有较高关注度。",
+    "tldr": "这是一个帮助 LLM 应用做上下文压缩与 token 优化的 Python 工具库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型上下文窗口优化、压缩策略和检索增强等研究与工程实践问题。"
   },
   "github:repo:iamthegreatdestroyer/sigmalang": {
     "fingerprint": "26dd1e044e28bc38f0df664a8db5613bcd7024ea",
@@ -918,10 +918,10 @@
     "recommendation_reason": "该仓库直接涉及视觉语言模型与多模态 AI 任务，适合用于跟踪相关科研方向的模型架构、应用场景和实现思路。"
   },
   "github:repo:integrity2077/openyggdrasil": {
-    "fingerprint": "a551dfbd9f19ff4f44e4fee8e4d0e74862c2f0b4",
-    "summary_zh": "这是一个名为 openyggdrasil 的 Python 仓库，描述为“memory forest engine”和 “Hermes router provider”。从标题和简介看，它更像是面向路由、内存管理或网络/消息转发相关功能的实验性项目。仓库当前星标很少，说明项目可能还处于早期阶段或受众较小。",
-    "tldr": "一个早期的 Python 仓库，涉及 memory forest engine 和路由提供器相关功能。",
-    "recommendation_reason": "它与科研主题相关，因为其内容可能涉及系统架构、路由机制或内存管理等可用于技术调研与原型分析的方向。"
+    "fingerprint": "a245dfd518af1f6cb41ff67d8823f9fb72d41d5d",
+    "summary_zh": "该仓库名为 openyggdrasil，描述为“memory forest engine”和“Hermes router provider”，语言为 Python。当前信息显示其主要面向某种内存管理、路由或代理相关的工程实现，但公开摘录中没有给出更具体的功能细节。仓库热度较低，Stars 为 2。整体来看，它更像是一个较早期或小众的技术项目。",
+    "tldr": "这是一个用 Python 编写、涉及内存/路由能力的早期小型仓库。",
+    "recommendation_reason": "它可能与科研中的系统架构、内存管理或路由机制实现研究相关，适合作为技术参考对象。"
   },
   "github:repo:abczsl520/caveman-agent": {
     "fingerprint": "c989e215471fe466632103cc1e8f77a963a8e22f",
@@ -952,5 +952,101 @@
     "summary_zh": "这是一个基于 Python 的多模态 AI 平台仓库，面向 B2B 销售智能和语音助手等应用场景。项目强调通过 8 个 MCP servers、130+ 工具以及 57 个自治任务来编排复杂工作流，并使用 LangGraph 实现流程控制。它还提到支持 edge nodes，说明该平台可能兼顾分布式部署或边缘侧运行能力。当前仓库星标较少，整体看更像是一个早期或小规模开源项目。",
     "tldr": "一个面向销售智能与语音助手的多模态 AI 平台项目，包含多工具和自治工作流能力。",
     "recommendation_reason": "它与科研主题相关，因为可用于研究多模态智能体、工作流编排、MCP 工具集成以及边缘部署等方向的系统设计与实现。"
+  },
+  "github:repo:aitherium/aitherkvcache": {
+    "fingerprint": "861f12f6bdee7dcf171c0389eb980ba635e38edf",
+    "summary_zh": "Near-optimal KV cache quantization for LLM inference. Sub-byte compression (2-4 bit) within 2.7x of information-theoretic optimum. arXiv:2504.19874 Language: Python Stars: 5",
+    "tldr": "Near-optimal KV cache quantization for LLM inference. Sub-byte compression (2-4 ",
+    "recommendation_reason": "与当前研究兴趣中的 Python 主题相近。"
+  },
+  "github:repo:harsh-daga/lattice": {
+    "fingerprint": "a3bd17093a4076c46750b0c7b3320837eeae30a8",
+    "summary_zh": "这是一个面向 LLM 流量的完整传输层项目，目标是对模型请求进行优化与加速。仓库强调批处理、缓存、压缩、拥塞控制和上下文管理等能力，以降低延迟并减少 token 传输开销。项目以 Python 实现，并兼容 Anthropic、OpenAI 等相关接口或工作流。由于当前星标较少，更多体现为早期阶段的基础设施型工具。",
+    "tldr": "这是一个用于优化 LLM 请求传输、降低延迟和节省 token 的 Python 基础设施仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了面向大模型通信优化的实际系统实现，可用于研究传输层、延迟优化和 token 效率等问题。"
+  },
+  "github:repo:eldriss-studio/tardigrade-db": {
+    "fingerprint": "109a1f4414247c674706852e703aa95df616fdf6",
+    "summary_zh": "Experimental LLM-native memory-kernel prototype for persistent agent memory in quantized KV-cache latent space. Language: Python Stars: 0",
+    "tldr": "Experimental LLM-native memory-kernel prototype for persistent agent memory in q",
+    "recommendation_reason": "与当前研究兴趣中的 Python 主题相近。"
+  },
+  "github:repo:xipower2/awesome-local-ai": {
+    "fingerprint": "0cf10e962f516e89203db54cebcf3dddf9bcc272",
+    "summary_zh": "🤖 Explore and utilize top open-source tools for running, fine-tuning, and building LLMs entirely locally, without cloud dependencies or API keys. Topics: ai, ai-extensions, anthrop",
+    "tldr": "🤖 Explore and utilize top open-source tools for running, fine-tuning, and buildi",
+    "recommendation_reason": "与当前研究兴趣中的 ai 主题相近。"
+  },
+  "github:repo:multidimensionalinteractive/kimikazee-qwopus": {
+    "fingerprint": "17023d942c55e4e37c8c91a6b4ea4916fce47ec0",
+    "summary_zh": "这是一个基于 Python 的 GitHub 仓库，主题是本地大模型代理服务。项目主打高性能本地 LLM proxy，并采用双模型 Scratch Pad 架构来组织推理流程。根据仓库简介，它更偏向于推理中间层与模型调用编排，而不是面向终端用户的完整应用。当前星标数为 0，说明该项目可能较新或尚未广泛传播。",
+    "tldr": "这是一个面向本地大模型代理与双模型推理编排的 Python 项目。",
+    "recommendation_reason": "该仓库与科研中的大模型系统、推理架构设计和本地部署性能优化相关，适合关注 LLM 推理管线与代理层实现的研究者。"
+  },
+  "github:repo:nagusamecs/hypertensor": {
+    "fingerprint": "db0b1ed179b1cef68b81892f15e8db9b92a3ee26",
+    "summary_zh": "该仓库是一个面向 AI 推理的高性能运行时，强调从 TensorOS 演进而来，支持在 Windows、Linux 以及裸机环境中运行。它提供 CUDA 和 Vulkan GPU 加速，目标是提升跨平台推理执行效率。项目使用 C 语言实现，目前公开热度较低，Stars 为 2。整体看更偏底层系统与推理引擎方向，适合关注 AI 运行时、跨平台计算和 GPU 加速的研究者。",
+    "tldr": "这是一个用 C 开发、支持 CUDA/Vulkan 加速的跨平台 AI 推理运行时项目。",
+    "recommendation_reason": "它与科研主题相关，因为可用于研究 AI 推理系统、异构计算加速和跨平台底层运行时架构。"
+  },
+  "github:repo:baremetalrt/baremetalrt": {
+    "fingerprint": "8cce70cd141e28f33e41109598b075ec99752c57",
+    "summary_zh": "BareMetalRT 是一个面向边缘 GPU 计算网格的开源仓库，主打在 GPU、NVIDIA、CUDA 和 TensorRT 环境下进行分布式计算与推理。仓库语言为 Python，标签显示其关注 LLM 推理、GPU 计算和 Windows 支持等方向。当前公开信息中星标数为 0，说明项目可能较新或尚未广泛传播。整体来看，它更偏向基础设施与推理部署层面的技术探索。",
+    "tldr": "这是一个面向边缘 GPU 分布式推理与计算的 Python 项目，聚焦 CUDA/TensorRT/LLM 场景。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 GPU 分布式计算、推理加速和边缘部署等可用于大模型系统研究的基础技术。"
+  },
+  "github:repo:farjana-yesmin/adaptive-gradient-sparsification-for-communication-efficient-he-in-fl": {
+    "fingerprint": "d6b463e481bfd25e5c0a7f30dbef6939a3eadcaa",
+    "summary_zh": "这是一个 GitHub 仓库，内容以 Jupyter Notebook 为主，主题聚焦于联邦学习中的通信效率优化。仓库标题显示其核心方向是自适应梯度稀疏化，可能结合安全/高效的梯度传输方法来减少通信开销。当前可见信息较少，仅显示为零星关注度（Stars: 0），未提供更多实现细节或实验结果。整体上，它更像是一个研究型原型或课程/实验性质的代码仓库。",
+    "tldr": "这是一个围绕联邦学习通信效率与梯度稀疏化方法的研究型 Notebook 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为其内容涉及联邦学习中的通信压缩与优化策略，适合作为相关算法实现与实验参考。"
+  },
+  "github:repo:rsanzzzzz/programmatic-tool-calling-ai-sdk": {
+    "fingerprint": "2cfb9ee6117f1f085499f9b3e892dd8a8dd78327",
+    "summary_zh": "这是一个 TypeScript 版的研究型/实验性仓库，核心目标是通过代码生成和沙箱执行来优化大模型的工具调用流程。项目关注减少 LLM 交互中的 token 消耗、延迟和成本，并结合了 AI SDK、MCP、Next.js、Vercel Sandbox 等技术栈。仓库标签显示它同时涉及 AI gateway、MCP client/server 和 programmatic tool calling 等方向，偏向面向实际应用的架构探索。当前仓库星标数为 0，说明它可能还处于早期阶段或受众较小。",
+    "tldr": "该仓库探索用代码生成与沙箱执行来更高效地实现大模型工具调用，以降低成本和延迟。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型工具调用优化、MCP 协议和 LLM 成本/延迟控制等可用于系统研究的技术方向。"
+  },
+  "github:repo:brianhigh/simple_llm_bench_tps": {
+    "fingerprint": "89533c1c166e80cb18e87a00df3f3c91975516cc",
+    "summary_zh": "这是一个用于评估大语言模型性能的简单基准测试工具，重点是测量并绘制每秒生成 token 数（tps）。项目以 Shell 脚本为主，体量较小，适合快速进行本地或命令行环境下的推测速率观察。由于功能聚焦于性能指标展示，它更偏向于工程评测而非模型训练或算法研究本身。该仓库当前关注点明确，适合用作 LLM 推理效率相关分析的辅助工具。",
+    "tldr": "这是一个用来测试并可视化大语言模型每秒 token 生成速度的简易 Shell 工具。",
+    "recommendation_reason": "它与科研主题相关，因为可用于量化和比较大语言模型推理速度，是性能评测研究的基础工具之一。"
+  },
+  "github:repo:rjcuff/koda": {
+    "fingerprint": "8e219b10b3f846d6b246f6a052132bbe6f279656",
+    "summary_zh": "这是一个用 Python 编写的开源仓库，目标是让用户通过一条命令在本地运行大语言模型。项目定位简洁，强调本地化部署和易用性，适合快速上手和测试。当前仓库热度较低，星标数不高，但其主题明确，具有一定的技术参考价值。",
+    "tldr": "这是一个用于一键在本地运行大语言模型的 Python 开源项目。",
+    "recommendation_reason": "它与科研主题相关，因为本地运行大语言模型涉及模型部署、推理效率和隐私保护等研究与实践问题。"
+  },
+  "github:repo:nickmonrad/kernel-ai-assistant": {
+    "fingerprint": "a05ee1b587bbe833f17f73e9fdd340e111a2eb5c",
+    "summary_zh": "Jandal AI — Local-first Android AI assistant with on-device LLM inference, semantic memory, and extensible skill framework Language: C Stars: 5",
+    "tldr": "Jandal AI — Local-first Android AI assistant with on-device LLM inference, seman",
+    "recommendation_reason": "与当前研究兴趣中的 C 主题相近。"
+  },
+  "github:repo:vikranthreddimasu/macfleet": {
+    "fingerprint": "430853e2f04c1f7a291f9480ed268935b8f131ae",
+    "summary_zh": "这是一个面向 Apple Silicon Mac 的分布式机器学习训练集群项目，目标是把多台 Mac 组成可用的训练“舰队”。项目支持零配置发现、环形 AllReduce 梯度同步，以及通过 HMAC 认证和 TLS 加密实现集群隔离与安全通信。它同时提供 PyTorch 和 MLX 两种训练引擎，适合在 macOS 与 Apple Silicon 环境下进行分布式训练实验。整体上，它聚焦于降低本地多机训练的部署门槛。",
+    "tldr": "该仓库提供了一个在 Apple Silicon Mac 上快速搭建分布式训练集群并进行梯度同步的 Python 工具。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及分布式训练、梯度同步和 Apple Silicon 平台上的机器学习系统实现，适合研究训练基础设施与跨设备协同计算。"
+  },
+  "github:repo:frank4112/comptext-mcp-server": {
+    "fingerprint": "ef3156fe054667cb52d2f3b6e52c7f11c752e702",
+    "summary_zh": "这是一个面向 CompText DSL 的高性能 MCP 服务器项目，提供 REST API 接口，强调缓存、类型安全和生产可用性。项目使用 Python 与 FastAPI，面向 AI 工具链和开发者工作流，标签中包含 Claude、Cursor、LLM、Notion 等。其定位更偏向于为大模型与外部工具之间提供稳定、可扩展的中间层，并兼顾 token 优化。当前仓库热度较低，Stars 为 1，说明项目可能仍处于早期阶段。",
+    "tldr": "这是一个用 Python/FastAPI 实现的、面向 CompText DSL 和 AI 工具链的 MCP 服务器项目，主打高性能与生产可用。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型工具调用、MCP 协议、API 设计和 token 优化等可用于研究智能代理与开发者工具系统的基础设施。"
+  },
+  "github:repo:hassan11196/llm-systems-cookbook": {
+    "fingerprint": "98f38400cb4b3f71a702e68ff7308d03c9488265",
+    "summary_zh": "这是一个面向 LLM 系统工程的实操型课程仓库，主要以 Jupyter Notebook 形式组织内容。仓库覆盖了推理、RAG、训练、智能体、部署服务、评测以及 GPU 编程等主题，适合系统性学习大模型相关工程实践。内容涉及 JAX、PyTorch、Triton、vLLM 等常见工具与框架，偏向教学和动手实验。整体上更像是一个课程/教材式资源，而不是单一功能代码库。",
+    "tldr": "这是一个覆盖 LLM 推理、RAG、训练、部署和 GPU 编程的实操型教学仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它集中展示了大模型系统工程的关键技术栈与实验性教学材料，可用于研究和比较不同 LLM 基础设施与实现方法。"
+  },
+  "github:repo:johntran-android/deep-math-for-ai": {
+    "fingerprint": "d247d934f194bd635b3937663297634e2a96aa34",
+    "summary_zh": "这是一个 GitHub 仓库，内容是关于 AI/ML 数学基础的深入笔记与拆解，重点涉及统计推断、数值优化、凸优化和线性代数。仓库主要以 Python 相关内容呈现，定位偏向学习与研究参考，而非完整工程项目。当前热度不高，Stars 为 8。整体看，它更像是用于理解机器学习底层数学原理的知识型资源。",
+    "tldr": "这是一个面向 AI/ML 数学基础的 Python 研究笔记仓库，适合补强理论理解。",
+    "recommendation_reason": "它与科研主题相关，因为它系统梳理了机器学习所依赖的数学基础，有助于研究者理解算法原理与推导。"
   }
 }
