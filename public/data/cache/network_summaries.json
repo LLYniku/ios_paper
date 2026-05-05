@@ -174,10 +174,10 @@
     "recommendation_reason": "它与大模型训练、模型迁移和框架互操作研究直接相关，适合用于比较不同训练生态下的实现与权重转换方案。"
   },
   "github:repo:blaizzy/mlx-vlm": {
-    "fingerprint": "2255c602883eca9d8fab1d33696099c21e27ad24",
-    "summary_zh": "MLX-VLM 是一个面向苹果芯片 Mac 的视觉语言模型工具包，支持基于 MLX 进行推理与微调。它覆盖多种 VLM 架构与任务场景，例如 LLaVA、Idefics、Florence-2、PaliGemma、Pixtral 和 Molmo 等。项目定位于本地 AI 与视觉-语言研究/应用开发，使用 Python 实现，并在 GitHub 上获得了较高关注度。",
-    "tldr": "这是一个可在 Mac Apple Silicon 上用 MLX 运行和微调多种视觉语言模型的开源仓库。",
-    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上进行视觉语言模型推理和微调的实用框架，适合实验复现与原型研究。"
+    "fingerprint": "9d3ba9c8c2550f246fa4dd02526a5740eb08f057",
+    "summary_zh": "MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX. Topics: apple-silicon, florence2, idefics, llava, llm, local-ai, mlx, mol",
+    "tldr": "MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VL",
+    "recommendation_reason": "与当前研究兴趣中的 apple-silicon 主题相近。"
   },
   "github:repo:pestopoppa/epyc-orchestrator": {
     "fingerprint": "42d712dceddafc01104215c140248108b441b987",
@@ -714,10 +714,10 @@
     "recommendation_reason": "它与科研主题相关，因为涉及向量压缩、KV-cache 优化和大模型推理加速等可复现实验性基础技术。"
   },
   "github:repo:chopratejas/headroom": {
-    "fingerprint": "bc1d8bd276b733491764b35dce33c045e2b280e7",
-    "summary_zh": "这是一个面向 LLM 应用的上下文优化层项目，核心目标是通过压缩、代理与上下文工程来提升大模型在有限上下文窗口中的使用效率。仓库主要聚焦于 agent、RAG、MCP、FastAPI、LangChain 以及 OpenAI/Anthropic 等生态的集成，强调 token 优化和上下文管理。整体来看，它更像是为开发者提供可落地的中间层工具，用于降低长上下文输入带来的成本与性能压力。项目为 Python 实现，且在 GitHub 上有较高关注度。",
-    "tldr": "这是一个帮助 LLM 应用做上下文压缩与 token 优化的 Python 工具库。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型上下文窗口优化、压缩策略和检索增强等研究与工程实践问题。"
+    "fingerprint": "6b0bfe75766eb234fd5368e78419c6506b04b84f",
+    "summary_zh": "这是一个面向 LLM 应用的上下文优化层项目，聚焦于压缩、上下文工程和上下文窗口管理，以减少无效 token、提升推理效率。仓库使用 Python 实现，并与 FastAPI、LangChain、MCP、OpenAI、Anthropic 等生态关键词相关，说明它可作为代理、RAG 和模型中间层的基础组件。项目主题围绕 token 优化与上下文管理，适合在多轮对话和工具调用场景中进行性能改进。",
+    "tldr": "这是一个用于优化大模型上下文、降低 token 开销的 Python 工具/框架仓库。",
+    "recommendation_reason": "它与科研主题相关，因为其核心关注点是 LLM 上下文压缩、token 优化和上下文窗口管理，这些都是大模型系统研究中的关键问题。"
   },
   "github:repo:iamthegreatdestroyer/sigmalang": {
     "fingerprint": "26dd1e044e28bc38f0df664a8db5613bcd7024ea",
@@ -768,10 +768,10 @@
     "recommendation_reason": "它与科研中的高效注意力机制、稀疏计算和大模型推理优化主题直接相关，可作为方法实现与工程参考。"
   },
   "github:repo:foundation42/valkyr": {
-    "fingerprint": "4f0238e5a23c76ea7984da0ad9e50850caf05397",
-    "summary_zh": "这是一个名为 valkyr 的 GitHub 仓库，使用 Zig 语言开发，面向跨厂商的大模型推理。项目基于 TRiP 和 Vulkan compute，强调不依赖 CUDA，从而减少对单一硬件生态的锁定。仓库还提到结合了 TurboQuant，说明它关注推理效率与量化相关优化。当前仓库星标数为 0，属于较新的或尚未广泛传播的项目。",
-    "tldr": "这是一个用 Zig 和 Vulkan compute 实现跨厂商 LLM 推理、强调摆脱 CUDA 依赖的开源仓库。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理系统、异构计算接口和高效量化优化等可用于研究和实验的基础设施。"
+    "fingerprint": "5ee7a7fb37ffc622cca6c5aecba7e87d59269044",
+    "summary_zh": "这是一个基于 Vulkan compute 的跨厂商大语言模型推理项目，核心思路是利用 TRiP 并结合 Zig 与 TurboQuant 实现推理流程。项目强调不依赖 CUDA，从而减少对单一硬件生态的绑定，提升在不同 GPU 平台上的可移植性。仓库当前以 Zig 作为主要语言，适合关注高性能系统实现、推理加速与跨平台 GPU 计算的研究者参考。",
+    "tldr": "一个用 Zig 和 Vulkan 实现、强调跨厂商且不依赖 CUDA 的 LLM 推理仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了跨平台 GPU 推理、计算后端抽象和高性能模型部署的实现思路。"
   },
   "github:repo:cryptopoly/chaosengineai": {
     "fingerprint": "c4e52e33ff99123e61f214efe672019ae4fbf645",
@@ -1138,5 +1138,95 @@
     "summary_zh": "这是一个面向 AEC（建筑、工程、施工）设计管理的 RAG 系统仓库，目标是结合 GraphRAG 与本地 LLM 来提升资料检索效率和项目洞察能力。项目使用 Python，并提到 FastAPI、Docker、Ollama 等技术栈，适合搭建可部署的本地化知识检索服务。其主题集中在 CAD、架构设计和 AEC 数据管理，说明它更偏向工程设计文档与项目知识的语义检索场景。当前仓库热度较低，星标较少，可能仍处于早期阶段。",
     "tldr": "这是一个用 GraphRAG 和本地大模型构建的 AEC 设计管理检索系统仓库。",
     "recommendation_reason": "它与科研主题相关，因为它展示了将图检索增强生成用于工程设计知识管理的实现思路，适合研究 RAG、GraphRAG 和行业知识库在 AEC 场景中的应用。"
+  },
+  "github:repo:nvidia/megatron-lm": {
+    "fingerprint": "8940560116aa4f4205d6255c7899dfe2f023f563",
+    "summary_zh": "这是 NVIDIA 开源的 Megatron-LM 仓库，主要用于大规模训练 Transformer 模型，定位于持续推进超大语言模型训练研究。仓库主题包含 large-language-models、model-para 和 transformers，语言为 Python，说明其面向并行化与高效训练实现。该项目在 GitHub 上有较高关注度，适合作为研究大模型训练方法、并行策略和系统优化的参考实现。",
+    "tldr": "NVIDIA 的 Megatron-LM 是面向大规模 Transformer/大语言模型训练的开源研究仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接提供了大规模语言模型训练与并行化实现的研究代码和工程参考。"
+  },
+  "github:repo:artalis-io/bitnet.c": {
+    "fingerprint": "fc8b93dd2dd44d395a5231e294d28f625ac941a0",
+    "summary_zh": "这是一个用纯 C11 实现的极简 LLM 推理仓库，主打零依赖、CPU 优先，并利用 NEON/AVX2 SIMD 做性能优化。项目支持 Flash MoE、LRU 专家缓存和 TurboQuant 3-bit KV 压缩，以降低内存占用并提升推理效率。它还兼容 20 多种 GGUF 量化格式，并可编译为 WASM，适合跨平台部署。",
+    "tldr": "这是一个面向 CPU 推理、支持多种量化与 SIMD 优化的轻量级纯 C LLM 推理实现。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理加速、量化压缩、KV cache 优化和跨平台部署等可直接用于系统与高效推理研究的技术点。"
+  },
+  "github:repo:aryan-cs/kv-cache-safety": {
+    "fingerprint": "ea961c5a9b39098bc510343e7436c4663571a8cc",
+    "summary_zh": "这是一个关于 KV cache 优化与模型对齐相关经验研究的 GitHub 仓库，主题聚焦于大语言模型中的缓存机制、安全性与对齐之间的关联。仓库标签涵盖 alignment、interpretability、guardrails 和 safety，说明其关注点不仅是性能优化，也包括模型行为控制与可解释性。项目语言为 Python，目前星标为 0，表明它可能是一个较新的或尚未广泛传播的研究代码仓库。整体上，它更像是面向实验验证与研究探索的技术资源。",
+    "tldr": "这是一个研究 KV cache 优化及其与大模型对齐/安全性关系的 Python 代码仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型缓存优化、对齐与安全性之间的经验分析，适合用于研究模型效率与安全行为的交叉问题。"
+  },
+  "github:repo:pcircle-ai/memesh-llm-memory": {
+    "fingerprint": "8ae37b4e2cabad372cc8f6284e31cd56cb70540c",
+    "summary_zh": "这是一个面向 AI/LLM 的本地优先记忆层项目，核心卖点是用单个 SQLite 文件实现持久化记忆管理，不依赖云端。它支持 MCP、HTTP 和 CLI 接入，并提供智能回忆、知识演化、自动捕获和交互式仪表盘等功能。项目还结合了全文检索、向量搜索和知识图谱，适用于构建可持续的上下文记忆系统。",
+    "tldr": "这是一个用 SQLite 实现的轻量级通用 AI 记忆层，支持本地持久化、语义检索和多种接入方式。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了面向 LLM 的记忆层架构、检索增强与本地化存储的实现思路，适合研究智能代理记忆与上下文管理。"
+  },
+  "github:repo:juliofal4822/deepseek-ocr-multigpu-infer": {
+    "fingerprint": "729f0ebbd449589dac794d35bca2a6be19117a99",
+    "summary_zh": "这是一个 GitHub 仓库，提供用 Python 运行 DeepSeek-OCR 推理的脚本，支持单 GPU 和多 GPU 两种模式，面向不同硬件环境提升推理效率。仓库主题集中在 OCR、PDF 解析、图像解析、文档抽取和并行计算等方向。它还涉及 agentic extraction、VLM 和 LLM 等相关技术关键词，说明其目标是面向文档理解与信息抽取的推理工具。当前仓库星标较少，可能处于早期或轻量级阶段。",
+    "tldr": "这是一个面向 OCR 与文档抽取的 DeepSeek-OCR 多 GPU/单 GPU 推理脚本仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及多 GPU 推理、OCR、文档解析和信息抽取等可用于实验与工程复现的技术方向。"
+  },
+  "github:repo:trvon/yams": {
+    "fingerprint": "e76bb27e2d2a7a6d5ef729db737c85f555e0f820",
+    "summary_zh": "这是一个面向 LLM 和应用的持久化记忆/知识存储仓库，主打内容寻址存储、去重、压缩以及全文与向量检索。项目标签显示它与知识库、知识图谱、本地存储和记忆管理等方向相关，适合用于构建可长期保存和检索的上下文系统。仓库使用 C++ 实现，已有一定关注度，说明其在性能或工程落地上具有一定吸引力。整体上，它更偏向底层存储与检索基础设施，而不是单纯的模型训练代码。",
+    "tldr": "这是一个为 LLM 和应用提供持久记忆、去重压缩与全文/向量检索能力的 C++ 知识存储仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及面向大模型的长期记忆、知识检索与高效存储机制，这些都是检索增强生成和知识管理研究中的关键基础设施。"
+  },
+  "github:repo:soulhash-labs/llama-model-manager": {
+    "fingerprint": "0c86c5b8d8e6ca0fc9b49305d952b7568fb85925",
+    "summary_zh": "这是一个面向本地 AI 运维的仪表盘项目，主要服务于 llama.cpp 和 GlyphOS™ AI Compute。它支持发现 GGUF 模型、切换模型、调整运行参数，并同步 Claude Code、OpenClaw、opencode 等工具的配置。项目还可以将受支持的 GlyphOS 工作负载路由到当前激活的本地端点，适合做本地模型管理与部署编排参考。",
+    "tldr": "这是一个用于管理本地大模型运行与工作流路由的 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了本地大模型部署、模型切换和运行时编排的工程实现，适合研究本地 AI 系统管理与推理工作流集成。"
+  },
+  "github:repo:avnlp/llm-finetuning": {
+    "fingerprint": "c0389c64d00b5071d3f4acd2a8d15e8faca66093",
+    "summary_zh": "Pipelines for Fine-Tuning LLMs using SFT and RLHF Topics: dpo, fine-tuning, grpo, kto, lora, orpo, p-tuning, peft, ppo, qlora, sft Language: Python Stars: 6",
+    "tldr": "Pipelines for Fine-Tuning LLMs using SFT and RLHF Topics: dpo, fine-tuning, grpo",
+    "recommendation_reason": "与当前研究兴趣中的 dpo 主题相近。"
+  },
+  "github:repo:aayoawoyemi/ori-mnemos": {
+    "fingerprint": "6e1f72d8e53445f112af73fb05a9a4cee487845a",
+    "summary_zh": "这是一个开源的 TypeScript 仓库，提供面向 AI agent 的本地优先、持久化记忆系统，核心基于 Recursive Memory Harness（RMH）。项目围绕记忆管理、知识图谱、语义检索、向量搜索和 SQLite 等能力展开，并支持 MCP/agent 场景集成。其目标是让智能体能够在本地环境中持续保存、检索和组织上下文信息，增强长期记忆与推理能力。",
+    "tldr": "这是一个面向 AI agent 的本地持久化记忆框架与实现，强调记忆检索、知识组织和长期上下文维护。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI agent 记忆架构、长期上下文建模、语义检索与知识表示等可用于智能系统研究的核心问题。"
+  },
+  "github:repo:effortlessmetrics/bitnet-rs": {
+    "fingerprint": "78147a10f1567a8a62c82b3fa835e200ddf8e828",
+    "summary_zh": "这是一个用 Rust 编写的推理引擎，面向 1-bit BitNet 大语言模型，并强调与 GGUF 和 llama.cpp 的兼容性。项目定位于本地推理与模型运行，适合关注低比特量化、推理效率和跨实现互操作性的研究者参考。目前仓库星标较少，说明项目仍较新或关注度有限，但技术方向明确。",
+    "tldr": "这是一个面向 1-bit BitNet LLM 的 Rust 推理引擎，兼容 GGUF 和 llama.cpp。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及低比特大模型推理、模型格式兼容性和高效推理实现，适合研究相关系统与量化方法的工作。"
+  },
+  "github:repo:matrixneo76/craft-memory": {
+    "fingerprint": "607491a398283eef02f51e43363cd5a4c20410fa",
+    "summary_zh": "这是一个名为 craft-memory 的 GitHub Python 仓库，当前显示信息较少，主要能确认其语言为 Python、作者为 matrixNeo76、且星标数为 0。根据仓库名称推测，它可能与记忆管理、数据持久化或与“记忆”相关的工具实现有关，但摘录中没有提供具体功能说明。由于缺少 README、代码结构或使用场景等信息，无法进一步准确判断其研究价值和技术细节。",
+    "tldr": "这是一个信息较少的 Python 仓库，可能与记忆相关工具或功能实现有关，但目前缺乏足够描述。",
+    "recommendation_reason": "它可能涉及 Python 中的记忆管理、状态保存或相关工具实现，可为研究类似系统设计与实现方式提供参考。"
+  },
+  "github:repo:mudler/localai": {
+    "fingerprint": "c79b571ebb09e4c29670687b8b92a32d72101170",
+    "summary_zh": "LocalAI 是一个开源 AI 引擎，主打在各种硬件上本地运行不同类型的模型，包括大语言模型、视觉、语音、图像和视频等能力。它强调无需 GPU 也能部署，并支持多种接口与应用场景，如 API、agents、TTS、图像生成、对象检测和重排序等。项目使用 Go 开发，定位于分布式、去中心化和可扩展的本地 AI 基础设施。该仓库在 GitHub 上具有较高关注度，说明其在开源 AI 工具生态中较受欢迎。",
+    "tldr": "LocalAI 是一个无需 GPU、可在多种硬件上本地运行多模态 AI 模型的开源引擎。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了可复现、可部署的本地多模态模型运行基础设施，适合研究离线推理、边缘计算和去中心化 AI 系统。"
+  },
+  "github:repo:djfeu/llmcode": {
+    "fingerprint": "73e74747d9cb223d66c77b460461a8af6b9efcdd",
+    "summary_zh": "Open-source AI agent runtime for any LLM Language: Python Stars: 4",
+    "tldr": "Open-source AI agent runtime for any LLM Language: Python Stars: 4",
+    "recommendation_reason": "与当前研究兴趣中的 Python 主题相近。"
+  },
+  "github:repo:google-ai-edge/litert": {
+    "fingerprint": "cd01fde7952c224009ce9b1faebc0258b7608cea",
+    "summary_zh": "LiteRT 是 Google AI Edge 团队发布的开源仓库，被定位为 TensorFlow Lite 的后继项目。它面向边缘端设备上的机器学习与生成式 AI 部署，强调高性能推理、模型转换、运行时执行与优化能力。该项目主要使用 C++ 实现，适用于需要在端侧进行高效推理和模型部署的场景。",
+    "tldr": "LiteRT 是 Google 面向边缘设备的高性能端侧 ML/GenAI 部署框架，强调转换、运行时和优化能力。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及边缘端高效模型部署、推理优化和端侧 AI 系统实现，适合研究端侧机器学习与生成式 AI。"
+  },
+  "github:repo:rudekwydra/burnless": {
+    "fingerprint": "62095b62b25aae8ba3c35dbc36ec11693bde6943",
+    "summary_zh": "这是一个名为 burnless 的 Python 仓库，定位为面向多轮 agent 循环的优化工具，强调将原本可能呈 O(N²) 的开销降为 O(N)。项目主打与不同模型提供商无关，利用 prompt caching 等思路降低多轮交互成本，并声称在第 10 轮时可显著节省费用。仓库主题与 agent、LLM、多 agent、prompt engineering 等方向高度相关，适合关注推理链路成本优化的研究者。该项目采用 MIT 许可证，当前星标数较少。",
+    "tldr": "burnless 是一个面向多轮 LLM/agent 交互的 Python 优化项目，重点降低循环调用成本并支持多提供商。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及多轮 agent 系统的计算复杂度、推理成本优化和 prompt 缓存策略。"
   }
 }
