@@ -690,10 +690,10 @@
     "recommendation_reason": "它与科研中关于大模型压缩、量化和高效推理加速的主题直接相关，可用于评估本地部署方案与性能优化方法。"
   },
   "github:repo:flashinfer-ai/flashinfer": {
-    "fingerprint": "afbf95df86e6ba3da9c4ede8aa06883b101ea86e",
-    "summary_zh": "这是一个面向大语言模型推理服务的 CUDA 内核库，重点提供高性能 attention、KV cache 相关算子以及面向 LLM serving 的加速能力。项目支持 Python 接口，并围绕 GPU、JIT、分布式推理和 MoE 等场景进行优化。它适用于需要提升推理吞吐、降低延迟、并在 NVIDIA GPU 上部署大型模型的研究与工程实践。",
-    "tldr": "这是一个用于加速大语言模型推理服务的高性能 CUDA 内核库。",
-    "recommendation_reason": "该仓库直接关联 LLM 推理、attention 加速、GPU 内核优化与分布式推理等科研方向，适合用于研究高效模型服务与系统性能优化。"
+    "fingerprint": "ddaac1fd57ba4574e1325aa96ab359f48e15b01c",
+    "summary_zh": "这是一个面向大语言模型推理服务的高性能内核库，主要用于加速 attention、MoE 等关键算子。项目基于 CUDA 和 Python，适配 NVIDIA GPU，并支持分布式推理与 JIT 相关场景。它显然聚焦于 LLM serving 的性能优化与工程落地，适合关注模型推理加速、显存/吞吐优化及 GPU kernel 设计的研究者。",
+    "tldr": "这是一个用于加速大语言模型推理服务的 CUDA/Python 内核库，重点支持 attention、MoE 和分布式推理。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、GPU 内核优化和分布式系统实现，适合研究高效推理与算子加速。"
   },
   "github:repo:desmondgregarious958/quantumleap---llama.cpp-turboquant": {
     "fingerprint": "0269f91822fc08ee2225ca17cc3a652b42c5a231",
@@ -780,10 +780,10 @@
     "recommendation_reason": "它与科研主题相关，因为它直接涉及本地 AI 推理加速、缓存压缩和预测式解码等可用于模型效率研究的技术。"
   },
   "github:repo:noonghunna/club-3090": {
-    "fingerprint": "9e5e393983f0632bf2b5ca57da35627f1376f669",
-    "summary_zh": "这是一个面向 RTX 3090 显卡部署大语言模型的社区配置仓库，提供了多引擎的服务方案，包括 vLLM、llama.cpp 和 SGLang。仓库强调模型无关性，便于针对不同模型进行统一部署与调优。目前主要提供了 Qwen3.6-27B 在 1 张和 2 张卡上的配置示例。整体上更像是可复用的部署配方集合，而不是单一模型代码项目。",
-    "tldr": "这是一个针对 RTX 3090 上部署和服务 LLM 的多引擎配置仓库，提供了 Qwen3.6-27B 的单卡和双卡示例。",
-    "recommendation_reason": "它与科研主题相关，因为它汇集了在消费级 GPU 上部署大模型的实用配置和工程经验，可用于研究模型推理性能、资源约束下的系统优化与部署方案。"
+    "fingerprint": "3d916029a33e0dc0d6bfaa0eb0adbf034efc222f",
+    "summary_zh": "这是一个面向 RTX 3090 上部署大语言模型的社区配方仓库，重点在于提供可直接参考的服务配置和实践经验。项目支持多种推理引擎，包括 vLLM、llama.cpp 和 SGLang，并强调模型无关性，便于迁移到不同模型与部署场景。当前仓库主要提供 Qwen3.6-27B 在单卡和双卡环境下的配置示例，适合研究和复现实验部署方案。",
+    "tldr": "这是一个提供 RTX 3090 上 LLM 部署配置与实践的开源仓库，覆盖多引擎和多模型场景。",
+    "recommendation_reason": "它与科研主题相关，因为它包含可复现的本地大模型部署配置和多引擎推理实践，便于研究者评估硬件约束下的模型服务方案。"
   },
   "github:repo:dl1683/moonshot-llm-genome": {
     "fingerprint": "8e0efebd3f8641a9ac14b6aa6c256c77a0c5535f",
@@ -858,10 +858,10 @@
     "recommendation_reason": "该仓库与科研主题相关，因为它涉及工业 AI、时序异常检测、预测建模和可部署架构等研究方向。"
   },
   "github:repo:nvidia/tensorrt-llm": {
-    "fingerprint": "b5d64ef920bf4fbfa8b1fea6111707818f0e52f4",
-    "summary_zh": "TensorRT-LLM 是 NVIDIA 开源的高性能大语言模型推理框架，提供易用的 Python API 来定义和部署 LLM。它针对 NVIDIA GPU 做了多种先进优化，目标是在推理阶段提升吞吐、降低延迟并提高资源利用率。项目还包含用于构建 Python 和 C++ 运行时的组件，以更高效地编排推理执行。其主题涵盖 blackwell、cuda、llm-serving、moe 和 pytorch，适合关注大模型部署与加速的研究者。",
-    "tldr": "这是一个面向 NVIDIA GPU 的高性能 LLM 推理与部署框架，强调高效优化和运行时编排。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型推理加速、GPU 系统优化和模型服务化部署，是研究高效 LLM serving 的重要实践项目。"
+    "fingerprint": "f41b2841bd234e64e5acb4271e3ed56bac1cc339",
+    "summary_zh": "TensorRT-LLM 是 NVIDIA 提供的一个面向大语言模型推理的开源项目，提供易用的 Python API 来定义和部署 LLM。它集成了多种先进优化，用于在 NVIDIA GPU 上高效执行推理。项目还包含用于协调推理执行的 Python 和 C++ runtime 组件，适合构建高性能的模型服务与推理系统。",
+    "tldr": "这是一个用于在 NVIDIA GPU 上高效部署和加速大语言模型推理的开源框架。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理优化、GPU 加速和 LLM serving 等关键研究方向。"
   },
   "github:repo:sgl-project/sglang": {
     "fingerprint": "f8b13be826b217b7aee2901b1d2f234c2c6dba2d",
@@ -1086,10 +1086,10 @@
     "recommendation_reason": "它与科研主题相关，因为 CPU 原生语言模型涉及模型推理加速、资源受限环境部署和系统优化等研究方向。"
   },
   "github:repo:basetenlabs/truss": {
-    "fingerprint": "1f37590287195e47c87771f3c9cd3b30fd2b54ab",
-    "summary_zh": "这是一个用于在生产环境中部署和提供 AI/ML 模型服务的开源 Python 仓库，主打“最简单”的模型上线方式。项目面向推理 API、推理服务器和模型封装，适用于 stable-diffusion、whisper、falcon、wizardlm 等多种模型类型。它强调易用性、包装与服务化能力，适合快速把机器学习模型转为可对外提供的在线服务。对于需要研究模型部署、推理系统和模型服务工程化方案的用户，这个仓库具有较强参考价值。",
-    "tldr": "这是一个面向生产环境的开源 Python 模型服务框架，用于快速部署和提供 AI/ML 推理服务。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及机器学习模型部署、推理服务和生产级模型工程实践，可为相关研究提供实现参考。"
+    "fingerprint": "85acdf80fe54cd624a7a9836208e5fd41c26e3c7",
+    "summary_zh": "这是一个用于在生产环境中部署和提供 AI/ML 模型服务的开源 Python 仓库，主打简化模型封装、打包与推理服务流程。项目面向多种模型和场景，包括推理 API、推理服务器以及常见生成式模型的部署。它强调易用性，适合希望快速将机器学习模型上线的开发者和研究团队。仓库具有较高关注度，说明其在模型服务工具链中具有一定影响力。",
+    "tldr": "这是一个面向生产部署的开源 AI/ML 模型服务框架，帮助用户更简单地构建推理 API 和模型服务器。",
+    "recommendation_reason": "该仓库与科研中的模型部署、推理系统和机器学习工程实践直接相关，适合关注模型落地与可复现服务化流程的研究者。"
   },
   "github:repo:toolathlon-agi-autonomy/enhancing-llms": {
     "fingerprint": "64c7e17a8e4e87fa15d099b5298f4b4b8f8245fe",
@@ -1194,10 +1194,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及 AI agent 记忆架构、长期上下文建模、语义检索与知识表示等可用于智能系统研究的核心问题。"
   },
   "github:repo:effortlessmetrics/bitnet-rs": {
-    "fingerprint": "78147a10f1567a8a62c82b3fa835e200ddf8e828",
-    "summary_zh": "这是一个用 Rust 编写的推理引擎，面向 1-bit BitNet 大语言模型，并强调与 GGUF 和 llama.cpp 的兼容性。项目定位于本地推理与模型运行，适合关注低比特量化、推理效率和跨实现互操作性的研究者参考。目前仓库星标较少，说明项目仍较新或关注度有限，但技术方向明确。",
-    "tldr": "这是一个面向 1-bit BitNet LLM 的 Rust 推理引擎，兼容 GGUF 和 llama.cpp。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及低比特大模型推理、模型格式兼容性和高效推理实现，适合研究相关系统与量化方法的工作。"
+    "fingerprint": "a5048f4da81ab451a09fa03ebbc8a5b7516b923e",
+    "summary_zh": "这是一个用 Rust 编写的推理引擎，面向 1-bit BitNet LLM 模型，强调与 GGUF 和 llama.cpp 的兼容性。项目定位于模型推理而非训练，适合关注低比特量化与高效推理实现的研究者。当前仓库热度较低，但主题明确，技术栈清晰。",
+    "tldr": "这是一个用于 1-bit BitNet 大模型推理的 Rust 实现，兼容 GGUF 和 llama.cpp。",
+    "recommendation_reason": "它与科研中低比特量化模型、推理引擎设计和跨格式兼容性评估等主题直接相关。"
   },
   "github:repo:matrixneo76/craft-memory": {
     "fingerprint": "607491a398283eef02f51e43363cd5a4c20410fa",
@@ -1228,5 +1228,83 @@
     "summary_zh": "这是一个名为 burnless 的 Python 仓库，定位为面向多轮 agent 循环的优化工具，强调将原本可能呈 O(N²) 的开销降为 O(N)。项目主打与不同模型提供商无关，利用 prompt caching 等思路降低多轮交互成本，并声称在第 10 轮时可显著节省费用。仓库主题与 agent、LLM、多 agent、prompt engineering 等方向高度相关，适合关注推理链路成本优化的研究者。该项目采用 MIT 许可证，当前星标数较少。",
     "tldr": "burnless 是一个面向多轮 LLM/agent 交互的 Python 优化项目，重点降低循环调用成本并支持多提供商。",
     "recommendation_reason": "它与科研主题相关，因为它直接涉及多轮 agent 系统的计算复杂度、推理成本优化和 prompt 缓存策略。"
+  },
+  "github:repo:hijolk/nexusquant": {
+    "fingerprint": "7d7219f1811b938406770e44386027e94ea6a946",
+    "summary_zh": "这是一个面向大语言模型推理优化的 GitHub 仓库，主打对 KV cache 进行训练无关的压缩，以降低长上下文推理时的显存占用。项目声称可以通过“只需一行代码”的方式将 KV cache 压缩 10 到 33 倍，适用于 llama、mistral 等模型及 transformers 推理场景。仓库标签显示其关注注意力机制、量化、向量量化、token eviction 和内存高效推理等方向。整体上更偏向工程实现与推理加速方法探索，适合研究和复现相关压缩策略。",
+    "tldr": "该仓库提供了一种训练无关的 LLM KV cache 压缩方法，用于显著降低长上下文推理的内存开销。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型推理阶段的缓存压缩、量化与内存效率优化，适合研究长上下文与高效推理方法。"
+  },
+  "github:repo:tobiaszn8972/turboquant-gpu": {
+    "fingerprint": "ccc0a1ff49e0dff16a0e98d5b1e11fdb2d632ff7",
+    "summary_zh": "这是一个面向大语言模型推理的 GPU 项目，核心目标是使用 NVIDIA GPU 上的 cuTile kernels 压缩 KV cache，以提升推理效率。仓库标签显示它涉及 attention、CUDA、PyTorch、Triton、多 GPU、检索和向量数据库等方向，说明其重点在高性能推理与加速实现。项目当前星标数为 0，语言为 Python，适合关注 LLM 推理优化和系统加速的研究者参考。",
+    "tldr": "该仓库提供了一个基于 GPU kernel 的 KV cache 压缩方案，用于提升大模型推理效率。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于大模型推理中的内存与计算优化，涉及 CUDA/Triton 等高性能实现，对研究高效注意力机制和推理加速有参考价值。"
+  },
+  "github:repo:bhzadjnty7/enhancing-large-language-models-llama-qwen-efficiency-through-layer-pruning": {
+    "fingerprint": "fbb5eb108621127090eecde86fc5aae9d8e2fe95",
+    "summary_zh": "该仓库提出了一个用于提升大语言模型推理效率的框架，核心方法是结合层剪枝与 speculative decoding。它分析 Llama 3 和 Qwen 等模型中的冗余层，以构建一个经过裁剪但尽量保持高保真度的“草稿模型”。该草稿模型可作为加速推理的 drafter，用于提升推理速度并尽量减少性能损失。内容以 Jupyter Notebook 形式呈现，适合快速实验和验证。",
+    "tldr": "这是一个通过层剪枝结合 speculative decoding 来加速 Llama/Qwen 等大模型推理的实验性项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型压缩、推理加速和结构优化等可研究方向。"
+  },
+  "github:repo:kavenmartinez1-collab/artifex-assistantv5": {
+    "fingerprint": "7ff82fb2dbc4a814e2d3a596bc3125a152ed9eff",
+    "summary_zh": "这是一个面向本地部署的 AI 助手项目，结合了浏览器端 WebGPU/WGSL 推理、HuggingFace Transformers 和 Ollama。项目重点展示了在有限显存条件下运行较大模型的优化思路，包括 TurboQuant KV cache 压缩、GPTQ INT4 融合反量化以及 BF16/INT4 混合精度方案。它强调可自托管和开源实现，适合关注本地大模型推理效率与显存管理的研究与工程实践。",
+    "tldr": "这是一个聚焦本地大模型推理、显存优化和浏览器端 AI 运行的开源助手项目。",
+    "recommendation_reason": "它与科研主题相关，因为它包含本地大模型推理、量化压缩和显存管理等可用于研究与验证的技术实现。"
+  },
+  "github:repo:privasys/confidential-ai": {
+    "fingerprint": "4c2f94e77fd29c6e19f20f99ae5cee1a6aeba6ca",
+    "summary_zh": "这是一个用 Go 编写的开源仓库，主题是“在机密虚拟机中实现可复现的 LLM 推理”。它强调结合 Intel TDX 与 NVIDIA H100，在受保护的执行环境里运行大语言模型推理流程。仓库当前可见信息较少，但从描述看更偏向于可信执行环境、云端隐私计算和高性能 AI 推理基础设施方向。",
+    "tldr": "该仓库关注在机密虚拟机中安全、可复现地运行 LLM 推理。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及可信执行环境、隐私保护推理和面向大模型的安全计算基础设施，适合关注云安全与隐私机器学习的研究者。"
+  },
+  "github:repo:ericflo/kiln": {
+    "fingerprint": "82e4576e9b216cb62b8e8ea2d1ccdb1bf7c00b06",
+    "summary_zh": "这是一个用 C++ 实现的 GitHub 仓库，定位为单模型 LLM 推理服务器，并支持通过 LoRA 热切换实现在线学习。项目主打“边服务边训练”，即在提供推理服务的同时进行模型增量训练。当前仓库星标数为 0，说明公开关注度较低，但概念上聚焦于推理与在线微调的结合。",
+    "tldr": "一个支持 LoRA 热切换、可边推理边训练的单模型 LLM 服务器项目。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理系统、在线学习和参数高效微调等研究方向。"
+  },
+  "github:repo:avarok-cybersecurity/atlas": {
+    "fingerprint": "2fae26f2a73f091013be7c850640b4c6bff223a1",
+    "summary_zh": "这是一个用 Rust 编写的纯推理引擎仓库，面向大模型推理场景，涉及 CUDA、DGX、LLM inference、speculative decoding、OpenAI API 接口以及 SSM/Mamba/Transformers 等关键词。项目主题显示它关注高性能推理、异构硬件加速和新型模型架构支持，可能适用于研究推理性能优化与系统实现。仓库星标数量不高，说明它更偏向早期或小众实现，但技术栈较集中，具有一定实验和工程研究价值。",
+    "tldr": "这是一个面向大模型推理优化的 Rust 纯推理引擎项目，覆盖 CUDA 加速、推测解码和多种模型架构支持。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于大模型推理系统、加速策略和新型模型架构的工程实现，适合研究推理性能与系统设计。"
+  },
+  "github:repo:ml-cab/juno": {
+    "fingerprint": "26af474a1b617571c8499e3c0491a0729a2f1bd6",
+    "summary_zh": "这是一个名为 JUNO（Java Unified Neural Orchestration）的 GitHub 仓库，主要用 Java 实现，涉及聚类、CPU/GPU 计算、语言模型、机器学习和神经网络等主题。仓库当前星标很少，说明项目可能还处于早期阶段或影响范围有限。其定位更像是一个统一的神经网络编排或实验性框架，适合关注 Java 生态下 AI/ML 工具链的人士查看。",
+    "tldr": "这是一个用 Java 实现、面向神经网络与机器学习编排的早期项目，涉及 CPU/GPU、聚类和语言模型等方向。",
+    "recommendation_reason": "它与科研主题相关，因为它覆盖了机器学习与神经网络基础设施、异构计算和模型编排等研究与工程常见问题。"
+  },
+  "github:repo:pytorch/torchtitan": {
+    "fingerprint": "89e75aa4b3d6bbc219f8575439ccccf3a1ab7aa2",
+    "summary_zh": "这是一个由 PyTorch 官方维护的开源仓库，提供用于训练生成式 AI 模型的原生平台。项目语言为 Python，说明其主要面向深度学习训练流程的开发与集成。根据描述，它更偏向于大规模模型训练基础设施和工程化实践，适合研究者关注训练框架、性能优化与模型部署前的训练环节。仓库当前具有较高关注度，反映出其在相关社区中的实用性和影响力。",
+    "tldr": "这是一个面向生成式 AI 模型训练的 PyTorch 原生平台仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及生成式模型训练平台与深度学习基础设施，适合研究模型训练方法、系统优化和工程实现。"
+  },
+  "github:repo:toddbilldon-glitch/llm-adaptive-learning": {
+    "fingerprint": "d8e0ba01548588a4817b9f45d1183f6b70b013e0",
+    "summary_zh": "这是一个 GitHub 上的 Python 仓库，当前星标数为 0，整体看起来是一个较新的或曝光度较低的项目。仓库名称显示其主题与“LLM 自适应学习”相关，可能围绕大语言模型在个性化学习、动态调整策略或学习过程优化方面的实现展开。由于提供的信息有限，无法进一步确认其具体功能、实验设置或代码成熟度。",
+    "tldr": "这是一个与大语言模型自适应学习相关的 Python 仓库，可能对研究个性化学习和智能教育系统有参考价值。",
+    "recommendation_reason": "它与大语言模型在自适应学习和个性化教育方向的研究主题相关，可能包含可复用的实现思路或实验框架。"
+  },
+  "github:repo:devxt-llc/ezlocalai": {
+    "fingerprint": "a59e3483756fe11a72c08894deed6dfa3720235f",
+    "summary_zh": "这是一个名为 ezlocalai 的开源 GitHub 仓库，定位为“易于部署的本地人工智能服务器”，并提供类似 OpenAI 的接口端点，便于本地调用大模型能力。项目使用 Python 实现，标签显示其与 AI、CUDA、llamacpp 和本地推理相关，说明它面向本地部署与加速推理场景。仓库当前星标数为 94，表明有一定社区关注度。整体上，它更偏向于本地 AI 服务搭建与推理基础设施，而非单一模型或算法研究。",
+    "tldr": "ezlocalai 是一个用 Python 实现的本地 AI 服务器项目，支持 OpenAI 风格接口，适合本地部署与推理集成。",
+    "recommendation_reason": "该仓库与科研中的本地大模型部署、推理服务接口标准化和加速计算实践相关，适合作为实验环境或原型系统参考。"
+  },
+  "github:repo:crownelius/fant3": {
+    "fingerprint": "19740e6e64a970bfeedc53892263d2881ffaf89e",
+    "summary_zh": "这是一个 GitHub 仓库，使用 Python 开发，项目名称为 fant3。原始摘录显示其主题与“SANDy | Spinor Atomic Neural Design”相关，暗示可能涉及神经网络设计或相关计算方法，但现有信息非常有限。仓库当前星标数为 0，说明其公开关注度较低。由于缺少 README、代码结构和具体功能描述，无法进一步确认其研究用途和技术细节。",
+    "tldr": "这是一个与神经网络设计相关、但信息较少的 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为其标题和描述暗示可能涉及神经网络或计算建模方法，适合进一步筛选相关研究代码。"
+  },
+  "github:repo:swiftwing21/helix-context": {
+    "fingerprint": "d040823d1680604a5af8275730a7e9250536f44c",
+    "summary_zh": "该仓库介绍了一个面向智能体的知识索引方案，主打不依赖嵌入模型、而是使用基于 IDF 加权的检索来实现语义/相关内容检索。项目采用 SQLite 作为存储，可在普通消费级硬件上处理 17K+ 条目，并支持 5 倍压缩，强调轻量化和本地可运行。它与 MCP、RAG、向量检索等方向相关，但更突出的是“无需 embedding”的检索管线设计与知识库索引实现。整体上适合关注高效检索、资源受限环境下知识管理和智能体上下文构建的研究者。",
+    "tldr": "这是一个面向智能体的轻量级知识索引与检索仓库，强调基于 IDF 的无嵌入检索和 SQLite 本地高效存储。",
+    "recommendation_reason": "该项目与科研中信息检索、RAG 管线优化以及资源受限场景下的知识表示与检索方法研究直接相关。"
   }
 }
