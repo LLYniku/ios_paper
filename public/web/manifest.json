@@ -1,0 +1,19 @@
+{
+  "name": "每日论文 Web",
+  "short_name": "每日论文",
+  "description": "PaperDaily 的长期可用 Web App 版本。",
+  "lang": "zh-Hans",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2e8",
+  "theme_color": "#f6f2e8",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

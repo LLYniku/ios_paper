@@ -73,6 +73,10 @@ def _language_label(language_code: str) -> str:
     return language_code
 
 
+def _contains_chinese(text: str) -> bool:
+    return re.search(r"[\u4e00-\u9fff]", text) is not None
+
+
 class JSONFeedExporter:
     def __init__(
         self,
@@ -170,6 +174,8 @@ class JSONFeedExporter:
                 ),
                 user_prompt=prompt,
             )
+            if not content.strip():
+                raise ValueError("LLM returned empty app summary content")
             payload = self._extract_json_object(content)
             summary = str(payload.get("summary_zh") or "").strip() or None
             tldr = str(payload.get("tldr") or "").strip() or paper.tldr or None
@@ -206,8 +212,11 @@ class JSONFeedExporter:
             keywords = words[:4]
         focus = "、".join((paper.categories or [paper.source])[:2])
         recommendation_reason = f"推荐理由：这篇论文与您近期关注的{focus}主题相近，且在今日候选中相关性较高。"
+        summary_zh = paper.summary_zh
+        if not summary_zh and paper.tldr and _contains_chinese(paper.tldr):
+            summary_zh = paper.tldr
         return {
-            "summary_zh": paper.summary_zh,
+            "summary_zh": summary_zh,
             "tldr": paper.tldr or (paper.abstract[:160] if paper.abstract else None),
             "recommendation_reason": paper.recommendation_reason or recommendation_reason,
             "keywords": keywords,

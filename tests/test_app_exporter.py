@@ -88,6 +88,18 @@ def test_exporter_handles_empty_papers(config, tmp_path):
     assert latest["stats"]["llm_summary_count"] == 0
 
 
+def test_fallback_summary_uses_chinese_tldr(config, tmp_path):
+    exporter = _make_exporter(config, tmp_path)
+    paper = make_sample_paper()
+    paper.summary_zh = None
+    paper.tldr = "这是一句中文 TL;DR，用于在 JSON 总结失败时保底展示。"
+
+    exporter.export([paper], total_candidates=1, generated_at=datetime(2026, 4, 22, tzinfo=UTC))
+
+    latest = json.loads((tmp_path / "latest.json").read_text(encoding="utf-8"))
+    assert latest["papers"][0]["summary_zh"] == paper.tldr
+
+
 def test_manifest_updates_with_new_archive_entries(config, tmp_path):
     exporter = _make_exporter(config, tmp_path)
     paper = make_sample_paper(url="https://arxiv.org/abs/2501.00001")
