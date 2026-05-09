@@ -174,10 +174,10 @@
     "recommendation_reason": "它与大模型训练、模型迁移和框架互操作研究直接相关，适合用于比较不同训练生态下的实现与权重转换方案。"
   },
   "github:repo:blaizzy/mlx-vlm": {
-    "fingerprint": "f077f3a80848964c86153c9d91fe564a32c99452",
-    "summary_zh": "这是一个面向 Apple Silicon Mac 的视觉语言模型工具包，基于 MLX 提供 VLM 的推理与微调能力。项目支持多种主流视觉语言模型与相关框架，适合在本地环境中进行实验和部署。其定位偏向本地 AI 研究与开发，强调在 Mac 上高效运行。",
-    "tldr": "这是一个用于在 Mac（尤其是 Apple Silicon）上运行和微调视觉语言模型的 MLX 工具包。",
-    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上进行视觉语言模型推理和微调的实用基础设施，适合相关算法与应用研究。"
+    "fingerprint": "92238354a43c99c187519836ac3b3979f76edd74",
+    "summary_zh": "这是一个面向 Apple Silicon Mac 的视觉语言模型（VLM）推理与微调工具包，基于 MLX 框架实现。本项目支持多种主流 VLM 架构与模型生态，包括 LLaVA、Idefics、Florence2、Molmo、Pixtral、PaliGemma 等，适合本地 AI 场景。其重点在于利用 Mac 设备进行高效的本地训练与推理，面向研究与开发者使用。仓库热度较高，说明社区关注度和实用性较强。",
+    "tldr": "这是一个可在 Mac 上用 MLX 进行视觉语言模型推理和微调的开源工具包，支持多种主流 VLM。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上复现、实验和微调视觉语言模型的实用框架，适合模型评测与方法探索。"
   },
   "github:repo:pestopoppa/epyc-orchestrator": {
     "fingerprint": "42d712dceddafc01104215c140248108b441b987",
@@ -714,10 +714,10 @@
     "recommendation_reason": "它与科研主题相关，因为涉及向量压缩、KV-cache 优化和大模型推理加速等可复现实验性基础技术。"
   },
   "github:repo:chopratejas/headroom": {
-    "fingerprint": "1518f601d894358d18a6ad2590ea64ac8309b317",
-    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是通过压缩、裁剪和代理机制来提升上下文窗口利用效率。仓库聚焦于 context-engineering、token 优化、RAG、代理和多模型接入等能力，适用于需要管理长上下文的 AI 应用开发。项目使用 Python 实现，并与 FastAPI、LangChain、MCP、OpenAI、Anthropic 等生态相关。整体来看，它更偏向 LLM 应用基础设施层，而不是单一模型或单一任务应用。",
-    "tldr": "这是一个帮助 LLM 应用进行上下文压缩与 token 优化的 Python 基础设施项目。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及大模型上下文管理、压缩与 token 优化等可用于研究高效 LLM 系统设计的问题。"
+    "fingerprint": "fcb5d228cdca80ec9ee0aa487b0309f66a35dbbe",
+    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是帮助控制和压缩提示上下文，提升上下文窗口利用率与推理效率。项目围绕 agent、RAG、token 优化、context engineering 等场景，兼容 Anthropic、OpenAI 等生态，并提供 Python/FastAPI 相关实现。它适合需要在实际应用中降低 token 成本、优化上下文传递和提升 LLM 系统性能的开发者与研究者。",
+    "tldr": "这是一个用于优化 LLM 上下文、压缩 token 并提升应用效率的 Python 开源项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型的上下文工程、token 优化与检索增强生成等关键研究方向。"
   },
   "github:repo:iamthegreatdestroyer/sigmalang": {
     "fingerprint": "26dd1e044e28bc38f0df664a8db5613bcd7024ea",
@@ -780,10 +780,10 @@
     "recommendation_reason": "它与科研主题相关，因为它直接涉及本地 AI 推理加速、缓存压缩和预测式解码等可用于模型效率研究的技术。"
   },
   "github:repo:noonghunna/club-3090": {
-    "fingerprint": "3d916029a33e0dc0d6bfaa0eb0adbf034efc222f",
-    "summary_zh": "这是一个面向 RTX 3090 上部署大语言模型的社区配方仓库，重点在于提供可直接参考的服务配置和实践经验。项目支持多种推理引擎，包括 vLLM、llama.cpp 和 SGLang，并强调模型无关性，便于迁移到不同模型与部署场景。当前仓库主要提供 Qwen3.6-27B 在单卡和双卡环境下的配置示例，适合研究和复现实验部署方案。",
-    "tldr": "这是一个提供 RTX 3090 上 LLM 部署配置与实践的开源仓库，覆盖多引擎和多模型场景。",
-    "recommendation_reason": "它与科研主题相关，因为它包含可复现的本地大模型部署配置和多引擎推理实践，便于研究者评估硬件约束下的模型服务方案。"
+    "fingerprint": "283e1163f76c6d7b5bf846e21960c74ed5f47ea5",
+    "summary_zh": "这是一个面向 RTX 3090 显卡部署 LLM 的社区配方仓库，重点提供可直接复用的推理与服务配置。项目支持多种推理引擎，包括 vLLM、llama.cpp 和 SGLang，并强调模型无关的部署方式。当前仓库主要提供 Qwen3.6-27B 在单卡和双卡 3090 上的配置示例，适合参考不同引擎下的性能与部署实践。",
+    "tldr": "这是一个为 RTX 3090 上部署和服务大模型提供多引擎配置参考的实用仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它汇集了在消费级 GPU 上进行大模型推理部署的可复现实践，有助于研究者比较不同推理引擎与硬件配置的效果。"
   },
   "github:repo:dl1683/moonshot-llm-genome": {
     "fingerprint": "8e0efebd3f8641a9ac14b6aa6c256c77a0c5535f",
@@ -1206,10 +1206,10 @@
     "recommendation_reason": "它可能涉及 Python 中的记忆管理、状态保存或相关工具实现，可为研究类似系统设计与实现方式提供参考。"
   },
   "github:repo:mudler/localai": {
-    "fingerprint": "8675e8e6b61b5a57e0334ccea298452bf270eefd",
-    "summary_zh": "LocalAI 是一个开源 AI 引擎，主打在任意硬件上运行多种模型，包括大语言模型、视觉、语音、图像和视频等能力。它强调无需 GPU 也能部署，并支持分布式、去中心化以及与代理、API、MCP 等生态相关的集成。项目使用 Go 开发，覆盖文本生成、语音合成、图像生成、目标检测和重排序等多类任务。",
-    "tldr": "LocalAI 提供了一个可在普通硬件上运行多模态模型的开源 AI 基础设施。",
-    "recommendation_reason": "该仓库与科研主题相关，因为它涉及可复现的本地模型部署、多模态推理和分布式 AI 基础设施，适合研究模型服务化与边缘/低资源环境推理。"
+    "fingerprint": "a68557d6eab3d4305f7b8e1e2dfc59b1e0d7e13d",
+    "summary_zh": "LocalAI 是一个开源 AI 推理引擎，主打在任意硬件上运行多种模型，包括大语言模型、视觉、语音、图像和视频等能力。项目强调无需 GPU 即可部署，并支持分布式、去中心化以及多种 AI 相关接口与任务类型。其应用场景覆盖文本生成、语音合成、图像生成、目标检测、重排序等，适合作为本地或私有化 AI 服务基础设施。",
+    "tldr": "LocalAI 提供了一个可在通用硬件上运行多模态模型的开源 AI 引擎，便于构建本地化和私有化的 AI 应用。",
+    "recommendation_reason": "该仓库与科研主题相关，因为它可用于低成本搭建可复现的本地 AI 推理与多模态实验环境，支持研究者评估模型部署、分布式架构和边缘计算场景。"
   },
   "github:repo:djfeu/llmcode": {
     "fingerprint": "73e74747d9cb223d66c77b460461a8af6b9efcdd",
@@ -1260,10 +1260,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及可信执行环境、隐私保护推理和面向大模型的安全计算基础设施，适合关注云安全与隐私机器学习的研究者。"
   },
   "github:repo:ericflo/kiln": {
-    "fingerprint": "82e4576e9b216cb62b8e8ea2d1ccdb1bf7c00b06",
-    "summary_zh": "这是一个用 C++ 实现的 GitHub 仓库，定位为单模型 LLM 推理服务器，并支持通过 LoRA 热切换实现在线学习。项目主打“边服务边训练”，即在提供推理服务的同时进行模型增量训练。当前仓库星标数为 0，说明公开关注度较低，但概念上聚焦于推理与在线微调的结合。",
-    "tldr": "一个支持 LoRA 热切换、可边推理边训练的单模型 LLM 服务器项目。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理系统、在线学习和参数高效微调等研究方向。"
+    "fingerprint": "ca266302a4443302abf53edd25337ccdb4d520d9",
+    "summary_zh": "这是一个用 C++ 实现的开源仓库，目标是提供单模型 LLM 推理服务，并支持通过 LoRA 热切换实现在线学习。项目强调“边服务边训练”的工作流，说明它关注推理部署与持续微调的结合。当前仓库星标较少，表明它可能还处于早期阶段或受众较小。整体上，它更像是一个面向实验和原型验证的基础设施项目。",
+    "tldr": "这是一个支持 LoRA 热切换与在线学习的单模型 LLM 推理服务器项目。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理、在线学习和参数高效微调等方向，适合研究低延迟训练部署一体化系统。"
   },
   "github:repo:avarok-cybersecurity/atlas": {
     "fingerprint": "86d6806420dbe6a09faffaf0005bcab62eba71a7",
@@ -1338,10 +1338,10 @@
     "recommendation_reason": "它与科研中的大模型系统、自动化部署和本地推理基础设施研究相关，适合用于考察 LLM 工具链编排思路。"
   },
   "github:repo:raullenchai/rapid-mlx": {
-    "fingerprint": "585fca57515a51dcc3ac1acbc7499a2397e8904e",
-    "summary_zh": "这是一个面向 Apple Silicon 的本地 AI 推理引擎项目，主打低延迟和高吞吐，声称在速度上显著优于 Ollama，并支持缓存、推理分离和云路由等能力。它提供 OpenAI API 兼容接口，可作为现有工具链的替代后端使用。项目还强调工具调用支持，并兼容 Claude Code、Cursor 和 Aider 等开发环境。",
-    "tldr": "这是一个面向 Mac Apple Silicon 的高性能本地大模型推理与 OpenAI 兼容替代方案。",
-    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理性能优化、接口兼容性和工具调用支持，这些都是研究和评估 LLM 系统部署的重要方向。"
+    "fingerprint": "e7a2b9551a897a68074702d0552b230b010b8d38",
+    "summary_zh": "Rapid-MLX 是一个面向 Apple Silicon 的本地 AI 推理引擎，主打更快的推理速度、较低的缓存首 token 延迟以及与 OpenAI API 兼容的替代能力。它支持工具调用、提示缓存、推理分离和云路由，并可与 Claude Code、Cursor、Aider 等常见开发工具集成。该仓库主要以 Python 实现，适用于在 macOS 和 M 系列芯片上部署本地大模型服务。",
+    "tldr": "这是一个针对 Apple Silicon 的高性能本地 LLM 推理与 API 兼容服务项目。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理优化、工具调用支持和跨接口兼容性，便于研究者评估和复现实验环境中的部署性能。"
   },
   "github:repo:acmarcone86/artseek": {
     "fingerprint": "3e6266d5a743796335034ad260c2cc86e245f2fc",
@@ -1474,5 +1474,65 @@
     "summary_zh": "这是一个用 Go 编写的 GitHub 仓库，定位为面向代码与工作任务的 AI agent harness 系统，强调自动化、异步、并发和高效率。项目标签覆盖 agent、LLM、Claude、GPT、CLI、worker 等，说明它主要面向命令行环境中的智能代理编排与执行。仓库当前星标较少，属于较新的轻量级工具型项目。整体上，它更像是一个用于搭建和管理 AI 编程/任务代理的基础框架或实验性实现。",
     "tldr": "这是一个用 Go 实现的 AI 代理执行框架，主打自动化、并发和高效的代码/工作流处理。",
     "recommendation_reason": "它与科研主题相关，因为它涉及 AI agent 编排、LLM 工具链和并发执行机制，适合研究智能代理系统与自动化工作流。"
+  },
+  "github:repo:jagmarques/nexusquant": {
+    "fingerprint": "077c61759104de2a1e59c54b91cae351196a89bc",
+    "summary_zh": "这是一个面向大语言模型推理阶段的开源仓库，核心目标是对 KV cache 进行无训练压缩，以降低长上下文推理的显存占用。项目结合了 E8 lattice 量化与注意力感知的 token 淘汰策略，据称可实现 10 到 33 倍压缩，并强调只需一行代码即可集成。它主要适用于 Llama、Mistral 等基于 Transformer 的模型，以及需要内存高效长上下文推理的场景。",
+    "tldr": "该仓库提供一种无需训练即可显著压缩 LLM KV cache 的推理优化方案，适合长上下文和低显存部署。",
+    "recommendation_reason": "该项目与科研中高效推理、长上下文建模和量化压缩方法研究直接相关，可作为 KV cache 压缩与注意力驱动 token 剔除的实践参考。"
+  },
+  "github:repo:boyazzam/kvcache-autotune": {
+    "fingerprint": "e8c9f62f3d951ed45506494772299a3d98b4bf0c",
+    "summary_zh": "这是一个面向大语言模型推理优化的 Python 仓库，核心目标是通过自动调优提升 KV Cache 的性能表现。项目强调在资源管理和推理速度上的改进，适用于基于 Hugging Face、PyTorch 和 Transformers 的 LLM 应用。其主题覆盖深度学习、NLP、推理优化与机器学习，表明它聚焦于模型部署阶段的效率提升。当前仓库星标数为 0，说明它可能较新或尚未广泛传播。",
+    "tldr": "这是一个用于自动调优 LLM KV Cache、提升推理效率的 Python 优化项目。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型推理加速与缓存优化，这类方法对高效部署和系统性能研究很有参考价值。"
+  },
+  "github:repo:suarezpm/contextforge": {
+    "fingerprint": "fdcc6e2defdd17579f8afdf0fed62f452465c2db",
+    "summary_zh": "这是一个面向多智能体大语言模型系统的共享上下文编译器项目，核心目标是优化上下文管理与资源利用。项目强调可以显著降低显存占用，摘录中提到在 AMD MI300X 上可减少 68% 的 VRAM。仓库使用 Python 开发，当前星标数为 0。整体看，它更偏向于提升 LLM 推理或协作框架的系统效率。",
+    "tldr": "这是一个用于多智能体 LLM 系统的共享上下文优化工具，主打降低显存占用并提升效率。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及多智能体大模型系统的上下文压缩、资源优化和推理效率改进。"
+  },
+  "github:repo:monitoodev/indiedroid-nova-llm": {
+    "fingerprint": "cb8d4feee4308c9caf549bbb60f66e58df06a054",
+    "summary_zh": "该仓库用于在 Indiedroid Nova（RK3588 NPU）上对本地大语言模型进行基准测试，重点是离线、端侧推理能力评估。内容涉及 Llama 3.1、DeepSeek、Qwen 等模型，以及 RKNN、Rockchip、arm64 等相关技术栈。项目宣称在该硬件上可获得比 Raspberry Pi 5 更好的性能表现，适合关注边缘 AI 与单板机推理优化的研究。仓库语言为 Python，当前热度较低。",
+    "tldr": "这是一个面向 RK3588 端侧设备的本地 LLM 基准测试仓库，用于评估边缘推理性能。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及端侧大模型推理、NPU 加速和边缘计算性能评测，可为相关实验与硬件选型提供参考。"
+  },
+  "github:repo:jjang-ai/vmlx": {
+    "fingerprint": "201e0c7fd7f18ccfb674e1131b1cd9c726609d3b",
+    "summary_zh": "这是一个名为 vMLX 的 Python 仓库，面向 MLX 生态下的本地大模型推理与服务能力增强。其重点包括 KV cache 压缩、复用、量化、前缀缓存、分页缓存和持久化记忆等优化方向，并提到可支持 OpenAI/Anthropic 接口以及 MLX Studio 相关能力。项目标签显示它还与 MCP server、llm、macbook、本地部署和代理式应用场景相关，说明它更偏向工程化的高效推理基础设施。",
+    "tldr": "vMLX 是一个聚焦 MLX 本地大模型推理与 KV cache 优化的 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型推理加速、缓存优化和本地部署等可用于系统研究与性能实验的基础技术。"
+  },
+  "github:repo:searchsavior/openarc": {
+    "fingerprint": "1105582593ff5299c72d9126c0c9ab944bbb9e52",
+    "summary_zh": "这是一个面向 Intel 设备的推理引擎项目，目标是通过 OpenAI 兼容接口提供模型服务。它支持多类模型推理，包括 LLM、VLM、Whisper、Kokoro-TTS、Embedding 和 Rerank 等，并结合了 FastAPI、OpenVINO 相关工具链与 Transformers 生态。项目以 Python 实现，定位于本地/边缘侧高效部署与统一推理服务。",
+    "tldr": "这是一个面向 Intel 硬件、支持多种模型并提供 OpenAI 兼容接口的 Python 推理引擎仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及推理引擎、模型部署与加速等基础设施能力，适合研究高效推理和多模型服务框架。"
+  },
+  "github:repo:jjang-ai/jangq": {
+    "fingerprint": "62d533217553365ee3f2ffdcca3f33b35c11e2f0",
+    "summary_zh": "这是一个面向 Apple Silicon 的 Python 仓库，核心目标是把 GGUF 模型用于 MLX 生态，并要求配合 JANG_Q runtime 才能运行。项目主打自适应混合精度量化与运行时支持，围绕 LLM、llamacpp、MLX/MLXLLM 等方向展开。它与量化、模型推理加速和端侧大模型部署相关，标签也显示其关注 Apple Silicon 场景下的优化。仓库当前有一定关注度，适合检索与量化推理、模型压缩和部署实践相关的研究资料。",
+    "tldr": "这是一个面向 Apple Silicon 的 GGUF/MLX 量化与推理项目，重点是自适应混合精度量化和运行时支持。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型量化、推理加速和端侧部署等可用于研究与实验的技术方向。"
+  },
+  "github:repo:gavin-qiao/vserve": {
+    "fingerprint": "a831f6e9ae0e7a76b91645e622c4f47bf94b4bef",
+    "summary_zh": "这是一个用于在 GPU 工作站上管理 vLLM 推理的命令行工具，支持模型下载、参数调优、服务部署以及风扇控制等功能。项目面向本地/工作站环境下的 LLM 推理运维，强调通过 CLI 简化 GPU 资源与推理流程管理。它使用 Python 开发，当前星标较少，属于较新的工具型仓库。整体上更偏向基础设施与推理工程场景，而非模型训练本身。",
+    "tldr": "这是一个面向 GPU 工作站的 vLLM 推理管理 CLI 工具，覆盖下载、调参、部署和风扇控制。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 LLM 推理部署、GPU 资源管理和实验环境自动化，这些都是研究中常见的基础设施需求。"
+  },
+  "github:repo:juyterman1000/entroly": {
+    "fingerprint": "81262b4d9ef4b1c643d12643053ce7b5024be040",
+    "summary_zh": "这个仓库提供一个名为 Entroly-Daemon 的工具，主打将超大规模代码仓库压缩为更精炼的上下文，以便在 AI 编程助手和开发工具中高效使用。其核心卖点是显著减少 token 消耗，同时尽量保持对代码库关键信息的准确理解，适用于 Cursor、Claude Code、GPT 等环境。项目还强调与 MCP、RAG、agent 工作流和 token 优化相关的集成能力，并以 Python 实现。整体来看，它关注的是面向大模型的代码库上下文管理与开发效率提升。",
+    "tldr": "这是一个面向 AI 编程助手的代码仓库压缩与上下文优化工具，旨在减少 token 成本并提升大模型处理大型项目的效率。",
+    "recommendation_reason": "该项目与科研中的大模型上下文压缩、检索增强生成和智能体开发工具研究直接相关，适合关注 AI 辅助编程与 token 优化的研究者。"
+  },
+  "github:repo:mahb97/wake2vec": {
+    "fingerprint": "bf912cd58cb0c788130eec419bf026518308e971",
+    "summary_zh": "这是一个名为 Wake2vec 的 GitHub 代码仓库，主题集中在数字人文、词向量/嵌入、语言模型与 LoRA 等 NLP 技术。仓库描述强调通过“embedding surgery”和 Wake 词汇来实现对某种文学风格的可控迁移，说明其关注文本风格建模与生成控制。项目语言为 Python，目前星标较少，可能处于实验性或研究原型阶段。整体上，它更像是一个结合文学分析与生成式模型的探索性工具或方法实现。",
+    "tldr": "这是一个用嵌入编辑和词表控制来实现文学风格迁移的 Python 研究型仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及数字人文、嵌入表示和可控文本风格迁移等可用于语言研究与生成模型实验的技术。"
   }
 }
