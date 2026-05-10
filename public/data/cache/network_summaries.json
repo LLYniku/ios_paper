@@ -174,10 +174,10 @@
     "recommendation_reason": "它与大模型训练、模型迁移和框架互操作研究直接相关，适合用于比较不同训练生态下的实现与权重转换方案。"
   },
   "github:repo:blaizzy/mlx-vlm": {
-    "fingerprint": "92238354a43c99c187519836ac3b3979f76edd74",
-    "summary_zh": "这是一个面向 Apple Silicon Mac 的视觉语言模型（VLM）推理与微调工具包，基于 MLX 框架实现。本项目支持多种主流 VLM 架构与模型生态，包括 LLaVA、Idefics、Florence2、Molmo、Pixtral、PaliGemma 等，适合本地 AI 场景。其重点在于利用 Mac 设备进行高效的本地训练与推理，面向研究与开发者使用。仓库热度较高，说明社区关注度和实用性较强。",
-    "tldr": "这是一个可在 Mac 上用 MLX 进行视觉语言模型推理和微调的开源工具包，支持多种主流 VLM。",
-    "recommendation_reason": "它与科研主题相关，因为它提供了在本地硬件上复现、实验和微调视觉语言模型的实用框架，适合模型评测与方法探索。"
+    "fingerprint": "0d5301b4bd4d071d85c7f221f9614e28ae7ce0ed",
+    "summary_zh": "这是一个面向苹果芯片 Mac 的视觉语言模型（VLM）工具包，基于 MLX 提供模型推理与微调能力。项目支持多种 VLM 架构与本地 AI 使用场景，适合在本地环境中进行多模态模型实验。其主题涵盖 vision-language-model、vision-transformer 以及若干主流 VLM 相关模型。",
+    "tldr": "这是一个可在 Mac 上用 MLX 进行视觉语言模型推理和微调的开源工具包。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了本地多模态模型的推理与微调框架，便于研究者开展视觉语言模型实验与原型验证。"
   },
   "github:repo:pestopoppa/epyc-orchestrator": {
     "fingerprint": "42d712dceddafc01104215c140248108b441b987",
@@ -780,10 +780,10 @@
     "recommendation_reason": "它与科研主题相关，因为它直接涉及本地 AI 推理加速、缓存压缩和预测式解码等可用于模型效率研究的技术。"
   },
   "github:repo:noonghunna/club-3090": {
-    "fingerprint": "283e1163f76c6d7b5bf846e21960c74ed5f47ea5",
-    "summary_zh": "这是一个面向 RTX 3090 显卡部署 LLM 的社区配方仓库，重点提供可直接复用的推理与服务配置。项目支持多种推理引擎，包括 vLLM、llama.cpp 和 SGLang，并强调模型无关的部署方式。当前仓库主要提供 Qwen3.6-27B 在单卡和双卡 3090 上的配置示例，适合参考不同引擎下的性能与部署实践。",
-    "tldr": "这是一个为 RTX 3090 上部署和服务大模型提供多引擎配置参考的实用仓库。",
-    "recommendation_reason": "它与科研主题相关，因为它汇集了在消费级 GPU 上进行大模型推理部署的可复现实践，有助于研究者比较不同推理引擎与硬件配置的效果。"
+    "fingerprint": "819dbfbcbb3fe2740598272643c05acb2041ce8b",
+    "summary_zh": "这是一个面向 RTX 3090 的 LLM 部署配方集合，提供了社区整理的推理与服务配置。项目强调多引擎支持，包括 vLLM、llama.cpp 和 SGLang，并尽量做到模型无关。当前内容重点覆盖 Qwen3.6-27B 在单卡和双卡环境下的配置，适合参考本地大模型部署方案。",
+    "tldr": "这是一个针对 RTX 3090 上部署和服务大模型的多引擎配置仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它汇集了本地大模型推理部署的实践配置，可用于研究高效推理、硬件受限环境下的模型服务和多引擎对比。"
   },
   "github:repo:dl1683/moonshot-llm-genome": {
     "fingerprint": "8e0efebd3f8641a9ac14b6aa6c256c77a0c5535f",
@@ -1534,5 +1534,107 @@
     "summary_zh": "这是一个名为 Wake2vec 的 GitHub 代码仓库，主题集中在数字人文、词向量/嵌入、语言模型与 LoRA 等 NLP 技术。仓库描述强调通过“embedding surgery”和 Wake 词汇来实现对某种文学风格的可控迁移，说明其关注文本风格建模与生成控制。项目语言为 Python，目前星标较少，可能处于实验性或研究原型阶段。整体上，它更像是一个结合文学分析与生成式模型的探索性工具或方法实现。",
     "tldr": "这是一个用嵌入编辑和词表控制来实现文学风格迁移的 Python 研究型仓库。",
     "recommendation_reason": "它与科研主题相关，因为它涉及数字人文、嵌入表示和可控文本风格迁移等可用于语言研究与生成模型实验的技术。"
+  },
+  "github:repo:butterwecksolutions/vsqz": {
+    "fingerprint": "1c5ce3eab5462b234ef2532d8ed0593c7324cf63",
+    "summary_zh": "这是一个名为 vsqz（VRAMSqueeze）的 Python 仓库，面向 AI 模型的显存与文件压缩优化。其主题标签显示它与 CUDA、PyTorch、Hugging Face、llama-cpp、GGUF、LoRA/微调和 OOM 缓解等场景相关。整体上，它更偏向于降低模型推理或训练过程中的显存占用，并提升资源受限环境下的可用性。当前仓库星标较少，说明它可能还处于较早期或较小众的使用阶段。",
+    "tldr": "这是一个用于 AI 模型显存与文件压缩优化的 Python 仓库，适合关注低显存部署、模型压缩和微调效率的研究者。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及模型压缩、显存优化和高效微调等可复现实验问题，适合研究资源受限条件下的大模型训练与推理。"
+  },
+  "github:repo:szibis/mlx-flash": {
+    "fingerprint": "e0e7b22c048b02825078c9d91886b73a3ac02ea5",
+    "summary_zh": "这是一个面向 Apple Silicon 的 MoE/LLM 推理优化仓库，目标是在 Mac 内存有限的情况下尽可能高效地运行超大模型。项目强调专家缓存、推测执行、SSD 流式加载等多种技术，并结合 MLX、Metal GPU、量化等手段提升推理性能。它同时覆盖了内存优化和推理加速两个方向，适合研究模型部署与系统级优化的用户参考。由于内容聚焦于前沿推理优化方法，具有较强的实验与工程研究价值。",
+    "tldr": "该仓库提供了在 Apple Silicon 上以多种优化技术高效运行大型 MoE/LLM 的实现与实验性方案。",
+    "recommendation_reason": "它与科研主题相关，因为它汇集了 MoE 推理、内存优化和加速执行等多种研究型方法，适合用于模型部署与系统优化研究参考。"
+  },
+  "github:repo:pranavshashidhara/llm-orchestration-stack": {
+    "fingerprint": "2ee483c5f0c73ebd1a664028cfaad70599449b53",
+    "summary_zh": "这是一个面向大语言模型编排与部署的端到端项目，展示了如何使用 QLoRA、4-bit 量化对 Llama-3.1 8B-Instruct 进行微调，并将其用于 SQL 生成任务。项目强调内存效率和高吞吐推理，支持多 GPU 场景下的推理加速。它还结合 vLLM 和 HuggingFace Hub，实现较接近生产环境的模型部署流程。整体内容以 Jupyter Notebook 形式呈现，更适合实验复现与流程演示。",
+    "tldr": "该仓库演示了一个面向 SQL 生成的高效 LLM 微调与部署流程，覆盖量化、微调、多 GPU 推理和生产化发布。",
+    "recommendation_reason": "该项目与科研中的大模型训练优化、推理加速和系统部署研究直接相关，可作为实验复现与工程实现参考。"
+  },
+  "github:repo:suarezpm/apohara_context_forge": {
+    "fingerprint": "d7e31608be618effccb20809a396ab2e736873c4",
+    "summary_zh": "这是一个面向多智能体大模型系统的共享上下文编译器项目，目标是通过上下文复用与编译优化来降低运行时资源开销。项目描述强调其可将 AMD MI300X 上的 VRAM 使用降低 68%，表明它重点关注高效内存管理与推理性能优化。仓库使用 Python 实现，目前星标数为 0。整体上看，它更偏向基础设施与系统优化方向，适合研究多智能体 LLM 的上下文管理和资源调度。",
+    "tldr": "这是一个用于多智能体 LLM 共享上下文优化的 Python 仓库，主打显著降低 VRAM 占用。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及多智能体大模型系统的上下文编译、内存优化和推理效率提升。"
+  },
+  "github:repo:shootthesound/torch-nvenc-compress": {
+    "fingerprint": "daf913c3bc0267a6d9b065d9b684f649d847055a",
+    "summary_zh": "这是一个面向 PyTorch 的 GPU 压缩项目，核心思路是利用显卡上空闲的 NVENC 编码单元，对数据进行编码压缩，以提升 PCIe 传输效率。项目标签显示其关注 AI、CUDA、HEVC、KV-cache 和 LLM 推理等场景，说明它可能主要服务于大模型推理中的显存/带宽瓶颈优化。它与模型压缩和推理加速相关，强调用硬件编码能力降低数据搬运成本。整体上，它更像是一个针对 GPU 数据传输与带宽优化的工程型研究仓库。",
+    "tldr": "该仓库探索利用 GPU 的 NVENC 硬件编码能力压缩数据，以提升 LLM 推理等场景中的 PCIe 带宽利用率。",
+    "recommendation_reason": "它与科研中高效推理、模型压缩和 GPU 系统优化主题直接相关，可用于研究硬件编码辅助的数据传输加速方法。"
+  },
+  "github:repo:caelator/candle-turbocalm": {
+    "fingerprint": "1774ec12505c4935aa587fff89dcc7095938b8db",
+    "summary_zh": "这是一个用 Rust 实现的本地推理项目，结合了 Candle 框架与 Metal，在 Apple Silicon 上运行 CALM 推理。项目重点是 TurboQuant 的 KV cache 压缩，用于提升推理效率和降低资源占用。它属于面向高性能本地大模型推理与量化优化的工程实践，技术栈较为偏底层和系统化。当前仓库星标数为 0，说明其社区关注度还比较低。",
+    "tldr": "这是一个面向 Apple Silicon 的 Rust 本地推理仓库，核心亮点是使用 TurboQuant 压缩 KV cache 来优化 CALM 推理。",
+    "recommendation_reason": "它与科研中的高效推理、模型压缩和硬件适配优化主题相关，可用于参考 Rust + Candle + Metal 的实现路径。"
+  },
+  "github:repo:ambiguitysentrybox755/lm-chat": {
+    "fingerprint": "37b44131224536034d0ea2408e1d3f76cc094bc2",
+    "summary_zh": "这是一个基于 Python 的开源仓库，目标是为本地大语言模型提供网页访问和多人聊天能力，并结合 LM Studio 的原生 API 实现持久记忆。项目面向聊天界面、代理式交互以及多用户协作场景，和本地推理、OpenAI API 兼容接口、Discord 机器人等主题相关。由于仓库星标较少，说明目前项目较新或影响范围有限，但仍可作为本地 LLM 应用层开发的参考。",
+    "tldr": "该仓库提供了一个面向本地 LLM 的多人聊天与持久记忆 Web 界面，并通过 LM Studio API 连接模型。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了本地大模型应用层、多人交互和记忆机制的实现方式，可用于研究聊天系统架构与人机交互。"
+  },
+  "github:repo:manwithacat/dazzle": {
+    "fingerprint": "6f1c04171a797a33807f4535bf1d5a0475e6875e",
+    "summary_zh": "这是一个名为 Dazzle 的 Python 仓库，定位为面向 LLM 应用的领域感知、节省 token 的 DSL 试验项目。项目强调“machine-first”软件设计，说明其目标是让机器更高效地理解和生成应用逻辑。当前仓库热度较低，Stars 为 1，表明它更像是早期探索性原型而非成熟工具。",
+    "tldr": "这是一个探索面向 LLM 应用的机器优先 DSL 设计的 Python 实验项目。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及面向大模型应用的领域特定语言与软件设计方法，可用于研究 token 效率、可编程接口和机器可读系统设计。"
+  },
+  "github:repo:hongbo-miao/hongbomiao.com": {
+    "fingerprint": "8dee494148a8ddaeebdf6770e5edd0207578bf63",
+    "summary_zh": "这是一个个人研究与开发实验室性质的 GitHub 仓库，目标是促进知识分享。仓库主题覆盖航天、自主系统、计算流体力学、计算机视觉、嵌入式、图神经/机器学习、LLM、神经网络、ROS、Rust、云原生、Kubernetes、服务网格和基础设施即代码等多个方向。项目以 Python 为主，显示出跨学科的工程与科研结合特征。适合关注前沿工程实践与AI/机器人/航空航天交叉研究的读者参考。",
+    "tldr": "这是一个面向航天、机器人、AI 与云原生等交叉领域的个人 R&D 知识与项目集合仓库。",
+    "recommendation_reason": "它汇集了与科研相关的多学科技术栈和实验性项目，适合研究者了解交叉领域的工程实现与方法。"
+  },
+  "github:repo:rtk-ai/icm": {
+    "fingerprint": "ac43892fce0d4b1c7ecef1e12bb954aa760023ff",
+    "summary_zh": "这是一个名为 icm 的 GitHub 仓库，定位为面向 AI agents 的“永久记忆”组件，强调单二进制、零依赖和原生支持 MCP。项目使用 Rust 开发，属于实验性工具，面向与 Claude Code、MCP 和记忆管理相关的场景。仓库当前有一定关注度，Stars 为 324，说明其在 AI 工具链社区中具有一定热度。整体上它更像是一个用于增强智能体长期上下文与状态保存能力的基础设施项目。",
+    "tldr": "这是一个用 Rust 实现、面向 AI agents 的轻量级永久记忆与 MCP 集成工具。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI 智能体记忆、上下文持久化和 MCP 生态的基础设施设计，适合研究 agent 架构与记忆机制。"
+  },
+  "github:repo:recordrnase224/brix-protocol": {
+    "fingerprint": "3a7e8646993babb09f0c1a7725177012c3321436",
+    "summary_zh": "这是一个面向 LLM 生产环境的 Python 仓库，主打通过一次 wrap() 调用为推理或生成流水线添加运行时可靠性保护。项目强调对常见生产故障的可配置防护，涉及审计、合规、可观测性、护栏和 AI 安全等方向。它与 LLMOps、RAG、提示工程和生成式 AI 的落地部署密切相关。当前仓库星标很少，可能仍处于早期阶段。",
+    "tldr": "一个为 LLM 流水线提供运行时可靠性护栏与故障防护的 Python 项目。",
+    "recommendation_reason": "它直接聚焦于 LLM 生产系统的安全性、可靠性与合规控制，适合科研中关于 AI 护栏与运行时治理的内容筛选。"
+  },
+  "github:repo:foresthumanistic755/context-accordion": {
+    "fingerprint": "c9738d5824707d32583267ba53842c528811c976",
+    "summary_zh": "这是一个 TypeScript 仓库，核心目标是将 AI agent 的上下文组织为四层记忆结构，以提升 token 使用效率并支持分层、持续可用的记忆管理。它强调更清晰的 prompt 控制，适用于需要在长上下文中维持焦点、压缩信息和分层检索的场景。仓库标签显示它与 agents、memory、RAG、Qdrant 和 prompt engineering 等方向相关，表明其偏向面向 AI 应用的上下文管理组件或方案。整体来看，这是一个面向智能体记忆与上下文优化的轻量项目，当前热度较低（Stars: 1）。",
+    "tldr": "该仓库提出用四层记忆结构来管理 AI agent 上下文，以提高 token 效率和 prompt 控制能力。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型上下文管理、记忆分层和 token 效率优化，这些都是智能体与检索增强生成研究中的关键问题。"
+  },
+  "github:repo:adelaidasofia/ai-brain-starter": {
+    "fingerprint": "0714f961f763fec1cdfcc9883d57f0c5eb34130c",
+    "summary_zh": "这是一个面向 Claude Code 的 Python 仓库，定位为“AI 大脑”或操作系统，用于为智能体提供记忆、问责、日志记录、知识图谱和模式识别等能力。项目强调通过一次安装，让每次会话都能持续积累上下文与经验。其主题涉及 agent memory、知识管理、MCP、Obsidian 和 personal knowledge management，明显偏向第二大脑与生产力工具方向。",
+    "tldr": "这是一个为 Claude Code 增强记忆与知识管理能力的 Python 仓库，聚焦智能体长期上下文积累。",
+    "recommendation_reason": "它与科研中的智能体记忆、知识表示和个人知识管理研究密切相关，可作为系统设计与应用实践的参考。"
+  },
+  "github:repo:endoscopyminoraxis855/nova": {
+    "fingerprint": "4e9996b4908ee7a120dc21527861c29011230f35",
+    "summary_zh": "这是一个名为 nova 的 GitHub 仓库，使用 Python 编写，定位为可在本地硬件上运行的个人 AI 助手。仓库简介强调它能够记住用户纠正、从错误中进行调整，并支持私人本地使用，具有一定的隐私保护与个性化学习特征。其标签覆盖了安全、性能、系统与多种技术栈相关主题，说明项目可能涉及较广的工程集成与底层能力探索。当前星标数为 0，显示其仍处于较早期或关注度较低阶段。",
+    "tldr": "这是一个面向本地私有部署的 Python 个人 AI 助手项目，强调记忆纠错与从错误中改进。",
+    "recommendation_reason": "该项目与科研中关于本地化 AI、隐私保护、持续学习和人机交互系统设计等方向相关，适合关注个性化智能体与低信任环境部署的研究者。"
+  },
+  "github:repo:sh1755/constructrag-ai": {
+    "fingerprint": "01e67984a96a20023b1fa3523c4dfce4c00b1d5f",
+    "summary_zh": "这是一个面向建筑产品智能检索与分析的开源仓库，使用 RAG、LangChain、FAISS、HuggingFace embeddings、Ollama 和 Streamlit 构建。它支持语义搜索、供应商对比以及材料推荐，适合用于构建面向行业知识库的问答与决策辅助系统。项目以 Python 实现，当前星标较少，说明可能处于早期阶段或关注度较低。整体上，它更像是一个可用于原型验证的技术实现，而非成熟的生产级产品。",
+    "tldr": "这是一个用 RAG 和向量检索技术实现的建筑产品智能搜索与推荐原型项目。",
+    "recommendation_reason": "该仓库展示了检索增强生成在行业知识管理、语义搜索和推荐系统中的应用，对研究此类方法在垂直领域落地具有参考价值。"
+  },
+  "github:repo:byk/loreai": {
+    "fingerprint": "83deb51ff495f9bfe53db56b78be60aa6911120a",
+    "summary_zh": "这是一个名为 Lore 的开源仓库，面向 AI 编程代理的上下文管理与记忆能力，目标是自动整理项目知识，减少反复向模型解释代码库。项目使用 TypeScript 开发，关注 ai-agents、context-management 和 memory 等主题。它强调让 AI coding agent 在每次会话中都能更聪明地利用已有项目知识，从而提升开发效率。仓库目前星标数较少，但主题明确，适合探索 AI 代理的长期上下文维护方案。",
+    "tldr": "Lore 是一个用 TypeScript 实现的 AI 代理上下文与记忆管理工具，帮助自动沉淀并复用代码库知识。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 AI 代理的上下文管理、记忆机制和代码知识组织，这些都是研究智能编程助手的重要方向。"
+  },
+  "github:repo:kemb6163/dataforge": {
+    "fingerprint": "a48f04e4640a078acf55660474d38894c6bb419c",
+    "summary_zh": "这是一个用于生成可复现合成数据集的 GitHub 仓库，目标是帮助对大语言模型进行微调，以提升其可靠使用工具的能力。项目强调数据的多样性与结构正确性，适合构造注释数据集和其他面向模型训练的数据资源。仓库当前以 Python 为主要语言，主题标签显示它与数据处理、数据库、ELT 管道和数据中心化工作流相关。由于 stars 目前为 0，说明它可能是一个较新的或尚未广泛传播的项目。",
+    "tldr": "这是一个面向 LLM 工具使用微调的合成数据集生成仓库，强调可复现性和结构化样本质量。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及合成数据集生成、数据增强与模型微调数据构造，这些都是机器学习与数据中心化研究中的核心问题。"
   }
 }
