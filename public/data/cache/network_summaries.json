@@ -714,10 +714,10 @@
     "recommendation_reason": "它与科研主题相关，因为涉及向量压缩、KV-cache 优化和大模型推理加速等可复现实验性基础技术。"
   },
   "github:repo:chopratejas/headroom": {
-    "fingerprint": "fcb5d228cdca80ec9ee0aa487b0309f66a35dbbe",
-    "summary_zh": "这是一个面向大语言模型应用的上下文优化层项目，目标是帮助控制和压缩提示上下文，提升上下文窗口利用率与推理效率。项目围绕 agent、RAG、token 优化、context engineering 等场景，兼容 Anthropic、OpenAI 等生态，并提供 Python/FastAPI 相关实现。它适合需要在实际应用中降低 token 成本、优化上下文传递和提升 LLM 系统性能的开发者与研究者。",
-    "tldr": "这是一个用于优化 LLM 上下文、压缩 token 并提升应用效率的 Python 开源项目。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型的上下文工程、token 优化与检索增强生成等关键研究方向。"
+    "fingerprint": "97681c27bf7ee522c53a492131c26e2bb36fba75",
+    "summary_zh": "这是一个面向 LLM 应用的上下文优化层项目，定位于在大模型调用前对上下文进行压缩、裁剪和优化，以提升 token 使用效率和整体成本表现。仓库标签显示它覆盖 agent、RAG、context-window、token-optimization、proxy 等方向，并支持 Anthropic、OpenAI、LangChain、FastAPI 等生态。项目语言为 Python，星标数较高，说明在开发者社区中具有一定关注度。整体上它更偏向 LLM 工程基础设施与上下文工程实践，而非单一模型或算法实现。",
+    "tldr": "这是一个用于优化 LLM 上下文与 token 使用的 Python 工具仓库，适合关注上下文工程、RAG 和大模型应用基础设施的研究者。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型上下文压缩、token 优化和应用层推理效率等可研究问题。"
   },
   "github:repo:iamthegreatdestroyer/sigmalang": {
     "fingerprint": "26dd1e044e28bc38f0df664a8db5613bcd7024ea",
@@ -1152,10 +1152,10 @@
     "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理加速、量化压缩、缓存优化和跨平台执行等可用于系统与高性能计算研究的核心问题。"
   },
   "github:repo:aryan-cs/kv-cache-safety": {
-    "fingerprint": "ea961c5a9b39098bc510343e7436c4663571a8cc",
-    "summary_zh": "这是一个关于 KV cache 优化与模型对齐相关经验研究的 GitHub 仓库，主题聚焦于大语言模型中的缓存机制、安全性与对齐之间的关联。仓库标签涵盖 alignment、interpretability、guardrails 和 safety，说明其关注点不仅是性能优化，也包括模型行为控制与可解释性。项目语言为 Python，目前星标为 0，表明它可能是一个较新的或尚未广泛传播的研究代码仓库。整体上，它更像是面向实验验证与研究探索的技术资源。",
-    "tldr": "这是一个研究 KV cache 优化及其与大模型对齐/安全性关系的 Python 代码仓库。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型缓存优化、对齐与安全性之间的经验分析，适合用于研究模型效率与安全行为的交叉问题。"
+    "fingerprint": "87b7c006a565da0ff08b1df3b8f4399e0263e021",
+    "summary_zh": "这是一个与大语言模型 KV cache 优化相关的 GitHub 仓库，重点关注 KV cache 在推理加速中的经验性分析，以及它与对齐效果之间的相关性。仓库主题涉及 alignment、safety、interpretability 和 guardrails，表明作者可能在探究性能优化是否会影响模型安全或对齐表现。项目使用 Python 实现，当前关注度较低，Stars 为 1。整体上它更像是一个研究探索型代码仓库，而非成熟的工程化工具。",
+    "tldr": "该仓库研究 LLM 的 KV cache 优化及其与模型对齐/安全性的相关关系。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理优化、可解释性与安全对齐之间的关系，适合用于研究性能改动对行为与安全指标的影响。"
   },
   "github:repo:pcircle-ai/memesh-llm-memory": {
     "fingerprint": "8ae37b4e2cabad372cc8f6284e31cd56cb70540c",
@@ -1206,10 +1206,10 @@
     "recommendation_reason": "它可能涉及 Python 中的记忆管理、状态保存或相关工具实现，可为研究类似系统设计与实现方式提供参考。"
   },
   "github:repo:mudler/localai": {
-    "fingerprint": "a68557d6eab3d4305f7b8e1e2dfc59b1e0d7e13d",
-    "summary_zh": "LocalAI 是一个开源 AI 推理引擎，主打在任意硬件上运行多种模型，包括大语言模型、视觉、语音、图像和视频等能力。项目强调无需 GPU 即可部署，并支持分布式、去中心化以及多种 AI 相关接口与任务类型。其应用场景覆盖文本生成、语音合成、图像生成、目标检测、重排序等，适合作为本地或私有化 AI 服务基础设施。",
-    "tldr": "LocalAI 提供了一个可在通用硬件上运行多模态模型的开源 AI 引擎，便于构建本地化和私有化的 AI 应用。",
-    "recommendation_reason": "该仓库与科研主题相关，因为它可用于低成本搭建可复现的本地 AI 推理与多模态实验环境，支持研究者评估模型部署、分布式架构和边缘计算场景。"
+    "fingerprint": "0cf26bc68f1305f4cc0d9ebcbb4b2a7dc8fa9eed",
+    "summary_zh": "LocalAI 是一个开源 AI 引擎，主打在本地或任意硬件上运行多种模型，包括大语言模型、视觉、语音、图像和视频等能力。它强调无需 GPU 即可部署，并支持文本生成、TTS、图像生成、对象检测、重排序等多类任务。项目还涉及分布式、去中心化与 API 集成，适合构建本地化 AI 服务或替代云端推理方案。",
+    "tldr": "LocalAI 提供了一个可在通用硬件上运行多模态模型的开源本地 AI 推理平台。",
+    "recommendation_reason": "该仓库与科研主题相关，因为它涉及本地化模型部署、推理架构与多模态 AI 能力，适合研究模型服务化、边缘计算和去中心化 AI 系统。"
   },
   "github:repo:djfeu/llmcode": {
     "fingerprint": "73e74747d9cb223d66c77b460461a8af6b9efcdd",
@@ -1500,10 +1500,10 @@
     "recommendation_reason": "它与科研主题相关，因为它直接涉及端侧大模型推理、NPU 加速和边缘计算性能评测，可为相关实验与硬件选型提供参考。"
   },
   "github:repo:jjang-ai/vmlx": {
-    "fingerprint": "201e0c7fd7f18ccfb674e1131b1cd9c726609d3b",
-    "summary_zh": "这是一个名为 vMLX 的 Python 仓库，面向 MLX 生态下的本地大模型推理与服务能力增强。其重点包括 KV cache 压缩、复用、量化、前缀缓存、分页缓存和持久化记忆等优化方向，并提到可支持 OpenAI/Anthropic 接口以及 MLX Studio 相关能力。项目标签显示它还与 MCP server、llm、macbook、本地部署和代理式应用场景相关，说明它更偏向工程化的高效推理基础设施。",
-    "tldr": "vMLX 是一个聚焦 MLX 本地大模型推理与 KV cache 优化的 Python 仓库。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型推理加速、缓存优化和本地部署等可用于系统研究与性能实验的基础技术。"
+    "fingerprint": "5ba7fde1aaeb974e97893ab695129f1ea153d369",
+    "summary_zh": "vMLX 是一个面向 MLX/LLM 推理场景的 Python 仓库，主打对模型与上下文缓存进行分层优化。其核心卖点包括可在重启后保留的 L2 磁盘缓存、用于降低首 token 延迟的 L1 分页缓存，以及混合 SSM 调度、连续批处理等性能优化机制。项目还兼容 OpenAI/Anthropic API 风格，并与 MacBook、LM Studio、MCP Server 等生态场景相关。整体上它更像是一个围绕本地大模型推理加速与缓存复用的工程实现。",
+    "tldr": "这是一个用于本地 LLM 推理加速和缓存优化的 MLX/Python 项目，重点在持久化缓存、低延迟首响和连续批处理。",
+    "recommendation_reason": "它与科研主题相关，因为其涉及大模型推理加速、KV cache 复用/压缩和系统级调度优化等可用于研究与实验的技术方向。"
   },
   "github:repo:searchsavior/openarc": {
     "fingerprint": "1105582593ff5299c72d9126c0c9ab944bbb9e52",
@@ -1702,5 +1702,89 @@
     "summary_zh": "这是一个名为 enhancing-llms 的 GitHub Python 仓库，当前公开信息显示其星标数为 0。仅从可见元数据来看，它似乎与提升或改进大语言模型相关，但未提供更多具体功能、方法或实验细节。由于缺少 README、代码结构或使用说明，暂时无法判断其技术路线和研究贡献。适合作为后续进一步查看源码和文档的线索。",
     "tldr": "这是一个与增强/改进大语言模型相关的 Python 仓库，但当前公开信息很少。",
     "recommendation_reason": "它与大语言模型改进方向直接相关，可能为科研中的方法调研、实现参考或实验复现提供线索。"
+  },
+  "github:repo:nwfrequencydistribution747/vsqz": {
+    "fingerprint": "e5fc6393ec772a80e981a194ad4b289633227b38",
+    "summary_zh": "这是一个 Python 仓库，主题集中在大模型微调与显存优化，涉及 axolotl、CUDA、Hugging Face Transformers/TRL、PyTorch 以及 GGUF 等技术栈。仓库标签显示它关注 memory-efficient、model-compression、oom 与 vram-optimizer，说明目标可能是降低训练或推理时的显存占用。由于当前可见信息主要来自仓库元数据，无法确认其具体实现细节或实验结果。整体来看，它更像是面向资源受限环境下的模型训练/压缩工具或配置集合。",
+    "tldr": "这是一个面向大模型微调与显存优化的 Python 仓库，聚焦低内存、模型压缩和 OOM 缓解。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型训练、显存优化和模型压缩等可复现的机器学习工程问题，适合关注高效训练方法的研究者。"
+  },
+  "github:repo:jeffasante/cellm": {
+    "fingerprint": "24e688457994c16f6743ae55a352932032669cd4",
+    "summary_zh": "这是一个用 Rust 实现的移动端原生大模型推理/服务引擎研究型项目，重点面向 Android 和 iOS 等设备上的本地推理场景。项目强调在 512MB RAM 限制下运行，采用分页式 KV cache 和多会话调度来提升资源利用率。它还包含面向 Metal 和 Vulkan 的内核实现，说明作者关注跨平台的高效端侧部署。整体上，这是一个围绕端侧 LLM 推理优化、内存管理和异构图形/计算后端的工程研究仓库。",
+    "tldr": "一个面向移动端本地大模型推理的 Rust 研究项目，聚焦低内存下的 KV cache、调度和 Metal/Vulkan 优化。",
+    "recommendation_reason": "该仓库直接涉及端侧 LLM 推理、内存受限环境优化和跨平台加速实现，与研究移动设备上高效模型部署和系统优化高度相关。"
+  },
+  "github:repo:buildingjoshbetter/truememory": {
+    "fingerprint": "b33eb08d87f4643356435bd6e430d35c3d0ba8db",
+    "summary_zh": "TrueMemory 是一个面向 AI 代理的本地优先记忆系统，强调将长时间跨度的数据持续摄取并提炼为可用于推断的洞察。它以单个 SQLite 文件为核心运行形态，结合 embeddings、向量检索、RAG 和 MCP 等机制，支持长期记忆与上下文管理。项目主要使用 Python 实现，目标是帮助智能体基于累积经验做出更果断的行动。",
+    "tldr": "这是一个基于 SQLite 的本地长期记忆系统，可用于增强 AI 代理的记忆与检索能力。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及 AI 代理记忆、检索增强生成和长期上下文建模等可用于研究智能体记忆机制的基础设施。"
+  },
+  "github:repo:marcogva-hub/mlx-flashattention-steel": {
+    "fingerprint": "3f7ca7501d0dd365c06a5ff50b27ddfd2a882c9f",
+    "summary_zh": "这是一个面向 MLX 的 Metal Flash Attention 实现仓库，主要使用 Python 编写。项目名称表明它聚焦于在 Apple Metal 环境下为 MLX 提供高效的注意力计算支持，适合关注推理加速和底层算子优化的开发者参考。仓库当前星标数较少，显示为较新的小型项目，但主题较明确，具有一定实验和工程探索价值。",
+    "tldr": "这是一个为 MLX 提供 Metal Flash Attention 支持的 Python 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为涉及高效注意力算子与 MLX/Metal 计算优化，可用于研究大模型推理加速和自定义算子实现。"
+  },
+  "github:repo:openvinotoolkit/model_server": {
+    "fingerprint": "21ecaecc43b978f9298dc3d07dc15c026b808644",
+    "summary_zh": "这是 openvinotoolkit 发布的一个开源仓库，提供面向 OpenVINO 优化模型的可扩展推理服务。项目定位于模型部署与在线推理，支持云端、边缘和 Kubernetes 等场景，适用于机器学习与生成式 AI 的服务化落地。其语言为 C++，主题涵盖 inference、model-serving、genai 和 edge 等方向。该仓库在研究和工程实践中可用于评估高性能推理系统的架构与部署能力。",
+    "tldr": "这是一个面向 OpenVINO 优化模型的可扩展推理服务器项目，适合云边端模型服务化部署。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及高性能模型推理、模型服务化和云边端部署等机器学习系统研究问题。"
+  },
+  "github:repo:janik96v/aipaca": {
+    "fingerprint": "254e3003c83aa2837f469081324e79bddf00bed4",
+    "summary_zh": "这是一个名为 AIpaca 的 GitHub 仓库，目标是在 Android 设备上本地运行大语言模型。它支持通过 WiFi 提供与 OpenAI 兼容的接口，强调无需云端、无需订阅，并与 gguf、llama-cpp、Ollama、on-device AI 等技术栈相关。项目使用 Kotlin 开发，定位于隐私优先的本地 AI 推理与移动端部署。对于需要在移动设备上研究离线推理、端侧 AI 或本地 API 封装的研究者具有参考价值。",
+    "tldr": "这是一个用于在 Android 设备上本地运行 LLM 并提供 OpenAI 兼容接口的 Kotlin 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为它展示了端侧大模型部署、移动设备本地推理和隐私友好 API 设计的实现思路。"
+  },
+  "github:repo:rohitg00/agentmemory": {
+    "fingerprint": "a6820030a3e2957a1e390d098a5eba08d5b228aa",
+    "summary_zh": "这是一个面向 AI 编码代理的持久化记忆项目，强调基于真实世界基准来评估和改进记忆能力。仓库使用 TypeScript 实现，面向 Claude Code、Codex、Copilot、Cursor 等多种代理/开发工具场景。其主题集中在 agents、memory、harness 等方向，说明它更关注让编码助手在长期任务中保持上下文与状态。当前显示有较高的社区关注度，反映出该方向具备较强的实践价值。",
+    "tldr": "这是一个为 AI 编码代理提供持久化记忆能力的 TypeScript 仓库，适合研究代理系统的长期上下文管理与基准评测。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 AI 代理记忆、长期上下文保持和真实基准评估，这些都是当前智能体研究的核心问题。"
+  },
+  "github:repo:sinoclaw/sinoclaw-agent": {
+    "fingerprint": "f590efe8187c5eb14fd0e09f01c778ff8d715f64",
+    "summary_zh": "这是一个基于大语言模型的 AI 编程代理项目，源码为 Python，实现目标是辅助自动化代码生成与开发任务。该仓库由另一个代理项目 fork 而来，说明其设计思路与现有 LLM coding agent 生态相关。当前仓库星标数为 0，表明其社区关注度较低，但仍可作为相关原型或实现参考。",
+    "tldr": "这是一个用于自动化编程任务的 Python 版 LLM coding agent 仓库。",
+    "recommendation_reason": "它与科研主题相关，因为可作为研究大语言模型驱动的软件工程代理、代码生成与自动化开发流程的实现样本。"
+  },
+  "github:repo:vpoluyaktov/gcp-vertex-ai-jobs-template": {
+    "fingerprint": "f6d8d194a7b8f63f83edf09bcedb432da9c4dab4",
+    "summary_zh": "这是一个面向 Vertex AI 的 Python 代码仓库模板，目标是构建可用于生产环境的自动化大模型监督微调流程。项目结合 Temporal 编排来管理任务流程，强调可重复、可扩展的训练作业调度与执行。它适合需要在云端进行 LLM 微调、并希望引入工作流编排和工程化部署能力的研究或开发场景。整体上更偏向基础设施与训练流水线模板，而不是单一模型或算法实现。",
+    "tldr": "这是一个用于在 Vertex AI 上用 Temporal 编排自动化进行大模型监督微调的生产级 Python 模板。",
+    "recommendation_reason": "它与科研中的大模型训练、云端实验自动化和可复现流水线构建直接相关，适合关注 LLM 微调工程化实现的研究者。"
+  },
+  "github:repo:vpoluyaktov/llm-sft-test": {
+    "fingerprint": "c03b6bf2a035d4e5936581f16db6666ce1dedf67",
+    "summary_zh": "这是一个基于 gcp-vertex-ai-jobs-template 的 LLM 监督微调测试项目，主要使用 Python 实现。仓库目前星标数为 0，显示出它更像是一个实验性或模板化的工程。其内容重点在于围绕 Vertex AI 作业模板进行 LLM SFT 流程的验证与测试。对于关注大模型训练管线、云端训练任务编排和微调实践的研究者有一定参考价值。",
+    "tldr": "这是一个用于验证基于 Vertex AI 的 LLM 监督微调流程的 Python 测试仓库。",
+    "recommendation_reason": "它与大模型微调、云端训练作业编排和实验性工程实践相关，适合研究者了解 SFT 流程在 Vertex AI 环境中的实现方式。"
+  },
+  "github:repo:superiorlu/aitreasurebox": {
+    "fingerprint": "25cea3b2020b8176bb12b30b4c782c3e032397b8",
+    "summary_zh": "这是一个自动收集和整理 AI 相关资源的仓库，内容涵盖代码仓库、工具、网站、论文和教程，定位类似“AI 百宝箱”式的资源索引。主题覆盖 AGI、AI agents、提示词、AI 工具、深度学习、LLM、MCP、OpenAI 等多个方向，适合作为快速检索和入门导航。项目以 Ruby 维护，属于偏集合型、参考型的资源列表，而不是单一算法或模型实现。",
+    "tldr": "这是一个面向 AI/LLM/Agent 生态的综合资源导航仓库，适合用来快速发现相关工具、项目和学习资料。",
+    "recommendation_reason": "它汇集了与大模型、智能体和 AI 工具链相关的多类资源，便于科研人员进行文献与技术生态扫描。"
+  },
+  "github:repo:novasky-ai/skyrl": {
+    "fingerprint": "a364cca817cc3349aa90ba52b4c463e5a7c25dad",
+    "summary_zh": "这是一个面向大语言模型强化学习的模块化全栈 RL 库，使用 Python 实现。项目强调从训练、评估到系统组件的完整支持，适合研究和工程实践结合的场景。当前仓库有较高关注度，说明其在 LLM 强化学习方向具有一定影响力和可用性。",
+    "tldr": "这是一个用于大语言模型强化学习的模块化全栈 Python 开源库。",
+    "recommendation_reason": "它与科研主题相关，因为它直接聚焦于 LLM 强化学习框架与系统实现，适合用于算法研究、实验复现和训练流程分析。"
+  },
+  "github:repo:roryford/manifoldkit": {
+    "fingerprint": "de50addd7ae00c0f9fb33a9c5fcf6c09c47a406c",
+    "summary_zh": "这是一个面向 Apple 平台的 SwiftUI 聊天框架，支持本地与云端的大语言模型推理。项目定位为可复用组件，便于开发者快速集成聊天界面和模型交互能力。当前仓库规模较小，星标数较少，说明它更像是一个早期或轻量级实现。整体上，它体现了在苹果生态中构建 LLM 应用前端框架的实践方向。",
+    "tldr": "这是一个用于 Apple 平台的 SwiftUI 聊天框架，支持本地和云端大模型推理。",
+    "recommendation_reason": "它与科研主题相关，因为可用于研究移动端/桌面端大模型交互框架、SwiftUI 组件设计以及本地与云端推理集成方案。"
+  },
+  "github:repo:razroo/ray": {
+    "fingerprint": "f8c588447b23e624f0ef49bd0a125ea026a325c2",
+    "summary_zh": "这是一个名为 ray 的 TypeScript 仓库，目标是将 AI 系统“缩小”到能够在廉价 VPS 基础设施上运行。仓库目前信息显示星标较少，说明项目可能还处于早期阶段或受众较小。其核心方向偏向 AI 部署、资源优化与低成本基础设施适配。对研究者而言，它可能提供有关轻量化推理、边缘/低成本部署方案的实现思路。",
+    "tldr": "一个面向低成本 VPS 部署的轻量化 AI TypeScript 项目。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于 AI 系统的资源受限部署与成本优化，这类实现思路对推理加速、系统设计和边缘计算研究都有参考价值。"
   }
 }
