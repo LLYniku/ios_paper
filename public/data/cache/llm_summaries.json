@@ -3853,5 +3853,182 @@
       "固定契约分析",
       "大模型效率"
     ]
+  },
+  "arxiv:2605.11186|213385e9c4aec7ba624cbd1d7e88159b2b008458|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Auto-regressive decoding in Large Language Models (LLMs) is inherently memory-bound: every generation step requires loading the model weights and intermediate results from memory (e.g., High-Bandwidth Memory (HBM) for GPU servers), making throughput bottlenecked by memory bandwidth rather than compute. Speculative decoding addresses this by enabling parallel verification of multiple draft tokens, effectively amortizing the cost of each target-model call. However, existing speculative decoding methods are designed under the assumption that HBM is sufficiently large to hold both the target model and an auxiliary draft model simultaneously -- an assumption that breaks down on memory-constrained devices such as edge platforms with limited DRAM. We analyze the inference bottleneck in this memory-limited regime and propose CATS, a self-speculative decoding framework that conducts cascaded verification and correction based on the memory budget and parameter offloading patterns on memory-limited devices. This design maximizes token acceptance rate and end-to-end speedup while keeping the peak memory footprint on the device equal to that of the target model alone. We evaluate CATS on different models across five benchmarks on real edge devices. CATS can achieve a wall-clock speedup of up to 5.08x with no degradation in generation quality, outperforming the SOTA method by up to 1.45x under edge memory constraints.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.11744|d73b942128d20fa247ddeacda0587e54c598754e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based large language models face severe scalability challenges in long-context generation due to the computational and memory costs of full-context attention. Under practical computation and memory constraints, many inference-efficient long-context methods improve efficiency by adopting bounded-context or segment-level execution only during inference, while continuing to train models under full-context attention, resulting in a mismatch between training and inference execution and state-transition semantics. Based on this insight, we propose a training-inference consistent segment-level generation framework, in which training and inference follow the same segment-level forward execution semantics. During training, consistency with inference is enforced by restricting gradient propagation to KV states carried over from the immediately preceding segment, while permitting head-specific access to past KV states during the forward pass without involving them in gradient propagation. Across long-context benchmarks, our approach achieves performance comparable to full-context attention, while achieving competitive latency-memory trade-offs against strong inference-efficient baselines, and substantially improving scalability at very long context lengths (e.g., approximately 6x lower peak prefill memory at 128K compared to full-context attention with FlashAttention).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.11581|70af7ba8a46ab53fbb36fd14af93ade7c6136b38|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "When large language models (LLMs) serve real-time inference in commercial online advertising systems, end-to-end latency must be strictly bounded to the millisecond range. Yet every token generated during the decode phase triggers thousands of kernel launches, and kernel launch overhead alone can account for 14.6% of end-to-end inference time. MegaKernel eliminates launch overhead and inter-operator HBM round-trips by fusing multiple operators into a single persistent kernel. However, existing MegaKernel implementations face a fundamental tension between portability and efficiency on resource-constrained GPUs such as NVIDIA Ada: hand-tuned solutions are tightly coupled to specific architectures and lack portability, while auto-compiled approaches introduce runtime dynamic scheduling whose branch penalties are unacceptable in latency-critical settings. We observe that under a fixed deployment configuration, the optimal execution path of a MegaKernel is uniquely determined, and runtime dynamic decision-making can be entirely hoisted to compile time. Building on this insight, we propose Ada-MK: (1) a three-dimensional shared-memory constraint model combined with K-dimension splitting that reduces peak shared memory usage by 50%; (2) MLIR-based fine-grained DAG offline search that solidifies the optimal execution path, completely eliminating runtime branching; and (3) a heterogeneous hybrid inference engine that embeds MegaKernel as a plugin into TensorRT-LLM, combining high-throughput Prefill with low-latency Decode. On an NVIDIA L20, Ada-MK improves single-batch throughput by up to 23.6% over vanilla TensorRT-LLM and 50.2% over vLLM, achieving positive gains across all tested scenarios--the first industrial deployment of MegaKernel in a commercial online advertising system.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.12471|fc4adfa30d0fbaa753c0bd468b57f6d6cb750245|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We introduce KV-Fold, a simple, training-free long-context inference protocol that treats the key-value (KV) cache as the accumulator in a left fold over sequence chunks. At each step, the model processes the next chunk conditioned on the accumulated cache, appends the newly produced keys and values, and passes the enlarged cache forward; the same one-step update is applied repeatedly, analogous to foldl in functional programming. Building on the KV cache concatenation primitive introduced for latent multi-agent communication, we repurpose it as a chunk-to-chunk recurrence for long-context inference. When processing chunk t, the model attends to the KV cache carried from earlier chunks as a prefix, reusing its internal state across segments without modifying or retraining the model. Despite its simplicity, the induced recurrence is stable: per-step drift rises briefly and then saturates into a flat plateau that persists across deep chains. This plateau is insensitive to a 10,000x change in numerical precision, robust across chunk sizes, and consistent across model families. At the task level, KV-Fold preserves exact information over long distances. On a needle-in-a-haystack benchmark, it achieves 100% exact-match retrieval across 152 trials spanning contexts from 16K to 128K tokens and chain depths up to 511 on Llama-3.1-8B, while remaining within the memory limits of a single 40GB GPU. Compared to streaming methods, which trade fidelity for bounded memory, KV-Fold maintains long-range retrieval while operating as a sequence of tractable forward passes. Overall, our results show that frozen pretrained transformers already support a stable form of KV-cache recurrence, providing a practical route to long-context inference without architectural changes or training.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.12357|98882078631809311cc468a80b5c33aa1f3c3853|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models increasingly need to accumulate and reuse historical information in long-term assistants and agent systems. Simply expanding the context window is costly and often fails to ensure effective context utilization. We propose $δ$-mem, a lightweight memory mechanism that augments a frozen full-attention backbone with a compact online state of associative memory. $δ$-mem compresses past information into a fixed-size state matrix updated by delta-rule learning, and uses its readout to generate low-rank corrections to the backbone's attention computation during generation. With only an $8\\times8$ online memory state, $δ$-mem improves the average score to $1.10\\times$ that of the frozen backbone and $1.15\\times$ that of the strongest non-$δ$-mem memory baseline. It achieves larger gains on memory-heavy benchmarks, reaching $1.31\\times$ on MemoryAgentBench and $1.20\\times$ on LoCoMo, while largely preserving general capabilities. These results show that effective memory can be realized through a compact online state directly coupled with attention computation, without full fine-tuning, backbone replacement, or explicit context extension.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.11537|76189ba0759da2b821c09bf13d1b6de6968d2744|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The Mixture of Experts (MoE) architecture has become a fundamental building block in state-of-the-art large language models (LLMs), improving domain-specific expertise in LLMs and scaling model capacity without proportionally increasing their computational overhead. However, MoE inference often suffers from suboptimal GPU utilization, load imbalance, and elevated latency arising from multiple tokens waiting on the same experts for their computation which arises from sparsity of expert activation. To address these challenges, we propose a dynamic expert replication strategy that predicts which experts are likely to be overloaded and replicates them for upcoming batches of tokens. The replicated experts process batch tokens concurrently across layers, which leads to improved parallelism, shorter GPU idle time, and significantly faster inference. Experimental evaluations conducted on large-scale MoE models, including Switch-base-128 and Switch-base-256, demonstrate that our method achieves near-complete GPU utilization (approx 100%), leading to upto 3x improvement in inference speed while preserving approximately 90-95% of the performance of baseline architectures",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.11577|f2b57eabe1c85838e987aee8f798e669f810cc1c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Autoregressive language models generate text one token at a time, yet natural language is inherently structured in multi-token units, including phrases, n-grams, and collocations that carry meaning jointly. This one-token bottleneck limits both the expressiveness of the model during pre-training and its throughput at inference time. Existing remedies such as speculative decoding or diffusion-based language models either leave the underlying bottleneck intact or sacrifice the causal structure essential to language modeling. We propose BitLM, a language model that represents each token as a fixed-length binary code and employs a lightweight diffusion head to denoise multiple tokens in parallel within each block. Crucially, BitLM preserves left-to-right causal attention across blocks while making joint lexical decisions within each block, combining the reliability of autoregressive modeling with the parallelism of iterative refinement. By replacing the large-vocabulary softmax with bitwise denoising, BitLM reframes token generation as iterative commitment in a compact binary space, enabling more efficient pre-training and substantially faster inference without altering the causal foundation that makes language models effective. Our results demonstrate that the one-token-at-a-time paradigm is not a fundamental requirement but an interface choice, and that changing it can yield a stronger and faster language model. We hope BitLM points toward a promising direction for next-generation language model architectures.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.11678|d0069088ea39f83d0a13185933129dfdacd46815|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "End-to-end Vision-Language-Action (VLA) models for autonomous driving unify perception, reasoning, and control in a single neural network, achieving strong driving performance but requiring 20-60GB of GPU memory-far exceeding the 12-16GB available on commodity GPUs. We present a framework, which enables memory-efficient VLA inference on VRAM-constrained GPUs through system-level optimization alone, without model modification. Our work proceeds in three stages: (1) Sequential Demand Layering reduces VRAM usage from model-level to layer-level granularity; (2) Pipelined Demand Layering hides parameter transfer time within layer execution time via transfer--compute overlap; and (3) a GPU-Resident Layer Decision Policy, informed by per-module residency benefit analysis, eliminates the residual transfer overhead that pipelining cannot hide. We further propose a performance prediction model that determines the optimal configuration-both the number and placement of resident layers-from a single profiling run with less than 1.3% prediction error across all configurations. Applied to NVIDIA's Alpamayo-R1-10B (21.52GB) on an RTX 5070Ti (16GB), our work achieves up to 3.55x speedup over Accelerate offloading while maintaining full BF16 precision.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.12464|5174fc16b8f9e08c852f346de0ebd4649307dfc2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Quantization has emerged as a standard technique for accelerating inference for generative models by enabling faster low-precision computations and reduced memory transfers. Recently, GPU accelerators have added first-class support for microscaling Block Floating Point (BFP) formats. Standard BFP algorithms use a fixed scale based on the maximum magnitude of the block. We observe that this scale choice can be suboptimal with respect to quantization errors. In this work, we propose ScaleSearch, an alternative strategy for selecting these scale factors: using a fine-grained search leveraging the mantissa bits in microscaling formats to minimize the quantization error for the given distribution. ScaleSearch can be integrated with existing quantization methods such as Post Training Quantization and low-precision attention, and is shown to improve their performance. Additionally, we introduce ScaleSearchAttention, an accelerated NVFP4-based attention algorithm, which uses ScaleSearch and adapted prior techniques to ensure near-0 performance loss for causal language modeling. Experiments show that ScaleSearch reduces quantization error by 27% for NVFP4 and improves language model PTQ by up to 15 points for MATH500 (Qwen3-8B), while ScaleSearchAttention improves Wikitext-2 PPL by upto 0.77 points for Llama 3.1 70B. The proposed methods closely match baseline performance while providing quantization accuracy improvements.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AR",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2605.11222|91f0848a96980f4b82c2b69eb00db2985fd98fc5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Quantization is an effective strategy to reduce the storage and computation footprint of large language models (LLMs). Post-training quantization (PTQ) is a leading approach for compressing LLMs. Popular weight quantization procedures, including GPTQ and RTN, suffer in model utility, especially at aggressive quantization levels (sub-4-bit). We propose ADMM-Q, a novel weight quantization algorithm that considers the layer-wise quantization problem. Our algorithm is based on a combinatorial variant of the Alternating Direction Method of Multipliers (ADMM). Our operator-splitting procedure updates weights continuously to minimize the layer-wise reconstruction error, while gradually enforcing the quantization constraints with convergence guarantees. We propose additional algorithmic enhancements (e.g., penalty scheduling, preconditioning, and a local search post-processing step) to make ADMM-Q efficient at LLM scale. ADMM-Q is modular and can be used as a drop-in replacement for any weight quantizer within existing quantization pipelines: ADMM-Q is fully composable with existing techniques including range clipping, learned or random rotations, and activation scaling. Using ADMM-Q in place of GPTQ on Qwen3-8B, we decrease WikiText-2 perplexity in: (i) the W3A16 weight-only setting (12.85 $\\rightarrow$ 10.06); (ii) the W4A8 SmoothQuant procedure (9.29 $\\rightarrow$ 8.68); and (iii) the W2A4KV4 SpinQuant procedure (66.11 $\\rightarrow$ 19.42).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.11277|25cf7e208569792b440cd848ea058f0d25488dc1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) has become a dominant architecture for scaling large language models (LLMs). However, the execution characteristics of MoE inference are changing rapidly and increasingly mismatch the assumptions underlying existing Processing-in-Memory (PIM) systems. Prior PIM systems for LLMs rely on static rules to offload memory-bound operations to PIM, without accounting for the combined effects of load imbalance and inter-GPU communication. Meanwhile, modern MoE models activate fewer experts out of increasingly many, creating a bimodal expert distribution: a small set of experts receives many tokens, while a long tail of experts receives only one or a few.\n  We identify a trend in modern MoE models toward increasingly bimodal token-to-expert distributions, quantify the resulting disparity in arithmetic intensity across experts, and show that this disparity dramatically reduces the efficiency of state-of-the-art PIM systems for LLMs. To address this problem, we propose a scheduler for serving MoE models on multi-GPU systems with attached HBM-PIM stacks. Our scheduler partitions expert execution between GPU and PIM based on runtime token-to-expert distributions, while jointly considering interconnect overhead, memory bandwidth, GPU throughput, and PIM throughput. Moreover, we propose Sieve, a runtime framework that employs the scheduler to coordinate execution across GPUs and their attached HBM-PIM stacks. Sieve overlaps GPU computation, PIM computation, and intra- and inter-device communication while preserving cross-device dependencies induced by expert parallelism. Sieve is evaluated on our cycle-accurate simulator based on Ramulator 2.0. Compared to state-of-the-art PIM systems for MoE, Sieve improves both throughput and interactivity by 1.3x, 1.3x, and 1.6x on Qwen3.5-397B-A17B, GPT-OSS-120B, and Qwen3-30B-A3B, respectively.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2605.12260|c7f065e4e3f93d7745b8fa3e7e68b00d490b16a4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-horizon language agents accumulate conversation history far faster than any fixed context window can hold, making memory management critical to both answer accuracy and serving cost. Existing approaches either expand the context window without addressing what is retrieved, perform heavy ingestion-time fact extraction at substantial token cost, or rely on heuristic graph traversal that leaves both accuracy and efficiency on the table. We present PRISM, a training-free retrieval-side framework that treats long-horizon memory as a joint retrieval-and-compression problem over a graph-structured memory. PRISM combines four orthogonal inference-time components: Hierarchical Bundle Search over typed relation paths, Query-Sensitive Edge Costing that aligns traversal with detected query intent, Evidence Compression that compresses the candidate bundle into a compact answer-side context, and Adaptive Intent Routing that routes most queries through zero-LLM tiers. By formulating retrieval as min-cost selection over typed path templates and pairing it with an LLM-side compression step, PRISM surfaces the right evidence under a strict context budget without any fine-tuning or modification to the upstream ingestion pipeline. Experiments on the LoCoMo benchmark show that PRISM delivers substantially higher LLM-judge accuracy than every same-protocol baseline at an order-of-magnitude smaller context budget, occupying a previously empty corner of the accuracy-context-cost frontier and demonstrating a superior balance between answer quality and retrieval efficiency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.11005|2e5301893dcf82fe403ebf3044afcbbf042b101f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-experts (MoE) architectures enable trillion-parameter LLMs with sparsely activated experts. Expert parallelism (EP) is a widely adopted MoE training strategy, but it suffers from severe all-to-all communication bottlenecks, which is exaggerated by the limited inter-node network bandwidth as the growing model size requires distributing experts across GPU nodes. Prior work focused on overlapping these all-to-all communications with feed-forward network (FFN) and self-attention computations, which often leaves residual network-bound stalls due to inherent imbalance in attention and FFN layers' computation-communication ratios. We present DisagMoE, a disaggregated MoE training system that jointly optimizes model placement and scheduling for maximal efficiency. DisagMoE separates attention and FFN layers into disjoint GPU groups, introduces a multi-stage pipeline with uni-directional, many-to-many communications, and employs a computation-communication roofline model to balance GPU and network bandwidth allocation among the attention and FFN groups. DisagMoE is implemented on Megatron-LM, and evaluation shows that DisagMoE improves training efficiency across multiple MoE models with up to 1.8x speedup on 16-node 8xH800 clusters.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2605.11093|eb38f0be9e4c9cefea1f164acd4132312adfbe2a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Today's inference-time workloads increasingly depend on timely access to a model's internal states. We present DMI-Lib, a high-speed deep model inspector that treats internal observability as a first-class systems primitive, decoupling it from the inference hot path via an asynchronous observability substrate built from Ring^2, a GPU-CPU memory abstraction for capturing and staging tensors, and a policy-controlled host backend that exports them. DMI-Lib enables the placement of observation points across a rich space of internal signals and diverse inference backends while preserving serving optimizations and adhering to tight GPU memory budgets. Our experiments demonstrate that DMI-Lib incurs only 0.4%--6.8% overhead in offline batch inference and an average of 6% in moderate online serving, reducing latency overhead by 2x-15x compared to existing baselines with similar observability features. DMI-Lib is open-sourced at https://github.com/ProjectDMX/DMI.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.PF",
+      "cs.SE"
+    ]
+  },
+  "arxiv:2605.11800|0201f14311b4dfe051e155fd07f1a33e8bb17041|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) with mixture-of-experts (MoE) architectures achieve remarkable scalability by sparsely activating a subset of experts per token, yet their frequent expert switching creates memory bandwidth bottlenecks that compute-in-memory (CIM) architectures are well-suited to mitigate. However, analog CIM systems suffer from inherent hardware imperfections that perturb stored weights, and its negative impact on MoE-based LLMs in noisy CIM environments remains unexplored. In this work, we present the first systematic investigation of MoE-based LLMs under noise model calibrated with real chip measurements, revealing that hardware noise critically disrupts expert load balance and renders clean-trained routing decisions consistently suboptimal. Based on these findings, we propose ROMER, a post-training calibration framework that (1) replaces underactivated experts with high-frequency ones to restore load balance, and (2) recalibrates router logits via percentile-based normalization to stabilize routing under noise. Extensive experiments across multiple benchmarks demonstrate that ROMER achieves up to 58.6\\%, 58.8\\%, and 59.8\\% reduction in perplexity under real-chip noise conditions for DeepSeek-MoE, Qwen-MoE, and OLMoE, respectively, establishing its effectiveness and generalizability across diverse MoE architectures.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.12245|38454495caa334c3c162d4ee8d85a5029f05b104|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "NVFP4 has recently emerged as an efficient 4-bit microscaling format for large language models (LLMs), offering superior numerical fidelity with native hardware support. However, existing methods often yield suboptimal performance due to inflexible scale selection and the coupled treatment of quantization and dequantization scales. To address these issues, we propose Scale Optimization for Accurate Reconstruction (SOAR), a novel post-training quantization framework that improves the accuracy of NVFP4 quantization. At its core, SOAR features Closed-form Joint Scale Optimization (CJSO), which jointly optimizes global and block-wise scales via analytical solutions derived from reconstruction error minimization. Furthermore, it incorporates Decoupled Scale Search (DSS). DSS decouples the high-precision quantization scale from its constrained dequantization counterpart, and performs discrete search to mitigate precision loss from scale quantization. Extensive experiments across multiple LLMs show that our method consistently outperforms existing NVFP4 quantization baselines, achieving superior accuracy under the same memory footprint with no additional hardware overhead. The code and models will be available at https://github.com/steven-bao1/SOAR.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.12466|a2bbd9377270a43422269c885a351dacd5296ed0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Looped Transformers offer a promising alternative to purely feed-forward computation by iteratively refining latent representations, improving language modeling and reasoning. Yet recurrent architectures remain unstable to train, costly to optimize and deploy, and constrained to small, fixed recurrence depths. We introduce Attractor Models, in which a backbone module first proposes output embeddings, then an attractor module refines them by solving for the fixed point, with gradients obtained through implicit differentiation. Thus, training memory remains constant in effective depth, and iterations are chosen adaptively by convergence. Empirically, Attractor Models outperform existing models across two regimes, large-scale language-model pretraining and reasoning with tiny models. In language modeling, Attractor Models deliver a Pareto improvement over standard Transformers and stable looped models across sizes, improving perplexity by up to 46.6% and downstream accuracy by up to 19.7% while reducing training cost. Notably, a 770M Attractor Model outperforms a 1.3B Transformer trained on twice as many tokens. On challenging reasoning tasks, we show that our model with only 27M parameters and approximately 1000 examples achieves 91.4% accuracy on Sudoku-Extreme and 93.1% on Maze-Hard, scaling favorably where frontier models like Claude and GPT o3, fail completely, and specialized recursive reasoners collapse at larger sizes. Lastly, we show that Attractor Models exhibit a novel phenomenon, which we call equilibrium internalization: fixed-point training places the model's initial output embedding near equilibrium, allowing the solver to be removed at inference time with little degradation. Together, these results suggest that Attractor Models make iterative refinement scalable by turning recurrence into a computation the model can learn to internalize.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL",
+      "cs.NE"
+    ]
+  },
+  "arxiv:2605.11196|f912a9c0086eda13bb2308819af228f9ca1e0f2f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Linear attention reduces the quadratic cost of softmax attention to $\\mathcal{O}(T)$, but its memory state grows as $\\mathcal{O}(T)$ in Frobenius norm, causing progressive interference between stored associations. We introduce \\textbf{Variational Linear Attention} (VLA), which reframes the memory update as an online regularised least-squares problem with an adaptive penalty matrix maintained via the Sherman-Morrison rank-1 formula. We prove that normalising the write direction to unit length gives the recurrence Jacobian spectral norm exactly $1$ for all sequence lengths and head dimensions (Proposition 2), and that the state norm is self-limiting under bounded inputs (Proposition 1). Empirically, VLA reduces $\\|S_t\\|_F$ by $109\\times$ relative to standard linear attention at $T{=}1{,}000$, achieves near-perfect exact-match accuracy on multi-query associative recall within the effective per-head memory regime ($n_\\text{pairs} < d_h$), maintaining substantially higher retrieval performance than DeltaNet and standard linear attention under increasing memory load, and maintains 62\\% accuracy at the per-head capacity boundary. A Triton-fused kernel achieves $14\\times$ speedup over sequential Python and $\\mathcal{O}(T)$ scaling, crossing below softmax attention latency at approximately 43\\,000 tokens.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.11374|033b1a02a81219ca97dadafe8a38e1b0402e532d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Test-time compute is widely believed to benefit only large reasoning models. We show it also helps small embedding models. Most modern embedding checkpoints are distilled from large LLM backbones and inherit their representation space; a frozen embedding model should therefore benefit from extra inference compute without retraining. Using an agentic program-search loop, we explore 259 candidate inference programs over a frozen embedding API across ninety generations. The entire Pareto frontier collapses onto a single algebra: a softmax-weighted centroid of the local top-K documents interpolated with the query. This parameter-free default lifts nDCG@10 statistically significantly across seven embedding-model families spanning a tenfold parameter range, with held-out full-BEIR validation confirming the lift on every model tested.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL",
+      "cs.IR"
+    ]
+  },
+  "arxiv:2605.11603|1a3bb6a65a53aacd89ef0c116e8775a88b761107|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The growing deployment of large language models (LLMs) makes per-request routing essential for balancing response quality and computational cost across heterogeneous model pools. Current routing methods rarely consider sustainable energy use and CO2 emissions as optimization objectives, despite grid carbon intensity varying by time and region, and models differing significantly in energy consumption. To address this gap, we introduce Green-Aware Routing (GAR), a constrained multi-objective optimization framework that minimizes per-request CO2 emissions subject to explicit accuracy floors and p95-latency service-level objectives (SLOs). GAR employs adaptive constraint optimization through per-dataset floor tuning and incorporates lightweight estimators for correctness, tail latency, and carbon emissions, enabling real-time routing decisions without additional inference passes. We present GAR-PD, a practical online primal-dual routing algorithm for rolling carbon budgets, alongside heuristic variants that achieve high feasibility coverage while limiting accuracy degradation. Comprehensive experiments across standard NLP benchmarks with heterogeneous LLM pools (7B-70B) demonstrate that GAR achieves substantial carbon reductions while maintaining competitive accuracy and p95 latency guarantees, providing a practical, theoretically grounded approach to sustainable LLM inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
