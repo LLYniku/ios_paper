@@ -174,10 +174,10 @@
     "recommendation_reason": "它与大模型训练、模型迁移和框架互操作研究直接相关，适合用于比较不同训练生态下的实现与权重转换方案。"
   },
   "github:repo:blaizzy/mlx-vlm": {
-    "fingerprint": "df922c41086b4244be4008672a9bd3f36c3855e3",
-    "summary_zh": "这是一个面向 Mac（尤其是 Apple Silicon）的视觉语言模型（VLM）推理与微调工具包，基于 MLX 实现，支持在本地运行多种模型架构。仓库覆盖了 Florence2、Idefics、LLaVA、Molmo、PaliGemma、Pixtral 等常见视觉语言模型，并提供 Python 接口，适合本地 AI 研究与开发。其定位同时包含推理和微调，说明不仅可用于快速验证模型效果，也可用于实验性训练与适配。项目在 GitHub 上具有较高关注度，表明其在本地多模态模型生态中有一定影响力。",
-    "tldr": "这是一个在 Mac/Apple Silicon 上用 MLX 本地运行和微调多种视觉语言模型的 Python 工具包。",
-    "recommendation_reason": "它与科研主题相关，因为它提供了多模态视觉语言模型在本地硬件上的推理与微调能力，便于研究者复现实验和开展模型适配。"
+    "fingerprint": "9d24d55be3d823c2f42f6dbdefa077104f0d9333",
+    "summary_zh": "这是一个面向 Mac Apple Silicon 的视觉语言模型（VLM）推理与微调工具包，基于 MLX 框架实现。本项目支持多种主流 VLM 相关模型与架构，适合在本地环境中运行和实验视觉-语言任务。仓库以 Python 编写，且拥有较高的社区关注度，说明其在本地 AI 与多模态研究实践中具有一定影响力。",
+    "tldr": "这是一个可在 Mac 上使用 MLX 对多种视觉语言模型进行推理和微调的开源工具包。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了多模态视觉语言模型的本地推理与微调能力，便于研究者在 Apple Silicon 环境中开展实验与原型验证。"
   },
   "github:repo:pestopoppa/epyc-orchestrator": {
     "fingerprint": "42d712dceddafc01104215c140248108b441b987",
@@ -276,10 +276,10 @@
     "recommendation_reason": "它与科研主题相关，因为它汇集了大语言模型与相关深度学习方法的代码示例和架构实现，适合用于学习、复现与快速了解基础实验思路。"
   },
   "github:repo:wazionapps/nexo": {
-    "fingerprint": "2f4a8610a06564aa0f9417844419e1f739b46939",
-    "summary_zh": "这是一个面向 AI 代理的本地开源“共享大脑”项目，主打持久记忆、语义 RAG、自然遗忘、元认知控制和信任评分等能力。它通过 MCP 服务器与多种客户端协作，提供 150+ 工具，强调在 Claude Code、Codex、Claude Desktop 等环境中的通用接入。项目以 Python 实现，定位为帮助多个智能体共享和检索记忆的认知架构组件，且完全本地运行。",
-    "tldr": "一个为 AI 代理提供本地持久记忆、RAG 和信任控制的开源共享记忆系统。",
-    "recommendation_reason": "该仓库与科研中的智能体记忆、认知架构、检索增强生成和多代理协作研究直接相关，可作为实验性基础设施或对比实现参考。"
+    "fingerprint": "2c14a44a634f86da80a9a0c2efee690acf7a1fc0",
+    "summary_zh": "这是一个面向 AI 代理的本地开源记忆系统，主打“共享大脑”能力，支持持久记忆、语义检索、自然遗忘、元认知保护和可信度评分。项目通过 MCP 服务器/工具链与 Claude Code、Codex、Claude Desktop 等客户端集成，强调可在本地运行并保持隐私与可控性。其设计还涉及知识图谱、向量搜索和检索增强生成等机制，适合构建多代理协作与长期上下文管理能力。",
+    "tldr": "这是一个为 AI 代理提供本地持久记忆、语义检索和可信控制的开源 MCP 记忆基础设施。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及 AI 记忆架构、检索增强、元认知控制和多代理协作等可研究方向。"
   },
   "github:repo:kenzzy69/rag-python-rag": {
     "fingerprint": "088904dc16ba366d265c8e5c366ca2b1f1c7aee8",
@@ -858,10 +858,10 @@
     "recommendation_reason": "该仓库与科研主题相关，因为它涉及工业 AI、时序异常检测、预测建模和可部署架构等研究方向。"
   },
   "github:repo:nvidia/tensorrt-llm": {
-    "fingerprint": "f41b2841bd234e64e5acb4271e3ed56bac1cc339",
-    "summary_zh": "TensorRT-LLM 是 NVIDIA 提供的一个面向大语言模型推理的开源项目，提供易用的 Python API 来定义和部署 LLM。它集成了多种先进优化，用于在 NVIDIA GPU 上高效执行推理。项目还包含用于协调推理执行的 Python 和 C++ runtime 组件，适合构建高性能的模型服务与推理系统。",
-    "tldr": "这是一个用于在 NVIDIA GPU 上高效部署和加速大语言模型推理的开源框架。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型推理优化、GPU 加速和 LLM serving 等关键研究方向。"
+    "fingerprint": "b2f2fa5a8de84a3c1c9c1fca1a3d81744b1952eb",
+    "summary_zh": "TensorRT-LLM 是 NVIDIA 开源的用于大语言模型推理加速的 Python/C++ 工具库，面向在 NVIDIA GPU 上高效部署 LLM。它提供易用的 Python API 来定义模型，并集成多种先进优化以提升推理性能。项目还包含用于编排推理执行的运行时组件，适合构建高性能 LLM 服务。",
+    "tldr": "这是一个面向 NVIDIA GPU 上高效部署和加速大语言模型推理的开源框架。",
+    "recommendation_reason": "该仓库直接涉及 LLM 推理优化、服务化部署和 GPU 加速，适合科研中研究大模型高效推理与系统性能提升。"
   },
   "github:repo:sgl-project/sglang": {
     "fingerprint": "d6c003472306183b78ba3ea12eedb95314d8f4b7",
@@ -1512,10 +1512,10 @@
     "recommendation_reason": "它与科研主题相关，因为它涉及推理引擎、模型部署与加速等基础设施能力，适合研究高效推理和多模型服务框架。"
   },
   "github:repo:jjang-ai/jangq": {
-    "fingerprint": "62d533217553365ee3f2ffdcca3f33b35c11e2f0",
-    "summary_zh": "这是一个面向 Apple Silicon 的 Python 仓库，核心目标是把 GGUF 模型用于 MLX 生态，并要求配合 JANG_Q runtime 才能运行。项目主打自适应混合精度量化与运行时支持，围绕 LLM、llamacpp、MLX/MLXLLM 等方向展开。它与量化、模型推理加速和端侧大模型部署相关，标签也显示其关注 Apple Silicon 场景下的优化。仓库当前有一定关注度，适合检索与量化推理、模型压缩和部署实践相关的研究资料。",
-    "tldr": "这是一个面向 Apple Silicon 的 GGUF/MLX 量化与推理项目，重点是自适应混合精度量化和运行时支持。",
-    "recommendation_reason": "它与科研主题相关，因为它直接涉及大模型量化、推理加速和端侧部署等可用于研究与实验的技术方向。"
+    "fingerprint": "fe442f27449e14387add2d2788482c6df754b2f6",
+    "summary_zh": "该仓库介绍了 JANG，一个面向 Apple Silicon 的 GGUF/MLX 量化方案，强调必须配合 JANG_Q runtime 使用。其核心方向是自适应混合精度量化与运行时支持，面向大语言模型在苹果芯片上的推理与部署优化。仓库标签显示它与 llama.cpp、MLX、MLXLLM、OMLX 等生态相关，主要实现语言为 Python。整体来看，它更偏向推理侧的量化与性能优化工具，而不是模型训练框架。",
+    "tldr": "这是一个面向 Apple Silicon 的 LLM 量化与运行时优化仓库，聚焦 GGUF/MLX 生态下的自适应混合精度推理。",
+    "recommendation_reason": "它与科研中的大模型量化、推理加速和异构硬件部署研究直接相关，尤其适合关注 Apple Silicon 上的高效模型推理方案。"
   },
   "github:repo:gavin-qiao/vserve": {
     "fingerprint": "a831f6e9ae0e7a76b91645e622c4f47bf94b4bef",
@@ -1786,5 +1786,77 @@
     "summary_zh": "这是一个名为 ray 的 TypeScript 仓库，目标是将 AI 系统“缩小”到能够在廉价 VPS 基础设施上运行。仓库目前信息显示星标较少，说明项目可能还处于早期阶段或受众较小。其核心方向偏向 AI 部署、资源优化与低成本基础设施适配。对研究者而言，它可能提供有关轻量化推理、边缘/低成本部署方案的实现思路。",
     "tldr": "一个面向低成本 VPS 部署的轻量化 AI TypeScript 项目。",
     "recommendation_reason": "它与科研主题相关，因为它聚焦于 AI 系统的资源受限部署与成本优化，这类实现思路对推理加速、系统设计和边缘计算研究都有参考价值。"
+  },
+  "github:repo:redchupa/lumen": {
+    "fingerprint": "81dbb2029c426aa1dcb65ee4064515d3b33953db",
+    "summary_zh": "这是一个用 Rust 编写的开源仓库，定位为 IR 驱动的 LLM 推理编译器。项目强调通过自动合成量化算子内核来提升推理效率，并把韩语大模型作为优先支持对象。仓库主题覆盖 compiler、inference、jit、quantization 和 llama 等方向，说明其面向底层推理优化与模型部署。当前星标较少，可能仍处于早期阶段，但技术方向明确且偏研究与工程结合。",
+    "tldr": "这是一个面向 LLM 推理优化的 Rust 编译器项目，重点在 IR 驱动、量化内核自动生成和韩语模型支持。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及大模型推理编译、量化优化和 JIT 内核生成等可用于研究与实验的核心技术。"
+  },
+  "github:repo:subha-v/quantization": {
+    "fingerprint": "091d90364fcf6bc5c7a03fce4f36c8924e5bd999",
+    "summary_zh": "这是一个 GitHub 仓库，主题围绕量化与混合精度分配，目标是寻找一种轻量级估计器，最好还能得到硬件支持，以便在线为激活分配不同精度。仓库使用 Python 实现，当前星标数为 0。整体看，它更偏向研究探索或原型验证，而非成熟工具。",
+    "tldr": "该仓库聚焦于面向在线混合精度分配的量化方法探索。",
+    "recommendation_reason": "它与科研主题相关，因为涉及模型量化、混合精度和硬件协同优化，这些都是当前高效深度学习推理与部署中的重要研究方向。"
+  },
+  "github:repo:tohio/slm": {
+    "fingerprint": "d53eeb14f9056f05075e542c84e795304a2babba",
+    "summary_zh": "这是一个用 Python 实现的开源仓库，目标是从零开始训练 GPT 风格的大语言模型。项目覆盖了数据整理、预训练、监督微调（SFT）以及 DPO 对齐等完整流程，说明其关注模型训练全链路。由于仓库星标数较少，当前更像是一个实验性或早期项目，但主题与大模型训练实践直接相关。",
+    "tldr": "这是一个面向从零训练 GPT 风格大模型的 Python 仓库，涵盖数据、预训练、SFT 和 DPO 对齐流程。",
+    "recommendation_reason": "它与科研主题相关，因为它提供了大语言模型训练与对齐的完整工程实践线索，适合研究模型训练流程和方法实现。"
+  },
+  "github:repo:forcepusher/smol-caveman": {
+    "fingerprint": "da3cf098d0a835630c236394f0fd2ed7c5fbb384",
+    "summary_zh": "这是一个面向本地大语言模型使用场景的仓库，核心目标是减少输入中的噪声内容，让模型读取更精简、质量更高的上下文，从而获得更好的输出结果。仓库定位偏实用工具或提示词/流程优化方向，强调“少读低质量信息”的信息筛选思路。当前可见热度不高，Stars 较少，说明可能还处于早期或小众阶段。整体上适合关注本地 LLM 运行、上下文压缩和输入清洗相关研究的人浏览。",
+    "tldr": "这是一个帮助本地大语言模型减少噪声输入、提升输出效果的轻量仓库。",
+    "recommendation_reason": "它与科研主题相关，因为涉及本地大语言模型的上下文优化、信息筛选和输入质量控制等研究问题。"
+  },
+  "github:repo:jgoy-labs/server-nexe": {
+    "fingerprint": "253df0d32534c75244098d6a20b5319a4dd64f5c",
+    "summary_zh": "这是一个面向本地部署的 AI 服务器项目，支持持久化记忆、RAG 检索增强生成和多后端推理。它可在用户自己的机器上运行，避免将数据发送到外部服务，强调隐私与自托管。项目支持 MLX、llama.cpp 和 Ollama 等后端，并与向量数据库场景相关，适合 Apple Silicon 与 Python 生态。",
+    "tldr": "这是一个支持本地运行、具备 RAG 和记忆能力的开源 AI 服务器项目。",
+    "recommendation_reason": "它与科研主题相关，因为它涉及本地大模型推理、RAG、向量数据库和隐私保护等可用于实验与原型验证的核心技术。"
+  },
+  "github:repo:omercanga/rtkmcp": {
+    "fingerprint": "4693cf403da997060ff5791fc147e88717c05016",
+    "summary_zh": "这是一个用 Rust 编写的 MCP 服务器项目，面向 LLM 开发工具场景。它通过在命令输出进入模型上下文前进行过滤，宣称可以在不丢失数据的前提下节省 60% 到 90% 的 token。项目当前星标为 0，说明公开关注度较低，但功能定位清晰，聚焦于上下文压缩与效率优化。",
+    "tldr": "一个面向 LLM 开发工具的 Rust MCP 服务器，主打在不丢失数据的情况下大幅减少上下文 token 消耗。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及大语言模型上下文管理、信息压缩和工具链效率优化，这些都是当前 AI 系统研究中的重要问题。"
+  },
+  "github:repo:rmems/corinth-canal": {
+    "fingerprint": "624bf91b6c9a61bd4ebb1a9135f8f2872e712d01",
+    "summary_zh": "这是一个 Rust 语言实现的 GitHub 仓库，主题与将 MOE 架构转换为 SNN 量化有关。仓库当前星标数为 0，说明它可能还处于较早期或较小众的阶段。原始描述较简短，但可以看出其关注点在模型结构转换与量化方法上，偏向机器学习模型压缩或神经网络架构研究。对于研究者来说，它可能提供了一个探索 MOE 到 SNN 映射与量化实现思路的代码入口。",
+    "tldr": "该仓库聚焦于将 MOE 架构转换为 SNN 量化的 Rust 实现，适合关注模型压缩与神经网络架构转换的研究。",
+    "recommendation_reason": "它与科研主题相关，因为其内容涉及机器学习模型结构转换、量化与 SNN 相关实现，可为神经网络压缩和高效推理研究提供参考。"
+  },
+  "github:repo:ssfdre38/grey-liquid-labs": {
+    "fingerprint": "7aaf65978e973f85d8ebb423b6740358a4debae2",
+    "summary_zh": "这是一个 GitHub 仓库，主题聚焦于低比特量化，尤其是 3 bit 以下量化的限制与瓶颈，以及对大语言模型架构的分析。仓库当前星标数为 0，说明公开关注度较低，但研究方向较明确。内容看起来更偏向探索性研究，可能涉及模型压缩、推理效率和架构适配等问题。对于关注大模型部署与量化理论的研究者，这类项目可能提供相关实验思路或问题定义。",
+    "tldr": "该仓库研究 3 bit 以下量化障碍及大语言模型架构分析，适合关注模型压缩与高效推理的研究者。",
+    "recommendation_reason": "它直接涉及低比特量化与大模型架构这两个与科研高度相关的方向，可能对模型压缩和推理优化研究有参考价值。"
+  },
+  "github:repo:nvidia-ai-blueprints/video-search-and-summarization": {
+    "fingerprint": "8e12bd82708ee64fe350ce50dd0f57bc52db9799",
+    "summary_zh": "这是一个来自 NVIDIA-AI-Blueprints 的 GitHub 仓库，提供用于构建 GPU 加速视觉智能体和 AI 视频分析应用的参考架构。仓库主题覆盖 agents、LLM、RAG、video-analytics、video-search 和 VLM，语言为 Python。其定位更偏向工程实践与系统设计，可作为视频检索、总结和多模态理解相关项目的起点。该仓库当前有较高关注度，适合研究者了解最新的视频智能体应用架构思路。",
+    "tldr": "这是一个面向 GPU 加速视频搜索与总结的参考架构仓库，聚焦多模态智能体、RAG 和视频分析应用。",
+    "recommendation_reason": "它与科研主题相关，因为它直接涉及视频检索、多模态大模型与检索增强生成等当前热门研究方向。"
+  },
+  "github:repo:dfrostar/neuralmind": {
+    "fingerprint": "ef47bd850208f2c593c9d606e6c7ff894ee8b2c0",
+    "summary_zh": "这是一个面向 AI 代码理解的自适应神经知识系统，核心目标是通过知识表示与语义检索来显著压缩上下文输入。项目使用 Python 实现，围绕 ChromaDB、知识图谱、MCP 和语义搜索等技术，强调在保持理解能力的同时减少 token 消耗。其宣传重点是可实现 40-70 倍的 token reduction，适用于代码分析、上下文管理和大模型辅助编程场景。仓库当前热度不高，但主题直接贴近 AI 代码理解与上下文优化研究。",
+    "tldr": "这是一个用知识图谱和语义检索来大幅降低 AI 代码理解 token 消耗的 Python 开源项目。",
+    "recommendation_reason": "它与科研主题相关，因为它聚焦于大模型代码理解中的上下文压缩、语义检索和知识表示优化。"
+  },
+  "github:repo:mbachaud/helix-context": {
+    "fingerprint": "6ea4a480a8217634e2b57ba9548ca96fdd2639fa",
+    "summary_zh": "这是一个面向智能体知识索引的 Python 仓库，主打基于 IDF 加权的检索方案，并结合确定性的嵌入式模型实现语义检索。项目使用 SQLite 作为存储，可在消费级硬件上处理 1.7 万以上条目，并强调 5 倍压缩下的可用性与效率。它与 RAG、向量检索、知识库和 MCP 相关，定位偏向轻量、本地化的检索增强系统。整体来看，适合作为智能体检索管线和知识索引实现的参考。",
+    "tldr": "这是一个用 SQLite 和 IDF 加权语义检索构建的轻量级智能体知识索引项目，适合参考其 RAG/向量检索实现思路。",
+    "recommendation_reason": "该仓库直接涉及检索增强生成、语义搜索和知识索引等科研主题，可用于参考轻量级本地检索系统的设计与实现。"
+  },
+  "github:repo:servicenow/fast-llm": {
+    "fingerprint": "593940af41a9f7841cea92707e9c71e42a4d15e8",
+    "summary_zh": "这是一个由 ServiceNow Research 开发的 Python 仓库，目标是加速大语言模型（LLM）的训练过程。项目定位于提升训练速度与效率，适合关注大模型训练优化、系统加速和工程实现的研究者。仓库当前已有一定社区关注度，体现出其在 LLM 训练加速方向上的实用性。",
+    "tldr": "这是一个面向 LLM 训练加速的 Python 开源仓库，适合研究高效训练与系统优化。",
+    "recommendation_reason": "它与科研主题相关，因为其直接聚焦于大语言模型训练加速，可为训练系统优化、性能改进和工程实现研究提供参考。"
   }
 }
