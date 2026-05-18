@@ -4461,5 +4461,180 @@
       "推理加速",
       "联合分布采样"
     ]
+  },
+  "arxiv:2605.15508|b33588ef6894648a35c034e5726325992855c49a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The quadratic complexity of attention imposes severe memory and computational bottlenecks on Large Language Model (LLM) inference. This challenge is particularly acute for emerging agentic applications that require processing multi-million token sequences. We propose STS, a sparse attention mechanism that requires no model retraining. STS leverages the key insight that tokens identified as important by a smaller draft model are highly predictive of important tokens for a larger target model. By integrating into speculative decoding frameworks, STS repurposes the draft model's attention scores to dynamically construct a token-and-head-wise sparsity mask. This mask effectively prunes the expensive attention computation in the target LLM. Our evaluation shows that STS achieves a 2.67x speedup operating at approximately 90% sparsity on representative benchmark NarrativeQA, maintaining negligible accuracy degradation compared to dense attention. STS establishes a new state-of-the-art on the sparsity-accuracy trade-off, outperforming prior techniques by enabling higher sparsity levels for a given accuracy budget.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.15413|5e016e2f6ad5ed0176b17e7cbda6a523007d6904|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Despite the remarkable success of transformer architectures in natural language processing, their scalability limitations remain poorly understood through systematic empirical analysis. This paper presents the first comprehensive large-scale evaluation of 118 transformer models across seven distinct architectural categories, revealing fundamental performance walls that manifest as hard deployment constraints. Our systematic benchmarking methodology uncovers a critical scalability crisis: while 88.1% of models successfully process sequences up to 512 tokens, this drops dramatically to 44.9% at 1024 tokens, with complete failure (0%) at 2048 tokens. Through rigorous analysis of loading times, memory consumption, and computational efficiency across sequence lengths from 128 to 2048 tokens, we demonstrate that compressed models achieve superior parameter efficiency (649.2 tokens/sec/M parameters) compared to large generative models (12.5 tokens/sec/M). Our findings challenge prevailing scaling assumptions and provide the first quantitative evidence that the theoretical O(n2) attention complexity translates into measurable performance walls. This work establishes new benchmarking methodologies for transformer evaluation and provides critical insights for practical deployment decisions in production environments.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.15626|5a26cb6a69fa4ff2f80ca4bc35dd71dc313949f4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models deliver strong performance across language and reasoning tasks, but their storage and compute costs remain major barriers to deployment in resource-constrained and latency-sensitive settings. SVD-based post-training compression offers a hardware-agnostic way to reduce model size and improve inference efficiency through low-rank factorization. However, existing methods often rely on input-only whitening spaces, homogeneous rank allocation, or loss-agnostic allocation heuristics, limiting their ability to preserve model quality under aggressive compression. We propose Input-Output Whitened SVD (IO-SVD), a post-training compression method that forms a KL-aware double-sided whitening space for model weights. Using a second-order expansion of the KL loss over the top-K token probabilities, IO-SVD constructs an output-side metric that captures predictive sensitivity, while input whitening captures activation statistics. We further introduce an efficient heterogeneous rank-allocation strategy that scores whitened singular components using first-order calibration loss estimates and prunes the least sensitive components under a global budget. Inspired by prior work that combines SVD truncation with quantization, we improve hybrid SVD-quantization compression through loss-aware remapping, which selects low-rank factor rows for 8-bit quantization based on the predicted loss change incurred by quantizing them. Extensive experiments across diverse LLM and VLM families, and inference-time analysis shows that IO-SVD compresses LLMs with minimal performance degradation while delivering practical inference speedups. Code is available at https://github.com/mint-vu/IO-SVD.git",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.15759|60fc0e85601797075eb493f9be6cbebedde4d9a3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) agents require long-term memory to leverage information from past interactions. However, existing memory systems often face a fidelity--efficiency trade-off: raw dialogue histories are expensive, while flat facts or summaries may discard the structure needed for precise recall. We propose \\textbf{DimMem}, a lightweight dimensional memory framework that represents each memory as an atomic, typed, and self-contained unit with explicit fields such as time, location, reason, purpose, and keywords. This representation exposes the structure needed for dimension-aware retrieval, memory update, and selective assistant-context recall without storing full histories in the model context. Across LoCoMo-10 and LongMemEval-S, DimMem achieves \\textbf{81.43\\%} and \\textbf{78.20\\%} overall accuracy, respectively, outperforming existing lightweight memory systems while reducing LoCoMo per-query token cost by \\textbf{24\\%}. We further show that dimensional memory extraction is learnable by compact models: after fine-tuning on the DimMem schema, a Qwen3-4B extractor surpasses LightMem with GPT-4.1-mini on both benchmarks and reaches performance comparable to, or better than, much larger extractors in key settings. These results suggest that explicit dimensional structuring is an effective and efficient foundation for long-term memory in LLM agents. Code is available at https://github.com/ChowRunFa/DimMem.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.15250|5e4de4d88d44773778e1a492ec6ca49cb4bee24f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2605.15250v1 Announce Type: new \nAbstract: Multi-head Latent Attention (MLA), the attention used in DeepSeek-V2/V3, jointly compresses keys and values into a low-rank latent and matches the H100 roofline almost perfectly. Its trained weights, however, expose only one decoding path - an absorbed MQA form - which ties efficient inference to H100-class compute-bandwidth ratios, forfeits tensor parallelism along the head axis, and yields no Multi-Token Prediction (MTP) gain on commodity inference GPUs such as the export-restricted H20. We propose Group-Query Latent Attention (GQLA), a minimal modification of MLA whose trained weights expose two algebraically equivalent decoding paths over the same parameters: an MQA-absorb path identical to MLA's, and a GQA path with a per-group expanded cache. The runtime picks the path that matches the target hardware - no retraining, no custom kernels - so a single set of GQLA weights pins the rooflines of both H100 (MQA-absorb, s_q=1) and H20 (GQA + MTP, s_q=2), while supporting up to 8-way zero-redundancy tensor parallelism on the GQA path. To avoid pretraining from scratch we extend TransMLA into TransGQLA, which converts a pretrained GQA checkpoint into a GQLA model; on LLaMA-3-8B it compresses the per-token KV cache to 28.125% of the GQA baseline on the MQA-absorb path while structurally preserving GQA-level traffic on the per-group path.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.15609|8c6a5242b82c4fd460c515fe45dcc0ccbad83630|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion large language models (dLLMs) generate text by iteratively denoising masked token sequences. Although dLLMs can predict all masked positions in parallel within each step, the large number of denoising iterations still makes inference expensive. This cost can be reduced spatially by unmasking multiple tokens per step, or temporally by collapsing multiple denoising steps into one verification call. We propose Parallel Speculative Decoding (PSD), a training-free framework that jointly improves inference along both axes. Using the confidence scores from a single forward pass, PSD selects positions to unmask via a configurable, adaptive unmasking policy and constructs multi-depth speculative drafts without extra model calls. A final batched verification pass then applies hierarchical acceptance, keeping the deepest draft that remains consistent with the updated predictions. Experiments on three dLLMs across reasoning and code generation tasks show that PSD achieves favorable trade-offs between inference efficiency and generation quality, reaching up to $5.5\\times$ tokens per forward pass with accuracy comparable to greedy decoding.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.15422|42cea9abcf5387271539b40876a1a769d61de218|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Modern RL post-training methods such as GRPO and DAPO train on $N$ response sequences of $R$ tokens sampled from a shared prompt of $P$ tokens, but standard FlashAttention replicates all $P$ prompt tokens $N$ times across both forward and backward passes -- duplicating compute and memory on identical hidden states. In large-rollout, long-context RL training ($N{\\geq}16$, $P{\\geq}8\\text{K}$), this redundancy dominates the policy update cost. We observe that in decoder-only models, causal masking makes prompt representations invariant across sequences at every layer, so all per-token operations (norms, projections, MLP) and attention can process the prompt once -- a property not yet exploited at the kernel level for training. We propose \\textbf{DualKV}, the first FlashAttention kernel variant that eliminates shared-prompt replication during RL training, via (1)~fused CUDA forward and backward kernels that iterate over two disjoint KV regions -- shared context and per-sequence response -- in a single kernel launch, and (2)~a data-pipeline redesign in veRL that repacks $N(P{+}R)$ tokens into $P{+}NR$ tokens per micro-batch, extending the token reduction from attention to the entire model by a factor $ρ= N(P{+}R)/(P{+}NR)$. DualKV is mathematically equivalent to standard attention and introduces no approximation. On Qwen3-8B GRPO training with 8$\\times$H100 GPUs ($N{=}32$, 8K-context), DualKV achieves $1.63$--$2.09\\times$ policy-update speedup, enables $2\\times$ larger micro-batches, and raises MFU from $36\\%$ to $76\\%$. Similar gains hold for DAPO ($2.47\\times$ speedup, $77\\%$ MFU). At 30B MoE scale on 16$\\times$H100, DualKV achieves $3.82\\times$ policy-update and $3.38\\times$ end-to-end step speedup over FlashAttention (which requires 4-way Ulysses sequence parallelism to avoid OOM).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.15436|244a6c232a9e2d5bc1b88a8a808eb9af7cd9dded|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "This paper presents a comprehensive analysis of neural activation patterns across six distinct large language model (LLM) architectures, examining their performance on twelve cognitive task categories. Through systematic measurement of final activation values, attention entropy, and sparsity patterns, we reveal fundamental differences in how encoder and decoder architectures process diverse cognitive tasks. Our analysis of 144 task-model combinations demonstrates that mathematical reasoning consistently produces the highest attention entropy across all architectures, while decoder models exhibit significantly higher sparsity patterns compared to encoder models. The findings provide critical insights into the computational characteristics of modern language models and their task-specific neural behaviors, with implications for model selection and optimization in big data applications.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.15694|0fd39843ad02f50cb726c883c8ab35a01f22e91c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer models are rapidly becoming a cornerstone of modern Internet of Things (IoT) applications, yet their computational and memory demands far exceed the capabilities of a single typical ultra-low-power IoT device. We present CATS, a framework for distributed transformer inference on ultra-low-power wireless devices, enabling multiple devices to collaboratively execute models far larger than what a single device can sustain. At its core, CATS is a communication-aware distributed transformer inference scheme co-designed across transformer partitioning, wireless communication and training. It employs SomeGather, a new pruned communication primitive that selectively broadcasts activation columns to reduce communication bandwidth and RAM usage without sacrificing model accuracy. Building on SomeGather, we design a partitioning method that exploits this primitive for efficient model parallelism. To cope with unreliable wireless communication, CATS employs message-dropout during training, which mimics packet losses and yields models that are robust to message loss during inference. In real-world experiments, we show that CATS brings distributed transformer inference to ultra-low-power wireless devices for the first time, with deployments on up to 16 devices that collaboratively execute transformer models up to 14 times larger than what a single device can run.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.15787|d80e5ab7e08bebe0fc72e981f42c843b0e681a0e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Why does a Transformer that has memorized its training set wait thousands of steps before it generalizes? Existing accounts locate this delay in norm minimization, feature emergence, or the late discovery of sparse subnetworks. These explanations capture important parts of the transition, but ignore a constraint unique to attention-based models: if attention discards an informative token, no bounded downstream computation can recover it. We formalize attention as an implicit Bayesian posterior over the task dependency graph and prove that generalization requires two separable conditions: a familiar Goldilocks bound on MLP capacity, coinciding with norm-based theories of grokking, and a novel Bayesian structural condition requiring attention to place sufficient mass on every informative token. This decoupling explains delayed generalization as delayed structural inference. Early in training, the MLP memorizes through unaligned features, drives the cross-entropy loss near zero, and thereby starves attention of structural gradient. Weight decay must then erode memorization before the missing graph becomes learnable, yielding the known inverse-weight-decay delay, which we derive as a structural waiting time. We then prove that this explaining-away delay can be bypassed by a KL-based structural intervention, yielding an inverse-intervention-strength scaling law for the grokking time. Experiments on algorithmic sequence tasks isolate structure from capacity and show that this Bayesian ticket matches or outperforms lottery-ticket transfer.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.15290|1d15bca5cb39ab4a4ab8526cb8ac0b5bb58b1824|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2605.15290v1 Announce Type: new \nAbstract: Hyperparameter transfer across model architectures dramatically reduces the amount of compute necessary for tuning large language models (LLMs). The maximal update parameterization ({\\mu}P) ensures transfer through principled mathematical analysis but can be challenging to derive for new model architectures. Building on the spectral feature-learning view of Yang et al. (2023a), we make two advances. First, we promote spectral norm conditions on the weights from a heuristic to the definition of feature learning, and as a consequence arrive at the Complete-P depth and weight-decay scalings without recourse to lazy-learning. Second, we consider a modified spectral norm that preserves the valid scaling law of network weights when weight matrices are not full rank. This enables (to our knowledge, the first) derivation of {\\mu}P scalings for grouped-query attention (GQA). We demonstrate the efficacy of our theoretical derivations by showing learning rate transfer across the GQA repetition hyperparameter as well as experiments regarding transfer over weight decay.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.15647|2e8bdd6f488f932acf2114e851cf9b2fcd5bd467|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Edge machine learning presents a unique set of constraints not encountered in cloud-scale model deployment: strict memory budgets, limited compute, and non-negotiable accuracy thresholds must all be satisfied simultaneously. Existing compression and optimization techniques can trade one resource for another, but rarely improve both accuracy and model size at the same time. This paper presents the application of Perforated Backpropagation to keyword spotting on the Edge Impulse platform, an experiment that won the Best Model award at the Edge Impulse 2025 Hackathon in December 2025. By adding artificial Dendrite Nodes to a standard convolutional neural network trained on the Edge Impulse keyword spotting tutorial pipeline, we demonstrate that dendritic models outperform traditional architectures at every level of parameter count and at every accuracy threshold tested across 800 hyperparameter trials. The best dendritic model achieved a test accuracy of 0.933 with only 1,500 parameters, versus the baseline accuracy of 0.921 requiring approximately 4,000 parameters. These results suggest that Perforated Backpropagation is a powerful addition to the edge AI engineer's toolkit, offering simultaneous gains in both model quality and deployment efficiency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.NE主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.NE"
+    ]
+  },
+  "arxiv:2605.15491|4e9d97e7d3c512753a5988b22253c79be2aba231|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Layer pruning removes entire Transformer decoder blocks from large language models, but introduces a mismatch between the hidden state received by the next surviving layer and the distribution it was trained to process, leading to significant performance degradation. We propose Ghosted Layers, a training-free recovery module that addresses this issue by solving a boundary activation alignment problem. Our method derives a closed-form optimal linear operator from a small calibration set to reconstruct the activation discrepancy introduced by the pruned layers. We show that this solution corresponds to the unconstrained optimum of the alignment objective, whereas existing methods are restricted to constrained solutions over limited operator subspaces. Experiments across multiple LLM backbones and pruning strategies demonstrate that our method consistently improves accuracy and perplexity over prior training-free baselines, while preserving the efficiency gains of layer pruning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2605.15208|8598f6d772e7b08e6756cf7250f31a9c0de85f69|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models are routinely compressed via post-training quantization to reduce inference costs and memory footprint for cloud and edge deployment, yet the impact of this compression on model quality remains poorly understood. Existing studies typically compare only two conditions (full-precision vs. a single quantized variant), rely on aggregate bias metrics, and evaluate a single model family, making it impossible to distinguish gradual degradation from threshold-dependent safety failures. We conduct a controlled empirical study of three instruction-tuned models (Qwen2.5-7B, Mistral-7B, Phi-3.5-mini) at five precision levels (BF16 through 3-bit) on 12,148 BBQ bias benchmark items across 5 random seeds, totaling 911,100 inference records. Our results reveal that 3-bit quantization causes 6-21% of previously unbiased items to develop new stereotypical behaviors, following a clear dose-response pattern confirmed via logistic regression, while models' willingness to select \"unknown\" answers declines by 17.4%. Crucially, these item-level changes are invisible to standard quality metrics: perplexity increases by less than 0.5% at 8-bit and under 3% at 4-bit across all three models, yet 2.5-5.6% of items already develop new biases at 4-bit. These findings demonstrate that aggregate evaluation metrics systematically miss fairness-critical degradation, underscoring the need for quality-aware compression protocols that explicitly test for bias emergence before deployment.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.15572|91517bd1c2ec65e0e53292f64ff527f65823f4ca|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The dynamic range of activations is a first-order constraint for low-bit quantization, activation scaling, and stable LLM inference. Prior work characterized outlier features and massive activations on pre-2024 LLaMA-style models, and the downstream activation-quantization stack inherits that picture without revisiting it for the post-LLaMA open-model boom. We ask the deployment-oriented question: how large can activations get in modern open LLMs, and how does this magnitude vary across families, generations, and training stages? Under a unified pipeline (5,000-sample multi-domain corpus, family-specific tokenization, identical hooks across embeddings, hidden states, attention, MLP/MoE, SwiGLU gates, and final norm), we measure global and layerwise maxima on 27 checkpoints from 8 open families spanning dense, MoE, vision-language, intermediate-training, and instruction-tuned variants. We find that (i) global maxima span over nearly four orders of magnitude at comparable parameter counts, with Qwen3.5 and MoE checkpoints in the 10^2 to 10^3 range and Gemma3-27B-it reaching ~7 x 10^5; (ii) cross-family and cross-generation comparisons break simple monotonic scaling; and (iii) MoE checkpoints exhibit 14.0-23.4x lower peaks than matched-scale dense counterparts, while the residual stream carries the global maximum in 22/24 checkpoints. A lightweight INT-8 sanity check shows that measured maxima co-vary with low-bit reconstruction error via activation-scale selection. We conclude that maximum activation magnitude is a model property tied to family, architecture, and training stage - not a simple byproduct of size - and should be measured and reported alongside any open-weight release before low-bit deployment. The code is publicly available at https://github.com/clx1415926/Max_act_llm.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.15206|01ea5ddcc046ec99bf9b88daa6251e024fa0a699|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Autonomous agents powered by large language models (LLMs) are increasingly used to automate complex, multi-step tasks such as coding or web-based question answering. While remote, cloud-based agents offer scalability and ease of deployment, they raise privacy concerns, depend on network connectivity, and incur recurring API costs. Deploying agents locally on user devices mitigates these issues by preserving data privacy and eliminating usage-based fees. However, agentic workflows are far more resource-intensive than typical LLM interactions. Iterative reasoning, tool use, and failure retries substantially increase token consumption, often expending significant compute without successfully completing tasks.\n  In this work, we investigate the time, token, and energy overhead of locally deployed LLM-based agents on consumer hardware. Our measurements show that agentic execution increases GPU power draw, temperature, and battery drain compared to single-inference workloads. To address this inefficiency, we introduce AgentStop, a lightweight efficiency supervisor that predicts and preemptively terminates trajectories unlikely to succeed. Leveraging low-cost execution signals, such as token-level log probabilities, AgentStop can reduce wasted energy by 15-20% with minimal impact on task performance (<5% utility drop) for challenging web-based question answering and coding benchmarks. These findings position predictive early termination as a practical mechanism for enabling sustainable, privacy-preserving LLM agents on user devices. Our project code and data are available at https://github.com/brave-experiments/AgentStop.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2605.16045|662f836a9d583f2983a9d3d970bed65e79e30e1e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Memory systems often organize user-agent interactions as retrievable external memory and are crucial for long-running agents by overcoming the limited context windows of LLMs. However, existing memory systems invoke LLMs to process every incoming interaction for memory extraction, and such an eager memory consolidation scheme leads to substantial token consumption. To tackle this problem, we propose RecMem by rethinking when memory consolidation should be conducted. RecMem stores incoming interactions in a subconscious memory layer and encode them using lightweight embedding models for retrieval. LLMs are only invoked to extract episodic and semantic memory when sustained recurrence are observed for semantically similar interactions. Such recurrence-based consolidation works because these interactions correspond to a semantic cluster with rich information and thus are worth extraction and summarization. To improve accuracy, RecMem also incorporates a semantic refinement mechanism that recovers the fine-grained facts omitted by memory extraction. Experiments show that RecMem reduces the memory construction token cost of three SOTA memory systems by up to 87% while exceeding their accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.15871|0e211450faee7b317b79127e2c4e87c0949ae9e6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Toward recursive self-improvement, we investigate LLM agents autonomously designing foundation models beyond standard Transformers. We introduce a dual-framework approach: AIRA-Compose for high-level architecture search, and AIRA-Design for low-level mechanistic implementation. AIRA-Compose uses 11 agents to explore fundamental computational primitives under a 24-hour budget. Agents evaluate million-parameter candidates, extrapolating top designs to 350M, 1B, and 3B scales. This yields 14 architectures across two families: AIRAformers (Transformer-based) and AIRAhybrids (Transformer-Mamba). Pre-trained at 1B scale, these consistently outperform Llama 3.2 and Composer-found baselines. On downstream tasks, AIRAformer-D and AIRAhybrid-D improve accuracy by 2.4% and 3.8% over Llama 3.2. Furthermore, AIRA-Compose finds models with highly efficient scaling frontiers: AIRAformer-C scales 54% and 71% faster than Llama 3.2 and Composer's best Transformer, while AIRAhybrid-C outscales Nemotron-2 by 23% and Composer's best hybrid by 37%. AIRA-Design tasks 20 agents with writing novel attention mechanisms for long-range dependencies and high-performing training scripts. On the Long Range Arena benchmark, agent-designed architectures reach within 2.3% and 2.6% of human state-of-the-art on document matching and text classification. On the Autoresearch benchmark, Greedy Opus 4.5 achieves 0.968 validation bits-per-byte under a fixed time budget, surpassing the published minimum. Together, these frameworks show AI agents can autonomously discover architectures and algorithmic optimizations matching or surpassing hand-designed baselines. This establishes a powerful paradigm for discovering next-generation foundation models, marking a clear step toward recursive self-improvement.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.15315|e03c0abacce88653510de787a8c4f6b85ac42036|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM-powered coding agents spend the majority of their token budget reading repository files, yet much of the retrieved code is irrelevant to the task at hand. Existing learned pruners compress this context with a single-objective sequence labeler, collapsing all facets of code relevance into one score and one transition matrix. We show that this formulation creates a modeling bottleneck: a single CRF transition prior must serve heterogeneous retention patterns, including contiguous semantic spans and sparse structural support lines. We propose LaMR (Latent Multi-Rubric), a structured pruning framework that decomposes code relevance into two interpretable quality dimensions, semantic evidence and dependency support, each modeled by a dedicated CRF with dimension-specific transition dynamics. A mixture-of-experts gating network dynamically weights the per-rubric emissions conditioned on the query, and a final CRF layer on the fused emissions produces the aggregate keep-or-prune decision. To supervise each dimension without additional annotation cost, we derive multi-rubric labels from the existing training corpus via AST-based program analysis, simultaneously denoising the teacher's binary labels. By effectively filtering distracting noise, LaMR frequently matches or even outperforms unpruned full-context baselines. Experiments on four benchmarks (SWE-Bench Verified, SWE-QA, LCC, LongCodeQA) show that LaMR wins 12 of 16 head-to-head multi-turn comparisons. It saves up to 31% more tokens on multi-turn agent tasks and improves Exact Match by up to +3.5 on single-turn tasks, while performance is frequently enhanced by denoising the context, and any remaining drops are marginal.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.15608|1173f859c34826268028c46b4f462556f37702ed|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Decoder-only transformers compute the conditional probability of the next token from a sequence of past observations. This paper derives, from first principles, inference architectures that solve the same prediction problem - and in doing so, recovers transformer-like layer operations as a consequence of optimal control theory. The framework is developed for two model classes: a nonlinear model of discrete-valued processes, directly motivated by the transformer, and a linear Gaussian model as a tractable baseline. For both model classes, the prediction objective is reformulated as an optimal control problem whose solution yields an explicit inference algorithm, the dual filter, with a layer structure that mirrors the layer structure of a decoder-only transformer. Numerical experiments provide a comparison of the optimal control to attention weights from a trained transformer. These experiments reveal that when the embedding dimension is insufficient, the transformer implicitly exploits non-Markovian structure.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、eess.SY主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "eess.SY"
+    ]
   }
 }
