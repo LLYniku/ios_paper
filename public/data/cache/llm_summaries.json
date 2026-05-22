@@ -5164,5 +5164,180 @@
       "cs.CV",
       "stat.CO"
     ]
+  },
+  "arxiv:2605.22205|0ffc37a7a8fcf5e2a31399e4a0dfc3a2c3a5abe7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models increasingly require specialization across diverse domains, yet existing approaches struggle to balance multi-domain capacities with strict memory and inference constraints. In this work, we introduce SkillWeave, a modular improvement framework that enables LLMs to specialize under fixed memory budgets. SkillWeave partitions full capabilities of a general-purpose model into skillpacks -- lightweight, domain-specific delta modules -- that reorganize and refine the model's internal knowledge. For efficient deployment, SkillWeave integrates SkillZip to compress skillpacks into compact and inference-ready format, enabling strong multi-domain performance with low-latency execution. On multi-task and agentic benchmarks, a 9B SkillWeave model outperforms several baselines and even surpasses a 32B monolithic LLM, while achieving up to 4x speedup.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.22416|385b9d63d59f202f796f54d5feecbf02625807a6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Hybrid language models like Jamba mix attention layers with State Space Models (SSMs), creating two memory cache types with opposite profiles: Key-Value (KV) caches grow linearly with sequence length, while SSM states stay fixed per layer. Current inference engines handle this poorly. Unified pools pad SSM states to attention page sizes, wasting up to 7.3x capacity. Static dual pools cannot adapt when prompt distributions shift between requests. We present Asymmetric Virtual Memory Paging (AVMP). The allocator separates the two cache types into physically distinct pools behind a unified virtual address space, and migrates capacity between pools when one runs out. Migration triggers only on allocation failure, keeping behavior deterministic. We evaluate AVMP across 270 synthetic cells plus 60 cells of ShareGPT trace replay on an RTX 3060 12GB. Out-of-Memory events drop 7.6% and request throughput improves 1.83x to 13.3x across synthetic workloads and 2.36x on ShareGPT. All gains hold under paired-bootstrap 95% confidence intervals. A phase-time breakdown reveals two distinct mechanisms: shorter OOM recovery on capacity-pressured workloads, and faster allocation calls on KV-heavy workloads. Implementation is pure Python; Triton integration is future work.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2605.22337|618e8a85f3822cc0e9eb827e77df6dc8a230c3fb|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The KV cache used in large language models has linearly growing time complexity, so LLMs face memory blow-up and reduced decoding efficiency when they process long contexts.Current KV Cache eviction has become an important research direction; however, existing methods based on fixed Soft Tokens (e.g., Judge Q) rely on a static parameter set as the query to evaluate the importance of KV pairs, so they cannot adapt dynamically to different input prompts, and they cannot precisely capture complex and changing task relevance.Also, evicted KV pairs are discarded permanently, so this causes irreversible information loss and context breaks. To address this problem, we propose Meta-Soft, a dynamic compression framework based on probe-driven context integration. Specifically, we build a meta-library with a learnable orthogonal basis matrix $\\mathcal{L}$, and we use a selector network with Gumbel-Softmax to produce differentiable sparse combination weights, so we dynamically synthesize the most targeted $k$ Soft Tokens from the input prompt features.We append these Soft Tokens to the end of the input sequence to probe key information. We also introduce an attention-flow based integration mechanism, which redistributes the semantic information of removed tokens into retained tokens, and this keeps the dropped context information effectively.Experiments on multiple datasets show that our method outperforms existing state-of-the-art eviction methods and provides a new solution for KV Cache compression.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.21952|7370a957e9f3f3b891c79b69facf2c439cc32e41|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As large language models (LLMs) continue to advance, retrieval-augmented generation (RAG) has become the key mechanism for expanding model knowledge and reducing hallucinations. Central to RAG is approximate nearest neighbor search (ANNS), which retrieves database vectors most similar to a given query. However, distance calculation over high-dimensional vectors is inherently memory-bound, causing retrieval performance to be constrained by I/O bandwidth on mainstream platforms such as CPUs and GPUs. Although many prior early exiting (EE) techniques attempt to reduce memory accesses by only computing partial dimensions, the partial distance converges too slowly to the EE threshold, which ultimately limits their performance gains. To address these challenges, we propose NASZIP, a hardware-software co-designed framework that integrates near data processing (NDP) with a novel feature-level early exiting guided by statistics-based principal component analysis (PCA). Instead of relying solely on partial distances, NASZIP incorporates estimation and correction parameters to approximate full dimensional distances accurately, enabling earlier exiting without compromising accuracy. We further introduce a bit-level NDP-aware dynamic-float scheme that significantly reduces memory access for vector data. On the hardware side, we develop a data aware neighbor list mapping strategy that reduces neighbor retrieval latency and inter-channel communication overhead, complemented by a dedicated cache that exploits data locality and enhances prefetch efficiency. With these co-optimized techniques, NASZIP delivers speedups of up to $8.4\\times$ / $1.4\\times$ over CPU baseline and state-of-the-art GPU implementation at equal accuracy. Relative to the state-of-the-art NDP ANNS accelerator ANSMET, NASZIP achieves $1.69\\times$ performance improvement.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.DB主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.DB",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2605.21558|56f795ef8da5eae154761b7dd88cf0dc570e2928|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Adapting Large Language Models (LLMs) to specialized domains typically incurs high data and computational overhead. While prior efficiency efforts have largely treated data selection and parameter-efficient fine-tuning as isolated processes, our empirical analysis suggests they may be intrinsically coupled. We posit the Strong Map Hypothesis: a sparse subset of attention heads plays a dominant role in task-specific adaptation, acting as keys that unlock specific data patterns. Building on this observation, we propose From Parameters to Data (P2D), a unified framework that leverages these task-sensitive attention heads as a dual compass for both sample mining and structural pruning. To rigorously quantify the total pipeline cost, we introduce the Alignment Efficiency Ratio (AER) metric for both selection latency and training time. Mechanistically, P2D identifies critical heads via a lightweight proxy and uses them as a functional filter to curate high-affinity data, establishing a synergistic pipeline. Empirically, by updating merely 10% of attention heads on 10% of the data, P2D achieves an 8.3 pp performance gain over strong baselines and delivers a 7.0x end-to-end time speedup. These results validate that precise parameter-data synchronization eliminates redundancy, offering a new paradigm for efficient alignment.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.21649|bad0ea9d19987c07efdb54367ddba27a108e6dff|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context decoding is increasingly limited by KV-cache memory traffic since each generated token attends over a cache whose size grows linearly with context length. Existing sparse decoding methods reduce this cost by selecting subsets of tokens or pages, but are designed for softmax attention, whose dense tails make any truncation discard nonzero probability mass. In contrast, $α$-entmax produces exact zeros, turning sparse decoding from dense-tail approximation into support recovery: if the selected candidates contain the entmax support, sparse decoding remains exact. While recent entmax kernels enable efficient training, they do not address the autoregressive decoding bottleneck, where dense inference still streams the full KV cache before sparsity is known. In this work, we introduce EntmaxKV, an entmax-native sparse decoding framework that exploits sparsity before KV pages are loaded. EntmaxKV combines query-aware page scoring, support-aware candidate selection, and sparse entmax attention. We analyze truncation error through the dropped probability mass $δ$, showing that output error is controlled by $δ$ and vanishes when the entmax support is recovered. We further introduce a Gaussian-aware entmax selector that estimates the entmax threshold from lightweight page statistics, adapting the selected budget to the score distribution. Empirically, EntmaxKV drops less probability mass, retains more support tokens, and achieves lower output error than softmax-based sparse decoding at matched KV budgets. On long-context and language modeling benchmarks, it closely matches full-cache entmax while using a small fraction of the KV cache, achieving up to $3.36\\times$ (softmax) and $5.43\\times$ (entmax) speedup over full attention baselines at 1M context length. Code available at: https://github.com/deep-spin/entmaxkv.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.22372|3c03a4f5fccc5e6213103d1255e5e5fbe264851a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Vision Transformers (ViTs) face severe computational bottlenecks due to the quadratic complexity of self-attention at high resolutions. Existing token reduction methods rely on local metrics - such as single-layer attention scores - that are inherently vulnerable to the attention sink phenomenon, where uninformative tokens are paradoxically preserved over salient foreground objects. We propose ASAP (Attention Sink Anchored Pruning), a training-free framework that recasts this sink as a feature. Modeling ViT information flow as a Lazy Random Walk, ASAP identifies the sink as a dominant accumulator of probability mass. By computing the diffusion distance to the sink within the cumulative transition matrix, ASAP partitions tokens via Radial Diffusion Clustering and compresses background redundancy through Transition Weight Pooling in a single shot. Extensive experiments across image, video, and vision-language tasks demonstrate ASAP outperforms state-of-the-art methods, accelerating throughput by up to 48% while maintaining - or even exceeding - baseline accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.21539|c59a41d2cd95c7b63e66a06ff852beb9f844c6eb|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We propose DualOptim+, a novel optimization framework for improving machine unlearning in large language models. It introduces a base state to capture common representations shared by forgetting and retaining objectives and delta states to preserve objective-specific residuals. This architecture allows the optimizer to adaptively bridge shared and decoupled states based on the directional conflict between forgetting and retaining gradients. We further introduce DualOptim+ 8bit, a quantized variant that reduces memory overhead without compromising performance. Extensive experiments across fictitious and real-world unlearning, safety alignment, and multi-task learning tasks demonstrate that DualOptim+ consistently achieves a superior trade-off between different objectives. Codes are available at https://github.com/CityU-MLO/DualOptimPlus.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.22476|bb45c9efabdeccacb396f2e214d49163c93577d1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Entity tracking requires maintaining and updating latent states for entities and attributes over long sequences. Recent task-specific attention operators can compress deep Transformer stacks into a few layers by performing multi-hop state propagation within a single layer, but their dense evaluation remains expensive. We show that in this setting, learned attention is strongly structured: most mass concentrates in local block-diagonal neighborhoods with a light cross-block residue. Exploiting this, we derive a blockwise evaluation of a resolvent-style operator that keeps within-block interactions exact and routes cross-block interactions through a reduced system. The resulting evaluation is subquadratic in sequence length $O(n^{4/3}d)$ (and $O(n^{7/3})$ when $d\\approx n$). On controlled tracking benchmarks, our method matches the dense operator's accuracy while reducing wall-clock time by $12-29\\%$ under a standardized measurement protocol, and is up to $2.4 \\times$ faster than a compact dense Transformer at comparable exact-match accuracy. We further provide ablations over block size and model capacity, and identify a limitation: performance collapses when the number of simultaneously evolving properties exceeds the number of attention heads.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.21965|9ba360b8b1f0b528c4c760c62b3b661d47c01faa|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models increasingly use external tools such as web search and document retrieval to solve information-intensive tasks. However, multi-hop tool use in complex tasks introduces substantial latency, since the model must repeatedly wait for tool observations before continuing. We study how to accelerate such trajectories without changing the final trajectory the model would have taken without acceleration, assuming access to faster but less reliable speculator tools. We develop a theoretical framework for lossless speculation in multi-hop tool-use settings, characterizing the optimal achievable latency gain. We propose SpecHop, a continuous speculation framework that maintains multiple speculative threads, verifies predicted observations asynchronously as target tool outputs arrive, commits correct branches, and rolls back incorrect ones. This preserves accuracy while reducing wall-clock latency. We show that SpecHop can approach oracle latency gains with enough active threads. Empirically, on retrieval-augmented multi-hop tasks, SpecHop closely matches theoretical predictions and reduces latency by up to 40\\% in some settings. Code: https://github.com/mehrdadsaberi/spechop",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.22106|247475443dbaf0847b0fdbf9cdb45339d811280d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recent progress in LLM reasoning has increasingly shifted from single-pass generation to explicit search over intermediate reasoning states. Tree-of-Thoughts (ToT) organizes inference to tree-structured search with branching and backtracking, but it substantially amplifies the Key--Value (KV) cache: retaining KV states for a frontier of partial trajectories quickly becomes a memory bottleneck that limits throughput and constrains search depth and width under fixed hardware budgets. We address this challenge by observing that KV reuse in ToT-style inference is governed by search dynamics: near-term decoding depends primarily on the active branch and its ancestors, whereas inactive subtrees have low short-term reuse probability yet must remain recoverable for backtracking. Motivated by this, we propose ArborKV, a structure-aware eviction framework that couples a lightweight value estimator with a tree-aware allocation policy, and performs purely token-extractive eviction with lazy rehydration to support revisits. Experiments on ToT-style reasoning benchmarks show that ArborKV achieves up to ~4x peak KV-memory reduction while preserving near-full-retention accuracy, enabling larger search configurations under fixed device budgets that would otherwise run out of memory.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.22786|912fef29b6b4bfbe3fccd3ec38a22244916b624c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM)-based multi-agent systems increasingly rely on intermediate communication to coordinate complex tasks. While most existing systems communicate through natural language, recent work shows that latent communication, particularly through transformer key-value (KV) caches, can improve efficiency and preserve richer task-relevant information. However, KV caches also encode contextual inputs, intermediate reasoning states, and agent-specific information, creating an opaque channel through which sensitive content may propagate across agents without explicit textual disclosure. To address this, we introduce \\textbf{LCGuard} (Latent Communication Guard), a framework for safe KV-based latent communication in multi-agent LLM systems. LCGuard treats shared KV caches as latent working memory and learns representation-level transformations before cache artifacts are transmitted across agents. We formalize representation-level sensitive information leakage operationally through reconstruction: a shared cache artifact is unsafe if an adversarial decoder can recover agent-specific sensitive inputs from it. This leads to an adversarial training formulation in which the adversary learns to reconstruct sensitive inputs, while LCGuard learns transformations that preserve task-relevant semantics and reduce reconstructable information. Empirical evaluations across multiple model families and multi-agent benchmarks show that LCGuard consistently reduces reconstruction-based leakage and attack success rates while maintaining competitive task performance compared to standard KV-sharing baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.ET主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.ET",
+      "cs.LG",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2605.22791|886dcd6c816b8460faf9fbf67f175d279807dc78|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Linear attention replaces the unbounded cache of softmax attention with a fixed-size recurrent state, reducing sequence mixing to linear time and decoding to constant memory. The hard part is not just what to forget, but how to edit this compressed memory without scrambling existing associations. Delta-rule models subtract the current read before writing a new value, and Kimi Delta Attention (KDA) sharpens forgetting with channel-wise decay. But the active edit still uses a single scalar gate to control two different things: how much old content to erase on the key side and how much new content to commit on the value side. We introduce Gated DeltaNet-2, which generalizes both Gated DeltaNet and KDA by inheriting adaptive forgetting and channel-wise decay while addressing their shared limitation, the scalar tie between erasing and writing. Gated Delta Rule-2 separates these roles with a channel-wise erase gate b_t and a channel-wise write gate w_t, reducing to KDA when both gates collapse to the same scalar and to Gated DeltaNet when the decay also collapses. We derive a fast-weight update view, a chunkwise WY algorithm with channel-wise decay absorbed into asymmetric erase factors, and a gate-aware backward pass that preserves efficient parallel training. At 1.3B parameters trained on 100B FineWeb-Edu tokens, Gated DeltaNet-2 achieves the strongest overall results among Mamba-2, Gated DeltaNet, KDA, and Mamba-3 variants across language modeling, commonsense reasoning, and retrieval. Its advantage is most pronounced on long-context RULER needle-in-a-haystack benchmarks, where it improves the evaluated multi-key retrieval setting and remains strong in both recurrent and hybrid settings. Code is available at https://github.com/NVlabs/GatedDeltaNet-2.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.22297|0bcae3585fa05e71804743d9d16efe69717e0c43|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Learning rate configuration is a fundamental aspect of modern deep learning. The prevailing practice of applying a uniform learning rate across all layers overlooks the structural heterogeneity of Transformers, potentially limiting their effectiveness as the backbone of Large Language Models (LLMs). In this paper, we introduce Layerwise Learning Rate (LLR), an adaptive scheme that assigns distinct learning rates to individual Transformer layers. Our method is grounded in Heavy-Tailed Self-Regularization (HT-SR) theory, which characterizes the empirical spectral density (ESD) of weight correlation matrices to quantify heavy-tailedness. Layers with weaker heavy-tailedness are assigned larger learning rates to accelerate their training, while layers with stronger heavy-tailedness receive smaller learning rates. By tailoring learning rates in this manner, LLR promotes balanced training across layers, leading to faster convergence and improved generalization. Extensive experiments across architectures (from LLaMA to GPT-nano), optimizers (AdamW and Muon), and parameter scales (60M-1B) demonstrate that LLR achieves up to 1.5x training speedup and outperforms baselines, notably raising average zero-shot accuracy from 47.09% to 49.02%. A key advantage of LLR is its low tuning overhead: it transfers nearly optimal LR settings directly from the uniform baseline. Code is available at https://github.com/hed-ucas/Layer-wise-Learning-Rate.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.22158|d21bded7200fece1dd21570f7d94d1e600a15392|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multimodal Large Language Models (MLLMs) face significant computational overhead when processing long videos due to the massive number of visual tokens required. To improve efficiency, existing methods primarily reduce redundancy by pruning or merging tokens based on importance or similarity. However, these approaches largely overlook a critical dimension of video content, i.e., changes and turning points, and they lack a collaborative model for spatio-temporal relationships. To address this, we propose a new perspective: similarity is for identifying redundancy, while difference is for capturing key events. Based on this, we designed a training-free framework named ST-SimDiff. We first construct a spatio-temporal graph from the visual tokens to uniformly model their complex associations. Subsequently, we employ a parallel dual-selection strategy: 1) similarity-based selection uses community detection to retain representative tokens, compressing static information; 2) temporal difference-based selection precisely locates content-changing points to preserve tokens that capture key dynamic shifts. This allows it to preserve both static and dynamic content with a minimal number of tokens. Extensive experiments show our method significantly outperforms state-of-the-art approaches while substantially reducing computational costs. Our code is available in https://github.com/bingjunluo/ST-SimDiff.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2605.22411|0f538a371613cf443b95dd24724225f21cb80b6d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) agents still struggle with long-term memory question answering, where answer-supporting evidence is often scattered across long conversational histories and buried in substantial irrelevant content. Existing memory systems typically process memory before future queries are known, then retrieve the resulting units based on similarity rather than their utility for answering the query. This workflow leaves downstream answerers to denoise retrieved candidates and reconstruct query-specific evidence. We present DeferMem, a long-term memory framework that decouples this problem into high-recall candidate retrieval and query-conditioned evidence distillation. DeferMem uses a lightweight segment-link structure to organize raw history and retrieve broad candidates at query time. It then applies a memory distiller trained with DistillPO, our reinforcement learning algorithm for distilling the high-recall but highly noisy candidates into a set of faithful, self-contained, and query-conditioned evidence. DistillPO formulates post-retrieval evidence distillation as a structured action comprising message selection and evidence rewriting. It optimizes this action with a decomposed-and-gated reward pipeline and structure-aligned advantage assignment, gating reward components from validity to quality checks while exposing task-level correctness feedback early and assigning each reward to its responsible output span. On LoCoMo and LongMemEval-S, DeferMem surpasses strong baselines in QA accuracy and memory-system efficiency, achieving the highest QA accuracy with the fastest runtime and zero commercial-API token cost for memory operations.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.22223|9ad269082fe05b8a09a55931f8e17449fea39aa7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We study how we can leverage only a handful of characteristics of a transformer's architecture to closely predict the number of different sequences it can output, both qualitatively and quantitatively. We provide an upper bound depending on the length of the prompt, which we show empirically to be tight up to a factor less than 10, across architectures and model sizes. Our analysis also provides a theoretical explanation for previously observed empirical failures of transformers on simple sequence tasks, such as copying and cramming. Formally, we prove that (i) the maximal length of accessible sequences (those that the transformer can output for some prompt) grows linearly with the prompt length, (ii) beyond a critical threshold, the proportion of accessible sequences decays exponentially with sequence length, and (iii) the linear coefficient relating prompt length to accessible sequence length admits a theoretical upper bound. Notably, these results hold even with unbounded context and computation time.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.22389|fba3c919db99cc240bcb17e641121c834417eabf|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Effectively training Large Language Models (LLMs) for complex, long-CoT reasoning is often bottlenecked by the need for massive high-quality reasoning data. Existing methods are either computationally expensive or fail to reliably distinguish high- from low-quality reasoning samples. To address this, we propose High-Entropy Sum (HES), a training-free metric that quantifies reasoning quality by summing only the entropy of the top (e.g., 0.5\\%) highest-entropy tokens in each reasoning sample. We validate HES across three mainstream training paradigms: Supervised Fine-tuning (SFT), Rejection Fine-tuning (RFT), and Reinforcement Learning (RL), with extensive results demonstrating its consistent effectiveness and significantly reduced computational overhead. In SFT, training on the top 20\\% HES-ranked data matches full-dataset performance, while using the lowest-HES data degrades it. In RFT, our HES-based training approach significantly outperforms baseline methods. In RL, HES-selected successful trajectories enable the model to learn strong reasoning patterns, significantly surpassing other compared methods. Our findings establish HES as a robust, training-free metric that enables a unified, effective, and efficient method for developing advanced reasoning in LLMs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.22064|63af8213beb73185663c63431fc74682cbbade2a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Hy-MT2 is a family of fast-thinking multilingual translation models designed for complex real-world scenarios. It includes three model sizes: 1.8B, 7B, and 30B-A3B (MoE), all of which support translation among 33 languages and effectively follow translation instructions in multiple languages. For on-device deployment, with AngelSlim 1.25-bit extreme quantization, the 1.8B model requires only 440 MB of storage and improves inference speed by 1.5x. Multi-dimensional evaluations show that Hy-MT2 delivers outstanding performance across general, real-world business, domain-specific, and instruction-following translation tasks. The 7B and 30B models outperform open-source models such as DeepSeek-V4-Pro and Kimi K2.6 in fast-thinking mode, while the lightweight 1.8B model also surpasses mainstream commercial APIs from providers such as Microsoft and Doubao overall.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.22743|966c1e087fec60a266f9fd88c90479ad62accbd2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Parameter-efficient fine-tuning enables fast personalization of text-to-image diffusion models, but composing multiple custom concepts remains challenging due to representation interference. Existing modular methods either rely on expensive post-hoc fusion or freeze adaptation subspaces, which limit expressiveness and concept fidelity. To address this trade-off, we propose Sequential regularized LoRA (SeqLoRA), a constrained continual learning framework that jointly optimizes both LoRA factors via bilevel optimization. Theoretically, we establish strong convergence guarantees for our algorithm and model the residual layer activations as a matrix sub-Gaussian process to derive high-probability bounds on catastrophic forgetting. We further prove that learning the LoRA basis from data minimizes residual interference energy more effectively than frozen-basis methods. Experiments on multi-concept image generation demonstrate that SeqLoRA improves identity preservation and scalability across up to 101 concepts, while avoiding costly fusion and reducing attribute interference in composed generations.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
   }
 }
