@@ -5339,5 +5339,181 @@
     "keywords": [
       "cs.LG"
     ]
+  },
+  "arxiv:2605.23057|7e57127d858959edcd21815720b9df773746aa44|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "ModeSwitch-LLM is a lightweight request-boundary controller for improving single-GPU large language model inference efficiency by routing each request to an appropriate fixed inference mode. Instead of relying on one static serving configuration, the system selects among FP16, quantized modes, speculative decoding, and hybrid modes such as GPTQ plus prefix caching and INT8 plus continuous batching using cheap workload-level features. We evaluate ModeSwitch-LLM on Meta-Llama-3.1-8B-Instruct served on a single NVIDIA A100 GPU. On deployment-style synthetic workloads, the online controller achieves a 2.10x mean latency speedup over FP16 and a 0.48x mean energy ratio, corresponding to 51.7% lower energy per token. On automatic benchmarks used as a quality gate, accuracy remains close to FP16 with a mean delta of +0.17 percentage points. We also evaluate lightweight learned routers, but find that they do not clearly outperform the rule-based controller because they add routing overhead and more often select modes that violate quality, energy, or memory constraints. These results show that simple request-aware routing can recover substantial efficiency from existing inference modes without retraining the model or changing its architecture.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2605.23258|dd14b9526954d5f01a2cf8830fe5dcee427253e7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "KV cache growth is a major bottleneck for long-context inference in large language models. Existing methods are often dominated by binary eviction or representation approximation, which may underutilize tokens that are not critical for exact retention but are still reconstructable. We present VECTOR, a plug-and-play augmentation for eviction-based pipelines that introduces three-way token routing: retention, approximation, and eviction. VECTOR combines an importance signal from the base scorer with a reconstructability signal from an offline-calibrated regression-based value estimation. By leveraging reconstructability, VECTOR recovers useful value information that would otherwise be irreversibly lost under binary eviction, while preserving key vectors for attention routing stability. Experimental results show that VECTOR improves quality-memory trade-offs under medium-to-high compression, with especially clear gains in stricter budget regimes.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.23071|82f87187941d9575d4304f45fab0d9324d1bf296|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) increasingly rely on long-context processing, but expanding context windows introduces substantial computational and financial costs. Existing context reduction approaches, including retrieval and memory compression methods, are typically evaluated using performance and efficiency metrics independently, limiting systematic comparison and deployment-aware decision-making.\n  This paper introduces The Efficiency Frontier, a unified framework for cost-performance optimization in LLM context management. The framework models context strategy selection as a deployment-aware optimization problem that jointly accounts for task performance, token cost, and preprocessing reuse through amortized cost modeling. Unlike existing evaluations that compare methods in isolation, the proposed framework enables decision-oriented analysis of when different context management strategies become preferable under varying operational conditions. Evaluated on 5,000 HotpotQA instances, the framework reveals distinct operational regimes and transition boundaries between retrieval-based and preprocessing-based strategies. Results show that deployment-aware optimization reduces effective token usage by approximately 25% at comparable performance ($F1 \\approx 0.78$), while amortized memory compression achieves over 50% lower token cost relative to full-context prompting in higher-performance settings. Overall, the proposed framework provides a principled and practical foundation for evaluating and deploying scalable, efficient, and sustainable LLM systems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.23200|6d0704d119c076aa97be8ebf1dcb8c949ccaec83|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The linear growth of the Key-Value (KV) cache is a critical bottleneck in long-form LLM inference. Existing KV compression methods mitigate this by evicting tokens based on importance scores. However, we show that their reliance on global Top-k selection triggers Region Wipe-out: the severe eviction of contiguous reasoning blocks that derails logical coherence. To address this, we propose Adaptive Mass-Segmented (AMS) KV Compression, a framework that shifts the paradigm from token-level competition to region-aware quota allocation. AMS adaptively partitions the KV cache based on the spatial distribution of attention mass, ensuring structurally vital reasoning segments receive guaranteed memory quotas. To ensure stability during iterative decoding, an EMA-based smoothing mechanism is incorporated to prevent jitter in segment boundaries. Crucially, AMS is a universal plug-and-play layer that is orthogonal to existing scorers. It can be seamlessly integrated into representative methods such as TOVA, Expected Attention, KeyDiff, R-KV and TriAttention. AMS is also system-compatible with modern paged-KV serving frameworks such as vLLM, supporting efficient gather-and-compact KV execution without introducing additional steady-state attention overhead. Extensive experiments across a diverse suite of tasks, including mathematical reasoning (MATH500, AIME, GSM8K), code completion, open-domain QA, and sparse retrieval, demonstrate that AMS consistently mitigates structural fragmentation and boosts model performance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.23751|f2535d551e8710e9cd05f10ff904a2f5dd36b9cc|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We revisit the I/O complexity of attention in large language models. Given query-key-value matrices $Q,K,V\\in\\mathbb{R}^{n\\times d}$, and a machine with fast memory size $M$, the goal is to compute the \"attention matrix\" $A=\\text{softmax}(Q K ^{\\top}/\\sqrt{d}) V$ with the minimal number of data transfers between fast and slow memory. Existing methods in the literature, most notably FlashAttention and its variants, incur an I/O cost that depends quadratically on $n$, while a trivial lower bound only requires $Ω(nd)$ I/O's to read the inputs and write the output. In this work, we present a technique for computing attention where the I/O cost only depends almost-linearly on $n$ in most parameter regimes. This is achieved by developing I/O-efficient algorithms inspired by the recent approximate attention framework of Alman and Song. We also prove corresponding lower bounds in each parameter regime to show that our algorithms are indeed close to I/O-optimal.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.23081|8eda310f8a18cb80212b20a8da448da0c6f57dcf|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Efficient attention algorithms are critical to mitigate the quadratic cost of attention in long-context workloads. Prior work utilises block-scaled quantisation techniques on Blackwell GPUs to move attention computation to 4-bit precision to accelerate inference. However, these techniques result in significant quality degradation in long-context settings. We show that the output impact of quantisation error is highly non-uniform and increases with the importance of each query-key interaction, concentrating functionally relevant error in a small number of attention blocks that contain the most important tokens. We propose ThriftAttention, a low-bit attention variant that delivers near-FP16 long-context quality at FP4 inference efficiency. This approach proceeds in two stages. First, a heuristic rapidly selects a small number of important query-key block pairs for FP16 precision. Second, the selected blocks are computed in FP16 and the remaining blocks in FP4, with both paths merged via online softmax into a single output. We demonstrate across long-context benchmarks and model families that by computing only 5% of query-key blocks in FP16, ThriftAttention recovers on average 89.1% of the FP4-to-FP16 performance gap. We show ThriftAttention's advantage grows with sequence length, mitigating the systematic FP4 quality degradation observed at longer contexts. The code is available at https://github.com/joesharratt1229/ThriftAttention.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.23294|58203e3c37d34b6f720ac14064f9146c928a1539|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The Mixture-of-Experts (MoE) models have emerged as the state-of-the-art paradigm for scaling up large language models (LLMs) without proportionally increased computational cost. However, its on-device deployment faces a critical challenge due to the large memory requirement for storing all expert parameters. 3D NAND-based computing-in-memory (CIM) architectures uniquely offer high storage capacity and reduced data movement, while they are ill-suited for MoE models with dynamically sparse expert activation, leading to a degradation of effective computational parallelism, along with underutilization of multibit storage capability of Flash cells. In this work, we proposed a 3D NAND-based content addressable-selected CIM architecture, dubbed as NASiC, which is tailored to MoE models. By leveraging the intrinsic string structure of 3D NAND technology, NASiC fuses the dynamical expert selection through CAM-based masking mechanism and activated expert computation through CIM into a single computation cycle, eradicating redundant computation and enhancing computational parallelism. Moreover, circuit-level optimizations and multibit CIM cell are co-designed with proposed NASiC architecture, featuring block-wise parallel computation with in-situ signed multibit input and weight expansion, substantially improving the throughput and energy-efficiency of NAND CIM array, as well as the utilization of high-density 3D NAND technology for MoE models. With extensive experimental results, we demonstrate NASiC achieves 4-114.8x improved performance and 3.9-70x improved energy efficiency over state-of-the-art designs, along with high accuracy, showing its great potential for efficient on-device MoE LLM inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2605.22884|9ca9911b9ff81e1de79856cce4625bbd48b38f3b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2605.22884v1 Announce Type: new \nAbstract: Autoregressive Transformer KV caches grow linearly with context length; sliding-window caching bounds memory but discards evicted tokens entirely, so relevant evidence outside the window becomes inaccessible. We introduce \\emph{Tensor Cache}, a two-level cache that pairs sliding-window softmax attention as a first-level cache (L1) with a fixed-size outer-product fast-weight memory as a second-level cache (L2) fed by KV pairs evicted from the window. Recent tokens remain in exact local attention; evicted pairs are compressed into a per-layer matrix $A$ and read by future queries through a single matrix multiplication, exploiting the linear-attention identity $q_t(k_i \\otimes v_i)=\\langle q_t,k_i\\rangle v_i$. A learned scalar gate fuses the L1 and L2 outputs, and per-head decay and write-rate parameters are trained end-to-end. The outer-product memory and the read identity are well-known; our contribution is their use as an L2 cache fed exclusively by sliding-window evictions, plus identifying that the common chunked-mean training shortcut $A\\!\\leftarrow\\!\\lambda A\\!+\\!\\eta(\\bar k\\!\\otimes\\!\\bar v)$ silently introduces $C^2{-}C$ spurious cross-token outer products per chunk, and closing the gap with a parallel weighted-sum scan equivalent to per-token writes within float32 epsilon. Across systems scaling, controlled associative recall, long-context language modeling, and memory-capacity diagnostics, Tensor Cache improves the memory--quality frontier over bounded-state baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.23078|41002d2223fbf3ca5bebffdcbb5833d5d3cbab84|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts Large Language Models (MoE-LLMs) achieve strong performance but incur substantial memory overhead due to massive expert parameters. Mixed-precision quantization mitigates this cost by allocating expert-wise bit-widths based on their importance, approaching the accuracy-memory Pareto frontier and enabling extreme low-bit quantization. However, existing methods rely on layer-wise importance estimation and overlook router shifts induced by quantization, resulting in suboptimal allocation and routing. In this work, we propose Global Expert-level Mixed-precision Quantization (GEMQ) to overcome these limitations via (1) a global linear-programming formulation that captures model-wide expert importance based on quantization error analysis, and (2) efficient router fine-tuning to adapt routing to quantized experts. These components are integrated into a progressive quantization framework that iteratively refines importance estimation and allocation. Experiments demonstrate that GEMQ significantly reduces memory and accelerates inference with minimal accuracy degradation. Source code is available at https://github.com/jndeng/GEMQ .",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.22863|9a82e7998d5b6d57f8ee10ea8870747c01bc5ade|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2605.22863v1 Announce Type: new \nAbstract: LLM agents today communicate via text, which incurs considerable latency and information loss due to the need to autoregressively decode the sharer model's state and encode at the receiver model. Recent work such as Cache-to-Cache (C2C; Fu et al., 2026) seeks to exchange KV caches by learning adapters that translate sharer KV matrices to the receiver model. However, the adapters are large and expensive to train, and translate individual tokens, which requires the target context to be identical. This is unsuitable for agent communication, where the LLMs have differing context.\n  We introduce Latent Cache Flow (LCF). To address efficiency, we observe that keys and values can be jointly translated and compressed, reducing the adapter to about 4% of C2C's size. To address differing context, we design the adapter to transmit a summary of new information that the target model does not have. Our early experiments show that a 13 MB LCF adapter can be more accurate than a 956 MB C2C adapter in shared-context settings; for different contexts, LCF is 23% more accurate and 8.5x faster than text-based communication.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.23603|b590716cfeb2c4604ce97afa7c1dce74ff473da7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We introduce the Preisach Attention Layer (PAL), a novel sequence modelling architecture grounded in the classical Preisach hysteresis operator from mathematical physics. PAL replaces the softmax attention mechanism with a binary relay operator parameterised by learned activation and deactivation thresholds, maintaining a stack of local extrema as its internal state. A single-layer PAL-Transformer with O(1) depth is Turing-complete under arbitrary precision arithmetic, achievable through simulation of a two-stack pushdown automaton -- in contrast to the O(log n) depth required by standard hard-attention transformers. Second, we prove that the function classes computable by PAL and by the transformer are incomparable: PAL computes historical range statistics in O(1) layers that require O(log n) layers for transformers, while transformers support random-access retrieval that PAL cannot perform without auxiliary state. The separating property is rate-independence -- PAL responds only to the sequence of local extrema, not to absolute token positions or temporal spacing. Third, we show that the extremum stack constitutes a minimal sufficient statistic of the input history for all rate-independent functionals, providing a formal analogue of the wiping property in classical hysteresis theory. PAL is thus an efficient architecture for tasks with long episodic memory and weak positional dependence, with O(n log n) total inference cost versus O(n^2) for standard attention.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cond-mat.dis-nn主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cond-mat.dis-nn",
+      "cs.AI",
+      "cs.NE"
+    ]
+  },
+  "arxiv:2605.23605|61605d4089b9afeedd3f364ba473c6ea2b1b65bd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion language models intrinsically fail to capture correlations between decoded tokens, which leads to a harsh trade-off between sampling quality and throughput. To solve this issue, we propose DiLaDiff, a variant of masked diffusion language models with three components: (1) a continuous latent space with semantic capabilities, learned by an auto-encoder fine-tuned from an existing masked diffusion language model; (2) a latent diffusion model learning the prior over the encoder distribution; (3) a consistency model distilling the learned prior into a few-step latent generative model. We show that, even without distillation, our latent-guided diffusion model outperforms the masked diffusion baseline while significantly accelerating inference. Consistency distillation further lowers the computational overhead of continuous diffusion, such that the latent is generated in negligible time compared to discrete decoding.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.23259|3cad40f0475249ca9877735bc680cd5fd5483e64|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "While Attention Residuals has shown some effectiveness in addressing the widespread issue of unbounded activation growth across deep residual layers, it inevitably incurs significant communication overhead. To circumvent this bottleneck, we propose Multi-Gate Residuals (MGR), which stabilizes activation scales without additional communication burden. It utilizes a straightforward scoring and gating mechanism to maintain multi-stream context, coupled with Attention Pooling to extract hidden states from the stream states. Empirical experiments demonstrate that MGR is practical for large-scale training and deployment, offering tangible performance improvements over existing architectures.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.23296|fadf75ca7604cf020787a4293889c6ad19697096|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-horizon LLM agents accumulate growing conversation histories that eventually exceed the model's context window. Context compaction via LLM-based summarization keeps the conversation bounded, but summarization is inherently lossy and the blocking call stalls agent inference for tens of seconds. Moreover, the operator has no fine-grained control over summary volume since prompt instructions are largely ignored, and as context grows, both the amount of output tokens the model produces and the information it retains fluctuate substantially from run to run, making the agent's retained knowledge unpredictable across runs. We introduce \\textbf{parallel compaction} for long-horizon agentic flows and characterize it against the sequential synchronous baseline across four backbones spanning 8B to 120B parameters, mixing dense and MoE architectures with reasoning and non-reasoning models, on the HotpotQA multi-hop QA and LoCoMo long-context dialogue benchmarks. Parallel compaction gives the operator fine-grained, predictable control over summary volume and enables more targeted prompt engineering per block. At matched compaction decode volume, it reduces end-to-end wall time and improves compaction throughput over the sequential baseline.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.23618|cb6d1d050fdc264037cc423a3b05f634eeefa163|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We benchmark Google Embeddings (GE2), a Vertex-AI-hosted bi-encoder with 2,048-token context and explicit task-type conditioning, against five open-source alternatives: BGE-M3, E5-large, Multilingual-E5-large (mE5-L), LaBSE, and Paraphrase-Multilingual-MPNet (mMPNet). Evaluation covers four BEIR subsets, a synthetic Italian RAG corpus, a chunking ablation considering 5 sizes of tokens with three strategies, and per-query latency on commodity CPU hardware. GE2 ranks first on every task, achieving BEIR avg.nDCG@10 = 0.638 and IT-RAG-Bench nDCG@10 = 0.282, but at 231.6 ms median latency, it is roughly 14x slower than the fastest local models. mE5-L reaches within 0.003 nDCG of GE2 on Italian at 31 ms, making it the preferred option when sub-100 ms SLAs matter. A more striking finding concerns LaBSE, which, despite widespread multilingual deployment scores 0.188 average nDCG@10 on BEIR, below every dedicated retrieval model including mMPNet. Chunking experiments show that all six models saturate at 32-token chunks on our corpus, with semantic chunking providing measurable gains only at 16 tokens.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.23215|8b17966a98d61eddcc36ed5e89382a82134ea10b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM-based agents for GPU kernel generation are advancing rapidly, yet their progress is fundamentally constrained by the benchmarks they optimize against. Existing benchmarks are poorly aligned with production inference frameworks: they evaluate kernels on a single GPU with synthetic inputs, ignore the surrounding compilation stack, and reward replicating known optimizations rather than discovering new ones. The resulting reward signals are misleading: agents learn to generate kernels that score well in sandboxes but introduce interface incompatibilities, compilation-stack conflicts, and silent correctness degradation when integrated into real systems. We introduce FastKernels, a kernel benchmark built around a minimal set of 46 representative architectures spanning 8 categories, whose kernels collectively subsume those of 96.2% (409/425) of HuggingFace Transformers architectures. FastKernels doubles as a minimalistic, production-grade inference framework that runs at parity with hardened systems such as vLLM and SGLang on mainstream LLM serving and substantially exceeds upstream references on under-served architectures; each task's interface mirrors the corresponding module in the state-of-the-art library for its architecture family, enabling direct deployment of optimized kernels into production codebases. Evaluating state-of-the-art kernel agents on FastKernels, we find that even the strongest agent achieves only 0.94$\\times$ aggregate speedup over production baselines, with weaker agents at $0.78\\times$ and $0.53\\times$ -- confirming that benchmark-production misalignment is a critical bottleneck for the field. We release FastKernels as a stepping stone toward kernel agents whose benchmark gains translate directly into production throughput improvements. Code is available at https://github.com/Snowflake-AI-Research/fastkernels",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.23244|aab1f8b4724cb0c4c5ac5017aaf6868956521f7b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Fine-tuning large language models (LLMs) to align with human preferences has driven the success of systems such as Gemini and ChatGPT. However, approaches like Reinforcement Learning from Human Feedback (RLHF) remain computationally expensive and complex. Direct Preference Optimization (DPO) offers a simpler alternative but has limitations such as inconsistent ranking accuracy, high dependence on GPU resources, and expensive hyperparameter tuning. We propose the Convex Optimization for Alignment and Preference Learning Algorithm (COALA): a novel lightweight strategy with strong theoretical guarantees. By leveraging the convex optimization reformulation of neural networks, COALA eliminates the need for a reference model and obtains significant reduction in both training time and VRAM consumption, thus enabling efficient training on a single GPU. Experiments across four datasets--including a 26621-sample synthetic Educational Feedback dataset--and six models (including Llama-3.1-8B) demonstrate COALA's competitive performance and efficiency while utilizing as little as ~17.6% of DPO's total TFLOPs. COALA exhibits stable, monotonically increasing rewards and reaches peak margins in significantly shorter time in comparison to traditional methods such as DPO and ORPO. To the best of our knowledge, this is the first time convex optimization has been effectively applied to preference fine-tuning of LLMs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.23872|0f31c490db79902ea0b2cb73bd15c6af5822010f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We introduce training-free looped transformers, in which a lightweight inference-time wrapper loops a contiguous mid-stack block of layers of a frozen checkpoint without additional fine-tuning, continued training, or architectural changes. Unlike prior looped transformer methods that train with the looped structure end-to-end, we retrofit recurrence onto pretrained models at test time. We show that naive block reapplication usually degrades performance, highlighting the importance of the loop application strategy. Motivated by viewing a pre-norm transformer block as a forward Euler step on an ODE, we instead treat looping as a refinement of the same approximation, replacing one large update with smaller damped sub-steps. Across seven dense, sparse MoE, and MLA+MoE model families, our method improves Qwen3-4B-Instruct by +2.64 pp on MMLU-Pro, Qwen3-30B-A3B-Instruct by +1.14 pp on CommonsenseQA, and Moonlight-16B-A3B-Instruct by +1.20 pp on OpenBookQA.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、math.NA主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "math.NA",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2605.23040|a22b867fb9abbb06a8d0ade85b837f6e6f1db76e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Latent steering exploits internal representations of Large Language Models (LLMs) to guide generation, yet interventions on dense states can entangle distinct semantic features. In this paper, we investigate attention query activations as a high-fidelity site for precise control, hypothesizing that manipulating the attention mechanism itself offers sharper steerability than general state interventions. We introduce Prototype-Based Sparse Steering, a framework that applies Sparse Autoencoders (SAEs) specifically to query activations, to decompose them into interpretable features, then apply gradient-based optimization during inference to align the sparse representation with class prototypes of target behaviors. To validate this architectural insight, we first analyze the mechanism in Textualized Gridworld, a controlled environment for verifiable planning constraints. We demonstrate that optimizing sparse query features enables effective navigation of rigid planning requirements (i.e., safe vs. short paths), confirming the method's ability to satisfy objective rules. We then demonstrate the framework's versatility by training SAEs on a high-dimensional educational domain, where the framework steers the cognitive complexity of feedback (i.e., Bloom's Taxonomy). Our experiments establish that sparse query representations provide the necessary disentanglement for unified, interpretable control over both logical planning and stylistic nuance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.23163|503e6a70462b61232e4f8de40a0d8bd23ce4b710|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "End-to-end autonomous driving via Vision-Language-Action (VLA) models demands a precarious balance between high-fidelity trajectory planning and efficient inference. Existing paradigms typically fall short: autoregressive (AR) VLAs are memory-bandwidth-bound on edge hardware and prone to exposure-bias drift, while full-sequence diffusion models preclude KV-cache reuse and suffer from \"logical leakage\" that violates the fundamental perceive-then-plan causality. We present Fast-dDrive, a block-diffusion VLA that performs bidirectional refinement within semantic units while enforcing strict causal ordering across them. Leveraging the observation that driving VLAs often emit structured JSON-like outputs, Fast-dDrive freezes structural tokens into a section scaffold and employs a section-aware training recipe that prioritizes safety-critical planning. We further introduce Scaffold Speculative Decoding to achieve AR-equivalent quality at significantly higher throughput. Finally, we propose a low-overhead test-time scaling scheme: by forking $N$ stochastic trajectory rollouts from a single shared-prefix KV cache and averaging them, we effectively suppress prediction variance at a fractional computational cost. Empirical results demonstrate that Fast-dDrive redefines the speed-accuracy frontier for driving agents. On the WOD-E2E test set, Fast-dDrive achieves SOTA ADE@3s and ADE@5s, alongside the highest RFS among diffusion-based VLAs; on nuScenes, it reduces average L2 error to $0.32$m (a $22\\%$ improvement). When integrated with SGLang, our framework delivers $12\\times$ throughput speedup over the AR baseline, narrowing the gap between high-capacity VLAs and the efficiency demands of real-time on-vehicle deployment.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
   }
 }
