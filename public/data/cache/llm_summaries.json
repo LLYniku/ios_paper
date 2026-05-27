@@ -5689,5 +5689,185 @@
       "cs.CL",
       "cs.AI"
     ]
+  },
+  "arxiv:2605.26558|f39ddad2fc0529837766e63c79f349003f0407ed|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding has emerged as a promising lossless approach for accelerating Large Language Models (LLMs). As reasoning LLMs increasingly suffer from decode-stage overhead and approximation-based methods degrade accuracy, lossless speculative decoding has become essential for efficient inference. However, existing methods still struggle to deliver strong low-batch performance without additional training, limiting practical deployment on consumer devices. To address this challenge, we propose Cassandra, an algorithm-hardware co-designed self-speculative decoding framework optimized for low-batch scenarios. Cassandra constructs a high-performance, training-free draft model through fine-grained data selection. Using optimized pruning and mantissa truncation, it identifies the most salient values in both model weights and the Key-Value (KV) cache, enabling rapid candidate token generation before full-precision parallel verification. Unlike prior self-speculative decoding methods based on layer skipping or structured KV compression, Cassandra achieves significantly higher efficiency. To further reduce the overhead of format conversion between Cassandra representations and standard floating-point formats, we also introduce a lightweight encoder-decoder hardware module designed for seamless integration with commercial GPUs and NPUs. Experimental results show that Cassandra achieves up to 2.41x speedup over the BF16 baseline without additional training. Furthermore, on Llama 3 8B running on an NVIDIA GeForce RTX 4090, Cassandra generates 1.81x more tokens under the same memory budget compared to Eagle-3, a state-of-the-art speculative decoding method.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2605.26444|7004e4133de6880c8c38b8d956ec9c71d5390c70|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models typically employ vocabularies of over 100k tokens, which creates a major computational bottleneck at the final linear projection layer when performing speculative decoding. Current methods for vocabulary pruning depend on either fixed or coarse-grained sub-vocabularies, requiring around 30k active tokens to preserve the quality of the draft model. We introduce MicroSpec, a training-free technique that overcomes this limitation by building a compact, context-sensitive active vocabulary on the fly for every decoding step. Exploiting the natural temporal locality found in language generation, MicroSpec attains high token coverage while reducing the average vocabulary size by more than 40x (down to under 3k tokens), all without any additional trained parameters. To translate this high sparsity into actual speedups on contemporary hardware, we present a co-designed system and algorithm that mitigates the overhead of sparse memory accesses via asynchronous gathering and GPU-resident state management. Acting as a plug-and-play enhancement, MicroSpec reduces draft inference latency by 51.6% on average, achieving an end-to-end speedup of 1.12-1.32x relative to the leading speculative decoding approach EAGLE-2 on various benchmarks, while also surpassing more sophisticated training-based pruning baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.26678|836bfe2ce2308c1db378d3fe90a694eebf26ea6f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context language models are limited by the memory footprint of the key-value (KV) cache. Existing training-free KV compression methods usually rank tokens by one importance signal -- attention, recency, layer-wise allocation, or key distinctiveness -- which becomes brittle when useful context is globally distinctive, locally episodic, or immediately relevant. We introduce NestedKV, a key-only KV cache compression method inspired by the Continuum Memory System in Nested Learning. NestedKV maintains global, block-level, and sliding-window key anchors, scores tokens by multi-time-scale cosine anomaly, and combines the resulting rankings with a training-free outer learner using head-adaptive mixing and surprise-gated token routing. The score is paired with adaptive per-head budgets and requires no training or LLM modification. Across RULER (4k--32k), LooGLE, LongBench, LongBench-E, InfiniteBench, and MMLU-Pro on Qwen3 and Llama-3.2 models, NestedKV is strongest when the retained cache is small. On Qwen3-4B, it improves over KeyDiff by up to 19.10 points on RULER and 19.29 on LongBench at $r=0.75$; at $r=0.95$, it retains 37.32 on LongBench versus 17.55 for KeyDiff.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.27033|5cd44bfb487285c5045ec608592d21632d2f9ade|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based large language models (LLMs) are comprised of billions of parameters arranged in deep and wide computational graphs, but it is not clear that they exploit their full capacity for all inputs. We introduce the s-Trace method to efficiently estimate the subgraph of size s that best approximates a full model output. With this method, we find the computation in a variety of LLMs to be organized in two distinct phases. A small subgraph mostly composed of early-layer nodes can reconstruct the head of the full model output distribution. Adding further nodes, mostly located in later layers and increasingly consisting of attention heads, leads to incremental refinements in approximating the full output distribution. We find moreover that the amount of necessary computation per input correlates with model uncertainty, and that sparser subgraphs encode shallow statistics, such as unigram frequency. Overall, our results suggest a consistent modular organization in effective LLM computation, with a sparse early-layer core providing a rough prediction that is further refined through denser computations in later layers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.26797|af3be00b6b12209f5c03af38852a3182e4f2b16a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We study Latent Recurrent Transformer (LRT), a lightweight augmentation of autoregressive transformers that reuses a high-level source-layer hidden state from the previous token as recurrent memory for the next token. Because this source state is already computed during ordinary decoding, LRT adds a cross-layer recurrent latent pathway across positions without inserting pause tokens or extra depth loops, and the standard attention mechanism and KV-cache interface are preserved. To pretrain this recurrence at scale without sequentially unrolling the transformer, we introduce interleaved parallel training: a single full-sequence initialization forward pass builds a shared buffer; then disjoint position subsets are refined in parallel and written back, so that all tokens receive recurrent-memory-aware supervision at roughly 2 times baseline compute. Across nanochat style backbones and a wide range of tokens-per-parameter budgets, LRT improves both language-modeling loss and in-context learning under matched effective compute while adding as little as 0.3% parameters.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.26496|da2d7a8e79b5e71749a7984be53697b05d6c05b0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The Mixture of Experts MoE architecture is highly promising for resource constrained on device deployments yet training these models from scratch incurs prohibitive costs Current methods attempt to alleviate this by upcycling dense models into MoEs however they often introduce parameter redundancy that degrades inference efficiency Alternatively standard layer pruning mitigates redundancy but inevitably compromises model accuracy To resolve this dilemma we propose Dense2MoE a novel framework that unifies pruning and upcycling through Layer Fusion UpCycling LF UC Guided by hardware Roofline theory Dense2MoE systematically overcomes the inference memory wall by pruning bandwidth heavy attention modules from redundant layers while repurposing their Multi Layer Perceptrons MLPs into MoE experts This structural innovation preserves the models core capabilities and strictly limits active parameters via selective token routing With a modest continual pre training budget Dense2MoE efficiently converts publicly available dense LLMs into on device ready MoE models Extensive experiments demonstrate that Dense2MoE significantly advances the Pareto frontier for on device inference latency versus model accuracy outperforming dense baselines state of the art compression and standard upcycling methods",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.27358|be81e57014911c77c1b10c762a7ea34d6cd03387|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) has become the de facto architecture for hundred-billion-parameter language models, yet its advantages at sub-billion scales for on-device deployment remain largely unexplored. To close this gap, we present MobileMoE, a family of on-device MoE language models with sub-billion active parameters (0.3-0.9B active and 1.3-5.3B total) that establish a new Pareto frontier for on-device LLMs. We first formulate an on-device MoE scaling law that jointly optimizes MoE architecture under mobile memory and compute constraints, identifying an on-device sweet spot - moderate sparsity with fine-grained and shared experts - that is simultaneously memory and compute-optimal. Building on the derived architectures, we train MobileMoE with a four-stage recipe covering pre-training, mid-training, instruction fine-tuning, and quantization-aware training, all on open-source datasets. Across 14 benchmarks, MobileMoE matches or exceeds leading on-device dense LLMs with 2-4$\\times$ fewer inference FLOPs, and matches or surpasses the state-of-the-art MoE OLMoE-1B-7B with up to 60% fewer parameters. To bridge the last mile to mobile deployment, we provide the first efficient MoE inference on commodity smartphones with comprehensive on-device profiling. At comparable INT4 weight memory, MobileMoE-S delivers $1.8$-$3.8\\times$ faster prefill and $2.2$-$3.4\\times$ faster decode than the dense baseline MobileLLM-Pro.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2605.26660|243f65d63e7d123fd10e7668f009163d4fd149ae|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Quantization is an effective approach to reduce the memory footprint and inference cost of large language models (LLMs), yet maintaining performance in the ultra-low-bit regime remains challenging. Existing post-training methods often suffer from severe accuracy degradation, while quantization-aware training requires costly retraining and additional resources. Moreover, most mixed-precision strategies rely on coarse-grained or heuristic sensitivity analysis that overlooks fine-grained variations within weight matrices. We propose WINDQuant, a reinforcement-learning-based allocation controller for ultra-low-bit LLM quantization. Rather than introducing another low-level quantization operator, WINDQuant learns how to assign bit-widths and quantization treatments to fine-grained column chunks under a global storage budget. By operating at the column-chunk level, WINDQuant enables flexible and fine-grained precision assignment within layers under a global target bit-width. The implementation combines PPO with activation-aware calibration, lightweight per-unit quantizer fitting, and explicit effective-bit accounting of the learned mixed-precision plan. Experiments on LLaMA models demonstrate that WINDQuant achieves competitive performance in ultra-low-bit settings while reducing optimization overhead relative to retraining-based approaches, highlighting reinforcement learning as a practical controller for adaptive mixed-precision quantization.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.26266|061b7719eb2f64621bb940f78f16aa3ab4e6781c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Chunk-wise autoregressive video diffusion models rely on a KV cache of previously generated chunks to avoid redundant computation, but this cache quickly becomes a memory bottleneck as videos grow longer. Methods that quantize the KV cache to low bitwidths reduce memory pressure but degrade video quality. We show that a key driver of this degradation is a systematic bias in attention weights: due to the convexity of the exponential in softmax attention, quantization noise inflates the contribution of cached keys, a phenomenon we call the Jensen bias. This effect causes quantized keys to steal attention mass from the unquantized current chunk. We derive a per-attention-score correction that removes this bias in expectation, computed on the fly from the quantization step sizes of the cached keys and the query norm. Using a second-order Taylor approximation, the additional computational overhead is negligible, and no additional memory is needed alongside the cache. Evaluated on MAGI-1, SkyReels-V2, and HY-WorldPlay at INT2 quantization, our correction recovers most of the quality lost to aggressive quantization, reaching near-BF16 video quality, and can outperform INT4 quantization while using 50% less memory.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV",
+      "cs.GR"
+    ]
+  },
+  "arxiv:2605.26289|7f37c7ac30a4660f02bbb75682c98af9878ceea6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multi-agent tool calling is becoming the dominant interaction pattern for LLM-based systems, yet existing inference frameworks treat each tool call as an independent request, re-processing the entire conversation from scratch even though 85-95% of the prompt is unchanged from the previous turn.\n  We present a stateful inference architecture that converts the $O(n_t)$ per-turn cost of conventional serving into an $O(Δ_t)$ delta-only cost: a persistent KV cache lives across turns and advances by ingesting only the new tokens, while a radix prefix cache extends this across interleaved multi-agent traffic and a prompt-lookup speculative decoder accelerates structured output. Against vLLM and SGLang on novel, fully-generated workloads, the reference implementation is $2.1\\times$ faster per turn on a 6-turn agentic workflow and $4.2\\times$ on the median turn of a 35-turn one, halving end-to-end wall time. The advantage comes from stateful reuse and speculation, not caching.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.27081|6563099badb7a567cd8f4ce30d658bc4231716fd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Fine-grained Mixture-of-Experts (MoE) models sparsely activate only a subset of experts per token, reducing activated computation while maintaining high model capacity. However, in memory-constrained inference scenarios, only a small set of experts can be cached. Experts not in the cache must be fetched from slow external storage (e.g., UFS), leading to frequent evictions and substantial I/O overhead.\n  We propose ReMoE, a router fine-tuning framework designed to boost token-wise expert reuse. ReMoE biases the router toward recently selected experts, producing temporally stable routing that better matches cache locality constraints. By increasing short-horizon expert reuse, ReMoE reduces expert fetches from storage without adding inference-time computation.\n  Experiments on DeepSeek and Qwen models show that ReMoE improves expert reuse by 26% while maintaining downstream task performance. Real-system evaluations further confirm these benefits, improving output throughput by 8.4% under vLLM GPU-CPU expert offloading and reducing TPOT by 43.6-49.8% under llama.cpp on Jetson Orin NX, corresponding to a 1.77-1.99$\\times$ decode speedup across diverse workloads. Checkpoints and usage instructions are available at https://github.com/BUAA-OSCAR/ReMoE.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2605.26667|61e14f2136e8f6602f70e2e9b19198dbbee8e9d3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) agents increasingly rely on external memory systems to remain consistent across long-horizon interactions, but little empirical work has been done to understand the specific failure modes and design choices that these systems present. Existing benchmarks report aggregate question-answering accuracy and treat memory systems as black boxes, making it impossible to attribute an incorrect answer to a particular failure mode of the system. We introduce MemFail, a diagnostic benchmark that isolates the failure modes of modern LLM memory systems. We begin by formalizing memory systems as the composition of three canonical operations -- summarization, storage, and retrieval -- and identify the potential failure modes induced by each. Based on these hypothesized failure modes, we construct five datasets spanning four tasks, each adversarially designed to test a specific operation of a memory system. Using these datasets, we evaluate four state-of-the-art memory systems on MemFail and demonstrate how MemFail can be used to empirically understand the tradeoffs induced by differences in memory system architectures.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2605.26175|041c0bb44f87969d2b55a34b15acc12f3aee2d21|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-bit activation quantization remains a major bottleneck in efficient large language model (LLM) deployment. The difficulty is not only that activations contain outliers, but that their distributions are often poorly matched to a low-bit uniform quantizer. Existing post-training quantization (PTQ) methods suppress peaks, balance channels, or minimize reconstruction error, yet they rarely specify what activation distribution is actually easy to discretize. As a result, activations may appear numerically smoother while still incurring large quantization error because the quantization range remains wide or most values collapse into a few levels near the mean. We recast activation transformation as quantizer-facing distribution design and analyze quantization error from an information-theoretic perspective. Our analysis shows that quantization-friendly activations should jointly have a smaller numerical range and sufficient dispersion within that range. Guided by this analysis, we propose InfoQuant, a train-free method that employs Peak Suppression Orthogonal Transformation (PSOT) to shape activations into more quantization-friendly distributions. We further introduce adaptive outlier-token selection to improve the robustness of PSOT during optimization. Across multiple LLM families, InfoQuant consistently outperforms prior PTQ and end-to-end training baselines. Under W4A4KV4, it preserves 97% of floating-point accuracy on average and reduces the LLaMA-2 13B performance gap by 42% over the previous state of the art. Code is available at [https://github.com/LLIKKE/InfoQuant](https://github.com/LLIKKE/InfoQuant)",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.26189|edd38a4af8a5058d38d664502f49b68fd20779ff|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Quantization-aware training (QAT) with low-bit floating-point formats enables efficient LLM deployment, yet introduces subtle failure modes invisible to standard training metrics. We present a systematic study of HiF8 W8A8 QAT for OpenPangu-Embedded-1B through the lens of Delayed Tensor Scaling (DTS). Across eight controlled experiments, we identify and disentangle two orthogonal failure modes: (i)amax saturation, where delayed scale estimates silently corrupt knowledge-sensitive representations via forward-pass clipping, and (ii)catastrophic forgetting, where an aggressive learning rate overwrites pretrained commonsense knowledge independently of quantization. Neither is detectable from training loss alone. We address amax saturation with a conservative max-algorithm DTS strategy over a 64-step history window, and mitigate forgetting via a 500-step BF16 warmup followed by QAT at lr=10^{-5}. Both fixes are necessary and sufficient: our final configuration achieves 0.43% MMLU drop, 0.58% HellaSwag drop, and 0.22% ARC-Challenge drop versus a matched BF16 baseline, with a training loss APE of only 0.11% over 10,000 steps.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.26128|be2aeae71e91c36f93bd0e5eb0e8d11e636aba78|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Production LLM systems increasingly require machine-readable outputs: JSON objects, typed traces, regex-constrained fields, and tool-call schemas. This paper targets on-device and low-cost small language model (SLM) deployments, where sub-3B models are attractive for privacy, latency, and commodity hardware but have limited capacity to satisfy schemas while solving tasks. The usual engineering assumption is that hard output constraints improve reliability without changing the underlying answer. We show that this assumption is unsafe for small models. We introduce \\emph{constraint tax}, a measurement protocol for isolating the answer and executable-accuracy loss caused by structured-output constraints at fixed model, fixed task distribution, and fixed problem instances. Across 15,000 commodity-GPU generations with Qwen2.5-0.5B, Qwen2.5-1.5B, and SmolLM2-1.7B, hard answer-only schema decoding raises schema validity from 61.5\\% to 100.0\\%, but lowers answer accuracy from 19.7\\% to 11.0\\% and increases wrong-valid-schema outputs from 49.5\\% to 88.9\\%. The strongest industry analogue is a deterministic calendar tool-call task: Qwen2.5-1.5B achieves 91.5\\% executable accuracy with prompt-only JSON but only 48.0\\% under the same hard tool-call schema, while both modes are 100.0\\% schema-valid. The error is semantic, not structural. We also show that the 3B boundary still pays a direct-schema tax and that delayed packaging supports a constructive design pattern: reason free, constrain late. The practical conclusion is direct: production systems should report schema validity, answer accuracy, executable accuracy, and wrong-valid-schema rate separately.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.SE主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.SE"
+    ]
+  },
+  "arxiv:2605.26362|1c2240f338633760b58c7609ca3cb9dd5900f375|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "In many reasoning tasks, large language models (LLMs) rely on structured external knowledge, such as graphs and tables, which is typically linearized into sequential token representations. However, even when sufficient knowledge is available, LLMs can still produce hallucinated outputs, and the underlying mechanisms behind such failures remain poorly understood. We investigate these mechanisms and find that hallucinations arise from systematic internal dynamics rather than random noise. First, attention disproportionately concentrates toward shortcut-like structural cues rather than distributing across the full context. Second, feed-forward representations fail to ground the provided knowledge, causing the model to revert to parametric memory. Moreover, our results indicate that hallucination is consistently associated with failures in semantic grounding within feed-forward layers, while attention allocation exhibits greater task-dependent variability. Finally, we show that these mechanistic patterns generalize beyond single-hop graphs to multi-hop and tabular settings, enabling effective hallucination detection across structured knowledge formats.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.26596|b539f9a77824f75ae34a5173df86fe69dab03064|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The token-level extractive compressors widely used for general LM context are structurally inappropriate for LLM agents: across 17 (env, backbone, method) cells spanning two independent token-level method families, every cell collapses to mean reward <= 0.05 despite 1.3-13.3x realized compression. We name and characterize this failure mode as action-grammar destruction -- the tokens carrying action semantics (identifiers, brackets, action verbs) are exactly those self-information ranks lowest, so a general-purpose compressor reliably removes them and the environment rejects the residual. The diagnosis points to step-granularity compression. We introduce AGORA, an inference-free step-level compressor combining a structural prompt parser, an always-keep floor for format- and recency-critical content, and a 125M-parameter relevance scorer trained on counterfactual next-action-change labels (~2ms/step, zero per-step LLM toll). Across the compared inference-free and LLM-based methods, AGORA is the only one retaining >= 75% uncompressed performance in 8 of 9 cells (with the lone exception at 73%); a four-way component ablation isolates the structural floor as the dominant quality lever and the learned scorer as the source of 1.0-11.5x adaptive end-to-end compression from a single fixed keep ratio.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.27255|96927a0aca258016253b41eb9844c76609753099|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long chain-of-thought reasoning has made autoregressive decoding the dominant inference cost of modern large language models. Existing methods target either the input side (latent compression) or the output side (speculative decoding and multi-token prediction, MTP), but the two lines of work have been pursued independently. Moreover, output-side methods must incur an expensive verifier pass to validate the unreliable draft tokens predicted by MTP. To address these issues, we propose \\textbf{Pair-In, Pair-Out (PIPO)}, which unifies both sides by viewing a latent compressor and an MTP head as mirror-image operations: the compressor folds two input tokens into one latent representation, while the MTP head unfolds one hidden state into one additional output token. To remove the verifier cost without sacrificing reliability, PIPO trains a lightweight confidence head that decides whether draft tokens should be accepted. We observe that On-Policy Distillation (OPD) naturally matches the rejection-sampling criterion of speculative decoding, so the confidence head can be trained alongside OPD with negligible extra cost. Experiments on AIME 2025, GPQA-Diamond, LiveCodeBench v6, and LongBench v2 with Qwen3.5-4B and 9B backbones show that PIPO improves pass@4 over regular decoding by up to $+7.15$ points, while delivering up to $2.64\\times$ first-token-latency and $2.07\\times$ per-token-latency speedups.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.26827|06f13d5db208f31b772541911b5719069eb0c8ee|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recent benchmarks reveal that despite strong reasoning capabilities, large language models (LLMs) still struggle to faithfully apply complex contextual knowledge. These failures are often not wholesale reasoning collapses: in context-rich tasks, models may follow the central reasoning path while missing peripheral, persistent, or format-sensitive requirements.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2605.26895|7872577893f33bdf91a312d8bc62e8e92c9497ab|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Normalization layers in modern large language models (LLMs) consist of a deterministic normalization operation and a learnable scale vector. While the normalization operation has been extensively studied, the scale vector remains poorly understood despite its ubiquitous use. In this work, we present a systematic study of scale vectors in LLMs from the perspectives of expressivity, optimization, and architectural structure. First, we show empirically that although scale vectors constitute only a negligible fraction of model parameters, removing them substantially degrades LLM pre-training. Our theory further shows that, in Pre-Norm architectures, scale vectors do not increase expressivity; instead, they improve optimization through a self-amplifying preconditioning effect on subsequent linear mappings. Second, we investigate the role of weight decay for scale vectors. By distinguishing Input-Norm and Output-Norm layers, we theoretically show that weight decay is beneficial for the former but harmful for the latter, due to their distinct roles in optimization and expressivity. Third, motivated by this understanding, we propose three lightweight and complementary improvements to scale vectors: branch-specific heterogeneity, improved placement around linear mappings, and magnitude-direction reparameterization. Both theory and experiments show that each improvement yields consistent gains. Finally, we combine these improvements into a unified scale-vector strategy and evaluate it through extensive LLM pre-training experiments on dense and mixture-of-experts models ranging from 0.12B to 2B parameters, across multiple optimizers and learning rate schedules, under industrial-scale token budgets. The unified strategy consistently achieves lower terminal loss than well-tuned baselines and exhibits more favorable scaling behavior, while adding negligible parameter and computational overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "stat.ML"
+    ]
   }
 }
