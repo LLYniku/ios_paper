@@ -6908,5 +6908,178 @@
     "keywords": [
       "cs.AI"
     ]
+  },
+  "arxiv:2606.06574|852e8934dcf2083d6b708a416649cb1fe9bb93a7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) perform inference by following a fixed depth and order, non-recurrent execution of all layers. We reveal the wide existence of training-free, flexible, dynamic program-of-layers (PoLar), where pretrained layers can be packed as modules and then skipped or looped to form a customized program for each input. For most inputs, substantially shorter program executions can achieve the same or better accuracy, while incorrect predictions of the original LLM can be corrected by alternative programs with fewer layers. These observations indicate that inference admits multiple valid latent computations beyond the standard forward pass. To efficiently achieve PoLar in practice, we propose a lightweight PoLar prediction network, which learns to generate execution programs that dynamically skip or repeat pretrained layers for each input. Experiments on mathematical reasoning benchmarks demonstrate that PoLar consistently improves accuracy over standard inference and prior dynamic-depth methods, often while executing fewer layers, and that these gains persist under out-of-distribution evaluation. Our results suggest that fixed-depth execution captures only a narrow subset of an LLM's latent reasoning capacity.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.06787|d2f6e408c0c430059721b971b6e0c25b7be47ab9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) show promise as tool-using agents but remain limited in long-horizon tasks that require remembering, organizing, and reusing knowledge. Prior memory approaches aim to resolve the situation, but mainly focus on storing factual information. Recent work on procedural memory improves task reuse, yet often reduces to replaying past successes without addressing failure cases or online scalability. We introduce a unified and automatic memory framework that integrates semantic, episodic, and procedural memory in a bi-level design combining short-term and long-term stores. A multi-agent architecture with actor, memory, and critic agents enables automatic memory generation, reward annotation, and adaptive retrieval. Long-term memory is managed through reward-based evaluation, merging, and pruning, ensuring scalability and continual improvement. Experiments across various environments show that our approach improves robustness and success on long multi-turn tasks compared to existing baselines. This work highlights the importance of comprehensive, adaptive memory for advancing LLM-based agents.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.06820|d666de6b52f57319ab6a133d96e45283537d8776|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Agentic Large Language Model (LLM) systems decompose complex tasks into workflow Directed Acyclic Graphs (DAGs) whose primitives must be scheduled on heterogeneous clusters. Existing deep reinforcement learning (DRL) schedulers are tied to a fixed cluster size and require retraining whenever the number of servers changes. We propose SCALE (Scalable Cross-Attention Learning with Extrapolation), a DRL scheduler that generalizes to unseen cluster scales without fine-tuning. SCALE employs a cross-attention pointer network where task features query against server features, so the architecture accepts any number of servers by construction. We observe, however, that permutation-invariant architecture alone does not guarantee good performance at new scales - the attention feature undergoes distribution shift as the server count grows. To counter this, we introduce Structured Representation Regularization (SRR): a decorrelation loss combined with a KL penalty toward the standard normal, which keeps feature statistics stable regardless of input size. Trained on 16 nodes and tested directly on 32 and 48 nodes, SCALE reduces average response time by 8.9% at N=48 relative to the same architecture without SRR, confirming that explicit regularization is necessary to close the scale-generalization gap.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.07362|af9be06f4544561d59e41af0021ed6c284752f71|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As scalable inference services become popular, the cold start latency of an inference engine becomes important. Today, vLLM has evolved into the de facto inference engine of choice for many inference workloads. Although popular, due to its complexity and rapid evolution, there has not been a systematic study of its startup latency. With major architectural innovations such as the V1 API and the introduction of torch.compile, this paper presents the first detailed performance characterization of vLLM startup latency. We break down the startup process into six foundational steps and demonstrate that it is predominantly CPU bound. Each step exhibits consistent and interpretable scaling trends with respect to model-level and system-level parameters, enabling fine-grained attribution of latency sources. Building on these insights, we develop a lightweight analytical model that accurately predicts vLLM startup latency for a given hardware configuration, providing actionable guidance for resource planning in large-scale inference environments. All benchmarking datasets, analysis tools, and prediction scripts are open sourced at https://github.com/upb-cn/vllm-startup-profiler.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.07404|d7b7f9fd0d0e6983f0f10624942335c67bf20227|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "This paper reports on training a hundred-billion-parameter sparse mixture of experts on a single eight-GPU node, end to end. LightningLM 0.1V is a recurrence-backbone language model family grown in four stages from a small dense seed, through a 5B and a 9B mixture of experts, to a 120B model with 460 routed experts under top-12 routing. Each larger model is grown from the trained weights of the smaller one; active parameters rise monotonically from 1.78B at the dense seed to 5.93B at 120B (about 5% of the 118.67B stored). The full lineage runs on single nodes, the larger stages at 8K context, reaching a released training loss of 1.78 at 120B scale.\n  This is a systems and experience report. It is organized around three disciplines. Reversibility: a reversible recurrence stack reconstructs activations in the backward pass instead of storing them, holding activation memory flat as the model grows. State-preserving growth: each expansion (dense to MoE, shallow to deep, few experts to many) is given as a reproducible principle paired with the failure that results from getting it wrong; several failures are silent. Single-node economics: the 120B trains through TQP, a strategy of quantized base expert weights and trained low-rank adapters that carries optimizer state on 2.26B adapter parameters rather than 100B+ resident in routed experts, cutting expert-path optimizer state by a factor of ~45.\n  What is new is the integration of known primitives, not any primitive in isolation: one grown lineage running end to end on a single node, documented at practitioner level, with per-domain held-out loss as evidence that targeted capabilities (multilingual Indic competence, code) were learned by construction. Model family, tokenizer, and training code are released.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.06915|b773eb82dc7868a9c6b2a7d7ed271a22115a42e0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Test-time compute (TTC) scaling has emerged as a powerful paradigm for improving large language model (LLM) reasoning by allocating additional compute during inference, e.g., via multi-sample generation and verifier-based reranking. Existing TTC scaling strategies and reasoning scorers remain fragmented, evaluated under inconsistent protocols, and are rarely analyzed through the lens of quality-cost trade-offs. We introduce ThinkBooster, a unified framework for seamless test-time compute scaling of LLM reasoning, which consists of (i) a modular Python library implementing state-of-the-art TTC scaling strategy and scorer families, (ii) a benchmark that jointly evaluates performance and computational efficiency, and (iii) a deployable OpenAI-compatible proxy service that enables drop-in integration of adaptive reasoning into real-world applications. We further provide a demo visual debugger for inspecting the reasoning trajectories, intermediate selection decisions, and alternative reasoning paths. Empirical results on mathematical and coding tasks reveal the performance-compute trade-offs of TTC scaling strategies and scoring methods and demonstrate that ThinkBooster provides practical gains in real-world tasks. The code is available online under an MIT license.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.07414|051978d481cddde02b2f80617b3424dca0149f6d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Sparsity allows scaling model parameters without proportionally increasing computational cost. While mixture of experts (MoE) models are made increasingly sparse, individual experts typically remain large and dense. Here, we demonstrate that further increasing sparsity by shrinking each expert to consist of a single neuron and selecting a tiny fraction of many available neurons can improve compute efficiency and interpretability. Counterintuitively, the key to achieving both is removing the nonlinearity typically applied to the experts, resulting in a network of sparsely gated linear neurons (sgatlin). In an isoflop comparison, we find that replacing all transformer feedforward layers with sgatlin improves perplexity in language models across different compute budgets. At the same time, the sparsity and linearity of the resulting feedforward circuits present new opportunities for model interpretability. In a small-scale case study, we demonstrate that feedforward circuits in sgatlin can be interpreted without having to train additional replacement models. We find that they form semantically structured clusters and are causally implicated in factual recall. Our findings paint a possible path towards compute-efficient and interpretable transformer feedforward layers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.NE主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.NE"
+    ]
+  },
+  "arxiv:2606.06920|61b803769db2dd11610b234db4f502f03ce4aee7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying Small Language Models (SLMs) on edge devices requires efficient fine-tuning strategies that adapt models to new tasks without degrading their general capabilities. In this study, we benchmark five sub-1B models (135M-1B) on mathematical reasoning tasks and uncover a critical vulnerability: Full Fine-Tuning (Full FT) actively harms performance in models under 300M parameters, often dropping accuracy below zero-shot baselines. This \"negative transfer\" makes Parameter-Efficient Fine-Tuning (PEFT) not just an efficiency preference, but a stability requirement. We find that while Low-Rank Adaptation (LoRA) and Weight-Decomposed LoRA (DoRA) perform comparably, their strengths vary by task; DoRA excels in complex reasoning (GSM8K), while LoRA dominates pattern matching (OrcaMath). In particular, Full FT is outperformed by LoRA on aligned models (Qwen2.5-0.5B) and even by simple 5-shot In-Context Learning on the smallest architectures (SmolLM2-135M). Based on these findings, we recommend defaulting to PEFT for all aligned sub-1B models and caution against Full FT for any architecture smaller than 500M parameters to prevent catastrophic forgetting. Reproduction of this work can be found at https://github.com/gulguluu/tiny-slm-finetune-compare.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.07098|4b726ec08b8176a811a7f65523bea9069f95401b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present SigmaScale, a method for learning auxiliary scaling matrices $S$ to aid truncated Singular Value Decomposition (SVD) based Large Language Model (LLM) compression. Instead of deriving scaling matrices analytically, SigmaScale optimizes two sets of vectors that define diagonal row and column scaling transformations under an activation-aware compression loss. We show that learned scaling lowers the effective intrinsic rank of weight matrices, as reflected by reductions in effective-rank entropy, and that this reduction is strongly correlated with compression loss. Experiments on Llama 3.1 8B Instruct and Qwen3-8B show that SigmaScale is competitive with closely related state-of-the-art SVD-based compression methods across perplexity and zero-shot benchmarks. By using learned activation-aware transformations, SigmaScale explores a more flexible route to low-rank LLM compression by adapting to the structure of individual model weights. The advantage observed in specific tasks makes our approach a valid option for applications requiring a reduced LLM-inference computing cost.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.07116|fec9d1e74ccfedda85503794ba61cae42c67200c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-bit quantization has been widely adopted to accelerate the inference of large language models (LLMs) by significantly reducing computational cost and memory usage. However, activation outliers pose a major challenge to effective quantization, often leading to notable performance degradation. In this paper, we introduce OffQ, a method designed to mitigate activation outliers in low-bit quantization through a novel offsetting mechanism. Specifically, OffQ first identifies a low-dimensional outlier subspace in the activations using a proposed top-1 PCA, and then concentrates high-magnitude activations into 1 channel via rotation. OffQ then absorbs this concentrated outlier channel by converting its magnitude into a shared offset, thereby reducing the standard deviation of the activations. This offsetting strategy enables effective W4A4KV4 quantization of LLMs using deployment-friendly uniform-grid and uniform-precision quantization. Extensive experiments across diverse LLM architectures and benchmarks demonstrate that OffQ outperforms state-of-the-art baselines, consistently improving model accuracy while preserving low-bit efficiency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.07246|47618518c9043e3ef4ff327d947f49ddab5b5ef7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "High-Level Synthesis (HLS) enables rapid development of FPGA accelerators, yet achieving high-quality results (QoR) remains challenging due to the large and irregular design space induced by compiler directives (a.k.a pragmas). Selecting effective configurations requires reasoning over complex interactions between program structure, memory behavior, and often conflicting objectives such as latency and resource utilization. Prior model-driven approaches exhibit limited generalization across kernels and fail to capture higher-level optimization intent. Recently, Large Language Models (LLMs) capture code semantics and high-level intent, but their sequential representations hinder modeling of structural dependencies and global trade-offs, leading to suboptimal HLS designs.\n  We present MailoHLS, a hybrid framework that combines LLM-based semantic reasoning with GNN-based structural modeling for objective-aware directive optimization. By integrating structural embeddings via cross-attention and leveraging PEFT with objective-conditioned LoRA adapters and Pareto-driven optimization, MailoHLS enables joint reasoning over code semantics, structure, and design trade-offs. Across seen and unseen kernels, MailoHLS achieves up to 12.42x and 8.4x speedup (9.48x and 4.97x geometric mean) for latency optimization, consistently producing near-Pareto-optimal designs. On fully unseen applications, it reaches up to 10.2x speedup (6.58x geometric mean), outperforming high-end LLMs and prior approaches while narrowing the gap to the Pareto frontier.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2606.07502|b617128a64a2709c9c5c20d5697556540269d5fd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2606.07502v1 Announce Type: new \nAbstract: Large language models exhibit impressive zero-shot capabilities across a wide range of downstream tasks. However, they struggle to function as off-the-shelf embedding models, leading to suboptimal performance on massive text embedding benchmarks. In this paper, we identify a potential cause underlying this deficiency. Our motivation stems from an unexpected observation: text embeddings tend to align with frequent but uninformative tokens when projected onto the vocabulary space. We argue that this excessive expression of high-frequency tokens suppresses the model's ability to capture nuanced semantics. To address this, we introduce EmbedFilter, a simple linear transformation designed to refine text embeddings derived from LLMs directly. Specifically, we uncover that the unembedding matrix within LLMs encodes a latent space that is actively writing these frequent tokens into embedding space. By filtering out this subspace, EmbedFilter suppress the influence of high-frequency tokens, thereby enhancing semantic representations. As a compelling byproduct, this enables an inherent dimensionality reduction, lowering index storage and speedup retrieval while fully preserving the refined embedding quality. Our experiments across multiple LLM backbones demonstrate that LLMs equipped with EmbedFilter achieve superior zero-shot downstream performance even with significantly reduced embedding dimensions. We hope our findings provide deeper insights into the mechanisms of LLM-based representations and inspire more principled designs to improve text embeddings training. Our code is available at https://github.com/CentreChen/EmbFilter.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.IR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.IR"
+    ]
+  },
+  "arxiv:2606.06888|ca1138a3908776c74e9d2feb528fe0a6d4658fab|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Classical scaling laws for language model pretraining balance model size against training dataset size under a fixed compute budget, assuming abundant data and a single pass over the corpus. As training compute grows faster than the supply of natural language data, pretraining is likely to enter a data-constrained, compute-rich regime where models train for multiple epochs over a finite dataset. We study data-constrained pretraining along two axes, regularization and scaling. For regularization, we study masked-input regularization (MIR), an auxiliary next-token prediction loss on randomly masked inputs. MIR tests whether the random masking central to diffusion language models can benefit autoregressive pretraining without architectural changes or inference overhead. Across 72M to 1.4B parameter models, we find that MIR added on top of strong weight decay improves validation loss over autoregressive strong-weight-decay-only models, with downstream gains at 1.4B. For scaling, we propose SoftQ, a scaling law that couples model size and data size to capture their interaction under repeated data. Classical alternatives such as the Chinchilla law use an additive form that decouples these terms, making them misspecified in the data-constrained regime. We find that SoftQ fits data-constrained experiments substantially better than these alternatives, and estimates MIR's gains as equivalent to roughly 1.3 times as much unique training data. We release our code at https://github.com/yixinw-lab/dc_pretrain.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.07345|161ea0ce75786b79078da1619c095cd33957eeee|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Tabular foundation models, exemplified by TabPFN, perform prediction via in-context learning, inferring test labels directly from labeled training examples. They have demonstrated competitive performance, particularly on small-to-medium datasets. However, recent tabular foundation models often improve accuracy with increasingly complex architectures, incurring higher inference cost and limiting practical deployment. In this work, we revisit the original TabPFN design and show that a lightweight row-wise attention-only backbone can remain highly competitive with two simple enhancements: a gated attention stabilization mechanism and a small set of learnable register tokens that provide global context and improve pretraining quality. The resulting model, TabSwift, supports both classification and regression, and is competitive with stronger tabular foundation models (e.g., TabPFN v2 and TabICL) while being more efficient at inference. For latency-sensitive serving, we further introduce an adaptive layer-wise early-exit mechanism that dynamically adjusts inference depth per sample. Overall, TabSwift enables efficient and anytime tabular in-context learning for practical deployments.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.06865|87266c41cb8129d36be0eb54c647a1ee542b0636|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) have been increasingly explored for graph computation, where tasks require reasoning over structured relationships and algorithmic operations. Yet, it remains unclear when LLMs can reliably support such computation and how they should be incorporated into graph-solving pipelines. Existing surveys at the intersection of LLMs and graphs primarily focus on graph learning, text-attributed graphs, or graph-language modeling. To bridge this gap, we provide a comprehensive review of LLMs for graph computation through a role-based taxonomy. Specifically, we identify two major paradigms: i) LLMs as executors, where models directly solve graph tasks from graph descriptions and instructions; and ii) LLMs as planners, where models formulate problems, decompose reasoning steps, and invoke external tools or agents for execution. Based on this taxonomy, we analyze the strengths and limitations of current methods. Our review indicates that LLMs are promising for simple, small-scale tasks, but remain unreliable for large-scale and exactness-demanding tasks. Finally, we summarize available datasets and suggest four future directions.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.06527|bfbf491ec1734f1138bf139f3649f4a93d54431c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Energy-efficient edge inference requires reducing arithmetic cost, memory traffic, and hardware overhead. This paper presents an ablation-focused study of NVFP4 LUT-based inference for edge-efficient neural networks. The proposed NVLUT framework combines 4-bit NVFP4 activations, two-level scaling, LUT-based mantissa computation, voltage-scaled storage, and selective ECC protection. Multiplication is decomposed into sign, exponent, and mantissa paths, where sign uses XOR logic, exponent uses integer addition, and mantissa multiplication is replaced by compact LUT access. NVFP4 activations use FP4 data with an FP8 block scale and an FP32 tensor scale. Across six edge-efficient models, block-size ablation shows that B = 16 offers a practical accuracy/storage trade-off, requiring only 4.5078 bits per input for N = 4096. Weight-precision ablation shows that FP8 and FP16 weights provide only modest gains over FP4 weights under the same NVFP4 activation path. Compared with pure unscaled FP4, NVFP4 without retraining recovers substantial accuracy by restoring activation dynamic range, while NVFP4 with retraining achieves the best accuracy across models. Hardware analysis shows that NVLUT achieves up to 26.85x energy reduction over traditional LUTs with ECC plus voltage scaling and up to 22.85x under mixed-voltage operation. Area is reduced by up to 2.21x and 1.52x, respectively. These results demonstrate that NVFP4 two-level scaling with selective reliability protection enables robust, low-energy edge inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.06547|82de192ca5e8ef39f6a7e5c78b6c4ad7ecba7fc5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion Large Language Models (dLLMs) refine tokens iteratively but commit them irreversibly, leading to a \"stability lag\" where early decisions remain fragile even after being written. We reveal that Post-Training Quantization (PTQ) error easily flips these borderline decisions at the write frontier, which are then permanently locked in and amplified. To address this, we propose Frontier-Aware Instability-Reweighted Calibration (FAIR-Calib), a two-stage PTQ framework for dLLMs. Stage I probes a full-precision teacher to estimate a position prior that combines frontier hits and masked-stage reliability. Stage II performs off-policy, layer-wise calibration by minimizing a reweighted hidden-state MSE, effectively prioritizing the protection of fragile frontier states without requiring expensive end-to-end diffusion rollouts. We further theoretically justify our weighted objective as a surrogate for output KL divergence. Empirically, FAIR-Calib consistently outperforms state-of-the-art baselines on LLaDA and Dream (W4A4), significantly reducing frontier decision flips and suppressing post-commit mismatches across diverse benchmarks.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.07108|dfe9ea3dbfe06e42c07d63d6e8d04fe3dfd44a3c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recent advances in Large Reasoning Models (LRMs) demonstrate remarkable performance improvements by iteratively reflecting, exploring, and executing complex tasks, yet suffer from inefficiencies due to redundant reasoning, known as \"overthinking\". Existing methods to mitigate this issue either rely on static difficulty estimates or require task-specific training, and thus fail to adapt to the dynamic complexity during reasoning. In this work, we empirically show that the problem difficulty evolves dynamically throughout the reasoning process and is linearly encoded in the LRM's step-level embeddings. Building on this insight, we propose DyCon, a training-free framework that leverages latent step-level representations to explicitly model the evolving task difficulty, enabling the dynamic control of reasoning depth to mitigate the overthinking issue. Extensive experiments conducted on four models ranging from 4B to 32B, and across twelve benchmarks in math reasoning, general question answering, and coding tasks demonstrate that DyCon significantly enhances reasoning efficiency by reducing redundant steps without sacrificing accuracy or generalization. Project page and code are available at https://github.com/yu-lin-li/DyCon.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.06528|184d1fb533ce458b6562a6840faeba5657935d49|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "In resource-constrained small-satellite settings, AI inference must operate under tight size, power, and payload budgets, which tend to limit onboard compute capability and data handling. These conditions motivate establishing a clear baseline for quantized AI inference under bounded compute and memory resources. To instantiate this baseline, a representative embedded-vision neural-network workload serves as the reference case. With this motivation, this paper presents a measurement-based characterization of quantized execution for this AI workload on highly constrained embedded platforms (for instance, Cortex-M), grounded as a lower-bound operating point. In this regime, scaling tends to rely on explicit orchestration rather than OS-managed, transparent multicore scheduling, and timing behavior is shaped by instruction efficiency and memory movement. As a result, the characterization provides a structured reference for estimating execution time across orchestrated configurations (e.g., multiple cores and/or devices), treating orchestration and architectural variation as explicit design choices. We report latency metrics alongside data-movement observations, and interpret these measurements in light of ALU/SIMD utilization under quantized arithmetic for the Cortex-M. Finally, we outline how this baseline provides a reference point for positioning the results against more space-typical embedded processor classes (e.g., LEON/NOEL-V).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.PF主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2606.06564|eba2b0539d97788c8fa4e9db7851935315d614ec|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Residual connections are central to training deep Transformers, but standard PreNorm residual streams aggregate sublayer updates with fixed unit weights. Recent Attention Residuals replace this fixed accumulation with content-dependent depth-wise routing, and Block Attention Residuals make the mechanism efficient by routing over block-level residual summaries. However, a single block summary stores only the low-frequency total residual displacement inside a block, discarding directional structure such as attention-vs-MLP imbalance and early-vs-late block dynamics. We propose WAV v1, a lightweight multi-resolution residual routing method for decoder-only Transformers. Instead of representing each block only by its accumulated residual sum, WAV v1 augments every block with two directional detail bases: a phase basis that contrasts attention and MLP updates, and a split basis that contrasts early and late sublayer updates. These bases are routed together with standard block summaries through the same depth-wise softmax mixer, while negative detail-source initialization and detached RMS matching stabilize training. On character-level TinyStories and Text8 language modeling, WAV v1 shows a clear depth-dependent benefit. Although it is not consistently beneficial at 12 layers, it becomes competitive at 24 layers and outperforms all baselines at 48 layers. At 48 layers, WAV v1 reduces validation loss relative to Block AttnRes from 0.4960 to 0.4738 on TinyStories and from 0.9363 to 0.9305 on Text8, with negligible additional parameters. These results suggest that directional residual details, not only block-level sums, are important for scaling residual routing in deeper Transformers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
   }
 }
