@@ -7621,5 +7621,185 @@
       "cs.AI",
       "cs.CR"
     ]
+  },
+  "arxiv:2606.13392|1ea821a7bab3ea946ea99083cd1a2d3cb31c22be|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2606.13392v1 Announce Type: new \nAbstract: Ultra-long-context capability is becoming indispensable for frontier LLMs: agentic workflows, repository-scale code reasoning, and persistent memory all require the model to jointly attend over hundreds of thousands to millions of tokens, yet the quadratic cost of softmax attention makes this untenable at deployment scale. We introduce MiniMax Sparse Attention (MSA), a blockwise sparse attention built upon Grouped Query Attention (GQA). A lightweight Index Branch scores key-value blocks and independently selects a Top-k subset for each GQA group, enabling group-specific sparse retrieval while maintaining efficient block-level execution; the Main Branch then performs exact block-sparse attention over only the selected blocks. Designed around a principle of simplicity and scalability, MSA is deliberately streamlined, making it straightforward to deploy efficiently across a broad range of GPUs. To translate sparsity into practical speedups, we co-design MSA with a GPU execution path that uses exp-free Top-k selection and KV-outer sparse attention to improve tensor-core utilization under block-granular access. On a 109B-parameter model with native multimodal training, MSA performs on par with GQA while reducing per-token attention compute by 28.4x at 1M context. Paired with our co-designed kernel, MSA achieves 14.2x prefill and 7.6x decoding wall-clock speedups on H800. Our inference kernel is available at: https://github.com/MiniMax-AI/MSA. A production-grade natively multimodal model powered by MSA has been publicly released at: https://huggingface.co/MiniMaxAI/MiniMax-M3.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.12876|0a03a3c8265a92b6e2967c72e496a94b892163a0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As large language models (LLMs) are increasingly deployed across heterogeneous hardware with varying resource constraints, the ability to adaptively manage the trade-off between performance and efficiency without retraining is critical. We propose Drop-by-Drop, a novel multi-bitwidth post-training quantization framework that enables inference-time precision control over LLM weights from a single trained model. Our method is theoretically grounded in information theory and successive refinement. We establish that LLM weights, which commonly follow a Gaussian distribution, can be optimally reconstructed with increasing fidelity as additional bits are incorporated, under a weighted mean squared error distortion motivated by LLM loss functions. To realize this in practice, Drop-by-Drop incorporates Matryoshka-style supervision into the loss function, exploiting the structure of additive codebooks. Drop-by-Drop produces a single model where ordered subsets of codebooks yield accurate partial reconstructions at each precision level. This approach significantly reduces storage and memory overhead by allowing a single checkpoint to serve multiple bitwidths, while maintaining competitive perplexity and accuracy across major architectures, such as Qwen, LLaMA, Gemma, and Mistral.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL",
+      "cs.IT"
+    ]
+  },
+  "arxiv:2606.13115|6969db62d8911911aa124de8b2dff8348b174c21|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "While Large Language Models (LLMs) have advanced open-domain dialogue systems, maintaining long-term consistency remains a challenge due to inherent limitations in long-context reasoning and the inefficiency of processing extensive raw text. Existing approaches typically rely on either unstructured memory storage, which is prone to information loss, or computationally expensive LLMs that incur high latency. To address these limitations, we propose G-Long, a graph-enhanced framework that utilizes a fine-tuned small Language Model (sLM) for structured triplet extraction and associative retrieval, significantly reducing operational costs. Furthermore, we introduce the novel attention-aware importance scoring mechanism that leverages the intrinsic cross-attention signals of a T5 summarizer to identify salient memories. Extensive experiments across diverse benchmarks demonstrate that G-Long achieves state-of-the-art performance in both response generation and memory retrieval, yielding performance gains of up to 9.8% in response quality on MSC and 40.8% in retrieval recall on LME, while significantly minimizing computational overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.13054|008eb6c7320c8b7cbb03f14a940643679605491c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) exhibit exceptional general language processing capabilities, but their memory and compute costs hinder deployment. Ternarization has emerged as a promising compression technique, offering significant reductions in model size and inference complexity. However, existing methods struggle with heavy-tailed activation distributions and therefore keep activations in high precision, fundamentally limiting end-to-end inference acceleration. To overcome this limitation, we propose TWLA, a post-training quantization (PTQ) framework that achieves 1.58-bit weight compression and 4-bit activation quantization while maintaining high accuracy. TWLA comprises three components: (1) Euclidean-to-Manifold Asymmetric Ternary Quantizer (E2M-ATQ) minimizes layer-output error under weight ternarization via a two-stage optimization from Euclidean initialization to manifold relocation; (2) Kronecker Orthogonal Tri-Modal Shaping (KOTMS) applies a Kronecker-structured orthogonal rotation to reshape weights into ternary-friendly tri-modal distributions, while the shared rotation statistically suppresses activation outliers; and (3) Inter-Layer Aware Activation Mixed Precision (ILA-AMP) explicitly introduces adjacent-layer second-order interaction costs in bit allocation and jointly optimizes for the layer-wise disparity of activation quantization gains induced by the shared orthogonal transform, preventing cascades triggered by a few weak layers. Extensive experiments demonstrate that TWLA maintains high accuracy under W1.58A4, while delivering significant inference acceleration. The code is available at <https://github.com/Kishon-zzx/TWLA>.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.13126|b1d2b5043aed2c065a5951248bdd6e65d1106c79|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Retrieval-augmented and agentic workloads repeatedly prefill recurring predictable structured inputs (which we call \"spans\") such as documents and code files. Yet, prefix caching in engines such as vLLM cannot reuse their KV entries unless they share identical prefixes with another request, while Position-Independent Caching (PIC) implementations within production-grade inference servers typically either require substantial server code changes or keep KV state outside the server, incurring host-to-device transfer overhead. We present Minimalistic PIC (MiniPIC): a minimal, flexible and fast vLLM design built from two ingredients: positional-encoding-free KV cache and user-controlled cache-reuse primitives. MiniPIC stores unrotated K vectors in the KV cache, applies RoPE to K tiles inside attention using per-request logical positions, and exposes three user-facing and token-level primitives: block-aligned padding, span separator (SSep), and prompt depend (PDep), that modify hashing behavior and effective block-level causal attention structure. With fewer than 100 lines of core-engine changes plus a custom attention backend, these primitives are sufficient to realize multiple PIC methods, including Block-Attention, EPIC, and Prompt Cache, within the same running vLLM instance, while natively integrating with KV cache CPU offload implementations. On 2WikiMultihopQA, MiniPIC with interleaved scheduling improves prefill throughput by 49% over baseline vLLM, reduces cached-span time-to-first-token by up to two orders of magnitude, preserves the linear prefill scaling of uncached spans, and incurs only 5.7% worst-case overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.12941|92f3a1eed3cb98f3b8b7c33f5e4df6f0fca43d60|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "When a user reveals task-critical information across several conversation turns, LLM accuracy drops by up to 65% despite full context availability. We show that this Lost in Conversation degradation can be substantially mitigated by training models to maintain a compact rolling memory instead of attending to a growing history. To make such training scalable, we introduce a low-cost sharding pipeline that converts single-turn QA datasets into multi-turn fragmented-information episodes, eliminating the need for hours of manual annotation. Training only on sharded GSM8K, our memory-augmented policy significantly improves multi-turn accuracy and generalises zero-shot to harder math and out-of-domain long-context QA. Moreover, memory-trained models outperform full-history baselines even when given the full history at test time, suggesting that learning to compress induces more robust incremental reasoning than full-context exposure alone.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.13233|e5be1bf589d14f597939cec614cd8c55583a53b6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large reasoning models (LRMs) improve complex problem-solving by generating long intermediate reasoning traces, but this substantially increases inference costs. NVFP4 inference offers a promising approach to reduce both computational and memory costs through hardware-supported low-precision execution. However, directly applying NVFP4 to LRMs introduces two practical limitations: reasoning accuracy degrades under quantization, and existing NVFP4 kernels do not fully realize latency benefits in small-batch autoregressive decoding. In this work, we analyze the effect of NVFP4 quantization on token-level uncertainty during reasoning. We show that quantization increases incorrect sampling at low-entropy symbolic tokens, while causing over-concentration on a small set of tokens in high-uncertainty reasoning steps. Based on this observation, we propose \\textbf{ReSET}, a reasoning-step entropy-based temperature-scaling method that estimates step-level uncertainty online and adapts the decoding temperature using both token-level and step-level entropy signals. To address the latency gap, we further design a CUDA-core small-$M$ NVFP4 kernel for latency-critical autoregressive decoding. Across reasoning benchmarks and model scales, ReSET improves NVFP4 reasoning accuracy by up to $\\sim\\!$2 points over the NVFP4 baseline. Our CUDA-core small-$M$ kernel further improves latency-critical decoding, delivering up to $2.5\\!\\times$ kernel-level speedup over NVFP4 vLLM and approximately $2\\!\\times$ end-to-end decoding speedup over BF16. Code is available at https://github.com/aiha-lab/ReSET.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.13177|3b0745b64be05f4d081910f7eaea005669671a30|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) agents are increasingly expected to operate over long-term interactions, where information from past dialogues must be preserved and recalled to support future tasks. However, as interactions accumulate, the memory store grows without bound and fills with redundant entries that inflate storage cost and degrade retrieval by crowding out the most useful evidence. Furthermore, this is especially limiting on resource-constrained platforms with hard memory budgets, motivating us to formulate storage-budgeted memory management, the task of keeping an already constructed memory store within a fixed budget while preserving information useful for future interactions. To this end, we then propose MemRefine, an LLM-guided framework that, since surface similarity poorly reflects factual value, uses similarity only to propose candidate pairs and defers delete, merge, and preserve decisions to an LLM judge based on factual content, iterating until the budget is met. Across multiple memory frameworks and long-term conversation benchmarks, MemRefine consistently meets target budgets while preserving downstream performance and outperforming rule-based baselines under tight budgets.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.13361|1642649c45aeb2f9992f3e4694464a28430c9925|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2606.13361v1 Announce Type: new \nAbstract: Right now, across the world, AI agents are repeating the same absurd act: to read one document, they each recompute it from scratch. Every agent re-runs prefill, the most compute-intensive step a large model takes, over identical text, only to rebuild a key-value (KV) cache identical to the one the agent before it just built. The same answer, computed a million times. We make a proposal that is almost offensively simple: compute it once. Let a publisher precompute a document's KV cache, and let every other agent buy the right to load it and skip prefill. It works, and it is token-exact: loading a precomputed KV and continuing matches prefilling from scratch (24/24 greedy tokens, and at the logits level), with no accuracy cost. On Qwen3-4B, reuse is 9-50x cheaper in compute than prefill, and the gap widens with length (prefill's attention scales with L^2), so a single reuse already pays it back. Then the part that matters: where the KV lives. Shipping it fails, because KV is nearly incompressible, so per-load egress costs more than the prefill it saves. Hosting it provider-side, exactly as production prompt-caching works, removes egress entirely. The size of the prize is set by our measured compute saving: serving one hot 3774-token document to 80M agents costs ~$1.5M to re-prefill but only ~$0.03M of reuse compute (49.7x less). The 0.1x cache-read tariff APIs charge passes a 10x discount to users while sitting inside this measured envelope, so the 10x is a floor that the measured ~50x compute saving clears, and the gap to the physical ~50x is provider margin: millions of dollars per popular document. We frame the resulting agent-native prefill CDN and leave lossless KV compression and a cross-party payment layer as the open problems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CE主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CE",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2606.12487|32f96daadf5a990f111ae4157017bef798da8465|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Post-training quantization (PTQ) is essential for efficient large language model inference, but reliably quantizing activations remains challenging when weights, activations, and KV caches are all quantized to 4-bit precision. A key difficulty lies in massive activations, whose extreme values dominate the activation range and amplify quantization errors. State-of-the-art methods mainly mitigate massive activations through transformation-based smoothing, such as orthogonal rotations and affine scaling, but overlook the cross-layer dynamics of the residual stream. In this paper, we show that massive activations emerge and disappear in a phase-wise pattern across network depth, triggering large residual changes. These changes cause newly injected layer-wise updates to dominate the 4-bit quantization scale and weaken historical residual information. To characterize this behavior, we introduce Jump Ratio and Historical Feature SNR. This suggests that static transformation-based smoothing cannot fully resolve dynamic quantization instability caused by cross-layer residual changes. Based on this analysis, we propose DynamicPTQ, a Dynamic Post-Training Quantization policy for phase-aware mixed-precision activation quantization. DynamicPTQ identifies quantization-sensitive layers from residual-stream dynamics and assigns 8-bit activation precision only to these layers, while keeping weights, KV caches, and other activations in 4-bit precision. It can be directly integrated with strong PTQ baselines such as QuaRot, SpinQuant, and FlatQuant. Experiments on LLaMA-2 and LLaMA-3 show that DynamicPTQ consistently improves perplexity and zero-shot QA performance under W4A4KV4 quantization, while achieving 1.05 to 1.07 times throughput improvement with modest memory overhead. These results demonstrate a practical path toward robust low-bit LLM inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.12629|1d3e7cbc434f4f39aa5fac8af1321169fea3db84|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We show that the standard basis of transformer hidden states already provides a training-free, architecture-general feature basis. Individual dimensions encode semantic content via their signs and confidence via their magnitudes, functioning as independent binary registers. We validate this Bag of Dims framework across three model families (Qwen 3.5-4B, Gemma 3-4B, Mistral 7B) through four progressive experiments. Sign patterns alone carry predictive content: replacing all magnitudes with unity achieves 72-93% top-5 next-token accuracy through the LM head, and pure Hamming scoring without any decoder reaches 80-90% top-4096. These sign patterns organize into semantic features: using a single-token type cache (one forward pass per vocabulary token, no context), we discover 175 categories via per-dimension sign consistency (mean AUC 0.80) from 50 anchors with zero training. A trained probe adds only +0.018 AUC and converges to axis-aligned weights, confirming negligible cross-dimension structure. This structure extends to attention: all 175 categories remain discoverable in K and V projections. On the write side, static FFN weight inspection links 20% of features to individual writer neurons (>0.70 agreement; random controls: 0%), with top-200 neuron coalitions achieving >0.70 agreement on 99.9% of prototypes via majority vote. Fully unsupervised discovery (random seeds, no labels) scales to 1500 features at 100% yield and 99% sparsity across all three models, with pairwise MI of 0.0014 bits confirming low inter-dimension coupling. These results establish that the standard basis already suffices for feature reading throughout the transformer compute pathway, requiring no training, no optimization, and no GPU-days beyond a single forward pass per vocabulary token.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.13241|4ef0c312e00f56c87cbdd057e4fdbebc2179192d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Defining query difficulty is one of the hardest problems in deployment engineering. Existing LLM routers rely on surface features such as domain labels, keywords, and token count, ignoring the within-domain variance that actually determines model success. Frontier models cost ten to one hundred times more than local open-weight models, so at production scale even small per-request savings become a direct cloud-bill lever. We present Brick, a multimodal router that scores each model on six capability dimensions, combines this with a per-query difficulty estimate, and dispatches via a cost-penalized geometric rule. A continuous preference knob lets operators slide between max-quality and max-saving profiles at deploy time. On a benchmark of 5,504 queries, Brick at max-quality reaches 76.98% accuracy, beating the best single model (75.02%) and all tested routers. At a neutral cost-quality profile, Brick achieves 74.11% accuracy at 4.71x lower cost than always using the strongest model. At min-cost, it cuts cost 22.15x with 11.85 points accuracy loss. Median latency drops from 51.2s to 22.8s.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.12688|8d99e9ee2ea3810652d0389b0039c853befd155f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We are entering a new era of composite model architectures that integrate diverse components such as vision encoders, language backbones, diffusion and flow heads, audio codecs, action generators, and world-model predictors. Such architectures underpin a broad class of multimodal models, including unified multimodal models, omni models, speech-language models, vision-language-action policies, and world models. However, existing model serving frameworks were built on narrow assumptions about model structure, making them ill-suited to accommodate this new architectural diversity. Here we present M*, a universal serving system for efficient serving of composite AI models. M* represents models as dataflow graphs, processing requests spanning diverse modalities and tasks as traversals over these graphs. The core insight is a modular abstraction that supports arbitrary composition of model components, flexible placement onto a physical cluster, and model-agnostic optimizations within a distributed runtime. We call this abstraction the Walk Graph and show how it can concisely capture composite models from a broad range of families. We instantiate M* on representative models and find that it achieves, on average, 20% lower end-to-end latency than vLLM-Omni for text-to-image workloads on BAGEL, while delivering up to 2.9x lower real-time factor and 2.7x higher throughput for text-to-speech workloads on Qwen3-Omni. M* also outperforms the V-JEPA 2-AC rollout baseline for robotic planning by up to 12.5x. Thus, our work paves the road towards more efficient serving of complex models with minimal developer effort.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2606.13624|259ea67f25bae649bbd248129ea5572f514f3bd6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) have enabled time series (TS) analysis by jointly modeling numerical observations and textual context through a shared token interface. However, TS tokens and prompt tokens exhibit fundamentally different information structures, making uniform token processing inefficient. In this paper, we study token efficiency in TS language modeling from an asymmetric-token perspective. We show that TS tokens have highly uneven spectral contributions, where many tokens share redundant frequency patterns while a small subset preserves critical temporal evidence. We also observe that prompt-token influence attenuates with model depth, suggesting that full prompt retention across all layers is unnecessary. Based on these findings, we develop an adaptive token budgeting framework that compresses TS tokens via frequency-domain structure and progressively reduces prompt tokens across layers. Experiments across forecasting, classification, imputation, and anomaly detection demonstrate up to \\textit{\\textbf{7.68$\\times$}} inference acceleration and performance gains in \\textit{\\textbf{78\\%}} of evaluated settings, showing the effectiveness of asymmetric token compression for scalable TS foundation models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.13328|baa760e9ac2fe2ffac7e38cd75e70839835f0439|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2606.13328v1 Announce Type: new \nAbstract: Modern deep learning hardware paradigms rely heavily on computationally expensive floating-point arithmetic (FP32, FP16, and FP8), requiring massive thermal and energetic overheads to maintain gradient-based optimization. This paper introduces a non-parametric, training-free computational framework for dual-manifold mapping that operates strictly within an 8-bit signed integer boundary and leverages simple bitwise and accumulation logic. By mapping a Spatial Manifold (N_spatial = 8192 neurons) and a Gabor-pooled Structural Manifold (N_structural = 4096 neurons) through an integer-based transformation matrix (Z-matrix), we eliminate the need for floating-point multipliers. Inference is achieved via cache-friendly pointer offsets and bitwise masks, accumulating directional sign-charges using fixed thresholds (theta_reject = 8.0, theta_cut = 2.0). Learning is executed through a localized, bounded update mechanism restricted strictly within [-127, 127], modulated by stochastic noise injection. Both architectures demonstrate extreme holographic resilience, preserving near-perfect reconstruction via a global scaling factor under 90% truncation sparsity and 20% random node destruction. By reducing core AI inference to 8-bit boundaries and boolean-like execution, this framework outlines a paradigm shift toward neuromorphic edge-computing, directly questioning the long-term necessity of dense, floating-point-centric GPU accelerators.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2606.12478|7f53ad454754ce91a550b59fe23b8c2d925fc9af|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Attention mechanisms are central to modern sequence models, yet standard attention computes relevance primarily through individual query--key similarities. Although softmax normalization introduces competition among positions, a standard attention layer does not explicitly parameterize learnable interactions between attention decisions. This limits its ability to directly model cooperative or antagonistic co-attention structure within the attention mechanism itself. We propose Boltzmann attention, an energy-based generalization in which attention patterns are governed by an interacting Ising model. The method augments the usual data-dependent local fields with learnable pairwise couplings, allowing the model to represent inter-position correlations beyond those captured by softmax or sigmoid attention. Experiments on character-level language modeling and synthetic bracket matching show that Boltzmann attention consistently improves over standard softmax attention within a standard Transformer architecture, with the advantage becoming more pronounced as sequence length increases. A four-way ablation confirms that the improvement arises from the learnable pairwise couplings. These results suggest that explicit inter-position interactions provide a principled enhancement for attention-based sequence modeling. Moreover, the Ising formulation opens a natural path toward quantum-computing-based sampling strategies: we demonstrate that diabatic quantum annealing provides a practical training method while maintaining competitive performance with exact Boltzmann computation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cond-mat.stat-mech主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cond-mat.stat-mech",
+      "quant-ph"
+    ]
+  },
+  "arxiv:2606.12841|e75dc3b0f634e4256543269757a7abd441a923d3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Masked diffusion language models (MDLMs) such as LLaDA now rival autoregressive (AR) LLMs, but every existing knowledge-editing and unlearning method (ROME, MEMIT, etc.) targets AR transformers and either makes assumptions that fail under iterative denoising, or requires gradient updates whose backward-pass activations cost tens of GB of extra VRAM and which collapse MDLMs at standard learning rates. We introduce TimeROME-DLM, the first training-free, gradient-free, inference-time knowledge-editing framework for MDLMs. It couples two components: a Temporal Indirect Effect (TIE) causal-tracing protocol that identifies, for each fact, the coordinate whose intervention most strongly drives the object prediction at later denoising steps; and a closed-form, low-rank residual edit memory that aggregates subject keys and target deltas across all forget facts and applies a single ridge-regularised update at that coordinate at every diffusion forward, with sparsification to limit utility spillover. Backbone weights stay frozen; only three hyperparameters (alpha, lambda, q) are tuned on a small validation split. On TOFU forget01 with TOFU-finetuned LLaDA-8B-Base, TimeROME-DLM cuts forget-set log-probability by roughly 83 nats. The same configuration transfers to LLaDA-8B-Instruct, Dream-7B, MMaDA-8B, DiffuLLaMA-7B, and LLaDA-MoE-1.4B. It keeps retain-set log-probability nearly flat (within ~1 nat at the utility-safe operating point) across 50 sequentially inserted facts, delivers a four- to fourteen-fold wall-clock speedup with zero additional VRAM over the strongest converged training-time baseline, and scales sub-linearly to 400 facts. TimeROME-DLM closes the locate-then-edit gap between AR LLMs and MDLMs at a fraction of the computational cost.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.13426|6f7e09300b1b406630193733b06278e9ba4920fe|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2606.13426v1 Announce Type: new \nAbstract: Speculative decoding speeds up LLM inference by using a draft model to generate tokens, with an acceptance-rejection scheme that ensures that the output matches the target distribution. Adapting this to continuous diffusions is difficult because speculative sampling requires drawing from a residual distribution. While straightforward in discrete spaces, efficiently sampling this residual in continuous space is non-trivial. Consequently, existing diffusion adaptations either use computationally inefficient sampling techniques or rely on an alternative scheme. In this work, we introduce a novel scheme that efficiently implements the original speculative sampling mechanism for diffusion models. Our approach offers a critical advantage over current methods: it enables us to adapt block verification from LLMs to diffusions -- which provably improves the acceptance rate of drafts. Furthermore, we formalize and analyze the Free Drafter, a heuristic self-speculative drafter for diffusions that requires no training. By enabling block verification, our Free Drafter yields up to a 6.3% speedup over existing speculative methods with no additional training and negligible overhead beyond the existing parallel verification pass.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、stat.ML主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2606.12881|a8f26adeb2b42ec94ca684a013597aa7bde0b68a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present an approach to fine-tuning large language models using Direct Preference Optimization (DPO), a reinforcement learning technique. Our experimental results demonstrate that DPO simplifies the training pipeline, improves computational efficiency, and achieves competitive performance. The evaluation using BLEU, ROUGE, and cosine similarity metrics indicates effective learning and convergence, though further investigation is needed to address observed training instability.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.12497|17e52fc45f90837fa21bfe7b74c78dc7c6b10711|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Vision-language-action (VLA) models predict chunks of future actions from the current observation, an assumption that fails under partial observability, where decisions depend on information no longer visible. Existing memory-augmented VLAs simultaneously introduce recurrence, retrieval, compression modules, auxiliary objectives, hierarchical memory, or task-specific architectural changes, so the contribution of recurrence itself remains entangled with surrounding machinery. We present a controlled isolation study of recurrence in a strong pretrained VLA backbone. Our formulation augments the transformer with a small set of learnable memory tokens carried across timesteps and updated through self-attention, trained end to end with truncated backpropagation through time, with no auxiliary losses and no architectural changes. We instantiate this as $μ$VLA, a family of OpenVLA-OFT variants parameterized by memory width m, TBPTT length K, and the memory update rule (cross-step gradients or a detached EMA), so that recurrence is the only varying factor. On MIKASA-Robo, $μ$VLA improves average success rate on five training tasks from 0.42 to 0.84 at the strongest setting and reaches 0.23 on held-out tasks with the same memory structure versus 0.07 for the memoryless baseline. On tasks requiring different memory structure, performance remains near baseline. On LIBERO, the strongest recurrent variant achieves 96.2% average success, indicating no regression under full observability. We interpret these results as a calibration of the capability envelope of minimal in-backbone recurrence, identifying the regime in which it is sufficient and the regime where additional memory structure is required. Demos and videos can be found in https://avanturist322.github.io/mu-vla/.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.RO主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.RO"
+    ]
   }
 }
