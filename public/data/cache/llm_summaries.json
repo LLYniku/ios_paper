@@ -7801,5 +7801,181 @@
       "cs.LG",
       "cs.RO"
     ]
+  },
+  "arxiv:2606.13740|9a04964842ec0ac2b4d406c5f98d0fb39321480e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion large language models (dLLMs) accelerate generation by denoising multiple tokens in parallel, making them attractive for latency-sensitive mobile inference. However, repeated denoising introduces substantial computation on smartphones. Mobile neural processing units (NPUs) offer high-throughput dense matrix computation, but efficiently exploiting them remains challenging: token commitment shrinks per-block effective workloads, token revision complicates KV cache reuse, and limited NPU-visible address space incurs costly remapping and data transfer overheads.\n  In this paper, we propose llada.cpp, the first NPU-aware inference framework for accelerating dLLMs on smartphones. llada.cpp aligns block-wise dLLM inference with the execution characteristics of mobile NPUs through three techniques. (1) Multi-Block Speculative Decoding fills the shrinking workload in late-stage current-block decoding with speculative future-block tokens. (2) Dual-Path Progressive Revision keeps committed tokens revisable until stable and refreshes unstable tokens through a CPU-side path without stalling dense NPU execution. (3) Swap-Optimized Memory Runtime compacts NPU-visible address layouts and overlaps data staging with NPU computation to reduce remapping and transfer overheads. We implement llada.cpp as an end-to-end framework and evaluate it across diverse hardware platforms and dLLM workloads. llada.cpp reduces LLaDA-8B generation latency by 17x-42x over the CPU baseline with prefix KV cache reuse, while preserving generation quality.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.13862|d89b74b1030f32feea78849c03fed7612ed326f2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long Chain-of-Thought (CoT) reasoning improves LLM problem-solving but is computationally expensive due to sequential token generation. While recent works explore reasoning in continuous latent spaces to bypass discrete token generation, they often struggle with training stability and fail to scale to complex, long-horizon tasks due to lack of supervision signal. We propose SuperThoughts, which compresses pairs of consecutive CoT tokens into single latent representations and decodes two tokens per step via a lightweight Multi-Token Prediction (MTP) module. This preserves discrete token supervision at training time while doubling throughput at inference time. We finetune Qwen2.5-Math-1.5B-Instruct, Qwen2.5-Math-7B-Instruct, Qwen2.5-Math-14B-Instruct, and evaluate on MATH500, AMC, OlympiadBench, and GPQA-Diamond. With a confidence-based adaptive mechanism that falls back to standard decoding when uncertain, SuperThoughts achieves $\\sim$20--30\\% CoT length reduction while maintaining accuracy with minimal degradation (1-2 points accuracy drop on most tasks).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.14672|58712581471d11af1b3cb139d75794a7c5d99878|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models increasingly serve as execution engines for agentic systems, yet they still consume context through a sequential text interface. This creates a mismatch with modern structured agent workflows, in which independent branches explore subtasks, retrieve evidence, or generate candidate solutions before a final synthesis step. Existing systems typically merge these branches by concatenating their textual outputs, which discards the parallel structure and incurs redundant prefill computation. In this work, we introduce Parallel-Synthesis, a plug-and-play framework that enables a synthesizer to directly consume the KV caches produced by parallel worker agents. Parallel-Synthesis combines a cache mapper that calibrates independently generated branch caches with a fine-tuned synthesizer adapter that enables generation from this non-sequential cache interface. We train Parallel-Synthesis using data that exposes the synthesizer to parallel cache contexts, teaches aggregation across cached branches, and distills reasoning behavior from standard text-concatenation-based synthesis. Across nine downstream datasets spanning math, science QA, code generation, GAIA, and multi-agent database diagnosis, Parallel-Synthesis matches or outperforms text-based synthesis on seven datasets and remains close on the other two. It also reduces time-to-first-token by 2.5x-11x, suggesting that direct cache-based synthesis is a promising interface for more native and efficient synthesis over parallel agent branches.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.14150|1a8170f020b4333eea6df6dfdd634ebc661af908|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Pruning promises a shortcut to strong small language models. In this work, we examine this promise by pruning Llama-3.1-8B at pruning ratios of 0.5--0.8 with six methods spanning depth, width, and sparse granularities, under two controlled token-matched settings. (1) With the same training token budget, pruned initialization consistently outperforms random initialization. This shows that the parent model provides a strong starting point, although the advantage narrows as the training token budget grows and as the pruning ratio rises, nearly vanishing at the highest pruning ratio we study. (2) When training from scratch is instead given the full token budget consumed by the whole pipeline, pruning at finer granularities still retains an advantage, while coarser structured pruning can be matched or surpassed. This suggests that the parent model transfers knowledge that additional training tokens alone cannot fully recover, but only at fine granularity. Taken together, our results yield a clear recommendation: with a large pretrained model in hand and a limited training token budget, pruning is better than training from scratch; when the training budget is not limited, training from scratch can be competitive for coarser pruning, so a large pretrained parent is not always necessary.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.14502|33835919fe3a33116a9139e844de44e6fecaddb8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) are undergoing a fundamental transformation from conversational generators into integrated AI systems capable of reasoning, action, memory, and self-improvement. We conceptualize this transition as a shift from Chatbot to Digital Colleague: from conversational answers to persistent work. We organize this transition along two tightly coupled dimensions. First, at the cognitive core level, LLMs are advancing from Chatbot-era \"fast thinking\" systems driven by next-token prediction toward Thinking LLMs that leverage inference-time computation, Chain-of-Thought reasoning, reflection, process supervision, and reinforcement learning to support more deliberate and reliable cognition. Second, at the tool-augmented task execution level, LLMs are progressing from tool-calling Agents that invoke external resources in an ad hoc manner toward OpenClaw-style workstation systems (OpenClaw) equipped with persistent Workspaces, skills, verification loops, and governance. The \"Workspace + Skill\" paradigm makes episodic tool use colleague-like via state persistence, reusable procedures, task closure, and experience reuse. We examine data construction shifts from instruction-response pairs to State-Action-Observation trajectories and evaluation from static benchmarks to sandboxed, auditable, self-evolving AI ecosystems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.14470|5dbafa1153764c38706345835e7840877369a674|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) reasoning is ephemeral: chains of thought vanish with the context window, pruned search branches leave no record, and memory buffers cannot be diffed, merged, or audited. Every other complex software process (code, infrastructure, data, experiments) is version-controlled; reasoning is not. We introduce GitOfThoughts, which stores an agent's reasoning tree as a git repository: every scored thought is a commit, scores are notes, outcomes are tags, and retrieval is \"git log\" over the agent's own history. This makes reasoning replayable, auditable, and mergeable across agents at near-zero engineering cost.\n  We then ask the harder question: does memory, in any substrate, actually improve accuracy? Across five substrates (none, markdown, vector, graph, git), two benchmarks, two model scales, and pre-registered replications, the answer for novel problems is no. No memory format reliably helps, and a promising early result collapsed under its own pre-registered replication. Memory pays only above what we call the copyability threshold: when the retrieved case is a near-duplicate of the current problem (similarity >~ 0.8), accuracy jumps sharply; below it, nothing. The gain is answer retrieval, not method transfer: a 4.5x larger model doubles the near-duplicate payoff yet still cannot extract a transferable method from a worked example. The only general lever we find is test-time sampling. The case for git-as-substrate is therefore auditability, provenance, and mergeability at accuracy parity. We document a retracted result and a refuted hypothesis to model the evaluation standard we hold ourselves to.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.14179|d65ccf193e9739219e5f7c07766218c8d43ecfdf|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present CacheRL, a system for training small agent foundation models that achieves 92 percent process accuracy on multi-step tool-calling tasks, approaching GPT-5's 94 percent while requiring 100 times less compute. Our approach addresses three challenges in practical agent training: transferring tool-calling knowledge from large models at scale, enabling reinforcement learning without costly live tool execution, and learning robustly from noisy cached environments. CacheRL introduces three key innovations. First, a hybrid thinking trajectory pipeline augments agent trajectories with LLM-generated reasoning traces, producing training examples that teach models not only what tools to call but also why. Second, the CacheAgentLoop eliminates live execution costs through a three-tier fuzzy cache while preserving trajectory fidelity using token-level masking. Third, a cache-tier-aware reward dynamically adjusts answer-quality weights to avoid penalizing models for cache-induced limitations. Through iterative supervised fine-tuning (SFT) and Group Relative Policy Optimization (GRPO), CacheRL improves Qwen3-4B-Thinking's validation reward from 0.43 to 0.78. On public agentic tool-calling benchmarks, our model achieves competitive performance against frontier models such as GPT-5. Ablation studies show that removing knowledge transfer reduces performance by 41 percent, while cache-aware rewards contribute a 17 percent improvement. Interestingly, reinforcement learning improves training stability but yields limited gains beyond strong supervised fine-tuning, suggesting that data quality and reward design play a more important role than complex optimization methods in building practical small agent models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.14275|e71ee86846d7276d3b864dab46d6169b9ad23c43|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM-curated hierarchical knowledge bases, namely a tree-structured wiki whose nodes summarize an underlying corpus, have become a dominant substrate for retrieval-augmented applications, yet their storage layer is still treated as an implementation detail. This workload is hierarchical, query-intensive, and continuously evolving, and no existing storage model natively captures all three properties at once. We present WikiKV, a path-indexed key-value storage model purpose-built for this workload, comprising three components: (i) a data-driven schema that bootstraps the hierarchy via Intent-Anchored Schema Induction and refines it through Continuous Evolution Operators; (ii) a consistency protocol for the path-indexed storage model that precludes partial-read observations under concurrent offline rewrites without read-path locking; and (iii) a budgeted navigation operator whose search-accelerated routing reduces the expected number of LLM-assisted descent steps from d to O(1) while preserving anytime semantics with progressively refined answers. We evaluate WikiKV through real-world deployment for the WeChat Official Account AI Assistant and benchmark it against diverse baselines on the AuthTrace dataset, where it achieves balanced low per-operator latency across four query operators against relational, graph, and FS backends, and reaches 63.2% end-to-end answer correctness, exceeding multiple RAG baselines, with the gap widening on low- and high-fan-in multi-document questions. Ablation study further confirms the effectiveness of WikiKV's components.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.DB主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.DB"
+    ]
+  },
+  "arxiv:2606.13894|cb6423ec1633ca6f535f1b1eb69c29ff7bcb44d8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "AdamW is a default optimizer for modern deep learning, but its first and second moment states add roughly two parameter-sized buffers to training memory. We propose Gefen, a memory-efficient optimizer that automatically shares second-moment estimates across parameter blocks and quantizes the first moment using a learned codebook, thereby reducing AdamW's memory footprint by ~8x while maintaining the same performance, corresponding to a reduction of 6.5 GiB per billion parameters. The method is motivated by a theoretical result showing that large mixed Hessian entries constrain the ratio of squared gradients toward one, suggesting that Hessian-aligned parameters are natural candidates for sharing second-moment statistics. Since computing Hessians is impractical at scale, Gefen infers block structure from the initial squared gradients, requiring no architecture-specific metadata or hyperparameters beyond AdamW defaults. Gefen learns an exact histogram-based dynamic-programming quantization codebook and reuses the same blocks for first-moment scaling. Across diverse experiments, Gefen achieves the lowest peak optimizer memory among the compared AdamW-like methods while maintaining AdamW-level performance. In FSDP and DDP training, the reduced memory footprint enables larger microbatches and improves throughput significantly over AdamW, providing a practical drop-in replacement with lower memory usage that can increase throughput and enable training larger models or using larger batch sizes. We provide the complete Python implementation, including fused CUDA kernels at https://github.com/ndvbd/Gefen",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2606.13767|704e64b8b107b98a2f710c8c4868d52272cde133|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-rank adaptation (LoRA) and its variants provide a memory- and compute-efficient alternative to full fine-tuning of pre-trained models. However, questions remain about the comparative generalizability of these approaches and how the structural restrictions on low-rank updates preserve effective adaptation performance. We present a historical framing, covering the past (full fine-tuning and original LoRA), the present (different variants of LoRA), and propose simpler, cheaper, parameter-efficient extensions by inducing sparsity within existing LoRA variants: Cheap LoRA (cLA), training a single low-rank factor with the other fixed (deterministically or, in its randomized variant, stochastically), and the chained circulant variant, ${c}^3$LA. We frame cLA as a structured instance of asymmetric LoRA, serving as a controlled column-subspace restriction of full fine-tuning. We derive information-theoretic generalization error bounds for these variants, marking one of the first endeavors in this area. Empirically, we evaluate 11 fine-tuning methods across 10 pre-trained models and 14 datasets, analyzing the fine-tuned models' performance and generalization using tools such as loss landscapes and spectral analysis. Despite the sensitivity of fine-tuned models to the pre-trained model, datasets, and other factors, our study suggests that restricting LoRA-based PEFT methods' adaptation to a sparse, structured column space remains competitive across tasks with their parameter-matched baselines while reducing up to 10% training time and peak GPU memory up to 15%, even with a naïve, non-optimized, sparse implementation. Our theoretical and empirical generalization measures provide a more consistent and principled approach to their cost-effective adaptation than commonly used analytical tools. Overview and code are available at: https://elicaden.github.io/Beyond_LoRA/.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.IT"
+    ]
+  },
+  "arxiv:2606.14597|7a1dc10e64814c3e0b5ec00351616695b9bf13d0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based neural operators have shown remarkable performance for approximating solution operators of partial differential equations on complex geometries. However, existing approaches implicitly assume a fixed domain size, which limits their ability to generalize at inference. In this work, we investigate domain extension, namely zero-shot inference on spatial domains that are significantly larger than those encountered during training. We argue that this setting fundamentally requires spatial locality and translation equivariance. We propose to implement this locality via a decomposable bias in the attention logits computation, enabling finely controllable locality while remaining fully decomposable into query-key inner products and directly compatible with optimized attention kernels. Combined with rotary positional embeddings, it enables expressive embeddings with controllable spatial support without altering the transformer architecture. We empirically show that our approach substantially improves zero-shot generalization to larger domains across two PDE benchmarks and a 3D industrial atmospheric flow application. Our code and datasets are available at https://github.com/cerea-daml/domain-extension.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.14346|4e86f74927c5fd68a9d45e6a84b12e4920c6110d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Unstructured pruning produces sparse weight tensors, but the standard implementation keeps tensor shapes unchanged so the deployed model is no smaller than before pruning. We present an exact structural rewrite, which we call minimization, that converts a masked network into a smaller dense network with the same forward function up to floating-point rounding. The Squeeze-Release cycle iterates pruning and minimization with an intermediate release step that re-enables the exact-zero positions inside the compacted tensors as small calibrated noise, turning otherwise wasted capacity back into trainable parameters. Successive cycles use that capacity to find structural redundancy a single pass cannot reach. We additionally introduce CompensatedLayerNorm, a function-preserving replacement for LayerNorm that extends minimization to channel reduction across LayerNorm-equipped residual streams. Squeeze-Release compresses the deployable network to 39x smaller than the unpruned model on a fully-connected model network and 14.8x smaller on modern CNN (ConvNeXt-Tiny), at comparable accuracy. In addition we prove that the rewrite can be extended to transformer architectures.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.14243|2600cd4a1a352e362f52b1618f97ef75cd9c5b5a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Knowledge injection aims to equip large language models (LLMs) with external, domain-specific, or time-sensitive knowledge. Existing approaches typically face a trade-off between flexibility and integration: retrieval-augmented generation keeps knowledge outside the model but only provides prompt-level augmentation, whereas post-training based methods encode new knowledge into shared parameters but may introduce catastrophic forgetting, knowledge conflict, and costly updates. In this paper, we propose Decoupled Mixture-of-Experts (DMoE), a modular architecture for parametric knowledge injection that decouples both experts and the router from the base model. DMoE converts external knowledge corpora into independently updatable expert modules and uses a lightweight uncertainty-aware router to activate relevant experts only when the base model lacks sufficient knowledge during generation. To support efficient auto-regressive inference, DMoE attaches experts only to the final-layer feed-forward network, preserving KV-cache reuse while enabling parameter-level knowledge augmentation. Experiments on knowledge-intensive benchmarks show that DMoE consistently improves answer quality over retrieval and adapter-based baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.14398|ba5291de64dbb6039171d9cacdda3565ec1d2929|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-experts (MoE) layers enable the scaling of transformer models while keeping the inference compute fixed. While task-expert specialization has been observed in empirical studies of frontier MoE transformer models, existing theoretical work analyzes this using continuous mixture models that cannot be used to model natural language effectively. An important open question is to \\textit{theoretically explain task-expert specialization in transformer MoE models using discrete models of language}. To address this, we represent structured knowledge via syntactic templates and finite key-value dictionaries, and prove formally that a single-layer MoE transformer can encode knowledge by using experts that specialize in the corresponding tasks. Our construction shows how queries are routed to unique, task-specific experts whose size depends solely on the intrinsic complexity of the given task (i.e. the combined size of its syntactic templates and factual dictionary). Our construction provides a theoretical support for empirical results on localized knowledge circuits in MoE models. We support our theoretical findings with experiments evaluating model performance under varying MoE loss functions.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.14694|3d9a7b10f23f362865c323ad8554e29e172b7fe9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large reasoning models typically follow a read-then-think paradigm: they observe the complete input, reason over a static context, and then produce the answer. Yet many real-world scenarios are inherently dynamic, such as audio and video stream, where information arrives as a continuous stream and models must reason, update, and respond under partial observations. Recent streaming reasoning methods allow models to think while reading, but they largely rely on supervised imitation of pre-constructed trajectories, which limits their flexibility. In this paper, we propose AdaSR, an adaptive streaming reasoning framework that enables models to reason during input streaming and perform final deliberation once the stream is complete, learning when to think, and how much computation to allocate across different stages. To optimize this hierarchical reasoning process, we introduce Hierarchical Relative Policy Optimization (HRPO), which decomposes policy optimization into streaming reasoning and deep reasoning phases, providing more fine-grained advantage assignment instead of uniformly distributing a single sequence-level advantage over all tokens. HRPO integrates format, accuracy, and adaptive thinking rewards to enforce valid reasoning protocols, preserve final task performance, and encourage latency-aware computation allocation. Experiments show that AdaSR achieves a better balance among reasoning accuracy, computational efficiency, and streaming latency compared with supervised fine-tuning baseline. We release our code at https://github.com/EIT-NLP/StreamingLLM/tree/main/AdaSR.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.14598|9716c88733692f4e804fbdf04965148d7c168104|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Post-training INT8 (W8A8) quantization of diffusion transformers is widely deployed as a speed optimization, yet on consumer Ampere GPUs it is frequently slower than the FP8 and NF4 alternatives it is meant to beat. We trace this to a software artifact: the production \"INT8\" forward quantizes weights and activations only to immediately dequantize them back to bf16 and run a bf16 matrix multiply, never engaging the GPU's INT8 tensor cores, so the hardware's compute advantage is left entirely unrealized. We close this gap with a single fused Triton INT8 GEMM (int8xint8->int32 on Ampere tensor cores, with per-token x per-channel dequantization and bias folded into the epilogue, autotuned per GEMM shape) dropped into the Ideogram 4.0 diffusion transformer's linear layers in place of the dequantize-to-bf16 path. In the kernel, the int8xint8->int32 accumulation is bit-exact against torch._int_mm and the dequantized output matches the reference at cosine similarity 1.0 with no NaNs, running 2.8-4.2x faster than bf16 per GEMM. End to end it delivers a ~1.1x (~9-10%) speedup at 768px, and at 1024px it generates an image in 156.5 s on a single RTX 3090, faster than the single-card NF4 (164.5 s) and FP8 (172.9 s) baselines, at no measurable quality cost on these point estimates (PickScore/CLIPScore). INT8 thus goes from the slowest variant to the fastest, and 1024px becomes single-GPU feasible. The primary speed criterion (beat FP8, by ~9.5%) is comfortably met; the NF4 margin (~4.9%, single-run n=4) is within run-to-run variance we did not quantify and is best read as consistent with meeting the stretch target. We close with an honest deployment map: the win is specific to consumer Ampere, and on A100 and B200 the same kernel loses to those cards' fast native bf16/FP8 paths.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.14142|62d2eee4e49650803fcbd11df50516ff561aa696|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) are increasingly adopted as backbones for Generative Recommendation (GR), promising access to pretrained world knowledge. Yet reliably invoking this knowledge for GR remains poorly understood. A key obstacle is that LLM-based GR typically represents items with Semantic IDs (SIDs), disrupting LLMs' natural-language reasoning interface because these tokens are unseen by the LLM during pretraining. Existing approaches address this with expensive multi-stage pipelines that ground SIDs and elicit explicit rationales, but offer limited insight into when and why each stage is necessary. In this work, we systematically decompose explicit reasoning training pipelines for LLM-based GR, revealing three key limitations: weakened world-knowledge verbalization, misalignment between SID and natural-language token embedding spaces, and sensitivity to rationale quality, all of which hurt explicit reasoning performance. To circumvent these issues, we propose PauseRec, a lightweight implicit reasoning paradigm tailored for GR. PauseRec is exceptionally practical, avoiding costly reasoning trace acquisition and reasoning alignment training, leading to a multitude of benefits: (1) it outperforms standard explicit CoT methods by up to 6.22%, (2) it reduces training cost by up to 65% GPU hours, and (3) it speeds up inference by up to 71.3%. These results position PauseRec as a lightweight alternative to explicit rationale generation, enabling more effective and efficient LLM-based GR.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.13708|a1163237a37ca5b173f53be6b6b8ae28adac5bb9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "RDMA one-sided verbs are the natural primitive for memory disaggregation, but they require the client to supply the exact remote address. The 1-RTT performance breaks down when the target address depends on data that must first be read from remote memory, a pattern we call the Indirection Wall. Indirection is pervasive: graph traversals follow pointers hop by hop, address translation walks multi-level page tables, distributed coordination requires conditional multi-host logic, and disaggregated LLM inference must resolve paged KV caches through block-table lookups. Each level of indirection costs one sequentially dependent network round-trip, yet offloading to existing RDMA NICs either consumes remote CPU cycles or has limited throughput. We present Tiara, a compact, statically verifiable instruction set that executes on the memory-side NIC. Tiara operators are pre-registered programs, analogous to eBPF programs in the kernel, that resolve indirection locally, collapsing multi-RTT dependent chains into a single round-trip. On an FPGA-based prototype, Tiara reduces 10-hop graph-traversal latency by 2.85x over one-sided RDMA while sustaining 3.4x higher throughput, cuts page-table walk latency by 62%, reduces uncontended distributed-lock latency by 2.9x, achieves 2.8x throughput for disaggregated PagedAttention at 8 KB blocks, and 1.88x MoE expert-gather latency at 32 experts.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.NI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.NI"
+    ]
+  },
+  "arxiv:2606.14620|2d40e0684473219dee3d04ee1a2de90d19f16dc7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Open diffusion language models are marketed as parallel, non-autoregressive decoders, yet the order in which a shipped checkpoint actually commits its tokens is almost never measured. We instrument DiffusionGemma 26B, a masked discrete-diffusion mixture-of-experts model built on Gemma 4, hooking its sampler's accept step to record which canvas positions commit, when, and at what confidence. Across a 686-prompt, six-regime probe suite we find that its decoding is neither parallel nor block-autoregressive: it follows a partial left-to-right commit bias whose apparent strength depends almost entirely on the granularity at which you look. Order is weak token by token and strengthens smoothly as the analysis is coarsened, so the model's \"block size\" turns out to be an artifact of the measuring ruler rather than the architecture. The model commits in large simultaneous batches, leaving much of the within-batch order genuinely undefined rather than merely unobserved. The behaviour is regime-dependent: structured JSON is committed in essentially arbitrary order, and a position's commit confidence tracks correctness on mathematical reasoning but carries no signal on factual recall. Commitment is aggressive, finishing in a short late burst well inside the step budget, while task accuracy matches the model's autoregressive Gemma-4 sibling. Beyond these findings, our central contribution is methodological: measuring decoding order honestly demands handling trailing-EOS padding, within-regime confounding, commit non-monotonicity, block-size sensitivity, and large commit-batch ties, each of which can otherwise manufacture a decoding-order result that is not really there.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.14391|03ef1894ebad0d531123f93fac0279930388badd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Despite advances in large-scale Automatic Speech Recognition (ASR), disfluent speech remains challenging, as state-of-the-art systems are often optimized to omit disfluencies, leading to information loss and hallucinations. Prior work has focused on verbatim transcription and the integration of disfluency markers, but adapting models on limited datasets can lead to catastrophic forgetting of general-domain knowledge. We address this gap by leveraging continual learning (CL) with explicit disfluency tokens. We first introduce these tokens into a pretrained ASR model to establish stable token mechanisms, and then continue training on additional datasets with varying disfluency distributions. Through a detailed analysis of model dynamics during training, we identify a trade-off between marker learning and ASR performance, and a consistent cross-attention head mechanism shared across CL methods.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.SD"
+    ]
   }
 }
