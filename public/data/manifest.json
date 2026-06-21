@@ -1,8 +1,13 @@
 {
   "schema_version": "1.0",
   "latest": "latest.json",
-  "latest_date": "2026-06-21",
+  "latest_date": "2026-06-22",
   "archive": [
+    {
+      "date": "2026-06-22",
+      "path": "archive/2026-06-22.json",
+      "paper_count": 0
+    },
     {
       "date": "2026-06-21",
       "path": "archive/2026-06-21.json",
