@@ -8685,5 +8685,181 @@
       "cs.AI",
       "cs.LG"
     ]
+  },
+  "arxiv:2606.21448|728cd923f212d0bc26aab0d105a03739675469e5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As large language models scale, memory bandwidth for key-value caches and retrieval-augmented generation systems becomes a critical bottleneck. While 1-bit quantization addresses this constraint, recent TurboQuant relies on dense random rotation matrices to condition the vector distribution before quantization. This projection demands millions of floating-point multiplications per embedding, making it difficult to deploy on constrained edge silicon. We introduce Fast-TurboQuant, a multiplier-free projection architecture that replaces the dense matrix with a structured fast Johnson-Lindenstrauss transform. By applying a Rademacher phase inversion followed by a fast Walsh-Hadamard transform (FWHT), the method leverages sub-Gaussian concentration to satisfy the prerequisites of scalar Lloyd-Max quantization without Gaussian projections. This substitution reduces the arithmetic complexity to only additions, eliminating hardware multipliers. Evaluation on DBpedia OpenAI-3 Large embeddings demonstrates a 19.7 times algorithmic speedup under sequential execution. Furthermore, the dimension expansion due to the FWHT zero-padding reduces the mean squared error and improves Recall@10.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.IT主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.IT",
+      "eess.SP"
+    ]
+  },
+  "arxiv:2606.21633|42321ba0a6de407e101fbad09a40fcab568a2e56|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2606.21633v1 Announce Type: new \nAbstract: Diffusion LLMs (dLLMs) improve GPU utilization over autoregressive decoding by generating multiple tokens per forward pass, but their KV cache still grows linearly with context, limiting throughput at long contexts. KV cache offloading to host DRAM alleviates this memory pressure, but the limited PCIe bandwidth necessitates recalling only a sparse subset of KV entries. In block dLLMs, the relevant KV entries remain consistent across denoising steps within a block, enabling high-accuracy selection by identifying the top-k entries once and reusing them throughout all denoising steps. This property appears attractive for offloading as it amortizes the selection overhead across the entire block, but it requires exact attention over the full KV cache, which is too expensive under offloading. We present HERALD, a KV offloading system for block dLLMs that resolves this through two opportunities that reduce the required selection compute by a factor of the block size and enable selection to be overlapped with denoising. Across three block dLLMs and five long context tasks, HERALD achieves near-lossless accuracy at 5-10% KV budget and up to 1.59x lower per block latency and 2.47x higher throughput over GPU-only inference, with speedups growing with context length.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.23419|4f0f10d0f9f5b22fbc3e4d9ead0a16b102969e13|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Autoregressive decoding with LLMs is primarily bottlenecked by GPU memory bandwidth, especially in edge-computing settings. While quantization is essential for mitigating this bottleneck, most existing methods treat inference as a uniform process and fail to account for the asymmetry between the compute-bound prefill stage and the memory-bound decoding stage. We propose GRINQH (GRaded INput-based Quantization Hierarchy), a weight-only post-training quantization framework that accelerates decoding by unifying quantization and sparsification. GRINQH leverages activation magnitudes as a proxy for computational importance to dynamically assign weight channels to different precision levels, enabling flexible average bit widths during decoding. Evaluated on Llama3 and Qwen3 models, GRINQH outperforms state-of-the-art fixed- and mixed-precision baselines at comparable 3- and 4-bit settings, even enabling effective 2-bit generation. We experimentally verify theoretical speedups by leveraging a hierarchical nested memory layout for multi-precision storage in a custom GPU kernel. Ultimately, GRINQH establishes a new state-of-the-art Pareto frontier for LLM generation, enabling a dynamic trade-off between generation quality and inference speed.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.22327|8ea38bf98a23bd081dc951c7536c57bf307318a3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The explosive demand for interactive Large Language Model serving has highlighted the management of the Key-Value cache's dynamic memory footprint as a critical area for performance optimization in inference engines. Modern inference systems overwhelmingly rely on time-centric scheduling heuristics, such as Shortest Job First. However, their theoretical optimality is rooted in traditional schedule modeling, failing to capture the highly dynamic, 2D spatio-temporal geometric growth specific to LLM inference mechanisms. To resolve this, we propose the geometry-aware online scheduling by introducing the Smallest Volume First (SVF) algorithm and its highly efficient variant, 1-bit SVF. Theoretically, we provide a rigorous mathematical foundation for our approach. Utilizing a novel proof methodology, we tighten the worst-case competitive ratio ($\\text{CR} \\le 48 \\rightarrow \\text{CR} \\le 5$) for SVF with known output lengths. Building upon this core breakthrough, we complete a comprehensive theoretical taxonomy analyzing our algorithms across different traffic scenarios and information availability. Practically, we seamlessly integrate our approach as a plug-and-play layer in vLLM. Extensive evaluations on Llama-3.1 models demonstrate comprehensive performance gains: SVF delivers strong reductions in both average and tail latency, while 1-bit SVF, with merely a single bit information, achieves competitive throughput and latency. This work establishes a theoretically sound and empirically proven approach for resolving memory-constrained scheduling in modern LLM deployments. To facilitate future research, our code is available at https://github.com/Aurora-Kl/Geometry-Aware-Online-Scheduling.git.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.22874|e9e3e3f6e49fd164c7256811db632a86793c875a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long contexts have become standard in pretrained LLMs, yet they remain expensive to run: prefill compute grows quadratically with sequence length, and every decode step re-reads a key-value cache that grows linearly with it. Sparse attention cuts these costs by attending only to a relevant subset of past tokens, but selecting that subset is itself expensive. We present SpotAttention, a lightweight selector that attaches to a frozen pretrained transformer and learns by KL distillation to estimate its attention distribution. The selector picks the top-K keys each query attends to, and because its estimate is a calibrated distribution, a dual top-p rule reads the per-query, per-layer budget directly from it. Across Qwen3 (dense, 4B-32B) and Qwen3.5 (hybrid linear/full attention, 4B-9B), SpotAttention matches dense accuracy at contexts up to 128K tokens, eight times the training length. Decode at L=128K runs 3.9x faster than FlashAttention and 1.8x faster than Twilight, the strongest training-free baseline. Quantizing the selector's K-cache to INT4 or FP4 microscale shrinks it 3.5x at no accuracy cost.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.22189|0b1609198c50dff4bf160b5fae55a3f90d881688|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Small language models are cheap to serve and feasible on local hardware, but strong public 135M-class systems are commonly trained with hundreds of billions to trillions of tokens on large clusters. We study a sharply resource-constrained regime: a complete 134.5M-parameter language-model pipeline executed on one NVIDIA L20 GPU. The released checkpoint, L20-Edu-135M, receives approximately 13B pretraining tokens: 10B FineWeb-Edu tokens followed by a 3B-token educational, mathematics, code, and reasoning mixture. We document the architecture, data gates, cross-source MinHash/LSH near-deduplication, segment deduplication, benchmark-overlap removal, throughput optimization, supervised fine-tuning (SFT) with weight interpolation, and reinforcement learning from verifiable rewards (RLVR) on GSM8K. In a self-run zero-shot six-task harness, L20-Edu-135M obtains a mean score of 0.4150. It trails SmolLM-135M (0.4767) and SmolLM2-135M (0.4917), but its mean is 87.1% of SmolLM-135M's while its nominal token count is 2.17% as large. This ratio is descriptive, not evidence of statistical equivalence or a controlled scaling law. The model exceeds several older 100M-160M public baselines under the same harness. Direct GRPO-style RLVR decreases GSM8K exact-match accuracy from 1.82% to 1.59% (192-token completions) and 1.21% (320-token completions). These single-run results identify a concrete failure mode rather than establishing a general lower bound on RLVR. The contribution is an auditable resource-constrained case study, not a state-of-the-art claim.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.21023|2a172c7034bc18ef63c087a8f8a699674fff6275|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As Large Language Models (LLMs) deploy into mission-critical domains (e.g., finance, medicine, and law), output reproducibility has become a strict system requirement. While practitioners use greedy decoding to eliminate algorithmic stochasticity, empirical deployments with 16-bit precisions still exhibit catastrophic output divergence across heterogeneous GPUs. Through SASS-level profiling, we reveal that this inconsistency is fundamentally driven by truncation errors introduced during downcasting at kernel boundaries. However, achieving reproducibility via a global FP32 pipeline incurs prohibitive system penalties: bypassing 16-bit hardware accelerators hurts compute efficiency, while upcasting the KV cache doubles memory overhead. To bridge this gap, we propose Hybrid Error ALleviation (HEAL), a targeted intervention that approximates FP32 precision while resolving hardware constraints through two targeted mechanisms. First, recognizing that floating-point formats underutilize their bit-width for Q, K, V tensors, HEAL applies INT16 quantization that preserves numerical stability without expanding the KV cache footprint. Second, HEAL synthesizes high-precision matrix multiplications via an algebraic error compensation strategy, executing entirely on high-throughput 16-bit Tensor Cores. To evaluate our approach practically, we introduce MCR-Bench, a benchmark targeting reproducibility in mission-critical tasks. HEAL achieves the same level of reproducibility on downstream tasks as the FP32 baseline while reducing the performance overhead by up to 7.1x.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.23546|5df1f436cd9f73b665ec83856cd5918ac57b21b3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based models underpin modern natural language processing but incur rapidly growing computational and energy costs. As training scales in both model size and parallelism, accurately predicting energy consumption has become critical for sustainable and cost-aware system design. We present a framework for modeling the energy consumption of Transformer training on multiple GPUs. Using controlled architectural sweeps of BERT models, we relate measured energy to lightweight proxies for compute, memory traffic, and hardware efficiency. Inspired by roofline models, our approach incorporates a speedup-based hardware-efficiency factor that captures the effects of tensor parallelism and fully sharded data parallelism. We derive a scaling law model that accurately predicts training energy across heterogeneous configurations.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.AR",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.20911|d988e37291f726e52d452eee5b87fb01e0ee7625|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Personalizing large language models (LLMs) requires encoding long-term, user-specific behavioral patterns in a way that is computationally efficient, scalable, and compatible with a frozen base model. We present Latent Personal Memory (LPM), a scalable framework that represents user-specific history as a compact, persistent matrix of N latent slots, that are interpretable. A shared cross-attention projection network maps these slots into dynamic, input-conditioned soft prompts that are prepended to the input of a frozen LLM. We evaluate LPM on PersonaMem v1 and LoCOMO benchmarks across Qwen3-1.7B, 4B, and 8B backbones. Results demonstrate that LPM outperforms LoRA and Prompt Tuning by up to 8.8% and 54.4% in overall accuracy respectively on PersonaMem v1, while reducing KV-cache usage by over 64x. On LoCoMo, LPM matches LoRA accuracy with 120x fewer trainable parameters. We also show that the efficiency of LPM grows with context length and outperforms full-context at 128K context length.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.22968|03f356e8f3c158f15bde047aa0997bc2edade4e2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) are increasingly used in prefill-only workloads, where end-to-end latency is dominated by the prefill phase. For long-context prefill, communication overhead grows with sequence length and quickly becomes a bottleneck on conventional GPU systems, making wafer-scale chips (WSCs) a promising substrate due to their high communication bandwidth and large aggregate compute and memory capacity. A natural way to accelerate prefill is to partition a long input sequence into multiple chunks and execute them in a finer-grained pipeline across devices. However, directly applying this idea to long-context prefill on WSCs remains challenging. First, causal dependency across chunks causes KV cache to accumulate unevenly across pipeline stages, creating severe memory imbalance and limiting the feasible sequence length. Second, later chunks require more attention computation because each chunk depends on preceding chunks, leading to chunk-level latency imbalance.\n  To address these challenges, we present MOCAP, a memory-orchestrated chunked pipelining framework for prefill-only LLM inference on WSCs. MOCAP introduces Memory-Balanced KV Reallocation (MBKR) to alleviate memory imbalance by redistributing KV cache across pipeline stages, thereby extending the feasible sequence length. It further incorporates Latency-Balanced Chunk Partitioning (LBCP) to balance chunk execution cost under both attention-cost growth and KV reallocation overhead, improving pipeline efficiency. Experimental results show that, compared with GPipe, MOCAP achieves 76.4\\% lower end-to-end latency and 3.24$\\times$ higher throughput on average. MOCAP also extends the maximum supported sequence length by up to 1.31$\\times$ compared with Terapipe.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2606.20945|069916675d9c13de8277835aaa566615d74e6936|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Self-attention is central to Transformer performance and is often the most expensive part of the Transformer at long context lengths because its pairwise token interactions scale quadratically with sequence length. Standard dense attention also applies the same set of attention heads to every token regardless of token difficulty or information content. This uniform activation can waste compute, especially as sequences grow longer and attention cost increases rapidly. We propose Grouped Query Experts (GQE), a mixture-of-experts layer on top of grouped-query attention (GQA). Within each GQA group, a router selects k query-head experts per token while all key-value (KV) heads remain dense and unchanged. Thus, GQE keeps the KV cache benefits of GQA and reduces only the active query-head computation. On a fixed 30B token budget at the 250M parameter scale, GQE matches the all-active GQA baseline in downstream accuracy while activating half the query heads per token.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.21848|796605285505fbe01691765d2bca5c49131391ff|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We propose Keyless Attention, an attention mechanism that eliminates the key projection entirely, operating over queries and values only. This yields a Value-Only Cache that reduces KV cache memory and access overhead by exactly 50% over standard attention, while matching or exceeding standard attention's decode throughput. Beyond efficiency, we introduce Depth-$m$ Attention Factorization: standard attention computes a depth-2 factorization of the attention bilinear form, while Keyless Attention realizes a depth-$m$ instance of this family. At m=3, Keyless Attention matches the projection matrix count of standard attention via a value-space routing matrix that replaces the key projection and introduces a coupling between routing and retrieval. Experiments across five models and four architectures (GPT-2 280M, GPT-2 557M, Pythia 410M, Qwen2 1.5B, and Llama 3.2 1B) show that Keyless Attention matches or outperforms standard QKV attention on perplexity in 4 out of 5 models. On downstream zero-shot evaluation (GPT-2 557M), Keyless Attention outperforms on 4 out of 5 commonsense reasoning benchmarks, while achieving 50% KV cache reduction throughout.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.22840|4049ed538f85a4fb50b0e80ce8e84cb6eabb67cd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present RLM-Cascade, a proxy-layer system that applies speculative decoding at the response level to reduce LLM API costs without requiring model architecture access or a shared vocabulary. A fast, inexpensive draft model generates a candidate response; a capable verify model accepts, enhances, or is bypassed entirely depending on a lightweight complexity router. On a real-world agentic coding workload (Claude Code), RLM-Cascade achieves a draft-use rate of 88.8% across 125 production requests, reducing API cost by 45.8% relative to a direct Opus baseline. Counter-intuitively, the proxy also reduces end-to-end latency: median response time is 2,026 ms versus 3,698 ms for Native Opus -- a 1.83X speedup at p50 -- because the SKIPPED path (DeepSeek only, no Opus call) dominates the workload distribution. Quality matches or exceeds the Opus baseline: 100% pass rate on a 20-task Code/Math/Instruct benchmark versus 95% for Native Opus. We further describe a rule-based complexity router that selects the SKIPPED path for simple agentic turns and a hybrid tool-call strategy that bypasses the speculative pipeline for schema-critical tool-selection turns. RLM-Cascade is deployed in production as an enterprise AI infrastructure component and published as open source with a live metrics dashboard and Prometheus endpoint.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.23568|43adae6e755fb920b3e9edea1ce648164d1b078b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) achieve remarkable performance across a wide range of tasks, but their deployment is constrained by substantial memory and compute requirements. Low-rank compression via singular value decomposition (SVD) is an effective remedy, but existing methods focus on how to factorize and which components to keep. We introduce SVD-Surgeon, a training-free method that brings the Optimal Brain Surgeon (OBS) framework to the singular-value basis. Treating each singular value as a parameter, it computes a closed-form update of the retained singular values that compensates, to second order in the model loss, for those removed by truncation. The same analysis yields a saliency for choosing which values to prune. As it operates directly on the singular-value factorization, SVD-Surgeon can be layered on top of existing SVD compressors. Applied to SVD-LLM, a leading SVD-based method, it improves the perplexity-compression trade-off on the OPT family and LLaMA 2-7B without any retraining.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.22606|6b66b7db70b00477d3b8d3be8c7bb83e39a57f92|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) achieve strong relation extraction (RE), but their computational demands and reliance on proprietary APIs limit deployment in resource-constrained or privacy-sensitive settings. We investigate how far small language models (SLMs) can close this gap across general-domain and literary text. We evaluate five models from 360M to 3B parameters under three domain-composition regimes and two prompt-conditioned tuning styles (30 configurations), comparing them with zero-shot frontier LLMs and a discriminative RoBERTa baseline. Across nine benchmarks, the best sub-billion model, Qwen2.5-0.5B fine-tuned on pooled general-domain data, achieves a general-domain positive-class micro-F1 of 0.83, versus 0.69 for GPT-5.4 and 0.66 for Claude Sonnet 4.6 evaluated zero-shot. This does not imply that SLMs are intrinsically stronger; rather, targeted task adaptation enables 4-bit models deployable on a single consumer GPU to outperform general-purpose frontier systems under this protocol. An in-domain RoBERTa baseline also exceeds both frontier models, indicating that the gain stems from task adaptation rather than generative decoding. On literary RE, tuned SLMs reach 0.92 on the human-annotated Biographical benchmark versus 0.83 for GPT-5.4, and 0.833 versus 0.578 on the two-benchmark literary average. A targeted domain-adaptive pretraining case study yields no practically meaningful gain over supervised fine-tuning, while the cleanest within-family scale comparison shows only marginal improvement. These results show that, when task-specific data are available, compact task-adapted models can provide accurate, private, and hardware-efficient RE.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.20954|4929584d269625737f5f48bc8355f7d8dec927dd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-running language-model systems accumulate interaction history that outgrows the context window, so they must continually evict. When an eviction policy drops a load-bearing detail, for example an access token issued at login or a path the next call needs, the action fails. We present LRE (Learned Relevance Eviction), a few kilobytes, CPU-only, language-model-free scorer that learns which units of history are load-bearing and keeps them by verbatim extraction. Under a matched-budget comparison, in our experiment, no baseline dominates LRE on the accuracy-cost plane. On agents, LRE matches the accuracy of keeping the entire history overall. On the simplest tasks, it exceeds that no-eviction baseline by 27%, while requiring zero compressor calls and reducing peak context size by up to 52%. A controlled study trace shows LRE completes tasks where the others loop, finishing one such task in 37% fewer calls than keeping everything and solving 14 tasks where no other run policy does. On conversational memory, LRE outranks dense and token-pruning encoders at zero neural cost. In downstream evaluation, LRE gives the best budgeted answer quality on LoCoMo reading 68% fewer tokens. Its supervision can also be annotation-free: training only on the system's own behavior recovers 95% of the supervised scorer's effectiveness. We argue that, because memory eviction in LLM agents is a fidelity problem, it requires a deployable proactive policy where the future query is unavailable and exact state is decisive, and that cheap learned relevance can be sufficient.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.22902|63ef5ea0476492cdcafef17f363675a58425c188|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Real-world users typically have access to multiple Large Language Models (LLMs) from different providers, and these LLMs often excel at distinct domains, yet none dominate all. Consequently, routing each task to the most suitable model becomes critical for both performance and cost. Existing routers treat this as a static, one-off classification problem. However, we identify the performance bottleneck for these routers as information deficit: simply augmenting a vanilla LLM router with performance statistics at the task-dimension level yields a 15.3% relative gain, surpassing a heuristic router built on the same dimension-level priors. Motivated by this finding, we propose Agent-as-a-Router, a framework that formalizes routing as a C-A-F loop (Context->Action->Feedback->Context). It closes the information gap by accumulating execution-grounded experience during deployment. We instantiate this framework as ACRouter, composed of an Orchestrator, a Verifier, a Memory module, and introduce CodeRouterBench, an evaluation environment comprising ~10K task instances with verified scores from 8 frontier LLMs, enabling regret-based router comparison on streaming tasks. Experiments show that ACRouter achieves the lowest cumulative regret on in-distribution tasks and generalizes to out-of-distribution agentic-programming tasks, demonstrating that our routing framework actively closes the information gap. Codes and benchmarks are released at https://github.com/LanceZPF/agent-as-a-router.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.23406|e044130c179c03bd7b71c45349345bee6d1f2980|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present HyperQuant (Hadamard, optimallY Packing, Entropy Rice-coding), a unified post-training quantization pipeline for the weights and the KV cache of large language and diffusion transformers. Across a suite of self-contained experiments (Table 1), HyperQuant outperforms the recent HIGGS scheme at every operating point from 3 to 5 bits per scalar (bps) on weights, and beats both TurboQuant and OCTOPUS on KV quantization down to 1.7 bps. Beyond the LLM setting, HyperQuant quantizes the 19B-parameter LTX-2 DiT video model with no observable per-frame artifacts. End-to-end on an H100 at 4 bps, HyperQuant compresses the linear weights ~3.9x and the KV cache ~3.79x at near-lossless quality.\n  HyperQuant combines four known ideas into a single construction: (i) a per-tile Randomized Hadamard Transform that makes the per-coordinate distribution of weights and activations approximately Gaussian; (ii) quantization to a low-dimensional optimal lattice (E8, D4, A2, or Z); (iii) lossless bit-stripping and near-entropy-optimal variable-length Rice coding of the lattice indices; and (iv) bias-correction methods for the KV cache that keep the reconstruction unbiased under inner products, preserving attention semantics. We further integrate the pipeline with 8-bit and 4-bit Tensor-Core MMA paths (fp8-e4m3, int8, nvfp4, mxfp4), and find that int8 beats fp8 on the post-RHT lattice output. Project page: https://moonmath.ai/hyperquant/",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.23670|4189b6cdc43686c84c827427dd9229d3b0841e01|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Modern language models, including transformer, recurrent, and memory-based variants, share a common chassis: a stack of identical layers in which parameters are allocated uniformly across depth. This is a default inherited from the original transformer and largely unchanged since, yet a growing body of evidence suggests that layers contribute non-uniformly to the final output, with later layers refining the residual stream rather than transforming it. We ask whether parameter capacity should reflect this asymmetry. Our controlled experiment shows that, under a fixed budget, allocating more capacity to earlier layers and less to later layers improves perplexity over a uniform-width baseline, while the reverse allocation hurts. Building on this result, we introduce Tapered Language Models (TLMs), an architectural principle in which a parameter-bearing component is monotonically tapered across depth under a fixed total budget. MLPs are the natural site for this instantiation: they dominate parameter count across all modern LM families and expose width as a single, clean axis of variation. Across three model scales and four architectures (Transformer, Gated Attention, Hope-attention, and Titans), tapering MLP width via a smooth cosine schedule consistently improves perplexity and downstream benchmark performance over uniform baselines, at no additional parameter or compute cost. These findings establish depth-aware capacity allocation as a simple, architecture-agnostic axis of language model design, a free lever hidden in plain sight.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.23087|f403b838826a93cbd8146c8b96bf315d2b3bfc1e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Industrial-grade distributed training of vision-language models (VLMs) remains far less efficient than that of unimodal LLMs. Existing solutions either follow a monolithic design that assigns uniform parallelism to heterogeneous modules or adopt a disaggregated deployment that separates modules while executing them as a batch-synchronized pipeline. In this paper, we highlight that the above solutions are still not sufficient, and VLM training can be further decoupled. To this end, we present FlowTrain, a flow-based decoupled training framework that reformulates VLM training as a producer-consumer dataflow coordinated through a unified memory pool. The encoder and backbone can progress independently over a global virtual address space. Since this execution decoupling fundamentally changes the optimization objective of allocation and scheduling, FlowTrain further introduces a heterogeneous parallel allocator that assigns module-specific parallelism strategies by solving a throughput matching problem. The dynamic packing scheduler is used to construct balanced microbatches at runtime according to the actual LLM-side computation cost. Extensive experiments on real-world workloads show that FlowTrain achieves over 50% MFU and up to 1.7x throughput improvement, narrowing the efficiency gap to LLM-only training.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
   }
 }
