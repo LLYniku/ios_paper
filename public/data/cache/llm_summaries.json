@@ -9213,5 +9213,179 @@
       "cs.AI",
       "cs.CL"
     ]
+  },
+  "arxiv:2606.26666|90dc71fdbe7c1a8cee2da8d7d497b5f7cca3eee5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Autoregressive large language model (LLM) serving is increasingly limited by key-value (KV) cache movement rather than dense matrix multiplication. Modern paged-attention systems reduce KV-cache fragmentation and mature kernels such as FlashInfer provide highly optimized native-paged decode attention. However, the best single-kernel implementation is not always the best serving schedule: low-active long-context decode can under-utilize commodity GPUs, while mixed sequence lengths introduce a tension between many exact-length launches and coarse padded batches. We present PersistentKV, a native block-table decode attention engine and page-aware scheduling study for grouped-query attention (GQA). PersistentKV maps work by KV-head group, is designed to reuse K,V tiles across grouped query heads, supports native page tables, and adds a compact workqueue schedule that executes only non-empty row-KV-head-sequence-split tasks. On an RTX 3060 with FP16, page size 16, Hq=32, Hkv=8, d=128, and identical correctness tolerance against FlashInfer, a calibrated adaptive policy selects FlashInfer for small active batches, PersistentKV sequence splitting for B1 long-context steps, and PersistentKV workqueue scheduling for B8 long-context steps. With thresholds and split counts fixed on calibration traces, one held-out trace seed improves synchronized wall throughput by 1.063-1.265x on B8 bimodal, uniform, and Zipf-like workloads and by 1.399x on a B1 bucketed trace. On the B4 bimodal boundary case, the policy avoids the PersistentKV regression by selecting FlashInfer. These results identify a concrete systems niche for adaptive page-aware decode scheduling and show that work assignment, not only attention math, is a decisive serving-system variable.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.26120|19845c1f6f8efd66df4865cf4711f627dacb64a9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion Large Language Models (dLLMs) offer a promising alternative to autoregressive models, excelling in text generation tasks due to their bidirectional attention mechanisms. However, their computational complexity scales on the order of L cubed with the sequence length L. This poses significant challenges for long-sequence and real-time applications, primarily due to the lack of compatibility with key-value caching and the non-autoregressive nature of denoising steps. Existing acceleration methods rely on static caching or parallel decoding strategies, which fail to account for the dynamic behavior of token properties across layers and decoding steps. We propose Dynamic-dLLM, a training-free framework that enhances dLLM inference efficiency through two components: Dynamic Cache Updating (DCU), which adaptively allocates cache-update budgets based on layer-wise token dynamics, and Adaptive Parallel Decoding (APD), which dynamically calibrates decoding thresholds to balance generation quality and efficiency. Extensive experiments on models like LLaDA-8B-Instruct, LLaDA-1.5, and Dream-v0-7B-Instruct across benchmarks such as MMLU, GSM8K, and HumanEval demonstrate that Dynamic-dLLM significantly improves inference speed. It attains an average speedup exceeding 3 times while maintaining performance. Dynamic-dLLM outperforms state-of-the-art acceleration methods and provides a plug-and-play solution for efficient dLLM deployment without compromising performance. The code is available at https://github.com/TianyiWu233/DYNAMIC-DLLM.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.26488|2f74e0e860ac6aced1ff68be0cfd06556cb8cad6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recursive reasoning models can solve complex structured tasks with only a few million parameters by repeatedly updating a latent state. Deploying these models on edge hardware requires significant compression, but unlike conventional sequence models, quantization errors compound across recursive reasoning cycles rather than across output tokens. As a result, standard intuitions about compression fail to apply. In this work, we ask what survives when recursive reasoners are compressed. Across a full precision sweep, three tasks, and two recursive architectures, we find that aggressive compression preserves local prediction but destroys global reasoning: cell accuracy holds while puzzle-exact accuracy collapses to zero under naive INT4 pruning, distillation, and linear attention alike. Token-level objectives, including quantization-aware training, cannot repair it. The collapse is architectural -- it strikes MLP-mixing recursion but not attention on the same task -- and we reverse it with per-channel calibrated INT4 without retraining. We also introduce carry-trajectory fidelity, the cosine similarity to the full-precision reasoning path, as a label-free signal that predicts this damage and its recovery before a task evaluation. The combined result is a deployment recipe: flash-streamed embeddings remove a 99.4MB bottleneck, INT8 at one cycle matches full-depth accuracy at 6x fewer FLOPs (8MB SoC), and calibrated INT4 fits a 4MB microcontroller.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.26105|466e98b1de4e736fb8d4afc2dfcb5845537c6e1c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) exhibit strong capabilities in short-context reasoning but degrade in performance over long conversational horizons due to context window limitations and inefficient token usage. We introduce ContextForge, a system for context recycling that maintains task-relevant information across turns by combining structured query generation, external memory retrieval, and controlled synthesis. The system enables efficient reuse of prior computation without relying on full context replay, reducing token overhead while preserving answer quality. We evaluate ContextForge using a 15-turn conversational benchmark that tests multi-turn reasoning, back-references, and domain shifts across structured healthcare queries. Compared to a baseline agent using identical underlying models, ContextForge demonstrates improved consistency and reduced token consumption, while maintaining comparable response accuracy. These results suggest that context recycling provides a practical approach for extending LLM capabilities in long-horizon tasks without requiring larger context windows or model retraining. Code and evaluation artifacts are available at https://github.com/Betanu701/ContextForge.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.26650|9ffe9c62c1f86ba3b2fc77555e29e30333ada0db|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "In this paper, we present CAT-Q, Cost-efficient and Accurate Ternary Quantization, for compressing and accelerating LLMs. Unlike existing state-of-the-art ternary quantization methods that rely on data-intensive and costly quantization-aware training to mitigate severe performance degradation, CAT-Q is a simple yet effective post-training quantization scheme that is readily applicable to LLMs with diverse architectures and model sizes. It has two key components, learnable modulation (LM) and softened ternarization (ST), which are coupled from an optimization perspective. LM leverages a composition of learnable factors to modulate the distribution of pre-trained high-precision weights and the ternary threshold, making them less sensitive to ternarization. ST further introduces a differentiable transition function to guide the ternarization process toward stable convergence. We show that, for pre-trained LLMs with 1.7B to 8B parameters, CAT-Q can efficiently quantize them into ternary models using only 512 calibration samples, while achieving superior performance than the seminal BitNet 1.58-bit v1 and v2 families (with 1.3B to 7B parameters) trained with 100B tokens, yielding about a 100,000X reduction in training tokens. Moreover, we show for the first time that CAT-Q can quantize much larger pre-trained LLMs having 14B to 235B parameters into leading ternary models within just 8 to 60 hours on 8 A100-80GB GPUs. Code is available at https://github.com/IntelChina-AI/BitTern.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26875|6a789b3f1f150bfad1975f442edc7e83f21bad64|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Reasoning capability has advanced rapidly in large language models (LLMs), leading to an increasing size of key-value (KV) cache in both prefilling and decoding stages. Existing KV cache compression methods mainly rely on attention weights to estimate token importance. While attention effectively captures contextual relevance, it overlooks complementary information-theoretic signals related to predictive uncertainty and token informativeness. In this paper, we revisit token importance from a forward-looking perspective and introduce \\textit{Forward Influence}, a metric that measures how compressed tokens affect future contexts. Our analysis reveals that tokens selected by attention scores mainly influence nearby contexts, whereas tokens associated with high predictive uncertainty exhibit substantially stronger influence on distant future contexts. Based on the observation, we propose \\textbf{InfoKV}, an entropy-aware KV cache compression framework that incorporates information-theoretic signals. It combines token-level predictive uncertainty with layer-wise representation evolution and integrates the resulting entropy scores with attention scores during reasoning. Experiments on long-context reasoning benchmarks with Llama-3.1, Llama-3.2, and DeepSeek-R1 demonstrate that InfoKV consistently outperforms existing attention-based KV compression methods in both long prefilling and decoding scenarios.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26472|549bb7809ce43461886d0b9f338521c93b3411b2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As reasoning models emit chains of thought tens of thousands of tokens long, KV cache increasingly becomes a deployment bottleneck. Existing cache eviction methods rank tokens by attention weight, which is a noisy importance proxy in long reasoning traces, and prohibits the use of fused kernels in production inference by forcing the model to materialize the attention matrix. In this work, we instead score tokens with a metric we term the epiphany score: the change in the model's internal representation, read directly from the forward pass with no attention matrix and negligible extra state. Our resulting cache eviction method, EpiKV, requires no training, classifier, or custom kernel, and can be used directly in FlashAttention inference stacks unchanged -- scaling to a 16x longer feasible context than attention-based scoring. upper-mid layers negatively) and remove a positional trend with a causal rolling z-score. At a 4096-token cache EpiKV reaches 72% on MATH-500, matching the strongest attention-based baseline (ThinKV 71%, H2O 67%); a lag-normalized KV variant reaches 37% on AIME-2024 at 8192 tokens against the best of them (33%), at up to 2.8x the speed.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.26587|6860e3a7d414352a436c2a43b4fd487a28be65e1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-bit floating-point formats and semi-structured sparsity are increasingly supported by modern accelerators, yet combining them for LLM activation compression remains challenging: activations contain input-dependent outliers that dominate block scales in FP4 quantization, and directly applying N:M sparsity masks discards moderate values, coupling sparsification loss with quantization error. We introduce SharQ, a training-free inference method that bridges activation sparsity and FP4 quantization through an online sparse--dense decomposition. For each activation tensor, SharQ generates an input-adaptive N:M mask to extract an outlier-dominated sparse backbone, quantizes it to FP4, and defines a dense residual relative to the quantized sparse backbone rather than the unquantized sparse values. A sparse FP4 GEMM processes the backbone while a dense FP4 GEMM compensates for both mask-induced activation loss and sparse-path quantization error. The two paths share a single FP4 weight payload with path-specific scale views, and a fused preparation kernel absorbs mask generation, residual construction, and layer normalization into one operator. SharQ requires no calibration data, retraining, or model-specific tuning. Evaluated on Llama-3.1-8B, Qwen2.5-7B, Qwen3-30B-A3B, and Qwen3-VL-8B, SharQ recovers 43--63% of the NVFP4-to-FP16 accuracy gap across language and vision-language tasks, and generalizes across NVFP4, HiF4, and MXFP4 formats. On an RTX 5090, SharQ delivers 2.2--2.4$\\times$ latency reduction over FP16 and 1.2--1.4$\\times$ throughput improvement over FP8 in language model serving, and up to 1.58$\\times$ speedup on Wan2.2-T2V-A14B video generation when combined with SageAttention. Our code is available at https://github.com/actypedef/SharQ.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26758|f6bf60e8f276ab987b75763bba5f76ba15efe758|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "High-performance GPU kernels are critical for reducing the exponentially growing computational costs of large language models (LLMs), but their development heavily relies on manual tuning by domain experts. While recent advances in LLM-based approaches show promise for automating kernel generation, they still struggle to achieve both correctness and high performance. This limitation primarily arises from the lack of domain-specific optimization guidance, hindering effective exploration of the optimization space. We propose EGG, an Expert-Guided Agent Framework for Kernel Generation, which incorporates expert optimization principles to guide LLMs' decisions. Inspired by expert workflows, we decompose kernel generation into two hierarchical stages: 1) algorithmic structure design, which establishes a high-quality computational structure foundation; 2) hardware-specific tuning, which performs targeted adjustments through parallel mapping, tensor tiling, and memory optimization. This staged decomposition defines explicit optimization objectives, structuring the design space to achieve progressive refinement. To this end, a stage-aware multi-agent collaboration mechanism is designed for inter and intra-stage context management, ensuring stable optimization trajectories. Experiments on KernelBench and real-world workloads show that EGG achieves a 2.13x average speedup over PyTorch, outperforming existing agent-based and RL-based approaches.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26861|a5a0c1cddb7ac3bb9c313a9e4f2e94a46bfbbe92|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying large language models (LLMs) on Industrial Internet of Things (IIoT) edge devices demands extreme compression, yet existing structured pruning methods collapse at high compression ratios due to one-shot importance estimation, and their cross-architecture behavior remains unpredictable. This article presents a cascaded multi-granularity pruning framework that removes layers, attention heads, and feed-forward channels in coarse-to-fine order, with lightweight low-rank recovery between stages to re-estimate component importance. An information-theoretic analysis motivates this ordering, and the Structural Independence Assumption (SIA) is formalized as a checkable condition predicting whether per-component pruning criteria are reliable for a given architecture: Multi-Head Attention (MHA)+GELU designs satisfy the SIA, whereas Grouped Query Attention (GQA)+SwiGLU designs violate it. On bearing fault diagnosis spanning 88M to 6.25B-parameter models, the framework extends achievable compression to 13.8 times on MHA+GELU architectures with 83.82% accuracy (+3.70 percentage points (pp) over the strongest baseline), while exposing a ~74pp accuracy collapse on GQA+SwiGLU architectures that violate the SIA. Deployed on an industrial slewing bearing fault diagnosis platform with NVIDIA DGX Spark, compressed models reduce inference latency by up to 67.2% and peak memory by 62.5%, demonstrating viability for IIoT edge inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.26452|ed02d47d763a741d4d70701edad726c0df79059b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "To minimize privacy concerns and inference latency on edge devices like smartphones, lightweight on-device models remain important for end-user applications. Many of these applications involve natural language classification, but deploying multiple specialized models creates a memory footprint challenge. We investigate: Can a single lightweight architecture solve multiple Speech-Adjacent (SA) classification tasks through reduction to a nuanced text similarity formulation? We propose AnySimLite, a lightweight similarity encoder that combines word-level and character-level channels. Together with a dataset transformation strategy, we evaluate AnySimLite across multiple SA classification tasks and show that it consistently achieves state-of-the-art (SOTA) or SOTA-competitive performance in few-shot settings while maintaining a low memory footprint. Even in the worst case, the performance drop remains below 7% while using $<\\frac{1}{250}^{\\mathrm{th}}$ of the model size of the SOTA qLLaMA_LoRA-7B baseline.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.SD主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.SD"
+    ]
+  },
+  "arxiv:2606.26290|6696542c00ee34433475245aee6b7225439cf99c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "While parameter-efficient fine-tuning (PEFT) typically targets attention projectors, its efficacy for tasks requiring sequential state accumulation remains under-explored. We examine if PEFT for such tasks can benefit from state space model (SSMs) adapters, and if MLP blocks are better injection sites. We introduce Hankel Reduced order Model (HRM) adapter, an SSM-based residual module initialized via Balanced Truncation of empirical Hankel Grammians. By leveraging the time-invariance of the system matrix $\\bar{A}$, HRM enables an exact FFT-based parallel scan, achieving computational parity with LoRA across all context lengths. In iso-parametric evaluations on Mistral-7B (8.4M trainable parameters), HRM outperforms LoRA variants on LongBench tasks, including QuALITY (+34.8\\% relative accuracy) and QMSum (+71.6\\% relative ROUGE-1). HRM further demonstrates consistent superiority across 18 configurations of synthetic state-tracking (DFA, Parity) and character-level language modeling (enwik8). Gate analysis reveals that HRM adapters effectively learn to modulate recurrence, providing a robust architectural alternative to low-rank adaptation for long-context sequence modeling.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26806|04570bc1aed3360cde0679673ca36878c6e9d2f5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-running language agents need more than memory access. Retrieval systems can fetch past facts at query time, but they do not decide which experiences should continue to shape behavior after the working context is unloaded. We study this separate problem as memory depth: durable goal-conditioned tendencies written into a small parametric store. We introduce the loop-drift protocol, a controlled stress test in which the retrieval index remains intact while working context is unloaded and goal-conditioned behavior must persist under long-loop interference. We evaluate EVAF, a surprise- and valence-gated LoRA consolidation mechanism. Across GPT-2 and TinyLlama, retrieval is strongest on shallow factual recall (short-fact accuracy 0.956--0.973), while EVAF is strongest on goal persistence and post-unload recovery (0.812--0.904) with only 2--3 parametric writes per 200 events. Mechanism controls show that selective consolidation factorizes into two controllable dimensions: selection and actuation. Matched random gates isolate selection beyond sparse writing; fixed-inner controls across GPT-2, TinyLlama, and Mistral-7B show that inner-loop write strength is model-dependent; and a Mistral-7B matched-gate inversion reveals asymmetric selection-actuation coupling under miscalibrated actuation. Public Memora event streams serve as an external diagnostic, exposing stale-memory invalidation as an unresolved boundary. Within this probe, selective parametric consolidation supplies memory depth distinct from and complementary to retrieval access.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2606.26493|cc5be87b9f8320c58abb734a0a3ced98db0c9ac0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion language models offer a promising alternative to autoregressive models due to their potential for parallel and iterative generation. However, existing approaches use a single network for both context representation and iterative denoising, forcing one model to serve both roles and limiting its capacity for either role. We propose TwoTower, a block-wise autoregressive diffusion model that decouples these roles into two towers: a frozen AR context tower that causally processes clean tokens, and a trainable diffusion denoiser tower with bidirectional block attention that refines noisy blocks via cross-attention to the context. Built on Nemotron-3-Nano-30B-A3B, an open-weight 30B hybrid Mamba-Transformer MoE model, and trained on approximately 2.1T tokens, Nemotron-TwoTower retains 98.7% of the autoregressive baseline's quality while offering 2.42X higher wall-clock generation throughput. We release the code and model weights at https://huggingface.co/collections/nvidia/nemotron-twotower.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.26918|8e2f87b5fdf37fd98c084d6f75e561466eddc27b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models can serve as capable long-horizon agents, but their out-of-distribution (OOD) generalization remains weak. We identify a key source of this failure as task insensitivity: when faced with similar but distinct tasks, models might apply patterns learned during training and fail to solve the task at hand. We show that models often continue with actions aligned with the original task even when the instruction is semantically corrupted and cannot be directly answered. We further find that, when we replace the task description in a trained prompt with another similar but distinct task, the model may still output the same action. This behavior is accompanied by a consistent training-time attention drift away from task tokens and toward local observations, suggesting an optimization bias toward shortcuts. To mitigate this problem, we propose Task-Perturbed NLL Optimization, a lightweight contrastive regularizer that explicitly encourages action dependence on the task instruction. Extensive evaluations show that our intervention improves task sensitivity and OOD generalization while preserving more stable attention to task tokens.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26383|1422bfd8394ec3d0f7d8b2092abb042b06c11318|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "How fast could a deep-learning model run on target hardware, and how far is today's implementation from that limit? These questions are central to software, hardware, and algorithm optimizations. Speed-of-Light (SOL) analysis answers them by computing a workload's theoretical minimum execution time on a given architecture. Yet deriving SOL bounds remains manual, error-prone, and disconnected from rapid model development. To close this gap, we introduce SOLAR, a framework that automatically derives validated SOL bounds from PyTorch and JAX source code. SOLAR leverages both generative and deterministic components in its flow: an LLM frontend translates any source programs into an executable Affine Loop IR, validated by output comparison; a deterministic flow lifts the IR into an einsum graph; and an analytical backend computes unfused, fused, and cache-aware SOL bounds. SOLAR provides comprehensive operator and language coverage, produces validated bounds with zero observed SOL violations, and offers multi-fidelity analysis that tightens bounds and surfaces optimization insights. We evaluate SOLAR across KernelBench, JAX/Flax models, and robotics workloads. These experiments demonstrate four use cases: headroom analysis at multiple fidelity levels, identifying optimization opportunities, cross-platform exploration, and inverse-roofline hardware provisioning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.AR",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2606.26108|261928d99530e3aa298e5975d9cbe60cf37582b5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Larger language models consistently outperform smaller ones on reasoning benchmarks, yet the reasoning differences underlying this gap remain underexplored. Across benchmarks in mathematics, physics, chemistry, and programming, we observe stable performance gaps: averaged over datasets, Qwen3-32B outperforms Qwen3-8B by 6.43%, while GPT-OSS-120B exceeds GPT-OSS-20B by 7.38%. To study the reasoning differences behind these gains, we develop AdvCluster, an automated framework that identifies questions where the larger model shows a stable advantage, extracts fine-grained advantage descriptions from paired reasoning traces produced by larger and smaller models, and organizes them through semantic clustering with quantitative evaluation and selection guided by a reviewer model. Our analysis yields a systematic taxonomy of larger model reasoning advantages, spanning both common advantages that recur across domains and specialized advantages associated with particular domains. Across these patterns, a recurring theme is Constraint-Guided Reasoning: larger models are better at identifying explicit and implicit constraints, organizing them into structured reasoning, and using them to rule out infeasible paths and verify intermediate steps.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2606.26671|dcb2c29a42f322c8a8df038aeb13805a41cf5f6f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Post-training alignment determines the reasoning and human preference following capabilities of large language models, yet most existing works withhold detailed data construction, filtering rules and training recipes, which hinders community reproducibility and lightweight model optimization. This work presents NebulaExp, a fully transparent, ablation-driven post-training pipeline built on Qwen3-8B-base, covering two orthogonal model branches: general instruct model and complex reasoning-specialized model. We curate a raw corpus of 3.84M multi-source SFT samples and a 200K verifiable RL candidate pool, and design an end-to-end data processing stack including response distillation, multi-dimensional cross-verification filtering, fine-grained difficulty grading, task classification and diversity-aware sampling. For the Instruct branch, our three-stage optimized supervised fine-tuning approach NebulaExp-Ins-SFT improves the average benchmark score from the 55.01 baseline of Qwen3-8B-nothink to 60.99. GRPO reinforcement learning then further elevates the average score to 61.85. For the Reasoning branch, medium-difficulty GRPO RL improves average reasoning score from 73.88 to 75.17. To address RL's dependency on task verifiers, we systematically investigate single-teacher and multi-teacher OPD (MOPD): utilizing merely 4K instruction-following samples and outperforms RL baseline by 3.26 points on IFEval with +4.43 average overall gain; MOPD fuses four domain-specialist teachers with merely 10K samples, lifting average performance by 4.18 over the base model. This report provides a fully reproducible empirical post-training recipe for 8B-scale LLMs, and comprehensively dissects the capability trade-offs among instruction adherence, mathematical reasoning, code generation and general knowledge.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26538|4616a055c6ea19c0f80103aed7c5e3eaaf13f9ae|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deep Transformers are composed of uniformly stacked residual blocks, yet their deepest layers often add little value. We present two efficiency methods that exploit this asymmetry. CascadeFormer tapers width with depth to match the uneven information flow across layers, achieving comparable perplexity to a uniform baseline at the same training budget while reducing latency by 8.6% and increasing throughput by 9.4%. CascadeFlow Pruning removes layers using accumulated training gradients, with no post hoc analysis. It outperforms standard heuristics on perplexity and rank-stability and stays competitive on downstream accuracy. To motivate these methods, we propose Gradient Fan-in Asymmetry (GFA) as a structural account of why deeper layers contribute less. In Pre-LayerNorm residual stacks, the gradient at a layer is the sum of an identity path and all downstream functional paths, producing a gradient fan-in that decays linearly with depth (and quadratically under deep supervision), yielding richer gradients for early layers and sparser ones for later layers. We provide correlational and interventional evidence for GFA on models trained from scratch up to 1.2B parameters. Across Transformers and ResNets, accumulated training gradients follow the theoretical fan-in and are associated with post hoc layer importance. Two interventions point to structure rather than magnitude as the bottleneck: equalizing per-layer gradient norms does not restore late-layer value, while increasing downstream path counts via parameter-shared repetition restores and elevates it. Whether gradient magnitude proxies fan-in beyond high-rank regimes, and how these dynamics behave at the 100B+ scale, remain open questions.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2606.26836|904c11db2609287f1953eaca0642f14c37bab5d0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Existing benchmarks typically report accuracy for a single model on a single run. This systematically understates real-world LLM capabilities, particularly under heterogeneous data distributions: (i) different models get different questions correct according to their specializations, and (ii) given a budget, multiple generations can be sampled and selectively retained. To quantify this gap, we introduce the Capability Frontier: a Pareto frontier over a set of models that characterizes the best achievable performance at each cost level under optimal selection across models and generations (i.e., via an oracle). Our construction corrects for two opposing biases: underestimation from single-model evaluation and overestimation from taking maxima over noisy samples. We study 21 LLMs across 16 widely used benchmarks spanning coding, reasoning, medicine, factuality, instruction following, and agentic tasks, comparing Capability Frontier performance at matched cost to each benchmark's top-performing model. Correcting for single-model evaluation yields a 54% error rate reduction; additionally correcting for single runs yields an 82% improvement, with SOTA accuracy matched at 85% cost reduction. Complementing these empirical results, we use controlled probabilistic simulations to show that higher query topic entropy produces a near-monotonic increase in the performance gap between oracle routing and the best single model. Our findings suggest collective LLM capabilities are substantially underestimated, with implications for evaluation and deployment in data-heterogeneous, multi-domain settings.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
