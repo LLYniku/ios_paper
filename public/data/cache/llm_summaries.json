@@ -11505,5 +11505,183 @@
     "keywords": [
       "cs.AI"
     ]
+  },
+  "arxiv:2607.13068|039b8a6cbe6c450d59ce009c1f84c3f51d2aff5a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Every mainstream GPU is built compute-heavy and capacity-light: it pairs enormous arithmetic throughput with too little memory to hold a modern model. In contrast, large language model decoding requires little compute and a large amount of memory: a GPU's floating-point units run at single-digit-percent utilization during decoding, and the memory the workload does need is sold only bundled with yet more compute. The compute is recovered only at hyperscale, where Mixture-of-Experts (MoE) models are spread across 96--320-GPU expert-parallel clusters serving thousands of concurrent users, a scale available to a handful of operators. We formalize the inefficiency with two fixed per-chip constants. F/B, the roofline ridge point, determines whether the compute can be utilized; F/S, the compute bundled with each GB of memory, determines how much compute must be bought. We then argue for a rebalanced decode accelerator: less compute, far more commodity memory, and a deliberately lower and cheaper bandwidth. The Skymizer HTX-301, a purpose-built 28nm PCIe accelerator using commodity DDR5, occupies that design point. Its entry cost is low. A single eight-chip card holds DeepSeek-R1 671B for about \\$19,000, and a 4U server of four four-chip cards serves two users at a deterministic 20.3 tokens per second each for about \\$28,000. Either costs less than a single H100, while the minimum GPU deployment for the model is an eight-GPU node near \\$350,000. Concurrency then scales out by adding hardware: eight 4U servers carry sixteen users for about \\$224,000, two-thirds of the node's price, with the cost per token unchanged at about \\$12 per million against the node's \\$21. The HTX-301's decisive advantage is a supply chain free of every rationed input: it uses no high-bandwidth memory, no CoWoS, and no leading-edge logic.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2607.13095|97fa8c49e31210a5e260c1bf6a4af7fd19eec627|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present a full-pipeline inference optimization for the MiMo-V2.5 model family, which combines Hybrid Sliding Window Attention (Hybrid SWA), sparse Mixture-of-Experts (MoE), and multimodal encoders. While Hybrid SWA can ideally reduce both attention compute and KVCache storage significantly compared to Full Attention, realizing these gains in production requires substantial engineering effort. We systematically optimize the KVCache system with layerwise prefetch, SWA-aware prefix cache trees, and specialized placement strategies, achieving strict $O(W)$ SWA storage and high cache hit rates. We further build GCache, a high-performance distributed cache infrastructure with RDMA-optimized networking, and develop a KVCache-affinity router to reduce computation while preserving load balancing. We also optimize for multimodal inputs, including GPU image preprocessing, parallel video decoding, and multimodal cache sharing. Together, these optimizations constitute the first large-scale LLM serving system in production that efficiently covers the Hybrid SWA + MoE + multimodal composite architecture.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.13649|a684a3695f00712257fa9a0ff558433f1d230af3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM impose significant computational and memory demands, creating challenges for energy-efficient inference across platforms ranging from data centers to power-constrained edge devices. Weight precision plays a critical role in balancing inference accuracy, throughput, and energy consumption, while modern LLM workloads exhibit pronounced heterogeneity and tolerance that favors adaptive precision execution. This paper presents CIMERA, a reconfigurable-precision LLM inference accelerator that integrates compute-in-interconnect and memory to mitigate the memory wall and enable precision-aware execution. Compared to Nvidia H100, CIMERA delivers up to $25\\times$ and $10\\times$ higher energy efficiency for 1B and 13B models, respectively.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2607.13591|b11102636aa401f02f9664c546ca2a85dad8a957|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Model (LLM) agents increasingly rely on external memory systems to accumulate experience across tasks. Yet nearly all existing approaches, from graph-structured memories to reflective insight stores, access memory through fixed, hand-designed heuristics. We argue that this static view of memory is a core bottleneck for agentic learning because optimal memory behavior is fundamentally context-dependent. The early stages of the tasks, benefit from minimal retrieval because memory is sparse; recurring goal types benefit from plan reuse rather than generic nearest-neighbor lookup; stuck agents benefit from re-retrieval with alternative queries; and across long task streams, the memory store itself must be consolidated and pruned to remain useful. We present Memory as a Controlled Process (MemCon), a framework that models memory operations as a Markov Decision Process and learns an online policy that adaptively decides when, what, and how much to retrieve, when to inject a distilled plan, and when to consolidate or forget. MemCon is backend-agnostic: it wraps any existing memory implementation, learns from task-by-task binary feedback with no pretraining and no additional LLM calls, and uses a lightweight tabular contextual bandit with UCB exploration that converges within tens of tasks. Across 6 benchmarks, 3 agent frameworks, and 3 LLM backbones, MemCon consistently outperforms multiple memory baselines by up to 15.2 points in task success while reducing token consumption by 5--20%.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.13205|24ad5e2ee9d97943aa7c931aedbe41a1fb586718|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Attention-based KV cache eviction (H2O and its descendants) compresses the memory-constrained state of a long-context model by ranking tokens on accumulated attention mass, treated here as signal energy, and keeping the heaviest. On schema-dense input streams such as nested JSON, this score acts as a non-stationary filter that disproportionately retains noise: a non-content sink role (delimiters or whitespace) carries an order of magnitude more energy than any content role, and structural KEY tokens are over-retained at roughly 1.8x the rate of the answer-carrying VALUE tokens, collapsing exact-match accuracy from 88% to 0% at a 5% budget as the signal-to-noise ratio of the retained state degrades. A counterfactual experiment establishes that suppressing KEY tokens is the best deployable filter. Our retraining-free, role-conditional allocation over SnapKV's windowed score, governed by a single tuned hyperparameter, closes 63-98% of the H2O gap at sub-20% budgets and, at higher budgets, modestly matches or exceeds full-cache accuracy -- a small, seed-sensitive denoising effect (borderline significant at B=0.50; not distinguishable from zero at B=0.30 over four seeds). A 15 MB linear role probe supplies these labels at negligible inference cost, though matching parser-level downstream accuracy remains open.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.13332|07865b0694b50ee0283d4126f49628dac76b664f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Training large language models at the multi-billion to trillion parameter scale is confined to datacenters, where data-parallel (DP) and model-parallel (MP) techniques presume homogeneous accelerators, high-speed interconnects, and a single orchestrating entity. Frontier model development is thereby concentrated among the few groups able to assemble such clusters. Meanwhile, an enormous pool of compute remains unusable for training: consumer and professional GPUs that are heterogeneous, preemptible, individually owned, and connected only by the internet. We present Agora, a system that makes efficient use of this compute. Agora combines bandwidth-efficient pipeline-parallel model sharding over internet-grade links with multi-party, fault-tolerant collective operations. Each participant holds only one stage of the model, and no single party ever possesses the full weights. We term this setup Protocol Learning: it enables collectively trained, collectively owned models, opening a path to open-source frontier training with economic sustainability. This report presents the outcome of a research effort spanning communication-efficient parallelism, asynchronous optimization, and fault-tolerant systems design. It culminates in the first demonstration of its kind: Pluralis-8B, an open, permissionless pretraining run of an 8.6B-parameter model on 500B tokens of FineWeb-Edu. The model was trained over 40 days by 330 contributor nodes, predominantly consumer GPUs on internet connections, joining and leaving throughout. The run sustained ~170k tokens/s and 4.2 tokens per TFLOP of pooled compute, 63% of the efficiency of a centralized H100 baseline, and converged to within a small margin of a centralized reference run.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2607.13395|c085cb8a59803e277f9631fc53391ba000e004dd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The pursuit of autonomously self-improving models has attracted growing interest in the era of large-scale foundation models. Drawing inspiration from the concept of \"enlightenment\" or \"aha moment\" in human brain, we hypothesize that large models exhibit an analogous enlightenment phenomenon-a latent capacity for sudden capability boost. Then, we propose Enlightenment, a novel training-free post-tuning paradigm for large-scale models. Our approach modifies shortcuts for key modules/layers without weight updates, while existing training-free ones predominantly manipulate attention weights. We introduce two architecture-specific instantiations: i) For large language models, we propose attention head-mixing shortcuts that recalibrate attention weights by linking the initial attention head's output to all other target heads, modulated by an adaptive scaling factor initialization strategy. ii) For vision-language models, we apply a lightweight scalar-modulated factor to residual connections in the decoder layers, regulating information flow. Extensive experiments show that Enlightenment efficiently unlocks the latent potential of pre-trained networks, yielding remarkable performance improvements across diverse benchmarks and models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.13425|f5cde6529ab56fa78004d5de3da48ae48145b268|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Learning effectively from limited data is critical in domains like security where labeled examples are scarce. Large language models (LLMs) have demonstrated some capabilities for data-efficient learning, especially through parameter-efficient adaptation methods, but continue to struggle when faced with few samples for difficult tasks. To meet this challenge, we propose Attention Head Reweighting (AHR), a data-efficient method that adapts LLMs to new text-classification tasks by learning only a single scalar per attention head. This drastically reduces the number of parameters that need to be learned by making use of the functional specialization of individual attention heads. Experiments on diverse open-source text classification datasets show that AHR can outperform standard baselines like LoRA when learning from limited samples, despite having 200-1000x fewer trainable parameters, as our AHR only modifies ~0.0001% of the model's parameters. In addition, our learned weights are easy to interpret and can be analyzed to better understand the mechanisms and attention heads responsible for in-context learning abilities in LLMs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.13048|1446ab783bec4c521235a2939451b22d0822ba7f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Streaming inference pipelines increasingly pair lightweight fast models with Large Language Models (LLMs) that provide rich semantic understanding at substantial cost. The central question of when to invoke the LLM has received limited formal treatment. We cast this as a risk-based sequential stopping problem, where a trigger policy fires when a risk functional over the observation history exceeds a threshold. Within this framework, we prove six results: a minimum inter-event time bound excluding trigger chattering; optimality of threshold policies via smooth pasting; approximate SPRT guarantees under estimated parameters; O(sqrt(T log T)) regret for stationary streams, extending to O(sqrt((C_T + 1) T log T)) under C_T changepoints; O(1/sqrt(T)) convergence of online gradient descent for adaptive thresholds; and a calibration-to-miss-rate transfer inequality. Several classical trigger families, including event-triggered, optimal stopping, SPRT, CUSUM, and Bayesian triggers, can be expressed as special cases of this framework. On turbofan degradation data (CMAPSS) with real LLM calls, we empirically verify the theoretical assumptions, ablate the risk function design, compare against six baselines including a RouteLLM-style router and contextual bandits, and analyze cost sensitivity and LLM failure modes. The results confirm sublinear regret, with alpha < 1 for all principled triggers; high diagnostic quality, with 92.9 percent of 1600 LLM diagnoses reaching grounding score >= 0.75 under our rubric; and that anomaly-score-driven risk functions dominate alternatives by roughly an order of magnitude on the Pareto AUC.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2607.13770|6bd3eec1c4e4ca282735fc8ab31776ab76f4ba82|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Video diffusion transformers (vDiTs) generate high quality video but introduce extremely high compute cost due to the long diffusion timesteps and self attention computation. As diffusion timesteps are reduced, the computation cost of self attention becomes the dominant bottleneck. Existing acceleration approaches largely inherit sparse attention techniques from large language models, which fail to consider the unique spatiotemporal correlation of video data.\n  This paper presents Kaleido, an algorithm hardware codesign that accelerates all operations in vDiTs by exploiting channel-wise spatiotemporal correlations in latent space. Based on this insight, we propose a lightweight channelwise reuse algorithm that skips redundant computations by reusing partial results while preserving higher generative quality than prior methods (>17 dB). To efficiently support this algorithm, we design a systolic array like accelerator with reconfigurable processing elements and a lightweight data dispatcher to mitigate irregular sparsity and data access patterns introduced by our reuse algorithm. Evaluations across three mainstream vDiT models show that Kaleido achieves up to 5.9x speedup and 16.0x energy savings over state of the art accelerators.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.13241|5a28c2e13b999206e785458de5ab27563325f028|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Traffic forecasting is highly challenging due to complex and nonlinear spatial and temporal dependencies. Self-attention mechanisms have been widely adopted to model dynamic and long-range dependencies, achieving state-of-the-art performance, but suffer from limited scalability due to quadratic computational and memory complexity. To address this, we propose an Efficient Multi-Attention Graph Network (EMAGN) that linearises the spatial attention mechanism itself, inspired by the theory of fast high-dimensional Gaussian filtering. Two learned clustering matrices C_k and C_v adaptively group key and value vectors into M super-clusters, reducing complexity from O(N^2 d) to O(NMd) without sacrificing the flexibility of attention for dynamic dependency modelling. Experimental results on PEMS-BAY and METR-LA show that EMAGN achieves accuracy within 2.7-3.2% MAE of full-attention GMAN while reducing training time by 32%, inference time by 38%, and GPU memory by 58%. Critically, at K=16 attention heads, full-attention GMAN runs out of memory on a standard 11 GB GPU entirely while EMAGN continues to operate, demonstrating a categorical expansion of feasible model configurations. EMAGN also surpasses Linformer and Performer in both accuracy and efficiency within the same backbone, owing to its traffic-network-aware adaptive clustering.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.13124|4968503ebb3c95f8ce7d479fb6b12e8c56f9105a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Structured pruning is a hardware-friendly way to compress LLMs, but it is mostly validated on multiple-choice recognition tasks, while the same compressed checkpoints can collapse on the free-form generation that deployment actually requires. Two observations trace this gap. First, greedy \\textsc{pass}@$1$ nearly vanishes after compression, yet \\textsc{pass}@$k$ recovers substantially under repeated sampling: useful generations are demoted, not erased. Second, the recoverable regime fails mainly through suffix repetition. Recovery should therefore train on the compressed model's own on-policy states with dense token-level supervision, which On-Policy Distillation (OPD) provides by reusing the pre-compression model as a frozen teacher. However, long on-policy rollouts spend early recovery budget on low-information repetitive suffixes, delaying loss descent. To mitigate this waste, we propose \\textbf{\\shortopd}, a short-to-long OPD schedule that detects teacher-confirmed repetitive suffixes, treats the surviving prefix as each rollout's effective length, and allocates future rollout budgets to the effective lengths the policy can currently use. Across math, code, and open-ended generation, \\shortopd\\ raises the compressed model's score to about $9\\times$ its unrecovered value and $1.6$--$4.4\\times$ standard recovery recipes (SFT w/o KD, KD, and SeqKD), and it matches a fixed $8192$-token rollout horizon within two points using a quarter of the training time ($8.5$ vs.\\ $35.9$ hours) and $71\\%$ fewer rollout tokens. We hope this recipe helps move structured pruning beyond marginal gains on perplexity and multiple-choice benchmarks, a step closer to deployment-ready generation quality.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.13239|3f3d521f33b5a44da258b1d09dfee6c8a01d5143|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Foundation models, including large language models (LLMs) and vision-language models (VLMs), are increasingly used for transportation management center (TMC) tasks such as anomaly detection, incident reporting, and traveler information. Deploying multiple such models across TMC functions raises a portfolio question: which model should serve each function, in which deployment mode, and under what shared hardware budget? We formulate this as the Foundation Model Deployment Portfolio (FMDP) problem, a mixed-integer program minimizing total cost of ownership (TCO) subject to per-function quality, latency, and safety constraints over shared GPU capacity. We prove the problem NP-hard by reduction from the 0-1 knapsack problem and propose a polynomial-time greedy heuristic. In an illustrative case study with five TMC functions and 19 candidate (model, mode) pairs, FMDP identifies a mixed portfolio costing $34/mo (97% below the cheapest feasible all-closed-API baseline) by routing four functions to open-source APIs and the one function whose quality floor no open-source model meets to a closed API. Break-even analysis shows that on-premise GPU investment becomes reasonable only above approximately 309 vision queries/hour or if API prices double.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.13047|7bd9974d683992868dd3304d17d886c021da0c84|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Parameter decomposition (PD) decomposes neural networks into interpretable computational components that faithfully reflect the original network's operations. However, scaling PD to large models requires vast compute, making it a costly and risky endeavor. Here we propose targeted PD (tPD), which identifies only the components that process specific inputs of interest -- from isolated prompts to large subtasks -- by introducing a high-rank catch-all component that handles all non-target data. We validate tPD on toy models and on transformer language models trained on The Pile, where it recovers reproducible, mechanistically faithful circuits. We extract a CSS-only submodel of a 4-block transformer using 7% of the FLOPs of its published decomposition, and in a 12-block transformer we surgically ablate and rewire memorized sequences, with negligible side effects on other inputs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.13735|55bcee5abe45b821b1a5c6def1706e56424007bb|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The rapid deployment of machine learning systems across cloud, edge, and enterprise environments has brought model optimization to the forefront of systems-engineering. Despite a rich literature spanning quantization, pruning, knowledge distillation, parameter-efficient fine-tuning (PEFT), and inference-time optimization, practitioners are often left navigating these techniques through heuristics rather than principled methodology. We argue that optimization should be formulated as a constraint-driven, multi-objective engineering decision and introduce a unified framework that characterizes any production deployment along five interacting constraint dimensions: data availability, latency budget, memory budget, accuracy tolerance, and retraining budget. Building on this taxonomy, we synthesize empirical gains reported across the research literature and map them to operational constraints rather than algorithmic categories. To ensure practical relevance, we selected these techniques by reviewing recent literature for methods that report measurable improvements against critical deployment bottlenecks. We propose a prescriptive decision framework and provide optimization pipelines for four representative industrial scenarios to illustrate it in practice. To the best of our knowledge, this work provides one of the first structured attempts to formalize model optimization as a constraint-aware, multi-objective engineering process, synthesizing quantitative evidence from the research literature.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.13705|ad61e9e76d47824eef848b8c2f4e6c775086cb30|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As Large Language Models (LLMs) evolve into autonomous agents, the need for unified evaluation infrastructure becomes critical. However, current evaluation pipelines remain highly fragmented and tightly coupled, hindering reproducibility and causing redundant engineering. To address this, we introduce AgentCompass, an open-source, lightweight, and extensible infrastructure for evaluating LLM-based agents. AgentCompass organizes the evaluation process around three independent components, namely Benchmark, Harness, and Environment, thereby enabling flexible configurations without requiring the reimplementation of complex execution logic. Furthermore, it features a fault-tolerant asynchronous runtime and comprehensive trajectory analysis tools to transparently diagnose nuanced failure modes like reward-hacking. Natively supporting over 20 benchmarks across five capability dimensions, AgentCompass provides the community with a scalable and reproducible infrastructure for advancing agent research.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.SE主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.SE"
+    ]
+  },
+  "arxiv:2607.13491|ea13e6428213b0fb78a80172477a352df2f84bc4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Looped Transformers scale sequential computation by applying a compact stack of physical blocks for multiple rounds, increasing unrolled depth without increasing stored parameters. This reuse changes the residual-scaling problem: in an untied Transformer, each residual branch receives and applies its own parameter update, whereas in a looped Transformer one shared update aggregates gradients from repeated visits and is read back by those same visits in the next linearized forward pass. We formalize this tied-depth effect through a first-order perturbation bound controlled by a visit-alignment coefficient $κ_R$. The bound recovers the DeepNorm exponent when visits decorrelate, but in the conservative aligned regime it requires the exponent to increase from $1/4$ to $1/2$ as loop count grows at fixed physical depth. The resulting method, \\textbf{DeepLoop}, keeps the Post-LN DeepNorm architecture and sets $α=(2N)^{1/2}$ and $β=(8N)^{-1/2}$ for unrolled depth $N$. On GPT-style looped language models at GPT-2 small and GPT-2 medium scale, DeepLoop is neutral when no physical block is revisited and improves validation loss and downstream accuracy once recurrent depth is activated. These results show that stable recurrent depth requires residual scaling rules that account for parameter visits, not only nominal layer count.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.13158|31423ea5ed35eee7533f6b7d3707dd32ecf63a3c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Simultaneous speech translation (SimulST) requires incremental translation under strict latency constraints, yet remains challenging for decoder-only LLM systems due to limited context and cross-lingual reordering. Recent approaches often introduce architectural changes or explicit read/write policies to control output timing, which can be brittle in conversational speech where segmentation boundaries are ambiguous. We present a simple data-driven alternative: fixed-length chunks for cumulative streaming decoding with a rewind-based committed prefix, and teacher-labeled prefix-to-prefix (P2P) targets with bounded waiting for fine-tuning, yielding CSSEL-P2P, where CSSEL is our proposed chunked streaming speech encoder LLM. In our in-house conversational speech evaluation, CSSEL-P2P improves streaming quality by +1.54 COMETKiwi over the CSSEL streaming baseline at comparable latency (+0.15s Average Lagging), suggesting effective SimulST without architectural changes via P2P supervision.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.13643|bb3467d7586af9976b9604c439b0ad24a2cafe07|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Sampling multiple solutions and returning the majority answer is among the most reliable ways to improve the reasoning accuracy of large language models without labels, and a growing family of methods converts this consensus signal into training supervision. However, existing approaches use consensus only in restricted forms: as a filter that selects solutions for fine-tuning, as a preference between answers, or as a scalar reward for reinforcement learning, discarding most of the information that the agreeing solutions contain. We present CANON (Consensus-ANchored self-distillatiON), a label-free training method that turns consensus into dense, token-level supervision. For each unlabeled prompt, CANON samples multiple solutions, extracts the majority answer, and conditions a frozen snapshot of the model on a solution that reaches it; this consensus-anchored teacher then supervises the model on its own rollouts at every token. Experiments on mathematical and scientific reasoning benchmarks show that CANON improves pass@1 by up to 12 points, outperforming label-free reinforcement learning by 6 points at a seventh of its compute and approaching a teacher conditioned on gold solutions; trained on pooled unlabeled data, it transfers to held-out benchmarks, matching training methods that use gold labels. Analysis suggests that the improvements are not pure distribution sharpening: after training, the model solves problems it previously never solved in 32 attempts, and its majority vote itself becomes more accurate.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.13106|74b377bfd245562f02da723ebc59f5022f55ec99|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Edge-based Artificial Intelligence (AI) acceleration has recently improved progress in real-time object detection. Object detection on edge devices requires a balance between accuracy, speed, and power efficiency. This paper proposes a customized Deep Learning Processor Unit (DPU)-aware architecture for attention-based YOLO variants deployed on AMD FPGAs. Specifically, we evaluate and benchmark YOLOv26 and YOLOv11, two modern attention-based YOLO variants, on the Xilinx ZCU104 across both standard and oriented object detection tasks. We replace unsupported activation functions, substitute split operations with 1x1 convolutions, and approximate the spatial attention mechanism in a DPU-compatible way. All models are then trained and evaluated across six benchmark datasets such as COCO, Pascal VOC, KITTI, DOTA, DIOR-R, and an in-house human presence dataset, and benchmarked across all eight DPU configurations (B512 to B4096) in terms of mAP, FPS, latency, power, and resource utilization. Notably, YOLOv26n and YOLOv26n-OBB deliver the highest end-to-end throughput at 34.05 and 29.55 FPS for standard and oriented detection, respectively, with an average of 5% absolute reduction in accuracy due to quantization while achieving up to approximately 3x lower power consumption compared with the state of the art.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、eess.IV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "eess.IV"
+    ]
   }
 }
