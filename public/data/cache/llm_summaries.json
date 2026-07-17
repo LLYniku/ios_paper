@@ -11683,5 +11683,184 @@
       "cs.AR",
       "eess.IV"
     ]
+  },
+  "arxiv:2607.14107|d470bc3560c4c62d59aa61a1f4814f1180753e3d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The inference efficiency of diffusion large language models (dLLMs) is constrained by two challenges: bidirectional attention precludes efficient KV-cache reuse, while increasing decoding parallelism with static confidence thresholds can compromise generation quality. We observe that both challenges arise from a shared phenomenon: as tokens are decoded, their contextual integration through bidirectional attention causes token representations to drift (evolve) across decoding steps. This insight motivates Polestar, a training-free inference framework that uses token representation drift as a unified signal to jointly address both challenges. Polestar comprises two components: Polestar-Cache, which identifies stale KV-cache positions via drift and performs sparse KV-cache refreshes to enable efficient reuse, and Polestar-Commit, which detects sharp drift events to reliably identify commit-ready tokens. Across mathematics and coding benchmarks on several dLLM families, Polestar sets a new state of the art on the accuracy-throughput Pareto frontier, achieving up to 10.73% accuracy improvement, up to 3.7x higher throughput, and high decoding parallelism of 3.67 tokens per forward pass over existing baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.15105|43d0e5cd5241a917636c9de24b5a7eedfa60a8fb|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Parameter-efficient fine-tuning reduces model and optimizer memory, but dense attention still makes long training sequences expensive. We combine Hierarchical Global Attention (HGA) with segment-wise backpropagation and tiered KV storage. Only the active segment remains differentiable in VRAM; older KV is detached into RAM or NVMe, and HGA loads a bounded set of exact historical tokens for each query block. On Qwen3-8B with 4-bit QLoRA and PG19, dense training on a 16 GB Quadro RTX 5000 fits 2,048 tokens but fails at 4,096, whereas HGA reaches 16,384 tokens with 15.28 GB peak VRAM. Under evaluation the same adapter runs through 131,072 tokens on this card; VRAM is not constant but grows gently with the resident chunk summaries, so RAM and NVMe capacity set the practical limit beyond these lengths. At the shared 2K training length, HGA-trained and dense-trained adapters obtain 2.7405 and 2.7383 nat under the same dense-attention readout, while the stock model obtains 2.9541. At this boundary HGA training is already marginally faster (217.75 vs. 207.02 tokens/s), and the HGA-to-dense throughput ratio improves from 1K to 2K; because HGA keeps the attended historical set per token approximately constant while dense work per token grows, we expect this lead to widen as context grows. Dense attention is used for the main quality and retrieval comparisons so that they measure the learned weights and remain compatible with standard generation frameworks. HGA can also be used for retrieval and generation; an optimized production-grade serving implementation is under development.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14952|cbd6b222f3e80868b4e7dbe99d9047a50edae538|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A growing gap separates inference context lengths from RL post-training: inference systems are approaching million-token contexts, while post-training workloads often remain at 256K tokens or below and rely on length generalization at deployment. The gap is especially important for AI agents, whose observations, tool outputs, documents, and prior decisions accumulate over long trajectories. LongStraw is an architecture-aware execution stack for million-token RL post-training under a fixed GPU budget, instantiated with Group Relative Policy Optimization (GRPO). It evaluates the shared prompt without autograd, retains only model-specific state needed by later tokens, and replays short response branches one at a time, reducing the live training graph at the cost of additional replay time. We implement it for the hybrid recurrent and full-attention Qwen3.6-27B and the compressed-attention mixture-of-experts GLM-5.2. On eight H20 GPUs, LongStraw completes grouped Qwen scoring and response backward at 2.1M positions for groups of 2 and 8; increasing the group size adds only 0.21 GB of peak allocated memory, while a separate stress test reaches 4.46M positions. On 32 H20 GPUs, we validate the end-to-end LongStraw execution path for a 2.1M-token prompt across all 78 layers of GLM-5.2. These experiments establish execution capacity rather than complete training correctness because the captured prompt state is detached and some distributed forward and gradient composition paths remain incomplete.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2607.14647|88eff181cffe7898fb452225bc827ff1d4d99823|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding accelerates large language model (LLM) inference without compromising output quality. Recent parallel drafting methods further improve single-request performance by decoupling draft length from drafting latency, enabling longer drafts and higher mean accepted tokens (MAT). However, under high request concurrency, long drafts waste substantial computation on rejected tokens, increasing verification cost and potentially making speculative decoding slower than autoregressive decoding. We present D-Cut, an adaptive pruning method that selects draft tokens jointly across the batch and concentrates the verification budget on tokens most likely to be accepted. D-Cut is motivated by two observations. First, acceptance lengths vary considerably across concurrent requests; D-Cut therefore performs cross-request pruning, allocating the verification budget adaptively according to draft confidence. Second, verification cost depends strongly on the deployment environment, including GPU architecture and parallelism strategy; D-Cut incorporates a runtime cost model to adapt its pruning depth to the target environment. Experiments on dense and mixture-of-experts (MoE) models show that, under high concurrency, D-Cut improves the average speedup from \\(1.26\\times\\) to \\(1.65\\times\\), restores acceleration in dense-model configurations where long-draft baselines are slower than autoregressive decoding, and achieves up to \\(3.0\\times\\) speedup over autoregressive decoding on MoE models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.14618|6411e5a4760eaa7b74d823c745a1a5d165019a7d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "CPUs are the most universal target for on-device LLM inference, but existing low-bit quantization methods offer either coarse operating points or fine-grained mixed precision that is difficult to execute efficiently on CPUs. We present PolyQ, a CPU-oriented compiler/quantization co-design for activation-aware channel-wise bit allocation under a user-specified average-bit budget. PolyQ assigns per-channel bit-widths from $\\{2,3,4,8,16\\}$, then uses a compile-time model compiler to permute and cluster channels into bit-homogeneous blocks, generate SIMD- and LUT-compatible kernels, and merge compatible permutations across operators to keep layout regularization off the runtime path. This turns fine-grained budget fitting into a practical fractional-bit deployment method for CPU-only inference. Across Falcon-H1-3B, Llama2-13B, and Qwen3-32B on WikiText-2, PolyQ provides stable quality scaling from 3--6\\,b and improves perplexity by 2.4--32.1\\% over prior methods at a 3\\,b target. End-to-end measurements on three representative CPUs -- workstation, laptop, and mobile -- show that compiler layout regularization reduces activation reorder traffic by up to 70.8\\%, prefill latency and decode throughput scale nearly proportionally with the configured bit budget, and energy/token overhead stays below 2\\% relative to an optimized LUT-based back-end. These results show that fractional-bit CPU deployment is practical, predictable, and energy-efficient across diverse edge targets.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AR",
+      "cs.OS"
+    ]
+  },
+  "arxiv:2607.14557|f956520a424fdaaa59af34c9da61230bb396316b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion Multimodal Large Language Models (DMLLMs) are highly effective for multimodal reasoning, yet their inference efficiency is significantly hindered by fixed-length generation constraints. Since the actual output length is unknown, output sequences are padded to a predefined maximum length, resulting in substantial redundant computation over unnecessary [EOS] tokens. In this work, we discover that DMLLMs implicitly reveal their valid semantic boundary at the very first denoising step through a distinct shift in MLP activation sparsity. Leveraging this observation, we propose Seer, a training-free framework that detects this boundary using a Signal-to-Noise Ratio (SNR)-based criterion and performs one-shot truncation of the redundant suffix for all subsequent computations. To preserve these theoretical gains during batched serving, Seer incorporates a hybrid execution strategy that maximizes throughput while seamlessly accommodating dynamic sequence lengths. Experimental results demonstrate that Seer effectively eliminates padding waste, accelerating throughput by up to $\\sim$31$\\times$. Across 9 benchmarks, Seer robustly maintains overall performance and even improves accuracy on complex visual tasks by mitigating noise leakage (e.g., DocVQA score increases from 63.52 to 63.66), offering a highly efficient, plug-and-play solution for DMLLM acceleration.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14112|8790c39fa2b331c6930d80bafcf7f4bb7d75086e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) are evaluated as though perfect reliability is achievable for any task given sufficient scale. We show this assumption is information-theoretically unjustified. Every generative task has a reliability ceiling that no model can exceed, determined by how much output uncertainty is resolvable from observable context. The gap decomposes into a resolvable component closable with additional context and a subjective component inherent to task ambiguity. Autoregressive generation further degrades this ceiling at a rate governed by the task's dependency kernel, which quantifies inter-token correlations in the output. From these two primitives, we derive a first-principles scaling law where LLM performance is bottlenecked by the scarcer resource: training data or model capacity. This law recovers the Chinchilla scaling law as a special case and provides a structural account of when scaling improves reliability. Beyond scaling, our framework unifies diverse practical phenomena, such as the benefits of retrieval-augmentation and the spectral mechanics of catastrophic forgetting. Our work formalizes the resource-complexity tradeoffs that govern model performance across domains, offering a unified theory of performance limits in generative language models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IT"
+    ]
+  },
+  "arxiv:2607.14327|7c4aadfdcf0037ac225c228f13f0327713ede9b1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Efficient long-context inference is not only about reducing memory cost, but also about keeping useful contextual evidence accessible as generation proceeds. However, existing compression-oriented approaches, such as key-value (KV) cache compression and context compression, often either make an early decision about which contextual information to keep or rely on an external compressor. Such designs make it difficult to adapt the compressed context to the evidence needed by later reasoning steps. This paper introduces PReM (Preserve and Refresh Memory), a context-compression framework that maintains the long context as the model's internal layer-wise KV memory and learns what to preserve and when to refresh it. Specifically, PReM uses a dedicated memory layer to make memory-selection decisions, and a special memory token <m> to trigger refreshes during generation. To train this behavior, PReM introduces Phase-Separated Refresh Training, aligning memory selection with memory-conditioned generation while preserving continuity across refreshes. Experiments with 32K-token contexts show that PReM outperforms strong baselines under both 16x and 32x compression, while maintaining a favorable balance between answer quality and inference efficiency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14661|ec284350530d5acd123c1c8e1bc688678c00e978|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying large language models (LLMs) as personal assistants on mobile devices demands privacy, low latency, and offline availability, yet the computational cost of giant models clashes with strict edge-hardware budgets. We argue that this tension cannot be resolved by model compression alone; it requires decomposing on-device intelligence into complementary functional roles. We present SmartRAG, a fully on-device framework that organizes an intelligent assistant around four coordinated modules -- Perception, Memory, Focus, and Thinking. At the core of SmartRAG is EvoNER, a continually learnable named-entity recognizer that incrementally expands its label inventory through teacher-distilled updates, enabling the system to absorb previously unseen entity types without retraining the backbone LLM. Extracted knowledge is stored in MRGraph, a three-layer provenance-preserving knowledge graph, and retrieved at query time through a hybrid pipeline combining graph traversal, lexical matching, and dense semantic search. The on-device LLM is invoked only for high-value semantic operations -- labeling, planning, and answer synthesis -- keeping inference costs bounded. Experiments on four QA benchmarks (TriviaQA, Natural Questions, HotpotQA, MultiHopQA) show that SmartRAG with a quantized 1.7B-parameter backbone achieves multi-hop reasoning performance competitive with models up to 18$\\times$ larger, while running entirely on commodity smartphones within practical memory and latency envelopes.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14431|207521ea5eb4b34e5ee5b92e202fc99e30682342|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We report a way to make a frozen small language model both more capable and dramatically cheaper at once, without changing any weights. Verified knowledge is deposited once as a byte-exact key-value (KV) state artifact and later restored, by graft, into a fresh inference context. The restore is bit-exact: under a pinned deterministic configuration, the grafted logits are byte-for-byte identical to a fresh computation (SHA-256 equality), with zero KL divergence and 100% argmax agreement over fifty samples. We show that own-position graft is the unique numerically exact operating point on a model with floating-point rotary encoding, and we verify byte-exactness on two model scales (12B, 31B) and two GPU targets, one through a pre-registered replay. On AIME 2025, a frozen Gemma-4-12B moves from 80.0% to 93.3% once a verified solution library is grafted, above its own 77.5% and its 31B sibling's 89.2% published anchors. On the recurring case, eight problems the base model never solves within a 401,026-token budget are answered from cached verified solutions in 61 total decode tokens, a factor of 6,574 fewer tokens and about 8,700x less energy; the capability claim proper rests on held-out transfer (7 of 7 at 31B). The same byte-exact store widens usable context from 32,768 to 2,854,766 tokens at zero extra accelerator memory, and moves byte-identical between machines of the same architecture. We describe the system at the behavior level; the engine is proprietary, and every reported number is backed by committed input and output hashes so the scoring can be re-checked without it.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2607.15232|975b1dde5e690ac2246c1d9e3fdf062de6ab4c8a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2607.15232v1 Announce Type: new \nAbstract: A tokenizer fixed at the start of pre-training allocates vocabulary in proportion to the pre-training corpus, reflecting the deployment priorities at that time. When those priorities shift, languages added later are split into many more tokens per word, which can raise latency, compute, and energy consumption for users of those languages. Cloud models can afford a broad vocabulary because the embedding and LM-head matrices are a small fraction of their parameters. On a compact model those matrices are a material share of per-token decode bandwidth, so on-device models ship small vocabularies and accept fragmentation outside a fixed language set. We present tokenizer expansion, an in-place recipe for upgrading a pre-trained model's tokenizer when the model producer controls its design. We continue the existing tokenizer's BPE merges on a multilingual corpus, so most source tokens carry over unchanged as single tokens and every new token has an exact decomposition into source tokens. We copy the carried-over embedding rows unchanged and initialize new rows as the mean of their source sub-token embeddings. A two-stage adaptation, embedding-only training then full-model continued pre-training, recovers source-checkpoint quality. We apply the recipe to a continued pre-trained checkpoint of LFM2-8B-A1B, an 8B-parameter Mixture-of-Experts model, to help produce LFM2.5-8B-A1B with a 128K tokenizer. The expanded tokenizer encodes Hindi and Vietnamese in roughly $2.4\\times$ and $2.6\\times$ fewer tokens than the source (up to $4.0\\times$ on Thai). Combining these reductions with the measured per-token cost of the larger vocabulary, we estimate a $2.2$-$3.7\\times$ per-character decode speedup for these languages across our reference devices. We release the model weights and the expanded tokenizer, and report the negative findings that shaped the recipe.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.14622|4130b15cb3e47ede5802da9b9238661988d83198|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-bit GEMM is increasingly central to efficient ML inference, yet very-low-bit execution remains a poor fit for conventional CPUs. Practical deployment spans fragmented regimes-from 1/2/4-bit weights to varying activation precision-whose feasibility, reuse opportunity, and support cost differ under fixed SIMD and register-file budgets, making lightweight CPU support selection a first-class design problem. We present ExaGEMM, a workload-aware codesign and exploration framework for CPU-native low-bit GEMM via register-resident LUT execution. The key insight is that existing SIMD datapaths already cover table generation and accumulation; the only new hardware is an in-register select/feed mechanism with explicitly modeled cost. ExaGEMM co-explores parameterized kernels and lightweight SIMD ISA support using analytical models of register feasibility, compute cost, memory traffic, and hardware overhead, pruning the candidate space by 99.2% before simulation. It then identifies non-dominated support points and generates ISA specs, gem5 patches, and GEMM kernels for validation. Across representative ML models and CPU targets, ExaGEMM improves latency by 13.29x over software-only baselines, while showing that workload-aware frontier selection is especially important for mixed-precision LLM workloads.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.LG",
+      "cs.OS"
+    ]
+  },
+  "arxiv:2607.14908|359636ec93381d571f40fdf36a2ae01384535521|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying Video Diffusion Models (VDMs) on edge devices is appealing for localized and privacy-preserving generation, but their iterative Transformer-based denoising remains too slow for practical local inference. Cross-Timestep Caching (CTC) has emerged as a promising direction for reducing redundant computation, reusing activations across adjacent denoising steps rather than modifying model weights, while largely preserving generation fidelity. However, on memory-constrained edge GPUs, CTC requires a massive cache footprint that quickly exceeds on-device VRAM and forces the cache into host memory. More fundamentally, cache operators remain tightly interleaved and chain-dependent with native compute operators, so naive near-memory offloading still incurs repeated PCIe exchanges for residual and fusion computations, turning cache reuse into a communication- and serialization-bound execution flow. We therefore propose CODA, an algorithm-hardware co-designed architecture centered on Compute-Cache Operator Disaggregation. CODA separates dense compute paths and memory-bound cache paths across the xPU and a lightweight DIMM-side near-memory engine, reorganizes fragmented cache activity into hardware-friendly coalesced segments, and exploits Classifier-Free Guidance (CFG) branch independence to overlap xPU compute with cache-side execution. Experiments show that CODA achieves up to 1.80x end-to-end speedup and 1.74x higher energy efficiency, while preserving competitive generation quality compared with a state-of-the-art caching algorithm.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2607.14427|ec74202bc59f1994a91a15fb1ec471aff646b749|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A depth-recurrent transformer applies a weight-tied core a variable number of times, and prior work has shown that training with a randomized recursion count yields one checkpoint usable across a range of inference depths. We ask what such a model actually computes per token, and measure it directly. On a 135M-class model trained on FineWeb-Edu, the recurrent state converges to a per-token fixed point: mean successive-output KL divergence falls from 3.9e-1 at the second loop to 8.5e-6 by the sixteenth, and per-token state change decays in step. Crucially, this convergence is not uniform across tokens. The median token converges by loop six, while approximately 10 percent of tokens continue to update at the training-mean depth of eight, and mean convergence depth is ordered by token type (whitespace shallowest, content words deepest). This per-token variation is the central object of the paper. We show it is directly readable and that reading it outperforms learning to predict it: a training-free rule that halts each token once its output stabilizes attains uniform depth-8 quality at 4.94 average loops (a 38 percent reduction in average depth) and matches uniform depth across the average-depth range, whereas a linear router trained on convergence labels harvested from the same model requires nearly full depth and yields no reduction. The elasticity that makes this possible reproduces here as background (validation loss decreases monotonically from 3.80 at one loop to 3.20 at eight and remains stable to 32 loops). We report average depth as a FLOP proxy with a three-point wall-clock bracket rather than a realized speedup, make no FLOP-matched parity claim, and note that the allocation results are established at a single scale and seed. The complete study runs on a single RTX 4090 in approximately 100 GPU-hours.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14149|825cc28708b60be8e41dcfb47bfe6e705d4f9ee7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Although large language models (LLMs) have set benchmarks for zero-shot reasoning, their deployment remains cost-prohibitive and environmentally taxing. Small Language Models (SLMs) offer a sustainable alternative, but prone to errors, on tasks requiring complex, multi-hop logical grounding. We investigate a neuro-symbolic agentic framework to enhance the reasoning capabilities of SLMs, specifically Gemma 3 (1B, 4B) and Llama 3.2 (3B), using the CLUTRR kinship benchmark. Our approach transforms the SLM into a minimalist agent utilizing two specialized tool calls: extract_facts for symbolic triplet extraction and get_hint for expert reasoning via a Relational Graph Convolutional Network (RGCN). We evaluate these models across two configurations, both in an Oracle scenario with ground-truth triplets and a Realistic scenario relying on self-extracted knowledge. Our results reveal that while RGCN-derived hints provide a 1.5 - 2x performance gain over story-only baselines, the system is constrained by the extraction bottleneck and sequential deductive fragility, where early extraction errors compound over multi-hop chains. Furthermore, we identify a \"distraction effect\" in specific architectures where noisy, self-generated facts degrade performance despite the presence of expert hints. This work characterizes the challenges of symbolic grounding in low-resource agentic systems and provides a roadmap for iterative verification in neuro-symbolic agentic pipelines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.14506|656fd5fedd142f2d29f3936a20ddc15d93c5390b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "While reinforcement learning with verifiable rewards (RLVR) is widely used to improve the reasoning capabilities of large language models (LLMs), the generalizability of the resulting models remains poorly understood. In this work, we establish the first non-vacuous generalization bounds for parameter-efficient RLVR fine-tuning at the billion-parameter scale. Our approach adapts PAC-Bayes compression bounds to this setting, and addresses the inherent stochasticity of token generation by applying the Gumbel-max reparameterization trick. To operationalize these bounds, we propose the Progressive RLVR framework, which integrates RLVR with on-policy distillation, TinyLoRA, and model quantization. Progressive RLVR empirically retains 84-97% performance of standard LoRA fine-tuning while producing models that are 14,796x more compressible. We show that this framework yields non-vacuous generalization bounds in four domains: mathematical problem-solving, programming, general-knowledge reasoning, and Text-to-SQL. Our bounds exceed the accuracy of the base model by 9-51% and lie within 6-11% of the accuracy of the fine-tuned models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14530|34e5b5dcacf43d1f0d7d776fdf9a9936b736ab11|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Hyper-Connections (HC) expand the residual stream of Transformers into $N$ parallel streams, providing a form of memory scaling beyond model width and depth. Manifold-Constrained HC (mHC) stabilizes this formulation at scale. The large gains from $N{=}1$ to $N{=}4$ suggest residual-stream expansion as a promising scaling axis. However, existing HC-family methods typically stop at $N{=}4$. Our experiments reveal why: scaling mHC beyond this point yields diminishing performance gains and rapidly increasing training cost. We attribute this limitation to two bottlenecks: insufficient write-back information for an expanding number of streams and residual-mixing generation whose cost scales cubically with $N$. To address both bottlenecks, we propose xHC (Expanded Hyper-Connections), the first HC-family method to achieve meaningful expansion beyond $N{=}4$. xHC combines temporal feature augmentation for richer write-back with a sparse residual-stream architecture that updates only $k=4$ of the $N=16$ streams while retaining dense access to the full residual state. Across 18B and 28B MoE models, xHC delivers strong and consistent downstream improvements. On an 18B MoE model, xHC improves the average downstream score by 4.0 points over mHC, while adding only modest training FLOPs over the vanilla baseline. Scaling-law experiments show that the vanilla and mHC require $1.50\\times$ and $1.19\\times$ the compute of xHC, respectively, to reach the same loss. Practical large-$N$ training also requires controlling memory traffic from the expanded residual state. We therefore introduce xHC-Flash, which reduces the per-sublayer memory traffic from $73.5C$ to $40C$, comparable to the $34C$ required by mHC at $N{=}4$, while retaining the gains of full xHC. Together, xHC and xHC-Flash make large-$N$ residual-stream expansion effective and practical for LLM pre-training.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.14119|c5dcc71b61d7fead32a987a0e48e3efc1226d06b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multi-agent LLM systems commonly decompose complex tasks into specialized roles. However, this modularity introduces a representational risk: when intermediate agents transform text across linguistic registers, they can systematically compress the semantic distinctions needed for accurate downstream decisions. We term this phenomenon semantic register compression and characterize it as an observable failure mode in multi-agent cascades. Using a three-agent pipeline (Collector-Evaluator-Decider), we quantify compression via inter-label separation in sentence-transformer embedding space. Across political fact-checking (LIAR), sentiment analysis (SST-5), and medical triage (Triagegeist), critical evaluation consistently reduces label separability by 41.7% at the Evaluator stage, while identity passthrough preserves it nearly fully. Five architectural variants causally isolate oriented semantic transformation as the primary driver. A credibility-seeking variant produces minimal geometric compression yet shifts outputs toward mostly-true, demonstrating that transformation valence controls the direction of distributional collapse independently of compression magnitude. Compression generalizes across the three domains with varying intensity: 41.7% in fact-checking, 27.2% in sentiment, and 20.0% in triage. Prompt-level regression explains 78% of the variance, with operational constraints associated with lower compression. These results demonstrate that semantic register compression is a measurable and generalizable phenomenon in multi-agent LLM systems, with implications for safety evaluation in high-stakes domains.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.15178|bb024361d3d009680fc6561ae837a6fe35f2d729|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2607.15178v1 Announce Type: new \nAbstract: Transformer reasoning is limited by autoregressive decoding, which repeat edly compresses rich hidden computation through token space and makes it difficult for intermediate reasoning states to persist across time. We in troduce Transformers with Temporal Middle-Layer Recurrence (T2MLR), a transformers-based latent reasoning architecture that fuses a cached middle layer representation from the previous token directly into an earlier layer of the current token position, enabling abstract intermediate computation to persist across decoding steps with little inference overhead. Across natural-language pretraining and multi-hop reasoning finetuning, T2MLR consistently outperforms data- and parameter-matched Transformer base lines. Moreover, applying recurrence to only a localized middle-layer block (as little as 20% of the network) often outperforms full-layer recurrence. Im portantly, T2MLR does not require pretraining from scratch: retrofitting the recurrent pathway into an existing pretrained 1.7B Transformer and briefly finetuning substantially improves math reasoning, lowering the barrier to practical adoption. These results suggest that effective latent reasoning in Transformers does not require looping over all layers as in previous works, but can instead emerge more strongly from targeted middle-layer recurrence.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.14541|56ff8b465f3b6fcd2c7cd1f3e004277ca80ceb55|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Existing GPU kernel generation benchmarks draw problems from synthetic or curated sources that diverge from deployed workloads. We present Atrex-Bench, a benchmark whose 30 operators and 440 shapes are sampled directly from full-cluster production inference traces of compute-limited, memory-rich GPUs. Each problem carries an importance weight derived from its share of observed GPU time, weighted by application card-hours and computed separately for the serving phases in which it runs, together with a per-problem roofline ceiling, so the aggregate score emphasizes the kernels that consume the most serving time. Evaluating six frontier coding agents on Atrex-Bench shows that even the best vanilla model reaches only ${\\sim}10\\%$ of the hardware roofline on production operators; and correctness alone overstates capability, since much of the apparent pass rate comes from PyTorch fallbacks rather than kernels the model wrote. To close this gap, we co-release Atrex-Kernel-Agent (AKA), a profile-driven kernel-optimization agent that combines iterative measure-revise search, optimization dropout for escaping stalled search contexts, and a layered GPU-optimization knowledge base (298 reference-kernel files and 244 optimization-knowledge documents, plus external upstream reference projects for API/ISA lookup). In a controlled case study, the agent converts zero-FlyDSL fallbacks into real kernels that match or exceed hand-tuned production baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
