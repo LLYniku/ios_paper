@@ -12032,5 +12032,181 @@
     "keywords": [
       "cs.AI"
     ]
+  },
+  "arxiv:2607.16339|861539cf3c51d4463979502ed7303dd4d247820c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion-based Large Language Models(DLLMs) enable parallel generation via Semi-Autoregressive (SAR) decoding in text generation. However, current methods suffer from severe operator-level redundancy: they recompute the entire sequence during denoising steps, ignoring that the prefix and masked suffix remain invariant within a block. We propose LaCache, a training-free acceleration framework that alleviates this redundancy through lossless caching and mixed precision. Specifically, LaCache employs Lossless State Memoization (LSM) by caching three types of intermediate results: (i) EmbedCache for embedding outputs, (ii) RoPECache for token-wise pre-attention states, and (iii) FACache for the online softmax statistics within FlashAttention. These caches allow the model to skip redundant computation on unchanged tokens without altering the output. To further alleviate memory-bandwidth bottlenecks, LaCache inegrates a per-group FP8 quantization strategy for FFN layers, tailored to step-dependent activation distributions across the diffusion process. Experiments demonstrate that LaCache alone achieves approximately 1.3X end-to-end speedup over vanilla DLLM. When combined with existing acceleration methods, LaCache reaches up to 40.2X end-to-end speedup while maintaining comparable task accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.16213|87e5a0c482344ffbbc3b5355f582873a1b3f8be9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) generate text autoregressively, relying on a key-value (KV) cache whose memory footprint grows linearly with context length, creating a major bottleneck. Recent compression methods mitigate this cost via token merging; however, these approaches often rely on indiscriminate aggregation, which degrades representations and introduces attention sag, a mismatch where merged tokens receive the same softmax mass as individual tokens despite encoding multiple inputs. We propose a training-free, dual-component framework for KV cache compression that addresses these limitations. First, a soft cosine gate adaptively modulates merging decisions based on value-vector similarity, suppressing or discarding dissimilar tokens to preserve semantic fidelity. Second, we introduce an attention-ratio compensation mechanism that applies a decoding-time logit bias derived from prefill attention statistics, correcting the softmax imbalance induced by merging. Evaluated on LongBench (16 English datasets) while retaining only 25% of the KV cache, our framework achieves strong compressed performance against representative one-shot baselines. It is especially robust on the evaluated grouped-query attention (GQA) models, maintaining nearlossless generation quality. Furthermore, the method outperforms the full-cache baseline on complex multi-document QA tasks and delivers a 3.3x decoding speedup at 100k tokens.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.17715|ae77b1b8774477ab9926d24c3b815428ac7a6da6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context inference is central to modern large language model (LLM) applications such as retrieval-augmented generation and multi-document reasoning. To mitigate the growing inference cost, recent work has explored key-value (KV) cache reuse to reduce redundant prefill computation. However, existing reuse methods primarily focus on computation savings and overlook a critical bottleneck in long-context LLM serving: the cost of storing and accessing large KV caches. While KV compression appears to be a natural complement, naively combining compression with non-prefix KV reuse often leads to severe accuracy degradation. In this work, we propose C$^2$KV, a unified framework for non-prefix KV reuse that jointly optimizes KV extraction and inference-time concatenation. C$^2$KV learns a composable and compressed KV cache manifold that is explicitly designed to be position-agnostic. Our approach introduces a lightweight sidecar Extractor with learnable compression tokens and a structured attention flow, enabling modular KV representations that can be flexibly reused and concatenated without modifying the frozen base model. We further employ a compression-concatenation co-training strategy to align extraction-time representations with their downstream reuse behavior. Extensive experiments across multiple long-context benchmarks and model families demonstrate that C$^2$KV significantly reduces KV cache storage and transfer costs, achieving up to 17$\\times$ inference speedup under long contexts, while preserving generation quality.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.18081|82591ac75092899731360e3bd526492bfadde391|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) have demonstrated remarkable capabilities across a range of Natural Language Processing (NLP) tasks, but their high computational and memory demands pose significant challenges for deployment on resource-constrained edge devices. Existing approaches to model compression and optimization often rely on coarse-grained pruning or quantization, which can compromise accuracy or require re-training and fine-tuning. In this work, we introduce SelectInfer, a neuron-level optimization framework that enables efficient LLM inference on edge devices through selective neuron loading and computation. By profiling and identifying both task-specific and general-purpose neurons using an offline LLM profiler, SelectInfer implements two key optimizations: selective loading, which reduces memory footprint by selectively loading a subset of neurons that were identified to be most important during the offline stage, and selective computation, which dynamically computes only the most relevant neurons at runtime. Evaluation across multiple datasets shows that SelectInfer achieves significant reductions in memory footprint and computation while preserving task performance, making it a practical step towards enabling LLM deployment on edge devices",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.17074|3e954985f23245fdf11bc69d60c002769faabfea|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture of Experts (MoE) architectures have emerged as a dominant paradigm for scaling Large Language Models (LLMs). However, MoE inference on conventional hardware is constrained by three fundamental bottlenecks. These encompass the massive memory bandwidth required to fetch non-contiguous expert weights, the non-deterministic scatter-gather traffic generated by input-dependent token routing, and the tail-latency dependency imposed by synchronous expert output aggregation. To address these challenges, we propose ThAME, a three-dimensional (3D) heterogeneous multi-chiplet architecture for MoE inference. ThAME employs Ferroelectric Field-Effect Transistor (FeFET)-based non-volatile and DRAM-based volatile memory chiplets with a co-designed compute mapping strategy that aligns the distinct computational profiles of attention mechanisms and expert routing. Furthermore, we design a specialized Network-on-Chip communication backbone optimized to mitigate the bottlenecks associated with non-deterministic token routing traffic across the combinatorial space of input-dependent MoE traffic patterns. Experimental results demonstrate that ThAME outperforms state-of-the-art counterparts by up to 15.7x in terms of speedup and improves energy efficiency by up to 9.8x.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2607.17538|43be61a6e6756132bf23d425094298d70c02cab9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Retrieval-Augmented Generation (RAG) enhances the factual grounding of large language model (LLM) inference by retrieving relevant information from external knowledge bases. However, its dense vector retrieval introduces significant latency and energy overhead, becoming the primary performance bottleneck. Although recent in-storage accelerators aim to reduce data movement, they still rely on host or embedded processors outside the memory, where nearly 70% of the total retrieval time is spent. As a result, they cannot fully overcome the bandwidth limitations, leading to yet another memory bottleneck. To tackle these limitations, we present D-NOVA, a hardware-software co-designed in-storage retrieval accelerator. D-NOVA executes an inverted file (IVF)-based hierarchical retrieval pipeline by deeply embedding the search functionality directly into the NAND memory array. This is achieved by incorporating a new distance metric, Dual-Bound Tight Similarity Sensing (DTS), which is specifically tailored for searching within the NAND string. In addition, we introduce a lightweight contrastive adapter that maps embedding vectors into a DTS-friendly domain, recovering near-software recall while improving performance and energy efficiency. D-NOVA is up to 41.7x faster and 71x more energy-efficient than a CPU baseline, and achieves 12.13x higher throughput while being up to 1.26x more energy-efficient than state-of-the-art in-storage RAG accelerators, demonstrating the potential of fully in-storage vector search for scalable RAG acceleration.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.CL",
+      "cs.DB",
+      "cs.ET"
+    ]
+  },
+  "arxiv:2607.17283|8bf1d2446fba86d4b6e2b25cbae941144985600b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2607.17283v1 Announce Type: new \nAbstract: Single-stream autoregressive decoding of large language models is bound by memory bandwidth: each generated token requires one full forward pass through the target model, and successive passes cannot be parallelized. Speculative decoding restructures this computation: a small draft model proposes $K$ tokens autoregressively, the target model scores all of them in one batched pass, and a rejection-sampling rule provably preserves the target model's output distribution. We present a from-scratch, device-agnostic (CUDA/MPS/CPU) implementation and an empirical study across five draft/target backend configurations on a consumer Apple-silicon laptop. Distribution equivalence is verified at three levels, culminating in a two-sample test over roughly 9,200 real-model tokens per method ($\\chi^2 = 162.5$, dof $= 200$, $p = 0.976$) and exact greedy-sequence agreement. The best configuration reaches a measured $1.61\\times$ wall-clock speedup at $K=6$, on an acceptance profile declining from 69.7% at $K=1$ to 37.8% at the optimum, while three of five configurations decelerate, either because the draft fails to out-speed a small target or because the quantized Metal backend executes \"parallel\" verification serially, an effect we isolate and quantify. The failures are as instructive as the successes: speculative decoding pays off only when verification is genuinely batch-parallel and the draft/target latency gap is real.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.16248|337069a8a683f3c6a14613321d5b38f1b46de612|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context large language model inference relies on the KV cache to avoid redundant attention computation, but incurs high memory and bandwidth overheads. Low-bit KV-cache quantization reduces this cost, yet it severely degrade quality; particularly, one-bit quantization reduces accuracy from 84.2% to 47.8% on Llama-3.1-8B under RULER.\n  Rather than common beliefs that absolute error of logits, we find that the root cause is structured local misranking, where the distribution of logits in top-K region is drifted. We thereby propose local distribution restoration, a new technique that detects steps with high local distribution risk from quantized-logit features and restores only the selected top-K candidate distribution before token selection. We implement DGAP to achieve local distribution restoration, with efficient risk detcetors and correctors. Expeirments show that on Llama-3.1-8B, DGAP recovers K1V1 RULER accuracy from 47.8% to 83.2% and reduces distribution drift from 0.38 to 0.14; across Llama, Mistral, and Qwen models, it preserves the persistent low-bit KV-cache footprint with modest decode overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.16241|d08814abf8dd226ab0080a3397b317d91e4a4fc8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recent large language models (LLMs) can generate custom CUDA kernels that appear to outperform PyTorch on benchmarks such as KernelBench. Building upon this foundational framework, we demonstrate that frontier models frequently engage in reward hacking to artificially inflate reported performance. In this work, we identify two areas where evaluation frameworks must co-evolve with model capabilities. First, to accurately measure true speedup, we examine the baseline timing mechanism, noting that enabling Tensor Core acceleration with TF32 provides a more realistic estimation of execution on modern GPUs. Second, concerning algorithmic correctness, models often exploit the narrow test distribution by hardcoding bypasses for specific tensor values. By skipping required computations, these kernels artificially accelerate execution rather than implementing actual CUDA kernels. We introduce KernelBench-Verified, an extended evaluation framework that incorporates a TF32-enabled baseline and a four-distribution hidden test suite. We additionally introduce memory efficiency metrics that capture the often-overlooked speed-memory tradeoff in kernel optimization. Under verified single-turn evaluation with seven frontier LLMs, we find that the best-performing model (GPT-5.5) achieves a 0.88x geometric mean speedup, significantly lower than the 1.43x speedup observed under the standard evaluation protocol. No model consistently outperforms PyTorch when evaluated against realistic baselines. On the memory front, 28% of GPU kernels generated by the best model increase peak GPU memory usage. Our findings demonstrate the necessity of continually adapting robust evaluation protocols as LLM kernel generation capabilities advance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.18027|3b5cd90a32b6d7fa4f0a35e01c3b22fb775e5d2f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Scaled dot product attention conflates directional alignment and vector magnitude, limiting its effectiveness as a similarity metric in Transformer models. We introduce L1 augmented attention, a simple and computationally parallelizable modification that subtracts a learned, head specific L1 distance between queries and keys from the dot product score. This hybrid similarity captures complementary geometric information. Dot product rewards directional alignment, while L1 penalizes coordinate deviations. To reduce the cost of L1 computation, we project queries and keys into low dimensional subspaces whose parameters specialize to preserve informative L1 structure. Evaluated on WikiText 2 using a compact transformer, L1 augmented attention achieves up to a 14.5% reduction in perplexity over the original transformer baseline and outperforms an RBF L2 kernel. Analysis of norm variance and learned L1 weights reveals distinct geometric roles across layers and strong head level specialization. These results demonstrate that enriching attention with L1 geometry provides a principled and effective improvement to similarity computation in modern language models, with practical benefits for both accuracy and parallel efficiency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.17545|31c523df9098cae7433c867496bfbec52d05fca2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Language agents depend on memory across interactions. However, the limited context windows of large language models (LLMs) and their inference costs constrain how much memory can be used at once. Existing systems mainly follow two strategies: memory retention and memory consolidation. Retention keeps raw records and preserves exact details, but relevant evidence may not fit under a tight budget; consolidation compresses and combines records, improving coverage per token but risking the loss of query-critical details. Neither strategy is universally preferable. This raises two central questions: when should consolidation replace retention, and which operator -- Merge, Abstract, or Rewrite -- should be selected? We formalize this decision by decomposing each operator's utility into a coverage effect on evidence omitted by retention and a signed replacement effect on raw evidence that already fits. Their balance explains why the preferred action changes with relative budget pressure. We implement this mechanism with Offline Abstraction-Safety (OAS), a lightweight learner that estimates action utilities from pre-generation features with held-out harm calibration. The public LongMemEval and LoCoMo benchmarks show the same budget-dependent pattern. On LongMemEval, consolidation improves absolute accuracy by up to 48% under tight budgets, whereas retention is preferable under loose budgets; LoCoMo replicates this crossover at a smaller budget, consistent with its shorter evidence. On both datasets, cross-note abstraction and merging generally outperform local rewriting when compression is necessary.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.17652|4f68e24d1d585790952ac19053e660a5fd5581ce|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Block-wise diffusion large language models (dLLMs) decode sequentially at the block level, enabling effective KV-cache reuse across blocks but making inter-block decoding strictly serial. Prior work has attempted to unlock inter-block parallelism through post-training methods, but achieves only modest speedups and often degrades accuracy. We observe that self-correcting dLLMs offer a training-free alternative: token-to-token (T2T) editing can repair tokens drafted with a slightly stale upstream context, so a downstream block requires only an informative draft rather than a finalized predecessor. This turns block finality from a hard dependency into a scheduling resource. We propose \\textbf{\\flowblock{}}, a training-free parallel decoding framework built on two mechanisms. (i) \\emph{Gated Wavefront Decoding} admits blocks into a bounded wavefront only when a readiness gate is satisfied, jointly refines active blocks via T2T editing, and commits blocks in order under a windowed block-causal mask that preserves exact frozen-prefix KV caches reuse. (ii) \\emph{Heterogeneous Wavefront Packing} assigns each request an independent wavefront while packing asynchronous windows into dense, shape-stable batched forwards. Across different benchmarks, \\flowblock{} improves tokens per second (TPS) over LLaDA-2.1 and LLaDA-2.0, two serial block-wise dLLMs, by up to 2.95$\\times$ and 4.01$\\times$, while reducing latency by up to 53.6\\% and 77.1\\%, respectively. It also improves average accuracy by 1.3 points. Compared with D2F, a training-based inter-block-parallel baseline, \\flowblock{} achieves higher accuracy and up to 16$\\times$ higher batched serving throughput.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.16673|f11c87e513c48a368aa3c60ace637ea3f8fcce3d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Linear-attention models replace the growing KV cache with recurrent states, but autoregressive decoding still reads, updates, and writes these states one token at a time. Speculative decoding can reduce this cost by verifying several draft tokens in one target pass, yet existing speculative systems are designed for Transformer KV caches. For stateful linear-attention targets, verification must follow recurrent dependencies across chains and branches, acceptance must update only the accepted state trajectory, and the drafter must avoid submitting candidates that waste stateful verification work. This paper presents SpecLA, a speculative decoding runtime for stateful linear-attention models. SpecLA verifies chains and trees with topology-aware kernels, stores compact factors produced during verification to recover accepted states, and uses confidence pruning plus a target-aligned EAGLE-style drafter to feed useful candidates to the verifier. On an NVIDIA H100 with a public GDN-1.3B target, SpecLA achieves up to 1.70x end-to-end speedup over autoregressive decoding.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.16669|670e516ec99dc131580c011518a4e061173cfe7e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "OpenLanguageModel (OLM) is an open-source PyTorch library for building and pretraining small language models while keeping their machinery visible. In OLM, model code reads like the architecture: components are ordinary modules, while Block, Residual, Repeat, and Parallel describe how they are wired. The resulting model can move unchanged from a teaching notebook to a complete pretraining run or a research ablation. OLM connects this readable model layer to tokenizers, local and streaming datasets, optimization, mixed precision, callbacks, checkpoints, and hardware-aware CPU, single-GPU, and single-node multi-GPU execution. We demonstrate the full path by tracing GPT-2 from diagram to code, launching a FineWeb-Edu training script, replacing one attention component, and letting AutoTrainer configure the available machine. The package includes 27 presets across nine familiar model families and documentation that progresses from LM fundamentals to architecture research. Validation shows close agreement with independent reference implementations, 90.6% four-GPU weak-scaling efficiency for a 348M-parameter workload, compact architecture edits, and positive early usability results. OLM is MIT-licensed and available through PyPI, GitHub, and its documentation site.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG",
+      "cs.SE"
+    ]
+  },
+  "arxiv:2607.17843|a7d0d7ce7e018e5b627a74577bf5a8842108719a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based language models organize computation along an ordered depth axis, where shallow and deep blocks often develop distinct representational roles. We challenge the conventional view that these roles must remain tied to a block's position in the ordered sequence. We introduce Mobius Learning, a training architecture based on cyclic depth folding, in which different data streams follow cyclically shifted block orders. The same block group is therefore applied early in the block sequence for some data streams and late for others, so it is optimized in both shallow and deep roles, a phenomenon we call depth-role superposition. Surprisingly, in four-worker experiments with a modded GPT-2 small (124M) model trained on 2.5B FineWeb tokens using Muon, Mobius Learning achieves lower validation loss than a fixed-order looped Transformer at larger numbers of Transformer block-sequence passes. This counterintuitive result shows that a block group need not remain confined to one fixed shallow or deep role within the block sequence and opens a new design space based on cyclic depth folding. Crucially, this structure makes Mobius Learning particularly well suited to memory-constrained distributed training: raw training data remain local, while each worker stores one block group rather than the complete Transformer block stack.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2607.17710|0255442d6eef0de121e87eeb204018ed71b7c3b1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) have had a remarkable impact across many areas of machine learning. However, recent studies have shown that they struggle to reliably solve planning problems. At the same time, theoretical results have shown that transformers, the core architecture underlying modern LLMs, are Turing-complete. In this work, we investigate this apparent gap between the theoretical computational power of LLMs and their empirical planning performance. We propose Chain of Computation (COC), a computational architecture that places a transformer-based LM inside an iterative loop, leveraging its strength as a pattern-matching system. The COC uses a Structured Context Window (SCW) which provides a constant-sized context window with support for choosing which window is used at each planning step. Within this architecture, the LM is able to learn a planning policy, predicts the world model, and performs the arithmetic operations required during planning. We show that, when given an append-only SCW (resembling a Turing Machine tape), even relatively small LMs trained from scratch can learn planning policies and generalize from a small number of training instances within each planning domain, achieving success rates above 99.89\\% on BlocksWorld and the Pancake puzzle. Our analysis of failure cases in Tower of Hanoi (TOH) reveals that they arise from arithmetic operations or from encountering previously unseen tokens. We show that COC can solve TOH problem instances with up to 20 disks, requiring over 1 million actions, while requiring substantially less training data by either (1) planning with symbolical support for arithmetic or by (2) using a deterministic pushdown automaton (PDA) formulation for the SCW.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.17979|4dd0f19f1072fafcb13c77918342f59e3dc9cc79|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) can assist GPU kernel generation, but their practical effectiveness depends on whether generated code can be reliably constrained, validated, profiled, and selected. This paper presents a harness-centered system for LLM-driven GPU kernel optimization in the MLSys 2026 FlashInfer AI Kernel Generation Contest on NVIDIA Blackwell B200 GPUs. The system separates an evaluation harness from a profile-backed optimization controller: the harness enforces compilation, correctness, official-aligned timing, and artifact archival, while the controller turns profiler and workload evidence into bounded candidate-generation decisions. Human-authored skills capture operator constraints, references, profiling procedures, and promotion rules, while Codex and Claude Code agents generate candidate kernels inside those constraints. Across five operator definitions, the retained official-aligned artifacts achieved mean-latency speedups over supplied FlashInfer baselines of 1.62x, 18.05x, 29.68x, 1.12x, and 13.70x. The Agent-Assisted kernels outperform the Full-Agent artifacts across the evaluated definitions, indicating that expert-provided optimization directions, high-quality references, and workload context remain critical for reliable AI-driven kernel optimization.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.18171|b1a151ae52f3d99fc7737a1885a80d635c779198|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Real-time multimodal applications, including voice agents and interactive video generation, compose heterogeneous models into pipelines whose efficient deployment requires application-specific decisions about placement, streaming, and intra-model parallelism. Existing serving systems and auto-parallelism compilers commit to limited transformations and fixed workload assumptions, so achieving high performance on a new application requires hand-crafting an efficient implementation. We present FlashRT, an agent harness that guides coding agents to lift simple developer-written reference implementations into optimized multi-GPU deployments that flexibly weigh target metrics like latency and throughput. Using a new chain-of-program paradigm, FlashRT directs a generic coding agent through a multi-pass transformation process where an agent transforms the reference into an intermediate representation (IR) to capture data dependencies and persistent-state scopes, validates this IR via a sequential interpreter, and performs static analyses to identify candidate transformations. Then, the agent iteratively implements, verifies, and benchmarks each candidate under a measurement-gated optimization loop to produce effective deployments that span different hardware budgets. Across various applications, including video world models and multimodal LLMs, FlashRT converts reference implementations into highly efficient deployments, delivering up to ~70x latency reduction and 2.8x throughput improvement on NVIDIA B200 GPUs. On AMD MI355X GPUs, FlashRT matches the peak latency reduction while increasing peak throughput improvement to 3.6x, demonstrating that agent-driven optimization can be more scalable on platforms with less mature expert optimization. In fact, for Qwen3-Omni text-to-audio inference, FlashRT reduces response latency by 65% compared to the expert vLLM-Omni implementation on AMD MI355X.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.16473|1f88da74643b40e3b9c6c45e7fe6c920a6687e2d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As neural processing units (NPUs) evolve rapidly to accommodate the ever-increasing compute demand of large language models (LLMs), their power consumption is becoming a limiting factor. Our study shows that using dynamic voltage and frequency scaling (DVFS) to exploit the service-level objective (SLO) slacks is a promising way to improve NPU energy efficiency for LLM services. And as tensor operators in LLMs exhibit diverse bottlenecks across NPU components, it is desirable to configure the frequency separately for each component to maximize their energy efficiency.\n  In this paper, we develop eNPU that enables hardware and software support for spatially fine-grained, component-level DVFS on NPUs. eNPU refactors the NPU core pipeline to partition components into separate V/$f$ domains. It introduces lightweight cross-domain communication mechanisms to mitigate synchronization overheads across components, and extends the NPU ISA for sub-$μ$s DVFS control. eNPU uses a compiler-driven two-level greedy search to co-optimize instruction scheduling and per-component V/$f$ selection under SLO constraints. We implement eNPU's pipeline design on an open-source NPU core to verify its functionality and evaluate the energy savings with a production-level NPU simulator with various LLMs using production traces. eNPU reduces energy consumption of LLM services by 25.8%--35.2% with 3.45% area overhead on a TPUv4 chip, while preserving strict SLO guarantees.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2607.17733|13db7a3044fe178b6f0af6453f631a86d0cf6c79|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "4-bit quantization enables efficient LLM inference, but suffers from significant accuracy degradation due to outliers. Prior work addresses this problem via data rotation or mixed-precision integer quantization, but often relies on software-managed scaling and frequent dequantization, incurring substantial overhead. Microscaling formats, such as MXINT, eliminate these inefficiencies by encoding scales in hardware, yet remain incompatible with rotation-based methods. Our analysis reveals that outliers vary in severity, from rare extremes to frequent mild deviations, and that quantization sensitivity is unevenly distributed across layers and columns. These insights motivate a fine-grained, sensitivity-guided approach. We introduce MXSens, a training-free method that assigns mixed mantissa bitwidths (4/6/8) based on column- and layer-wise sensitivity, naturally leveraging the block-wise structure of MXINT. MXSens outperforms state-of-the-art quantization methods across a range of models and tasks. Under the W4A4KV4 setting, MXSens achieves perplexities of 3.77 and 7.63 on LLaMA-2-70B and LLaMA-3-8B, respectively, substantially improving over existing baselines on WikiText-2. Our work establishes a new balance between accuracy and resource efficiency for LLM quantization.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
   }
 }
