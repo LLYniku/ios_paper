@@ -12731,5 +12731,181 @@
     "keywords": [
       "cs.AI"
     ]
+  },
+  "arxiv:2607.22389|c6c4dd524cfd6109c53050e2f629a8de02b77cf0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "With the rapid adoption of long-context large language models (LLMs), the continuously growing KV cache during decoding has become the critical memory bottleneck. To tackle this challenge, we propose HiKV, a novel algorithm-hardware co-design that exploits KV cache redundancy through hierarchical importance awareness. Algorithmically, HiKV compresses the KV cache at two granularities: Stage I evicts unimportant tokens within a fixed budget, and Stage II further loads only the significant elements of each retained token, reaching compression ratios unattainable at a single granularity. Architecturally, we develop a dedicated accelerator centered on a reconfigurable importance sorter that switches between the distinct sorting datapaths each stage requires, unifying the two-stage acceleration in one circuit with minimal overhead. Evaluated on representative LLMs, HiKV achieves up to 7.95x speedup and 90% energy reduction in the attention computation over the vanilla KV cache baseline within negligible 1% accuracy loss. Under iso-accuracy constraints, HiKV outperforms state-of-the-art importance-based methods by achieving an additional 1.82~4.87x reduction in external memory accesses. These benefits are enabled by specialized hardware components that add only 8% to the system area.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.21927|f507c0eae5e436547634c6e6b730c0cede087bf1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Full self-attention in large language models scales as O(N^2), which limits long-context document analysis to 65,536 tokens and requires costly GPU clusters. The Reduced Interaction Sampling (RIS) inference engine addresses this constraint as a model-agnostic architecture. Without modifying weights, RIS reduces self-attention complexity to O(N log N) using sparse stochastic geometry that fits within commodity memory limits. We validate RIS on Qwen2-1.5B-Instruct across two regimes. In controlled evaluations at 32,768 tokens (where native dense attention serves as the upper bound), RIS-Stochastic at 1% density and 70 ensemble seeds achieves 75.00% accuracy, outperforming the native dense baseline (71.88%), while RIS-Stochastic at 5% density and 10 seeds matches it (71.88%). This demonstrates that sparse attention acts as a regularizer: low density (1%) over multiple seeds filters out sequence-level noise, whereas higher density (5%) reintroduces distractor noise. Under the tightest budget, RIS-Structural reaches 68.75% accuracy at 1% density with just 10 seeds, recovering 75% of the contextual gap relative to the zero-context floor (59.38%). At 65,536 tokens, where dense attention triggers out-of-memory faults, RIS yields retrieval gains of up to 14.06 percentage points over the zero-context floor (51.56%), which is confirmed as marginally significant under McNemar's paired test (p = 0.078 < 0.10). All evaluations run on commodity, unaccelerated CPU servers (16-128 GB of RAM), demonstrating that long-context LLM inference is feasible on standard academic hardware without GPU acceleration.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.21604|9b12ac564498fcf3d99dae0aa816faf83b5a1f89|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Memory-augmented LLM agents maintain context across hundreds of interactions through agentic memory systems that actively curate retrieved content with LLM-generated metadata such as summaries, keywords, and tags. From an inference cost standpoint, every retrieval triggers a full re-encoding of these structured memory units into Key-Value (KV) states, which dominates prefill latency. Existing training-free KV reuse methods mitigate this by selectively recomputing a small fraction of tokens, but were designed for RAG-style raw passages and degrade on structured agentic memories. We present AgentKVShift, a training-free, probe-guided KV residual correction method that operates per retrieved memory unit. One of the crucial insights we demonstrate is that the per-memory KV reuse residual decomposes into a shared memory-level offset plus small token-wise fluctuations. Estimating this offset from a small probe set allows us to correct every reused token by a single weighted correction. Unlike prior reuse methods which decide which tokens to recompute and leave the rest of the cache stale, AgentKVShift also corrects the tokens it does not recompute, turning the refresh budget into useful signal across the entire chunk. Across four open-source LLMs spanning 3B to 32B parameters and two long-horizon agentic memory benchmarks (long-term dialogue and agentic applications), AgentKVShift achieves near full recompute performance while refreshing only 10-30% of the cache, outperforming baselines at the same recompute ratio. It requires up to 5x lower recompute to reach this near-full performance, which prior reuse methods only attain at 45-55% refresh. In this regime, AgentKVShift delivers prefill speedups of 2-3.5x over no-KV-reuse on a single A100. AgentKVShift orthogonally composes with KV cache quantization, retaining over 2x the F1 of prior reuse methods under aggressive 2- and 4-bit settings.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22022|52bee24aeb11b86b9ad4a10f3c9cc53cebf7c6b6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Structured State Space Models (SSMs), such as Mamba, enable efficient long-sequence modeling with linear time complexity. Recent implementations realize this capability through Structured State Space Duality (SSD), which transforms recursive state evolution into matrix-form computations. However, SSD introduces substantial system-level overheads, including quadratic intermediate materialization, irregular data movement, and prefix-dependent execution, leading to excessive memory traffic and bandwidth demand on conventional architectures. Although prior accelerators mitigate these overheads through optimized dataflows or compute-in-memory techniques, they largely retain matrix-oriented SSD execution and cannot simultaneously avoid quadratic intermediate storage and efficiently map dependency-bound state propagation.\n  This paper presents HEMERA, a heterogeneous memory-centric accelerator for efficient Mamba-2 inference. Rather than directly executing the matrix-form SSD computation, HEMERA reformulates it into an algebraically equivalent streaming-recursive dataflow that avoids quadratic intermediate storage while preserving the original computation. The resulting heterogeneous execution paradigm maps dense linear operations onto in-memory computing units and recursive state updates onto a dedicated streaming engine. Across Mamba-2 models ranging from 130M to 2.8B, HEMERA achieves average latency speedups of 1.4x-3.6x and energy-efficiency improvements of 12.2x-27.0x over the official optimized fused Mamba-2 kernel on NVIDIA A100. It further reduces the average SSD-related execution-time ratio across model scales to 14.12% during long-sequence inference, demonstrating its potential for efficient deployment under edge constraints.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2607.21731|c40db9f243e522c3696ed6afb453dbf0b00644fd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformers are widely used across many domains, including natural language processing, computer vision, web search, and DNA sequence analysis. Given their broad applicability, improving the performance of transformer models is critical. However, the high volume of data movement between processing units and memory during attention operations significantly limits their efficiency. Processing-In-Memory (PIM) mitigates this issue by performing computations directly inside memory. While prior work has proposed PIM-based transformer implementations, they suffer from costly inter-bank communication, and struggle to scale due to the limited capacity of memory banks. As a result, attention-related data must be split across banks, diminishing the potential benefits of PIM.\n  In this work, we propose RED-PIM, an algorithm-architecture co-design that reduces attention latency by minimizing inter-bank data movement from O(N^2) to O(N) and shrinking intermediate attention matrices from N x N to d x d. By reorganizing matrix operations, performing computations locally, and employing an optimized data transfer strategy, RED-PIM significantly reduces computation cost and interconnect traffic. Compared to baseline PIM implementation, RED-PIM achieves inference time reductions ranging from 16.05% to 99.99% (geometric mean of 66.42%), with the largest gains on longer sequences. On real-world datasets, RED-PIM improves performance by 99.60% for long documents and 13.44% for shorter ones, while maintaining or improving accuracy. These results demonstrate RED-PIM's effectiveness for scalable and efficient transformer inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AR"
+    ]
+  },
+  "arxiv:2607.22043|41293ef66c43a452ff919f796a0958b236e84cf2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Although large language models (LLMs) exhibit remarkable reasoning capabilities, their reliance on text-only pre-training restricts the perception of the multimodal physical world. Native multimodal pre-training avoids this limitation by training models from scratch on multimodal inputs, thereby achieving deep cross-modal integration and mitigating optimization asymmetries inherent to traditional late-fusion architectures. Despite these advantages, the scaling properties of this paradigm remain systematically uncharacterized. To address this gap, we investigate the optimal model size and token count for training a transformer-based vision-language model under a fixed computational budget. We demonstrate that minimal objective loss adheres to a predictable compute law, whereas compute-optimal model sizes and token counts scale as power laws. Notably, language and multimodal objectives manifest distinct scaling behaviors. The language allocation law is largely invariant to the composition of the data, indicating stable language learning regardless of the multimodal data ratio. Conversely, the multimodal allocation law is highly sensitive to this composition. Specifically, text-heavy mixtures become compute-efficient only at larger model scales, shifting the optimal resource allocation toward greater model capacity. Additionally, by modeling the influence of data composition on compute laws and allocation exponents, we derive an efficiency frontier specifying precise configurations of model size, token count, and data mixture. Downstream evaluations further reveal that native multimodal pre-training induces positive cross-modal transfer, thereby enhancing pure-text spatial reasoning and enabling robust multimodal in-context learning. In summary, this empirical research establishes the essential groundwork for predictably scaling multimodal foundation models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.CV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2607.21602|587dd099e6262af04ec0ed640c643e0053ea2606|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Accurate latency prediction is critical for deploying large language models (LLMs) on heterogeneous edge devices, where inference latency is affected by model architecture, prompt behavior, runtime backend, hardware utilization, dynamic voltage and frequency scaling (DVFS), and thermal variation. This paper presents a runtime-aware latency prediction framework for deployment-oriented LLM selection. The framework represents each inference request as a hardware-runtime-model-prompt configuration, separates inference into prefill and decode phases, and adaptively fuses static descriptors with dynamic hardware telemetry through a gated prediction model.\n  We evaluate the framework using Pixel mobile devices and validate the profiling pipeline on Jetson Nano, Orange Pi 5 Pro, and an RTX 3090-class GPU platform. On Pixel 8, the full predictor improves total-latency R-squared from 0.953 to 0.960 and decode-latency R-squared from 0.957 to 0.973 over a static-only baseline. On Pixel 8 Pro, it improves prefill-latency R-squared from -1.383 to 0.966. For cross-device transfer, calibration improves Pixel 8 Pro to Pixel 8 total-latency R-squared from -0.974 to 0.940 and decode-latency R-squared from -1.085 to 0.927. Heterogeneous profiling further shows that latency is highly device- and runtime-dependent: the same SmolLM2 model family reaches 8.42 tokens/s on Orange Pi 5 Pro but 64.38 tokens/s on an RTX 3090-class GPU. These results demonstrate that runtime-aware prediction with lightweight calibration can reduce profiling cost and support latency-aware LLM deployment across heterogeneous edge platforms.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.21624|393a332f7136baaf53c2208351531c7cb39aba7b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based models have enabled unprecedented capabilities across language, vision, and multimodal tasks. On-device fine-tuning of transformer models offers a privacy-preserving path to personalized AI, yet remains inefficient on mobile GPUs due to severe memory constraints and frequent layout transformations in attention mechanism during training. Existing mobile training frameworks either use unified layouts for forward and backward passes -- leading to fragmented memory access and poor GPU utilization during backpropagation -- or rely on explicit layout conversions, which introduce significant transformation overhead.\n  To overcome this, we propose FBLayout, a layout-aware framework that co-designs tensor organization with mobile GPU platforms. FBLayout introduces: (1) a unified R-Tile layout for multi-dimensional reductions across forward/backward passes; (2) tile-based index transformation to eliminate physical data movement; and (3) activation-guided layout selection to propagate efficient layouts globally. Evaluations on seven transformer models across different mobile phones (including ARM Mali and Qualcomm Adreno GPUs) show that FBLayout achieves 2.2-5.7x speedup over MNN, TFLite, and TVM, while significantly improving cache efficiency and reducing memory footprint, enabling practical on-device large model fine-tuning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.21752|f9517b2fb1ee71a9b387c4c3062862dd1f81760d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2607.21752v1 Announce Type: new \nAbstract: Data-adaptive sparse attention masks substantially outperform fixed patterns (e.g., BigBird and Longformer) and can even exceed dense attention on long sequences. Existing adaptive approaches---including SBM-Transformer, Dynamic Mask Attention, and NSA---typically require additional learnable parameters, custom gradient estimators, or specialized CUDA kernels.\n  We show that classical data compression provides an effective masking signal with \\textbf{no additional parameters}. By computing per-block gzip compression ratios, we identify non-redundant content blocks and route long-range attention selectively through them. Intuitively, blocks that gzip cannot compress contain information not predictable from local repetition, making them natural long-range attention targets. Because the compression profile is input-dependent, the resulting sparse mask adapts dynamically to content without learned parameters, auxiliary losses, or custom kernels.\n  On PG-19 byte-level language modeling at 92M parameters with 8K context, our method achieves 1.71 bits-per-byte (BPB), outperforming dense attention (2.89), BigBird (2.34), Longformer (3.21), and a reimplemented SBM-Transformer (3.38)---the only learned-mask baseline---by up to 1.67 BPB while adding no parameters. The advantage grows with sequence length, with the gap over BigBird widening from 0.05 BPB at 4K context to 0.63 BPB at 8K, while convergence is 3.3$\\times$ faster.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.22465|3ba3e091713b976ee4d143e0d9a3ce008412423e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Routing to select large language models (LLMs) with different cost-quality trade-offs has become a fundamental deployment feature of enterprise AI. Existing routers, primarily make independent routing decisions for each LLM call. However, agentic applications execute as long-horizon workflows whose quality is determined only by a delayed, task-level outcome. This mismatch prevents per-call routers from correctly attributing feedback to individual routing decisions. Towards mitigating this, we present TRACE-Router, a task-level routing framework that aligns routing with the unit of supervision. TRACE-Router assigns each task to a model once at admission using a contextual bandit, pins all subsequent LLM calls to the selected backend, and updates its policy using the task's terminal reward, jointly accounting for accuracy and latency. By leveraging delayed task feedback, TRACE-Router learns routing policies that adapt to the workload while avoiding explicit task-complexity estimation. Across three agentic benchmarks, TRACE-Router consistently improves the accuracy-latency trade-off, achieving non-dominated Pareto frontier points. On tau2-Bench, it outperforms latency-matched interpolation between individual models by 7-8 accuracy points, while on Terminal-Bench it achieves 7.1 higher accuracy points than the strongest single model baseline with 36% lower latency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2607.22361|1d5968ee02eefbb0fad0a6baf80c2f12c611a6d9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We study information bottlenecks in modern deep-learning architectures -- RNNs, softmax transformers, linear-attention transformers and state-space models -- through the lens of the indexing primitive. In this primitive, the input consists of $n$ bits and one integer $i$ from $1$ to $n$ called the index, and the output equals the value of the $i$-th bit.\n  We introduce causal complexity for masked architectures. We show that architectures with low causal complexity cannot solve the indexing primitive in any constant number of layers when the index appears at the end of the input. In particular, this limitation applies to low-parameter RNNs, SSMs and masked linear-attention transformers. In contrast, small softmax transformers can solve it in one layer, while non-masked linear-attention transformers can solve it in 2, which separates them from their masked counterparts. In turn, when the index appears at the beginning, we show that small RNNs are capable of solving this task in 1 layer, while all the other architectures require 2.\n  All our impossibility results are unconditional and apply even to models that employ infinite-precision real arithmetic. Moreover, experiments for up to $n=64$ qualitatively align with our theory: configurations with low-parameter theoretical solutions learn the indexing task easily, while configurations that do not admit such theoretical solutions struggle to learn as the sequence length grows.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22038|02d4830aa87972daa283301d90fe18cd00369df8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multi-task inference models share a single backbone across diverse tasks, yet execute identical computation regardless of which task is active - wasting energy and cycles on task-irrelevant operations. We observe that the task command, typically available before inference begins, provides a free signal that can be exploited to skip unnecessary computation at the hardware level. We present a HW/SW co-designed approach in which a lightweight gating network, trained jointly with the backbone, predicts per-tile binary execution masks conditioned on the task input. Each tile corresponds to a fixed group of output channels (the native scheduling granularity of the accelerator), enabling masked tiles to be skipped with zero overhead. This yields a task-dependent reduction in compute, where each command activates only the subset of the network it requires, without changes to the model architecture or inference pipeline.\n  We co-design the full system stack: a command-conditioned training procedure that learns hardware-aligned tile masks under a sparsity objective; an instruction set architecture whose instructions carry per-tile bitmask fields, allowing the hardware to skip masked tiles without software intervention; and a tiled inference accelerator with configurable parallelism, double-buffered memory, and INT8 datapath that natively supports sparse tile execution.\n  We prototype on an AMD/Xilinx Alveo U50 FPGA and evaluate on a closed-loop visuomotor driving task in CARLA autonomous driving simulator. Task-conditional sparsity reduces FLOPs by 66-76% while maintaining driving quality. On-device latency decreases by 51-59%, from 9.12 ms to 3.74-4.44 ms (2.1-2.4x speedup), with energy per inference dropping from 263 to 108-128mJ.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.21609|36828eab6b01dd7f86d4ac767b29a404dabdbf7b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Although structured workflows empower Large Language Models (LLMs) to tackle complex problems, automating their creation is severely hindered by a vast combinatorial search space, frequently resulting in inflexible and resource-heavy offline training dependencies. To address this, we conceptualize workflow generation as an intertwined topology-and-execution search paradigm, where the broader topological layer dictates subtask boundaries and lower-level execution outcomes actively reshape the topology itself. Building on this foundation, we introduce HierFlow, a training-free, test-time hierarchical search architecture that automates agentic workflow design by merging feedback-guided topology adjustments with a fast, MCTS-inspired tree search for sub-workflow optimization. HierFlow maximizes efficiency through an intelligent gating module that selectively triggers execution-level searches based on contextual necessity, a mechanism we further support with an in-depth analysis detailing how varying degrees of cross-task coupling impact the effectiveness of hierarchical splitting. Comprehensive testing across question answering, mathematical reasoning, and code generation benchmarks confirms that HierFlow consistently outperforms strong baselines, delivering an optimal balance of high-quality results and computational efficiency without any additional training overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.21962|b50cbe86dbf44bc8352270eb7e0ed303a88f8a70|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Benchmarks for LLM-agent memory typically generate conversations first and extract answer keys afterwards -- with documented label-error and contamination problems -- and they overwhelmingly measure short interaction histories. We invert the pipeline: a seeded life-script sampler emits facts with validity intervals, volatility classes, and source channels before any text exists; an LLM renderer writes chat and email from per-event fact manifests; a fidelity verifier confirms every planted fact; and questions are instantiated mechanically from the script, so gold answers are script-valid by construction and separately validated for answerability. The synthetic, fictionalized corpus (~380 questions, 15 types) embeds features absent from the benchmarks we survey: per-fact validity intervals, sent/received trust distinctions, injection probes in a benign harness, and as-of-date question sets. Benchmarking five memory architectures against a no-memory control (fixed answerer, versioned LLM judge, three replicates, two horizons), we find backend rankings invert with history length: the budgeted curated-map memory that leads at three weeks loses recall of evicted content by nine weeks (96% to 72%) while a provenance-typed graph rises to 90%; the inversion is positive for all six users under complete cross-family re-judging (exact p=0.031). A full-rendered-history baseline ties or exceeds the best memory system at the short horizon but shows no judge-independent advantage at nine weeks, at about twice the read cost. Write-stage quality strongly correlates with downstream quality (weakly-written facts fail 24% vs 2%), and injection resistance tracked whether provenance boundaries survive representation. A layered architecture performs best among the memory systems in both regimes (96.8% short-horizon) and is released as Veracium, an open-source library, with the corpus generator and harness.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.22251|7bb01b630d8a0d0ae4c63ece486873d6b3001185|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-Rank Adaptation (LoRA) is a widely used parameter-efficient fine-tuning method for large language models, but its performance depends strongly on how a fixed rank budget is distributed across Transformer modules. Existing adaptive-rank methods usually rely on local gradient statistics collected during training, which introduces extra memory and computation and overlooks task-conditioned global information flow. We propose IFCLoRA, a topology-aware rank allocation method applied before fine-tuning. Using a small calibration set and a frozen pretrained model, IFCLoRA builds a sparse task-conditioned interaction graph whose nodes represent LoRA-compatible modules. It combines a global information-flow topology prior with local gradient sensitivity to compute Information-Flow Centrality scores, which estimate each module's adaptation importance under multi-hop propagation. Ranks are then assigned once under a global budget. Across multiple models, tasks, and low-rank settings, IFCLoRA consistently outperforms LoRA, AdaLoRA, and EVA under matched training configurations and total rank budgets, while retaining training costs comparable to standard LoRA. On mathematical reasoning with LLaMA 3 8B, IFCLoRA improves over LoRA by 1.36 percent at rank 4 and 1.82 percent at rank 8. Further analysis shows task-dependent, non-uniform rank profiles, indicating that global information-flow structure provides an informative and interpretable prior for low-budget parameter-efficient fine-tuning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.21861|d8fb64a7d483a01d77c87a5f7b138f1354c299d6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We study baking documents directly into the weights of a 4-bit Gemma-4-e4b model via LoRA, so a system can answer questions about a corpus closed-book: no retrieval and no context-window budget. Across roughly 100 training runs from single documents to a 99-document corpus, we find that once adapter capacity is adequate, training-data quality is the dominant lever on closed-book accuracy, outweighing LoRA rank, learning rate, and two alternative architectures combined; capacity itself is a hard gate below which no data intervention helps. A single curation pass (shortening gold answers to canonical 1-6 word spans and dropping trivia) moved closed-book accuracy from 57.7% to 85.7% on a 15-document corpus, a larger jump than any architectural change. We confirm a capacity trend (rank must grow with corpus size) entangled with a coupling between rank and learning rate that we initially misdiagnosed. On a 15-document slice we add a real retrieval baseline: the internalized adapter (84.2% recall) beats a BM25-RAG pipeline with a base reader (58.9%) and even a realistic gold-chunk oracle (65.6%) at lower latency. We report the full arc, including three misdiagnoses, as a case study in debugging LLM training empirically.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22319|ce505e348712fd2ea01ce14da0a0272a538a5def|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) and AI agents have demonstrated strong potential for data integration in zero-shot and few-shot settings. However, they continue to face significant accuracy and cost challenges in enterprise environments due to a persistent knowledge gap. This paper envisions trustworthy, scalable, and cost-efficient integration through knowledge-grounded LLMs and agents operating within a retrieval-augmented generation (RAG) workflow. Here, trustworthiness refers to evidence-grounded, verifiable reasoning, where integration decisions are transparently supported by retrieved knowledge, robust against hallucination, and consistent across tasks. We trace the evolution from classic RAG to GraphRAG and KG-RAG (knowledge graph-based RAG), highlighting how these paradigms bridge parametric and contextual knowledge. Building on this trajectory, we explore the shift toward Agentic RAG, where autonomous multi-agent systems adaptively plan, retrieve, refine, and reason for complex integration tasks. We examine optimization strategies for cost-efficient integration, addressing computational bottlenecks in large-scale enterprise settings. Finally, we outline open challenges and future directions toward building reliable, explainable, and scalable knowledge-grounded integration systems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.DB、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.DB",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22083|9eb06f6ed12a487ba594e77a50965df07159649b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present Nanbeige4.2-3B, a compact general agentic model with 3B non-embedding parameters. It delivers strong performance across code-agent, office-agent, and complex tool-use tasks while maintaining highly competitive reasoning capabilities in mathematics, coding, and science. Nanbeige4.2-3B is pretrained from scratch on 28T tokens with a Looped Transformer that reuses the layer stack to increase capacity without adding parameters. For SFT data and trajectory construction, we expand the diversity of executable environments, task assets, and agentic scaffolds through real-world deployment and large-scale synthesis. Our RL pipeline applies mixed-mode RLHF over Think and Non-Think responses to improve overall model quality and reduce failure cases, length-controlled reasoning RL to balance accuracy and reasoning efficiency, and agentic RL with outcome and process rewards to stabilize long-horizon training. Extensive evaluations show that Nanbeige4.2-3B outperforms larger models, including Qwen3.5-9B and Gemma4-12B, across diverse agentic benchmarks while remaining competitive on reasoning and alignment tasks. Performance with OpenClaw further supports its use as a compact local personal assistant.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.21686|7150f5c46f36a2918a36d40d33c9a8606c948e2d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Generative world models are increasingly driven as simulators: a planner forks a state, rolls out futures, backtracks, and returns to a visited viewpoint. Recent benchmarks establish that current video world models fail this usage, and attribute it to the model, prescribing new architectures and training objectives. We show this attribution is incomplete, and for an important class of models simply wrong. Snapshotting the state the runtime already holds -- an observation plus RNG state, a memory bank, or a windowed KV context, by architecture -- and restoring it after a genuine excursion reproduces the never-left continuation byte-identically on all three; corrupting only the RNG degrades it. The capability was never missing: request-centric serving discarded it, inheriting from language-model serving the assumption that runtime state is recomputable -- but world-model state carries a non-recomputable kernel. We define Persistent Computational State (PCS), the minimal non-recomputable state that must survive across requests, show it can be discovered by measurement, and build a session-centric runtime over it. Checkpoint and restore cost 0.012 ms against a 1.85 s generation step; resident sessions become host- rather than device-bounded (measured to 1,024); and world memory must be evicted by relevance to the return, not recency -- the inverse of LLM practice.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22334|37da0d4dfb772a09aaf478f331031c052d8643df|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Open-weight language models from different families exhibit complementary capabilities, motivating their consolidation into a compact student through on-policy distillation (OPD). However, full-vocabulary OPD typically assumes a shared tokenizer, while existing cross-tokenizer methods may discard teacher probability mass or assign it to student tokens with unrelated content. We introduce Byte-Prefix Marginalization (BPM), which re-expresses the teacher's next-token distribution over the student vocabulary in a shared byte space. Specifically, BPM assigns each teacher token's probability to the longest student token whose byte representation is a prefix of the teacher token's bytes, aggregates mass mapped to the same student token, and places otherwise unmatched mass in an explicit residual category. This produces a vocabulary-complete, byte-aligned, and mass-preserving target for dense OPD. The target exactly recovers the teacher-induced byte-prefix marginal when the relevant prefix does not span multiple teacher tokens (a condition satisfied at more than 99% of training positions) and uses a mass-preserving, chain-factorized lower bound otherwise. Across Qwen3-32B, GLM-Z1-9B-0414, and MiniMax-M2.7 as teachers, BPM consistently outperforms current cross-tokenizer methods on six mathematics and programming benchmarks, improving six-benchmark avg@8 by 3.7-6.6 points over the strongest baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
   }
 }
