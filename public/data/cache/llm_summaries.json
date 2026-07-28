@@ -12907,5 +12907,183 @@
       "cs.AI",
       "cs.CL"
     ]
+  },
+  "arxiv:2607.24555|bfca8bab947ba2a86b0e8a8cab3c020f1128f375|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2607.24555v1 Announce Type: new \nAbstract: Serving large language models at long context is bottlenecked by the key-value (KV) cache, which is read in full at every decode step. Attention keys are locally low-rank though globally high-rank: shared low-rank bases discard page-specific directions that a page's own compact basis retains. LOCKS gives every page its own spectral summary (resident, about a tenth the cache's size), reconstructs within-page logits, estimates each page's attention mass by log-sum-exp, and attends only the top pages; selection itself reads no candidate keys or values. Selecting on this summary alone stays within about a point of the full cache on long-document QA (LongBench-v1), tracks the read-every-key oracle on retrieval-dense RULER down to the smallest budgets, and shows its largest margins on long-form reasoning (AIME26, MATH-500), where baseline selectors collapse. At its shipped $2048$-token budget LOCKS matches FullKV aggregate quality at $100$K$+$ context while attending about $2\\%$ of the tokens, and halves per-token decode latency ($2.0\\times$ at $1$M tokens) against dense attention. LOCKS ships as a drop-in plugin for unmodified vLLM, with batched decode running in full CUDA graphs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22583|02d7fb7927966083a81d35030e9ad266e85eb6c0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) have achieved widespread adoption because of their strong reasoning and query-response capabilities. However, deploying them in embedded and edge computing environments remains challenging because of strict latency, memory, and energy constraints. Their large parameter counts and computational demands hinder efficient execution on resource-constrained platforms. Although model pruning has emerged as a viable solution for reducing scale while preserving performance, jointly optimizing layers, attention heads, and Multi-Layer Perceptron (MLP) dimensions remains highly complex. Exhaustively exploring this combined design space is computationally expensive and often leads to local optima or unstable configurations. To address these limitations, we propose a hardware-aware, multi-objective structured pruning framework. The proposed two-stage method explicitly targets latency and model size for efficient deployment on edge devices. In the coarse-grained stage, multi-objective depth pruning removes entire attention and MLP blocks to reduce computational load and memory usage. In the subsequent fine-grained stage, Parallel Bayesian Optimization (PBO) searches for the optimal layer-wise pruning ratios for pruning under latency constraints, while importance-based strategies rank the specific components to be pruned within each layer's allocated budget. Experimental results show that our approach reduces model complexity with minimal impact on commonsense reasoning tasks and zero-shot performance. Our method achieves a favorable trade-off among accuracy, latency, and model size, making it suitable for edge deployment. Across multiple LLMs at 37.5% and 50% pruning ratios, the proposed approach achieves better performance on commonsense reasoning tasks than existing methods while significantly reducing inference cost.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22577|715247e813c8d61df59ff3b73b82db61c1443332|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Scaling large language models (LLMs) has driven their success, yet dense Transformers couple capacity and computation: every parameter is activated for every token, making training and inference costs grow linearly with model size-a critical bottleneck as models approach trillion-parameter regimes. We aim to scale capacity through MoE-style mixture throughout the LLM pipeline rather than only the FFN. Prior pipeline-level approaches include ParaScale, which introduces virtual tokens and parallel streams but incurs substantial overhead and suffers from homogenized routing and gradient collapse, and AltUp, which uses an auxiliary prediction branch but offers limited adaptivity and slow convergence. We establish that MoE-style mixture layers can be reformulated as variable-kernel dynamic convolutions, where each expert corresponds to a $1{\\times}1$ convolutional kernel and routing implements input-conditioned kernel aggregation. Building on this equivalence, we introduce cMoLLM: a convolutionally gated mixture-of-LLMs that routes over end-to-end streams through fully differentiable dynamic convolution. In GPT-2-style models trained on FineWeb, cMoLLM improves language modeling perplexity and downstream GLUE and SQuAD accuracy under matched compute, with better stream utilization, more stable optimization, and favorable scaling compared to ParaScale- and AltUp-style baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.24331|bee322867619ee75ea20f6a11784bf106c9d5fe5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As the inference phase of Large Language Models (LLMs) requires handling long context windows, the Key-Value (KV) cache initially appears to address this challenge but eventually becomes a significant bottleneck as the context window continues to grow. Low-rank compression has recently been studied as an effective approach to reduce KV cache memory while maintaining model performance. However, only a few existing methods treat the Key and Value caches differently, despite their distinct roles. Moreover, these methods typically employ fixed attention-head grouping, which may not fully exploit the structural similarity among attention heads. In this paper, we propose an improved low-rank KV cache compression framework. For the Key cache, we dynamically group attention heads based on Centered Kernel Alignment (CKA) similarity and allocate the rank budget adaptively under a parameter budget. For the Value cache, we adopt the same approach as ReCalKV, refining the low-rank decomposition through offline calibration to improve reconstruction quality. Experimental results on three instruction-tuned LLMs show that our method reduces the number of Key cache parameters while maintaining competitive accuracy. We further observe that the proposed strategy is particularly effective for Multi-Head Attention (MHA) models, whereas it should be applied more conservatively to Grouped-Query Attention (GQA) models, especially in long-context settings.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.22648|88846bd0b2744061cea99d4fe656062ccb30a75a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Inspired by the design of client caching in Content Delivery Networks (CDNs), PTStore distributes and replicates popular tensors that form reusable KV cache prefixes, which are the main technique used by state of art approaches to accelerate inferences. This reduces the latency of accessing the KV cache and alleviates load imbalance caused by a disproportionately large number of requests on servers containing popular tensors. Furthermore, thanks to decentralization, PTStore allows the expansion of the size of the KV cache for LLM inference by orders of magnitude. As a result, PTStore can execute inferences on long passage Q\\&A datasets 5-6 times more efficiently than current baselines, which do not aggregate memory across different nodes and GPUs and therefore require regenerating the KV cache.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2607.22720|11b9b187464fb4ed29c154406ab88df4de191a2b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Existing adaptive inference methods for Large Language Models rely on observational heuristics, such as hidden-state similarity or activation magnitudes, to drop redundant modules. However, these correlation-based metrics often fail to capture subtle, non-linear structural computations vital for semantic accuracy. We introduce CausalGate, an intervention-guided framework for compute-efficient transformer inference. During a calibration phase, CausalGate isolates individual Attention and MLP sub-layers, zeros out their respective outputs, and measures the exact semantic damage via the Kullback-Leibler divergence of the final logit distribution. To eliminate runtime routing overhead, this structural importance hierarchy is distilled into a global set of static, lightweight scalar gates using an Exponential Moving Average smoothing objective paired with a differentiable pairwise ranking loss. Evaluated on TinyLlama-1.1B, Qwen2.5-3B, and Llama-3.1-8B across language modeling and commonsense reasoning benchmarks, CausalGate consistently outperforms prominent dynamic routing and layer-skipping baselines, translating theoretical compute savings into concrete hardware latency reductions with zero operational overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL",
+      "cs.CV",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2607.22586|35564cfae22f8907d7cd20723b7cbbe76157b713|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Key-Value (KV) caching is essential for efficient inference in multimodal large language models (MLLMs), yet its memory footprint grows linearly with context length and becomes a major bottleneck due to the large number of visual tokens. Recent prefill-stage KV selection methods estimate KV importance from prefilling statistics, implicitly assuming that prefilling-time queries are representative of those encountered during decoding. We show that this assumption breaks down in multimodal inference, where decoding-time queries exhibit substantially larger variance than prefilling-stage representations, leading to unstable KV importance estimation under tight cache budgets. As a result, small ranking errors can disproportionately discard semantically critical visual tokens and degrade grounding and reasoning performance. We propose MM-ShiftKV, a training-free, decode-aware and strictly prefill-only KV selection method. MM-ShiftKV approximates decoding-time query behavior during prefilling by constructing variance-expanded query proxies and estimates prompt KV importance based on their aggregated attention mass. Experiments on multimodal benchmarks demonstrate that MM-ShiftKV consistently outperforms existing methods under strict KV-cache budgets. Our code is available at https://github.com/zjuDBxAI/MM-ShiftKV.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.23054|431e70255fad1b90f96a51724860996d83404ecc|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multi-head Latent Attention (MLA), introduced in DeepSeek-V2, compresses key-value pairs through a shared low-rank bottleneck (cKV), achieving 81% KV-cache reduction during inference. Despite its adoption in massive production models, no prior work has studied what information this bottleneck preserves or discards, nor how it reshapes internal transformer circuits. We present the first comprehensive mechanistic interpretability study of MLA, training a 114M-parameter transformer (pretrained on a web/code/math mixture, fine-tuned on TinyStories) and analyzing its representations through SVD, attention head taxonomy, linear probing, and a disruption-attribution analysis. Our key findings are: (1) the cKV bottleneck learns a pure content representation, preserving entity identity (98% retention) while discarding positional information, validating MLA's separation of content from position via RoPE; (2) induction heads co-locate at a single layer (Layer 12), unlike their distributed formation in standard MHA; (3) a single \"semantic hub\" layer (Layer 15) simultaneously exhibits the highest SVD effective rank and strongest disruption-attribution score; and (4) the bottleneck is globally over-provisioned, using only 46% of its capacity on average. These findings suggest MLA does not merely compress attention passively, but reshapes how the model organizes content, position, and circuit structure. We view this as an initial data point and detail scope limitations in Section 5.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.22785|12219dd935412ac8aa13238126927ad8667e2a9a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Apple-Silicon SoCs share CPU, GPU, and Neural Engine over one unified memory system, raising the question of whether transformer inference can be accelerated by splitting single operators across units. Prior attempts, including our own, failed or produced precision-confounded wins. We identify the cause: MLX's lazy-graph scheduler \\emph{serializes} cross-stream work whenever a CPU-stream operation consumes an unmaterialized GPU result inside one evaluation graph, so a row-split matmul that runs \\x{1.38} faster with materialized inputs runs \\x{0.66} slower than GPU-only inside a lazy graph; an eager materialization boundary restores concurrency (\\x{1.34}). \\sys{} implements a per-layer, contention-aware CPU+GPU row split for transformer prefill built on this fix. Evaluated across five chips and three Apple-Silicon generations, community-replicated, the split accelerates Llama-shaped decoder-block prefill by \\x{1.15}--\\x{1.38}, unchanged at full 32-block depth, and reaches \\x{1.18}--\\x{1.25} faster time-to-first-token on a real Qwen2.5-7B checkpoint served through stock MLX-LM, with token-identical outputs and unchanged decode throughput. We characterize the boundaries equally carefully: decode cannot benefit, bound by shared bandwidth co-execution does not add; precision-matched training loses \\x{0.86}--\\x{0.97} on all five chips; ANE dispatch overhead excludes it at layer granularity; and a no-regression runtime gate becomes self-defeating under memory pressure, where probing an alternative mode evicts the active mode's working set. Code, raw results, and generation transcripts are released.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2607.22690|15a626bacef371ea941bf4723837046846d9a162|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-term memory lets LLM agents reuse past interactions, but raw dialogue histories are verbose and information-sparse. Retrieving broadly improves evidence coverage yet overwhelms downstream reasoning with noise; compressing at write time reduces noise but irreversibly discards details the future query may need. We introduce LazyMem, which sidesteps this dilemma by deferring all memory construction to query time. A lightweight 4B model processes the retrieved candidate pool in overlapping parallel windows, selectively retaining and compressing only query-relevant content. The model is trained through supervised fine-tuning followed by group-based reinforcement learning with a format-gated composite reward that combines a rule-based action signal measuring selection accuracy with an LLM-judged quality signal measuring source faithfulness and query utility. On the LongMemEval benchmark, LazyMem-4B achieves an LLM-judge accuracy of 0.85 with only 213 memory tokens, 68.7$\\times$ fewer than retrieval-only, and generalizes to LoCoMo (0.68) without target-domain training, while reducing mean latency over the prior query-time baseline. The 32B variant reaches 0.93, surpassing oracle-context references on aggregation-heavy question types. The code associated with this work is publicly available at https://github.com/allacnobug/LazyMem.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.23806|c61a70237eb8f5824bfa62eb7959207c8a967274|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Improving a language model today means retraining it: enormous compute, a new opaque model each cycle, non-deterministic output. We take the opposite path: the model stays frozen, and a persistent memory of verified solutions grows beside it. Once a problem family is solved and has passed an independent verification step that never consults the answer key, every new instance of that family is answered at zero generation tokens, bit-exact, deterministically. Across 180 fresh instances spanning nine problem families, four architectures from four vendors - dense and mixture-of-experts - each score 180/180 at zero generation tokens per answer: execution-bound capability decoupled from parameter scaling. A negative control attributes the capability fully to the memory: emptied, it solves nothing. The same verify-before-store contract holds for open-ended reasoning: 88/88 consistency-gated acceptances across all four models, machine-checked formal proof, and reasoning-method transfer at 77/80. Memory selection takes 1.4 microseconds; a full reuse completes in 6-23 ms at 36 mWh. Approximate similarity retrieval selects the wrong item 94.3% of the time on a 4,500-item verified store where exact addressing makes zero errors. The store also serves as working context at a scale no shipped engine matches: a 6,000,000-token movable window on a single 46 GB GPU at flat memory, where vLLM stops at 30,399 tokens and SGLang silently truncates past 32,000. On published benchmarks, frontier models remain far ahead of any 12B at raw from-scratch reasoning; on everything this system has solved and verified, the comparison inverts: a frontier API call pays a fresh generation pass on every query, forever, while verified reuse costs zero tokens and returns the identical bits every time. A public testbench with free, rate-limited access accompanies this report: https://corbenic-galahad-bench.hf.space",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.24434|99f64af967735e7fa3a24feddb0ba2b7594e6b0e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Mixture-of-Experts (MoE) language models are attractive for end-device deployment because only a small subset of experts is active per token, but their routed expert weights often exceed accelerator memory. We target latency-critical single-user settings where routed experts are staged on demand from CPU memory to a GPU or from Flash to a mobile NPU. In this setting, self-speculative decoding faces a new bottleneck: increasing the draft expert set improves accuracy but triggers extra expert loading, while cheap small-footprint drafts have low acceptance; moreover, verifying a multi-token block activates the union of target experts and is no longer close to one target step. We propose DraftExpert, an expansion-aware self-speculative decoding framework for expert-offloaded MoE inference. DraftExpert trains one lightweight accelerator-resident draft expert per layer by self-distilling residual, logit/token, and router-agreement signals from the frozen target MoE. At inference time, it uses a fixed-footprint shared+top-1+draft-expert drafter together with confidence--expansion truncation and target-expert prefetching, while final tokens are still exactly verified by the target model. On DeepSeek-V2-Lite and Moonlight-16B-A3B across CPU-GPU and Flash-NPU offload, DraftExpert improves decode throughput by 1.45x on average, raises draft acceptance to 84~87%, and achieves 86~88% prefetch hit rates.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.23815|9a5138b4fd5be5d1dd5e21668ceb3b9a6358b533|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models are increasingly used as semantic operators for filtering, extracting, ranking, joining, and transforming unstructured data. Existing semantic query processing systems invoke request-centric LLM serving systems that are unaware of the query plan, leaving substantial performance opportunities unused. This paper introduces relational LLM serving, an abstraction that makes LLM serving aware of semantic query structure while preserving query semantics and output accuracy. The key opportunity is pipelined execution across semantic operators: when intermediate tuples flow directly from one operator to the next, their KV-cache state can be reused instead of recomputed.\n  We present Kalypso, a relational LLM serving system that exposes an API for semantic query plans and executes them using an adaptive, memory-aware scheduling algorithm. Kalypso addresses a new online scheduling problem in which pipelined operator execution is coupled with GPU memory pressure management to reuse KV-cache state in the serving engine before eviction. Its scheduler continuously adjusts memory allocations to balance upstream parallelism, downstream progress, and GPU utilization. Our evaluation shows that Kalypso improves query completion time over baselines using request-centric LLM serving, with speedups up to 4.57x across diverse workloads, demonstrating that query-aware LLM serving can substantially improve the efficiency of semantic query execution.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.DB、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.DB",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.22587|e5f6543e44e6fa8c5566f6a1cfc7c47b44ec9dc6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) achieve strong performance across diverse tasks but their deployment is constrained by the memory and compute cost of their parameters. Structured pruning addresses this by removing entire structures such as attention heads and Multi-Layer Perceptron (MLP) neurons to produce smaller dense models that run efficiently on standard hardware. However, existing methods rely on either gradient-based importance estimation, which is memory-prohibitive, or activation-based statistical proxies, which do not directly measure the effect of removal on the loss. Furthermore, the interaction between the importance criterion and the post-pruning recovery strategy has not been systematically studied. We propose TriSP (Tri-Signal Structured Pruning), an importance metric that combines weight magnitude scaled by activation norm with first-order gradient sensitivity via a geometric mean, producing a channel-level score that captures both structural and loss-sensitivity signals. Combined with adaptive per-layer budget allocation and low-rank adaptation (LoRA) recovery, TriSP achieves the lowest perplexity and highest zero-shot accuracy across all tested configurations, reaching 6.80 WikiText-2 perplexity at 20% pruning on LLaMA-7B. Inference throughput improves by 82% at 50% pruning, while still maintaining competitive performance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.24260|d49a3957de5eb054da3e8765da5dd67098ac4faa|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Modern LLM systems increasingly rely on knowledge-selection processes that produce high-value structured priors, such as ranked evidence, graph topology, multimodal alignment, and confidence signals. Yet LLM serving remains fundamentally oblivious to this rich structure: once such signals are serialized into a prompt, the backend observes only a flat token sequence, forcing dense and uniform consumption of the full key-value (KV) state during decoding. We term this architectural mismatch the Knowledge Selection-Runtime Consumption (KSRC) gap: richer contexts enlarge the full-prompt KV footprint and decode-time memory traffic, increasing latency and degrading throughput even when reasoning depends on only a small fraction of the context. To bridge the gap, we propose Knowledge Access Planning (KAP), a paradigm-shifting execution abstraction that elevates structured knowledge priors from passive prompt-construction hints into first-class physical execution artifacts. KAP establishes a universal intermediate representation (IR)-the runtime access plan-which compiles structured knowledge signals to govern physical KV access without altering logical prompt semantics, model weights, or training procedures. Through this IR, KAP shifts LLM serving from token-aware context consumption to plan-driven, knowledge-aware runtime consumption. We instantiate KAP with GraphSpec, a compiler-executor realization connecting structured knowledge selection to an LLM serving backend. We derive a phase-boundary model for the positive-speedup regime of plan-guided execution. Across 4K-128K long-context QA workloads, GraphSpec maintains answer quality comparable to full-context decoding while decoupling physical KV consumption from prompt length, reducing proposal-time KV access to 5.5% of source KV state at 128K, and fundamentally shifting the scaling trajectory of long-context generation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.24593|d92d3a6dc368a3bfe75dc7ad84542374efbb8581|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2607.24593v1 Announce Type: new \nAbstract: Token-level sparse attention, as implemented by DeepSeek Sparse Attention (DSA) in production systems, makes the downstream attention efficient but shifts the bottleneck to the indexer that feeds it. To select the top-k tokens for each query, the indexer must still score every preceding token, incurring a cost of O(L^2) per layer for a sequence of length L. We observe that this per-query scan is largely redundant: nearby queries select highly overlapping top-k tokens, and the indexer scores are long-tailed along the key axis. We exploit these properties in PIVOT, Proxy Indexing Via One full-prefix Traversal, a training-free, drop-in replacement for the DSA indexer that shares one prefix scan across a group of nearby queries. PIVOT aggregates a group into a single proxy query, performs one shared full-prefix scan to obtain a candidate set, and then selects a top-k for each query from that set. Two variants trade speed for fidelity: PIVOT-Reuse shares the proxy top-k across the group for maximum speed, whereas PIVOT-Refine re-scores the candidate set with the indexer of each query and then selects an individual top-k, matching the dense indexer at a small additional cost. A single algorithm covers both inference phases, differing only in how groups are formed: fixed-size groups of consecutive queries in prefill, and the queries decoded together in one multi-token prediction (MTP) step in decode. On DeepSeek-V3.2 and GLM-5.1 across LongBench and RULER, PIVOT matches the accuracy of the dense DSA indexer while accelerating it by up to 4x and reducing end-to-end latency by up to 1.6x at long context.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2607.24667|d71bbef973a5f2494fdfc7968b3648991871d69a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A language model with a bounded working memory must repeatedly decide which stored items to keep. Every deployed method decides the moment an item arrives, from the past (StreamingLLM, H2O) or from a guess about the future (SnapKV). We recast the choice as an estimation problem on a hidden signal, whether an item will be reused, placing existing methods on one axis, the commit lag $H$: online filters and learned predictors commit at $H=0$, while Belady's offline optimum sits where the whole future is known. The missing regime in between, fixed-lag smoothing, waits a bounded number of steps, observes which items a correct near-future prediction attended to, and only then commits. This measurement, demonstrated utility, turns Belady's unobservable future request into something we read off the model itself. We instantiate it as a training-free policy, RMM, a strict generalization of H2O that reduces to it exactly when the measurement is uniform. In controlled settings where reuse is endogenous and separated in time, demonstrated utility identifies used memory far better than accumulated attention, and a small bounded memory behaves like a much larger one. But on independent third-party benchmarks, run inside NVIDIA's KVPress harness against its own SnapKV, H2O, and StreamingLLM implementations, the advantage mostly disappears: RMM is on par with H2O for single-turn question answering and loses to both H2O and SnapKV in a streaming multi-turn setting. The cause is simple: on natural text the model is correct about most tokens, so weighting attention by correctness barely changes it, and demonstrated utility collapses onto accumulated attention unless reuse is sharp and endogenous, which standard benchmarks do not exercise. Our contribution is the framework and an honest map of when measuring beats accumulating, not a new state of the art.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.22625|9a0ccffa013cb1250dbd6e9d820d4b6f74f54ffa|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Retrieval-augmented generation (RAG) enhances large language models (LLMs) with external knowledge, but suffers from knowledge conflicts: when retrieved information contradicts parametric memory, the shared self-attention pathway produces unpredictable outputs. We present TokenMem, a lightweight memory system that injects knowledge into frozen LLMs through a dedicated cross-attention channel, bypassing competition with parametric memory in the residual stream. TokenMem trains only a thin gating adapter ($\\sim$3-7M parameters) via a two-phase curriculum: first learning general knowledge utilization, then strengthening faithful compliance under counterfactual knowledge. In controlled experiments on five models spanning three families (Qwen3-4B/8B/14B, LLaMA-3.1-8B, OLMo-3-7B), TokenMem achieves 69-70% Knowledge Compliance (KC) on counterfactual benchmarks, compared to 20-52% for vanilla RAG, a gap of up to 49 percentage points. Ablation studies show that the two-phase curriculum is critical: removing Phase 2 collapses KC to near-zero. Mechanistic analysis reveals that the gate adapter learns a conflict-aware, layer-specific injection strategy without explicit supervision.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2607.22663|d34f8b3107f2a7afb0691bd2a4fe0161e352376d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Block diffusion has emerged as the dominant paradigm for scaling discrete diffusion language models (dLLMs), because decoding text in fixed-size blocks preserves parallel generation within each block while keeping the quadratic attention cost tractable. However, this efficiency comes with a structural limitation: tokens near the end of a block are generated without access to future cross-block context, and once a block is finalized, its uncertain predictions become irreversible context for all subsequent blocks. This creates a block boundary problem, in which uncertainty accumulates toward block boundaries and early mistakes propagate throughout later generation. To address this issue, we propose Multi-Block Editing (MBE), to mitigate this problem by editing decoded tokens based on cross-block context. Following this principle, MBE first proposes a training-free decoding algorithm to edit the decoded tokens in previous blocks, which is achieved by re-opening a full-attention window over selected blocks. Given the mismatched attention mechanism between block diffusion training and MBE inference, MBE further introduces a supervised Fine-tuning strategy, which equips the model with bidirectional attention masks that progressively expands the editing span. Furthermore, it also extends SGLang with a multi-shape CUDA Graph pool and fine-grained KV cache control to make these variable-length editing passes efficient in practice. Experiments on LLaDA2.1-Mini across 13 benchmarks show that training-free MBE outperforms all existing decoding baselines while maintaining comparable throughput, and MBE SFT further brings a performance gain of 2.7. The largest improvements appear on tasks requiring strong long-range consistency, including +13.3 on AIME 2025 and +5.9 on ZebraLogic, demonstrating the effectiveness of MBE.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2607.23678|b0ddee22efa235b0b8913d344340d04e5e4bde56|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) enable autonomous agents for reasoning, planning, and tool use. Recent systems increasingly organize these agents as graphs of specialized, interconnected nodes. Although graph-based orchestration supports flexible decomposition and coordination, it creates a key challenge: \\textbf{attention allocation}. As workflows grow, existing approaches often execute graph components uniformly, wasting resources on irrelevant or low-impact tasks. We introduce \\textbf{Attention Orchestration}, a paradigm that extends Transformer-style attention from token representations to workflow-level agent coordination. Our framework, \\textbf{Adaptive Goal-aware Attention Orchestration (AGAO)}, dynamically estimates agent importance based on user objectives, graph dependencies, and computational constraints. AGAO combines three components: (1) goal-aware attention, measuring semantic relevance between user goals and agent capabilities; (2) topology-aware attention, modeling structural dependencies in agent graphs; and (3) resource-aware attention, allocating budgets and execution priorities across heterogeneous agents. Together, these mechanisms transform static agent graphs into adaptive systems that focus computation on goal-critical reasoning paths. Experiments across diverse multi-agent workloads show that AGAO improves task effectiveness while reducing unnecessary computation, latency, and token consumption compared with existing graph-based execution strategies. Our work establishes \\textbf{Attention Engineering} as a direction for scalable, intelligent multi-agent systems. Code: https://github.com/MingzhouFan97/AGAO.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
