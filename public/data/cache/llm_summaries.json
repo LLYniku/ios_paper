@@ -14128,5 +14128,188 @@
       "cs.AI",
       "cs.CL"
     ]
+  },
+  "arxiv:2608.04169|a00f109a5f627b886136c17f0a16f584a2574094|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.04169v1 Announce Type: new \nAbstract: Heterogeneous DRAM-based processing-in-memory (PIM)-GPU systems promise significant efficiency gains for decode-phase large language model (LLM) inference, particularly in long-output generation, yet current design practices overlook critical factors that determine real-world performance. Through systematic evaluation of diverse architectures and workloads (OPT-7B/70B, Mamba2-2.7B/70B), we reveal three fundamental design principles: (i) static power consumption (DRAM leakage, refresh, and GPU idle power) can dominate the efficiency calculus, causing dynamic-only models to overestimate tokens/s/W by up to 3.85X for realistic deployments (Mamba2-2.7B, batch size 1, 128 input tokens, and 2,048 output tokens); (ii) decoding performance is monotonically non-decreasing with channel count across all evaluated models and workloads, generally plateauing at high channel counts for low-batch workloads; under a fixed-capacity sweep, all models instead share a common near-optimal hierarchy configuration, with substantially larger misconfiguration penalties for attention-based models; (iii) workload mapping strategies provide bounded improvements (up to 14.0%/17.4% kernel-level latency/energy reduction, up to 5.6% end-to-end gain) and are not primary bottlenecks. Significant efficiency gains require system-wide co-optimization. These principles provide design-space guidance for architects designing the next generation of memory-accelerated LLM systems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.ET主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.ET"
+    ]
+  },
+  "arxiv:2608.04405|481fd1ee16bf78568df98b9b0b621d3e31d589f6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context large language models (LLMs) are increasingly deployed in real-world applications, yet self-attention remains a major efficiency bottleneck -- especially during decoding -- due to the necessity of repeatedly processing ever-growing key-value (KV) caches. Existing sparse attention reduce computation by attending to fewer KV pairs, but often suffer from substantial accuracy degradation, require additional training, or rely on expensive hashing. In this work, we present BinaryPC, a training-free, data-aware hashing-based sparse attention for long-context LLMs. BinaryPC constructs compact binary hash codes and corresponding hash function by computing binary principal components of data. Unlike Locality-Sensitive Hashing (LSH) with data-independent random projections or learned non-linear hashing methods, BinaryPC constructs binary codes that explicitly preserve the structural information of data without requiring gradient-based training. Comprehensive experiments across multiple model families and long-context benchmarks show that BinaryPC preserves accuracy relative to full attention while achieving superior performance among sparse and hashing-based baselines. On modern GPUs, BinaryPC improves end-to-end decoding throughput by 3.56$\\times$ over the FlashAttention kernel. Our code is available at https://github.com/yudaohai666/BPC.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.04048|414319c269ed95cc0f825c04496b7b47e91976a6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Serving large language models (LLMs) under diverse deployment constraints requires flexible trade-offs between accuracy, memory footprint, and throughput. However, conventional quantization methods typically require a separate checkpoint for each target bit-width. We introduce Recurrent Residual Quantization (RRQ), a post-training quantization (PTQ) framework that represents weights as a low-bit quantized base together with a sequence of quantized residual corrections, enabling multiple effective precisions from a single checkpoint. Starting from a 2-bit model obtained via post-training quantization (PTQ) or round-to-nearest (RTN), RRQ progressively adds lightweight 2-bit residuals generated via RTN to construct 4-, 6-, and 8-bit representations. The method is calibration-free and avoids joint multi-bit optimization. In our Qwen3-8B setup, the full all-RTN 2-/4-/6-/8-bit package is constructed in 1,293 seconds, 3.3 times faster than the measured MatGPTQ construction. Experiments on six recent LLMs show competitive accuracy at 6 and 8 bits, with model-dependent behavior at 4 bits. The code will be made publicly available upon publication.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.04074|725ad771be00c9afb8b7ee3947f29984c4ad0328|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.04074v1 Announce Type: new \nAbstract: Long-context LLM decoding reads the key-value (KV) cache at every step. Loading it takes longer than computing attention over it, so throughput is bandwidth-bound. Hence, reducing the cache size can raise both decoding speed and serving capacity. The challenge is to reduce cache size while preserving the attention products, keeping reconstruction cheap, and using a fixed per-token bit count. At two bits per element, the most competitive methods rely on orthogonal transforms. However, existing techniques are either data-oblivious or use the query statistics without deriving the transform from a distortion criterion. Moreover, they rely on transforms built on top of random or Hadamard rotations, which equalize variances across entries rather than compacting energy, and fixed-width scalar quantizers, which are suboptimal at low rates. In this paper, we formulate KV cache quantization as a transform coding problem in which distortion is the error in the attention products. We derive closed-form optimal transforms for keys and values from calibration statistics, under a high-resolution model. We show that the optimal key transform is not orthogonal and satisfies a generalized Parseval relation: the attention-aware distortion becomes mean-squared error (MSE) in the transform domain. Thus, we can use MSE-optimal vector quantizers applied directly to the transformed key coefficients. To meet the fixed-width layout requirement, we show that grouping coefficients into equal-volume partitions makes equal-size codebooks attain the variable-rate optimum under the same high-resolution model. At two bits per element, our method, termed NOVA-KV, recovers most of the long-context retrieval accuracy lost by scalar quantization methods at comparable throughput.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.IT",
+      "eess.SP"
+    ]
+  },
+  "arxiv:2608.04488|804302f6016a1ff31f57be9da1e088ca12cc256d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Despite rapid advances in large language models (LLMs), deploying and personalizing them on resource-constrained devices remains impractical due to high VRAM, time, and energy costs. Parameter-Efficient Fine-Tuning (PEFT) of Small Language Models (SLMs) offers a promising alternative, yet few studies compare PEFT methods across architectures using both general and personalization benchmarks while accounting for energy consumption. We compare five fine-tuning approaches (Full Fine-Tuning, LoRA, LoRA+, QLoRA, and BitFit) on four SLMs from two families (Transformer-based: TinyLlama-1.1B, Qwen3-1.7B; SSM-based: Mamba-1.4B, Mamba-2-1.3B) across three GLUE tasks (SST-2, QNLI, STS-B) and three LaMP personalization tasks (LaMP-1, LaMP-2, LaMP-3). Each configuration is evaluated with the energy-focused NetScore-E and the memory-focused NetScore-M, the two variants that reflect the constraints binding on-device deployment. Methods are selected with a strict energy-first rule (highest NetScore-E, ties broken by NetScore#). LoRA+ achieves the highest NetScore-E in 19 of 24 configurations and the highest NetScore-M in 13 of 24, and is the selected method in 18 of 24. QLoRA, available only for the Transformer models, cuts peak finetuning VRAM by up to 3.9x relative to LoRA and therefore takes the best NetScore-M in 5 of the 12 Transformer configurations, although its de-quantization overhead leaves it selected in only one of them once energy decides. BitFit and full fine-tuning are almost never competitive on either variant, and TinyLlama-1.1B leads the energy-focused NetScore-E on five of the six benchmarks and the memory-focused NetScore-M on four. These results show that compact SLMs paired with PEFT provide a practical, energy-aware path to personalized on-device deployment, with the optimal method set by the dominant constraint: LoRA+ for energy and QLoRA for memory.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.04678|50ff980e7643bc6159e74609171fe0f6dae9bf29|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Papers 1-2 of the Kathleen series showed that a byte-level, attention-free architecture built from a wavetable encoder and multi-scale reverberant state can match strong baselines on classification at ~450-700K parameters, without pretraining. We ask whether the same ingredients can generate. (1) Scaling: on byte-level language modeling (WikiText-103, raw UTF-8, no tokenizer), the reverberant model beats a parameter-matched transformer at every dataset scale measured (2-512 MB), e.g. 1.84 vs 2.04 bits/byte at 512 MB with ~0.5M parameters; the transformer needs more than 512 MB to match what the attention-free model learns from 32 MB. (2) Measurement: we introduce FORM DISTANCE, a non-parametric, gaming-resistant instrument for \"reads like text\": nine statistical axes of human text define a reference cloud, and five constructed fakes are all rejected. (3) Generation: decoding policy dominates architecture -- widening the sampler halves the same model's distance (3.17 to 1.52), and a retrieval-augmented decoding scheme takes the frozen model further (1.52 to 1.14) with no training step involved; the ablation attributes the gain to the sparse phrase dose itself, not the selection gate. The gain has a sharp boundary condition: the phrases must come from the model's own training corpus -- a 40x larger foreign library helps not at all, an effect the attention twin shares, consistent with in-context integration being a capability of scale. We also report four architectural additions that did not help, and a computed lexicon reaching 94% of a learned table's top-1 accuracy at one fifth of the parameters. Everything runs offline; all experiments are reproducible on a free Kaggle T4.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.04771|258470894c1314d455fa66ce1a896a1fb45ad27b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Reasoning Models (LRMs) excel on complex tasks through long chain-of-thought (CoT) reasoning, but their lengthy intermediate steps cause severe overthinking that inflates inference cost. KV-cache compression is a common solution, yet existing reasoning-oriented methods apply a uniform policy across the trajectory and judge compression only by what it removes from the cache. Two observations point the other way. First, a reasoning state's tolerance to context loss varies along the trajectory, and process reward tracks it: deleting tokens at high-reward steps preserves accuracy far better than deleting the same budget at random. Second, compression is not free on the generation side, since a smaller cache leads the model to generate more tokens, partly canceling the saving. Together these motivate coordinating both sides under a single process reward. We propose ReCo (Reward-Coordinated Compression), a step-wise framework in which a lightweight process-reward estimator scores each completed step and drives three components: (1) reward-adaptive KV-cache compression that shrinks the retained cache harder at high-reward steps and less at low-reward ones, (2) a reward-banded penalty on reflection tokens that curbs redundant generation, and (3) confidence-based early stopping that triggers when the reasoning is reliable. Across three reasoning models and six benchmarks, ReCo reduces generated tokens by 37%-65% and end-to-end latency by 2.08x-2.35x over Full CoT, all while largely preserving accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.04980|440cb150eccbb09a986104ab4b90019846f0a3a8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We show that tiny transformers can profitably employ a simple form of Chain of Thought, which we call protoreasoning, allowing us to study step-by-step reasoning on ~1M-parameter models and opening up opportunities for much more detailed experimentation and analysis than is feasible for larger models. Current Large Language Models exhibit impressive step-by-step reasoning, but we have yet to understand its generality, i.e., when and how LLMs learn genuinely general algorithms rather than \"bags of heuristics.\" Such questions are hard to settle on compute-intensive frontier models trained on opaque data. To work at model scales far below the threshold for natural-language competence, we define reasoning-friendly tasks on Dyck languages (sentences of correctly nested brackets). We find that protoreasoning traces substantially close the out-of-distribution generalization gap, and ablations confirm that the trace's content, not merely its extra tokens, drives the gain.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.05124|bc996d48a9fa39e91b728eb74c71484220cfd534|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long context reasoning in large language models (LLMs) is usually constrained by the fact that a single inference trajectory has to simultaneously explore the context, store intermediate state, verify evidence, and produce the final answer. This becomes particularly difficult in tasks that require extraction, counting, ordering, or multi-hop reasoning, where an early mistake can propagate until the final response. In this work, we propose Chained Recursive Language Models (Chained RLM), an inference-time architecture, in which the same underlying model is called repeatedly as a sequence of fresh reasoning roots. Each root receives the original problem and context, but does not inherit the full conversational history. Instead, it receives a compact plain-text summary, a plain-text blackboard, and some durable task-specific artifacts written by predecessor roots. The motivation is to manage the context by chopping into partial tasks rather than one large inference response; in each staged computation, intermediate artifacts can be inspected, corrected, and extended by a later fresh inference by the same model. We describe the system model, handoff mechanism, artifact workspace, and evaluation protocol for this system. We study when fresh-context artifact continuation gives a measurable gain in accuracy over direct LLM answering even with recursive tool-calling.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IT",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.05141|6afa1c1ae5132fc21579ae9e81243e480cb89906|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Context lengths of language models (LMs) have dramatically increased, driven by the demands for in-context learning, self-improvement, and long-horizon agentic workflows. Existing long-context corpora, however, are dominated by books, academic articles, and code repositories, which are finite resources and often scarce in long-distance dependencies. In this work, we introduce OctoLong, a context engineering pipeline that instruments an AST parser, a language server backend, and a package manager to facilitate the recursive retrieval of code references, enabling the curation of dependency-rich code contexts of millions of tokens in length. We then train OctoLong-Instruct, a suite of capable long-context open LMs, derived from base models ranging in size from 600M to 14B parameters, via context-extension mid-training on a ~50B-token mixture containing ~6.2B tokens of OctoLong code contexts, followed by ~10B tokens of instruction tuning. Our training ablations and experimental evaluations against 18 state-of-the-art open-weight long-context LMs show that supplanting just 12% of traditional context-extension corpora with OctoLong data yields substantial gains in long-range retrieval, long-term state tracking, repository-level code understanding, and downstream agentic tasks, while also enhancing API usage in short-context coding scenarios.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG",
+      "cs.SE"
+    ]
+  },
+  "arxiv:2608.04428|bd0076fe74a40b767360e0b975a8e9581fa494bf|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Vision-language-action (VLA) models have emerged as a key component in embodied AI. Among existing approaches, diffusion-based VLA models achieve superior motion quality and generalization. However, diffusion-based VLA models are compute-intensive and must run at high control frequency, e.g., 50-200 Hz. Thus, it imposes strict latency and energy constraints on edge devices.\n  In this work, we present Deltoris, an algorithm-hardware co-design framework for efficient diffusion-based VLA inference. First, we exploit the temporal similarity of consecutive inputs and propose a \\textit{temporal-aware bit-sparsity} algorithm that computes only the differences between consecutive inputs, eliminating redundant bit-level operations. To further address the extra off-chip traffic introduced by our algorithm, we propose a \\textit{speculative inference} technique, which amortizes data loading across multiple control steps. Lastly, to support these techniques, we co-design a dedicated accelerator with customized 1D systolic bit-serial PE arrays that eliminate PE workload imbalance. Our evaluation shows that Deltoris achieves up to 34.2$\\times$ speedup over mobile GPUs and 6.1$\\times$ over prior accelerators, while maintaining comparable accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.04443|783e655f5334cb2b93a07f2e2ebb9e97d5a71547|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Emerging workloads, such as Multi-Agent Reinforcement Learning (MARL), large-scale neuromorphic computing, and probabilistic graphical models, intrinsically exhibit parallel-sequential computing patterns. While these tasks demand massive parallelism to achieve high throughput, they are severely bottlenecked by irregular data access patterns centralized to main memory. Consequently, conventional architectures face fundamental limitations when executing these workloads, primarily manifesting as global buffer saturation and memory-bound bottlenecks. To address these challenges, we propose the Memory-Centric Hierarchical Architecture (MCHA), a reconfigurable hardware solution tailored for parallel-sequential execution. MCHA leverages a hierarchical communication strategy that facilitates distributed, inter-core data routing, thereby significantly reducing the bandwidth burden on the global memory. Complementing the hardware, MCHA introduces a novel parallel-sequential programming model that utilizes event-driven conditional triggers to effectively hide data transmission latency within the execution pipeline. We benchmark MCHA against a diverse suite of parallel-sequential tasks, including MARL, motor variable control, and Markov random fields. Validated through our open-source, cycle-accurate simulator, MCHA demonstrates performance speedups ranging from 153.06$\\times$ to 2456.96$\\times$ over NVIDIA A100 GPUs on MARL workloads, while maintaining robust programming flexibility across other application domains. Furthermore, the architecture successfully reduces main memory access from 96% to 5.44%. When synthesized in a 28 nm process, the MCHA implementation occupies an area footprint of 2.92mm$^2$ and consumes 115.36 mW of power at 200 MHz. MCHA is open-sourced at https://github.com/carabdis/MCHA.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.DC",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2608.04458|f350fc3867fa0747060dac1c3cb66c597696f507|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Agentic AI is emerging in datacenters, but its architectural implications remain unexplored. We organize agentic workflows in a taxonomy and present its first architectural characterization with a production study at Microsoft Azure and a controlled study of open-source frameworks. We show that agentic execution is fragmented and heterogeneous. Requests expand into a workflow of LLM inferences, tool invocations, and orchestration decisions that repeatedly cross the CPU-GPU boundary. Our taxonomy explains how this fragmentation turns into resource demand. As orchestration and tools run on the host, the CPU sits on the critical path. Execution structure sets the load over time, which stays low with sudden spikes. Model composition sets how evenly the workflow uses the GPUs. Diversity in tasks and tools widens this range even further. These characteristics expose architectural mismatches of conventional uniform servers. Fragmented execution strands CPU and GPU capacity despite bursty demand. Different software roles make homogeneous CPU provisioning inefficient. Finally, multiplexing many agents onto shared cores degrades microarchitectural locality. Guided by our findings, we derive implications for agentic servers and examine them through Agora, our prototype for commodity servers. Agora dynamically harvests idle CPU cores for co-located throughput work, while protecting agentic tail latency against tool spikes. It oversubscribes GPU memory by placing more agents on each GPU, prefetching the next agent's state to hide swap latency. To match the machine to the heterogeneous roles, Agora pools cores by role and applies affinity-aware scheduling to restore locality. It automatically tunes mechanisms to the workload. Agora improves utilization and server throughput while preserving agent tail latency. Our insights also identify key directions for future server architectures for agentic AI.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.AR",
+      "cs.OS"
+    ]
+  },
+  "arxiv:2608.04962|0267cc4ff47f61901461f551d402448571b770d0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Reinforcement learning (RL) post-training improves the reasoning capabilities of large language models, but autoregressive rollout generation remains a major efficiency bottleneck. Speculative decoding can accelerate generation, yet applying it during RL is difficult because the target policy continually evolves: static proposers become stale, while frequent drafter updates add substantial overhead. We introduce SpecRoll, a speculative rollout engine that preserves the target model's sampling distribution while adapting at two timescales. Lightweight future-token heads generate parallel proposals, while our proposed Reflex module uses delayed verifier feedback to perform bounded, trajectory-local hidden-state corrections without backpropagation. A complementary slow path updates the head parameters only when sustained degradation is detected. SpecRoll combines these mechanisms with concurrency-aware sparse-tree verification and exact target verification, leaving the target rollout distribution and GRPO objective unchanged. Across five models ranging from 1.5B to 14B and three mathematical reasoning datasets, SpecRoll achieves 1.26-2.15x generation speedup and 1.21-2.04x end-to-end speedup over vanilla GRPO. It also outperforms FastGRPO in both generation and end-to-end time across all 15 matched settings, with an average pairwise end-to-end gain of 1.18x. Controlled ablations show that the fast and slow adaptation paths provide complementary benefits. Our source code is available at https://anonymous.4open.science/r/SpecRoll-26062006.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.04505|4ffa0e7285d7a7048e9b166d8cdd201ea756c386|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "This technical report presents K-EXAONE 2.0, an open-weight multilingual foundation model developed by LG AI Research as a step in our effort toward global frontier-scale foundation models. Rather than training from scratch, we upcycle K-EXAONE and expand its architecture, yielding a Mixture-of-Experts (MoE) model with 750B total parameters and approximately 37B activated per token---more than three times the capacity of its predecessor. K-EXAONE 2.0 supports context lengths of up to 256K tokens and expands multilingual coverage from six to ten languages. Its training pipeline combines continual pre-training, difficulty-focused mid-training, and post-training to strengthen reasoning, agentic coding, multilingual capability, and safety grounded in Korean sociocultural contexts. Across nine evaluation categories selected to reflect the conditions of practical use, K-EXAONE 2.0 improves over K-EXAONE and remains competitive with open-weight models, showing its largest gains in agentic coding and long-context understanding and its clearest strengths in long-context retrieval and safety. Released under the Apache 2.0 license, K-EXAONE 2.0 enables the wider AI ecosystem to evaluate, deploy, adapt, and build upon it, while marking the beginning---rather than the endpoint---of our challenge toward the global frontier.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.04753|f858ced134cbf877324e5f41ea5490e0729b693b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Attention layers are the backbone of today's most powerful and impactful models. Models with multi-million and billion parameters rely on contextual knowledge provided by attention layers. However, their use goes well beyond just being the core component of large language models. One particularly interesting application is in Memory Augmented Autoencoders (MemAE), specifically for unsupervised representation learning in outlier detection tasks. It was shown that attention helps these models be more effective in centralized learning scenarios. Our work aims to address the lack of specialized aggregation techniques in Federated Learning (FL) when it comes to MemAE models. In this paper we analyze the intricacies of the architecture behind Memory Augmented Autoencoders, and propose novel, guided approaches to effectively aggregate these models in federated scenarios. We demonstrate our approach on non-IID datasets and show that these novel aggregation schemes are more robust when dealing with numerous edge nodes in environments with unbalanced datasets, specifically for unsupervised anomaly detection scenarios. This approach improves the performance of even very shallow autoencoders, allowing them to be used in resource constrained environments.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.04904|6a031cac8b92bef1f8a453ce204af18bb2e604ec|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multilingual large language models exhibit substantial performance differences across languages, while existing adaptation methods often require parameter updates and considerable multilingual training data. We propose an inference-time multilingual steering method that uses pretrained sparse autoencoders to identify and strengthen target-language-related features. Using multilingual parallel sentences, we compare SAE activations across languages and select a small number of layer-specific features associated with each target language. These features are decoded into steering signals and injected into the model's hidden states without additional training. Experiments with Gemma-3-12B-it show average accuracy improvements of 10.9 percentage points on XCOPA, 5.3 points on XNLI, and 1.9 points on MGSM.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.04519|bfde7ca86d0574d59a954d9250bfc0753172672f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Benchmarking machine unlearning methods is critical to understand whether sensitive knowledge is removed from large language models (LLMs) or not. Current unlearning benchmarks include mainly single-hop questions and a narrow set of multi-hop questions. Although effective, they still face two challenges. (1) Knowledge is not isolated, whereby diverse multi-hop reasoning paths can potentially induce knowledge leakage than normal queries. (2) Unlearning may be fragile: unlearned knowledge can be partially recovered through recovery attacks such as lightweight post-unlearning adaptation, making static evaluation insufficient. Therefore, in this paper, we introduce \\unlearning as a novel benchmark to understand robust LLM knowledge removal across diverse reasoning paths and recovery attacks. We experiment with this benchmark on 3 models, 6 unlearning methods, and 2 carefully curated datasets. Results show that existing methods are vulnerable to multi-hop reasoning paths and recovery attacks. We further explore the trade-off among forget quality, robustness, and model utility for LLM unlearning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.04368|9992c0415afcc0e88d69a2c4dd437a3ee402cc2e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multimodal temporal data are inherently irregular and uneven in information density, yet most models rely on uniform discretization, leading to inefficient representations.\n  We propose \\textbf{EvtGraph}, a unified framework that aligns computation with temporal salience under explicit budget constraints. EvtGraph reparameterizes sequences into event-level tokens via event-adaptive compression (EAMC), selects a compact subset with a node budget (NBC), and performs temporally constrained sparse graph reasoning (T2SG). This transforms dense sequences into structured computation over salient events, reducing complexity while preserving critical transitions.\n  We show that this design provides a practical mechanism for allocating representational capacity under a fixed budget, yielding a consistent performance--efficiency trade-off, where a small budget is often sufficient in practice. Experiments on multimodal clinical (MIMIC-IV + CXR) and cross-domain benchmarks demonstrate that EvtGraph outperforms both Transformer-based and recurrent baselines while significantly improving efficiency.\n  These results suggest that budget-constrained event-centric representation provides a general paradigm for learning from high-redundancy temporal data.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.04548|c247accbd0f543dbfb9be5335677b2ffe49b1ca1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multimodal large language model (MLLM) unlearning methods have been proposed to remove private, sensitive, or proprietary information from well-trained models. However, most existing MLLM unlearning methods are designed for one-shot requests and fail to adequately address continual scenarios, as repeatedly applying one-shot operations leads to cumulative utility degradation, unlearning rebound, and retention drift. We introduce Merging for Continual Unlearning (MCU), an approach that dynamically merges multiple one-shot unlearning adapters into a unified adapter upon receiving each new unlearning request.Through a leave-one-out merging analysis, we reveal that these unlearning adapters exhibit strong cross-task dependencies. Such dependencies have two contrasting effects: they can facilitate cross-task unlearning transferability, but they can also introduce severe interference that degrades unlearning effectiveness and compromises retained knowledge. To address this challenge, MCU projects the adapters into a shared representation space, preserves their dominant directions, suppresses over-concentrated coordinates, and reconfigures cross-task dependencies to mitigate interference while enhancing transferability. Experiments on ICU-Bench and MLLMU-Bench demonstrate that MCU achieves superior unlearning effectiveness while preserving both retained knowledge and general multimodal utility.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
   }
 }
