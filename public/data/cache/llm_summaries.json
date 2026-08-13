@@ -15005,5 +15005,179 @@
       "cs.LG",
       "cs.AI"
     ]
+  },
+  "arxiv:2608.11919|22a795ac509c5dcde7501396609a94c836f03c6c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Training large language models on limited hardware is increasingly a scheduling problem across GPU compute, host memory, PCIe transfer, and storage bandwidth. Existing offloading systems reduce GPU residency, and MegaTrain shows that a CPU-master layer-streaming executor can train large models on a single GPU, but fixed checkpointing and placement heuristics still leave communication exposed on the critical path. We propose LazyTrain, an optimization layer over a layer-streaming executor. LazyTrain formulates checkpoint selection, activation placement, recomputation, and CPU-GPU-NVMe communication overlap as a mixed-integer scheduling problem, then executes the solved policy during training. It further couples 8-bit optimizer states with fast gradient clipping as a single Hybrid 8-bit operator: state compression reduces optimizer-state memory, while fast clipping counteracts the additional CPU-side update overhead. Across H800 experiments from Qwen2.5-3B to Qwen3.6-27B, LazyTrain improves sustained TFLOPS over matched baselines runs by approximately 1.24$\\times$; RTX 3090 experiments likewise increase the maximum feasible batch size by one at each model scale. In the primary Qwen3.6-27B H800 MetaMathQA run, LazyTrain reaches 219.95 TFLOPS and 1361 tokens/s at batch size 72, peaks at 68.84\\,GB of GPU memory, and obtains 95.42\\% exact-match accuracy on the full evaluation split. The source code is available at https://github.com/DataArcTech/LazyTrain.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.11920|b06e653d6798d26b54a0dc94b9522decf0ee6761|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "In-storage computing (ISC) is considered a next-generation memory architecture for its ability to relieve the data bottleneck between the host and the memory. While the required resources of large language models (LLMs) have increased significantly in recent years, the memory density has not scaled accordingly. Recently, several works have studied NAND flash-based processing-in-memory (NAND-PIM) schemes to exploit the high density of the memory. However, they do not address the dataflow/buffer for the intermediate values, so a simple method is to deal with the values in the slow flash memory array. To overcome such a limitation, we propose a high-performance NAND flash-based ISC architecture with enhanced activation buffering. Instead of using the very slow flash memory array for the intermediate values, our architecture buffers the values in a fast DRAM subsystem. This approach effectively handles the high-latency penalties when activations are programmed into slower TLC NAND flash. We also introduce a distributed dataflow approach for the NAND-PIM array. This approach maximizes computational parallelism by employing efficient intra-plane data mapping. The results show that our proposed architecture achieves significant performance improvements, reducing the inference latency by up to 85% compared to the baseline.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2608.11519|9b9cdf513cd401631141e93c8d889e6cd3f47698|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Full self-attention is a strong token mixer for PDE surrogates on irregular domains, but its quadratic cost limits its use on high-resolution problems. Efficient latent-attention models such as the Fast Low-rank Attention Routing Engine (FLARE) avoid that cost by routing all N tokens through M << N learned latent queries, but those queries are parameters: once trained, the same learned query templates serve every input. We remove this restriction with FLARE++, a low-rank attention architecture with dynamic token routing. FLARE++ reuses FLARE's own encoder to build its routing queries: learned latent seeds drive one extra encode call that gathers the N input tokens into M input-conditioned queries, and those queries then determine how the same tokens are compressed and redistributed. This preserves FLARE's explicit low-rank factorization and linear O(NM) complexity, and expresses the complete routing operation with standard scaled dot-product attention (SDPA) calls alone. We also provide a multi-GPU context-parallel implementation that shards input tokens across devices without ever gathering the full token sequence on one of them. FLARE++ is competitive across a set of standard PDE surrogate benchmarks, improving on fixed-query FLARE by 24% on average, and it gains 2.3 points of average accuracy on Long Range Arena.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.11361|7852316a9bfd6555f16ec9e5b21281ccb232b850|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Tokenizer vocabulary size is a foundational design choice in large language model (LLM) infrastructure, yet it is typically fixed at training time based on convention rather than deployment analysis. We show that the cost-optimal vocabulary is not a constant but a function of the serving regime. We formalize total deployment cost as $C_{lifecycle}(V) = C_{train}(V) + λ\\cdot C_{infer}(V, B)$, where $λ$ is inference volume and $B$ is the serving batch size. Through controlled experiments on two GPU families spanning the memory-bound to compute-bound regimes (A10G, ridge $\\approx$ 117 FLOP/byte; A100, ridge $\\approx$ 183 FLOP/byte), we demonstrate: (1) the inference-optimal vocabulary shifts 16x with serving batch, from 32k at $B=1$ to 524k at $B=64+$, driven by amortization of the $V \\times d$ unembedding matrix read; (2) at 1.3-2.3B model scale, quality (bits per byte, BPB) is optimized at $V=65$k, confirming scale-dependent vocabulary preference; (3) the lifecycle-optimal vocabulary diverges from training-optimal by up to 16x for production deployments. Quality is approximately invariant across the optimal range ($<$2% BPB spread), making vocabulary a pure systems optimization with no quality penalty in the measured range. Our results provide actionable capacity planning guidance: on-device deployments ($B=1$) should use $V \\approx 32$k; datacenter serving ($B \\geq 64$, $λ\\geq 10$) should use $V \\approx 131$-262k.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2608.11742|1bc5830527301eb535bb5d47ab6d8e184847e8c9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion Large Language Models (dLLMs) have emerged as a competitive alternative to autoregressive language models, offering the potential for substantially faster inference through parallel decoding. Existing parallel decoding schedulers typically commit positions only after they meet a per-position criterion, overlooking how early commitments may benefit subsequent decoding. We identify a ripple effect in dLLM decoding: proactively committing a mid-entropy pivot position can induce a pronounced reduction in uncertainty across the remaining masked positions. This uncertainty reduction allows subsequent steps to unmask more tokens in parallel, thereby accelerating the overall decoding process. To exploit the ripple effect, we propose Ripple-Pivot Search (RPS), a novel training-free decoding method that seeks mid-entropy positions as promising candidate pivots (where to decode), and determines their token assignment that yields the greatest downstream benefit via lookahead evaluation (what to decode). Across 3 dLLMs and 4 reasoning and code-generation benchmarks, RPS achieves 4-10$\\times$ wall-clock speedup over the standard decoder while preserving generation quality, and improves accuracy over the previous lookahead baseline by up to 5.49% while delivering higher throughput in most settings. When integrated with KV caching, RPS further achieves up to 18$\\times$ wall-clock speedup over the standard decoder.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.11231|ed800d6fd8fe98b205c8c2555c8ce93affbb19db|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM serving is increasingly accelerated by position-independent caching (PIC). Existing PIC methods, however, are built for full-attention models, where a token-indexed KV cache underlies its core operations: matching reusable token chunks, concatenating their KV entries, and selectively recomputing a few tokens to restore cross-chunk context. Hybrid LLMs break these primitives---they replace most attention layers with linear recurrences that expose only a fixed-size state, leaving no token-indexed KV to concatenate or to locally repair. This raises a natural question: can PIC benefit hybrid models, and what would it take? We present LinearKV, a training-free hybrid-PIC framework. Its key insight is a \\emph{decoupled initialization}: each linear layer maps its $K$ matched local states to a single initial state, while full-attention layers concatenate their KV as before. LinearKV is therefore compatible with existing PIC methods, reusing their token selection and recomputation as-is. Under this framework, we find that a \\emph{single cached state} suffices as the linear layer's initializer. The algebraically principled alternative---composing all $K$ cached states into the exact full-prefix state, as concurrent work HYPIC does---is unnecessary and, on some architectures, even harmful. We compare the two across three hybrid models and three PIC selectors. On the two GDN models the two tie, both recovering most of full quality (up to $92\\%$); on the Mamba-2 model, exact composition instead collapses under every selector---under EPIC, for instance, it recovers only $46.6\\%$ of full quality, versus $86.8\\%$ for a single cached block initializer. A single state initializer is also cheaper, cutting time-to-first-token to $0.46\\times$ full prefill versus a further $5$--$17\\%$ overhead for exact composition; results hold across LongBench QA and RULER at 8K--32K.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.11758|bbe9df12aaa8ee10e3bdd592b0166a4840dfa29e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multimodal Large Language Models (MLLMs) exhibit strong generalization and reasoning abilities due to large-scale multimodal pre-training. However, fine-tuning these models on downstream tasks often leads to catastrophic forgetting, where newly learned task-specific knowledge degrades previously acquired capabilities. This issue arises because gradient updates for new tasks overwrite parameters critical to prior knowledge, limiting the practical deployment of MLLMs. To address this challenge, we propose Activation-Weighted Adaptive REtention (AWARe), a fine-tuning method that mitigates catastrophic forgetting by dynamically controlling parameter updates based on activation patterns. AWARe assigns activation-based importance scores to parameters, selectively freezing those essential for preserving prior capabilities while allowing less important parameters to adapt to new tasks. Importantly, AWARe operates without modifying model architectures, ensuring compatibility with existing inference engines. Extensive experiments demonstrate that AWARe effectively preserves upstream capabilities while achieving superior downstream performance compared to existing methods. Code is available at https://github.com/kaln27/AWARe.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.11249|4607277d1fc3ff8081b00c280a40fab915742fc0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We study the problem of lossless text compression, motivated by the rapid growth in the collection and storage of digital textual data - including plain text, source code, and structured formats such as XML - and by recent advances in neural language model-based compression. In particular, recent LLM-based approaches, whether built on symbol-ranking pipelines or paired with a statistical compressor, have demonstrated compression ratios significantly superior to general-purpose compressors such as zstd, gzip, or bzip on text and code. However, these neural approaches suffer from severe throughput limitations, making them not yet practically usable.\n  For the first time in the context of lossless neural text compression, we introduce Diffusion Language Models (DLMs) as an alternative inference paradigm to autoregressive LLM-based approaches. We argue that replacing autoregressive LLMs with DLMs within the same compression framework could overcome the throughput bottleneck caused by their one-symbol-per-step limitation. However, achieving these improvements requires addressing algorithmic challenges introduced by applying DLMs to lossless compression, where the architecture allows the number and positions of symbols encoded at each forward pass to be decided independently. We design efficient and effective strategies to solve these challenges and evaluate them experimentally against LLM-based and general-purpose compressors on enwik8, a well-established textual benchmark.\n  Our results show that the newly proposed DLM-based framework advances the state of the art in lossless text compression. Moreover, as DLMs are still a relatively young paradigm, recent advances toward increasingly capable and efficient models suggest substantial room for further improvements.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IT",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.11235|6445da5123c83dd1d7afad3af206cca980fcd578|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion language models (DLMs) update many tokens in parallel, yet practical decoders often use a fixed denoising horizon. Many predictions stabilize early, but blockwise decoding continues until all positions are resolved, causing repeated dense forward passes. Existing accelerators often rely on learned filters, modified scores, dependency models, or cache-specific mechanisms. We ask whether native trajectory signals can identify residual positions likely to match the deterministic dense endpoint. We propose CORA-Diff, a training-free method that preserves the original transfer rule and applies confidence-and-persistence gating only to positions that rule leaves unresolved. Accepted tokens remain visible as context, and the block terminates once all positions are resolved. This requires no backbone change, learned acceptance model, or logit modification. Our theory explains why high-confidence, persistent predictions are more likely to match the fixed-horizon dense endpoint, and paired post-intervention trajectories provide direct empirical support. We select one operating point on a separate GSM8K calibration subset and freeze it for all evaluations. Under a matched Learn2PD-style LLaDA protocol, CORA-Diff has the lowest measured runtime in all eight task-length settings. Task scores match or exceed dense decoding in five settings, and the largest observed drop is 1.22 points. Its incremental speedups over EOS-aware dense decoding are 2.70x and 3.32x on GSM8K and HumanEval. It also reaches 13.14x under the fixed-horizon 1024/1024 mechanism-isolation protocol and transfers to Dream without retuning at 3.18x-3.53x. These results show that native confidence and persistence enable reliable residual acceptance, reducing repeated denoising computation while preserving task quality.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.11981|7fa56e742948420386479ca75c3c17ef52fb4d24|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Small Language Models (SLMs) have emerged as a more efficient alternative to traditional Large Language Models (LLMs), offering promising potential in resource-constrained scenarios. Existing approaches to building SLMs typically follow two paths: training compact models from scratch, or compressing larger pre-trained models using methods such as pruning, quantization, or distillation. As language models become increasingly integrated into real-world applications, ensuring their trustworthiness has become a critical concern. However, how to build trustworthy SLMs remains an underexplored question. In this work, we present a comprehensive evaluation of SLM trustworthiness across multiple dimensions, including fairness, robustness, privacy, and ethics. We first examine the effects of pruning and quantization, and find that quantization is significantly more effective in preserving trustworthiness compared to pruning. More importantly, we demonstrate that compressing a reliable large model via quantization can produce SLMs with superior trustworthiness and adaptability compared to using small models trained from scratch. Furthermore, knowledge distillation from trustworthy teacher models can further enhance the reliability of SLMs. We hope our findings provide practical guidance and a foundation for future research into the development and deployment of trustworthy small language models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.11427|0e23c04d3eef10e95cfef66dd9c8a79fce21de67|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Full attention exposes every token pair, whereas kernel attention compresses a sequence into a fixed-dimensional sketch. We show that this distinction becomes exponential at the first context length containing two competing candidates. On Min-IP over Boolean inputs, rank-one normalized kernel attention solves every sequence of length at most two exactly. In contrast, any single normalized nonnegative kernel-attention head that succeeds on all three-token sequences with error strictly below $1/2$ requires $2^{Ω(m)}$ features, even with arbitrary finite-dimensional tokenwise values and an arbitrary query-dependent affine readout. Dense softmax solves the same task with $m$-dimensional scores and constant temperature. The conclusion survives position-dependent token maps and a causal final query. As context length grows, the lower bound approaches the exact $2^m$-feature realization. Separately, for deterministic multihead, multilayer sketch models whose cross-token channels have finite alphabets, we prove a transcript lower bound linear in the number of independent answers and logarithmic in their alphabet size.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.12218|500b49d2d81acd976bf2bcec5989c5b2eafea593|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.12218v1 Announce Type: new \nAbstract: Large language models are increasingly trained and deployed with long contexts that span documents, code repositories, and interaction histories. This scaling reflects the implicit assumption that training on longer contexts will only help the model by exposing it to richer evidence. We challenge this view by studying how the context window shapes a model's mode of learning, shifting it between parametric internalization and contextualization. We propose the Information Abundance Paradox, which hypothesizes that abundant relevant information in the training context can reduce the incentive to encode that information parametrically, thereby increasing reliance on context. In pretraining with long documents, increasing the context window improves language modeling, natural language understanding, and closed-book MCQA only up to an intermediate optimum, after which performance consistently declines. In supervised fine-tuning, more task-relevant train-time context improves performance with supporting context, but reduces robustness when context is absent or misleading at test time. Our analysis suggests that this behavior arises when longer context provides a lower complexity solution. Mechanistically, training with informative context shifts gradient pressure from feed-forward networks, often linked to parametric knowledge, toward attention modules, and causal interventions show that this shift increases reliance on context during inference. Overall, these findings support the Information Abundance Paradox and suggest that scaling toward near-infinite context is not simply a matter of supplying more data, even when high-quality long-context data is abundant.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.11233|813eb835111de227509a2076af54bc44931ad803|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A dense, pretrained language model can be retrofitted with recurrent depth and learn an iterative latent transition that persists after outcome-only annealing. Qwen2.5-0.5B-Instruct is split into a Prelude, a weight-tied Recurrent Block, and a Coda, with an identity-preserving one-loop path and a re-entry bridge on later loops. At loop 1 the retrofit remains non-inferior to its base on a preregistered ARC battery. Three findings. First, the mechanism is a reusable procedure rather than terminal-answer lookup, and installs at two budgets: 6M trained parameters over frozen base weights and 180M full-block. With intermediate-step supervision, the model computes one task step per loop and persists when only final answers are graded. The adapter matched the full block overall (83.8% versus 84.0%), led through depth 11, and trailed beyond. Verbal fine-tuning reached 79-86% on controlled verbal renderings (zero-shot transfer was minimal), and adapter verbal training begun from the installed mechanism outpaced matched fresh training by 18.6 points, including on a held-out test set. Second, the operation extrapolates to roughly 1.5 times its supervised depth, holding 70% accuracy through depth 18. Third, a same-size scratchpad-trained model matched the recurrent model within its learned horizon but collapsed beyond it. The recurrent model won overall, 84% versus 72%, retained 53% versus 2.5% beyond depth 10, and answered 7.6 times faster. An iterative transformer can therefore perform deeper reasoning in latent space faster than comparable or larger models fine-tuned on the same task, in a system-level comparison. A second task, running the rule in reverse, exposed the limits: the inverse was learnable in isolation, but no continuation acquired it while preserving the installed mechanism and general capability, a catastrophic-interference boundary. Learned depth selection remains open.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.11786|3f827536d475feb7d4afc2c76eb9ad7ed254e81a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Aggressive quantization disproportionately harms multilingual capability: in the sub-4B INT3 GPTQ regime, we measure 2-4x larger perplexity degradation on non-English languages than on English. We propose Language-Conditional Dequantization (LCD), a post-hoc method that attaches per-language rank-2 LoRA corrections to the linear layers of an already-quantized model, adding 0.12% parameters per language and training in under 20 minutes on a single GPU. Across Qwen2.5-3B and Llama-3.2-3B, LCD recovers 70-83% of the perplexity gap for non-Latin script languages and 17-28% of the GlobalMMLU accuracy gap, outperforming a language-agnostic correction of equal capacity by 3-9 points on typologically distant languages and a data-free low-rank baseline (LQER) by an order of magnitude. We further identify a perplexity-accuracy disconnect and trace it to where quantization concentrates damage: early-depth errors (Llama) propagate downstream and resist local correction, while late-depth errors (Qwen) do not. A layer-restricted variant of LCD validates this mechanism directly.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.11676|9ee860ec837857f3fb7ea794be45efa12af60c87|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Heterogeneous multi-agent LLM systems, where agents are powered by different model families, can outperform homogeneous configurations by reducing redundant reasoning patterns. Yet existing communication protocols either operate through text, discarding the sender's internal representations, or require architectural homogeneity for latent-level transfer. We identify the entity grounding problem in cross-architecture communication: cross-attention bridges that transfer continuous representations across different LLM families suffer from rare-token compression collapse, where entity identity is lost in the continuous bottleneck (bridge-only F1 ~30%). We propose XBRIDGE, a decode-free communication protocol that addresses this through two mechanisms. Lexical Anchor Mapping (LAM) maps the sender's original context tokens to the receiver's vocabulary, providing discrete entity anchors. A Latent Enrichment Bridge (LEB) lets the receiver query the sender's hidden states for contextual enrichment. The entity anchors ground the bridge's contextual signals to specific entities through the receiver's own self-attention. Across three model families (Llama, Qwen, and Mistral), seven benchmarks, and both communication directions, XBRIDGE outperforms text-based communication on all seven tasks for each model pair while achieving 11x lower latency, and in a same-architecture setting it also exceeds a KV-sharing baseline on six of seven tasks. LEB requires only 264M trainable parameters (3.8% of the receiver), is trained on a small balanced sample set, and adds negligible inference overhead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.12026|fbe990b8631dbbb85b5dd9f7e999a92c8a610c1b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.12026v1 Announce Type: new \nAbstract: Post-training quantization pipelines routinely leave the softmax output layer in high precision. Yet in small LLMs with modern vocabularies, the head holds 15--30\\% of all parameters, so a nominal ``2-bit'' model with an fp16 head can store several times as many bits per weight. We pose softmax-layer quantization as a rate-distortion problem under the KL divergence between the original and quantized output distributions. A second-order analysis reveals a class-aware geometry: quantization error is weighted jointly by feature covariance and class-specific softmax curvature. A separability approximation replaces the $Kn\\times Kn$ Cholesky with one $n\\times n$ factorization rescaled per class, making the lattice encodable by successive interference cancellation, with both statistics from a single forward pass. The resulting method, SoftWater, gives fine grids to frequent, low-variance classes and coarse grids to rare ones, a large gap under Zipfian token distributions. Across five models from 1B to 32B, SoftWater outperforms the released WaterSIC quantizer (near-optimal under linear-layer WMSE but not output KL) at matched head rates on 59 of 60 test points, using none of that pipeline's refinements and cutting head-induced KL by $6.5\\times$--$8.3\\times$ at 2 bits. On Llama-3.2-1B-Instruct with quantized bodies, a 2-bit head removes 45--60\\% of stored bytes for a $2.9$--$3.7\\%$ perplexity increase. Because the class-side statistic comes from calibration data, matching calibration to the deployment domain gives the lowest KL on that domain throughout. On a tied model, a 4-bit head is near-lossless and a 2-bit head costs under 4\\% perplexity, making head quantization of such models practical.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.11788|6072660249785a6ac355f2ceca36c6b3e50030b1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Continual pre-training (CPT) has been widely adopted as a method for domain adaptation in large language models. However, CPT has consistently been accompanied by challenges, such as the difficulty of acquiring large-scale domain-specific datasets and high computational costs. In this study, we propose a novel method called Test-Enhanced Learning for Language Model Enrichment (TELLME) to alleviate these issues. TELLME leverages the TestEnhanced Learning (TEL) principle, whereby the model's training efficiency is improved using quizzes during training. It integrates this principle with CPT, thereby promoting efficient domain-specific knowledge acquisition and long-term memory retention. Experimental results demonstrate that TELLME outperforms existing methods by up to 23.6% in the financial domain and achieves a 9.8% improvement in long-term memory retention.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.11693|eb2abb83411584f198bcaee54f83993ee0233a9f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "NVIDIA's published specifications give the Blackwell Ultra GPU (B300) a dense-compute ratio of roughly 30:1 between FP8 and INT8 tensor-core throughput; its predecessors, H200 and B200, both provide 1:1. We audit what this deprioritization means in practice by tracing INT8 W8A8 support through four layers of the stack: the published specifications, the PTX ISA, NVIDIA's CUTLASS kernel library, and the two major open-source LLM serving engines (vLLM and SGLang). We find a consistent, layered withdrawal: (i) the PTX ISA never exposes the fifth-generation tensor-core integer path (tcgen05.mma with .kind::i8) on sm_103a, even though the same PTX revision extends the FP4 kinds to that target, leaving legacy warp-level IMMA as the only architecturally legal integer tensor-core path on B300; (ii) CUTLASS's kernel generator explicitly skips INT8 UMMA generation for any build targeting 103a, while generating FP8 unconditionally; (iii) vLLM ships no INT8 GEMM for Blackwell and fails with a hard runtime error at the first forward pass, after the model has loaded; and (iv) SGLang's ahead-of-time INT8 GEMM stops at Sm90, while its FP8 tuning configurations already cover B200. We document an escape hatch (rerouting vLLM's INT8 path to a JIT-compiled Triton backend via an environment variable), a false-negative trap in the obvious profiler methodology for detecting \"native INT8\" on sm_103, and the practical failure semantics that make naive testing expensive. Together, these findings show that a quantization format's availability is a property of the whole stack rather than of the model or the spec sheet. Four distinct layers, three of them NVIDIA's own, withdrew INT8 support in mutually consistent ways, and a format that is nominally present on the datasheet is, by default, undeployable on this hardware.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2608.11688|57c5087dfa5b2a1e779b784fe6c81fe9f6789547|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) models are attractive for edge deployment because they provide high model capacity while activating only a small subset of parameters per token, improving compute efficiency. However, MoE inference at the edge is fundamentally limited by memory. Expert parameters are large and often reside in off-chip memory due to capacity, cost, and power constraints, putting expert loading to the critical path. We present APEX: Adaptive Expert Prefetching, a predictive resource management framework that overlaps expert loading with useful computation. APEX introduces a lightweight prefetch router that predicts candidate experts before the attention block to dynamically fetch additional experts using a learned confidence model. This adaptive strategy achieves over 99% overlap accuracy, significantly outperforming fixed top-k prefetching techniques. APEX supports two execution modes: a correctness-preserving mode that guarantees exact routing semantics, and a stall-free mode that eliminates residual stalls by operating on available experts with negligible impact on application accuracy. Across multiple MoE models, the correctness-preserving mode reduces per-token latency by up to 26% and improves energy-delay product (EDP) by up to 41% over state-of-the-art baselines, while the stall-free mode provides additional efficiency gains with negligible impact on application accuracy. These results establish adaptive, confidence-driven expert prefetching as an effective approach for efficient MoE inference on edge systems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.11215|b492e6ca14d336e214ce9509853994b3a84ebcb4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Simulating societies of many large language model (LLM) agents is expensive, yet the questions asked of such simulations are usually macroscopic: phase behaviour, stylised facts, and scaling with the number of agents $N$, not the cognition of any single agent. We turn a statistical-physics observation into a method: replace each LLM agent by a low-parameter model fitted from a few hundred to a few thousand cheap queries, then run the society at any $N$ on a laptop. Whether this works is decided before the simulation runs, chiefly by what each agent perceives. We introduce an [interaction order x memory] taxonomy that maps perception and memory to an effective theory and a predicted $N$-trend of the surrogate error. We validate it on a faithful reimplementation of the LLM macroeconomy EconAgent and seven further named LLM simulations, with agent decisions cloned from genuine LLM elicitations (primarily DeepSeek) for a few dollars; the predicted error trends hold cell by cell, and the two refuted predictions, both on a strongly saturating response and traced to its curvature, are themselves matched quantitatively by the theory with no free parameters.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cond-mat.stat-mech主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cond-mat.stat-mech",
+      "cs.CL",
+      "cs.LG"
+    ]
   }
 }
