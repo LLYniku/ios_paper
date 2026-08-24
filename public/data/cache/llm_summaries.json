@@ -16237,5 +16237,178 @@
       "cs.AI",
       "cs.CL"
     ]
+  },
+  "arxiv:2608.20953|8e6ca1bb8d80ad6b333cb72138884cf6c8ce5efc|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Serving large language models cheaply increasingly means shipping models that are both structurally compressed to a fraction of their parameters and quantized to 4 bits. Together these steps degrade reasoning, mathematics, coding, and long-context behavior enough to require a recovery, or healing, stage before deployment. The default recipe, quantization-aware training (QAT), re-fits the compressed, quantized model to hard labels; in our pipeline it converged slowly and collapsed past its peak. We adopted Quantization-Aware Healing (QAH) instead. Because a structurally compressed model is never independently trained at full precision, its bfloat16 checkpoint is a distillation-recovered approximation of the original; QAH distills the 4-bit student directly from the original, uncompressed model. On a GPT-OSS 120B to 60B to MXFP4 pipeline, the QAH student matches or beats its bfloat16 source on 7 of 9 benchmarks at roughly 4 times less weight memory and half the teacher's parameter count, and is released open-weight as Hypernova-60B. Against a matched QAT baseline it reaches a comparable peak about 7 times faster and stays stable under continued training, without hand-tuned early stopping. We also report deployment lessons, including a large, reproducible quality gap between distributed-training backends. Our aim is a recipe deployable without a multi-week hyper-parameter search.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2608.20397|3b97dff3059731bc422184f37ec7f531089f5895|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Agentic large language models (LLMs) on the Model Context Protocol (MCP) re-encode verbose tool schemas every turn, so prefill - quadratic in sequence length - dominates time-to-first-token (TTFT) as the tool registry grows. Nexus's primary lever is to decouple routing from the schema-prefill cost: an INT8 semantic lookaside buffer (SLB) with a calibrated cross-encoder margin gate selects tools by retrieval, and arguments are generated over a compressed textual signature (median 19 tokens) rather than over spliced key/value (KV) cache. This path is depth-independent: routing accuracy stays near 89% as the registry scales to 250 tools - where a concatenate-all-schemas baseline overflows the context window entirely - and it reaches a first-argument token 1.66x sooner than a full-schema re-prefill at a ~80% main-context token saving. As a secondary, bounded lever we transplant a compiled schema KV block directly into the live context. This is fundamentally limited by rotary position embedding (RoPE) phase drift: an anchored splice is output-exact, but off-anchor placement corrupts attention, so beyond a threshold P=256 Nexus repairs the seam with a depth-adaptive suffix redecode that escalates to a full re-prefill. The resulting never-regress property is a guarantee on output fidelity (top-1 agreement, D_KL approx. 0) - not on latency, which can dip to 0.98x before converging to parity - alongside a 1.1-1.7x TTFT speedup at moderate depth that narrows to parity at deep context. Two negative results bound the design: the off-anchor RoPE fidelity boundary, and the failure of a reference-free drift gate to predict drift (Spearman rho = 0.193). All measurements are from one model tuple (Qwen2.5-14B-Instruct Q4_K_M) on Apple-silicon unified memory; the qualitative boundaries generalize, while the quantitative envelope is tuple-specific.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.20961|18a4d1c249502d5846603e0c38e8cf296cadb0f9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Modern open models are hybrids: most layers are linear-attention (Gated DeltaNet, GDN) layers carrying a small fixed-size recurrent state instead of a growing key-value (KV) cache. This makes ordinary decoding memory-efficient, but hurts speculative decoding. To verify a batch of draft tokens and then roll back the rejected ones, today's systems snapshot the full recurrent state at every draft position for GDN layers, and those snapshots cannot be shared across branches of a draft tree, so a wide, high-acceptance tree becomes memory-infeasible. We remove the snapshots. Using a tree-structured WY transform of the gated delta rule, we compute every draft node's output with a single triangular solve and reconstruct only the one accepted state on commit, storing a small pseudo-value matrix instead of per-node states; the derivation depends only on the gated delta rule, not on any other architectural detail. In serving benchmarks on two scales of one hybrid model family (Qwen3.5 35B and 397B) this cuts speculative recurrent-state memory and KV-cache pressure at identical acceptance length, turning the freed HBM into higher throughput and much lower time-to-first-token (TTFT) wherever memory binds, and costing a few percent where it does not. For tree width the same memory buys affordability: a wider, higher-acceptance draft becomes possible, though not yet a throughput win.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL",
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.20359|05b2ac9e56f2d3b6e5f3d4ab39db09033f01d43a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) are deployed for increasingly complex tasks involving planning and multi-step decision making, but high-quality performance on these tasks often requires generating long reasoning traces. This is a poor fit for latency-sensitive and interactive applications like voice assistants or coding agents, where generation latency can strongly affect user experience. Existing acceleration methods typically focus on token-level generation, without utilizing the structure of reasoning workflows. We introduce SSR: Self-Speculation for Reasoning Models, a training-free self-speculative decoding method that leverages the chain-of-thought (CoT) as a source of speculation. SSR uses the partial-CoT answer distribution as the drafter and the full-CoT distribution as the verifier, deriving both from the same model at different reasoning budgets. This builds on the observation that later partial-CoT responses often exhibit greater semantic and lexical overlap with the full-budget response. Due to this overlap, SSR can accept long draft prefixes at once, leading to large speedups on structured and long-form generation tasks. To further exploit draft-response overlap beyond the contiguous prefix accepted by standard speculative decoding, SSR also incorporates suffix decoding, using the draft to seed a suffix cache and recover useful spans beyond the accepted prefix, further reducing latency on tasks with high lexical overlap between the draft and the final response. We evaluate SSR on multiple structured and long-form generation tasks where it is most useful, and demonstrate a relative improvement of up to 24.1% on total generation latency for popular open-source models such as Qwen3.5 and Gemma-4.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.21265|e840cb9944d6ec6816f3edefdb2af3f7fe0c7997|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.21265v1 Announce Type: new \nAbstract: Large language models often rely on Chain-of-Thought (CoT) reasoning to solve complex tasks, but verbose reasoning traces introduce substantial inference overhead. CoT compression shortens generation, yet aggressive compression may disrupt logical coherence and degrade performance. We formalize this trade-off as the \\textit{Context-Generation Substitution Law}, where explicit reasoning context substitutes for part of decode-time generation. Based on this principle, we propose \\textit{Memory-Augmented Compression}, a training-free framework that constructs reusable reasoning memories from historical traces and retrieves them as prefill-side scaffolds. Rather than using raw demonstrations, these memories summarize reusable reasoning patterns, key constraints, and critical operations to compensate for information lost during compression. Experiments show that Memory consistently improves prompt-based Chain-of-Draft (CoD) compression across mathematical reasoning, complex reasoning, and science question answering tasks, yielding accuracy gains of 21.4, 28.0, 29.5, and 6.61 points over CoD on GSM8K, MATH, BBH, and MMLU-Sci, while achieving a 1.14--1.49$\\times$ latency speedup over standard CoT. Memory is also compatible with token-level, reasoning-trace-level, and inference-state compression mechanisms. Further analyzes show that the gains come from relevant reasoning memories rather than simply increasing context length.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.20427|d7aaeb423bfdc4c92d0bb53415e1f696b5e64bc8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Dense causal attention remains expensive at long context even when implemented with highly optimized exact kernels. We study BF1, a deterministic block-aligned dyadic sparse-attention route that combines a small exact local neighborhood, a global first block, and logarithmically spaced historical blocks. The route is related to prior log-sparse and dilated attention patterns; our contribution is a correctness-gated pretrained-model retrofit, a matched topology-control study, and a systems characterization that connects per-layer sparsity to whole-model latency. For fixed block width, every converted layer uses O(n log n) selected token interactions and has O(log n) graph communication depth. On an NVIDIA RTX PRO 6000 Blackwell GPU, an optimized BF16 implementation crosses dense attention between 2K and 4K tokens and reaches a 10.91x per-layer prefill speedup at 32K. Retrofitting eight of 28 Qwen3-0.6B attention layers lowers warm whole-model time to first token by 7.7%, 11.3%, and 15.3% at 8K, 16K, and 32K, respectively, while the remaining dense layers keep the complete model asymptotically quadratic. Under a matched 1,000-step, 16.384M-token adaptation protocol, BF1 ranks first across three training seeds: mean report perplexity is 1.68639 versus 1.69154 for a matched static-random nonlocal graph, 1.69258 for dense continued training, and 1.81505 for equal-budget local sliding. At seed 1234, the packed-report paired interval places Dense-CT 0.3169-0.4055% above BF1 and static-random graph 17 0.2441-0.3642% above BF1. These results establish BF1 as a reproducible sparse operator and selective retrofit primitive with real long-context systems value. This paper evaluates numerical correctness, selected-interaction scaling, kernel performance, partial-model inference, and matched next-token language modeling.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.20530|236c5e055f05cb8c03deaac11566f465791d2d0b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding accelerates language-model inference by drafting future tokens that the target model verifies in parallel. A diffusion-style block head such as DFlash is an attractive drafter, predicting an entire block of future tokens in one forward pass. However, it is trained on per-position marginals rather than the joint block distribution, so the tokens it emits are individually plausible yet jointly incoherent. We introduce LiLiCorr, a Lightweight Likelihood-based model that Correlates the per-position marginal distributions a drafter already produces. It keeps the top-k tokens at each position as candidates and processes them jointly, producing for each an in and an out vector. A pair of adjacent candidates matches when the earlier one's out vector has high cosine similarity with the later one's in vector. These matches capture the block's joint structure without ever materializing the full joint distribution. One lightweight network pass produces all the vectors, and the pairwise scores are then computed in parallel as batched matrix operations, leaving only a cheap greedy walk sequential. We further co-train the drafter with LiLiCorr, so it learns to propose candidates that correlate into longer accepted sequences. Over the vanilla DFlash drafter, LiLiCorr raises acceptance length on every benchmark by 9 to 19%, while its scoring head accounts for about 2.8% of the per-block latency. Against DFlash and two concurrent methods that also restore coherence at draft time, LiLiCorr delivers the highest throughput in 70 of 72 settings: nine benchmarks at two target sizes under greedy and temperature-one decoding, and a throughput sweep over six concurrencies, two input lengths and three entropy tiers, with all systems equally optimized on a common serving stack. Extending LiLiCorr to inputs an order of magnitude longer than it was trained on preserves that lead.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.20631|45650a56cbdca4f9480679fc49c56860c606228f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) agents have demonstrated the ability to solve multi-step tasks requiring planning, tool use, and external information access, yet growing execution histories increase inference cost and expose reasoning to outdated, irrelevant, or misleading information, potentially degrading reasoning quality. Existing memory approaches organize or compress execution histories but provide limited mechanisms for deciding which memories remain active. We introduce the, a hierarchical memory system that organizes execution into tasks, subtasks, and actions while assigning each memory a dynamic retention score. Event-based updates and selection-based decay revise these scores, allowing WMT to preserve useful information, fold completed trajectories, suppress low-utility content, and retain access to folded context. We evaluate WMT on GAIA-Text using Qwen3-8B, Gemma 4 E4B, and Llama-3.1-8B, with ablations and memory-poisoning experiments. Relative to linear memory, WMT improves accuracy by an average of 9.97 percentage points while reducing prompt-token usage by 32.8%. Memory-poisoning experiments show that WMT limits the persistence and propagation of unreliable information. Our results suggest that effective long-horizon agent memory depends less on storing more information than on deciding which information should remain active.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.21308|96874e86976d46cc2742749df2a20229543107de|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.21308v1 Announce Type: new \nAbstract: Test-Time Training (TTT) enables long-context processing via continuous weight updates during inference, but current methods struggle to balance the expressivity of per-token update dynamics with the hardware efficiency of chunk-wise approximations. We propose E$^2$-TTT (Expressive and Efficient TTT) to bridge this gap. Under the standard approximation of taking gradients at the chunk-start weights, we derive a closed-form state transition that exactly reproduces the chunk-end fast-weight and momentum states of the per-token recurrence. This enables fully parallelized chunk-level training while preserving the temporal structure of the update rule that prior chunk-wise methods discard. We validate E$^2$-TTT by training models up to 1.3B parameters from scratch. It performs on par with previous TTT and hybrid attention baselines in language modeling while outperforming them on in-context retrieval. Its advantage is most pronounced in length extrapolation: on the standard ``Needle in a Haystack'' passkey test, it retains over 90% accuracy at $8\\times$ the training context length. Meanwhile, E$^2$-TTT can match the training throughput of efficient chunk-wise methods, demonstrating that it effectively reconciles expressivity with efficiency. The code is available at https://github.com/zeyun-zhong/E2-TTT.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.20988|2993f4411c2a31c5902b32e29946370a1911e4bd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Quantization of Large Language Models (LLMs) is often hindered by the sensitivity of the self-attention mechanism to discretization errors. We identify the softmax operator as a bottleneck for quantization stability due to its sensitivity to outliers and state-dependent Jacobian. We theoretically establish that suppressing the norm of this Jacobian helps in bounding quantization-induced performance degradation. Based on this, we propose Jacobian-Guided Noise Injection, a training strategy that injects zero-mean Gaussian noise into pre-attention logits, with variance derived directly from the Jacobian Frobenius norm. Unlike prior approaches that rely on heuristic or penalise jacobian directly, our method provides a way to identify the optimal noise variance based on the local attention sensitivity. We evaluate the method on SOTA LLM architectures, where it demonstrates improved robustness over popular PTQ methods. Empirical analysis reveals that the proposed method gives up to +37% relative gains on Top-1 accuracy on ImageNet-1K for SigLIP and improves relative perplexity by upto 40% on WikiText for language models in low bit quantisation settings, proving the efficacy of the approach.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.20632|6b0c97ba23177dcd13f2edb4852e066cb2ff9e0f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Efficient-transformer research often motivates token pruning and adaptive computation with the claim that not all tokens require equal computational effort. We test this claim end to end using SEWN, a two-stream Transformer that routes tokens through either lightweight or full-capacity processing using a learned gate. Across our experiments, routing introduces negligible accuracy change relative to parameter-matched baselines, while the gate's token-importance signal depends critically on how it is learned. A static lexicon-seeded prior fails a counterfactual faithfulness test on BoolQ, whereas a fully contextual gate achieves highly significant separation ($p<10^{-10}$) on both evaluated tasks without changing task accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.20617|ae38365096af459f09635e5e067df159a7dbd6e5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multi-agent LLM systems split work across models, so answering often requires knowledge that sits in another agent's context: a Sharer has encoded information that a Receiver needs to complete its task. They usually communicate by exchanging text, which puts autoregressive decoding on the critical path and reduces the exchange to a discrete message written without sight of the receiver's state. Recent latent protocols instead translate the sharer's key-value (KV) cache into the receiver's: C2C supports heterogeneous models but requires both to read the same input, while LCF-X removes this shared-context requirement through position-free sharer-cache pooling. Three restrictions remain: LCF-X compresses the sharer alone, supplies the same layer-local summary to every receiver position with no joint cross-layer memory to retrieve from, and assumes matched layer count and KV geometry. We introduce XKV, which lifts all three: learned-query attention pools both caches; self-attention over receiver-aligned layer tokens, with a learned layer map reconciling different depths, mixes the pooled summaries into a compact joint memory; and a shared position decoder lets every raw receiver cache position retrieve its own per-head-gated residual in the receiver's native KV geometry. Both models stay frozen and may differ in family, depth, KV-head count, head dimension, and tokenizer; only the translator is trained. Across 45 dataset-model-pair settings (six heterogeneous and three same-model ordered pairings, five datasets), XKV attains the highest macro score and best average rank, improving on LCF-X on every dataset (by 4.6 exact-match and 4.2 F1 points on ROPES) and surpassing text communication on four of the five, while training 76% fewer parameters and translating a cache pair 10.3x faster (5.8 vs. 59.9 ms); end to end, XKV is 26% faster than LCF-X and 6.8x faster than text communication.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.21240|0b799275fd55c2f1302634513c4aa3ba8c2cc641|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.21240v1 Announce Type: new \nAbstract: Mixture-of-Experts (MoE) models are increasingly used in LLMs because sparse activation decouples model capacity from compute cost. However, the large expert parameter footprint often exceeds GPU memory capacity, making inference latency dominated by the host-to-device PCIe transfers for expert loading. To address these challenges, this paper presents SPICE, a speculative prefetching framework for MoE offloading that combines lightweight expert prediction with confidence-aware CPU-GPU orchestration. On one hand, SPICE builds a lightweight draft model aligned with the target MoE architecture, using a confidence-aware adaptive lookahead algorithm to prefetch high-confidence experts. On the other hand, when speculative predictions miss, SPICE switches to a cost-aware CPU-GPU heterogeneous orchestration: low-confidence misses are approximated by the resident shared expert with low rank expert (LoRE) surrogates, while exact residual work is offloaded to the CPU and executed asynchronously in parallel with ongoing GPU computation. Evaluated on DeepSeek-V2-Lite and Qwen2-57B-A14B across diverse GPU platforms, SPICE achieves up to 3.12 speedup in Time Per Output Token (TPOT) with minimal quality loss, showing that effective MoE offloading requires not only predicting future experts, but also deciding which misses deserve approximation, which require exact recovery, and where exact residual work should execute.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2608.20873|e3c805eb5038709bf7826547e87fb8d1066b28bd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Every way of teaching a deployed language model something new -- full fine-tuning, adapter merging, model editing -- replaces the released checkpoint, and with it every evaluation and cache that referred to those exact bits. We instead learn inside the dequantization gap: with the integer codes and scales of a 4-bit release frozen, new knowledge is written only into the per-weight residual that lives strictly inside each quantization decision cell. Re-quantization then returns the released artifact bit-for-bit, a machine-checkable guarantee; updates are exactly revocable by dropping the residual; and drift is bounded. We give six propositions and three training paths, including CellFill, a bounded reparameterization that makes invariance structural rather than enforced.\n  Exact invariance turns out to be nearly free: across three paired seeds the constrained dense path matches an unconstrained reference whose weights provably escape the artifact (58.9 vs 59.3 percent fact recall; paired difference -0.5 points, 95% CI [-5.0,+4.0]), and is better on held-out cross-domain perplexity. Against the natural null hypothesis -- serving the same update as an unmerged adapter -- projecting into the cells reduces cross-domain forgetting in every run that converged, and a diverged control shows the boundary: projection is a trust region, not a repair. What no method escapes is the cost of knowledge itself, and the apparent free lunch of in-domain perplexity improving past the anchor is an artifact of rehearsal sharing a corpus with the metric. Methods differ threefold at matched rehearsal in knowledge bought per point of cross-domain perplexity, a ranking that is not the recall ranking. The method transfers to a 27B hybrid linear-attention model (2.4e10 constrained weights, verified bit-identical), where matched recall costs about half as much cross-domain perplexity as at 1.7B.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.20342|3de8ebdfb51e7b9743c5f0f679ac2f8cce45f995|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) coding agents start each session with an empty context window, discarding accumulated knowledge from prior work. We present PrimeAgentOrchestrator (PAO), a system that spawns new instances of Claude Code -- Anthropic's terminal-based coding agent -- pre-loaded with relevant memories compiled from the user's existing personal databases. At spawn time, PAO queries two independently-operated memory backends in parallel (a PostgreSQL entity-observation database and a Cloudflare Worker semantic search index), fuses results using backend-specific retrieval strategies, and delivers the compiled briefing via filesystem injection that exploits the host agent's configuration auto-read behavior. PAO manages the full agent lifecycle including trust pre-seeding, readiness polling with error detection, and adaptive terminal text injection. We report on four months of regular deployment (December 2025 through March 2026) as an experience report, documenting three generations of context delivery mechanisms, the failure modes that motivated each redesign, and the engineering tradeoffs of bridging heterogeneous memory systems rather than building a unified one.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.MA主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2608.21142|6ebe0742d714d262c7980a3e9f26f4cdea103fb5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Structured pruning reduces the size and inference cost of large language models (LLMs) by removing weight columns, but the resulting output error can degrade accuracy. Existing training-free compensation methods use an additive bias or a single orthogonal rotation on the output side of the retained weight. These corrections leave its input singular frame unchanged and therefore limit how the retained weight can adapt after column removal. We propose COEC (Calibrated Orthogonal-Equivalence Compensation), a training-free compensation framework that applies alternating left and right orthogonal rotations to the retained weight. The right rotation is optimized on a reduced Stiefel manifold, while singular values are rescaled using generalized cross-validation to select the regularization strength for each layer. COEC further tempers the calibration Gram matrix to reduce the dominance of high-energy activation directions and introduces an alignment penalty that preserves the geometric relation between adjacent attention projections.All components use second-order statistics from a small calibration set and require neither backpropagation through the LLM nor retraining of the model parameters. COEC is independent of the column pruning criterion and can be applied to multiple structured pruning methods. Experiments on the Llama-3, Llama-3.1, and Qwen2.5 model families across multiple structured sparsity levels show that COEC improves perplexity on every model and zero-shot accuracy in most settings over existing compensation methods, with larger gains at higher sparsity. These results show that post-pruning compensation can recover part of the performance lost to column removal.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.20382|76dfa724cc3a176e4f5985150dab556909fb6f61|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We introduce a new architecture design for multimodal large language models (MLLMs), Libra, capable of both multimodal understanding and generation. Libra architecture contains one vision system and one language system, connected by cross-modal bridges. This design decouples self-modal modeling and cross-modal interaction, enabling each modality to learn its unique representations while maintaining effective cross-modal comprehension. The decoupling is mainly achieved in a switch attention module and a switch FFN module, which dynamically routes the computation flow for self-modal modeling and cross-modal interaction scenarios. We evaluate the effectiveness in two important settings: \\textbf{Libra-1} for the understanding-only image-to-text setting, and \\textbf{Libra-2} for unified image-to-text understanding and text-to-image generation. In addition to the architecture design, we discuss various improvements on tokenization, positional encoding, and supervision. Experiments demonstrate that the dedicated Libra design enables mutual improvements on multimodal understanding and generation, achieving strong performance on both understanding and generation benchmarks.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.CV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2608.20349|792c00a1bf7d286355b824d3e9100f8ff50ad499|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) exhibit extreme sensitivity to surface-level prompt variations, in which minor lexical changes can trigger disproportionate performance fluctuations. Moving beyond black-box optimization and coarse-grained templates, we present the first large-scale, n-gram token-level mechanistic analysis of prompt stability, leveraging a dataset of 132,000 prompt variants. Our investigation reveals a fundamental Scaling Law of Prompt Performance Stability: higher average task performance is strongly associated with lower variance and greater robustness across prompt perturbation. We identify two core linguistic drivers underlying this robustness: (1) Domain-Specific Terminology, which tightly anchors semantic boundaries, and (2) Explicit Action Directives, which formalize reasoning trajectories. Together, these elements constrain the model's interpretative space, effectively ``locking in'' more deterministic generation behavior. Building on these insights, we introduce an automated Prompt-Refining Agent that systematically restructures input queries by injecting domain anchoring and operational constraints. Empirical evaluation shows that our approach reduces performance variance by 40.7% in code generation task, while preserving or improving mean performance. These findings provide a statistically grounded and mechanistically interpretable framework for achieving robust prompt engineering.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.21199|bb66ff9edde4dfd7e62c323ad69f26b3e1a1af50|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based tabular foundation models such as TabPFN achieve strong predictive performance but incur quadratic computational cost with context length. On the other hand, subquadratic SSM-based alternatives such as Hydra trade away accuracy for efficiency. To balance both, we introduce Tydra, a hybrid Transformer-State Space Model (SSM) architecture for tabular in-context learning that interleaves attention and SSM layers. Across 30 OpenML datasets, Tydra reduces inference time by 30% relative to TabPFN while retaining much of its predictive performance. Tydra also outperforms an approximately ten-times-larger Hydra model while providing faster inference. The results indicate that hybrid architectures are a promising direction for tabular foundation models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.20497|98d788946cefe976d842dc87ed6087834ccfc9df|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying high-accuracy neural networks on resource-constrained edge devices remains challenging, as existing approaches treat training, compression, and hardware synthesis as separate stages, leaving a gap between software-trained models and efficient end-to-end deployment with limited support for interpretability. We propose Bern2Edge, an end-to-end framework that uses knowledge distillation to convert a pretrained teacher feed-forward network into hardware-efficient representations via Bernstein polynomial activations. This representation enables two deployment paths: (i) a high-fidelity LUT-based realization that preserves model fidelity under compression, and (ii) a symbolic rule-based representation derived from Bernstein activation geometry, enabling interpretable inference with explicit input-space constraints. The resulting BNNs achieve up to 2.12 percentage-point (pp) accuracy improvement over ReLU under identical compression constraints. At the system level, Bern2Edge achieves up to 99.8% latency reduction and 95.2% BRAM reduction relative to a W8A8 quantized teacher on an AMD Xilinx KV260 FPGA, while maintaining accuracy within 0.5 pp, and further deploys on a low-power Spartan-7 XC7S15 FPGA. The rule-based path reduces DSP usage by up to 89.0% at a cost of 1.5 pp in total accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AR"
+    ]
   }
 }
