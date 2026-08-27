@@ -16584,5 +16584,182 @@
       "cs.CL",
       "cs.AI"
     ]
+  },
+  "arxiv:2608.23843|490dac9b5407f9f3341e2d84310d7e20f57c93df|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context inference in large language models (LLMs) is increasingly limited by the memory required for the key-value (KV) cache. KV cache compression addresses this problem by reducing the storage cost of previous tokens. Among existing approaches, low-rank compression is particularly attractive because it represents every token in reduced dimensions. Previous low-rank methods typically derive fixed projection spaces from model weights, construct fixed spaces from calibration activations, or construct a shared basis over a broad cache region. Such representations may not capture detailed but important information. We partition each per-head KV cache into fixed-length logical pages and observe substantial low-rank structure within individual pages. Based on this observation, we propose PuzzleKV, a training- and calibration-free method that treats each completed page as an independent compression unit. PuzzleKV decomposes pages within each layer and KV head, computes attention directly over dense and factorized pages, and incrementally compresses newly eligible pages during autoregressive decoding. Experiments across models, context lengths, and benchmarks demonstrate the effectiveness of PuzzleKV under matched storage budgets. At approximately 60% of the original KV cache storage, PuzzleKV achieves more than 96% of Full KV performance across both evaluated models and all benchmark settings, with substantial gains over Global SVD on RULER and competitive performance on LongBench. To achieve a more aggressive compression ratio, PuzzleKV can be further combined with quantization while retaining more than 93% of Full KV performance using only 18.7% of the original storage.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.24070|b17f237d939cbdeffde163c6ee02c5afea45a83f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Prohibitive computational and environmental costs impede the scalable deployment of Large Language Models (LLMs). Traditional compression techniques (sparsity, quantization, low-rank approximations) are typically applied in isolation, and each hits an accuracy-efficiency wall. This thesis proposes the \"Compression Trinity,\" a unified framework that applies the three pillars jointly: sparsity to reduce computation, quantization to minimize memory bandwidth, and low-rank approximations to recover accuracy. To accelerate pretraining, we apply the Trinity to the optimizer and model architecture. MKOR approximates curvature via block-diagonal sparsity and low-rank inversion, maintaining numerical stability for quantized states; it reduces curvature update complexity from $O(d^3)$ to $O(d^2)$ and accelerates convergence by up to 1.85x over KFAC. SLoPe accelerates training by up to 1.25x via a double-pruned backward pass for N:M sparsity, using low-rank \"lazy\" adapters in the final 1% of training to recover accuracy. For post-training compression, OPTIMA stabilizes static masks in a zero-training regime by formulating weight reconstruction as globally optimal column-wise quadratic programs, improving zero-shot accuracy by up to 3.97%. Given a fine-tuning budget, PATCH breaks the ceiling of static masks by learning a dynamic hybrid sparsity ratio between 0% and 50%, yielding up to 1.38x speedups. Finally, SLiM realizes the full Compression Trinity in one shot, using mathematically derived low-rank adapters to recover information lost to quantization and sparsity, improving accuracy by up to 5.66% over state-of-the-art methods and outperforming uncompressed dense models at equal parameter budgets by 0.6%. Together, these results show that jointly applying the Compression Trinity is essential for efficient, scalable, high-performance LLMs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.DC",
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2608.23834|2c97024c52543d7f24bbfe2a558427b0eba0f843|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The key-value (KV) cache is a primary capacity and bandwidth bottleneck in long-context LLM serving. We present Minima-KV, a retention-preserving hierarchy for mixed-format paged attention. Recent and protected Anchor pages remain in FP8, while older non-anchor pages move to packed TQ3; every live-request page remains addressable. Format-specific kernels compute partial attention states and combine them through a globally normalized online-softmax merge, enabling direct heterogeneous decode without a cache-sized dense shadow. Across separate, configuration-bound Qwen3.6-27B profiles on a single 96-GB NVIDIA RTX PRO 6000 Blackwell GPU, deployment accounting reports 18.3 KiB of attention KV per live token, corresponding to 3.50x compression relative to BF16 and 1.75x relative to FP8. A materializing quality profile matches its dense control on 16K RULER needle-in-a-haystack tasks. On the same 503-question LongBench v2 set, measured deltas are -0.80, -0.60, and -0.40 percentage points at 16K, 32K, and 64K. A separate single-pair direct-decode canary with two 59,008-token requests measures 3.625x active-KV compression and 0.9821x throughput relative to its control, routes all 16 full-attention layers without fallback, and retains no dense shadow. These results establish a practical mixed-format path for compressing long-context state without evicting live-request KV pages.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.23962|48a72a5d1e2c8905e1f97f342ada97159157e8fc|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "When an LLM serving deployment runs out of KVcache room, there are two well-established ways out. Tensor parallelism shards the weights and the KV cache across two, four, or eight devices, buying memory headroom at the price of an all-reduce on every layer and a hardware bill that grows with the device count. The algorithms community shrinks the cache in place, with KV quantisation and eviction keeping a single GPU and spending a little quality instead. Compression papers report memory ratios, parallel-scaling papers report throughput curves, and almost nobody puts the two on the same cost axis. We place tensor-parallel configurations (degree 1 to 8) and KV-compressed configurations (16/8/4-bit, keep-ratios down to 0.25) on one costnormalised axis, cost per million tokens against latency, using a profiled simulator calibrated on A100, A40, and H100 hardware, and we go looking for the cost-equivalence crossover. We do not find one. Across two models (Llama-2 at 7B and 70B), three GPU types, and every level of memory relief we could construct, compression is cheaper by 1.20x to 2.00x. A 7B model on an 80 GB device cannot exhaust its KV budget within its own context window, and the boundary that decides between the strategies is model size relative to device memory, at roughly 36B parameters for an 80 GB card. Below that wall, compression dominates and extra GPUs are largely wasted spend; above it, tensor parallelism stops being a choice and becomes an entry ticket: Llama-2-70B is infeasible on one A100 at any KV setting, because the binding resource is weights, which KV compression does not touch. Tensor parallelism is the only lever that improves latency (compression makes per-token latency worse, by 8 to 93%, through batching contention), while compression is the only lever that multiplies capacity per dollar (16.5x, against 1.21x for an eightfold spend on GPUs).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.23841|a8c9cdbfbfaed805180bc1ba4cd445ca2d89a32e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Single-token autoregressive decode on CPUs is bound by memory bandwidth, not arithmetic: a modern CPU sustains roughly 1 TFLOP/s of compute but only about 50 GB/s from main memory, and each generated token must stream every active weight once. This report argues that the most effective response is to co-design the model architecture and the inference runtime together. It presents cflow, a CPU-first streaming engine, alongside a family of pipeline-native transformer architectures whose inter-layer dependency graphs are constructed to permit a vertical, stage-major execution schedule.\n  cflow stores weights as L2-sized tiles in compute-consumption order, reads only the top-k experts of each mixture-of-experts layer, fuses projections, and executes a delay-aware schedule from per-model dependency parameters. Across five architectures trained on TinyStories, one (arch2_4_combined) achieves a 2.00x reduction in critical-path weight bandwidth (9.00 to 4.50 MB/token) within 0.24 perplexity of the best candidate, and the tile layout incurs 7.29x fewer L1-data read misses than a row-major baseline. On a 30.9-billion-parameter pipeline-native MoE, cflow decodes at 5.94 tokens/s (tok/s) on a 32-vCPU Ice Lake server, ahead of llama.cpp (4.75) and the vLLM CPU backend (1.65) on comparably sized dense models. Realizing the expert-delay window as asynchronous I/O overlap on a disk-resident expert tier yields a further net win of up to 1.68x, matching the overlap model within 1%. Measurement refutes one of the eight design claims and leaves a second inconclusive; both are reported in full, with the conditions under which they would hold.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2608.23599|e7bc69ddb68d3fef699ec8f5241020f96d495ae3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Current assessment of KV-cache compression performance confuses resident bits with read bandwidth and is affected by the artifacts of chunked teacher-forcing. We present Geodesia-KV, a family of training-free KV cache policies based on monotonic block-wise precision allocation, exact rate-distortion residuals, and query-sparse reading, enabling proper hardware-ready compression. With proper separation of resident and read bits and causal evaluation, we show that Geodesia-KV significantly outperforms other approaches. Specifically, on WikiText-2 with 16k context, the 5-bit operating point of Geodesia-KV results in lower perplexity at lower bitrate than KIVI-4 on Qwen. In addition, our compressed-Quest version delivers improved perplexity and reduces resident (9.83 vs 16.25 bits/value) and read rates (1.95 vs 2.32 bits/value) over baseline sparse methods on PG-19. As Geodesia-KV is implemented as native GeodesiaKVCacheManager plug-in of vLLM, Geodesia-KV fully removes the need for dense cache residency via monotonic bit demotion. With the full consumer hardware evaluation, Geodesia-KV leads to 1M-token context generation on a single 16 GiB GPU with up to 71.7% peak VRAM savings on all leading architectures (Qwen, Llama, DeepSeek).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.23807|86794f33d885eea290cb71bc078d97f607271810|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Masked diffusion language models (dLLMs) can in principle generate text faster than autoregressive (AR) models, since they denoise many tokens at once. Recent systems have begun building serving infrastructure for dLLMs, but none first measure how these models behave under real, concurrent serving load. Serving systems built without this grounding risk carrying over assumptions from AR serving that may not hold for dLLMs. We characterize dLLM serving to close this gap, using LLaDA-8B-Instruct with a D2F (Discrete Diffusion Forcing) LoRA adapter on a single NVIDIA H200 GPU, evaluated on GSM8K and HumanEval. We report three findings. First, request difficulty, the number of denoising steps a request needs, is discrete rather than continuous: requests fall into 11 fixed step-count levels (178 + 29k), and no signal we test predicts the level before generation starts (best R2 = 0.150). Second, benchmarks with short generation budgets below 320 tokens understate serving variance, since requests are cut off before the latency spread appears. Third, only 24% of single-request wall-clock time is GPU computation; the rest is CPU-side dispatch overhead. Batching mainly helps by amortizing this overhead: sharing one forward pass per denoising step improves throughput by 16.0x at batch size 16 over a per-request-dispatch baseline. We also argue structurally that output quality should not degrade with batch size, stating three assumptions this rests on; we measure 74 to 76% GSM8K accuracy at single-request scale. Finally, we derive a batch-timeout rule for fixed-fill synchronized batching under Poisson arrivals. Together, these results show that serving diffusion language models needs parallelism at the level of each denoising step, which differs from AR serving in how admission and eviction interact with an already shared forward pass.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.23582|9dde67d714cca6855c8f0a04809ddbf329ff043e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present the Transformer Accelerator (TFA), a synthesizable, parameterizable INT8 memory-to-memory engine for transformer inference. One time-multiplexed datapath handles prompt processing and autoregressive generation. TFA implements matrix multiplication, softmax, RMSNorm, elementwise, and copy/gather operations through eight 512-bit macro-op descriptors. Offline-compiled programs are fetched, validated, and dispatched through AXI interfaces, supporting encoder, decoder, and encoder-decoder models.\n  The RTL combines an output-stationary multiply-accumulate array with ping-pong buffers that overlap DMA and compute, bit-exact reciprocal-square-root and divide units, key-value-cache and embedding addressing, and an abort-safe zero-padding write engine. A UVM environment byte-compares outputs against a bit-exact golden model. Across 25 tests and 34 constrained-random runs, TFA achieved zero mismatches, 100% functional coverage, and 94.96% code coverage.\n  We compiled the t5-small encoder-decoder pipeline for English-to-French, German, and Romanian translation. On ten multilingual proverbs, TFA executed 70,320 descriptors and matched 37.9 MB of golden-model output with zero mismatches. INT8 output matched the floating-point reference token-for-token on five sentences; the rest produced valid alternative translations. Randomized-Hadamard reparameterization recovered about 11 dB of per-tensor INT8 signal-to-noise ratio across layers. The verification configuration achieved about 20x end-to-end speedup over a 22-thread CPU, while larger designs are projected to reduce energy per token by about 1000x. After RAM inference recoding, logic area fell to 2.73 mm2, and the design completed design-rule-clean synthesis and place-and-route on SkyWater sky130. TFA demonstrates end-to-end, bit-exact execution of pretrained transformers using compact hardware and compiler-managed quantization.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.23806|b4ffcb54e4a1e9f43bb176bf8ec546ec1d269f01|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We introduce Giga-Embeddings, a family of text embedding models designed to combine strong retrieval quality with efficient serving. Its largest member is a sparse 10B-parameter Mixture-of-Experts encoder with approximately 1.8B active parameters per token. Across English, Russian, multilingual, and code MTEB benchmarks, this model achieves the strongest aggregate performance within the family on all four evaluated suites. In our vLLM benchmark with 1024-token inputs, it processes 114.5k tokens per second, providing 25 percent higher throughput than the dense 3B model and 1.56-2.65x the throughput of the evaluated external systems. The family also includes a dense 3B encoder and a distilled 480M encoder for tighter compute and memory budgets. We train the compact model using a dimension-agnostic objective that aligns teacher and student similarity distributions. The resulting 480M model scores 70.98 on Russian MTEB, surpassing FRIDA while using 42 percent fewer parameters. We release all three model checkpoints.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.24004|7034e39fdc6b6fc105fcac85c43cb971479e3a06|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM)-based agent applications often incur high response time. Speculative decoding is a promising solution to improve the inference efficiency of LLM agents without impacting generation quality. However, state-of-the-art speculative decoding algorithms exhibit substantial speed degradation under large batch sizes, limiting their effectiveness to deploy in real-world agent applications. In this work, we first present a systematic analysis of speculative decoding for LLM agents and identify two dominant factors of speedup degradation: high rejection rate of speculative tokens, and under-utilization of dynamic token budgets.B ased on these observations, we propose AgentSpec, a speculative decoding algorithm that addresses the limitations of existing methods for LLM agents. AgentSpec incorporates structure-isolated drafting that constrains speculation to semantically coherent segments of the agent workflow, reducing the drafts of irrelevant semantic paths and achieving an extremely low rejection rate. Moreover, AgentSpec adopts redundancy-aware budget allocation that exploits agent-level information to better utilize the dynamically-free token budget during the agent inference. We implement and evaluate AgentSpec on five different workloads and four different models from four different LLM families in vLLM. Our results demonstrate the superiority of AgentSpec over state-of-the-arts.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.24615|f8c086b91bb213ac089f55642600804923a3e74d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.24615v1 Announce Type: new \nAbstract: Post-training quantization lowers the memory footprint of Large Language Models (LLMs) and speeds up inference, which is why it is now common for on-device deployment. Most of what we know about its effects, however, comes from English benchmarks. It is not clear whether the same holds for morphologically complex, low-resource languages such as Bangla, and this gap is what we address here. We evaluate three model families---Qwen-2.5-7B, LLaMA-3.1-8B, and GPT-OSS-20B---in full precision and in three quantized formats (GPTQ-Int8, GPTQ-Q8, GGUF-W8A16) across five Bangla natural language understanding benchmarks (Bangla MMLU, CommonsenseQA-BN, OpenBookQA-BN, PIQA-BN, and BoolQ-BN), using zero-shot evaluation through lm-evaluation-harness. To our knowledge this is the first controlled comparison of quantization formats on Bangla NLU. The three families do not respond the same way: GPT-OSS loses up to 57.35% accuracy on reasoning-heavy tasks under GGUF-W8A16, while Qwen and LLaMA hold steady under GPTQ, and in a few cases the quantized version edges out the full-precision one. BoolQ-BN, a comprehension task, stays stable across all three families regardless of format. Taken together, these results suggest quantization can work well for Bangla deployment, but the choice of architecture and quantization method matters more than the bit width alone. We discuss what this means for practitioners choosing a model to run on constrained hardware.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.24411|134d82c5712eb164f9ff9455f60e63fea25325ea|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The efficiency of Large Language Model (LLM) serving is fundamentally limited by the sequential nature of autoregressive decoding. Speculative Decoding (SD) mitigates this by using a lightweight draft model to speculate future tokens, which are then validated by the LLM in a single parallel forward pass. To further boost efficiency, multi-candidate schemes propose diverse candidate sets to increase the likelihood of token acceptance. However, we show that these schemes are bottlenecked by Residual Drift: a phenomenon where the rejection of initial candidates causes the residual target distribution to diverge from the draft model's predictions. This shift renders subsequent candidates ineffective and forces the system into expensive resampling. To resolve this, we propose ResiSpec, a framework that strategically reforms the proposal distribution during verification to anchor the residual target mass within the draft model's high-confidence regions. By mathematically re-aligning the verification process without compromising output exactness, ResiSpec prevents candidate obsolescence and achieves up to 1.92$\\times$ speedup over state-of-the-art multi-candidate methods. Code is available at https://github.com/Czzzk/Resispec.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.24658|2df133f73a0ccd4055131a08fc028b1b90b2379a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.24658v1 Announce Type: new \nAbstract: Scaling test-time reasoning has substantially improved the problem-solving ability of large language models (LLMs), but standard autoregressive decoding still executes long reasoning traces sequentially, creating severe latency for difficult tasks (up to days and weeks). Parallel reasoning offers a natural remedy. However, prior systems primarily focus on Subtask Parallelism, where the model learns to decompose a high-level task into smaller chunks that can be solved independently. This approach overlooks another pervasive form of parallelism: Trial Parallelism, where multiple speculative attempts explore, verify, and aggregate competing hypotheses in parallel. In this paper, we introduce Parason, which reveals and learns both forms of parallelism in LLM reasoning. Our analysis identifies Trial Parallelism as the majority of parallelizable reasoning computation (65.5% in DeepSeek-V4's reasoning steps in HLE), and it becomes increasingly dominant on hard problems. Guided by this taxonomy, Parason converts sequential reasoning traces into structured parallel trajectories with a context-free grammar, then trains models with Parallelism-Aware Group Relative Policy Optimization (PA-GRPO), whose reward jointly balances accuracy, latency, and the two parallelism ratios. At inference time, Parason executes the learned parallel structure through tool calls, translating theoretical savings to real-world wall-clock acceleration. Experiments on mathematical reasoning benchmarks including AIME24 and AIME25 show that Parason achieves an average acceleration about 1.7$\\times$ while maintaining competitive accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.23818|256fe84ea11673d8e20b0edaf5403e9e4cea9f36|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformer-based language models are widely used as models of human language processing, yet their attention mechanisms allow lossless access to the full preceding context, unlike the limited memory systems of humans. We hypothesize that installing memory constraints into transformers' attention mechanisms can improve their fit to human behavioral data. While previous work has explored individual constraints in isolation, we conduct a systematic comparison of multiple attention-based memory mechanisms across different model sizes and training corpora, evaluating both psychometric predictive power for human reading times and grammatical competence. We additionally compare static constraints, in which the constraint strength is fixed throughout training, to dynamic memory curricula. We find that constraints that are sensitive to the content of intervening tokens consistently achieve the highest alignment with human reading times, outperforming distance-based constraints. We observe a dissociation between psychometric fit and grammatical competence under dynamic memory curricula, suggesting that Transformers cannot serve as a one-size-fits-all cognitive model.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2608.23658|74182c16834268f75926be5ac84f39afb539e879|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "An LLM serving engine sizes its key-value (KV) cache once, at startup, permanently setting aside a reserve for the worst-case prefill activation. During decode-dominant phases that reserve sits idle, yet it cannot be handed to the KV pool because it is exactly the memory a large prefill needs. We ask whether this reserve is reclaimable, and build a mechanism to test it. Our elastic KV cache lends the reserve to the KV pool during decode and returns it before prefill, driven by the scheduler's one-step-ahead view of the next batch. It is pure userspace on the CUDA virtual-memory path: two physical handles mapped into one contiguous virtual range per layer, so the attention kernel is unchanged and no driver patch is required. It decommits in a few milliseconds and recommits in tens of milliseconds, works with CUDA graphs and prefix caching, and never triggers an out-of-memory event. A static commit of the same memory is unsafe, crashing on prefill bursts, which makes the dynamic toggle necessary.\n  Having built the mechanism, we test the premise it rests on and report an honest negative result. It only pays off if a small prefill chunk size badly hurts prefill latency. In a controlled experiment injecting long prompts into a live decode load, that penalty is small (median time-to-first-token differs by about 1% between chunk sizes of 8192 and 32768 tokens), because prefill is compute bound and decode consumes only about one token per sequence per step. Simply lowering max_num_batched_tokens recovers more KV than the controller does, at nearly equal latency. The reserve also dilutes under tensor parallelism, from 16% of KV at TP1 to 2.7% at TP4. We state precisely when reclaiming the reserve could still help, and release the mechanism as a reusable userspace elastic-VMM allocator.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2608.24188|29097cead5be2bcf0712033e02d758d6b8fe8f16|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Coding agents re-send large file reads and tool outputs to a frontier LLM every turn, and this context dominates their token bill. General-purpose prompt compressors are trained on prose and suit code poorly: they paraphrase identifiers and drop the exact spans an agent needs to edit. We present Paritok-4B, a 4B LoRA compressor for coding-agent trajectories built on two commitments. It is extractive: it selects spans rather than rewriting them, and 96.0% of the identifiers, paths, and numbers it emits already appear in its input, holding at 96.2% on held-out SWE-bench Lite output. It is intent-conditioned: told the agent's current task, it acts chiefly inside a retained segment, selecting which lines survive (retained lines are +0.067 more intent-relevant than removed ones, paired 95% CI [+0.056, +0.078]) rather than changing how much is retained. We distil a gpt-4.1-mini teacher over 67,074 real OpenHands trajectories into 40,606 validated examples and fine-tune Qwen3-4B. On all 300 SWE-bench Lite instances, Paritok-4B compresses agent context to 25.7% of its size, 2.0x harder than a gpt-4.1-mini compressor (50.2%) and 2.4x harder than gpt-5 (61.9%), while retaining 86.5% of uncompressed single-shot solve quality. Fed the cat -n line-numbered input real agents produce, it compresses slightly less (27.8%) and retains more (89.3%); there the paired test is informative, with 30 instances solved only uncompressed and 17 only compressed, an exact McNemar p=0.079, so at this sample size compressing context to roughly a quarter of its size does not significantly reduce the solve rate. The model is a 264 MB adapter that self-hosts on one 24 GB GPU with no per-token compressor fee, which at list prices decides the economics: gpt-5 as a compressor is net-negative, costing more than the downstream tokens it saves. Weights, data, and evaluation scripts are open (Apache 2.0).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL",
+      "cs.LG",
+      "cs.SE"
+    ]
+  },
+  "arxiv:2608.23970|bdcde985f02f55bc51ba85a3ac1235b456be7a81|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multimodal large language models (MLLMs) have made significant progress in understanding and interpreting mul- timedia content. However, their ability to generate me- dia remains limited. Recent approaches have attempted to bridge this gap by translating the hidden representations of token sequences into the embedding space of visual models or directly into raw image data. However, these methods often represent each image using multiple specialised to- kens which significantly increases the input length. This be- comes a major limitation for tasks such as graphic design generation where the output typically involves a seamless blend of thousands of tokens across text, multiple images, and layout information. To address this challenge, a novel architecture is proposed that maps hidden token represen- tations to the embedding space of visual models, such as CLIP ViT-L/14, using a single [IMG] token per image. The architecture employs two shallow MLP blocks, each with a separate compression module followed by a shared expan- sion module, trained with six distinct loss functions. One block aids the other during training and is omitted during inference, resulting in a lightweight solution. Strong perfor- mance is demonstrated in both image-to-design and text-to- design generation tasks.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2608.23794|a21734061a5d22e0dfd5dc464406970135992df1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) scales language models by routing each input through a small set of independently parameterized experts. We show that copying this design into convolutional networks fails for a structural reason: parallel convolutional experts that read the same input channels learn nearly identical filters. We therefore move the expert axis from operator duplication to channel selection. We introduce Mixture of Channel Experts (MoCE), a structured sparse channel-mixing layer, inspired by MoE, that replaces pointwise (1x1) channel-reduction projections. In MoCE, an expert is a single output channel with a learned sparse support of k << C input channels. The selected channels are combined by a softmax whose temperature is predicted per input, so each expert can move between mean-like and max-like aggregation. A residual expert summarizes the unselected channels, and a load-balancing loss keeps channel coverage complete. MoCE replaces a dense projection whose cost is quadratic in C with a mechanism whose relative cost scales as k/C, and the predicted savings hold in measured wall-clock time. Across ResNet backbones on ImageNet-1K and CIFAR-100, transfer learning, EfficientViT, and a strong modern training recipe, MoCE matches or exceeds dense baselines and prior channel-selection methods while reducing MACs by 16.7% and end-to-end latency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2608.24664|0165e55ff119f05b1cc9583c5b7980205c508780|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2608.24664v1 Announce Type: new \nAbstract: We introduce Maia 200, an advanced AI accelerator delivering high performance-10 145 Tflop/s FP4 and 5072 Tflop/s FP8 within a 750W TDP and 7 TB/s HBM bandwidth. Maia exemplifies a new class of Software Defined Locally Accessed Dataflow Architectures (SDLA), which explicitly program dataflow engines to orchestrate highly specialized memories and data movement engines. This approach shifts the focus from today's thread-centric to data-movement-centric architecture, improving efficiency and scalability. Our taxonomy of data management, inspired by Flynn's classification, highlights how SDLA addresses challenges in modern AI computing. Maia 200 achieves significant cost and energy savings while supporting massive parallelism for AI inference workloads, making it a compelling solution for next-generation high-performance computing systems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI",
+      "cs.DC",
+      "cs.ET"
+    ]
+  },
+  "arxiv:2608.24338|1b5163160bdbe4535d34ec46d8da9b5f1a6b5fe5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Inference-time decoding methods improve LLM reasoning by exploring multiple candidate trajectories, yet treat each trajectory as atomic: either retaining it whole or discarding it irreversibly. This wastes computation on partially promising candidates whose high-quality prefixes are abandoned alongside degraded suffixes. We introduce Selective Regenerative Decoding (SRD), which routes each candidate to discard, keep, or refine only the degraded portion of the suffix while preserving the useful prefix of borderline candidates, without requiring a larger target model. Under mild assumptions, SRD achieves a provable 1.28-to-1.36-fold gain in sample efficiency over rejection sampling with strictly higher expected trajectory quality, with the gain growing as the candidate pool grows. Across MATH500, GPQA Diamond, HotpotQA, and AlpacaEval with multiple generation-reward model pairs, SRD matches Best-of-N accuracy with substantially fewer generated tokens and outperforms speculative rejection in low-compute regimes. By enabling segment-level intervention rather than whole-trajectory selection, SRD opens a previously underexplored region of the accuracy-compute tradeoff for inference-time reasoning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
