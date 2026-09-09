@@ -18000,5 +18000,179 @@
     "keywords": [
       "cs.LG"
     ]
+  },
+  "arxiv:2609.07966|c6d3d79e0d20262233e491f80903ea4459190e2c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Key--value (KV) cache compression is an effective way to reduce the memory overhead of large language model (LLM) inference, particularly for long-context workloads. However, existing compression methods make different trade-offs among accuracy, inference latency, and peak KV cache memory utilization, making a single fixed configuration unsuitable across different prompts and resource constraints. We introduce MetaKV, an adaptive framework that selects a KV cache compression configuration for each input prompt based on user-specified latency and peak memory budgets. MetaKV uses lightweight prediction models to estimate the end-to-end latency, peak memory, and probability of a correct response for each candidate configuration, and selects the configuration that best satisfies the latency-memory constraints while preserving accuracy. We evaluate MetaKV across ten configurations from three representative KV cache compression methods, KVQuant, H$_2$O, and RocketKV, together with an uncompressed FP16 configuration, on four datasets covering mathematics, science, commonsense reasoning, and reading comprehension. Across a wide range of latency and peak memory constraints, MetaKV consistently outperforms the best static configuration, improving constrained success rate (CSR), the fraction of prompts answered correctly while satisfying both constraints, by approximately 0.07 on average and up to 0.135. These results demonstrate the benefit of adapting KV cache compression to individual prompts and latency-memory constraints. Code is available at https://github.com/MichaelWang0505/MetaKV.git",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.08682|1b529e344f7001be403a638fa4cf4eaf4b7f5317|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) architectures have become a key technique for scaling Large Language Models (LLMs), enabling high model capacity with reduced computational cost. However, this efficiency comes at the expense of increased memory capacity and bandwidth demands. Recent 3D Near-Memory Processing (NMP) architectures, which vertically integrate memory and compute through hybrid bonding, provide high internal bandwidth and energy efficiency, making them attractive for accelerating MoE inference. Nevertheless, the distributed memory and compute organization of NMP systems introduces new challenges for mapping MoE workloads. Existing parallelization strategies, such as Tensor Parallelism (TP) and Expert Parallelism (EP), suffer from either high communication costs or unbalanced computation utilization, leading to inferior efficiency. In addition, the dynamic routing behavior of MoE models further complicates efficient deployment. To address these challenges, we present HDA-MoE, a framework that optimizes MoE execution on NMP architectures through hybrid parallel deployment and runtime scheduling. HDA-MoE integrates an offline hybrid parallel mapping algorithm with an online dynamic and adaptive scheduling mechanism to reduce communication overhead while improving computation utilization. Experimental results show that HDA-MoE achieves a speedup of 1.1x--3.4x over TP, 1.1x--1.5x over EP, 1.1x--3.7x over the Hybrid TP-EP compute-balanced baseline, and 1.1x--1.3x over HD-MoE. Source code is available at https://github.com/PKU-SEC-Lab/HDA-MoE-TCAD26.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2609.05764|e677e28d3481a6775748296a85f0e73e9ce52451|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The key-value (KV) cache is the dominant memory bottleneck in long-context large language model (LLM) decoding: every step reads it entirely, so decoding is memory-bandwidth bound. Holding a quantized KV cache in dense on-chip non-volatile memory (NVM) removes the off-chip transfer. Existing KV quantization methods, however, were designed for GPU-style memory systems: KIVI attaches per-group metadata, adding about 25% to the stored KV cache; KVQuant keeps sparse full-precision outliers that a dense array cannot hold in place. This paper examines what these structures cost when the KV cache resides in NVM behind fixed-range converters, and designs a quantization scheme matched to that interface. The architecture stores the quantized KV cache in dense on-chip NVM, uses a small static analog crossbar only for the fixed rotation, and keeps attention in on-chip digital logic. A randomized rotation and per-vector normalization give every coordinate the same range, so one fixed codebook for keys and one for values, each shared across all tokens of the corresponding tensor type, serve the entire KV cache. The codebook thresholds are programmed once as the read converter's reference levels, enabling fixed-range digitization with no per-token converter reconfiguration. Dequantization is a sixteen-entry lookup and one norm multiply; the only per-vector metadata is one scalar, about 3%. Across models from 3B to 14B and contexts to 32k tokens, the four-bit KV cache maintains accuracy under storage and crossbar noise simulated at realistic device levels. KIVI and KVQuant remain more accurate in software; the advantage of our format lies at the memory interface: 3.1-3.6x lower KV read energy than both mapped to the same NVM, and 8x lower metadata overhead than KIVI. The contribution is a KV quantization co-designed with the NVM memory interface rather than a new accuracy record.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.06161|2fa76cb27c6cec15ccc7c5393195fa92907fe24f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) have achieved remarkable progress, yet their massive storage and memory-bandwidth demands still hinder efficient deployment. Weight binarization is a promising solution, but existing binarization-based post-training quantization (PTQ) methods usually far exceed the nominal 1-bit storage target due to hidden overhead. To address this gap, we propose All for 1-Bit (AF1), a genuine 1-bit PTQ framework for LLMs. AF1 comprises two complementary components: (1) Null-space-Aware Binary Factorization (NABF) for improving binary reconstruction through Hessian-aware surrogate reparameterization, null-space-aware binary factorization, and scale-only global reconstruction; and (2) Hierarchical Shapley Allocation (HiSA) for assigning structural capacity using hierarchical Shapley sensitivity. Together, they preserve model accuracy under a strict 1.0-BPW budget in the PTQ setting. Experiments on LLaMA, Qwen, and Gemma families show that AF1 consistently outperforms existing binarization-based PTQ methods in perplexity and zero-shot accuracy. Compared with BF16, AF1 achieves an average 2.5 times inference speedup and over 90% memory reduction across evaluated models, providing a practical path toward deployable genuine 1-bit compression for LLMs. The code for reproducibility is available at https://github.com/Kishon-zzx/AF1.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.07264|7bda43bcb21eeff88adad99e47d33051b26950c4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Inference energy per token drives the cost and carbon footprint of deployed transformers. It is dominated by dense matrix products that incur fused multiply-accumulate (FMA) operations and memory traffic. To reduce these computations while retaining dense tensors for high GPU throughput, we develop a methodology from first principles to adapt structural complexity during training to maximize inference utility per unit compute. Channel penalties drive entire tensor slices to zero to enable physical removal while preserving density and the network function.\n  The natural approach, penalizing the norm of operator components acting through each channel, is provably destabilized by gauge freedom. We resolve this pathology with GaugeLasso: additive symmetric group-lasso penalties that recover a monotone function of product-norms when the network converges to gauge balance. Our equilibrium analysis enables per-channel calibration to correctly suppress slices that under-perform in inference utility per unit compute.\n  Under adaptive pressure, the network reorganizes into depth-dependent structural profiles that can be far smaller than the architecture required to learn the task. On polynomial long division over $\\mathbb{F}_{31}$, compute compresses from 148 to 255 times with perfect accuracy. On character-level language modeling, compressed models outperform the hand-designed baseline at equal FMA. On masked autoencoding, a compression trial exposes which axes were over-provisioned and which saturated, guiding a better second design. Compaction also accelerates training monotonically as the model progresses. Post-hoc pruning with the same utility ranking cannot reach these structures, showing that sustained pressure is central to discovery of efficient models. Retraining a discovered architecture recovers baseline quality on our statistical tasks, but fails on our exact algorithmic task.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、stat.ML主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2609.06557|8ad9922cc60049a82ddb37abca7197aa304dc08a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) are often considered fragile under aggressive sparsification, and maintaining reliable performance typically requires sticking to moderate sparsity levels. However, recent studies suggest that LLMs are more resilient to high sparsity than previously thought, reframing the problem as a design challenge rather than a fundamental limitation. In this work, we challenge the perceived limits of unstructured post-training LLM pruning by revisiting elementary pruning strategies that have remained relatively underexplored at this scale. Through a progressive sparsification framework with second-order saliency and continued training coordinated with sparsity progression, we show that pretrained LLMs can retain strong performance far beyond commonly studied sparsity regimes. Across LLaMA-2 and Qwen-3 model families, our approach improves perplexity and downstream accuracy up to 99\\% sparsity, surpassing both the current state-of-the-art and representative baselines. Precisely, on LLaMA-2-7B, our approach achieves WikiText-2 perplexities of 13.48 and 19.67 at 95\\% and 99\\% sparsity, respectively, while delivering 3.23$\\times$ decoding speedup and 6.21$\\times$ memory savings at 95\\% sparsity. Taken together, our results show that LLMs can be pushed into extreme sparsity while retaining strong performance, providing a foundation for further improving sparse models in this regime.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.06974|fdc7d1e9cd477cd043bdd38b3aeead1870897699|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models achieve strong performance across diverse tasks, but deployment remains costly because of memory, latency, and energy demands. Structured pruning reduces these costs by removing architectural components, yet its recovery stage is often limited by a mismatch between the recovery module's representational capacity and the complexity of the removed knowledge. We call this bottleneck the capacity-knowledge asymmetry and propose OverRep, an Overcomplete Reparameterization framework for structured LLM pruning. Following the principle of \"train overcomplete, deploy compact\", OverRep temporarily overparameterizes the recovery module during training to absorb complex knowledge distilled from the original model. After recovery, the overcomplete re-parameterization is algebraically merged into a mathematically equivalent compact module, preserving the pruned model's inference-time architecture and computational cost. OverRep further introduces an annealed activation that enables nonlinear training dynamics while converging to a linear regime for exact algebraic merging. Across three backbone families, OverRep improves retained reasoning performance over strong recovery baselines by up to 5.5 and 8.4 points at 25% and 50% pruning, respectively, while keeping memory usage and TFLOPs comparable to existing recovery methods. Our code is available at https://github.com/mmai-laboratory/OverRep.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.07306|d01b47b416699cc9e779db867e016c1b4222a693|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Dynamic sparse attention reduces long-context prefill cost by routing each query chunk to a small set of key chunks at every Transformer layer. The sparse attention kernel avoids most token interactions, but the router still rebuilds a chunk--chunk score matrix layer after layer, even when the selected routes change little. We introduce RouteRelay, a router-agnostic method that reuses only route metadata across depth while continuing to compute attention with the current layer's queries, keys, and values. Anchor layers perform full routing. Intermediate layers rescore the previous top-$k$ route and a compact sentinel set of near-miss and randomly probed chunks. A query row is rerouted only when a sentinel challenges its weakest selected chunk. We give a top-$k$ stability condition, a probabilistic bound on missed challengers, and a row-selective GPU execution design. In a reproducible empirical evaluation, RouteRelay retains at least 99.99% route recall while rerouting 25.0%, 55.4%, and 78.2% of rows under low, moderate, and high cross-layer drift, respectively. Across routing scales, RouteRelay retains 100.0% recall while evaluating 38.4--51.6% of full-routing score pairs as the key-chunk count grows from 128 to 1024. Its unfused CPU execution remains slower than dense matrix multiplication, exposing row compaction and ledger updates as the main kernel-engineering targets.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.06663|68027ab90e1d309d99e34459da9766312d8fea98|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Although multimodal Large Language Models (MLLMs) excel in diverse tasks, their scalability remains limited by the memory and computational overhead of KV cache storage. Recent KV cache eviction approaches incorporate a cosine similarity-based diversity metric with importance metrics to selectively retain critical key-value pairs. However, cosine similarity involves normalization that discards magnitude information, and it often yields uniformly high similarity values across layers due to the anisotropy property of hidden representations. In our study ECOKV, we rigorously deconstruct the capabilities of existing diversity metrics. Moving beyond simple measurement, we propose a geometry-aware composite metric that jointly leverages Euclidean distance and cosine similarity to capture token diversity from complementary perspectives. Furthermore, we use these two metrics to estimate the redundancy level of each attention head, allowing adaptive weighting between diversity and importance scores during token selection. Finally, we demonstrate that the observation window commonly employed to preserve recent tokens can be substantially reduced, thereby allocating more cache capacity to informative tokens and yielding consistent improvements. Extensive experiments demonstrate that ECOKV achieves state-of-the-art performance under various compression ratios and can be seamlessly integrated with existing KV cache eviction methods. We further analyze the relationship between importance and diversity, and examine redundancy patterns across layers and attention heads.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2609.07237|fc4a6e422ce8b6d2ccb3e9485e7c8f61d36e8421|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Post-hoc sparse attention accelerates long-context prefill by routing each query to a small set of token-level interactions. Hard selection, however, assigns zero probability to every omitted chunk: a routing miss cannot be recovered, and a fixed expansion budget spends the same work on easy and ambiguous queries. We introduce Coarse-to-fine Error-aware Dynamic Attention Routing (CEDAR), a coarse-to-fine method that keeps the language model frozen while preserving global coverage. Each semantic chunk contributes a cheap key--value summary to a residual attention path; chunks with high estimated approximation error are then expanded to exact token attention. Exact and summarized contributions are combined in a single softmax normalization, so refinement replaces, rather than duplicates, coarse evidence. We derive an output-error bound governed by within-chunk key/value dispersion and use it to allocate a variable refinement budget. A controlled clustered-attention study shows that residual summaries reduce reconstruction error by more than 98% relative to hard dropping at equal exact-chunk budgets. Experiments on long-context benchmarks demonstrate that CEDAR recovers most of the quality lost by hard sparse routing while maintaining approximately $3\\times$ kernel speedup at 128K context.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.07883|3d92c2ac2e1c147667933217f103ce114066bc86|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Continuous batching improves large language model (LLM) serving throughput, but long prompt prefills can delay decode iterations and violate inter-token latency objectives. Chunked prefill mitigates this interference, yet its chunk size is normally fixed: small chunks protect decode latency but repeatedly pay launch overhead, while large chunks improve prefill efficiency but create latency spikes. We introduce SLOWeave, an online scheduling method that selects the largest prefill chunk predicted to finish before the earliest active decode deadline. The decision requires no workload-specific chunk-size tuning and is computed by a logarithmic-time search over a monotone iteration-cost model. We prove that, whenever a decode-only iteration is feasible and the cost predictor is accurate, SLOWeave maximizes immediate prefill progress among decisions that preserve every active request's next-token deadline. We evaluate the method in a reproducible event-driven simulator and an iteration-level GPU runtime across chat, mixed-context, long-context, and bursty workloads. Under a 25ms time-per-output-token objective, SLOWeave improves goodput over the strongest fixed-chunk baseline by 39% on mixed requests and 38% on long-context requests. Under a stricter 10ms objective, the gains rise to 3.3$\\times$ and 2.4$\\times$, respectively. These results isolate adaptive chunk sizing as a useful serving primitive and provide an implementation-ready controller for integration with iteration-level LLM runtimes.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.07664|7307fac5a638fff24138bb94a19b6b7ded2725e9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deployment of Large Language Models (LLMs) on memory-constrained edge devices relies heavily on aggressive post-training quantization. However, evaluating these models is largely based on zero-shot task accuracy, which depends solely on argmax predictions and is insensitive to changes in the underlying predictive distribution. Consequently, accuracy can exhibit unstable, non-monotonic behavior under progressive quantization, masking substantial fidelity loss relative to the BFloat16 (BF16) uncompressed base model and providing misleading deployment signals. We introduce a distribution-sensitive evaluation framework quantifying information loss in quantized LLMs as the divergence between full-vocabulary predictive distributions at the token decision boundary. We compute statistical distances, including Jensen-Shannon Divergence and Total Variation Distance, between outputs of full-precision and quantized models, enabling a fine-grained analysis of distributional shift. Using this framework, we quantify probability mass displacement and distributional drift relative to the BF16 reference, capturing predictive distribution changes not reflected in top-1 accuracy. We conduct a 120-run experimental matrix across five foundation architectures and four reasoning benchmarks under progressive quantization regimes, from uncompressed BF16 to Q2_K, providing a systematic fidelity analysis. Our results show divergence metrics generally increase under stronger quantization, complementing task accuracy with a fidelity signal. Across tested llama.cpp schemes, mixed-precision Q4_K generally yields lower divergence than uniform Q4_0 at similar memory footprints. These findings motivate distribution-aware evaluation as a practical diagnostic complement to task accuracy; they do not directly establish correctness, calibration, safety, or user-perceived quality.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.05512|aff92363f77e2162c278a379cc1ae13f0406bb55|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Reasoning Models (LRMs) impose substantial energy costs during deployment, yet current compression methods apply uniform quantization across all components, risking damage to critical reasoning circuits. We present a reasoning-aware compression framework that benchmarks quantization conditions across five reasoning benchmarks, GSM8K, FOLIO, MATH-500, ProofWriter, and MuSiQue, with hardware-level GPU energy measurement; profiles per-module INT4 vulnerability across all 196-224 (layer, projection) pairs via a perturbation sweep on a held-out calibration split, then selectively restores the most sensitive circuits to FP16. Three findings emerge. First, INT4 quantization can increase energy by extending reasoning chains; a 25% power reduction becomes a net energy increase on GSM8K. Second, vulnerability is task-dependent: attention projections are more critical for mathematical reasoning, and sensitivity patterns differ by architecture in logical inference. Third, selective compression achieves Pareto-optimal points inaccessible to uniform methods: R1-Qwen-7B Top-10% on ProofWriter gains +12 pp over FP16 at -9.7% energy, validated on held-out data across five reasoning benchmarks.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2609.09085|fd085f563ca1753a38c0958d2eb7a2f8e97d48ce|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) often exhibit \"Attention Sink\" (AS) and the accompanying \"Massive Activations\" (MAs) at the initial position of a sequence. These phenomena frequently co-occur, and MAs can pose challenges for low-bit quantization. In this study, we analyze the factors underlying AS and MAs that emerge at the initial position regardless of the token occupying it. Our experiments suggest that self-concentration of attention, resulting from the causal mask, and the subsequent Value-non-mixing in attention outputs contribute to AS and MAs. These findings provide new empirical evidence on the internal dynamics of LLMs, offering insights that may inform future quantization strategies and advance our understanding of the internal mechanisms of attention layers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.08131|86d481c21fcf01748d22aae9dce106b6ae3b1caa|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Key-value (KV) cache eviction is essential for scaling long-context inference in Large Language Models. However, existing policies predominantly rely on empirical heuristics, lacking a rigorous characterization of token utility under the inherently nonlinear softmax attention mechanism. In this work, we rethink KV cache eviction through the lens of local information geometry, modeling the attention process as a nonlinear Gaussian communication channel. By performing a first-order Taylor expansion of the attention mapping, we derive the Jacobian Information Capacity, a novel objective that explicitly captures query relevance, softmax sensitivity, and structural diversity. Guided by this theory, we introduce Jacap, a capacity-aware eviction method that utilizes softmax-aware importance weighting and statistical leverage scores for subset selection. Extensive experiments across diverse architectures and benchmarks demonstrate that \\textsc{Jacap} delivers superior performance in most scenarios, particularly in high-compression regimes.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.07282|c371e71627d58ef7c3350e83cdbee5d415b077fd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Methods for streaming language models are often discussed alongside long-context and memory systems, although they solve different problems. An attention sink can stabilize autoregressive generation over an indefinitely long stream while the model remains unable to use content that has left its recent-token cache. We argue that this distinction should be explicit in system claims and evaluation. We introduce three horizons: the stability horizon, over which predictive behavior remains well behaved; the access horizon, over which past content can still causally affect the output; and the utility horizon, over which a task retains acceptable performance. We show constructively that the stability horizon can be infinite while the access and utility horizons are finite. We then propose ThreeH, an evaluation contract that measures all three horizons under a common state and compute budget. Applying the framework to attention-sink streaming clarifies its strength, constant-memory, stable generation, without treating anchor tokens as semantic memory. The framework exposes roles for cache policies, recurrent state, retrieval, and external memory. Experiments on 128K-token streams, delayed binding recall, and delayed decisions show that attention sinks preserve local modeling but not content beyond the active cache; recurrent and retrieval state extend the semantic horizon.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.08189|0d66f28bf53592b0bc0094fa42470758a2b082a7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Dynamic layer routing reduces the inference cost of Large Language Models (LLMs) by learning to skip layers for individual tokens. Existing methods, however, treat each routing decision as a local operation conditioned solely on the current hidden state which is a formulation that overlooks the sequential, path-dependent nature of routing across depth: earlier decisions shape the representations seen by downstream routers, and the layer-usage objective couples all decisions jointly. We propose History-Aware Routing (HeRo), a dynamic routing framework that resolves this mismatch by introducing a router memory mechanism to maintain an explicit routing state across model depth. The memory is constructed via linear attention, incrementally aggregating preceding routing scores and their induced residual updates into a compact history representation. At each routed layer, the router conditions jointly on this accumulated state and the current hidden representation to select the executed branch. Instantiated for token-wise FFN routing, HeRo trains only lightweight routers and adapters on a frozen backbone, requiring no modification to pretrained parameters. Across Llama 3.1-8B, Llama 2-7B, and Llama 2-13B, HeRo consistently achieves the highest aggregate performance retention among ten baselines. On Llama 3.1-8B, it bypasses 26.87% of model parameters while achieving 100.24% of dense model performance across seven benchmarks, and retains 97.01% while bypassing 38.82% of model parameters under a tighter computation budget. Ablation studies confirm that removing routing history consistently degrades performance, most notably on multistep reasoning and code generation, validating that explicit routing memory enables more accurate and adaptive dynamic routing than solely conditioning on hidden state.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.07821|d5e664a65307d34bf124174c61061dc64339df60|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Chain-of-Thought (CoT) improves the reasoning ability of Large Language Models (LLMs) but incurs substantial computation and context costs. Existing methods either lose intermediate information through hard pruning or lack a principled criterion for continuous compression. We present A*-Thought-V2, a geometric dynamics of LLM guided framework that models CoT as a hidden-state trajectory and replaces hard deletion with an explicit-implicit interleaved latent architecture. After projecting question, step, and solution representations into a 3D PCA space, it measures alignment between each local transition and global question-to-solution direction. Aligned steps remain explicit text, whereas deviating steps are compressed into continuous latent tokens. Directional angles capture both local semantics and reasoning dynamics: small angles indicate direct execution and answer formation, while large angles more frequently involve checking, correction, and branch exploration; their temporal variation reveals exploration, convergence, and refinement stages. To train this architecture, we introduce stepwise embedding forcing, which pools each redundant step into a single latent embedding, and label forcing, which supervises that latent token with a soft multi-modal vocabulary distribution instead of a hard one-hot label. Experiments on Qwen3.5-9B and Qwen3.6-27B across six in-domain and out-of-domain benchmarks show that A*-Thought-V2 improves average accuracy by up to 2.6% while reducing response length by up to half, increasing Accuracy per Computation Unit by 2.29$\\times$, and reducing preprocessing and training time by 94.6% and up to 80.3%, respectively. Representation analyses suggest that latent states form a compact region distinct from textual states, while higher entropy at latent-token positions reflects broader soft targets that encourage richer step-level feature learning.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.07236|f6d564ea904c242515997947d1f3014dd2f92dd7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Selecting a parallelism strategy - the configuration of data, tensor, and pipeline parallelism degrees together with micro- and global-batch sizes - largely determines the training efficiency of large language models. State-of-the-art methods search for a parallelism strategy offline and select the single strategy that minimizes per-iteration time. But we find that they neglect the target validation perplexity and time-to-perplexity (TTP). In particular, our analysis reveals that the best strategy yielding the fastest perplexity improvement changes multiple times during training. As a result, state-of-the-art methods are 1.8-11.4x slower in TTP than the strategy sequence that selects the best strategy at each iteration. This paper proposes CONA, a new training method that introduces online strategy chaining. Instead of a single strategy selected offline, CONA ranks candidate strategies during training using a surrogate metric built from compute throughput and gradient statistics, and switches the current strategy to a new strategy with a higher metric. In our evaluation with GPT-3 1.3B, BERT-Large, and Llama-3.2-1B, CONA reaches the target validation perplexity 1.4-9.6x faster than state-of-the-art methods. Moreover, CONA closely tracks the perplexity achieved by the sequence that selects the best strategy at each iteration, within 2.6%.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2609.08407|3465c05e7dbed4f13ac6a222f4cba38a61329412|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "In this study, we identify depth-dependent prefix redundancy in final-readout LLM embedding models, notably across representative backbones including Qwen3-Embedding and Qwen3-VL-Embedding. We find that removing prefix states is substantially more damaging in shallow layers than at greater depth, showing that prefix states become increasingly compressible as the prefix and readout states propagate through the network. To this end, we introduce FastE, a training-free, plug-and-play method. FastE uses a shared fixed threshold on batch-mean readout-prefix alignment as a lightweight online heuristic for selecting when compression occurs, and ranks prefix states by the attention scores they receive from the readout position to determine which states are retained in subsequent layers. Our evaluations demonstrate FastE's ability to substantially reduce computational costs: on NarrativeQA with Qwen3-Embedding-0.6B, it reduces decoder-backbone FLOPs by 40.11% while retaining 99.53% of Full Forward nDCG@10. Across five text embedding benchmarks, two backbone scales, and three cross-modal retrieval tasks, the quality-efficiency trade-off is directly customizable through the maximum removal ratio without retraining. We believe FastE offers practical value for scalable embedding generation in retrieval, indexing, clustering, and multimodal representation systems.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
