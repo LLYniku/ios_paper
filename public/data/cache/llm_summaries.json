@@ -19386,5 +19386,174 @@
       "cs.CR",
       "cs.LG"
     ]
+  },
+  "arxiv:2609.21704|7818e84eb546dae2c77a18a0072e6fb2f0f3610b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Running large language models (LLMs) locally continues to be limited by restrictions of compute and memory on consumer hardware. The popular acceleration technologies, such as quantization, speculative decoding, and adaptive inferencing, offer substantial speed boosts but usually necessitate retraining, per architecture tuning, or draft models. SpecQuant is a trainingfree framework, that combines speculative decoding with multiparent quantization to perform adaptive, efficient inference of LLMs. SpecQuant derives multiple quantized variants (INT4, FP8, FP16) from a shared base model, and dynamically routes queries based on predicted complexity; lightweight variants are used for simple or factual tasks, and full-precision models are used for complex reasoning tasks or long-context inputs. The shared-weight design of SpecQuant ensures sufficient token acceptance for speculative decoding without compatibility issues using separate draft parent models. We evaluate SpecQuant on Qwen2.5 based models on the MMLU, AlpacaEval, and GSM8K datasets, or benchmarks, demonstrating 35-43% speedups without degrading accuracy greater than 2%, substantial within the LLM community. SpecQuant enables practical on-device LLM deployment across diverse hardware without special infrastructure or expertise.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.21172|9cce3aac6c897ebe071c293c5ac4016ae60e5da5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) are moving onto mobile devices for increasingly diverse workloads over text, images, video, and audio. These applications often require long contexts, making the Key-Value (KV) cache a dominant memory bottleneck because it grows linearly with sequence length and is accessed at every decoding step. Prior work reduces KV-cache footprint through low-rank compression, token eviction, or flash offloading, but the resulting reconstruction overhead, irreversible token loss, or I/O stalls can offset the benefit of saving memory. We present TierKV, a mobile LLM inference framework built on Predictive Multi-Tier Cache Optimization (PMCO). Before decoding starts, PMCO predicts future cache demand from prefill hidden states and jointly assigns tokens to exact, low-rank, and flash-offloaded tiers under the device memory and accuracy budgets. This formulation retains access to the full context, removes the circular dependency of reactive eviction, and admits a closed-form solver that selects tier boundaries and per-layer ranks at runtime. Across eight text, vision, and audio models on three mobile SoCs, TierKV improves prefill throughput by up to 17.6x over existing mobile LLM frameworks, reduces RAM-resident KV cache by 12.5-34%, thereby enabling substantially longer contexts under the same memory budget, while incurring only minor accuracy degradation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、eess.SY主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "eess.SY"
+    ]
+  },
+  "arxiv:2609.20888|9c32f33a297aec1340d4bbb5e0c77f9db8bc0794|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Massive KV caches can cause severe memory-bandwidth bottlenecks during long-context decoding. Sparse attention methods mitigate this via selective loading, but that comes at a cost: rigid heuristics drop necessary context, leading to quality degradation. We introduce \\textbf{Elastic Threshold Attention (ETA)}, an end-to-end trainable architecture that achieves hardware-accelerated decoding speed without sacrificing dense model quality. ETA predicts dynamic, contextual thresholds directly from query representations, allowing the model to allocate dense-like context to difficult retrieval or reasoning steps while pruning routine tokens. To learn this policy from scratch without representation collapse, ETA \\emph{multiplicatively suppresses} sub-threshold logits toward zero during training rather than deleting them. Training against this smooth uniform attention floor provides a distributed probability reservoir that \\textbf{causes localized attention sinks on initial tokens to disappear}. It also enables the model to hard-prune uninformative KV blocks at inference time and absorb incidental tokens co-admitted by coarse GPU block selection. As a result, a 1.45B pretrained ETA model rivals dense attention across language modeling, commonsense reasoning, and long-context needle retrieval at $\\approx 85\\%$ training sparsity and $\\approx 38\\%$ active decode density. At inference time, we implement a custom decode kernel in Triton that screens KV blocks in $O(1)$ time using cached geometric-probabilistic bounds, delivering up to $2.5\\times$ wall-clock decode speedups over FlashAttention-2 on sequences up to 512K tokens. Finally, we introduce an offline calibration algorithm for domain-specific deployments that freezes per-head constant thresholds to eliminate predictor overhead, cutting attention compute by an additional $27\\%$.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.21849|017c1613febb8db64f061ee98f10f8c92e40a894|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "On-device inference is booming, but the momentum is almost all in language models. Diffusion pipelines are memory hungry, latency-sensitive, and require orchestrating an embedder, a transformer, a decoder, and often further postprocessing that is not as standardized as LLM inference loops are. We navigate the trade-off between performance, quality, and model footprint to reach as many client devices in the wild as possible. We make three contributions: an embedding translator that maps a small text encoder into a large encoder space to cut weight and latency; a reproducible sweep recipe for navigating the speed/quality/memory triangle in diffusion pipelines; and an interactive on-device image generation editor achieving sub-second TTFI on recent GPUs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CV",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2609.21672|d05ff2f739e136763f11aaf387b3365600a4e5fb|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) achieve strong performance but suffer from slow and costly inference. Existing acceleration methods often lead to noticeable performance degradation, while Mixture-of-Experts (MoE) models require extensive computational resources. In this paper, we propose L0-MoE, a lightweight MoE approach using L0-regularization to accelerate dense LLMs nearly without performance loss. Our method introduces a cluster confusion matrix for domain-aware dataset curation and applies dynamic batching for efficient training. Experiments show that L0-MoE achieves up to 2.5x speedup over dense models while maintaining competitive performance, outperforming existing LLM acceleration baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.20971|ceb35ed50e037dd65e5ba98f6d261909f0f2461c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context large language model inference is increasingly limited by prefill, where dense self-attention processes the entire prompt before generation begins. Sparse block selection can reduce this cost, but a block centroid may hide a highly relevant token among many irrelevant ones. We call this failure mode mean dilution and propose RBS-Attention, a training-free sparse-prefill method with two complementary selection branches. A centroid base branch captures average relevance, while a rescue branch uses the maximum key-block radius and its prompt-, layer-, and head-dependent distribution to identify blocks at risk of underestimation. Independently thresholding the two branches and combining their masks controls the contribution of rescue blocks while preserving regular block-sparse FlashAttention execution. On H100 GPUs, RBS-Attention achieves 20.65$\\times$ standalone prefill-attention speedup, 11.92$\\times$ vLLM prefill-attention speedup, and 5.97$\\times$ end-to-end time-to-first-token speedup at 128K on Qwen3-30B-A3B-Instruct-2507-FP8. On the dense Qwen3-32B model, it obtains 88.65 overall RULER accuracy versus 89.52 for dense attention; LongBench-v2, InfiniteBench, and Video-MME provide additional quality evaluation. Supporting experiments measure actual retention, compare selectors at matched density, and characterize block-size, threshold, and memory behavior. Together, these results support radius-adaptive dual-branch selection as an effective approach to long-context prefill.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.21139|c89667c096ebf8e2dfbfd1cbf0c98534e6549d56|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Replacing attention in a pretrained language model is a compatibility problem: a plausible substitute may alter representations expected by later layers. TinyCeNN-LM introduces a \\emph{quality-gated post-training conversion} framework using CeNN-inspired cellular-recurrent layers with bounded local processing, compact recurrent memory, routing, fusion, and accept-or-rollback validation. Three implementations are studied: Integrated Memory, MemoryFusion, and PDelta3-GDN2-CLVR+Local32. Strict PDelta3 conversion accepts a layer only when representation and NLL criteria pass fixed thresholds. On SmolLM2-135M, layers 0-2 are accepted with cumulative $Δ\\mathrm{NLL}=+0.01209$, while layer 3 is rejected despite acceptable NLL because representation fidelity fails. On Qwen3.5-0.8B, full-attention layers 3, 7, and 11 are accepted with final $Δ\\mathrm{NLL}=+0.02073$. Integrated Memory keeps perplexity within $-0.07\\%$ to $+0.93\\%$ while reducing total cache by up to $6.01\\%$. A sampled 200-item downstream sanity check gives $28.5\\%$--$32.0\\%$ overall accuracy for converted Qwen releases. The results support conservative, quality-gated structural conversion rather than universal attention replacement or speedup.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.21940|f201292554d9b54f6a148e200423b9e745f05cc8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-term memory is essential for large language model (LLM) agents to maintain consistency and personalization over extended interactions. Existing memory systems typically rely on fixed granularities or static schemas, but these designs struggle when heterogeneous information, such as preferences, events, constraints, and temporal updates, is embedded in a single mixed representation. The resulting semantic interference makes top-K retrieval sensitive to noise and often leaves relevant evidence poorly ranked. We present AutoViewMem, a data-driven framework that organizes long-term conversational memory into self-configuring, low-overlap semantic views before indexing. AutoViewMem discovers candidate views from interaction traces, selects a compact complementary view set, and uses these views to guide write-time structured extraction of provenance-grounded memories. This representation-first design moves semantic disentanglement from retrieval time to write time, allowing standard top-K similarity search to retrieve focused evidence without explicit routing or iterative retrieval. We further apply offline consolidation to improve memory compactness and consistency. Experiments on the LoCoMo and PersonaMem benchmarks, under both Qwen3-8B and Qwen3-14B backbones, show that AutoViewMem improves long-horizon question answering and personalization over strong memory baselines while preserving a simple inference pipeline.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.21605|f366c86d8942b4f3aeca1a8e7951104b46d570d9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recurrent Transformers increase computational depth through temporal recurrence, feeding each token's high-level hidden state into the computation of the next. This raises a natural question: is additional computation better spent on more temporal steps or greater physical depth? We investigate this question using Latent Recurrent Transformers (LRTs), which retain one backbone forward pass per vocabulary token during decoding and provide a controlled setting for comparing these two ways of adding computation. Specifically, we insert a latent thought token between consecutive vocabulary tokens. Each thought token passes through the same $L$ layers as a vocabulary token, sharing the backbone parameters and providing an additional stage of hidden-state refinement before predicting the next token. We compare this $L$-layer LRT against a $2L$-layer LRT without thought tokens. Both execute $2L$ Transformer blocks per vocabulary token during decoding, but the thought-token model uses fewer parameters. On 16- and 20-layer mixture-of-experts NanoChat backbones, one thought token brings the shallower model within 0.006 and 0.004 bits per byte of its double-depth counterpart, recovering 67% and 81% of the improvement with approximately 48% fewer total parameters. These results suggest that temporal thinking offers a parameter-efficient alternative to increasing physical depth in recurrent Transformers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.21137|c1a92616843bd16435fea7b42eb481544bab9973|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) decoding on scratchpad-based tensor accelerators (STA) is dominated by moving expert weights while the compute engines sit idle. This traffic is hard to hide, because the experts are known only after routing, and hard to shrink without losing quality or adding critical-path work. We present CARDAN, which represents each expert-weight matrix as a vector-quantized component plus a shared-basis low-rank component and co-designs this representation with a multi-engine decoding dataflow. The representation separates expert-common from expert-private work, so the dataflow overlaps DMA with computation on several engines. Across five MoE families on AWS Trainium3, CARDAN matches or improves BF16-teacher perplexity across all five models and speeds up batch-one decoding by 1.15-1.31x over AWS dense MoE megakernels, rising to 1.7x at batch size 16.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2609.21264|e4f620fb71287b7424c791941b7142f620073666|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Spatial NPUs such as AMD XDNA place compute tiles beside small local memories and leave data movement between them to software. Mapping a multi-stage workload onto such a device is largely a question of where the intermediate tensors live. We report what we learned making those choices for FlashAttention with the open-source IRON and MLIR-AIR flows.\n  We compare four reference designs on XDNA 1 and XDNA 2: one runs each operator separately, two stream between operators on chip, and one fuses all three attention stages into a single kernel. The fused kernel holds the $\\boldsymbol{QK}^{\\mathsf T}$ scores in compute-tile local memory and reduces partial results over the cascade interconnect, so the scores never return to shared MemTile memory. On XDNA 2, it reaches 3.62 TFLOP/s over complete end-to-end execution, twice the IRON design, with 5.3 to 7.2 times the energy efficiency of the integrated GPU on the same chip at 2K tokens and above. It covers twelve LLM configurations, from BERT to DeepSeek, up to 128K tokens.\n  Roofline analysis at each memory level explains this result and shows when to stop. XDNA 1 has lower ridge points, so streaming on chip already reaches the compute-bound regime: the same fusion that doubles throughput on XDNA 2 is nearly wasted on XDNA 1. Comparing a mapping's operational intensity against each level's ridge point predicts which case applies before writing any code. Fuse until the mapping clears that ridge point, then stop. We release the reference designs as maintained open source.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.20824|9d36aae56e14034e96b3d6e7f7ab415b7e540f46|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We explore whether entropy-based confidence signals can be leveraged to improve the accuracy of Small Language Models (SLMs) with fewer than 3 billion parameters, running entirely on consumer hardware. We evaluate seven distinct approaches, including token-level entropy early stopping, semantic entropy estimation, and uncertainty-aware routing to larger expert models, across 7 model pairs and 5 standard NLU benchmarks. Our key finding is that token-level entropy is effectively blind in SLMs: in 91% of dataset-model combinations, mean token entropy is near zero regardless of answer correctness, rendering token-based confidence signals unusable at this scale. We demonstrate that semantic entropy, computed by generating multiple samples, clustering answers by meaning, and measuring distributional uncertainty, recovers a viable confidence signal. Using semantic entropy to selectively route uncertain queries to a larger expert model yields accuracy improvements of up to +50 percentage points. Notably, cross-family routing (e.g., SmolLM 360M to Phi-3.5-mini) averages +22.0% improvement compared to +6.8% for same-family routing, revealing that expert model quality matters more than architectural compatibility. Our results suggest that the value proposition for entropy-based methods in SLMs is not computational savings but intelligent compute allocation: spending more tokens where they matter most.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.21554|1ce621a237bd50db1acef47401389aa5d03a8ee8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Recent advances in Large Language Models (LLMs) have revolutionized artificial intelligence and how human interact with AIs. Despite impressive advancements, LLMs struggle with complex mathematical, scientific, and logical tasks. Inspired by human cognitive flexibility - our ability to dynamically switch mental perspectives - we propose MIRAGE (Multi-perspective Inference-time Reasoning via Agent-Guided Exploration), a novel inference-time creative thinking framework. MIRAGE includes a Selector that prioritizes effective conceptual perspectives (e.g., algebraic, probabilistic) and a Reasoner that sequentially solves tasks until a confident solution emerges, otherwise aggregating multiple perspectives. Tested on GSM8K, MATH500, MMLU-Pro, and Game-of-24 benchmarks, MIRAGE consistently outperforms methods like Chain-of-Thought and diverse prompting ensembles, significantly boosting accuracy with minimal inference overhead, providing a scalable solution for practical applications.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.20974|388aba1bd6f99078fa07dc870ecfb3d61f1def22|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "In Mixture-of-Experts language models, the router typically selects and weights experts based on the token's hidden state, utilizing limited contextual information. We propose Attention-Aware Routing (AAR), which augments the router with temporal and spectral features extracted from a sliding window of attention weights that represent a summary of the model's contextual state, disentangled from the hidden state. Keeping the base transformer entirely frozen, we train only the routing parameters, isolating routing as the sole variable. AAR improves GSM8K by +3.37 pp over a routing-only SFT baseline on OLMoE. Beyond performance, we show that routing and attention form a coupled circuit: routing changes at layer l propagate through the residual stream to amplify attention sinks at layer l+1, reshaping attention without any direct update to the attention mechanism itself. Further, AAR reduces long diverging generation, with incorrect answers getting shorter, while correct answers remain unchanged in length. Finally, AAR is strongly depth-sensitive: applying it indiscriminately across layers can degrade factual retrieval, whereas mathematical reasoning gains persist when it is introduced deeper in the network. This sensitivity exposes a retrieval--reasoning tension across depth and makes layer-selective AAR a controlled probe of the routing-relevant information carried by attention at different layers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2609.22043|cb1d246409d7d9ad24f954e0cd699b30e3675f2e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Memory systems for large language models have focused predominantly on efficient retrieval, whereas the decision of whether retrieved memories should be trusted has received comparatively little attention. When the memory store contains conflicting positions, standard retrieval-augmented generation (RAG) blindly injects memories and amplifies hallucinations: in models susceptible to memory injection, the RAG hallucination rate under conflicting memories is markedly higher than that of a memory-free baseline. Inspired by memory signaling mechanisms in the prefrontal cortex, we propose the Memory Decision Layer (MDL), a zero-parameter memory decision controller situated between the retrieval and generation stages. Its core is a three-signal complementary encoder that fuses relevance, reliability, and task risk through QR-based orthogonal subspace projection and a meta-working-memory signal into an interpretable decision representation that quantifies the trustworthiness of retrieved memories. Building on this encoder, MDL explicitly decouples confidence from consistency and introduces risk inversion and explicit abstention. Evaluations on mainstream large language models and multiple open-source datasets show that MDL reduces the hallucination rate under conflicting memories by about 56.04% in general scenarios and approaches zero hallucination in high-risk scenarios. The controller is fully white-box: it relies purely on geometric operations, requires no trained parameters, and adds only about 0.14 ms per decision -- roughly 50x faster than the embedding-retrieval step that precedes it and four to five orders of magnitude faster than an LLM self-evaluation call.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.20849|6f2e478061408ded1d27ab56eadf6ed0fb5bb452|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Audio Language Models (LALMs) perform well on complex question answering but often show a reasoning gap, where explicit Chain-of-Thought (CoT) reduces accuracy compared to direct answers. We hypothesize that long reasoning sequences shift attention away from the audio input. To address this, we propose SPARE (Semantic Prediction for Audio REasoning), which introduces a register token aligned with the final conclusion using a cosine similarity loss with a Sentence-BERT embedding. This conditions the model's latent space with the target semantic goal before reasoning begins. Experiments on MMAU and MMAR with SALMONN show improved zero-shot reasoning and stronger early attention to audio without additional inference cost.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.SD主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.SD",
+      "eess.AS"
+    ]
+  },
+  "arxiv:2609.21247|8c305f943ef2e1c56c3f3e40a67edd53c786661a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Reasoning Models increasingly use intermediate traces for machine translation, but it remains unclear when such reasoning helps or hurts. We analyze reasoning traces across models, languages, domains, and datasets, focusing on reasoning language, length, and structure. We find that the best reasoning language is model-specific, reasoning length has a non-monotonic relationship with quality, and traces exhibit recurring functional patterns. To uncover these patterns, we introduce Hierarchical Meta-Summarization (HMS), a scalable framework that induces coarse- and fine-grained reasoning structures without predefined taxonomies. HMS reveals a shared organization--understanding/planning, translating/drafting, and refining/verifying--alongside domain-specific variation. Our results suggest that MT reasoning should be controlled in a model-aware, length-aware, and pattern-aware manner rather than uniformly encouraged.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2609.20845|36bc5cd8f0688a8be95514c89458a5a6c3b2ede8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A decoder that turns video or audio into text conventionally consumes the entire input before emitting a word. Offline this is merely more than the task requires; live it is impossible, since a caption cannot wait for a match to end. Streaming systems bolt on a fixed rule such as wait-$k$, which waits for the same number of input tokens before every word, regardless of the input's length or pace.\n  We replace the fixed offset with ZENDAYA, a schedule governed by a single continuous parameter $γ$. It makes the visible source prefix a closed-form function of generation progress, scaled by the input's own predicted length, so an ordinary offline decoder and a real-time streaming decoder become two endpoints of one family rather than separate models. The same scalar fixes, in closed form, the mean fraction of source consumed per emitted word, $\\bar{E}(γ) \\approx 1/(1+γ)$, making it at once a latency dial and an interpretable budget. We prove a structural dependency theorem: under any schedule fixed in advance and non-decreasing, no emitted token can depend on input that has not yet arrived. The guarantee holds for trained and untrained weights alike, and extends to unbounded streams under arbitrary asynchronous arrival.\n  The empirical result is counterintuitive: seeing less can produce better text, because a flood of source dilutes attention exactly when the model has the least of its own output to anchor on. Trained from scratch across two modalities and three public corpora (Charades-STA, ActivityNet Captions, LibriHeavy), a compact 29M-parameter decoder matches or beats the fixed schedule while reading less of the source, with the sharpest gains at the lowest latencies, where a fixed offset collapses. Streaming METEOR gains are statistically significant on all three corpora.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.21450|ae61b30fb186b015f3acd63bb53542904d5697ce|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Post-training weight-activation quantization reduces the memory and inference costs of large language models, but aggressive W4A4 quantization remains difficult because activation outliers degrade effective quantization resolution. Although weight optimization, channel-wise scaling, and orthogonal rotation mitigate this problem, the error components they address and their relationship remain unclear. Using an exact decomposition of local weight-activation quantization error into an activation-guided weight compensation term and an orthogonal residual, we bound the residual using persistent channel-wise outlier and regular activation quantities. This decomposition clarifies which error components can be addressed by weight compensation and which require transformation design. We then use the residual bounds to derive practical guidelines for applying randomized Hadamard rotation, sign selection, and channel scaling. In particular, the analysis explains how random signs suppress constructive interference among persistent outlier channels, how sampling multiple sign patterns can improve transformation selection, and how second-moment balancing leads to an $L_2$ scaling rule while a further relaxation recovers SmoothQuant-style $L_\\infty$ scaling. We evaluate these guidelines through backpropagation-free configurations across eight Llama and Mistral models, obtaining performance competitive with gradient-trained SpinQuant.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2609.22005|580b04153faaa95386415a130c4ba4ce427dcdae|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Gating the value pathway of attention reportedly improves language model pretraining, and prior studies disagree on why. We argue and provide experimental evidence that such gates supply two different things that softmax attention lacks: abstention and noise filtering. The first is abstention, which allows an attention head to output nothing, bypassing the requirement that attention weights must sum to one. The second is noise filtering, which allows the value pathway of an attention head to suppress interference from superposed features in the residual stream. In our experiments in matched models from 10M to 350M parameters, we supply abstention through a learned per-head sink logit in the softmax and noise filtering through a gate on each value. We report three empirical findings. First, the benefit of abstention, measured as the reduction in validation loss relative to a matched baseline, declines as models grow, whereas the benefit of noise filtering increases with scale. In particular, abstention accounts for nearly all of the gain from gating at 10M and filtering for most of it at 350M. Second, the best model at every scale is the one with both primitives built in. Third, injecting controlled interference into the values a head reads confirms that the gate removes such interference, and reveals that each of the two gate forms we study has a characteristic blind spot. Supplying both primitives adds negligible parameters and remains compatible with the key-value cache.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
   }
 }
