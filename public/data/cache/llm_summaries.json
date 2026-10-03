@@ -20947,5 +20947,174 @@
     "keywords": [
       "cs.CL"
     ]
+  },
+  "arxiv:2610.00049|19d458555f4d4d7527683c6d24bec0032aff8ab0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2610.00049v1 Announce Type: new \nAbstract: Graphics processing unit (GPU) generations scale matrix, special-function, and memory pipelines at different rates, so kernel bottlenecks move as hardware evolves. FlashAttention-4 exposed this imbalance inside attention on NVIDIA Blackwell. We test whether short polynomial programs can accelerate other special-function-unit (SFU) operations in large language models (LLMs). We first compare native PyTorch evaluation with packed fused multiply--add (FMA) programs in an isolated IEEE binary16 (FP16) sweep spanning L2-resident and high-bandwidth-memory (HBM)-resident working sets. We then replace native sigmoid, tanh, and sigmoid linear unit (SiLU) with degree-3 or degree-4 bfloat16 (BF16) programs in four GB200 integration tasks: dense SiLU, tanh-softcapped attention, sigmoid attention, and routed-expert Swish-gated linear unit (SwiGLU). The programs combine analytical symmetry, target-format rounding, and packed arithmetic inside consuming kernels. The isolated paths improve by 1.19--2.19x in L2 and 1.00--1.70x in HBM. The dense-SiLU, tanh-softcapped-attention, and routed-expert substitutions improve complete training-step throughput by 2.7\\%, 2.9\\%, and 8.0\\%, respectively. The sigmoid-attention substitution improves complete-attention forward by 7.4\\% and the complete GPU step by 0.3\\%. Same-checkpoint open-weight ablations and one paired pre-training comparison per task extend the evaluation to model behavior. At common horizons near 100 billion tokens, the final smoothed training-loss differences (polynomial minus native) range from $-0.107$ to $+0.079$ across the four tasks.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.00418|4cbe8fb6806bbbf1824e091d28319a6f7dd6a449|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Scaling Transformers to long contexts is constrained by the quadratic cost of self-attention and the linear growth of key-value cache memory transfer. Sparse attention mitigates this by retrieving only relevant tokens, but current approaches either require large-scale training or, within the training-free regime, rely on semantically coarse heuristics or expensive clustering that is difficult to update efficiently during decoding. We introduce CommunityKV, a framework that formulates sparse attention as a community detection problem. CommunityKV constructs a token graph from the $QK^T$ scores already computed during standard prefill, and partitions the graph into communities to enable retrieval of semantically coherent token groups. A local update rule assigns newly generated tokens to communities in constant time, enabling sparse retrieval throughout streaming decoding without global re-partitioning. We evaluate CommunityKV on Qwen3 and Llama-3.1 models across three long-context benchmarks. With one graph per query head, CommunityKV delivers up to $1.25\\times$ the end-to-end generation throughput of dense attention, while query-group graph aggregation yields up to $1.71\\times$ with comparable accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.01230|8ec3df3fca5104355d85dc82a7bdb941870546ca|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Efficient long-context inference is essential for large language models (LLMs), yet it poses a severe computational bottleneck. Hash-based retrieval offers an efficient alternative by encoding queries and keys into binary codes and using Hamming distance for key selection. However, this leads to a critical mismatch between Hamming distance and attention relevance. Query-Key logits depend jointly on directional similarity and feature magnitudes, whereas hash binarization discards magnitude information, causing both false-positive retrieval of low-logit keys and false-negative omission of high-logit keys. To address these failures, we propose Hierarchical Hash Retrieval (HHR), a coarse-to-fine framework that progressively improves retrieval accuracy through Geometry-Aware Key Routing (GKR) and Learned Hash Projection (LHP). GKR learns a head-wise orthogonal transformation to redistribute feature magnitudes and derive more discriminative page-level logit bounds, enabling effective pruning of low-logit keys while preserving important candidates. LHP then learns a head-wise projection space that aligns Hamming distance with the true Query-Key relevance ranking for fine-grained retrieval. By combining GKR and LHP, HHR suppresses false positives and recovers false negatives, substantially improving the fidelity of hash-based sparse attention. Extensive experiments across diverse LLMs and benchmarks demonstrate that HHR achieves superior performance over existing methods. For example, on LongBench, HHR improves the average score by 1.10 points and, at a context length of 128K, achieves up to a 3.30x decoding speedup and a 2.83x end-to-end speedup for Llama-3.1-8B-Instruct. The code is publicly available at https://github.com/lianjunl13-sudo/HHR.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.01763|9a07d6befcd2998dd8384e58b0c46ba037236cda|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Activation sparsity speeds up large language model (LLM) inference by setting unimportant activations to zero so that the corresponding computations can be skipped. Existing training-free methods, however, make different trade-offs: threshold-based methods such as TEAL adapt the sparsity level to each token but do not tightly control the realised sparsity, while TopK-based methods such as WINA enforce a fixed sparsity level but use the same sparsity budget for every token. Both also apply the same budget across transformer blocks, despite large differences in block sensitivity. We introduce TopK-Guided, a training-free method that addresses both limitations by combining bounded token-level sparsity adaptation with sensitivity-aware block-level budget allocation. Across Llama-2 and Llama-3 models, TopK-Guided consistently improves perplexity and downstream accuracy over TEAL and WINA while preserving essentially the same sparsitydependent projection compute as WINA, with the largest gains at high sparsity. Ablations show that both components provide complementary improvements.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.00872|b092e44ce3d8d0f785d38a89bee17c74c24251c5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-term memory systems for large language models (LLMs) have gained popularity for extending reasoning capabilities across applications. Current memory systems rely on LLM agents to organize and consolidate memory, resulting in costly, inefficient write operations. To address this limitation, we propose MemFit, a long-term memory system for conversational agents that reduces the cost and latency of memory operations. Unlike existing systems that rely on expensive LLM calls for memory construction or discard surface-level details through compression, MemFit stores each turn verbatim in an append-only store with near-instantaneous, LLM-free insertion, indexing turns with segment summaries rather than replacing them. Additionally, MemFit uses an LLM-free, multi-path retrieval strategy that combines lexical and semantic signals with cross-encoder reranking over caption- augmented episodes in both textual and multimodal settings. Empirical results on three widely used benchmarks, LoCoMo, MemGallery, and LongMemEval-S, show that MemFit achieves state-of-the-art performance while reducing memory construction time and cost several-fold, providing a scalable and efficient solution for persistent agentic memory.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.00717|0a5705595575aca53de61cccd85144553bea4047|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Post-training compression of LLM attention is often formulated as independent matrix approximation, ignoring both the shared structure among attention projections and the representation shift introduced by earlier compression. We propose FTC, a sequential structured compression framework that adapts the approximation to the current compressed model while jointly exploiting the native Q/K/V head structure under a fixed storage budget. The output projection is handled separately to account for the changed post-attention representation. FTC requires neither fine-tuning nor gradient-based recovery. Across seven decoder-only LLMs from 6B to 32B parameters, FTC achieves the lowest WikiText-2 perplexity among the compared methods at every tested keep ratio on five modern GQA models, with the largest gains under aggressive compression. The improvements transfer to downstream tasks and remain substantial at the 32B scale.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2610.00412|1ea69f9120bfadb5cb489d43b3c1ed31701fc9a6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "KV cache pruning reduces long-context inference memory usage by evicting less important key-value pairs. KVzip estimates importance through context reconstruction: prompting a model to repeat the context chunk by chunk. This achieves strong compression quality at the cost of additional forward passes. Learned approximations reduce this cost but require model-specific training. We analyze how KVzip identifies important cached information and show how to approximate its reconstruction scores using information already computed during prefill. These findings motivate EchoPress, a training-free method that approximates reconstruction attention using queries and keys from standard prefill. For each request, it reconstructs only the first chunk to calibrate importance scores for the remaining context. Experiments on LongBench and RULER with Qwen3-8B and Llama-3.1-8B-Instruct show that EchoPress matches KVzip in task accuracy across eviction ratios from 50% to 90%, while reducing compression overhead by a factor of 1.7-19.6 and total prefill time by a factor of up to 2.9. Code is available at https://github.com/ljwljwljwljw/kvpress/tree/echo-press.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.00432|6521c57520cdb3e66fb6eb162e339e6c293c6654|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Trellis-coded quantization enables high-dimensional compression of large language model (LLM) weights at ultra-low bit widths without the exponentially large codebooks required by conventional vector quantization. Practical deployment, however, presents two challenges: reconstructing compressed weights at sufficient parallel throughput to avoid making dequantization an inference bottleneck, and maintaining quantization accuracy without costly incoherence transformations. We address these challenges with two complementary techniques. First, we introduce an ultra-low-complexity trellis dequantizer that uses a structured, hardware-efficient state-to-value mapping while preserving diverse reconstruction choices for trellis search. Second, we reformulate discrete trellis path optimization with a curvature-aware objective that reflects model sensitivity directly in the original coordinate space. Together, these techniques enable high-quality ultra-low-bit trellis quantization with inexpensive, highly parallel runtime reconstruction and without relying on Hadamard-based incoherence processing.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.02199|d012a2e30c0b3eb3230614f0bed3dfd700eb1181|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Full-parameter fine-tuning of large language models (LLMs) incurs substantial optimizer state memory overhead, limiting the model sizes that fit on modern GPUs. Existing approaches either compress optimizer state, abandon first-order gradients, or change the update geometry while retaining dense state. The recently introduced Muon optimizer reduces optimizer memory through matrix-valued updates. Still, its geometry differs from AdamW and can lead to performance degradation when fine-tuning AdamW-pretrained models. To reduce optimizer memory without sacrificing accuracy or computational efficiency in LLM fine-tuning, we propose Ternary Absolute-max Column-wise One-sparse optimizer, or TACO, which follows Muon's operator-norm steepest-descent view but takes the geometric route further. TACO computes the exact steepest-descent direction under a dimension-normalized $1\\to1$ operator norm by selecting the sign of the largest magnitude entry in each column of two-dimensional weight matrices. This retains first-order gradients while making optimizer state memory nearly negligible. Our practical TACO optimizer maintains only a small set of low precision gradient components per column, reducing persistent optimizer state by $174\\times$ relative to AdamW8bit (from 27.7 GB to 0.16 GB) and peak training memory by $2.9\\times$ (from 80.6 GB to 27.5 GB) on OPT-13B, while achieving comparable accuracy and runtime. TACO further enables full-parameter fine-tuning of 30-32B-parameter models on a single 80 GB H100 GPU across multiple model families and tasks.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、math.OC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "math.OC"
+    ]
+  },
+  "arxiv:2610.00321|a9c45cb9fc310227bc357809e186fee2a293446d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding accelerates large language model inference by drafting future tokens cheaply and verifying them with the target model in parallel. Block drafters score a whole block of future tokens in one forward pass, yet standard decoding verifies only the top-scoring chain and discards the other candidates. Because these candidates are already scored, verifying more of them adds target computation but no extra drafting. We introduce CAST (Cost-Aware Speculative Trees), which packs these candidates into a tree and verifies it in a single target pass, leaving the target model, drafter weights, and decoding rule untouched. To decide how wide the tree should be, CAST adds candidates while the expected gain from the next one outweighs the verification time it adds. The width therefore adapts to each deployment from a latency measurement, without sweeping over widths. We evaluate CAST across five domains on three GPU generations and two model families. At its predicted width, CAST is faster than the standard chain in all eight settings, by up to 43%. We also find that the best width depends strongly on the deployment. Where verification cost jumps at a kernel boundary, a 128-token tree is only 2% faster than the standard chain, whereas the tree at the predicted width is 20% faster. Furthermore, we prove that CAST leaves the target output distribution unchanged under both greedy and sampled decoding. Code is available at https://github.com/js-lee-AI/CAST.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.00426|87416584c5b9efb073bbd51fcabc9fcb3017d5e0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We introduce IrekoGPT, a post-hoc method for converting pretrained LLMs into slimmable models whose width can be adjusted at inference time. Building on SliceGPT, we retain its projection matrices without pruning them, allowing a single model to expose nested subnetworks at different widths. We improve robustness by calibrating each layer across multiple compression ratios, and correct downstream linear layers through gradient-free ridge regression. Across Llama and Qwen models, preliminary results show improvements over naive PCA-based slimming, with the largest gains at high compression. Code is available at https://github.com/aimagelab/IrekoGPT",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、stat.ML主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  "arxiv:2610.00499|471a60682636d0ed154de3d8778a932a2bc9c26c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As diffusion large language models (dLLMs) become more capable, they are moving from research settings to real-world \\textit{serving}, where request management (such as scheduling and resource allocation) relies on accurate estimation of per-request inference cost. However, common cost proxies fall short for dLLMs: output length ignores that one forward pass can unmask multiple tokens, and denoising-step count ignores the \\textit{heterogeneous} per-step costs. We observe that the block-autoregressive generation mechanism induces a two-dimensional execution structure over output blocks and within-block denoising steps, whereas these proxies collapse it into a scalar, discarding information essential for characterizing the cost. Motivated by this insight, we propose the Denoising Workload Surface (DWS), which preserves this two-dimensional block-step structure as a probability surface to weight the heterogeneous per-step costs. We then design a coarse-to-fine training scheme that enables a lightweight prompt-only predictor to accurately predict the complex DWS. This predictor runs efficiently even on a single CPU core, avoiding GPU contention with the serving model. Since DWS decouples request-dependent execution behavior from deployment-specific cost factors, the predictor transfers across hardware configurations without retraining. In \\textit{real-world} serving experiments, DWS reduces cost-prediction error by up to $2.50\\times$ over scalar-based predictors, while the DWS-guided shortest-job-first scheduler reduces end-to-end latency by up to $1.92\\times$ for online chatbots.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.00665|c818b33bac28b21037a627558e0818647cfb4fc1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Background: Protein language models (PLMs) are increasingly used for sequence generation and property prediction, but their size makes fine-tuning and deployment expensive. The effects of quantization and parameter efficient fine-tuning on performance, representations and generation remain insufficiently characterized. Results: We evaluated 4-bit quantization and low-rank adapter fine-tuning (QLoRA) across ESM-2, ESMC, ProtBERT, ProtT5, Ankh, Ankh3 and Profluent-E1. Across protein prediction tasks, many model-task pairs retained more than 90% of full fine-tuning performance. Peak GPU memory savings approached 90% for the largest models, although performance and efficiency varied by model, dataset and training configuration. QLoRA often preserved early-layer representations while inducing task-specific adaptations in middle and late layers, resembling full fine-tuning with smaller representational changes. Training speed and power effects were more varied. For unconditional generation with ProLLaMA, ProtGPT2, ProGen2, ProteinGLM and ESM3, 4-bit quantization largely preserved predicted structural and sequence-level properties, but token-level analysis revealed model-dependent shifts in autoregressive output distributions. Conclusion: QLoRA and 4-bit quantization reduce PLM computational requirements, particularly GPU memory usage. Our results support QLoRA as a first-pass strategy for memory limited adaptation, reserving full fine-tuning for challenging tasks, unstable architectures or low validation recovery. For generative PLMs, sequence-level and structural metrics should be complemented with distributional analysis, since downstream predictions alone may miss quantization-induced shifts. These approaches can broaden access to large-scale protein modelling while requiring model- and task-specific validation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、q-bio.QM主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "q-bio.QM"
+    ]
+  },
+  "arxiv:2610.00010|d77736399ed66e53597e76b2829443f228e8c60f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-horizon language agents increasingly rely on external memory as a frozen world model, yet current memory systems are usually judged only by task success or token cost. We argue that the missing object is the shape of memory use: under finite context and repeated retrieval, agent memory can concentrate on a small core while leaving rare states in a long tail where prediction errors accumulate. We study this effect through a conservative tail audit and find that concentration is reproducible but policy-dependent. Random-walk agents produce log-normal-compatible retrieval artifacts, whereas semantic LLM policies yield the strongest truncated-power-law-compatible core--tail traces. Motivated by this audit, we propose Core--Tail World Model (CTWM), a rank-based memory controller that allocates prompt budget with a single exponent $τ$ while retaining a summarized tail. On Synthetic Graph World, CTWM preserves full state and transition coverage, reduces prompt tokens by 5.9%, and lowers bottom-half tail prediction error by 13.6% relative to a graph-memory baseline. The same paired comparison gives consistent token savings on ALFWorld and a 24.48% token reduction on LongMemEval with aggregate accuracy parity. These results suggest that heavy-tailed memory traces are not only a diagnostic of finite retrieval, but also a practical control signal for token-efficient agent world models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.01936|8639fcb7da1e73338c9cefb539e875c8fad9bce9|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) have demonstrated remarkable fluency across many tasks but remain limited by their static, parameter bound knowledge and their susceptibility to hallucinating information. Retrieval Augmented Generation (RAG) addresses these issues by incorporating external retrieval into the generation process, grounding model outputs in verifiable and up to date sources. While prior surveys primarily focus on core RAG architectures and standard pipelines, recent research explores broader challenges and capabilities that extend beyond these foundational designs. This survey provides a consolidated and structured examination of contemporary RAG developments, organizing the field into a four axis taxonomy: improving retrieval efficiency, strengthening robustness and security, supporting user driven and interactive workflows, and enabling multi step or complex reasoning. We formalize key components of the RAG framework and review methods spanning dense and sparse retrieval, fusion strategies, embedding optimizations, and reinforcement learning based retrieval policies, highlighting how these advances influence practical deployment and system design. We also synthesize evaluation practices, domain specific applications, and architectural variants such as Naive, Advanced, and Modular RAG. Finally, we outline persistent challenges related to retrieval quality, reliability, domain adaptation, scalability, and explainability, and identify opportunities for building RAG systems that are more reliable, adaptable, and transparent.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.00586|fffdb5bb86590124c02efd82a94df02eea80cccb|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Activation memory, not compute, limits CNN inference on constrained hardware such as microcontrollers. Direct in-place convolution removes the dual-buffer cost, but the memory-optimal formulation of Gural and Murmann assumes valid padding, unit stride, unit dilation, and odd square kernels, and needs a non-sequential traversal costing $2\\times$ inference time in transposes. We identify two regimes in which their published closed form does not hold: (1) an under-allocation of exactly $(k-1)C_{in} \\bmod (C_{out}-C_{in})$ scalars, active on every convolutional layer of their own deployed network and manifesting as a silent corruption of still-live input; (2) an unbounded overestimate, up to $2{,}432\\times$, once the critical leg leaves the output grid. We correct both and generalize to arbitrary stride, dilation, padding, and rectangular kernels. We then propose Right In-Place (RiP) convolution, a bit-identical operation in which every layer reads its input right-aligned in a shared workspace and writes its output left-aligned from index zero. The debt is piecewise affine in the output pixel index, so evaluating its breakpoints in $O(1)$ yields the minimum safe gap without enumerating the output grid, with row-major access preserved. Across $10{,}000$ random layers RiP produced no corruption, and across 84 convolutional layers from 25 architectures it matches the herringbone workspace exactly on 58 and within 5% on 81, using 24.8% less memory than dual buffering on average. Written into TinyEngine's kernels and deployed to a Raspberry Pi Pico 1 and Pico 2, it cuts peak activation memory across eleven MCUNet models by 12.5 to 33.3% at unchanged cycle counts and bit-identical outputs, raising the number of models that fit the Pico 1's 256 KB SRAM from six to nine.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CV主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CV"
+    ]
+  },
+  "arxiv:2610.00673|eaab56d4ac3357cc9c9bcd8f6720e1561a2c51b4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Looped language models increase effective depth by repeatedly applying a shared block of layers, but existing large-scale recipes require multi-stage training over trillions of tokens, while the benefits of recurrence remain difficult to separate from differences in data and training. In this work, we establish practical training recipes for looped language models, with three main results. (1) We develop a compute-efficient from-scratch pipeline that reduces the training budget from 7.7T tokens in Ouro to 310B tokens while retaining strong reasoning performance. Pretraining followed by high-quality mid-training, together with learning-rate warmup and stronger exit-gate regularization, enables stable recurrent training without prior multi-stage schedules. (2) Under controlled comparisons, our 1.4B LoopLM outperforms a parameter-matched dense model trained on the same data and token budget on all 12 evaluated benchmarks, including +14 points on GSM8K, +10 on MATH, and +22 on DROP. At matched inference compute, it approaches a 3.9B dense model on mathematical reasoning and reading comprehension while using only 36\\% as many parameters. (3) We introduce a minimal recipe for converting pretrained dense models into looped ones: a single learned input-mixing scalar and a smoothed exit loss, with no step-specific parameters. Applied to Qwen3-1.7B-Base, Looped Qwen improves over an identically continued dense baseline on every evaluated benchmark across two data regimes, with statistically clear gains on GSM8K, MATH, and MMLU-Pro on the curated mixture. Together, these results make looped language models substantially cheaper to train from scratch and practical to introduce into existing pretrained checkpoints, while isolating the gains due to recurrence itself.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.01127|24fb7a39b0a62c18af8e49bca0a2f2d43f69c91a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2610.01127v1 Announce Type: new \nAbstract: Mainstream large language models rely on a tokenizer to encode text into a token sequence. Different tokenizers may yield token sequences of substantially different lengths for the same text. With a fixed model architecture, shorter token sequences correspond to lower inference time. We propose a tokenizer training approach named Counting and Filtering (CNF) and a text encoding algorithm called Min-Cost Encoding (MCE). MCE defines a cost function over a text segment, and determines the best segmentation by globally minimizing the overall segmentation cost. CNF builds a raw vocabulary by directly counting valid substrings, and then constructs the final vocabulary through a filtering step based on actual token usage when segmenting the training corpus with MCE. The CNF-MCE conbination offers several advantages over BPE, including higher token efficiency, greater scalability, and lower dependency. Across six text categories and two vocabulary-size groups, CNF-MCE consistently achieves better compression than the evaluated BPE tokenizers. With a 250K vocabulary, CNF-MCE increases compression rate by 26% and 30% on English web text over the o200k_base and qwen250k tokenizers. Experiments scaling the vocabulary to 1M entries on English web text demonstrate sustained improvements over BPE, with a token efficiency improvement of over 60% and vocabulary utilization rising from 52.9% to 96.9%. The MCE algorithm does not depend on a merge list (as in BPE) or token probability (as in UnigramLM), making it applicable to a wide range of vocabularies, including those built from BPE, UnigramLM, CNF, and others. Language models trained from scratch at the 1.8B and 8B scales achieve comparable average performance to models using the BPE tokenizers across 11 benchmarks. These results demonstrate that CNF-MCE can improve token efficiency significantly while maintaining competitive downstream performance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.01296|b50e6bde1df53e43242d23d4666de6769aa0f6a7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) Diffusion Language Models (DLMs) offer flexible parallel decoding and increased model capacity, but their large number of expert parameters incurs substantial computation and storage costs. Existing low-rank MoE compression methods largely rely on static factorization and fixed rank allocation, which overlook the distinctive properties of MoE DLMs. Specifically, we identify two properties: cross-mode non-uniform redundancy, where parameter redundancy and sensitivity to rank truncation vary across the input, output, and expert modes, and token-wise utilization variation, where hot and cold tokens exhibit distinct spectral characteristics and expert activation patterns. To address these challenges, we propose ITC-MoE, an Importance-guided Token-aware Compression framework for MoE DLMs. ITC-MoE consists of two complementary components. First, Importance-guided Adaptive Tucker Compression (IATC) incorporates activation and gradient importance into expert weight transformation, jointly factorizes expert weights across multiple modes, and adaptively allocates ranks under a fixed parameter budget. Second, Token-aware Compensation and Routing (TCR) applies lightweight low-rank compensation to compression-sensitive hot tokens and restricts the candidate expert set for cold tokens with concentrated routing patterns. By jointly adapting compression capacity and inference execution to both parameter redundancy and token-wise variation, ITC-MoE substantially reduces the computation and storage costs of MoE DLMs while preserving their generation quality. For example, on SDAR-30B-A3B-Chat-b32, ITC-MoE maintains an accuracy of 96.33% on MultiArith under a 30% compression budget, while achieving up to a 7.22x end-to-end speedup. The code is publicly available at https://github.com/lianjunl13-sudo/ITC-MoE.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.01439|b8c124860756a4c8a563774fd9688b81ed91f9c6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Parallel drafting reduces the drafting overhead of speculative decoding for large language models (LLMs), but its gains remain limited by the accepted prefix length. Even when the correct token is present in the candidate pool, a single early selection error prevents subsequent predictions from being used. We propose DRelay, which uses global information from the entire draft block to perform prefix-aware selective repair of candidate selections before target-model verification. DRelay bases its decisions on candidate correlations and the selected path: a global reader extracts predictive information across positions for each candidate. While a causal selector combines candidate-level information extracted by the global read with the tokens selected at preceding positions to determine whether the native choice at the current position is consistent with the global evidence and the selected prefix. It then decides whether to retain or replace the token, thereby repairing early errors and extending the accepted prefix. We further jointly train the draft backbone and the selector, combining candidate-support learning with a repair objective, while weighting the repair loss according to each block position's potential contribution to the consecutive accepted prefix. Across eight diverse benchmarks on an H800 GPU, DRelay consistently improves both average acceptance length and end-to-end decoding performance over DFlash, Domino, and DSpark. Under SGLang serving, DRelay improves average end-to-end speedup over DFlash, Domino, and DSpark by 14.7%-16.8%, 8.7%-9.3%, and 8.1%-9.3%, respectively.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
