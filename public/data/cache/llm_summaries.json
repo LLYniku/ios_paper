@@ -21116,5 +21116,179 @@
     "keywords": [
       "cs.AI"
     ]
+  },
+  "arxiv:2610.02953|980568b48bf657e0d992d9c58579fff454f73398|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context LLM serving is increasingly bottlenecked by KV-cache memory, especially in resource-constrained scenarios. Among existing KV-cache compression strategies, token-wise methods reduce cached states but risk information loss through eviction or condensation, while feature-wise methods reduce per-token KV dimensions but can require full-dimensional reconstruction to apply positional embedding, limiting decoding speedups. We introduce SlimKV, a question-agnostic joint token-feature KV-cache compression method. SlimKV uses low-rank-aware training to compress long contexts into beacon memory states with latent KV representations, together with layer-adaptive rank allocation. We further uncover a positional asymmetry: removing key-side RoPE affects beacon and raw tokens differently, with much smaller degradation for beacon tokens. Exploiting this asymmetry, SlimKV trains beacon KV projections under a K-RoPE-free constraint and enables latent-space attention during decoding, mitigating reconstruction latency. On LongBench, SlimKV outperforms baselines at 16x/32x compression and remains leading at 4x/8x, where it retains over 96% of the uncompressed model's score. Needle-in-a-Haystack confirms robustness across evidence positions, and efficiency evaluation shows up to 7.34x attention speedup and 3.38x end-to-end decoding speedup over the uncompressed model at 128K length.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02598|680db79d7e0e126c3f1afed24d03ded87ccbb313|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying LLMs on consumer-grade GPUs with insufficient memory to hold their weights can result in prohibitively slow inference, because decoding repeatedly transfers offloaded weights from system RAM or flash storage into GPU at much lower bandwidth than local GPU-memory access. Activation sparsity reduces these transfers by skipping weights associated with zero or near-zero activations. However, as more activation contributions are omitted, model quality eventually degrades rapidly, indicating that weights associated with small-magnitude activations collectively influence model quality sharply. In this work, we improve the trade-off between model quality and decoding performance when exploiting activation sparsity. Our key idea is to replace the binary choice of whether or not to read a weight with three options: fully retain it, approximate it using a compressed weight representation, or omit it entirely. SpAx skips weights associated with activations closest to zero, reads approximate weights for smaller-magnitude activations, and reads original weights for the largest-magnitude activations. Smaller-magnitude activations attenuate the errors introduced by approximate weights, while compressed weight representations require fewer bytes to be transferred. With weights offloaded to CPU memory, SpAx speeds up decoding by 3.86X on average (up to 5.57X) with 16-bit weights and 2.06X (up to 2.74X) with 4-bit weights, at a WikiText-2 perplexity increase of at most 10%. With weights offloaded to flash storage, the speedups are 3.31X on average (up to 4.81X) and 1.54X (up to 2.03X).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.PF主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2610.03027|1cc105c6209e0cd2e3ff20a489f8a0751bd795dd|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The key-value (KV) cache becomes a major memory bottleneck in long-context LLM inference, placing substantial pressure on memory capacity and bandwidth. To mitigate this bottleneck, vector quantization (VQ) has emerged as a promising approach for aggressive KV cache compression. However, existing VQ methods degrade substantially in the 1-bit regime. At such extreme compression, each codebook must represent a larger group of channels with a limited set of centroids, making effective use of its capacity increasingly challenging. To address this, we introduce $\\textbf{TaSQ}$, which tailors the VQ target space by combining query-guided channel weighting, cross-head normalization, and covariance-aware channel grouping to better reflect the error sensitivity and statistical structure of cached activations. Since these transforms are RoPE-compatible and can be easily merged into projection weights and codebooks, TaSQ preserves the conventional VQ lookup structure and adds negligible serving overhead. Across general, long-chain-of-thought reasoning, and long-context retrieval benchmarks, TaSQ consistently outperforms existing low-bit KV cache VQ baselines while preserving reasoning stability. On a single RTX 6000 Ada GPU, its SGLang implementation supports up to $14\\times$ larger batch sizes and achieves $1.87\\times$ higher peak throughput compared to the BF16 baseline.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.02491|165a5fe8e080acfe4b232c24d57a3323e3502d30|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models spend the same amount of computation on every token they generate, regardless of how difficult each token is to produce. Methods such as speculative decoding and model routing are built on the premise that much of this computation is unnecessary, yet the computation an individual token actually requires has not been measured. We measure it through a Mixture-of-Agents (MoA) lens: a panel of fifteen language models of increasing capacity, drawn from three families, in which every agent attempts to reproduce a reference sequence token by token, conditioned on the correct preceding tokens. We define the inference cost of the smallest agent that succeeds as the token's sufficient compute, which upper-bounds what the token requires. On three core benchmarks, a 0.5B agent reproduces 92--95\\% of reference tokens. Across Qwen, OLMo, and R1-distilled panels, the most expensive 10\\% account for 64--80\\% of estimated FLOPs. On all 500 MATH-500 problems, the MoA-derived map helps model routing reduce projected latency from 7.59 to 5.12 seconds while slightly improving accuracy, relative to the best confidence-routing baseline. The MoA-map helps drafting use 32.6\\% fewer draft tokens and approximately 20\\% lower projected latency than fixed-window drafting at similar accuracy. These comparisons reveal remaining allocation headroom, motivating controllers that exploit sufficient-compute structure.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.02229|3c892050ac076b3b8f8600023e689bad6bbbd7d1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "On Blackwell, normalization and operand movement can limit attention kernels whose matrix multiplications are already deeply pipelined. We implement an FA4-style pipeline in Triton TLX with fixed-shift dense softmax and a saved inverse denominator for backward. The fixed shift removes recurrent accumulator corrections; the saved reciprocal moves row normalization from the quadratic backward loop into linear preprocessing. The guarded causal path uses a first-block anchor with selective recovery, and fully masked diagonal contractions are skipped. A packed BF16 exponential approximation and pipelined dQ publication reduce per-element work and on-chip movement. On B200 at 1,000 W, using prepared launches and the original FA4 timer, TLX improves geometric-mean throughput by 7.3 percent across the 24 cases in FA4's BF16 variable-batch grid through 32,768 tokens at head dimension 128. Dense forward and backward improve by 13.0 and 10.4 percent, respectively. Causal backward improves by 8.0 percent, while causal forward is 1.5 percent slower. The TritonBench comparison has geometric- mean gains of 13.4 percent in forward and 24.4 percent in backward",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2610.02241|b172bcbee969bf830e37e6a1eb97e8d0728e67a3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mixture-of-Experts (MoE) architectures allow frontier language models to scale to trillions of parameters, but their deployment is constrained by massive memory footprints and memory-bandwidth limitations. Although modern accelerators provide Sparse Tensor Cores (SpTCs) that reduce weight storage and increase throughput through low-precision semi-structured sparsity, exploiting them for MoEs remains challenging because of substantial model-quality degradation and the lack of grouped sparse GEMM primitives. We present an end-to-end hardware-software co-design framework that compresses expert weights into hardware-native, low-precision sparse representations and accelerates their execution on SpTCs. Algorithmically, our framework relaxes discrete semi-structured support selection through continuous reparameterization, enabling differentiable joint optimization with quantized weights under a router-weighted reconstruction objective and scalable expert-parallel compression. Systemically, we develop a custom grouped sparse GEMM kernel tailored to low-precision sparse MoE inference on SpTCs. Across MoE models ranging from 30 billion to one trillion parameters, our framework improves state-of-the-art joint sparse-quantization accuracy by up to 4.35 percentage points while preserving 96.09% of the original model's performance. On NVIDIA B200 GPUs, our kernel outperforms the vendor baseline by up to $1.65\\times$, increasing serving throughput by $1.18\\times$ and reducing end-to-end latency by up to $4.03\\times$. These results establish hardware-software co-design as a practical path toward scalable and efficient MoE deployment.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02687|746af3a84da300ae4dced6a2562ce4b01ecf0aa6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) are increasingly deployed in enterprise, scientific, and medical applications, where agents must incorporate domain-specific knowledge and adapt from experience. Context engineering offers a practical alternative to weight updates by improving model behavior through instructions, strategies, and evidence supplied at inference time. However, adapting context online typically requires a costly trial-and-error process, while queries are often processed independently, preventing useful experience from carrying forward. Memory systems address this limitation by retaining information across interactions, but approaches that continually append information to a shared context face increasing token costs, context-window limits, and performance degradation as the context expands. We introduce a unified formulation of context optimization and show that an agent memory system update can be interpreted as an optimization update procedure over the model's context. This perspective attempts to provide a principled framework for studying memory design and its efficiency. We then propose GraphMemory, a lightweight graph-based memory that accumulates, refines, organizes, and connects reusable strategies. For each query, GraphMemory retrieves only the relevant subgraph, enabling online context adaptation without exposing the model to the entire memory. Under bounded retrieval, the amount of retrieved memory remains constant as the number of processed examples grows. Experiments show that GraphMemory achieves competitive downstream performance while using approximately 81-85% fewer memory-construction tokens than our baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02383|98ae7a7adda9a3b328d18a472c612f719eb8855f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Looped Transformers apply the same layers several times per token, adding compute to improve quality without more parameters. Each recursion, however, writes its own key-value cache, so memory still grows with compute. Inference-time techniques can shrink this cache at a cost in quality. We pretrain looped language models to share memory: only the first recursion writes a cache, and later recursions read it while keeping a short window of their own. Surprisingly, we find that sharing memory does not cost quality and instead improves it. At 150M-1B parameters, our Looped Prediction Transformer (LPT) and its hybrid variant set a new quality-memory frontier for looped models: with five recursions, the hybrid lowers validation perplexity on FineWeb-Edu by 1.12-1.82 relative to a same-size standard Transformer while using 76-79% less context memory. Through an extensive analysis, we investigate why memory sharing helps. Shared and local memory develop different representations, and later recursions attend mostly to the shared memory, which also acts as a gradient highway to the first recursion.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.03039|191d42476953f139c446b0d4e0d79945170341f7|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-form thinking traces can substantially improve the multi-step reasoning performance of large language models (LLMs), but they introduce high inference-time overhead, with latency dominated by sequential decoding. We propose HyperThink, a text-to-parameter approach that amortizes this reasoning computation into a single query-conditioned parameter update: a lightweight hypernetwork reads the question and predicts updates to a small subset of the base LLM's parameters, while a vector-quantized decoder constrains them to a finite set of reusable patterns to improve robustness and transfer. Trained end-to-end on outputs from the base model itself, HyperThink eliminates long thinking traces at test time: after one hypernetwork forward pass, the adapted model generates a concise step-by-step solution and final answer without an intermediate trace, using far fewer tokens while retaining strong reasoning performance. Empirically, HyperThink improves the low-latency region of the accuracy-latency trade-off on mathematical and general reasoning tasks, with its strongest gains in the near-non-thinking regime.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.03135|242e370822a1f5592e5bd027b83998f8967db6ca|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Serving long-context autoregressive language models is constrained by the key-value (KV) cache. Most dynamic eviction methods score token importance per query head and choose tokens independently. This fits poorly with grouped-query attention (GQA), where several query heads share one physical KV buffer: divergent per-head selections force the serving engine to retain the union of their choices - inflating the cache by up to the group ratio r - while arithmetic mean pooling dilutes the specialized retrieval heads that carry factual recall. We introduce Page-EntroKV, a formal framework for KV-cache eviction operating at the granularity GQA serving actually allocates. Heads within each physical group are pooled by weights derived from sink-isolated collision (Renyi-2) entropy - one inner product per head, computed once at prefill with no calibration - so sink heads cannot masquerade as retrieval heads. Pooled scores are projected onto PagedAttention page frames, and eviction executes at the hardware tuple (layer, group, page). We formalize the union overhead ratio (UOR) and intra-group disagreement, prove an exact identity linking them for two-head groups alongside two-sided bounds at every group ratio, prove strict budget preservation and a finite-context needle-retention bound that arithmetic mean pooling provably violates, and give exact per-layer page accounting. On a pilot architecture (Qwen2.5-1.5B-Instruct, r=6), head-independent replay over 2,240 group measurements yields union overhead up to 4.75x at a 2% budget, while Page-EntroKV holds UOR exactly 1.000; sink isolation removes a 13x sink masquerade; needle recall is 100% versus 0% for mean pooling at a 20% budget; retained cardinality is exact for every page size; and QA and code tasks remain solvable at 20% retention.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02235|81754e6ccac001668c62d22b5316073b6ea0831c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context decoding is increasingly constrained by key--value (KV) cache memory and bandwidth. Existing fixed-budget compression methods typically separate retention from compensation, while a retention ranking specifies neither discarded attention mass nor the direction of induced output error. We start from an exact factorization: eviction error equals evicted attention mass times the directional gap between the evicted centroid and retained output, highlighting the importance of set-level coverage in retention and mass-preserving memory writing. We introduce CORE COverage Calibration and Evicted-Mass REdistribution for KV Cache, which distills an offline allocation combining query utility and log-determinant coverage into a lightweight cache-aware indexer. At inference, one calibrated distribution drives both channels: its Top-$B$ ordering retains complementary KV states, while its excluded allocation mass and conditional weights parameterize latent-memory writes without a separate write-weight predictor or online log-determinant evaluation. Our analysis provides a four-term pre-compensation error certificate, characterizes non-additive coverage interactions, and establishes mass-independent write stability with hierarchical bounds through recurrent and query-adaptive normalization. Across three backbones, CORE exceeds the strongest RULER baseline by up to 3.78 points at 90\\% compression; LongBench and repeated-eviction evaluations further demonstrate strong effectiveness and decoding efficiency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.02488|5a7d61e6c861246074a1dc8f134124a898e8520d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Language-model agents increasingly rely on harnesses that manage bounded context, persistent memory, tools, verification, and repeated execution, yet existing notions of model capability do not quantify the computational resources these mechanisms consume. We introduce the Language Model Agent Machine (LAM), a resource-bounded abstraction that fixes the underlying semantic model while explicitly charging harness-level resources. We establish four classes of results. Communication: LAM execution is instancewise equivalent to red--blue pebbling under simultaneous call--transfer budgets, transferring classical I/O lower bounds to context--memory traffic. Access: memory interfaces induce asymptotic separations, including a $Θ(n)$ gap between random and non-speculative sequential access on pointer chasing. Recomputation: bit-reversal DAGs require $Θ(n^2/(C+S)+n)$ model calls with context capacity $C$ and persistent-memory capacity $S$, quantifying when stored intermediate state avoids repeated semantic computation. Reliability: we derive tight stage-local sampling bounds, exact imperfect-verification costs, and a Young--Daly-type checkpoint law with a closed-form optimal verification interval. Controlled and held-out experiments on GPT-6 Astra test communication and reliability predictions, including checkpoint optima, policy selection under programmatic checking, and tradeoffs among call granularity, logical input traffic, and reliability on chained MATH tasks. Together, these results provide a resource theory for the computational cost of language-model agent harnesses.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02462|c64b5f19df540e29a3745c741cfa5e64fbc90742|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM compression reduces inference costs and memory requirements, but selecting a method and configuration remains largely empirical because comparable resource reductions can produce different capability losses. We systematically investigate capability scaling-down laws for LLM compression across pruning, quantization, and distillation. Our framework measures capability loss in mathematics, code generation, and question answering, and relates these measurements to model size, training stage, compression settings, data availability, and training exposure. We develop simple predictive relations and evaluate their accuracy, measurement efficiency, and generalization to unseen configurations and model states. Sharing the density response across pruning levels halves the configuration measurements needed to fit a pruning predictor: on new Pythia states, on pre-registered OLMo-2 test states and under Wanda pruning, the compact relation matches a regression fitted with all measurements on math and code to within 0.020 nats per token, with coefficients refitted for each setting. Controlled distillation experiments show that the cost of heavy data reuse recurs across question-answering distributions, while the net benefit depends on the evaluation distribution. We further evaluate the decision value of these predictions by comparing numerical selection with configuration medians and fixed method priorities. Independent evaluations across two model families show that selection captures most of the available cross-method benefit for question answering within the tested candidate sets, where a fixed method priority attains the same regret, with smaller opportunities for mathematics and code. These results clarify the predictive scope of capability scaling-down laws and their use in compression method selection. Our code is publicly available at: https://github.com/LabRAI/scaling_down_law.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.02713|ad062f4bdabe2f56224dc1a43d5707357724017b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Most KV-cache compression methods classify attention heads once, either offline or during prefill, and keep this classification fixed throughout generation. Across three models (1.5B-8B) and three regimes (needle retrieval, long chain-of-thought, and multi-turn recall), we measure head behavior on four model-regime combinations and find that most heads change their reading behavior at least once during generation. We introduce WakeKV, a reactive residency policy that moves cooling heads to a recoverable CPU reservoir rather than freezing or permanently evicting their state. At matched memory or budget, WakeKV consistently improves miss rate over frozen classification and destructive eviction, evaluated across five model-regime combinations and over three cited baselines (SnapKV, uniform R-KV, and ReasonAlloc) across four eligible combinations. A FlexiCache/vLLM implementation on Mistral-7B confirms the benefit on real hardware, improving throughput while retaining LongBench quality.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AR",
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.03109|308e259512bb8be54392e6370a1805d2515b137f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "While representation similarity across independently trained language models is well-documented, how internal mechanics such as attention behave across models remains far less characterized. Inspired by this gap, we examine the structure of post-softmax attention weights by marginalizing over query positions, mapping them into a joint token-head \"marginal attention space\". Evaluating across 60+ diverse LLMs, we find that different properties emerge when reducing this space along its token and head axes. When reduced token-wise, marginal attention yields a text-intrinsic signal robustly conserved across models. To explain this property, we empirically connect marginal attention to the input-output Jacobian of the network, and prove theoretically that under a smoothness assumption, models with similar next-token distributions are guaranteed to have similar input-output Jacobian statistics. When reduced head-wise, it forms a model-private signature conserved across documents. Practically, this provides a natural way to estimate a per-head budget for key-value (KV) cache eviction, effectively decoupling model-specific budget allocation from text-intrinsic token scoring. On standard eviction benchmarks, a per-head budget precomputed offline on pretraining text, combined with a training-free token score, shows competitive performance with methods that recompute the budget on every document or train it per target. Code available at https://github.com/Flegyas/marginal-attention",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.02472|38bd1cd400e3577b1eabdee32a6f8106484e3a8b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Personalized LLM assistants must recover sparse evidence from long conversation histories across queries of varying complexity. We introduce APDMem (Agent-controlled Progressive Disclosure Memory), a hierarchical long-term memory architecture that applies progressive disclosure to memory retrieval. Rather than relying on a flat memory store or fixed retrieval granularity, APDMem represents conversation history as four progressively detailed layers: thematic summaries, personalized key facts, turn-level evidence notes, and raw messages. At inference time, a controller applies progressive disclosure to the memory hierarchy: it first reads high-level summaries and drills into finer evidence only when needed. This creates an adaptive cost-fidelity trade-off: simple queries can terminate early, while complex temporal, multi-hop, or exact-evidence queries trigger deeper inspection. A note synthesizer converts retrieved evidence into a query-focused structure that consolidates facts, orders events, and flags contradictions before final answer generation. Experiments on LongMemEval show that APDMem achieves strong performance for long-context memory reasoning while accessing only 8% of the total conversations.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.02766|4726161a72d9943e4011fdda17b39a2759b1ddc6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Retaining language-model prefix states trades recomputation against storage time. Optimizing each cached block independently can overcount savings: a resident block is usable only when the required preceding prefix is also available. We introduce Prefix-Certificate Retention (PCR), an exact finite-trace formulation for static, grouped, reset-on-access timeouts. Usable-prefix rewards become nodes whose prerequisites are timeout thresholds and preceding hit certificates. The resulting maximum-weight closure reduces to one minimum cut, with graph size linear in the number of block lookups and timeout choices. A breakpoint theorem extends the construction to all nonnegative timeouts without discretization error. We also derive a linear-time-in-grid-size dynamic program for ordered timeouts and bounds that certify the cost of this restriction. Exhaustive small-instance checks and chronological replay of 39,632 public Mooncake requests validate the formulation. On the fixed grid, ordered timeouts attain the unrestricted training optimum in 118 of 120 trace-grouping-price cases. Heterogeneous retention improves several held-out memory-time tradeoffs, but finer training optimization does not uniformly improve transfer. The contribution is a tractable optimization model and an auditable benchmark for retention policies; the experiments measure usable prefix blocks and storage time, not GPU latency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02657|49b16e9b37a34ecd716d593953a8a159e18c4121|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Converting a pretrained autoregressive (AR) model to a diffusion language model (dLLM) enables parallel generation without pretraining a new model. Published conversion methods differ by roughly three orders of magnitude in training data and have not been compared under a common protocol. We compare two conversions of the same 30B Mixture-of-Experts (MoE) parent, holding the corpus, supervised-token budget, trainable parameter set and evaluation harness fixed, each under its own training recipe. The in-place model updates a subset of the parent's weights using denoising and representation-alignment losses; the frozen-tower model instead conditions through cross-attention on a frozen causal copy of the parent. With 1B training tokens, the frozen-tower model scores 71.60 on HumanEval pass@10 against 6.19 for the in-place model, an 11.6x improvement. At the same budget it also keeps 95% of the parent's GSM8K score and 99% of its MMLU-Pro score. A dense-parent experiment reproduces the HumanEval separation. Within the two-tower design at about 500M tokens, freezing the context tower retains substantially more MMLU-Pro performance than training it, while both give similar observed HumanEval scores. Our theoretical analysis establishes that both conversion classes contain an exact sampler for the AR parent under a hard attention mask and left-to-right commitment of one position per round. Under a shared loss, freezing removes the gradient contribution through the context states. Furthermore, evaluation protocol substantially affects a published 500B-token conversion's scores in both directions across tasks, while its AR parent's scores vary by less than three points, so comparing dLLMs needs a common protocol. These results show that, in the tested low-budget regime, the frozen-tower configuration retains substantially more of the parent's generation performance than in-place conversion.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.02288|9f8523b20aa3175f25181229228367d079291fe2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deploying Vision Transformers (ViTs) on low-power edge devices is challenging due to high computational demands. Conventional pruning frameworks require a separate compiled binary for each sparsity level, increasing storage overhead and limiting runtime adaptability. This paper presents an end-to-end deployment pipeline that transforms pretrained ViTs into a single runtime-configurable binary, enabling dynamic compute-budget switching on embedded CPUs. This is achieved by restructuring generated C kernels with modified loop bounds and binary-mask control logic, allowing execution to switch across discrete sparsity levels via compact external configuration files. Compared to multi-binary deployment, the proposed runtime-adaptive approach reduces on-device storage by up to 4.86x, requiring only 163 MB for ViT-Base instead of nearly 800 MB. To maximize pruning efficiency, we introduce a hardware-aligned block pruning strategy for Multi-Layer Perceptron (MLP) layers. In addition, a custom ISA extension is proposed to exploit input-reuse patterns in linear projection kernels. On a Synopsys TRV32P3FX RISC-V processor, the full system achieves up to 2.8x speedup at 65% MLP and 50% attention-head pruning for ViT-Base. The ISA extension alone provides a 1.56x speedup and 33% lower inference energy, with a 24.7% area overhead in a TSMC 28 nm implementation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2610.02800|fb5542dd5aa303d132cb1d47eb2b185a84fc5964|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding accelerates autoregressive generation by using a lightweight draft to propose multiple tokens for parallel verification. However, existing methods often require an additional draft model or weight representation, introducing non-negligible memory overhead on resource-constrained devices. Self-speculative approaches reduce this overhead, yet still face trade-offs between draft quality, target quality, and storage efficiency. We propose BitNest, a bit-nested speculative decoding framework that embeds a low-precision draft directly into the higher-precision target representation. Instead of deriving a draft from a predefined target, BitNest first constructs a strong low-precision base and then recovers the higher-precision target through residual refinement, enabling both models to share a single physical weight representation. BitNest further extends this progressive-precision design to the KV cache for long-context inference. Across multiple 7B--8B edge-friendly LLMs and diverse workloads, BitNest achieves an average speculative acceptance rate of 95.2% while closely preserving higher-precision model quality, and delivers 1.48--1.61x end-to-end speedup over FP16 autoregressive decoding. On the LLaMA models supported by all representative self-speculative baselines, BitNest also achieves consistently competitive or higher decoding speedup.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
