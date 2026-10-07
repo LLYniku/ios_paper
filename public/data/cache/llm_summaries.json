@@ -21290,5 +21290,179 @@
     "keywords": [
       "cs.AI"
     ]
+  },
+  "arxiv:2610.06286|108945b00f64c07bf3ac7e00bf25ad4c78bb6313|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context large language models (LLMs) have demonstrated strong capabilities across a wide range of tasks, but the growing KV cache introduces substantial memory and inference overhead. Existing one-shot KV cache compression methods typically commit to irreversible eviction immediately after prefill, before any signal from actual generation becomes available. Our quantitative analysis shows that early queries from the actual generation stage provide attention signals that are more consistent with subsequent decode attention, with the largest single-step gain occurring at the prefill-decode boundary. Based on this observation, we propose DeferKV, which moves the eviction decision from the end of prefill to the first real decoding step and temporally combines prompt-side and decode-side observations, thereby better aligning KV importance estimation with subsequent generation requirements. DeferKV requires no additional training, draft model, or future-query prediction module, making it simple and easy to deploy. Experiments on LongBench, RULER, and Needle-in-a-Haystack demonstrate that DeferKV consistently improves model performance under KV cache compression while maintaining low inference latency.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.06387|3df6c5eab7c9acd79632df003eaf274454bcc048|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) have achieved substantial performance gains through increases in model size, training data, and computational resources. However, traditional scaling approaches produce diminishing returns, rising financial and environmental costs, and barriers to participation for researchers operating outside large industrial laboratories. This review examines the evolution of LLM scaling theory from empirical scaling laws to compute-optimal training, with particular emphasis on parameter efficiency, token utilization, data efficiency, and resource-constrained environments. Foundational work on scaling laws is synthesized alongside later research on compute-optimal training, data pruning, efficient architectures, quantization, low-rank adaptation, and edge-oriented optimization. The literature indicates a shift from scale maximization toward more deliberate allocation of parameters, tokens, compute, and hardware resources. At the same time, important empirical, theoretical, and methodological gaps remain regarding whether scaling principles established on enterprise-grade infrastructure generalize to smaller models and constrained computing environments. This review organizes these developments into a unified framework for resource-efficient LLM training and argues that future progress should evaluate efficiency not solely through model performance, but through the relationship among performance, parameter count, computational cost, token allocation, and hardware constraints.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.04875|15a4114d48b58c94e92611762b593857ff6eb369|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion large language models (DLLMs) generate text through iterative block denoising, and multi-branch speculative decoding accelerates this process by verifying a main branch together with multiple draft branches in a single forward pass. While prior DLLM acceleration methods primarily exploit temporal redundancy across denoising steps, we identify a complementary redundancy axis within each speculative verification step: multi-branch computational redundancy. During speculative verification, draft branches inherit most tokens from their parents while unmasking a small set of additional positions, causing large portions of hidden states to remain highly similar across branches. We propose SpecFold, an algorithm-system co-design that exploits this multi-branch redundancy to reduce the cost of multi-branch speculative verification. Algorithmically, SpecFold performs token-level residual gating and selectively reuses parent computation through folded attention and FFN while preserving residual hidden states. Systemically, a Triton kernel implementation translates this fine-grained reuse into end-to-end throughput gains through efficient sparse multi-branch execution. SpecFold is orthogonal to temporal caching and compatible with existing DLLM speculation strategies. Across two DLLM families, five models, and five standard benchmarks, SpecFold achieves up to 1.64x throughput over Spiffy and up to 1.99x over vanilla decoding, while maintaining comparable task performance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.04204|571571112fa0fc916d324fc7d52c6c0c4ee383b3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Training large language models (LLMs) entails a fundamental trade-off: memory-efficient optimizers such as Adam discard cross-parameter curvature, whereas full-curvature methods such as SOAP can accelerate convergence at prohibitive memory costs. We introduce Clean, a memory-efficient and full-curvature optimizer designed to resolve this bottleneck. Clean leverages the randomized Nystrom method to accurately approximate the left and right preconditioners in SOAP, and to reduce the optimizer's memory complexity from quadratic to linear in terms of model dimensions. We subsequently reintegrate the off-subspace components to capture curvature information beyond the low-rank approximation, preserving rich curvature at minimal memory cost. We further propose Q-Clean, a low-precision variant that aggressively compresses optimizer states. Q-Clean reduces optimizer memory consumption by \\textbf{over 50\\%} compared to Muon when pre-training a LLaMA-1.3B architecture, all while maintaining strong and competitive predictive performance. Notably, Clean operates with a smaller optimizer-state footprint than standard AdamW while reaching AdamW's final performance \\textbf{26\\% faster} in wall-clock time. Furthermore, our methods uniquely enable the pre-training of a 13B-parameter model on a single 80GB GPU, providing a scalable, efficient, and accessible approach to large-scale model optimization.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.04753|7ffee6780466c69335617a87cf64ad183aea91a1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "utoregressive generation in Large Language Models (LLMs) is constrained by the memory and computational demands of attention mechanisms. Sparse attention methods mitigate this cost by selecting only high-probability entries of the attention matrix. We observe that in many such methods, this renders the probability-value multiplication negligible, shifting the bottleneck to the query-key step. Key heads can therefore be reduced to accelerate inference, while retaining more value heads preserves capacity with limited additional decoding cost. We introduce Sparse Asymmetric Group-Query Attention (SAGA), which decouples key and value head counts to exploit this principle, and pair it with approximate top-N (Atop-N) attention, a simple sparse attention method designed to study the interaction between sparsity and head-count asymmetry. We formalize the benefits of this asymmetry theoretically and validate them empirically through latency measurements and quality evaluations on models up to 1.5B parameters. Together, SAGA and Atop-N achieve end-to-end decoding speedups exceeding $2\\times$ over our full-attention GQA baseline at long contexts. Models trained from scratch with SAGA nearly match the quality of comparable GQA variants on the evaluated benchmarks. To facilitate adoption, we introduce an efficient fine-tuning method that converts pretrained models to the SAGA architecture, enabling practitioners to benefit from our approach without costly retraining.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.06686|8214dea52b347d3151acb81d65c83b2ed5738c53|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long context inference with large language models becomes increasingly expensive as attention must operate over an ever growing KV cache. Page sparse attention reduces this cost by representing each KV page compactly and retrieving only a subset for each query. Existing retrieval methods are designed to estimate attention scores or page relevance, but their objectives do not directly account for how approximation errors affect the resulting value weighted attention output. We introduce \\method{}, an output aware page encoding derived from the joint structure of keys and values while preserving the key information needed for accurate retrieval. \\method{} is training free and requires no additional value dependent statistics at inference time. Once constructed, its stored representation has the same size and decode time scoring cost as a key only spectral representation. Across long reasoning, long context understanding, and long generation benchmarks, \\method{} consistently improves over the key only spectral baseline and performs competitively with recent KV cache compression and retrieval methods. On long reasoning benchmarks, it achieves strong avg@\\(k\\) performance across model benchmark pairs, while matching or surpassing leading baselines on several long context understanding and generation settings with modest decoding overhead. Code is available at \\url{https://github.com/Ashkan13776/oval-kv}.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.04537|202715f364c9baf073fc7e1d52dc7d19de306246|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "On-device assistants run GPU-based LLM inference alongside CPU retrieval on unified-memory systems. Under a saturated local-retrieval workload, four concurrent retrieval workers raise 95th-percentile (p95) decode latency by 60-61% on two M4 systems, whereas prefill latency rises by only 5.7-6.9%. We study LLM phase as an admission signal for independent CPU retrieval under controlled LLM workloads. PHASEGATE calibrates separate concurrency limits for prefill and decode, selecting four and one on our base-M4 configuration. Under a backlogged queue, it achieves 2.0 times the aggregate retrieval throughput of the best tested feasible fixed policy, with both p95 LLM latency metrics within 1.25 times their no-retrieval baselines in all seven held-out runs. A phase-blind control, TimeGate, uses the same two limits on a calibration-derived schedule without observing LLM phase. It achieves similar retrieval throughput but violates the output-token latency limit in every run. M2 and M2 Pro Mac minis reproduce the policy ordering, while output-length sweeps show that the advantage narrows as decode occupies more of each request.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2610.04956|10aa33dfb49aca03e512356a4de59fb44cb6721e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As Large Language Models (LLMs) become essential in privacy-sensitive sectors like hospitals and government agencies, the on-premise LLM servers offer a cost-effective and secure alternative to public cloud services. However, these resource-constrained servers struggle to guarantee heterogeneous Service Level Objectives (SLOs) when serving multiple LoRA-adapted services simultaneously. Existing serving frameworks suffer from severe SLO violations due to the computational overhead of LoRA layers and the rigid nature of batch scheduling. To address this, we propose HALO, a scheduling method tailored for LoRA-assisted on-premise LLM deployment. HALO introduces two key innovations: a spatial multiplexing strategy that overlaps Base and LoRA computations by partitioning GPU Streaming Multiprocessors (SMs), and an SLO-aware scheduler that decouples request execution based on \"request-level slack.\" By prioritizing urgent tasks and utilizing idle budget for traffic shaping, HALO significantly mitigates resource contention. Our evaluation demonstrates that HALO minimizes SLO violations while improving throughput compared to state-of-the-art baselines.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2610.04313|2523678a631aad0019ae7cc3c366093b1b519395|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context decoding is limited by memory bandwidth, because every output token reads the KV cache of every layer. Sparse decoding reduces this cost by reading only part of the KV cache. We observe that the number of pages a query needs varies widely across KV heads, layers and steps. Fixed budgets are simple, but they are sized for demanding cases and tuned per workload; adaptive budgets follow this variation more flexibly, but existing designs pay for it with extra selection cost or training. At the kernel level, FlashAttention-3 (FA3) and FlashInfer are designed for rows of similar length: with page lists whose length differs per KV head, they either pad the lists (forfeiting much of the sparse saving), leave thread blocks unbalanced, or rely on a host-side plan that runs outside the CUDA graph. We propose MOIRA, a training-free sparse decode path in vLLM whose budget adapts per KV head and per layer. For every request, layer, KV head and step, a coverage rule keeps the smallest set of pages whose estimated attention mass reaches a fraction $γ$. A new kernel, self-planning attention, lets each thread block derive its own share of the work from the list lengths, so the whole decode step stays inside the CUDA graph. On an H200, at RULER's 128k context, MOIRA with $γ=0.99$ matches dense accuracy while reading about 30% of the pages and reduces the time per output token (TPOT) by 2.2-2.5$\\times$ relative to dense FA3; with $γ=0.98$ it reduces TPOT by 2.7$\\times$ and stays within the noise of dense. Under high serving load it raises throughput by up to 51%. These results suggest that a budget adapted per head and layer, paired with a kernel that keeps such budgets inside the CUDA graph, makes sparse decoding both flexible and fast.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.05106|b884bef42f4605b271b12d315870ae64ee0bcc00|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-form reasoning makes inference expensive, and speculative decoding mitigates this cost by verifying multiple draft tokens in parallel. Its speedup, however, can fade as context grows and draft acceptance declines. We focus on attention-mass dilution: as softmax normalizes over more visible Keys, the mass concentrated on the highest-scoring Keys can decrease. We introduce SharpDraft, a training-free method that counteracts this effect through cardinality-aware Query scaling, without the computational overhead of online adaptation. Under explicit assumptions, we derive an exact top-$k$ mass correction and deploy a closed-form fixed-slope approximation. Across AIME-26, GPQA-Diamond, and LongGenBench Diary, SharpDraft achieves $2.59$-$3.19\\times$ geometric-mean end-to-end speedups over target-only autoregressive decoding when applied to DFlash, PARD, and EAGLE 3.1. With DFlash, it improves decoding speed and outperforms full-parameter and LoRA-based online adaptation in end-to-end speedup, while matching the unmodified drafter's reported peak allocated GPU memory.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.06479|08bb6c85b664ca970c631ef726684b9aec998e25|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2610.06479v1 Announce Type: new \nAbstract: KV caches are a major bottleneck in long-context inference and long-form generation with large language models. Existing training-free eviction policies largely rely on proxy importance signals, such as attention mass, to decide which past tokens to retain. We argue that cache compression should instead preserve the predictive behavior of the full-cache model, retaining entries whose removal would substantially change the model's output distribution. We propose Behavior-Preserving KV Cache Compression, a training-free framework that scores candidate evictions by estimating the compressed-cache logits induced by their removal and evaluating the resulting KL to the full-cache next-token distribution. Using pre-eviction forward statistics, the method avoids running separate masked forward passes for each candidate. Across diverse architectures and both prefill-time and generation-time compression, our method delivers substantial gains in downstream task quality over lightweight attention-based heuristics at matched retained-KV budgets, with the largest gains under aggressive compression. It achieves these gains with additional compression-time computation while retaining an end-to-end speedup over full-cache inference in our evaluated settings.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.04093|7ed10827a920bd440bce601d1c9d1b75865f3da8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deep neural networks continue to grow in parameter count, driving up training and inference cost on GPUs. Sparse neural networks and Dynamic Sparse Training (DST) promise to reduce these costs, but most implementations rely on binary masks over dense tensors and recover little of the theoretical compute, memory, or energy savings. We propose SNACK, a truly sparse GPU layer that stores and computes only non-zero connections. SNACK exposes a simple PyTorch API for restructuring connections and backpropagating gradients entirely in the sparse paradigm, and ships SNACK-COO, a custom COO-format SpMM CUDA kernel with a batch-to-Streaming-Multiprocessor mapping tuned for the small-batch, high-sparsity regime typical of large-model training and single-stream inference. At the kernel level, SNACK is up to 7x faster than the masked dense baseline (Dense+Mask) and competitive with cuSPARSE, Sputnik, and FlashSparse at 95% sparsity. At 90% sparsity, a single SNACK layer accelerates training by 8x and 3.7x, and inference by 4x and 2x, over Dense+Mask and fully dense layers, respectively, while using 72% less memory than dense and substantially less energy. End-to-end, SNACK reduces GPT-2 peak training memory by up to 40% and graph-style inference latency by 4.8x over Dense+Mask at 99% sparsity.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2610.05685|1210245dd307100651080e495ccbec19f81baf7e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Reasoning models write most of their KV cache while decoding long chains of thought (CoT), so the cache has to be compressed online under a fixed memory budget. Decode-time methods mostly decide which tokens to evict. We ask how a fixed byte budget should be split between the number of cached tokens and their precision. BreadthKV spends the bytes on more tokens at low precision, combining quantization with eviction, and picks the bit-width for each model and budget with a 60-problem end-to-end calibration, since offline attention error does not predict it reliably. On three reasoning models and four math and science benchmarks, it scores above eviction alone in 17 of 18 settings and produces shorter outputs. Much of what eviction loses comes from derailed runs, which keep reasoning until the length cap without reaching an answer. On Qwen3-8B at our tightest budget, eviction sends 91% of AIME samples to the cap and BreadthKV 40%. Under the same protocol, BreadthKV is statistically indistinguishable from a joint rate-distortion allocator (RDKV) that uses 27% more KV memory-time, and it outperforms our re-implementation of ThinKV.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.06026|17246aacbe6335493841e7ad70e13c6413afae95|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "SVD-based pruning and quantization have recently emerged as a promising strategy for the ultra-efficient compression of large language models. In these methods, compression is performed in two stages: components are first truncated, and the remaining ones are subsequently quantized. Although this decoupled pipeline benefits from both pruning and quantization, it requires separate optimization for each stage and fails to fully exploit their balance, which can lead to suboptimal performance under aggressive compression. To address this limitation, we propose a new LLM compression method that co-optimizes pruning and quantization in a unified framework. Our key idea is a differentiable method for learning component-wise bit-widths, allowing less important components to be assigned 0-bit precision and pruned away. Notably, our method performs favorably against two-stage baselines, even when subjected to extreme quantization settings ($1.61$ bits) designed for ultra-efficiency. Code: https://github.com/MMAI-Laboratory/DBW.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.06647|4a5a246212dc5212907ffcf66e6b85491b789e01|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Reinforcement learning (RL) has greatly advanced the capabilities of large language models (LLMs), but its memory demands remain a barrier to broader adoption. We introduce LoGRA, an approach to RL post-training that reduces memory by retaining useful learning signals in low-rank gradient sketches. These compact representations support both model updates and efficient policy synchronization. To prevent overly large updates from disrupting learning, we complement gradient compression with predicted-KL step control, which estimates policy changes before applying each update and adjusts its magnitude accordingly. Across reasoning tasks, LoGRA reduces average training memory by up to 45.7\\% without sacrificing performance. It also enables stable training of a 27B-parameter model for over 1,100 steps on a single eight-GPU node, where dense Adam runs out of memory, making previously memory-infeasible RL training practical. Code is available in the \\href{https://github.com/skzhang1/labs-molt/tree/logra/examples/scripts/logra}{Molt library}.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.05978|e7078c207723ba3abe104f82a62cf83b317452fa|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Tokenizer-free language models remove the inductive bias of fixed tokenizers by modeling text directly as bytes, but the resulting longer sequences substantially increase computation and eliminate explicit text abstractions. We ask whether this additional computation can be useful, and whether standard Transformers can learn the abstractions that tokenization provides. We study these questions on Transformers without specialized tokenization-related architectures. With token-superposition training and hash embeddings, byte Transformers consistently outperform subword Transformers as model size scales. We further find that byte Transformers build local text abstractions as external tokenizers: a set of segmentation-like positions are used to collect local context representations, and restricting up to $25\\%$ of intermediate layers to these local representations preserves downstream performance. Finally, these learned structures induce highly non-uniform generation difficulty, with uncertainty concentrated near local structure boundaries; exploiting them for speculative decoding yields $3.4\\times$ more accepted tokens than in subword Transformers.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.04047|b4d1593cad31581a7b9370bde0b0fbdc453ff11d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A language model reads long text in one quadratic forward pass, stops at the context window, and loses accuracy with length before reaching it. We ask whether the read can be factorized when deciding over a finite set: which document is relevant, which option is supported, which passage is the evidence. Periscope, a training-free inference method, arranges the $N$ chunks of a text on a $K{\\times}K$ grid with $K{=}\\lceil\\sqrt{N}\\rceil$ and asks a frozen model the same question about $K$ local spans of consecutive chunks and $K$ strided spans that sample the whole text, reading the log-odds of every answer at one token. Each answer takes its best local and strided score, and scoring every chunk by its two spans gives an evidence map at no further cost, whose peak is the chunk behind the answer. Every probe is about $\\sqrt{sc}$ tokens for a text of $s$ tokens and chunk size $c$, so a window of $W$ tokens reaches $W^{2}/c$ tokens at $s^{1.5}$ cost. The map replaces the long read. On LongBench v2, reading only the $K$ chunks the map ranks highest, 9k tokens, matches the same model's best window read across windows from 32k to 1M tokens, and on InfiniteBench, where the median context is 150k tokens, it leads the best window read by 5 points. The same map ranks BRIGHT's long-document corpora with the best NDCG@10 of six methods. Each call caches only one probe, so a 27B model reads 4.5M-token contexts on one 80GB GPU, where a single pass would need 296GB of cache. A long read then needs a GPU that holds the model, not one that holds the text.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.IR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.IR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2610.05842|d0b751b03a77277db3e1e2cae21c96fd30205e0f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Linear attention enables efficient long-context autoregressive decoding by compressing history into recurrent states, but this compression can make selective access to sparse and distant information difficult. Existing chunk-based extensions increase memory capacity, yet learned chunk-mixing coefficients may remain fixed with respect to input content and therefore cannot adapt historical access to each query. We introduce \\emph{Hybrid Linear Attention} (HLA), a query-dependent chunk-level attention mechanism for Gated DeltaNet (GDN). HLA represents each completed chunk as an exact affine state transition and computes content-dependent routing gates from compact, self-attentively pooled representatives. Each gate interpolates the corresponding historical transition with the identity map, controlling both the chunk's additive memory and its transformation of earlier states. Effective-support regularization further encourages concentrated routing for sparse inference. We evaluate HLA under both pretrained adaptation and from-scratch training. Across Qwen3.5 models from 0.8B to 9B, HLA consistently improves over native GDN and fixed chunk mixing, with gains of up to 5.57 percentage points on LongBench-V2 and 3.97 points on RULER. In a controlled from-scratch 1.3B setting trained for 100B tokens with a 4K context, HLA also improves RULER performance from 4K to 32K, with gains increasing from 0.83 points at 4K to 4.22 points at 32K. These results demonstrate that query-dependent composition of recurrent memory improves long-context modeling and remains effective beyond the training context while using compact per-chunk affine summaries. Project page: https://caesarhhh.github.io/hla/",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2610.06347|07d74e9e0dd1c5cf2c7a7c2e769f9a2f1fe05a79|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Adapting general-purpose large language models to specific tasks requires substantial human effort in designing data and training strategies. Sustaining improvement is especially challenging because model updates change the error distribution, requiring strategies to be continually refined. We introduce ImproveAnyTask, an autonomous post-training harness that improves task performance under a limited compute budget. Drawing inspiration from gradient-based parameter optimization, the harness organizes adaptation into error attribution, update-direction selection, and executable model updates. It combines metric-level and case-level analysis to identify a focal problem, then investigates research-backed strategies and compares their reported gains and reproduction difficulty. The selected strategy is translated into training data and a training configuration, with small-scale execution checks preceding full post-training. Subsequent evaluation guides model selection and further adaptation, while validated strategies and scripts are retained for reuse. Across 11 tasks, ImproveAnyTask achieves mean gains of 18.29 and 11.97 percentage points on the Base and Instruct models, respectively, with a maximum gain of 41.96 points, under a 24-hour budget with resources equivalent to eight H20 GPUs.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2610.05977|e5a3169ff9ccbc2c1c5268f8a6a6a3bcbc8763e3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Serving a large language model (LLM) across a fleet of deployments requires several weight-precision operating points. Multi-precision formats serve them all from one stream whose prefixes are valid lower-precision codes, instead of storing multiple copies. We present StagQ, a multi-precision weight format whose main stream is a 2-bit group-wise affine base followed by a configurable number of 1-bit refinement planes on a dyadic step schedule. Every supported precision is a readable prefix, decoded by an affine map derived from metadata shared across all precisions, with no per-weight lookup. A sparse side record, filled both before and after the grid is fitted, holds out the few weights the grid serves worst. We report two configurations of the encoder. At two bits the cheaper one leads the strongest multi-precision baseline on Llama-3.1-8B, Phi-4, and OLMo-2-7B by 3.1 to 7.0 MMLU points, at a slightly lower logical rate. At three bits it leads on Llama-3.1-8B, leads on Phi-4 at a higher rate, and ties on OLMo-2-7B. At four bits it ties on all three, at a higher rate. In a batch-one matrix-vector product on an NVIDIA A100 GPU, timed on synthetic weights, our kernel is faster than the two baseline kernels in most shape-precision cases.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
   }
 }
