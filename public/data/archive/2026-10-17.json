@@ -1,0 +1,998 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-17T00:26:09.491572Z",
+  "recommendation_date": "2026-10-17",
+  "timezone": "Asia/Taipei",
+  "source": [
+    "arxiv"
+  ],
+  "language": "zh-Hans",
+  "config": {
+    "categories": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CL",
+      "cs.DB",
+      "cs.AR"
+    ],
+    "max_paper_num": 30,
+    "model": "gpt-5.4-mini"
+  },
+  "stats": {
+    "total_candidates": 414,
+    "recommended_count": 30,
+    "llm_summary_count": 0
+  },
+  "papers": [
+    {
+      "id": "arxiv:2610.21165",
+      "source": "arxiv",
+      "title": "From Long Context to Selective Memory:A Survey of Memory-Centric Compression for Large Language Models",
+      "authors": [
+        "Chaogui Gou"
+      ],
+      "abstract": "Long-context capability has become essential for large language models (LLMs) to handle complex tasks, yet continuously expanding the context window does not remove the computational, storage, and information-selection pressures incurred at inference time. Existing work on prompt compression, KV-cache management, efficient serving, retrieval augmentation, and agent memory is usually discussed in isolation, leaving the flow of information between storage and computation insufficiently understood. This survey reframes long-context compression as a memory-management problem for allocating inference-time resources. We distinguish compute-active memory, which directly participates in model computation, from compute-inactive memory, which lies outside the computation path but can be stored, retrieved, updated, or forgotten, and we characterize offloaded KV caches, persistent prefix caches, and precomputed KV states as intermediate states on the activation path. On this basis, we formulate writing, offloading, recall, retrieval-and-injection, materialization, eviction, consolidation, and forgetting as state transitions within an information lifecycle, and introduce a budgeted cost model that places these operations in a single cost account. The resulting framework unifies short-term context compression, long-term memory management, and the transitions between them, and shows that the central challenge is not merely reducing information volume but deciding which information should participate in costly inference, when, and in what form. We further summarize evaluation dimensions, benchmark gaps, and open challenges, and argue that future research should move from static, pointwise compression toward dynamic, governable, lifecycle-aware memory management.",
+      "summary_zh": null,
+      "tldr": "Long-context capability has become essential for large language models (LLMs) to handle complex tasks, yet continuously expanding the context window does not remove the computational, storage, and information-selection pressures incurred at inference time. Existing work on prompt compression, KV-cache management, efficient serving, retrieval augmentation, and agent memory is usually discussed in isolation, leaving the flow of information between storage and computation insufficiently understood. This survey reframes long-context compression as a memory-management problem for allocating inference-time resources. We distinguish compute-active memory, which directly participates in model computation, from compute-inactive memory, which lies outside the computation path but can be stored, retrieved, updated, or forgotten, and we characterize offloaded KV caches, persistent prefix caches, and precomputed KV states as intermediate states on the activation path. On this basis, we formulate writing, offloading, recall, retrieval-and-injection, materialization, eviction, consolidation, and forgetting as state transitions within an information lifecycle, and introduce a budgeted cost model that places these operations in a single cost account. The resulting framework unifies short-term context compression, long-term memory management, and the transitions between them, and shows that the central challenge is not merely reducing information volume but deciding which information should participate in costly inference, when, and in what form. We further summarize evaluation dimensions, benchmark gaps, and open challenges, and argue that future research should move from static, pointwise compression toward dynamic, governable, lifecycle-aware memory management.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 5.1652,
+      "published_at": "2026-10-15T03:24:36Z",
+      "updated_at": "2026-10-15T03:24:36Z",
+      "categories": [
+        "cs.CL"
+      ],
+      "keywords": [
+        "cs.CL"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21165v1",
+      "abs_url": "http://arxiv.org/abs/2610.21165v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.22256",
+      "source": "arxiv",
+      "title": "BitSparse: Compact Activation Storage for ReLU Feed-Forward Networks",
+      "authors": [
+        "Max Zhu",
+        "Bohang Sun",
+        "Pietro Lio",
+        "Jialin Yu"
+      ],
+      "abstract": "Reducing memory use in large language model (LLM) training is an ongoing challenge. Activation checkpointing saves memory by recomputation, while lossy compression changes the stored activations. The reemergence of sparse $\\relu$ and $\\relu^2$ activations creates a third opportunity: losslessly compressing the activation cache itself. We present BitSparse, a GPU-resident lossless compression format for sparse activations. Compression and reconstruction run in custom Triton kernels fused into an autograd function, shrinking the activation cache while recovering it exactly for the backward pass. Bfloat16 (BF16) and FP8 activations are supported. Optional sign-bit packing further increases compression up to close to the theoretical limit. We analyze its compression ratio and compare it to the theoretical optimum. BitSparse lowers per-token VRAM by 31\\% and 30\\% Modded-NanoGPT and Nemotron-H respectively, with overheads of no more than 1\\% at practical sequence lengths. Additionally, a new preallocated buffer system avoids host synchronization during training when variable size tensors are allocated.",
+      "summary_zh": null,
+      "tldr": "Reducing memory use in large language model (LLM) training is an ongoing challenge. Activation checkpointing saves memory by recomputation, while lossy compression changes the stored activations. The reemergence of sparse $\\relu$ and $\\relu^2$ activations creates a third opportunity: losslessly compressing the activation cache itself. We present BitSparse, a GPU-resident lossless compression format for sparse activations. Compression and reconstruction run in custom Triton kernels fused into an autograd function, shrinking the activation cache while recovering it exactly for the backward pass. Bfloat16 (BF16) and FP8 activations are supported. Optional sign-bit packing further increases compression up to close to the theoretical limit. We analyze its compression ratio and compare it to the theoretical optimum. BitSparse lowers per-token VRAM by 31\\% and 30\\% Modded-NanoGPT and Nemotron-H respectively, with overheads of no more than 1\\% at practical sequence lengths. Additionally, a new preallocated buffer system avoids host synchronization during training when variable size tensors are allocated.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 5.0844,
+      "published_at": "2026-10-15T17:24:51Z",
+      "updated_at": "2026-10-15T17:24:51Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.22256v1",
+      "abs_url": "http://arxiv.org/abs/2610.22256v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20641",
+      "source": "arxiv",
+      "title": "AbridgeKV: Compressing Long Reasoning into the KV Cache of Learned Pause Tokens",
+      "authors": [
+        "Jack Cai",
+        "Lijie Yang",
+        "Vasilis Kontonis",
+        "Dimitris Papailiopoulos",
+        "Shivam Garg"
+      ],
+      "abstract": "Long chain-of-thought decoding is memory-bound: the KV cache of the generated tokens grows linearly with the test-time compute being spent. Evicting cache entries does not fix this, because a model never trained on a cache with entries removed generates longer, often up to the length limit. We instead train the model to compress its own output. AbridgeKV compresses each completed block of generated text into the KV entries of a few learned pause tokens. These are extra input tokens with trained embeddings that produce no output. Once the pause tokens have encoded the block, AbridgeKV frees the block's original cache; subsequent tokens attend to the pause tokens' KV entries in its place. Three novel choices make this work: the pause tokens' KV entries take positions inside the block they replace, the cache budget is allocated across layers according to the measured value of each layer's entries, and compression operates on relatively large blocks. On 446 competition problems from AIME, HMMT, AMC, BRUMO, CMIMC and SMT with 32K-token generations, keeping a quarter of the generated cache matches an identically trained full-KV model in accuracy and output length; the strongest published evictor at a matched budget writes far longer, and the closest trained compressor, retrained on the same data, loses 10 points. Served in vLLM, the cache is 3.5x smaller per sequence and a saturated H100 finishes a problem 3.2x faster than with full KV.",
+      "summary_zh": null,
+      "tldr": "Long chain-of-thought decoding is memory-bound: the KV cache of the generated tokens grows linearly with the test-time compute being spent. Evicting cache entries does not fix this, because a model never trained on a cache with entries removed generates longer, often up to the length limit. We instead train the model to compress its own output. AbridgeKV compresses each completed block of generated text into the KV entries of a few learned pause tokens. These are extra input tokens with trained embeddings that produce no output. Once the pause tokens have encoded the block, AbridgeKV frees the block's original cache; subsequent tokens attend to the pause tokens' KV entries in its place. Three novel choices make this work: the pause tokens' KV entries take positions inside the block they replace, the cache budget is allocated across layers according to the measured value of each layer's entries, and compression operates on relatively large blocks. On 446 competition problems from AIME, HMMT, AMC, BRUMO, CMIMC and SMT with 32K-token generations, keeping a quarter of the generated cache matches an identically trained full-KV model in accuracy and output length; the strongest published evictor at a matched budget writes far longer, and the closest trained compressor, retrained on the same data, loses 10 points. Served in vLLM, the cache is 3.5x smaller per sequence and a saturated H100 finishes a problem 3.2x faster than with full KV.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.9242,
+      "published_at": "2026-10-07T17:39:41Z",
+      "updated_at": "2026-10-07T17:39:41Z",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20641v1",
+      "abs_url": "http://arxiv.org/abs/2610.20641v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.22130",
+      "source": "arxiv",
+      "title": "DropKV: Decoupling Residual-Output Perturbation for Near-Optimal KV-Cache Eviction",
+      "authors": [
+        "Aozhong Zhang",
+        "Selcuk Gurses",
+        "Yanxia Deng",
+        "Naigang Wang",
+        "Chi-Chun Liu",
+        "Davis Wertheimer",
+        "Derrick Liu",
+        "Xin Li",
+        "Zi Yang",
+        "Felix X. -F. Ye",
+        "Penghang Yin"
+      ],
+      "abstract": "Key-value (KV) cache management has become a critical bottleneck for scaling Large Language Models (LLMs) to long-context scenarios due to linear memory growth. While recent eviction methods have moved beyond simple attention-score heuristics to incorporate value representations, they typically face a fundamental trade-off: the underlying optimization for minimizing output perturbation is an NP-hard combinatorial problem, leading to mathematically suboptimal heuristics or implementations that are difficult to kernelize. In this work, we propose DropKV, a simple principled eviction framework based on Decoupled Residual-Output Perturbation. By decoupling the joint eviction decision into independent per-token scoring, DropKV circumvents combinatorial intractability and admits a provable constant-factor approximation guarantee under a cone condition that we empirically verify on three long-context LLMs. To ensure practical viability, we provide a high-performance implementation using fused Triton kernels that avoid materializing the full attention matrix, delivering a 19.8x scoring-kernel speedup that translates to up to a 9.9% matched-batch end-to-end prefill speedup. Extensive evaluations on the RULER and LongBench benchmarks demonstrate that DropKV consistently outperforms state-of-the-art baselines at equivalent cache budgets, achieving the lowest inference latency among eviction methods while also remaining faster than the dynamic cache baseline.",
+      "summary_zh": null,
+      "tldr": "Key-value (KV) cache management has become a critical bottleneck for scaling Large Language Models (LLMs) to long-context scenarios due to linear memory growth. While recent eviction methods have moved beyond simple attention-score heuristics to incorporate value representations, they typically face a fundamental trade-off: the underlying optimization for minimizing output perturbation is an NP-hard combinatorial problem, leading to mathematically suboptimal heuristics or implementations that are difficult to kernelize. In this work, we propose DropKV, a simple principled eviction framework based on Decoupled Residual-Output Perturbation. By decoupling the joint eviction decision into independent per-token scoring, DropKV circumvents combinatorial intractability and admits a provable constant-factor approximation guarantee under a cone condition that we empirically verify on three long-context LLMs. To ensure practical viability, we provide a high-performance implementation using fused Triton kernels that avoid materializing the full attention matrix, delivering a 19.8x scoring-kernel speedup that translates to up to a 9.9% matched-batch end-to-end prefill speedup. Extensive evaluations on the RULER and LongBench benchmarks demonstrate that DropKV consistently outperforms state-of-the-art baselines at equivalent cache budgets, achieving the lowest inference latency among eviction methods while also remaining faster than the dynamic cache baseline.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.8721,
+      "published_at": "2026-10-15T16:05:17Z",
+      "updated_at": "2026-10-15T16:05:17Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.22130v1",
+      "abs_url": "http://arxiv.org/abs/2610.22130v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21257",
+      "source": "arxiv",
+      "title": "Fractional Power-of-Two Quantization for Efficient and Effective Multiplier-Free LLM Inference",
+      "authors": [
+        "Sunghyun Wee",
+        "Geunjae Choi",
+        "Hyeonjin Kim",
+        "Suyoung Kim",
+        "Nojun Kwak"
+      ],
+      "abstract": "Large Language Models (LLMs) demand efficient inference, where the multiply-accumulate (MAC) operations in linear projections dominate compute and energy cost. Post-training quantization (PTQ) reduces this cost by mapping weights and activations to low-bit integers. Power-of-Two (PoT) weight quantization promises efficient multiplier-free LLM inference via shift-add logic, but suffers significant accuracy degradation at low bitwidths due to its coarse base-2 quantization grid. We introduce Fractional PoT (FPoT), a base-$\\sqrt{2}$ (half-octave) fractional PoT grid that achieves practical 4-bit weight quantization while preserving a fully integer shift-add datapath. The method combines (i) the base-$\\sqrt{2}$ weight grid with uniform integer activations, (ii) a calibration-time grid-alignment refinement absorbed into the static per-channel scale, and (iii) a lightweight 1-adder $\\sqrt{2}$ approximation whose error is absorbed during weight calibration via approximate-grid quantization, yielding a processing element (PE) with significantly fewer gates than a 4-bit integer multiplier. On Llama-3-8B with 4-bit weight and activation quantization, FPoT improves zero-shot commonsense reasoning performance by 8.72% relative to the PoT baseline, while maintaining performance close to the uniform integer baseline, with only a negligible 0.4%p degradation. These results hold across various configurations spanning seven models and three bit-widths. Furthermore, FPoT can be integrated with state-of-the-art LLM PTQ methods, demonstrating framework-agnostic applicability.",
+      "summary_zh": null,
+      "tldr": "Large Language Models (LLMs) demand efficient inference, where the multiply-accumulate (MAC) operations in linear projections dominate compute and energy cost. Post-training quantization (PTQ) reduces this cost by mapping weights and activations to low-bit integers. Power-of-Two (PoT) weight quantization promises efficient multiplier-free LLM inference via shift-add logic, but suffers significant accuracy degradation at low bitwidths due to its coarse base-2 quantization grid. We introduce Fractional PoT (FPoT), a base-$\\sqrt{2}$ (half-octave) fractional PoT grid that achieves practical 4-bit weight quantization while preserving a fully integer shift-add datapath. The method combines (i) the base-$\\sqrt{2}$ weight grid with uniform integer activations, (ii) a calibration-time grid-alignment refinement absorbed into the static per-channel scale, and (iii) a lightweight 1-adder $\\sqrt{2}$ approximation whose error is absorbed during weight calibration via approximate-grid quantization, yielding a processing element (PE) with significantly fewer gates than a 4-bit integer multiplier. On Llama-3-8B with 4-bit weight and activation quantization, FPoT improves zero-shot commonsense reasoning performance by 8.72% relative to the PoT baseline, while maintaining performance close to the uniform integer baseline, with only a negligible 0.4%p degradation. These results hold across various configurations spanning seven models and three bit-widths. Furthermore, FPoT can be integrated with state-of-the-art LLM PTQ methods, demonstrating framework-agnostic applicability.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.765,
+      "published_at": "2026-10-15T04:50:03Z",
+      "updated_at": "2026-10-15T04:50:03Z",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21257v1",
+      "abs_url": "http://arxiv.org/abs/2610.21257v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20682",
+      "source": "arxiv",
+      "title": "TurboMamba: Faster Inference, Faster Training, and Better Prediction with Lexical Memory",
+      "authors": [
+        "Hanxin Zhang"
+      ],
+      "abstract": "We introduce TurboMamba, a language-model architecture for faster inference, faster training, and better token prediction. A global Mamba-3 model runs once per completed token block. A small Transformer uses this global context and earlier tokens within the block to predict the next token. Three lightweight additions improve local predictions: direct access to the previous block's last token, a small correction to next-token scores, and a learned mixture with recent-token frequencies. We compare twelve small-scale implementations on public FineWeb-Edu, with comparable parameter counts and shared training-budget caps. The baselines include Transformer, Mamba-3, Jamba, and Zamba. The Jamba and Zamba versions use Mamba-3 in place of their original Mamba modules. TurboMamba achieves the lowest mean test prediction loss (negative log-likelihood, NLL) among all twelve models. Its mean NLL is 9.4% lower than that of Mamba-3, 7.3% lower than that of the Jamba version, and 18.3% lower than that of the Zamba version. End-to-end training throughput is 2.60x that of Mamba-3, 2.81x that of the Jamba version, and 4.82x that of the Zamba version. We measure end-to-end batch latency for a batch of 32 sequences, each with a 256-token prompt and 128 generated tokens. On this workload, TurboMamba achieves a 3.12x speedup over Mamba-3, a 3.53x speedup over the Jamba version, and a 6.21x speedup over the Zamba version.",
+      "summary_zh": null,
+      "tldr": "We introduce TurboMamba, a language-model architecture for faster inference, faster training, and better token prediction. A global Mamba-3 model runs once per completed token block. A small Transformer uses this global context and earlier tokens within the block to predict the next token. Three lightweight additions improve local predictions: direct access to the previous block's last token, a small correction to next-token scores, and a learned mixture with recent-token frequencies. We compare twelve small-scale implementations on public FineWeb-Edu, with comparable parameter counts and shared training-budget caps. The baselines include Transformer, Mamba-3, Jamba, and Zamba. The Jamba and Zamba versions use Mamba-3 in place of their original Mamba modules. TurboMamba achieves the lowest mean test prediction loss (negative log-likelihood, NLL) among all twelve models. Its mean NLL is 9.4% lower than that of Mamba-3, 7.3% lower than that of the Jamba version, and 18.3% lower than that of the Zamba version. End-to-end training throughput is 2.60x that of Mamba-3, 2.81x that of the Jamba version, and 4.82x that of the Zamba version. We measure end-to-end batch latency for a batch of 32 sequences, each with a 256-token prompt and 128 generated tokens. On this workload, TurboMamba achieves a 3.12x speedup over Mamba-3, a 3.53x speedup over the Jamba version, and a 6.21x speedup over the Zamba version.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.6916,
+      "published_at": "2026-10-14T16:29:19Z",
+      "updated_at": "2026-10-14T16:29:19Z",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20682v1",
+      "abs_url": "http://arxiv.org/abs/2610.20682v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20686",
+      "source": "arxiv",
+      "title": "RoLaQ: Joint Rotation and Range Calibration for 2-Bit KV Caches in Multi-Head Latent Attention",
+      "authors": [
+        "Shiyu Ji",
+        "Peng Ling",
+        "Chen Lin",
+        "Shupeng Li",
+        "Yixuan Wang",
+        "Qingfu Zhu",
+        "Wanxiang Che"
+      ],
+      "abstract": "Multi-head latent attention (MLA) compresses the content of a key-value cache into a shared latent per token, making low-bit storage attractive for long-context inference. At two bits, errors in this representation perturb both attention matching and value readout, with effects that depend on error direction and reconstruction scale. We introduce RoLaQ (Rotation-calibrated Latent Quantization), an offline method for joint rotation and range calibration. RoLaQ refines a shared rotation within subspaces defined by the frozen key and value projections, and jointly learns quantization ranges whose thresholds and reconstruction gains are coupled to control the shared signal's response. Prediction matching and attention-output supervision guide calibration with model weights frozen. Across three MLA models and six benchmarks, RoLaQ achieves the highest average accuracy among the compared 2-bit methods both without and with token protection. On DeepSeek-V2-Lite, an SGLang implementation provides 3.96 times the BF16 KV capacity under the same memory budget and 2.51 times its decode throughput with 256K input tokens.",
+      "summary_zh": null,
+      "tldr": "Multi-head latent attention (MLA) compresses the content of a key-value cache into a shared latent per token, making low-bit storage attractive for long-context inference. At two bits, errors in this representation perturb both attention matching and value readout, with effects that depend on error direction and reconstruction scale. We introduce RoLaQ (Rotation-calibrated Latent Quantization), an offline method for joint rotation and range calibration. RoLaQ refines a shared rotation within subspaces defined by the frozen key and value projections, and jointly learns quantization ranges whose thresholds and reconstruction gains are coupled to control the shared signal's response. Prediction matching and attention-output supervision guide calibration with model weights frozen. Across three MLA models and six benchmarks, RoLaQ achieves the highest average accuracy among the compared 2-bit methods both without and with token protection. On DeepSeek-V2-Lite, an SGLang implementation provides 3.96 times the BF16 KV capacity under the same memory budget and 2.51 times its decode throughput with 256K input tokens.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、stat.ML主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.6223,
+      "published_at": "2026-10-14T16:46:48Z",
+      "updated_at": "2026-10-14T16:46:48Z",
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "keywords": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20686v1",
+      "abs_url": "http://arxiv.org/abs/2610.20686v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21176",
+      "source": "arxiv",
+      "title": "Language Models Share a Readout Bottleneck in Working Memory",
+      "authors": [
+        "Dongyu Gong"
+      ],
+      "abstract": "Large language models (LLMs) reproduce a human working-memory signature on the N-back task: performance declines as memory load N increases, and errors concentrate on lures, items that repeat the current stimulus at a neighboring but incorrect serial position. We ask whether this shared behavioral signature reflects a shared mechanism. The literature offers two candidate accounts. On a precision account, softmax attention cannot concentrate its weight on the item N positions back, so adjacent items are retrieved instead. On an interference account, attention selects the correct item, but the content of competing items corrupts the decision. We dissociate these accounts in 15 pretrained LLMs from three families (70 million to 14 billion parameters) and in minimal transformers trained from scratch. In all three families, the attention heads that carry the task attend to the target on most missed matches. Linear probes decode near-perfectly whether a matching letter occurred at the target or at a lure position, even on trials where the model false-alarms to the lure, although its own decisions barely distinguish the two. Sharpening attention yields negligible gains, whereas suppressing the letter identity of non-target items improves sensitivity (d') in nearly all model-by-load conditions. In larger models the task is spread over more heads, and removing interference helps more. In minimal transformers, precision limits a single attention layer, but a second layer removes this constraint. The working-memory limit of LLMs therefore lies in reading items out under interference rather than in locating them, consistent with interference accounts of human working memory.",
+      "summary_zh": null,
+      "tldr": "Large language models (LLMs) reproduce a human working-memory signature on the N-back task: performance declines as memory load N increases, and errors concentrate on lures, items that repeat the current stimulus at a neighboring but incorrect serial position. We ask whether this shared behavioral signature reflects a shared mechanism. The literature offers two candidate accounts. On a precision account, softmax attention cannot concentrate its weight on the item N positions back, so adjacent items are retrieved instead. On an interference account, attention selects the correct item, but the content of competing items corrupts the decision. We dissociate these accounts in 15 pretrained LLMs from three families (70 million to 14 billion parameters) and in minimal transformers trained from scratch. In all three families, the attention heads that carry the task attend to the target on most missed matches. Linear probes decode near-perfectly whether a matching letter occurred at the target or at a lure position, even on trials where the model false-alarms to the lure, although its own decisions barely distinguish the two. Sharpening attention yields negligible gains, whereas suppressing the letter identity of non-target items improves sensitivity (d') in nearly all model-by-load conditions. In larger models the task is spread over more heads, and removing interference helps more. In minimal transformers, precision limits a single attention layer, but a second layer removes this constraint. The working-memory limit of LLMs therefore lies in reading items out under interference rather than in locating them, consistent with interference accounts of human working memory.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.612,
+      "published_at": "2026-10-15T03:32:37Z",
+      "updated_at": "2026-10-15T03:32:37Z",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL",
+        "q-bio.NC"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL",
+        "q-bio.NC"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21176v1",
+      "abs_url": "http://arxiv.org/abs/2610.21176v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.22179",
+      "source": "arxiv",
+      "title": "LCT: Losslessly Compressed Tensors with GPU friendly execution for Training",
+      "authors": [
+        "Max Zhu",
+        "Bohang Sun",
+        "Pietro Lio",
+        "Jialin Yu"
+      ],
+      "abstract": "Lossless tensor compression could reduce memory usage during training, but training requires tensors to be repeatedly re-encoded. We introduce Losslessly Compressed Tensors (LCT), a GPU execution framework designed for this repeated encode-decode regime. LCT exploits the natural redundancy in floating point data to reduce storage for weights, activations and optimizer states. Highly optimized GPU kernels implement Huffman coding with precomputed codebooks for low compression and decompression overhead, essential for training. Our analysis characterizes LCT's storage costs and adaptation to magnitude shifts. LCT achieves a compression ratio of up to $1.455\\times$, and is demonstrated in training and finetuning settings. On a 162M-parameter NanoGPT, LCT reduces memory usage by $24.6\\%$ for a $7.2\\%$ step-time increase. In Qwen3-4B fine-tuning, LCT saves up to $23.8\\%$ of peak memory, enabling a $3.5\\times$ larger context length in training on the same GPU.",
+      "summary_zh": null,
+      "tldr": "Lossless tensor compression could reduce memory usage during training, but training requires tensors to be repeatedly re-encoded. We introduce Losslessly Compressed Tensors (LCT), a GPU execution framework designed for this repeated encode-decode regime. LCT exploits the natural redundancy in floating point data to reduce storage for weights, activations and optimizer states. Highly optimized GPU kernels implement Huffman coding with precomputed codebooks for low compression and decompression overhead, essential for training. Our analysis characterizes LCT's storage costs and adaptation to magnitude shifts. LCT achieves a compression ratio of up to $1.455\\times$, and is demonstrated in training and finetuning settings. On a 162M-parameter NanoGPT, LCT reduces memory usage by $24.6\\%$ for a $7.2\\%$ step-time increase. In Qwen3-4B fine-tuning, LCT saves up to $23.8\\%$ of peak memory, enabling a $3.5\\times$ larger context length in training on the same GPU.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.5477,
+      "published_at": "2026-10-15T16:34:35Z",
+      "updated_at": "2026-10-15T16:34:35Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.22179v1",
+      "abs_url": "http://arxiv.org/abs/2610.22179v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21810",
+      "source": "arxiv",
+      "title": "N-Gram Memories at Two Bits: Quantizing Lookup Tables in Large Language Models",
+      "authors": [
+        "Donghoon Han",
+        "Minseop Jung",
+        "Dong Woo Kwak",
+        "SeungJae Lee",
+        "Junhoo Lee"
+      ],
+      "abstract": "Conditional memory expands language-model capacity through selective lookup, but the full embedding table must remain available for every possible input. We introduce Conditional Program (CP), a compressed representation that reconstructs only the rows an input requests. CP represents each row by a short code and a local scale, with a reconstruction program shared across the table. We instantiate this representation with a Gaussian trellis, norm restoration and independently decodable row records. CP's two-bit code lowers output KL by 41--63\\% relative to 2-bit round-to-nearest. Analysis across three trained n-gram memory families shows that Gaussian-like coordinate statistics coexist with learned relationships among rows; at matched storage budgets, the shared trellis outperforms the fitted codebooks and low-rank residual variants we test. For DeepSeek, it reduces table storage from 203GB to 51GB, leaving room for larger workloads when the table is kept on GPU.",
+      "summary_zh": null,
+      "tldr": "Conditional memory expands language-model capacity through selective lookup, but the full embedding table must remain available for every possible input. We introduce Conditional Program (CP), a compressed representation that reconstructs only the rows an input requests. CP represents each row by a short code and a local scale, with a reconstruction program shared across the table. We instantiate this representation with a Gaussian trellis, norm restoration and independently decodable row records. CP's two-bit code lowers output KL by 41--63\\% relative to 2-bit round-to-nearest. Analysis across three trained n-gram memory families shows that Gaussian-like coordinate statistics coexist with learned relationships among rows; at matched storage budgets, the shared trellis outperforms the fitted codebooks and low-rank residual variants we test. For DeepSeek, it reduces table storage from 203GB to 51GB, leaving room for larger workloads when the table is kept on GPU.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.5404,
+      "published_at": "2026-10-15T12:57:19Z",
+      "updated_at": "2026-10-15T12:57:19Z",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21810v1",
+      "abs_url": "http://arxiv.org/abs/2610.21810v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20865",
+      "source": "arxiv",
+      "title": "Long-Context Drafting Does Not Require Long-Context Drafters",
+      "authors": [
+        "Aref Jafari",
+        "Vansh Bhatia",
+        "Matt Qin",
+        "Subhajit Dutta Chowdhury",
+        "Ben Lee",
+        "Vikram Appia",
+        "Ali Ghodsi",
+        "Mehdi Rezagholizadeh"
+      ],
+      "abstract": "Speculative decoding pairs a cheap drafter with parallel verification against the target. At ultra-long context it stops paying, because a drafter that attends over the full prefix inherits the target's context-dependent cost, so the speedup it was meant to provide first erodes and then reverses. The standard response is to build a long-context drafter, by training or fine-tuning one, or by using a multi-token-prediction head shipped inside the target checkpoint. We argue this is unnecessary, because the drafters in use are target-conditioned, reading hidden states the target computed over the entire prefix, so distant context already reaches them without their own attention, and verification corrects what they miss. We therefore freeze released short-context drafters and run them far past their training length under two inference-time mechanisms, one bounding the attention cache they see, which fixes their cost, and one re-basing their rotary position indices into the trained range. No weight is touched and the only tunable saturates early, so one vLLM-side configuration spans 4k to two million tokens, costing at most 0.16x of speedup at short length. We prove when a common index shift leaves the drafter's computation exactly unchanged, and decompose acceptance into two measurable gaps with sharp bounds. Whatever speedup a frozen drafter delivers at short context, it retains out to two million tokens, across three target-drafter pairs and five corpora. The claim concerns the flatness rather than the multiple, and removing either mechanism eliminates it. The gain is conditional on the speculative cost per emitted token staying below the matched target-only cost.",
+      "summary_zh": null,
+      "tldr": "Speculative decoding pairs a cheap drafter with parallel verification against the target. At ultra-long context it stops paying, because a drafter that attends over the full prefix inherits the target's context-dependent cost, so the speedup it was meant to provide first erodes and then reverses. The standard response is to build a long-context drafter, by training or fine-tuning one, or by using a multi-token-prediction head shipped inside the target checkpoint. We argue this is unnecessary, because the drafters in use are target-conditioned, reading hidden states the target computed over the entire prefix, so distant context already reaches them without their own attention, and verification corrects what they miss. We therefore freeze released short-context drafters and run them far past their training length under two inference-time mechanisms, one bounding the attention cache they see, which fixes their cost, and one re-basing their rotary position indices into the trained range. No weight is touched and the only tunable saturates early, so one vLLM-side configuration spans 4k to two million tokens, costing at most 0.16x of speedup at short length. We prove when a common index shift leaves the drafter's computation exactly unchanged, and decompose acceptance into two measurable gaps with sharp bounds. Whatever speedup a frozen drafter delivers at short context, it retains out to two million tokens, across three target-drafter pairs and five corpora. The claim concerns the flatness rather than the multiple, and removing either mechanism eliminates it. The gain is conditional on the speculative cost per emitted token staying below the matched target-only cost.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.525,
+      "published_at": "2026-10-14T19:54:59Z",
+      "updated_at": "2026-10-14T19:54:59Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20865v1",
+      "abs_url": "http://arxiv.org/abs/2610.20865v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21436",
+      "source": "arxiv",
+      "title": "HyCo: Hybrid Drafting for Cost-Efficient Mobile-Cloud Speculative Decoding",
+      "authors": [
+        "Hanbin Bae, Heejin Choi, Joohyung Lee, Byoung Jin Choi, Sangjun Park, Hoon-Young Cho"
+      ],
+      "abstract": "arXiv:2610.21436v1 Announce Type: new \nAbstract: Device-cloud speculative decoding reduces server computation, but growing a deep draft tree with a small language model (SLM) requires repeated passes on a mobile neural processing unit (NPU). We present HyCo, which assigns depth to the server model's native multi-token prediction (MTP) head, executed on the device, and alternative branches to one SLM pass. The server returns the hidden state, input embedding, and key-value entries needed by the head instead of executing its sequential steps. Quantization, a restricted vocabulary, and a 1K-token window fit both drafters to the NPU. An {\\epsilon}-threshold rule additionally relaxes exact preservation of the verifier's sampling distribution. In single-client runs with a Galaxy S26 Ultra over LTE/5G, HyCo reduces server GPU time per output token relative to server-side MTP self-speculation by 38.6% on Spec-Bench and 29.2% on 32K-token summarization. With the same acceptance rule, three Spec-Bench runs per system show 9.0 percentage points more saving and 1.9x delivery speed than an SLM-only drafter. HyCo differs from Cloud+MTP by +0.2 judge-score points (paired 95% CI: -0.9 to +1.3); exploratory translation favors SpecEdge-{\\epsilon}. Without relaxation, HyCo exact saves 27.7% and 11.9% on the two datasets.",
+      "summary_zh": null,
+      "tldr": "arXiv:2610.21436v1 Announce Type: new \nAbstract: Device-cloud speculative decoding reduces server computation, but growing a deep draft tree with a small language model (SLM) requires repeated passes on a mobile neural processing unit (NPU). We present HyCo, which assigns depth to the server model's native multi-token prediction (MTP) head, executed on the device, and alternative branches to one SLM pass. The server returns the hidden state, input embedding, and key-value entries needed by the head instead of executing its sequential steps. Quantization, a restricted vocabulary, and a 1K-token window fit both drafters to the NPU. An {\\epsilon}-threshold rule additionally relaxes exact preservation of the verifier's sampling distribution. In single-client runs with a Galaxy S26 Ultra over LTE/5G, HyCo reduces server GPU time per output token relative to server-side MTP self-speculation by 38.6% on Spec-Bench and 29.2% on 32K-token summarization. With the same acceptance rule, three Spec-Bench runs per system show 9.0 percentage points more saving and 1.9x delivery speed than an SLM-only drafter. HyCo differs from Cloud+MTP by +0.2 judge-score points (paired 95% CI: -0.9 to +1.3); exploratory translation favors SpecEdge-{\\epsilon}. Without relaxation, HyCo exact saves 27.7% and 11.9% on the two datasets.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.DC主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.5113,
+      "published_at": null,
+      "updated_at": null,
+      "categories": [
+        "cs.CL",
+        "cs.DC",
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.CL",
+        "cs.DC",
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21436v1.pdf",
+      "abs_url": "https://arxiv.org/abs/2610.21436",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.22016",
+      "source": "arxiv",
+      "title": "Close Enough is Nowhere Near: Fidelity-Consumability Decoupling in KV Caches",
+      "authors": [
+        "Adam Deng",
+        "Shicheng Liu",
+        "Yada Zhu"
+      ],
+      "abstract": "Multi-agent LLM systems communicate in text, which is lossy and wasteful: the sender throws away the reading it already did. A growing literature instead transmits the KV cache, the natural carrier of that reading. We study the most appealing form of the idea: both models stay frozen and the sender's cache is substituted for the reader's with nothing trained. It does not work, and the obstruction belongs to the reader. A frozen transformer reads only caches close to the one it would have written itself, a region we call its tolerable set. We show that geometric similarity to that cache does not predict whether the reader can use it, and the failure is not gradual, so a more faithful substitute is not the remedy it appears to be. We explain this phenomenon with competitive attention. Experimentally, we test eight diverse substitution methods against two measured anchors: an uninformative cache baseline and the reader's own accuracy from having read the passage. All sit at the baseline. That turns a long tail of separate negative results into one outcome with a stated condition for overturning it. A different design does work: if the reader keeps its own cache and attends over the sender's as extra context, adapting only its queries, it beats its own baseline, and also clears the baseline with eight senders pooled where undirected attention over the same union falls below it. We offer this as a characterization on one probe, not a leaderboard claim. Our central contribution is a redirection: pursuing faithful substitute caches is the wrong target; adding a cache to what the reader already has is the promising one.",
+      "summary_zh": null,
+      "tldr": "Multi-agent LLM systems communicate in text, which is lossy and wasteful: the sender throws away the reading it already did. A growing literature instead transmits the KV cache, the natural carrier of that reading. We study the most appealing form of the idea: both models stay frozen and the sender's cache is substituted for the reader's with nothing trained. It does not work, and the obstruction belongs to the reader. A frozen transformer reads only caches close to the one it would have written itself, a region we call its tolerable set. We show that geometric similarity to that cache does not predict whether the reader can use it, and the failure is not gradual, so a more faithful substitute is not the remedy it appears to be. We explain this phenomenon with competitive attention. Experimentally, we test eight diverse substitution methods against two measured anchors: an uninformative cache baseline and the reader's own accuracy from having read the passage. All sit at the baseline. That turns a long tail of separate negative results into one outcome with a stated condition for overturning it. A different design does work: if the reader keeps its own cache and attends over the sender's as extra context, adapting only its queries, it beats its own baseline, and also clears the baseline with eight senders pooled where undirected attention over the same union falls below it. We offer this as a characterization on one probe, not a leaderboard claim. Our central contribution is a redirection: pursuing faithful substitute caches is the wrong target; adding a cache to what the reader already has is the promising one.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.3536,
+      "published_at": "2026-10-15T14:56:53Z",
+      "updated_at": "2026-10-15T14:56:53Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.22016v1",
+      "abs_url": "http://arxiv.org/abs/2610.22016v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20980",
+      "source": "arxiv",
+      "title": "How to Train Your Little Dragon: Teaching a Small Language Model to Construct and Refine GPU Optimization Scripts",
+      "authors": [
+        "Annabelle Sujun Tang",
+        "Wei Tang",
+        "Songyao Jiang",
+        "Tianhui Li",
+        "Shengzhe Xu",
+        "Jiin Woo",
+        "Kaan Ozkara",
+        "Youngsuk Park",
+        "Zhen Jia",
+        "Hadi Esmaeilzadeh"
+      ],
+      "abstract": "Compiler transformations interact, making GPU kernel optimization a search for combinations that preserve the computation while improving performance. We introduce HOW TO TRAIN YOUR LITTLE DRAGON, a training method that teaches a small language model both to construct complete optimization scripts and to improve existing ones. Instead of ranking candidates or generating kernel code, our model generates optimization scripts. We devise a compact, lossless representation whose deterministic decoding reconstructs the exact compiler trace, preserving its transformation parameters and dependencies. We use a compiler framework TVM MetaSchedule to build training data on 54,116 distinct workloads, and construct 108,594 examples in two training sets: 60,236 teach the model to generate an optimized script from an unoptimized kernel, while 48,358 teach it to produce a better script given the kernel and a somewhat optimized script. Supervised fine-tuning teaches the model to construct and improve optimization scripts from these search-derived examples. We then add reinforcement learning with a shaped reward that combines correctness with measured performance, awarding a latency-based bonus only to numerically correct kernels. We apply this training method to a model with 8 billion parameters. After supervised fine-tuning and reinforcement learning, the model achieves per-attempt correctness of 91.27% for construction and 92.01% for refinement, while reinforcement learning produces faster kernels than supervised training on 88 of 102 construction tasks and 145 of 170 refinement prompts. With only 8B parameters, our LITTLE DRAGON achieves higher per-attempt correctness and better kernel performance than six frontier LLMs: GPT-6 Astra, Opus 5, Kimi-K3, and GLM-5.3 among them, each with hundreds of billions to trillions of parameters, for which task-specific training is unavailable or expensive.",
+      "summary_zh": null,
+      "tldr": "Compiler transformations interact, making GPU kernel optimization a search for combinations that preserve the computation while improving performance. We introduce HOW TO TRAIN YOUR LITTLE DRAGON, a training method that teaches a small language model both to construct complete optimization scripts and to improve existing ones. Instead of ranking candidates or generating kernel code, our model generates optimization scripts. We devise a compact, lossless representation whose deterministic decoding reconstructs the exact compiler trace, preserving its transformation parameters and dependencies. We use a compiler framework TVM MetaSchedule to build training data on 54,116 distinct workloads, and construct 108,594 examples in two training sets: 60,236 teach the model to generate an optimized script from an unoptimized kernel, while 48,358 teach it to produce a better script given the kernel and a somewhat optimized script. Supervised fine-tuning teaches the model to construct and improve optimization scripts from these search-derived examples. We then add reinforcement learning with a shaped reward that combines correctness with measured performance, awarding a latency-based bonus only to numerically correct kernels. We apply this training method to a model with 8 billion parameters. After supervised fine-tuning and reinforcement learning, the model achieves per-attempt correctness of 91.27% for construction and 92.01% for refinement, while reinforcement learning produces faster kernels than supervised training on 88 of 102 construction tasks and 145 of 170 refinement prompts. With only 8B parameters, our LITTLE DRAGON achieves higher per-attempt correctness and better kernel performance than six frontier LLMs: GPT-6 Astra, Opus 5, Kimi-K3, and GLM-5.3 among them, each with hundreds of billions to trillions of parameters, for which task-specific training is unavailable or expensive.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.3404,
+      "published_at": "2026-10-14T21:49:24Z",
+      "updated_at": "2026-10-14T21:49:24Z",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20980v1",
+      "abs_url": "http://arxiv.org/abs/2610.20980v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21375",
+      "source": "arxiv",
+      "title": "Memorilla: Latent Semantic Memory for LLMs",
+      "authors": [
+        "Adibvafa Fallahpour",
+        "Parsa Idehpour",
+        "Vignesh Kothapalli",
+        "Nikita Mounier",
+        "Shirley Wu",
+        "Shayan Pardis",
+        "Jure Leskovec"
+      ],
+      "abstract": "Memory enables large language models (LLMs) to use information beyond their parameters, such as past user conversations, long documents, or an agent's earlier actions. For a frozen LLM, access to this accumulated knowledge is limited to what a memory system places in its context window. However, gathering and combining relevant information needed for each query while keeping the model's context short remains challenging for existing systems. Here we introduce Memorilla, a memory system that gathers information from an entire document collection into a fixed number of query-dependent 'memory tokens' for a frozen LLM. Memorilla encodes documents (such as user chats, book chapters) once into reusable embeddings, then learns to retrieve and place query-specific information in the LLM's input embedding space. Using only 16 memory tokens, Memorilla achieves the best performance against baselines including Mem0 and MemoRAG on five of eight benchmarks spanning personalization, long-document and knowledge-intensive question answering. Notably, on FactKG, it reaches 84.33% accuracy versus 80.43% with full-context inference, while using 108x fewer tokens to represent the source documents. Furthermore, Memorilla can facilitate continual learning in agentic systems where the document count (the agent's past turns) increases throughout the trajectory. In a TextWorld environment, we show that Memorilla reduces the agent's tendency to wander between rooms it has already explored, and improves its average success rate from 18.6% with full-history in-context learning to 24.2%. Overall, Memorilla aids frozen LLMs in accumulating and using knowledge effectively across long-context interactions and takes a step towards building continually learning AI systems.",
+      "summary_zh": null,
+      "tldr": "Memory enables large language models (LLMs) to use information beyond their parameters, such as past user conversations, long documents, or an agent's earlier actions. For a frozen LLM, access to this accumulated knowledge is limited to what a memory system places in its context window. However, gathering and combining relevant information needed for each query while keeping the model's context short remains challenging for existing systems. Here we introduce Memorilla, a memory system that gathers information from an entire document collection into a fixed number of query-dependent 'memory tokens' for a frozen LLM. Memorilla encodes documents (such as user chats, book chapters) once into reusable embeddings, then learns to retrieve and place query-specific information in the LLM's input embedding space. Using only 16 memory tokens, Memorilla achieves the best performance against baselines including Mem0 and MemoRAG on five of eight benchmarks spanning personalization, long-document and knowledge-intensive question answering. Notably, on FactKG, it reaches 84.33% accuracy versus 80.43% with full-context inference, while using 108x fewer tokens to represent the source documents. Furthermore, Memorilla can facilitate continual learning in agentic systems where the document count (the agent's past turns) increases throughout the trajectory. In a TextWorld environment, we show that Memorilla reduces the agent's tendency to wander between rooms it has already explored, and improves its average success rate from 18.6% with full-history in-context learning to 24.2%. Overall, Memorilla aids frozen LLMs in accumulating and using knowledge effectively across long-context interactions and takes a step towards building continually learning AI systems.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.299,
+      "published_at": "2026-10-15T06:55:55Z",
+      "updated_at": "2026-10-15T06:55:55Z",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21375v1",
+      "abs_url": "http://arxiv.org/abs/2610.21375v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20753",
+      "source": "arxiv",
+      "title": "Optimal Hydra: Model Heterogeneous Federated Learning for LLMs using Data-Informed Hydra-Nets",
+      "authors": [
+        "Gwen Legate",
+        "Rahaf Aljundi",
+        "Eugene Belilovsky"
+      ],
+      "abstract": "Large language models (LLMs) trained on vast amounts of data have demonstrated impressive performance over a range of tasks, but future performance gains will require increasing amounts of data and compute. Federated Learning (FL) facilitates training on decentralized private data, but client resource limitations can make training impractical, particularly as model sizes continue to expand. These resource constraints make the assumption of a shared server-client architecture impractical. Model heterogeneous FL offers a promising alternative by adapting model size to client capabilities; however, previous work is limited to the pre-training setting, and conclusions on sub-network selection do not necessarily hold for fine-tuning. Furthermore, prior approaches create client sub-networks without considering their unique data distributions, thereby overlooking the opportunity to tailor sub-network architecture to local data. Motivated by evidence that attention heads exhibit task dependency within layer defined feature spaces, we propose Optimal Hydra, a transformer based heterogeneous FL framework for fine-tuning that combines global layer selection with client specific attention head selection, aligned with local data distributions. Optimal Hydra makes explicit use of client data to produce client-specific sub-networks we call Hydra-nets. To our knowledge, this is the first model heterogeneous FL approach tailored to LLM fine-tuning. Experiments on three datasets show significant improvements over baseline methods while also reducing local resource demands.",
+      "summary_zh": null,
+      "tldr": "Large language models (LLMs) trained on vast amounts of data have demonstrated impressive performance over a range of tasks, but future performance gains will require increasing amounts of data and compute. Federated Learning (FL) facilitates training on decentralized private data, but client resource limitations can make training impractical, particularly as model sizes continue to expand. These resource constraints make the assumption of a shared server-client architecture impractical. Model heterogeneous FL offers a promising alternative by adapting model size to client capabilities; however, previous work is limited to the pre-training setting, and conclusions on sub-network selection do not necessarily hold for fine-tuning. Furthermore, prior approaches create client sub-networks without considering their unique data distributions, thereby overlooking the opportunity to tailor sub-network architecture to local data. Motivated by evidence that attention heads exhibit task dependency within layer defined feature spaces, we propose Optimal Hydra, a transformer based heterogeneous FL framework for fine-tuning that combines global layer selection with client specific attention head selection, aligned with local data distributions. Optimal Hydra makes explicit use of client data to produce client-specific sub-networks we call Hydra-nets. To our knowledge, this is the first model heterogeneous FL approach tailored to LLM fine-tuning. Experiments on three datasets show significant improvements over baseline methods while also reducing local resource demands.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.2872,
+      "published_at": "2026-10-14T18:08:34Z",
+      "updated_at": "2026-10-14T18:08:34Z",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20753v1",
+      "abs_url": "http://arxiv.org/abs/2610.20753v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20637",
+      "source": "arxiv",
+      "title": "Expanding Attention: A Taylor-Series Route to Linear-Time Transformers with a Fixed Number of Recurrent States",
+      "authors": [
+        "Zicong Huang"
+      ],
+      "abstract": "We expand the exponential kernel of attention into a truncated Taylor series of $n$ terms and factorize each term into a tensor-power inner product, which collapses the causal history into exactly $n$ recurrent states, each updated by one rank-one outer product per token and independent of context length $N$. The recursion is lossless with respect to the truncated kernel ($2.2 \\times 10^{-16}$ in float64), and the states are additive across chunks ($5.7 \\times 10^{-14}$), so prefill admits a parallel scan. Measured exponents are $t \\propto N^{2.28}$ for softmax against $N^{0.91}$ for states, with a crossover at $N \\approx 728$ and $20.8\\times$ at $N = 8192$; per-token decoding latency is constant at $7.3\\,μ$s against $N^{1.04}$ for softmax, giving $76.0\\times$ at $N = 65536$. Accuracy improves exponentially in $n$ while cost grows combinatorially, since the $m$-th state is $\\binom{d+m-1}{m}$ wide---a bound confirmed by SVD---so the optimum is second order, $n = 3$, at $6.5 \\times 10^{-4}$ error and $9{,}945$ elements per head. Query and key normalization is a prerequisite: without it the argument exceeds the convergence radius and adding terms stops helping.",
+      "summary_zh": null,
+      "tldr": "We expand the exponential kernel of attention into a truncated Taylor series of $n$ terms and factorize each term into a tensor-power inner product, which collapses the causal history into exactly $n$ recurrent states, each updated by one rank-one outer product per token and independent of context length $N$. The recursion is lossless with respect to the truncated kernel ($2.2 \\times 10^{-16}$ in float64), and the states are additive across chunks ($5.7 \\times 10^{-14}$), so prefill admits a parallel scan. Measured exponents are $t \\propto N^{2.28}$ for softmax against $N^{0.91}$ for states, with a crossover at $N \\approx 728$ and $20.8\\times$ at $N = 8192$; per-token decoding latency is constant at $7.3\\,μ$s against $N^{1.04}$ for softmax, giving $76.0\\times$ at $N = 65536$. Accuracy improves exponentially in $n$ while cost grows combinatorially, since the $m$-th state is $\\binom{d+m-1}{m}$ wide---a bound confirmed by SVD---so the optimum is second order, $n = 3$, at $6.5 \\times 10^{-4}$ error and $9{,}945$ elements per head. Query and key normalization is a prerequisite: without it the argument exceeds the convergence radius and adding terms stops helping.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.2668,
+      "published_at": "2026-10-02T03:39:07Z",
+      "updated_at": "2026-10-02T03:39:07Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20637v1",
+      "abs_url": "http://arxiv.org/abs/2610.20637v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20914",
+      "source": "arxiv",
+      "title": "Recursive Offline Distillation via Entropy Gain Sampling and Answer Mixing",
+      "authors": [
+        "Andrey Goncharov",
+        "Daniil Vyazhev",
+        "Simon Epanov",
+        "Alexey Zaytsev"
+      ],
+      "abstract": "Distillation of reasoning chains from Large Language Models (LLMs) into their smaller siblings is a standard training approach. Frequently, researchers do not have full access to a teacher model and its internal representations, which limits the resulting performance. We propose a recursive offline distillation method combining two components: entropy-based sampling for selective distillation and answer mixing. Specifically, for three open models (3-4B), at each epoch, we sample reasoning chains weighted by entropy difference with an auxiliary medium model (70-72B) and, next, supplement thinking traces with single-token ground truth answers. Our approach consistently outperforms naive distillation with comparable data budgets ($57.15 \\pm 1.01$ vs 51.61 on average) and offers a much steeper learning curve. Additionally, we present a comparative analysis of methods to generate and normalize distillation traces.",
+      "summary_zh": null,
+      "tldr": "Distillation of reasoning chains from Large Language Models (LLMs) into their smaller siblings is a standard training approach. Frequently, researchers do not have full access to a teacher model and its internal representations, which limits the resulting performance. We propose a recursive offline distillation method combining two components: entropy-based sampling for selective distillation and answer mixing. Specifically, for three open models (3-4B), at each epoch, we sample reasoning chains weighted by entropy difference with an auxiliary medium model (70-72B) and, next, supplement thinking traces with single-token ground truth answers. Our approach consistently outperforms naive distillation with comparable data budgets ($57.15 \\pm 1.01$ vs 51.61 on average) and offers a much steeper learning curve. Additionally, we present a comparative analysis of methods to generate and normalize distillation traces.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.2565,
+      "published_at": "2026-10-14T20:45:04Z",
+      "updated_at": "2026-10-14T20:45:04Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20914v1",
+      "abs_url": "http://arxiv.org/abs/2610.20914v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21594",
+      "source": "arxiv",
+      "title": "LoopAhead: Speculating Ahead for Faster Decoding in Looped Language Models",
+      "authors": [
+        "Zixuan Liu",
+        "Nan Xue",
+        "Rui Bao",
+        "Yuhang Xu",
+        "Xiaofeng Cao",
+        "Jiangchao Yao",
+        "Zhiyong Chen"
+      ],
+      "abstract": "Looped Transformers improve parameter efficiency by repeatedly applying the same Transformer layers. However, generating each token still involves sequential computation and repeated access to model weights, leading to high decoding latency. Recent pipelined self-speculative decoding methods reduce this delay by drafting tokens from early-loop predictions and asynchronously advancing tokens at different recurrent depths in the same batch, but they do not fully exploit early-loop features for longer lookahead and still spend computation verifying incorrect speculative branches. We introduce \\method, a speculative decoding framework for looped transformers that enables earlier drafting of future tokens and assigns complementary roles to different recurrent depths. A lightweight lookahead drafter (LAD) predicts multiple future tokens with early-loop states, and deeper-loop feedback helps decide which draft branches to continue and which to pause, while the full-depth model makes the final token decisions. LoopAhead achieves up to 7.82x decoding speedup over autoregressive decoding while preserving the target model's output distribution.",
+      "summary_zh": null,
+      "tldr": "Looped Transformers improve parameter efficiency by repeatedly applying the same Transformer layers. However, generating each token still involves sequential computation and repeated access to model weights, leading to high decoding latency. Recent pipelined self-speculative decoding methods reduce this delay by drafting tokens from early-loop predictions and asynchronously advancing tokens at different recurrent depths in the same batch, but they do not fully exploit early-loop features for longer lookahead and still spend computation verifying incorrect speculative branches. We introduce \\method, a speculative decoding framework for looped transformers that enables earlier drafting of future tokens and assigns complementary roles to different recurrent depths. A lightweight lookahead drafter (LAD) predicts multiple future tokens with early-loop states, and deeper-loop feedback helps decide which draft branches to continue and which to pause, while the full-depth model makes the final token decisions. LoopAhead achieves up to 7.82x decoding speedup over autoregressive decoding while preserving the target model's output distribution.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.249,
+      "published_at": "2026-10-15T09:38:11Z",
+      "updated_at": "2026-10-15T09:38:11Z",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21594v1",
+      "abs_url": "http://arxiv.org/abs/2610.21594v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21808",
+      "source": "arxiv",
+      "title": "RoleQ: Role-Aligned Scales for Converting Language Models to Ternary",
+      "authors": [
+        "Johannes Knittel",
+        "Alec Helbling",
+        "Hanspeter Pfister"
+      ],
+      "abstract": "Weight quantization below four bits shrinks memory and bandwidth at a perplexity that looks acceptable, but often at the cost of factual knowledge and task accuracy. Ternary weights have mostly been obtained by training from scratch or long fine-tuning. We introduce RoleQ, a quantization framework that places scales by the functional roles of Transformer units rather than by the layout of the weight matrix, as conventional formats do. Vectors that read from the residual stream take one scale per output unit; those that write to it, one per input unit. The rule is structural, needs no search, calibration or stored state, and holds on integer and ternary grids. In a rotated basis it matches a per-layer axis search at half the solver work, and at ternary it cuts perplexity by up to half against layout-based placement in two families at every size from 0.6B to 14B, where per-row scales leave MMLU at chance. Our lightweight post-training pipeline converts an existing checkpoint to 1.59 bits per weight in a few GPU-hours, a fraction of the cost of learned ternarization, and leads every post-training ternary method at matched or lower memory-resident bits on perplexity, zero-shot accuracy and MMLU, most widely on knowledge. A sparse second ternary plane placed by a per-unit Fisher saliency keeps the matmul multiplication-free and recovers what ternary loses first: at 8B, a fraction of a bit returns about half the MMLU that conversion costs, well ahead of random or Hessian-based placement at equal bits.",
+      "summary_zh": null,
+      "tldr": "Weight quantization below four bits shrinks memory and bandwidth at a perplexity that looks acceptable, but often at the cost of factual knowledge and task accuracy. Ternary weights have mostly been obtained by training from scratch or long fine-tuning. We introduce RoleQ, a quantization framework that places scales by the functional roles of Transformer units rather than by the layout of the weight matrix, as conventional formats do. Vectors that read from the residual stream take one scale per output unit; those that write to it, one per input unit. The rule is structural, needs no search, calibration or stored state, and holds on integer and ternary grids. In a rotated basis it matches a per-layer axis search at half the solver work, and at ternary it cuts perplexity by up to half against layout-based placement in two families at every size from 0.6B to 14B, where per-row scales leave MMLU at chance. Our lightweight post-training pipeline converts an existing checkpoint to 1.59 bits per weight in a few GPU-hours, a fraction of the cost of learned ternarization, and leads every post-training ternary method at matched or lower memory-resident bits on perplexity, zero-shot accuracy and MMLU, most widely on knowledge. A sparse second ternary plane placed by a per-unit Fisher saliency keeps the matmul multiplication-free and recovers what ternary loses first: at 8B, a fraction of a bit returns about half the MMLU that conversion costs, well ahead of random or Hessian-based placement at equal bits.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.2206,
+      "published_at": "2026-10-15T12:56:57Z",
+      "updated_at": "2026-10-15T12:56:57Z",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "keywords": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21808v1",
+      "abs_url": "http://arxiv.org/abs/2610.21808v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.22065",
+      "source": "arxiv",
+      "title": "ABNAT: Attention-Based Noise-Aware Training for Robust Transformers on Analog Compute-in-Memory Systems",
+      "authors": [
+        "Wenshuai Yao",
+        "Wenyong Zhou",
+        "Hanyong Shao",
+        "Zhiyuan Ning",
+        "Yizhe Chen",
+        "Yuannuo Feng",
+        "Kechao Tang",
+        "Ru Huang"
+      ],
+      "abstract": "Transformer-based models have become the backbone of a wide range of tasks, but their intensive computation and data movement incur substantial energy overhead. Analog compute-in-memory (CIM) offers an energy-efficient alternative, yet its inherent hardware non-idealities perturb stored weights and can significantly degrade model performance. Although existing noise-aware training (NAT) methods improve robustness by injecting noise during training, they largely overlook the critical role of attention mechanisms in Transformer inference.To bridge this gap, we analyze how CIM-induced noise reshapes attention in Transformers and identify two key observations: (1) the divergence between clean and noisy attention maps increases substantially in deeper layers, and (2) conventional NAT can remain overconfident even when its attention routes deviate markedly from the clean reference. Motivated by these findings, we propose ABNAT, an attention-based noise-aware training framework that teaches the noisy student to preserve the clean teacher's headwise attention routes rather than merely reproduce answers, without hardware changes or inference overhead; selective variants further reduce training cost.Extensive experiments across vision, language, and multimodal Transformers show that ABNAT consistently improves robustness over corresponding NAT baselines, improving noise-degraded accuracy by up to 11.28% and reducing attention deviation by up to 85.77%.",
+      "summary_zh": null,
+      "tldr": "Transformer-based models have become the backbone of a wide range of tasks, but their intensive computation and data movement incur substantial energy overhead. Analog compute-in-memory (CIM) offers an energy-efficient alternative, yet its inherent hardware non-idealities perturb stored weights and can significantly degrade model performance. Although existing noise-aware training (NAT) methods improve robustness by injecting noise during training, they largely overlook the critical role of attention mechanisms in Transformer inference.To bridge this gap, we analyze how CIM-induced noise reshapes attention in Transformers and identify two key observations: (1) the divergence between clean and noisy attention maps increases substantially in deeper layers, and (2) conventional NAT can remain overconfident even when its attention routes deviate markedly from the clean reference. Motivated by these findings, we propose ABNAT, an attention-based noise-aware training framework that teaches the noisy student to preserve the clean teacher's headwise attention routes rather than merely reproduce answers, without hardware changes or inference overhead; selective variants further reduce training cost.Extensive experiments across vision, language, and multimodal Transformers show that ABNAT consistently improves robustness over corresponding NAT baselines, improving noise-degraded accuracy by up to 11.28% and reducing attention deviation by up to 85.77%.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.2074,
+      "published_at": "2026-10-15T15:28:13Z",
+      "updated_at": "2026-10-15T15:28:13Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.22065v1",
+      "abs_url": "http://arxiv.org/abs/2610.22065v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": "10.1145/3840404.3848194"
+    },
+    {
+      "id": "arxiv:2610.21483",
+      "source": "arxiv",
+      "title": "FlashAttention with Statistics: Low-Overhead Attention Features for Compact Hallucination Detectors",
+      "authors": [
+        "Andrei Volodichev, Maksim Savichev, Nikita Sviridov, Artem Yuliy, Dmitry Simakov, Alexey Zaytsev"
+      ],
+      "abstract": "arXiv:2610.21483v1 Announce Type: new \nAbstract: Large language models can produce fluent answers that the supplied context does not support. A compact frozen proxy model can detect such answers by reading the context and another model's response, even from a proprietary generator. Attention-based detectors use summary statistics of the proxy's attention weights, but standard pipelines materialize the attention matrix, whose memory grows quadratically with sequence length. We compute these statistics without materializing attention, by accumulation in the FlashAttention pass, sparse lookups after it, or a second tiled pass over the scores, and classify them by this path into nearly free and costlier ones. On an H100, the statistics of five published detectors add 16% to the latency of a Qwen3-8B forward at 2K tokens, falling to 1.4% at 35K, and store 22.5 KiB per response token. On three benchmarks, probes trained on frozen Qwen3 proxies of 0.6B to 8B parameters prove strong detectors: a 4B proxy outperforms the strongest of nine zero-shot 4-9B LLM judges in F1 on two of the three, the proxies match or outperform specialized grounding checkers of up to 7B parameters, probing each proxy beats prompting it as a judge, and adding attention features significantly improves F1 in half of the 12 benchmark-proxy pairs, never significantly lowering it.",
+      "summary_zh": null,
+      "tldr": "arXiv:2610.21483v1 Announce Type: new \nAbstract: Large language models can produce fluent answers that the supplied context does not support. A compact frozen proxy model can detect such answers by reading the context and another model's response, even from a proprietary generator. Attention-based detectors use summary statistics of the proxy's attention weights, but standard pipelines materialize the attention matrix, whose memory grows quadratically with sequence length. We compute these statistics without materializing attention, by accumulation in the FlashAttention pass, sparse lookups after it, or a second tiled pass over the scores, and classify them by this path into nearly free and costlier ones. On an H100, the statistics of five published detectors add 16% to the latency of a Qwen3-8B forward at 2K tokens, falling to 1.4% at 35K, and store 22.5 KiB per response token. On three benchmarks, probes trained on frozen Qwen3 proxies of 0.6B to 8B parameters prove strong detectors: a 4B proxy outperforms the strongest of nine zero-shot 4-9B LLM judges in F1 on two of the three, the proxies match or outperform specialized grounding checkers of up to 7B parameters, probing each proxy beats prompting it as a judge, and adding attention features significantly improves F1 in half of the 12 benchmark-proxy pairs, never significantly lowering it.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.1776,
+      "published_at": null,
+      "updated_at": null,
+      "categories": [
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21483v1.pdf",
+      "abs_url": "https://arxiv.org/abs/2610.21483",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21537",
+      "source": "arxiv",
+      "title": "Functional Subnetwork Localization for Efficient Continual Learning in Large Language Models",
+      "authors": [
+        "Shuoran Jiang",
+        "Wentao Zhu",
+        "Yang Xiang",
+        "Dongfeng Li",
+        "Yunan Zhang",
+        "Mengchen Zhao",
+        "Yuhui Guo",
+        "Kai Chen",
+        "Youcheng Pan",
+        "Xiangping Wu",
+        "Qingcai Chen"
+      ],
+      "abstract": "Biological intelligence continually adapts to new information while retaining prior skills through localized plasticity. In contrast, continual learning in large language models (LLMs) remains vulnerable to catastrophic forgetting. A promising direction is to identify functionally specialized subnetworks within LLMs that enable targeted and resource-efficient adaptation. Using gradient-attribution profiling, we localize cognition-associated functional subnetworks exhibiting extremely low mutual overlap. Building on this finding, we propose Function-isolated Memory-Efficient Optimization (CiMEO), a continual learning framework that routes each training example to its corresponding functional subnetwork, restricting parameter updates and optimizer states to selected regions. Across 1.4 million sequential instructions, CiMEO achieves the highest average performance among the compared methods on five generative benchmarks spanning programming, examination-style tasks, and mathematical reasoning, while mitigating catastrophic forgetting. Subspace-overlap and principal-angle analyses further indicate that localized updates help preserve pre-trained representations, highlighting functional subnetwork localization as a practical approach to efficient and stable continual learning in LLMs.",
+      "summary_zh": null,
+      "tldr": "Biological intelligence continually adapts to new information while retaining prior skills through localized plasticity. In contrast, continual learning in large language models (LLMs) remains vulnerable to catastrophic forgetting. A promising direction is to identify functionally specialized subnetworks within LLMs that enable targeted and resource-efficient adaptation. Using gradient-attribution profiling, we localize cognition-associated functional subnetworks exhibiting extremely low mutual overlap. Building on this finding, we propose Function-isolated Memory-Efficient Optimization (CiMEO), a continual learning framework that routes each training example to its corresponding functional subnetwork, restricting parameter updates and optimizer states to selected regions. Across 1.4 million sequential instructions, CiMEO achieves the highest average performance among the compared methods on five generative benchmarks spanning programming, examination-style tasks, and mathematical reasoning, while mitigating catastrophic forgetting. Subspace-overlap and principal-angle analyses further indicate that localized updates help preserve pre-trained representations, highlighting functional subnetwork localization as a practical approach to efficient and stable continual learning in LLMs.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.1607,
+      "published_at": "2026-10-15T09:03:08Z",
+      "updated_at": "2026-10-15T09:03:08Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21537v1",
+      "abs_url": "http://arxiv.org/abs/2610.21537v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21147",
+      "source": "arxiv",
+      "title": "All-in-One Memory: Process-Rewarded Reinforcement Learning for Memory Agents",
+      "authors": [
+        "Bingbing Wang",
+        "Jingjie Lin",
+        "Weiming Qiao",
+        "Jing Li",
+        "Ruifeng Xu"
+      ],
+      "abstract": "Large language models increasingly rely on external memory to answer queries grounded in long-horizon histories such as multi-session dialogues and lengthy documents. However, existing memory methods often optimize retrieval and memory construction separately, without a shared reward space for evaluating search, writing, and stopping decisions. To address this, we propose All-in-One Memory (AiO-Mem), which organizes these operations as transitions over a shared evidence state and directly evaluates the semantic quality of each action in a unified reward space. AiO-Mem compiles heterogeneous histories into source-traceable multi-view events, providing a shared substrate for retrieval and memory writing. A unified memory policy actor then rolls out complete interaction trajectories over this shared evidence state. A separate trajectory-conditioned process reward model is trained through evidence-grounded supervised fine-tuning and trajectory-level DPO to assign process scores to the collected trajectories. These scores are aggregated into an action-balanced trajectory reward and used by Process-Aligned DAPO (PA-DAPO) to optimize the memory policy. Across long-context memory benchmarks, AiO-Mem consistently improves answer accuracy over both static memory systems and RL-trained memory agents.",
+      "summary_zh": null,
+      "tldr": "Large language models increasingly rely on external memory to answer queries grounded in long-horizon histories such as multi-session dialogues and lengthy documents. However, existing memory methods often optimize retrieval and memory construction separately, without a shared reward space for evaluating search, writing, and stopping decisions. To address this, we propose All-in-One Memory (AiO-Mem), which organizes these operations as transitions over a shared evidence state and directly evaluates the semantic quality of each action in a unified reward space. AiO-Mem compiles heterogeneous histories into source-traceable multi-view events, providing a shared substrate for retrieval and memory writing. A unified memory policy actor then rolls out complete interaction trajectories over this shared evidence state. A separate trajectory-conditioned process reward model is trained through evidence-grounded supervised fine-tuning and trajectory-level DPO to assign process scores to the collected trajectories. These scores are aggregated into an action-balanced trajectory reward and used by Process-Aligned DAPO (PA-DAPO) to optimize the memory policy. Across long-context memory benchmarks, AiO-Mem consistently improves answer accuracy over both static memory systems and RL-trained memory agents.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.1297,
+      "published_at": "2026-10-15T03:02:24Z",
+      "updated_at": "2026-10-15T03:02:24Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21147v1",
+      "abs_url": "http://arxiv.org/abs/2610.21147v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20782",
+      "source": "arxiv",
+      "title": "Open-world AI: a Tale of Three Requirements",
+      "authors": [
+        "Jianyu Zhang",
+        "Léon Bottou"
+      ],
+      "abstract": "The closed world asks AI for specialized competence and lets it manufacture the iid data its theory assumes: a fixed criterion licenses collecting examples until the task is covered. The open world asks for versatility --- taking up tasks a machine was not built for, from few examples and with little prior from a human designer --- and offers data that is grouped, not shuffled. Its tasks are not known in advance, so a machine must do inference-time learning (1st requirement). Modeling tasks as sharing latent factors and decomposing the training objective, we derive two more: a *rich representation*, retaining more than iid generalization requires, and a predictive disentanglement that aligns inputs and outputs into matched low-dimensional groups. The analysis further predicts the need for a consistent inner learner, and the benefit of long contexts spanning related tasks. We test these claims on language models up to 8B, asking whether a model has a property (qualitative) rather than how much it wins (quantitative). Models that meet the requirements improve as data from related tasks accumulates; the rest degrade, and neither scale nor layer-type interleaving repairs this.",
+      "summary_zh": null,
+      "tldr": "The closed world asks AI for specialized competence and lets it manufacture the iid data its theory assumes: a fixed criterion licenses collecting examples until the task is covered. The open world asks for versatility --- taking up tasks a machine was not built for, from few examples and with little prior from a human designer --- and offers data that is grouped, not shuffled. Its tasks are not known in advance, so a machine must do inference-time learning (1st requirement). Modeling tasks as sharing latent factors and decomposing the training objective, we derive two more: a *rich representation*, retaining more than iid generalization requires, and a predictive disentanglement that aligns inputs and outputs into matched low-dimensional groups. The analysis further predicts the need for a consistent inner learner, and the benefit of long contexts spanning related tasks. We test these claims on language models up to 8B, asking whether a model has a property (qualitative) rather than how much it wins (quantitative). Models that meet the requirements improve as data from related tasks accumulates; the rest degrade, and neither scale nor layer-type interleaving repairs this.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.1199,
+      "published_at": "2026-10-14T18:28:16Z",
+      "updated_at": "2026-10-14T18:28:16Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20782v1",
+      "abs_url": "http://arxiv.org/abs/2610.20782v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21681",
+      "source": "arxiv",
+      "title": "Data Strategies for Large Language Models: A Unified Perspective on the Training Lifecycle",
+      "authors": [
+        "Yuanjian Xu",
+        "Jianing Hao",
+        "Tianze Sun",
+        "Yongyao Duan",
+        "Sam Chen",
+        "Jinyi Han",
+        "Wanbo Zhang",
+        "Yuxuan Sun",
+        "Guang Zhang",
+        "Zhong Li"
+      ],
+      "abstract": "Data strategy plays a central role in training large language models (LLMs). It governs the selection, weighting, and scheduling of training data, thereby determining the capabilities a model can acquire from a fixed data budget. We treat high-quality data as having high training-dependent utility, which depends on the target objective, the model, and its training state rather than on the text alone. Research in this area now spans pretraining and post-training, but related ideas use inconsistent terminology and evaluation protocols. This work reviews data strategies across the training lifecycle and formulates them as policies that allocate a training budget over candidate examples. We organise methods by their decision granularity, model dependence, and temporal adaptivity, then compare their computational requirements and empirical support. Fine-grained or state-dependent policies offer more control but incur additional scoring, search, or rollout costs. Evidence for transfer across model scales and comparable end-to-end cost remains limited. A continuously updated list of papers, along with their public implementations, is available at https://github.com/xuyj233/data_strategy_survey.",
+      "summary_zh": null,
+      "tldr": "Data strategy plays a central role in training large language models (LLMs). It governs the selection, weighting, and scheduling of training data, thereby determining the capabilities a model can acquire from a fixed data budget. We treat high-quality data as having high training-dependent utility, which depends on the target objective, the model, and its training state rather than on the text alone. Research in this area now spans pretraining and post-training, but related ideas use inconsistent terminology and evaluation protocols. This work reviews data strategies across the training lifecycle and formulates them as policies that allocate a training budget over candidate examples. We organise methods by their decision granularity, model dependence, and temporal adaptivity, then compare their computational requirements and empirical support. Fine-grained or state-dependent policies offer more control but incur additional scoring, search, or rollout costs. Evidence for transfer across model scales and comparable end-to-end cost remains limited. A continuously updated list of papers, along with their public implementations, is available at https://github.com/xuyj233/data_strategy_survey.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.1183,
+      "published_at": "2026-10-15T11:08:14Z",
+      "updated_at": "2026-10-15T11:08:14Z",
+      "categories": [
+        "cs.CL"
+      ],
+      "keywords": [
+        "cs.CL"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21681v1",
+      "abs_url": "http://arxiv.org/abs/2610.21681v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.22330",
+      "source": "arxiv",
+      "title": "Designing Transformers for Continuous Diffusion Language Models",
+      "authors": [
+        "Weijian Luo",
+        "Yujian Chen",
+        "Hao Jiang",
+        "Guang Cheng",
+        "Tianyang Hu"
+      ],
+      "abstract": "Continuous diffusion language models (CDLMs) offer an alternative approach to parallel language generation; however, most existing studies directly use transformer architectures from either causal large language models (LLMs) or Diffusion Transformers (DiTs) for image generation, which were not optimized for CDLMs. In this paper, we conduct a systematic study on Transformer architectures for CDLMs and introduce Language Diffusion Transformer (LangDiT), combining feature and query-key normalization, wider noise conditioning, likelihood-shortcut gradient routing and calibration, and confidence-gated training self-conditioning. LangDiT significantly reduces generation perplexity in matched LangFlow comparisons, establishing a new state of the art in continuous language generation across different model formulations. Using LangFlow as a representative CDLM, LangDiT as a plug-and-play backbone leads to a new state-of-the-art model with a generation perplexity (GenPPL) of 21.72 using 1024 NFEs and 44.72 GenPPL using 128 NFEs on the unconditional generation of 1024-token sequences on the OpenWebText dataset. When adapted to Plaid-style CDLM formulations, LangDiT results in a new leading GenPPL of 11.33 using 1024 denoising NFEs, and 27.51 GenPPL using 128 denoising NFEs. These gains are achieved while retaining each model's underlying representation, training objective, and inference sampler, isolating transformer architecture as a fundamental source of improvement. Our study identifies architectural design as an important source of improvement in continuous diffusion language models.",
+      "summary_zh": null,
+      "tldr": "Continuous diffusion language models (CDLMs) offer an alternative approach to parallel language generation; however, most existing studies directly use transformer architectures from either causal large language models (LLMs) or Diffusion Transformers (DiTs) for image generation, which were not optimized for CDLMs. In this paper, we conduct a systematic study on Transformer architectures for CDLMs and introduce Language Diffusion Transformer (LangDiT), combining feature and query-key normalization, wider noise conditioning, likelihood-shortcut gradient routing and calibration, and confidence-gated training self-conditioning. LangDiT significantly reduces generation perplexity in matched LangFlow comparisons, establishing a new state of the art in continuous language generation across different model formulations. Using LangFlow as a representative CDLM, LangDiT as a plug-and-play backbone leads to a new state-of-the-art model with a generation perplexity (GenPPL) of 21.72 using 1024 NFEs and 44.72 GenPPL using 128 NFEs on the unconditional generation of 1024-token sequences on the OpenWebText dataset. When adapted to Plaid-style CDLM formulations, LangDiT results in a new leading GenPPL of 11.33 using 1024 denoising NFEs, and 27.51 GenPPL using 128 denoising NFEs. These gains are achieved while retaining each model's underlying representation, training objective, and inference sampler, isolating transformer architecture as a fundamental source of improvement. Our study identifies architectural design as an important source of improvement in continuous diffusion language models.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.1134,
+      "published_at": "2026-10-15T17:52:31Z",
+      "updated_at": "2026-10-15T17:52:31Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "keywords": [
+        "cs.AI"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.22330v1",
+      "abs_url": "http://arxiv.org/abs/2610.22330v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20687",
+      "source": "arxiv",
+      "title": "On-Policy Residual Learning for Diffusion Language Models",
+      "authors": [
+        "Yifan Yu",
+        "Yuqing Jian",
+        "Jisen Li",
+        "Yuezhou Hu",
+        "Tianyi Zhang",
+        "Xiaoxia Wu",
+        "Rui-Jie Zhu",
+        "Junxiong Wang",
+        "Zhongzhu Zhou",
+        "Fan Lai",
+        "James Zou",
+        "Chenfeng Xu"
+      ],
+      "abstract": "Residual context is key to unlocking the speed-quality Pareto frontier of diffusion language models (DLMs) by carrying forward predictive distributions across denoising steps. Yet turning this seemingly simple mechanism into an effective learning paradigm is far from simple: there is no clear recipe for how residual context should be learned. We introduce ORL, a framework for on-policy residual learning in DLMs. Algorithmically, we identify that residual learning is inherently on-policy. ORL learns from model-induced residual trajectories on the fly and introduces an entropy-contraction objective that sharpens predictions as the model revisits its own predictions. System-wise, exact residual supervision requires capturing, retaining, and reprocessing many trajectory-dependent states. ORL co-designs the algorithm with asynchronous residual capture and transport, specialized block-diffusion attention, and packed compute-balanced training, making it practical at scale. On a 4B DLM converted from Qwen3-4B, ORL improves tokens per forward (TPF) by up to 6.2x and, with our dlmrt engine, end-to-end throughput by approximately 6.9x at comparable or better quality. In single-request serving on one H100, this mode achieves a stronger speed-quality Pareto frontier than autoregressive models with EAGLE3 and DFlash speculative decoding under both strict and relaxed verification, running 1.74x faster than DFlash at matched accuracy. ORL also transfers to existing DLMs: on LLaDA-2.1-mini, 36 H100-hours and 4.2M self-generated tokens, about 10x less data than prior LLaDA recipes, yield up to 1.5x higher TPF and up to 3x higher throughput at comparable quality, and on DiffusionGemma, ORL raises TPF by 1.1-1.2x. With dlmrt and NVFP4 quantization, ORL models decode a single request at up to 5,046 tokens/s on one B200, 7,708 on eight B200s, and 2,788 on a consumer RTX 5090, with comparable quality.",
+      "summary_zh": null,
+      "tldr": "Residual context is key to unlocking the speed-quality Pareto frontier of diffusion language models (DLMs) by carrying forward predictive distributions across denoising steps. Yet turning this seemingly simple mechanism into an effective learning paradigm is far from simple: there is no clear recipe for how residual context should be learned. We introduce ORL, a framework for on-policy residual learning in DLMs. Algorithmically, we identify that residual learning is inherently on-policy. ORL learns from model-induced residual trajectories on the fly and introduces an entropy-contraction objective that sharpens predictions as the model revisits its own predictions. System-wise, exact residual supervision requires capturing, retaining, and reprocessing many trajectory-dependent states. ORL co-designs the algorithm with asynchronous residual capture and transport, specialized block-diffusion attention, and packed compute-balanced training, making it practical at scale. On a 4B DLM converted from Qwen3-4B, ORL improves tokens per forward (TPF) by up to 6.2x and, with our dlmrt engine, end-to-end throughput by approximately 6.9x at comparable or better quality. In single-request serving on one H100, this mode achieves a stronger speed-quality Pareto frontier than autoregressive models with EAGLE3 and DFlash speculative decoding under both strict and relaxed verification, running 1.74x faster than DFlash at matched accuracy. ORL also transfers to existing DLMs: on LLaDA-2.1-mini, 36 H100-hours and 4.2M self-generated tokens, about 10x less data than prior LLaDA recipes, yield up to 1.5x higher TPF and up to 3x higher throughput at comparable quality, and on DiffusionGemma, ORL raises TPF by 1.1-1.2x. With dlmrt and NVFP4 quantization, ORL models decode a single request at up to 5,046 tokens/s on one B200, 7,708 on eight B200s, and 2,788 on a consumer RTX 5090, with comparable quality.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.0946,
+      "published_at": "2026-10-14T17:13:17Z",
+      "updated_at": "2026-10-14T17:13:17Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20687v1",
+      "abs_url": "http://arxiv.org/abs/2610.20687v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.21336",
+      "source": "arxiv",
+      "title": "Ranking and Partitioning of Attention Heads for Sparse and Continual Reinforcement Learning Fine-tuning",
+      "authors": [
+        "Ruizhe Shi",
+        "Zaiwen Yang",
+        "Qiubo Wang",
+        "Banghua Zhu",
+        "Maryam Fazel"
+      ],
+      "abstract": "We study sparse and continual reinforcement learning fine-tuning of language models through attention-head ranking and partitioning. For sparse learning, we rank attention heads by gradient norm to identify a small subset of heads that can be trained effectively. For continual learning, we partition heads across tasks to reduce cross-task interference and preserve previously learned capabilities. Theoretically, we relate gradient norm to training effectiveness, and further characterize why sparse, separated head updates can remain stable. Empirically, across math, instruction-following, and coding tasks, tuning higher-ranked heads consistently outperforms tuning lower-ranked ones while often matching denser baselines, and head partitioning improves retention while preserving adaptation to new tasks.",
+      "summary_zh": null,
+      "tldr": "We study sparse and continual reinforcement learning fine-tuning of language models through attention-head ranking and partitioning. For sparse learning, we rank attention heads by gradient norm to identify a small subset of heads that can be trained effectively. For continual learning, we partition heads across tasks to reduce cross-task interference and preserve previously learned capabilities. Theoretically, we relate gradient norm to training effectiveness, and further characterize why sparse, separated head updates can remain stable. Empirically, across math, instruction-following, and coding tasks, tuning higher-ranked heads consistently outperforms tuning lower-ranked ones while often matching denser baselines, and head partitioning improves retention while preserving adaptation to new tasks.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.0887,
+      "published_at": "2026-10-15T06:21:56Z",
+      "updated_at": "2026-10-15T06:21:56Z",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "keywords": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.21336v1",
+      "abs_url": "http://arxiv.org/abs/2610.21336v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    },
+    {
+      "id": "arxiv:2610.20951",
+      "source": "arxiv",
+      "title": "LEV: Thinking Fast and Deep with Looped Decision Models",
+      "authors": [
+        "Dingjie Song",
+        "Zhiling Yan",
+        "Yuxuan Zhang",
+        "Lichao Sun"
+      ],
+      "abstract": "Decision models answer typed questions about an input with one probability per option, computed in a single forward pass without generating text. Like the fast System 1 of dual-process theory, they answer at once, but their depth is fixed at training time, so they spend the same computation on easy and hard questions. Models that reason in generated text can think longer, but they pay for every extra step in decoded tokens. We present LEV, a decision model that thinks deeper by rerunning its layers in a loop instead of generating tokens. LEV builds on a language model pretrained as a loop, reads the options after every loop step and trains all steps jointly, so one checkpoint can answer at any depth. On three looped backbones, accuracy rises with depth on the same weights, mostly on hard questions, and a 2.6B LEV goes from 63.2% at depth one to 76.2% at depth four on JevBench. On-demand depth, set per question by a small stopper with a threshold fitted on unlabelled requests, saves 15% to 24% of the computation at a cost of under one accuracy point, level with or slightly above a fixed mix of depths. On a locked test set, the 1.4B and 3B models are 5.4 to 8.8 points more accurate than dense (non-looped) models and cascades of the same latency below 50 ms.",
+      "summary_zh": null,
+      "tldr": "Decision models answer typed questions about an input with one probability per option, computed in a single forward pass without generating text. Like the fast System 1 of dual-process theory, they answer at once, but their depth is fixed at training time, so they spend the same computation on easy and hard questions. Models that reason in generated text can think longer, but they pay for every extra step in decoded tokens. We present LEV, a decision model that thinks deeper by rerunning its layers in a loop instead of generating tokens. LEV builds on a language model pretrained as a loop, reads the options after every loop step and trains all steps jointly, so one checkpoint can answer at any depth. On three looped backbones, accuracy rises with depth on the same weights, mostly on hard questions, and a 2.6B LEV goes from 63.2% at depth one to 76.2% at depth four on JevBench. On-demand depth, set per question by a small stopper with a threshold fitted on unlabelled requests, saves 15% to 24% of the computation at a cost of under one accuracy point, level with or slightly above a fixed mix of depths. On a locked test set, the 1.4B and 3B models are 5.4 to 8.8 points more accurate than dense (non-looped) models and cascades of the same latency below 50 ms.",
+      "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+      "relevance_score": 4.086,
+      "published_at": "2026-10-14T21:20:03Z",
+      "updated_at": "2026-10-14T21:20:03Z",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "keywords": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "affiliations": [],
+      "pdf_url": "https://arxiv.org/pdf/2610.20951v1",
+      "abs_url": "http://arxiv.org/abs/2610.20951v1",
+      "code_url": null,
+      "project_url": null,
+      "doi": null
+    }
+  ]
+}
