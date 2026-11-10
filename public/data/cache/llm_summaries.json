@@ -24944,5 +24944,178 @@
       "cs.LG",
       "cs.CV"
     ]
+  },
+  "arxiv:2611.09598|398f48bfaadfd6c01bd1af7ce40f7c9254563f8c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.09598v1 Announce Type: new \nAbstract: Private, personalised language models must run on local consumer devices, where large, frontier models cannot fit, and retaining long contexts is non-trivial. Sequential memory---the key-value (KV) cache---grows linearly with context length, quickly dwarfing the model itself: for Qwen3-1.7B-Base, 200,000 retained entries require 21 GiB, 6.6 times more than the model weights. Yet the KV-cache compression methods we measured fail beyond moderate compression ratios. We introduce Transformer-FSQ, addressing extreme KV-cache compression by replacing standard key and value projections with a finite scalar quantisation bottleneck. Our cache stores a packed vector of discrete integer codes per token, with no per-token quantisation metadata. Converting a pretrained transformer trains only these projections on 0.25 tokens per original parameter. We evaluate Transformer-FSQ against five baseline families on models from 0.6B to 8B parameters. On long-context retrieval (RULER), from 12$\\times$ to 97.5$\\times$ Transformer-FSQ is the most accurate method we evaluate, across scales. A fused Triton kernel decodes directly from the integer codes; with baselines given their authors' kernels where available, it decodes at $1.01\\times$ (95% interval $0.98$--$1.05$) the throughput of native SDPA attention on the uncompressed Qwen3-8B-Base at $32\\times$ and $1.54\\times$ at $97.5\\times$. Extreme KV-cache compression is therefore a practical way to extend how much context a fixed device can hold.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.09424|e5d0ec39e75a0d4fa8081a065008f057f2c3d455|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We present MINE (Memory-efficient INference Engine), a lossless entropy coding approach that accelerates single-stream inference of Large Language Models (LLMs), where existing lossless compression methods yield speedups only for specific data types such as \\texttt{BF16} and under additional assumptions. Single-stream decoding is strongly memory-bound, since every weight must be streamed from memory once per generated token and requests cannot be batched in local or low-latency deployments. At the core of MINE is dtANS-LLM, a GPU entropy coding scheme adapted from the prior dtANS to the needs of LLM inference. It exploits the non-uniform distribution of weights, which persists even after quantization, and exposes hyper-parameters that trade compression ratio against decoding cost. We auto-tune these parameters for each tensor and GPU to obtain the Pareto front between model size and decoding latency. MINE integrates into vLLM as a plugin and selects the best kernel configuration for a given memory budget. On Llama~3.1~8B~Instruct with a 2.1-bit EntQuant checkpoint, MINE achieves speedups of 2.52$\\times$ and 1.48$\\times$ over the fastest baseline on an RTX~4060~Ti and an RTX~5090, at effective bitrates of 2.24 and 3.43~bits per weight. MINE is available as open source.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2611.09722|9e0469030095cdce78fccbac9765e5a2a297da6d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large-language-model decode attention streams the key-value (KV) cache for every generated token. Packing that cache into 2-bit or 4-bit quantized integers reduces memory traffic but does not automatically translate into latency saving. Existing 2-bit fused kernels reach under 31%/15% of peak HBM throughput on H100/B200. Converting each value and applying its scale and offset before feeding Tensor Cores is a major bottleneck because instruction-issue throughput is scarce on modern GPUs. Instead of applying scale and offset to each KV value, FOSCAR uses affine folding to apply them to the other operand or the output of decode-attention matrix products, depending on the quantization scheme (token-wise or channel-wise). This reduces scale-and-offset operations by up to two orders of magnitude while preserving the dequantized attention output in exact arithmetic. FOSCAR also uses bit manipulation to feed KV operands to Tensor Cores efficiently, requiring only 1 and 0.19 ALU instructions per INT2 element on H100 and B200, respectively. Finally, FOSCAR builds warp-specialized GPU pipelines for Hopper (H100) and Blackwell (B200) using wgmma and tcgen05. On H100, FOSCAR INT2 and INT4 kernels achieve geo-mean speedups of $3.36\\times$ and $2.83\\times$ over FlashInfer BF16, and $2.03\\times$ and $1.71\\times$ over TensorRT-LLM FP8. On B200, the corresponding INT2 and INT4 speedups are $2.67\\times$ and $2.30\\times$ over FlashInfer BF16, $1.48\\times$ and $1.28\\times$ over TensorRT-LLM FP8, and $1.16\\times$ and $1.00\\times$ over TensorRT-LLM NVFP4. We integrate FOSCAR into SGLang to benchmark serving efficiency. On long-context serving workloads, FOSCAR increases peak aggregate throughput by up to 170% and 341% over 2-bit and 16-bit baselines, respectively. We open-source FOSCAR as a kernel library at https://github.com/FutureMLS-Lab/FOSCAR.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.09614|59d11570f4bb6b5c392861c629bec2963569a37c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.09614v1 Announce Type: new \nAbstract: Large Language Model training is increasingly constrained by memory capacity. Activation Checkpointing reduces activation memory by avoiding storing selected activations during the forward pass and rematerializing them during backpropagation, thereby trading memory savings for additional computation. Although this technique is essential for scaling model training, rematerialization can be prohibitively expensive, particularly for Transformer linear layers. Approximate computation could reduce this overhead, but conventional approaches either introduce errors that accumulate over the backward pass or fail to exploit information available from the initial forward pass. We introduce a novel approximate rematerialization method that can yield unbiased gradient estimates: using information collected during the initial forward pass, the method selectively recomputes only the most important layer components, either through greedy selection or randomized sketching. Ablation studies show that the resulting gradients closely match the exact gradients. When applied to feed-forward layers, attention layers, or both, our method can recompute only two-thirds of the layer components in a Llama-488M model, while increasing perplexity by just 1.7%, 1.2%, and 2.5%, respectively.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.09891|a2da42bd4660eb99f6b7f3af994126cc9ce1a7b4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models reinvent the wheel all the time. They conflate task-solving with the execution of the solutions, which forces them to solve every problem from scratch. We show that once a task has been reasoned through, the application of its solution to a new problem instance can be done very efficiently and with little involvement from language models. We introduce agentic reasoning caching, a method for constructing robust CPU-executable agentic reasoning caches (ARCs) from LLM reasoning traces. ARCs show on-par performance with frontier LLMs across a range of difficult mathematical and scientific tasks, are fully explainable, continually trainable, robust to input perturbations, and 16-291x cheaper to invoke than the source model.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.09825|f13c9f5f1fb0bb7cebceb1149f71fa7664e6434e|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The key-value (KV) cache dominates memory capacity and bandwidth in long-context LLM serving. While 4-bit microscaling formats (NVFP4, MXFP4) shrink the cache and run attention on FP4 Tensor Cores, a fundamental gap remains between algorithmic quantization and system-aware acceleration: existing FP4 KV systems use vanilla quantization that causes severe accuracy drops, whereas accuracy-oriented 4-bit algorithms rely on vector codebooks whose lookup overhead degrades decoding throughput. We present BitDecoding-FP4, an algorithm--system co-design for accurate and efficient native FP4 KV decoding. We mitigate three error sources: Dual-Residual Query Quantization splits queries into two FP4 tensors, cutting query logit error from 60% to 1%; Underflow-Aware Probability Scaling prevents E4M3 scales from rounding long-context probabilities to zero; and Outlier-Aware Key Quantization combines static smoothing, Hadamard rotation, and scale search to suppress key outliers under token-wise scaling. At the system level, we remove the softmax bottleneck via transposed softmax with fused probability quantization and stacked query MMA on paged KV caches. Across dense and MoE models with GQA and MLA, BitDecoding-FP4 stays within 0.5 points of BF16 KV accuracy with NVFP4 (1 point with MXFP4), and tracks BF16 KV in RL training rollouts. In end-to-end serving on NVIDIA B300 with Qwen3-4B and Qwen3-30B-A3B, it delivers 2.4-3.0$\\times$ higher peak serving throughput than BF16 KV. The implementation is available at https://github.com/OpenBitSys/BitDecoding-FP4.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.AR",
+      "cs.CL",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2611.08669|19f07f5f5d31c55465d4932903849a1d751f256f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding has become a standard way to accelerate LLM inference: a lightweight drafter proposes tokens that the target verifies in one parallel pass. Existing drafters face trade-offs that limits their speedups: autoregressive drafters generate tokens one at a time, so drafting cost grows with draft length, while diffusion drafters generate tokens in parallel but predict each position independently, ignoring inter-token dependencies. We introduce ChainFlow, a new speculative decoding paradigm and the first flow-matching drafter conditioned on the target's hidden states. ChainFlow treats drafting as a short transport over hidden states, needing one or two flow steps instead of the many denoising steps of generation from noise. A variational autoencoder compresses these states so drafting cost barely grows with target size, lightweight feedback heads restore inter-token dependencies, and tree drafting raises acceptance. On Qwen3.5 models, at matched drafter size and training data, ChainFlow outperforms EAGLE-3 and DFlash in vLLM by 39% and 11%, respectively. These gains further widen as drafters are adapted to new languages sequentially. Our ablations cover drafter design and concurrent serving, and we open-source our code and drafter models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.09700|fe94a15e59d2202ece874f0df69198da126f36b1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.09700v1 Announce Type: new \nAbstract: Attention is a major scalability bottleneck in large language models (LLMs), with its computational cost and key-value (KV) memory traffic becoming increasingly prohibitive as context length grows. Sparse attention addresses this bottleneck by restricting each query to a subset of the context, but its effectiveness hinges on identifying relevant regions both cheaply and reliably. Existing training-free methods primarily rely on runtime relevance estimates, with selection dimensionality and granularity typically governed by fixed heuristics rather than the intrinsic interaction structure of pretrained attention heads. We take a different perspective: the query-key operator of each pretrained head defines a characteristic response structure that determines the resolution needed for sparse selection, both across feature directions and across context tokens. Building on this insight, we propose Head-Adaptive Sparse Attention (HASA), a training-free sparse attention framework that jointly adapts selection resolution along these two dimensions. Along the feature dimension, the singular spectrum of each head's query-key operator determines an effective rank, yielding a compact, head-specific response space. Along the sequence dimension, neighboring regions are progressively merged according to the directional coherence of their token responses in this same space, while heterogeneous regions remain separate. Exact attention is then computed using the original full-dimensional KV states of the selected regions. HASA captures 88.1% of dense-attention mass and, compared with UNIQUE, a strong recent sparse-attention baseline, improves accuracy by up to 3.47 and 2.57 points on RULER and LongBench-Pro, respectively, and accelerates self-attention by up to 1.32x, while achieving up to 14.07x speedup over dense attention.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.09868|8943dfc716f76c553b6c3454fd9f0b05103a8cd1|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large reasoning models (LRMs) improve task performance by generating longer intermediate reasoning traces, but this substantially increases inference costs and makes low-precision quantization increasingly important. However, aggressively quantized models often perform poorly on reasoning tasks. We observe larger activation fluctuations during the first decoding steps of reasoning. Calibration that omits these early states may miss their activation fluctuations. To address these reasoning-specific quantization challenges, we propose \\textbf{CodeQuant2}, a clustering-based LUT quantization framework for low-precision large reasoning models. CodeQuant2 mitigates activation outliers with rotation and scaling, uses clustering to represent non-uniform weight distributions, and adapts codebook sizes to the quantization difficulty of each layer. Guided by our observation of reasoning-time activation behavior, CodeQuant2 further improves calibration sample selection to better match actual decoding statistics. Combined with our customized LUT CUDA kernel, CodeQuant2 delivers substantial accuracy improvements on reasoning benchmarks while achieving up to $2.85\\times$ speedup over BF16.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.08741|b50c26de162bd73e109d18bc120e58e11c288f04|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Most LLM architectures have fixed compute demands determined at training time. We propose a novel architecture that combines the Mixture-of-Experts architecture with shallow experts and a novel dynamic-depth system to make the extent of a forward pass dynamically adjustable. Our approach lets the model automatically determine the compute needed for a given task, paired with a system to scale it down after training without retraining when the execution environment demands faster or cheaper inference. To achieve this, we introduce an iterative computation mechanism, sequence-level depth-based routing steered by a halting mechanism within the experts, a depth encoding that lets the model track its progress in the chain, and a regularization mechanism that incentivizes the model to use allocated compute efficiently. We present initial benchmarks and discuss future research directions.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.09075|9bd468fa192e323e6d167ae750f7fb169f50b732|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large Language Models (LLMs) have transformed many areas of artificial intelligence (AI), but their substantial resource requirements limit their deployment on mobile and edge devices. Although LLMs have demonstrated impressive capabilities in various applications, the next challenge is deploying these models on resource-limited edge devices. Recent innovations in software optimizations and specialized hardware have made it feasible to deploy LLMs on edge devices. Edge deployment offers benefits including local data processing, cost savings, reduced latency, and personalized responses. This paper reviews the latest techniques that make the deployment of LLMs on edge devices feasible.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.09522|9bdf3ece12d8b29be0ba782b8e3c73fc0d4aaf00|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.09522v1 Announce Type: new \nAbstract: Transformer inference repeatedly invokes dense matrix multiplication and attention, including its data-dependent softmax normalization. We present Atik, an open-source RoCC accelerator for RocketChip that executes matrix multiplication and dense attention through one shared fixed-point MAC mesh. Atik accepts and returns BF16 tensors, uses a streaming online-softmax schedule that never materializes the full score matrix, and is invoked through a small descriptor-based ABI. We evaluate three meshes cycle-by-cycle on FireSim and report standalone Sky130 physical-design area. Across 137 logged FireSim test records, all tests pass their benchmark tolerance with zero reported output mismatches. Relative to the same scalar Rocket BF16 reference, the 8x8 configuration reaches 31.5x peak matmul speedup and 225.8x peak attention speedup. Hybrid projections for the single-layer workload-derived C models, using directly measured accelerator-kernel cycles, give aggregate speedups of 44.2x, 77.1x, and 32.3x for ViT, TinyBERT, and GPT-2 prefill, respectively; these are not full-model hardware replays.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.09239|924748b398e8b9f01468d8a3b8c784be9031f63b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Diffusion language models (DLMs) enable parallel token generation through iterative denoising, yet their inference remains costly due to repeated attention over a growing historical prefix and repeated processing of the entire current generation block. Historical attention becomes increasingly expensive as generation progresses, while all current-block positions are propagated through the Transformer at every denoising step even though only a small fraction are typically resolved at that step. In this paper, we introduce Duet, a training-free dual-sparse inference framework that addresses these challenges through prefix Key-Value (KV) sparsity and early query sparsity, respectively. Specifically, Duet exploits the concentration and cross-step stability of historical attention within each generation block to construct a compact historical KV subset that is reused across denoising steps. For query sparsity, Duet predicts update positions from shallow representations and propagates only the corresponding queries through the suffix Transformer layers, avoiding deep computation at positions unlikely to be updated in the current step. Experiments show that Duet maintains competitive accuracy while achieving 1.34$\\times$/2.83$\\times$ end-to-end/per-step speedups on LLaDA2.1-mini and 2.41$\\times$/4.72$\\times$ on SDAR-8B-Chat-b32 at a 32K context length.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.08924|137fe524e8ec522d031bdc7f73a99deb17d66f38|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Quantization-aware training (QAT) is the most reliable way to obtain accurate low-bit large language models (LLMs), but training with AdamW keeps two dense FP32 states for every weight matrix. We find that low-rank memory-efficient optimizers such as GaLore and LDAdam degrade substantially in QAT. A considerable part of the QAT momentum lies outside its top-r singular subspace, and projection-based methods discard this part at every step. We further observe that this residual remains useful when only its sign is kept. Based on these observations, we propose ResQAdam. It keeps a single BF16 momentum, applies Adam only to the r x r coordinates of the principal subspace, and adds a normalized sign update computed from the residual. We evaluate ResQAdam with two from-scratch QAT methods and three QAT fine-tuning pipelines, with weights quantized down to 2 bits. It reduces optimizer-state memory by 71% to 74% relative to AdamW, stays close to AdamW in most settings, and lowers training throughput by less than 2%.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.09280|095e12e775cb1ae2d7c715b7b1547798d652823f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Behind the expanding use of large language models (LLMs) across application domains lies a growing dependence on specialized GPU kernel libraries. These libraries underpin the correctness and efficiency of training and inference across diverse GPU platforms, implementing attention, GEMM, quantization, and low-precision operators while managing tensor shapes, memory layouts, code generation, and hardware-specific dispatch. Problems at this layer can silently corrupt outputs, hang GPUs, prevent compilation, introduce deployment incompatibilities, or degrade performance, thereby reducing developer productivity and wasting expensive GPU resources.\n  We present the first comprehensive empirical study of issues in GPU kernel libraries for LLM systems. We manually analyzed 300 high-quality GitHub issue reports, their discussions, and available fixes from seven representative libraries: FlashInfer, FlashAttention, Triton, CUTLASS, DeepGEMM, xFormers, and bitsandbytes. The analysis characterizes symptoms, root causes, fixes, and testing and debugging practices. Our main findings are: (1) 60.33% of the sampled issues originate in the Compiler and Build System or Runtime Environment dimensions, so validation must cover the deployment and execution stack, not just kernel code. (2) Kernel specialization imposes implicit correctness constraints on tensor shapes, metadata layouts, memory aliasing, and hardware resources. Violations can produce incorrect outputs or launch failures even for supported operations, highlighting the need for explicit contract validation and boundary-case testing. (3) Current testing and debugging practices are often insufficient for identifying low-precision numerical problems and hardware-specific execution failures. We outline research opportunities and tooling directions to support future LLM GPU kernel development.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.09225|a4bf152d5232b7b183e96c944e3a7d87d0b0fe14|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-precision matrix throughput on modern GPUs is growing far faster than vector-arithmetic throughput. Attention therefore cannot realize the available GEMM performance because softmax has become the pipeline bottleneck. We introduce Fused-Softmax Attention, a training-free algorithm that reformulates and approximates softmax to fold its dominant operations into the attention GEMMs, moving work from vector units to matrix cores. Implemented for the AMD CDNA 4 architecture, our MXFP8, MXFP6 and MXFP4 kernels reach approximately 3.0, 4.0 and 4.6 PFLOP/s on an AMD Instinct MI355X GPU, yielding speedups of $2.1\\times$, $2.8\\times$ and $3.2\\times$ over the BF16 attention. Importantly, the additional error introduced by Fused-Softmax remains below the error floor set by quantizing the GEMM operands. On Wan2.2-T2V-A14B, a hybrid MXFP6/4 schedule delivers up to $2.05\\times$ end-to-end speedup while preserving the visual quality of the outputs. The kernels ship in AMD's open-source AITER library, and they powered AMD's MLPerf Inference v6.1 Wan2.2 submission, which ran $1.7\\times$ faster than AMD's previous-round result on the same hardware. Our results show that redesigning softmax to utilize the matrix pipeline enables attention to capitalize on continued growth in low-precision matrix throughput.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG",
+      "cs.PF"
+    ]
+  },
+  "arxiv:2611.09254|d15ec9002424c4700f35995170255acc0e7ba270|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Agentic artificial intelligence (AI) services interleave large language model (LLM) generation with external tool execution, and increasingly rely on search-based workflows that repeatedly revisit shared reasoning states and computations. These patterns create substantial redundancy across tool outputs, LLM responses, and key-value (KV) prefixes, yet existing serving systems primarily optimize shared prompt prefixes, while naive input-keyed caching is unsafe when identical requests produce different outputs. We present TwinHash, a unified object management architecture that assigns each object an input-side hash key to recognize repeated requests and an output-side content fingerprint to validate and locate stored state, complemented by type-specific reuse guards that preserve correctness and response diversity. A software object identity table maintains reusable objects across requests and trajectories, while a hardware object placement table tracks their residency across hierarchical memory tiers so that evicted state can be retrieved rather than recomputed. Across seven agent frameworks and five benchmark suites, reuse follows workflow structure more than benchmark identity. TwinHash serves up to 81% of tool outputs wherever deterministic tool reads recur, and up to 92% of LLM responses in search-based frameworks. Retrieving an evicted KV-prefix from DRAM reduces TTFT by up to 5.6x on Qwen3-32B, with greater gains projected for larger dense models. Under search-based frameworks, TwinHash reduces end-to-end wall-clock time by up to 87% and measured task energy by up to 81% over a prefix-cached baseline, while a per-key serving cap controls the quality-reuse trade-off in adaptive search. These results demonstrate that unified identity, safety, and placement management can convert structural redundancy in emerging agentic workflows into substantial serving-efficiency gains.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.09233|23244d1000d863d65b0b4c6f0bd3a0c65ff78ded|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Cross-Layer Transcoders (CLTs) decompose the activations of large language models into human-interpretable features and trace how these features interact across layers to form circuits, making them a key tool for mechanistic interpretability. However, training CLTs effectively and efficiently is hard. Beyond the usual trade-off between sparsity and reconstruction quality, a CLT has to model all layers at once, which adds a further challenge. The common JumpReLU recipe controls sparsity only indirectly through a penalty, while the direct extension of TopK selects a fixed number of latents in every layer. Yet reconstruction difficulty differs widely across layers, and intermediate layers are much harder than others, so giving every layer the same budget is suboptimal. We propose Cross-Layer TopK, which sets a single L0 budget for the whole model and dynamically allocates it across layers during training. In a comparison with JumpReLU and other TopK variants on Qwen3-8B-Base, this gives lower FVU while using 20% fewer active latents than JumpReLU. The better reconstruction carries over to circuit tracing, yielding more complete circuits with higher replacement and completeness scores. The fixed per-token budget of Cross-Layer TopK also makes it easy to pair with sparse decoding, which cuts both computation and communication and gives a 2.9x speedup per training step. We further show that Cross-Layer TopK follows scaling laws in both latent size and sparsity. We have open-sourced the weights of our CLT at https://huggingface.co/ByteDance-Seed/Cross-Layer-TopK-CLT.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.08693|495b1aae672be4f4193b981bd42ee935d7a90ca5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Analog compute-in-memory (CIM) accelerators compute matrix-vector products directly inside memory arrays, eliminating weight movement and promising order-of-magnitude gains in inference efficiency. However, converter and device errors make pretrained models unusable on these arrays, and hardware-aware retraining is costly. We enable retraining-free, accurate inference of pretrained models on simple analog arrays with low-cost, shared calibration. Our key observation is that analog error depends on how each layer is represented on the array, and that this representation can be changed offline without changing the computation. We center the inputs and apply Hadamard rotations designed for analog arrays, which keep shared reference errors spread and confine input mixing to each array. Across CNNs, vision transformers and LLMs up to 14B parameters on PCM and ReRAM, the method brings vision models and larger LLMs within a few points of floating-point accuracy and matches or approaches published hardware-aware training without training any weights. On ReRAM with 6-bit ADCs, it restores ViT-B/16 from 37.4% to 82.9% and Phi-4 from 27.0% to 72.2%, both within 2.2 points of floating-point accuracy.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.09412|7031410689bda2666c0e9d056b9db840d533f2e6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We show that the Transformer's recurrent successors --- such as selective state-space models (SSMs), Receptance Weighted Key Value (RWKV), and Retentive Network (RetNet) --- can be characterized as infinite-impulse-response (IIR) systems. The zero--pole geometries of these IIR systems characterize the temporal modes they can represent. However, to trade parallelism, the algebraic structures of the parameterizations of these recurrent systems often give rise to poles constrained to the real axis, thereby inducing an architectural bias in their recurrent dynamics. To unify these recurrent architectures and eliminate their pole geometry bias, inspired by the lattice--ladder realization of general IIR systems, we present \\textsc{Mira} (\\textbf{M}odal \\textbf{I}IR \\textbf{R}ecurrent \\textbf{A}rchitecture), a unified family of linear-time recurrent architectures for building large language models (LLMs) with a highly parallel algebraic structure. Each \\textsc{Mira} block realizes a higher-order IIR system that represents temporal modes from token streams through a lattice--ladder structure, followed by a feed-forward network (FFN). This realization enables the model to represent the temporal modes associated with both real and complex-conjugate poles. We pretrain \\textsc{Mira-S}, a 12-layer small-scale LLM with 0.14B parameters composed entirely of \\textsc{Mira} blocks. Throughout the pretraining, \\textsc{Mira-S} achieves lower perplexity than strong recurrent baselines, exhibits stronger context-window generalization beyond the training length, and attains higher throughput with a dedicated CUDA kernel.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
   }
 }
