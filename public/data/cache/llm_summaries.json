@@ -25460,5 +25460,186 @@
     "keywords": [
       "cs.CL"
     ]
+  },
+  "arxiv:2611.16345|4f5594389e8f5dbb31c220771b5fb75a02402698|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Multimodal diffusion large language models (dLLMs) generate text through iterative masked denoising with bidirectional attention, offering a compelling alternative to autoregressive vision-language modeling. However, each denoising step requires a full forward pass over long multimodal sequences in which visual tokens dominate the sequence length, and a fixed step budget further compounds this quadratic per-step cost. Existing inference acceleration approaches for multimodal dLLMs characterize attention redundancy implicitly, motivating designs from isolated attention visualizations rather than from measurement. We close this gap with DRAMA, a training-free acceleration framework grounded in a systematic dissection of attention redundancy in multimodal dLLMs. By probing attention tensors along spatial and temporal axes, we reveal two persistent redundancy structures: (i) attention mass consistently concentrates on a sparse subset of visual tokens, and (ii) attention distributions rapidly stabilize across denoising steps after an initial formation phase. These findings motivate two complementary mechanisms: Spatial-Redundancy-Aware Visual Token Pruning (SVTP) and Sufficiency-Guided Adaptive Stopping (SGAS). Together, DRAMA achieves an average 18.67 times inference speedup across six vision-language benchmarks without training, architectural modification, or attention caching, while maintaining competitive accuracy. Our results establish a strong, measurement-grounded acceleration baseline for multimodal dLLM inference.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.17097|5f3f4dce5639e017c35d75a3c597ca4ac9f4832d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.17097v1 Announce Type: new \nAbstract: Large language model (LLM) inference at datacenter scale is fundamentally bottlenecked by memory capacity and bandwidth limits. Because model weights are read-only and identical across instances, conventional architectures that replicate these parameters across the local DRAM of tens of thousands of accelerators incur massive capital expenditures, significant static power dissipation, and redundant memory-fetch energy. A recent proposal to use optical fiber loops as delay-line memory alleviates these issues, but its recirculating loop must hold the whole model: loop length grows with model size, slack is fixed when the ring is built, and the layouts that serve modern Mixture of Experts (MoE) models efficiently do not fit in it.\n  We propose Optical Broadcast Memory (OBM), an open-ended hierarchical Tap-and-Amplify fiber architecture that generalizes and replaces the optical ring paradigm. A centralized memory server continuously broadcasts weights to distributed inference nodes that passively tap the data stream using receive-only co-packaged optics, delivering parameters directly to compute units without intermediate buffering. To overcome the limitations of continuous weight streaming, we use dynamically-sized slack to accommodate large and variable context lengths. We show how removing the restrictions of the optical ring allows OBM to efficiently serve MoE models. Evaluated at a datacenter scale of 80,000 accelerators, OBM eliminates petabytes of HBM while being competitive or better in throughput and energy per token than an HBM-based system.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.DC",
+      "cs.ET",
+      "cs.NI"
+    ]
+  },
+  "arxiv:2611.14776|64879dc4d9f7ab8b0d9f880b28c409b11a6f1c9c|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language model (LLM) inference demands ever more memory capacity for larger models and batch sizes. High-Bandwidth Flash (HBF) replaces the DRAM dies of HBM with NAND flash and provides up to 16x the capacity at comparable read bandwidth. However, HBF can incur a read latency of nearly 20$μ$s, 20x that of HBM, so on-demand HBF accesses slow inference by up to 12.8x. Conventional cache-line prefetchers require 20x more in-flight tracking state to cover this latency. Tensor-streaming designs, such as H3, follow virtual-address order as opposed to kernel-demand order, and therefore need hundreds of megabytes of buffering.\n  We propose SlipStream, a software-hardware co-designed prefetcher that turns prefetching into a demand-paced producer-consumer pipeline. In software, SlipStream profiles the repeatable weight-page demand order of data-independent LLM kernels and inserts a staging warp that replays this order with non-blocking STAGE instructions. In hardware, the staging warp acts as the producer and the work warps as consumers. Our key insight is to retire each STAGE tracking entry only when demand first accesses the page, as opposed to when the page returns from HBF. Demand thus paces staging and bounds how far staging leads consumption. SlipStream tracks 4 KB pages instead of cache lines and allocates buffer slots only when pages return, which decouples the buffer size from outstanding traffic. Across seven dense models spanning 16-800 GB, SlipStream with a 40 MB staging buffer achieves 92.4% of the performance of an ideal HBF with HBM-like latency. H3 achieves only 43.1%, even with a 320 MB buffer. The buffer sizing of SlipStream is independent of HBF latency and workload. SlipStream with 16 MB buffer, 20x smaller than that of H3, performs within 4% of SlipStream-40MB. SlipStream also supports Mixture-of-Experts models and reaches 91.2% of ideal performance (40 MB buffer).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.16714|b46432ec239116892164809175ce6ec3b28a6c53|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Speculative decoding accelerates text generation with large language models by letting a cheap draft model propose tokens that a large verifier checks in a single forward pass. We introduce Olifant, a draft model built on a memory-based classifier. It predicts the next token from a four-token window in under 0.3 ms on CPU, requiring no GPU, no backpropagation, and no accelerator memory. We measure throughput and energy under two verifier regimes on consumer hardware. Without a KV cache, drafting is nearly free: a domain-matched Olifant model reaches 38.1% acceptance on EU legal text, delivering 2.43x throughput and 2.51x lower energy per token than the neural verifier model alone. With a KV-cached verifier, itself a ~10x energy saver, drafting costs matter: a TinyLlama draft model halves throughput and triples energy despite high acceptance, whereas Olifant still yields 1.25x throughput and the lowest energy in the study (93 J per 100 tokens, 14x below the uncached baseline). We further show that KV caching decouples time from energy: verification of longer drafts raises power draw, shifting the energy-optimal draft length below the speed-optimal one. Speculative decoding is not dead in the age of fast verifiers, provided drafting is nearly free.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.16384|1604df7b4a07410f1be01244d4c70fb860c0bcb8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "As large language models (LLMs) advance toward increasingly long inputs, soft context compression offers a promising approach to efficient inference by converting long inputs into compact memory slots. Under limited memory budgets, effective context compression remains challenging because task-relevant evidence varies substantially across queries, ranging from localized evidence to multiple distant spans or information dispersed throughout the full document. Instead of compressing everything indiscriminately, we propose CoMem, a query-guided selective context compression framework that learns memory representations conditioned on both the document and the query. CoMem develops Contrastive Compressor Learning to achieve query-sensitive yet context-preserving memory representations. To inject a strong prior over query-dependent evidence distributions, we devise a same-context hard negative mining strategy by pairing a single document with multiple queries, requiring the compressor to selectively retain information according to each query's distinct evidence needs. To address the restricted information flow imposed by causal masking, we further enable bidirectional attention among memory slots. Experiments demonstrate that CoMem consistently outperforms existing context compression methods across compression ratios on question answering and RULER-NIAH benchmarks. Our code is available at https://github.com/scar-on/CoMem.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.17108|145be4d0d6bc700abedace9e1f58f0a7ffeb0035|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.17108v1 Announce Type: new \nAbstract: Memory decides which LLMs an edge device runs, and how fast: capacity on a $4$ GB Jetson Nano, bandwidth on an $8$ GB Jetson Orin Nano Super. Deployed formats (GPTQ, AWQ, $\\texttt{llama.cpp}$'s K- and I-quants) spend equal bits on every integer code of a matrix, although the codes are far from uniform. $\\texttt{LazyWeights}$ keeps these formats but tunes GPTQ so the codes compress, Huffman-codes them losslessly in interleaved lanes, and decodes them on demand in a small unit between DRAM and L2, so GPU kernels run unchanged and DRAM moves only coded bytes. At $1\\%$ and $3.5\\%$ perplexity budgets, coded Phi-3-mini, Mistral-7B and SmolLM-1.7B are $5.7-31.4\\%$ smaller than the best $\\texttt{llama.cpp}$ format. A bit-exact $0.21$ mm$^2$ ASIC decoder unit ($1$ GHz, $7$ nm) cuts Orin latency and energy per token by up to $36\\%$ and $38\\%$ ($54\\%$ and $44\\%$ with prompt-lookup speculation). On the Nano, $\\texttt{LazyWeights}$ needs $58-64\\%$ less time and $53-57\\%$ less energy per token than CPU $\\texttt{llama.cpp}$, and runs a streamed Mistral-7B 6.6$\\times$ faster at $3.89$ bits per weight. A Huffman decoder beats an rANS decoder in rate and area at equal throughput; the ASIC decoder unit runs bit-exact on a Zynq UltraScale+ FPGA (AMD ZCU102).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AR",
+      "cs.CL",
+      "cs.IT"
+    ]
+  },
+  "arxiv:2611.14924|8ada8a259076482312c319aa5904747d1533affe|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Deployment of retrieval-augmented generation (RAG) for Edge-AI is constrained by memory and bandwidth limitations. A standard 7B parameter model consumes 14 GB Video Random Access Memory (VRAM) in half-precision (FP16), precluding co-location of vector indices and Key-Value (KV) caches. This paper presents an engineering integration and empirical evaluation of a multimodal RAG framework optimized for consumer-grade Turing hardware (e.g., NVIDIA Tesla T4). Our system-level analysis identifies a critical trade-off: while generative pre-trained transformer quantization (GPTQ) offers superior throughput (51.6 tok/s), it exhibits significant context instability at 2048+ tokens on Turing architectures. Conversely, NormalFloat 4-bit (NF4) maintains robust long-context performance with viable latency (81 ms/tok). By coupling NF4 with a decoupled Florence-2 vision integration, we achieve visual reasoning with only 430 MB VRAM overhead. Furthermore, empirical observations of prompt-induced search space pruning show that structured prompting reduces latency by 47% without altering computational intensity (1.88 GFLOPs/token). The integrated architecture maintains an 8.37 GB footprint, establishing a viable RAG pipeline for 12-16 GB GPUs. Finally, structured few-shot prompting effectively compensates for quantization-induced reasoning loss, restoring mathematical accuracy from 35.0% to 92.0% across 200 trials.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.15130|ba3ea541f8f36b2d2d5fa169c708f45e0b78b557|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "LLM workloads sometimes ask many independent questions about the same long document, as in document QA, data labeling and LLM-based evaluation. Prefix caching removes the redundant prefill shared by these queries, but each decode step still reads the document's key-value (KV) cache once per question, so decoding is bound by memory bandwidth and scales with the number of questions. We present Parallel Prompting, which decodes P questions as P independent streams of a single request all at once, fixing this issue. In our method, every step reads the shared document once for all P streams, and a stream-id attention mask, evaluated inside the attention kernel, keeps each answer conditioned only on the document and its own question. We implement Parallel Prompting in SGLang by adding about 80 lines to three existing files and a small engine package; the mask needs no dense tensor, and every decode step has a fixed shape that is captured as a CUDA graph. With CodeLlama-7B, 8k-16k-token documents and 64-256 questions per document, Parallel Prompting is 3.7x faster than stock SGLang with its FlashInfer backend on an A100 and 5.9-6.0x faster on an RTX A6000, on two SGLang releases, including the most recent release. Timed on identical inputs, it is faster than stock SGLang in all 144 runs (2 GPUs x 2 releases x 6 workloads x 6 input sets). Code: https://github.com/jlab-nlp/parallel-prompting",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI",
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.14681|2ee3b1a0cff82d8e101158da749be4fd125338a5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Today's AI workloads are rapidly changing: new models are released more often, model architectures are increasingly diverse, and traffic distributions change frequently. The challenge we face at Together AI is continual optimization for these changing workloads. Compiling a deployment into an optimized forward pass is a challenge that is well-suited for agent hill-climbing. Existing systems struggle with continual compilation due to a tradeoff between measurement throughput and fidelity. Many systems use agents to optimize individual kernels from the inference forward pass using offline benchmarks, but timings are low-fidelity because of data-dependent behavior in primitives like mixture-of-experts (MoE). On the other hand, systems use agents to directly optimize end-to-end engines but suffer from slow engine launch times. To address these challenges, we build Together Compiler (TKCC), the first truly continual agent loop designed for AI inference optimization. To address the throughput-fidelity tradeoff, we propose: (1) a Tiered Persistent Engine that decouples engine launch overheads from forward pass computation; (2) a cost model to select the parallelism configurations that seed the optimization process. We also conduct extensive ablations on agent context management and present our insights on deploying TKCC in production. TKCC outperforms highly-optimized hand-written Megakernels on the Llama 1B workhorse workload by up to 1.7x and the best open source engines on the latest frontier models (Kimi K3, GLM 5.3, MiniMax M3.1 Flash, DeepSeek v4.1 Flash) across hardware platforms by up to 2.6x higher TPS on the InferenceX benchmark. TKCC also sets the state-of-the-art performance at batch size 1, with 1111 TPS on M3.1 Flash and 1205 TPS on DeepSeek v4.1 Flash. Finally, TKCC generalizes beyond frontier language model inference. TKCC serves trillions of tokens across our production fleet.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.17042|298f9cdca253966e3b68e21052ade8f00588d1b2|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.17042v1 Announce Type: new \nAbstract: Users of artificial intelligence services, including those powered by large language models and other transformer-based models, need assurance that inference and training follow the declared computation without exposing private models or data. Zero-knowledge proofs can provide this assurance, but proof generation remains expensive. Hardware acceleration research often reports gains for individual cryptographic operations, leaving their effect on the full cost of proving neural-network workloads, particularly large transformer models, unclear. We introduce a four-layer framework linking verifiable AI workloads, proof systems, cryptographic kernels and hardware platforms, use it to review the literature, and add original measurements of six provers and seven kernels to identify which costs matter in practice. Our measurements show that the dominant cost changes with the proof system and input length. In low-rank fine-tuning, the cost of opening commitments to fixed model weights remains nearly constant across input lengths from 64 to 2048, while the work associated with intermediate values grows. A 13-billion-parameter fine-tuning configuration exceeds the capacity of a 40-gigabyte graphics processor but completes on an 80-gigabyte device, showing why capacity must be assessed alongside execution time. Our kernel profiling further identifies instruction issue and synchronization limits that a bandwidth-only model misses. We use these findings to assess graphics processors, reconfigurable logic, custom chips and existing artificial intelligence accelerators. The resulting research agenda connects proof-friendly numeric formats, reuse of fixed-weight commitments, heterogeneous execution and shared benchmarks to the measured bottlenecks. Effective acceleration requires selecting hardware and proof-system optimizations around the cost profile of the target workload.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR、cs.CR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR",
+      "cs.CR",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.16321|abf53f5c1fa40d2210555aa0659db28bc7b2dd95|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transferring LLMs into System One decision models typically replaces the language modeling head with a decision head while retaining the full backbone, making every decision pay for all layers. Yet it remains unclear how much depth such decisions require. We find that decision information is concentrated in intermediate layers, with early layers building essential features and the final six layers removable without loss, while independently trained smaller models largely mimic the full model rather than developing specialized decision capabilities. These findings suggest that efficiency requires not simply smaller backbones, but shared computation across different depths. Building on this, we propose \\method{}, which jointly trains a full model with prefix sub-models that share its final layers and decision head through self-distillation. A lightweight gate reads the hidden state at each exit to determine whether additional computation is needed, allowing one model to operate at multiple layers. Across seven decision benchmarks, our approach matches or outperforms independently trained models at every depth, while achieving better accuracy-efficiency trade-offs through adaptive computation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.15231|5a3a594f8e9c8635eed382e83e3f20827307e836|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Autoregressive large language model (LLM) inference is often limited by external-memory bandwidth, while existing ultra-low-bit trellis quantization reconstructs floating-point weights and leaves runtime Hadamard-transform and decoder costs unresolved. This paper presents TQIR, an algorithm--hardware co-design that decouples storage precision ($S$) from decoded-weight ($W$) and activation ($A$) compute precisions, enabling a better accuracy--hardware trade-off. TQIR performs trellis matching with floating-point candidates offline while constraining each candidate to an INT8 or INT4 codeword that can be reproduced exactly for integer GEMM at runtime. To reduce transform cost while preserving the integer weight path, TQIR relocates the reverse Hadamard transform to the activation side and employs an $H_{128}$ Subspace Hadamard Transform, together with a subspace-aligned $128\\times2$ trellis tile that preserves the original 256-weight sequence length. The configurable decoder, synthesized in a TSMC 16-nm process, delivers 307.2~Gweights/s in 0.0509~mm$^2$ and achieves 13.93$\\times$ and 1.52$\\times$ the normalized decoder-area efficiency of Ecco and Codeword Decomposition, respectively. These results show that fixed-rate trellis compression can reduce weight traffic while sustaining an integer-GEMM datapath matched to the evaluated memory and PE rates.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.16956|72376ec845b7de648401730d4b64de8f634c4dab|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.16956v1 Announce Type: new \nAbstract: General-purpose language models are trained mostly on English: over open models we review, at most, non-English pretraining data makes up only a 12% share. Models built for European languages give them far more, but score well below general-purpose models of the same size. A common concern is that, in small models, languages compete for capacity. We present Lara Mini base, a model trained from scratch on 6T tokens in English and 44 other languages, which together cover all 24 official languages of the European Union. As training progresses, the 44 other languages together come to outweigh English. To give these languages enough capacity at low cost, Lara Mini base uses a mixture of experts architecture with 7.2B total and 0.6B active parameters. Among open base models with up to 2B active parameters, it achieves the highest average score across standard English, multilingual, math, and code benchmarks, ahead of models trained on 4 to 6 times as many tokens. Its margin is largest on multilingual benchmarks in the languages it supports and on math benchmarks. It supports contexts of up to 128k tokens. We find that our MoE architecture reduces capacity competition between languages. For a single user on one GPU, without quantization, it generates text at least 1.8 times faster than any model with a higher average score. We release the weights of Lara Mini base under the CC BY-NC-SA 4.0 license. In addition, we will release T-HellaSwag, a higher-quality machine translation of the commonsense reasoning benchmark HellaSwag into 110 language variants.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.16072|66d43e0bd162acc97e920aedbf540b8ce184ccea|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Transformers typically cache an independent key-value (KV) representation for each token at every layer. Recent work reveals that a token's KV representations across neighboring layers are correlated and contain shared information. We hypothesize that this correlation implies incremental inter-layer changes, which can be effectively captured by low-dimensional deltas. Motivated by this, we propose KVPath, a new KV representation paradigm that connects KV representations across the network depth into a path. The path establishes a full-dimensional base KV at the first layer, while subsequent layers generate low-dimensional delta KVs to update the preceding KV, thereby constructing their own KV states. By caching the base KV once alongside these compact delta KVs, KVPath preserves distinct layer-specific representations without storing full KV states at every layer. We develop two variants of KVPath: KVPath-Residual, which updates vector values via residual addition, and KVPath-Rolling, which progressively updates feature dimensions in a rolling manner. Under matched parameter counts, KVPath reduces KV-cache storage by up to 68\\% for Grouped-Query Attention (GQA) and 55\\% for Multi-Head Latent Attention (MLA), while maintaining or even improving model performance.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.16426|bea82bd6eedb14392ec41bedf05d6be95fdd42f0|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Low-bit quantization reduces the memory footprint and inference cost of large language models (LLMs), yet accurate FP4 quantization remains challenging. Practical formats such as MXFP4, NVFP4, and HiF4 pair a 4-bit floating-point payload with block-wise or hierarchical scale codes, making accuracy highly sensitive to how each local distribution is scaled. Default maximum-absolute-value scaling preserves dynamic range, but can spend scarce FP4 levels on rarely occupied outlier regions and leave dense tensor values poorly resolved. Existing scale-search methods minimize local element-wise reconstruction error, optimizing tensor fidelity rather than layer-output fidelity. We propose SoScale, a second-order weight scale-code search method for hierarchical FP4 quantization. SoScale searches hardware-valid scale codes under a Hessian-aware layer reconstruction objective and couples this search with GPTQ-style error recovery, selecting scales by their impact on layer outputs. Across Qwen3 models, SoScale consistently reduces downstream quantization degradation under MXFP4, NVFP4, and HiF4.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.14604|512e9d22ee3f85bad4b8e8495f36279a150e54b4|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Training large language models to generate efficient CUDA kernels requires supervision spanning diverse computational requirements and iterative code optimization. Constructing this supervision is challenging because of heterogeneous specifications, and useful implementations emerge through iterative complicated testing and refinement. We introduce KernelMosaic, an open dataset pairing diverse CUDA tasks with verified solutions and trajectories. Human-guided review and diversity-aware selection curate tasks expressed as natural-language descriptions, reference programs, mathematical specifications, and their intersections. To build the solutions and trajectories, our agentic framework guides a strong LLM through implementation, correctness repair, and performance optimization with reusable CUDA guidance and execution feedback. Supervised fine-tuning of a small open-source model on KernelMosaic raises correctness from 4%, 0%, and 0% to 88%, 82%, and 16% on KernelBench L1, L2, and L3, respectively, while increasing the fraction of tasks with kernels faster than PyTorch eager at every level. Further training experiments show that supervision from the curated trajectories substantially outperforms direct responses and promotes sustained testing and revision. These results demonstrate that KernelMosaic enables a general-purpose model to achieve substantial gains in CUDA kernel generation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.16301|64e274e31b8e664fffb37c9cd1dad84fc5e3936d|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Reinforcement learning (RL) increasingly targets small language models, and executing these workloads efficiently across multiple accelerators requires effective coordination. On TPUs, Pathways-based RL uses a single controller to coordinate computation across hosts. This execution model is effective for large models, but its coordination computational costs are harder to amortize when small models repeatedly invoke short computations. To characterize these computational costs, we sweep dense models from 0.6B to 405B parameters on TPU v7x under a decode-heavy workload and measure how host and network computational overhead vary with model size. At 0.6B, host orchestration occupies 36% of step time and network communication 2%, whereas for large models, estimated network computational costs dominate the non-compute time. Motivated by these findings, we present Local Coordination JAX (LoCoJAX), which implements local rollout and reward processing on each TPU host with synchronous global training. In controlled comparisons against a tuned and optimized Pathways baseline on Qwen3-0.6B across three workloads and 8-64 TPU v7x chips, its colocated mode (LoCoJAX-CO) is 1.3-3.6x faster per step; on GSM8K, it completes a step faster on 8 chips than Pathways does on 64. Finally, a Ray-managed disaggregated mode (LoCoJAX-DA) overlaps rollout and training on separate hosts, and placement experiments establish when this overlap compensates for dividing devices and transferring weights: only when rollout dominates the step and receives most of the hosts. On NuminaMath-CoT at 256 chips, giving rollout 75% of hosts cuts step time by about 15% compared with LoCoJAX-CO.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC"
+    ]
+  },
+  "arxiv:2611.17332|8f8e40a9d836ed3e16656564bedae53fbef64c88|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Model architecture shapes the scaling behavior, training efficiency, and inference cost of LLMs, making it a central focus of both industry and academia. In industry, teams such as those behind DeepSeek, Qwen, and Kimi routinely introduce architectural innovations, yet public reports rarely document which ideas succeeded, which were abandoned, and why. In academia, limited compute and inconsistent baselines often restrict evaluations to small-scale, single-point comparisons, making it difficult to establish whether improvements hold at larger scales or translate into broader impact. ArchSpace addresses both gaps as a public platform for Recording, Reviewing, and Referencing Architecture Researc}: each proposal is recorded with its experiments and reasoning, reviewed by the community, and referenced by later work. To evaluate ideas before costly large-scale training, ArchSpace leverages scaling laws to predict model loss at larger scales from smaller experiments, a practice widely adopted in industry. We provide initial references that make the platform usable: Qwen3.5 and OLMo3 baselines, fitted scaling laws, and a reusable training recipe. Ideas validated through this review can in turn become new baselines, and ArchSpace thereby aims to broaden the range of ideas that shape the next generation of models.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.15236|39b3302781a5a6d5fb109e34f37caddf5445520f|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The increasing demand for real-time processing and personalized deep learning has made edge-device training essential but challenging due to high memory and computational costs. To address this, we propose a Convolutional Neural Network (CNN) training accelerator with a dynamic sparse update mechanism that selectively updates important parameters using a random channel strategy, avoiding costly evaluations. Combined with activation pruning, our approach reduces activation storage to just 3.4\\% of the original. Our hardware features a fused forward dataflow that concurrently processes group normalization and convolution, reducing training time by 45\\% through computation reordering and efficient zero-skipping. Implemented in TSMC 28nm at FP8 precision, the design operates at 800 MHz, achieving 8 TOPS peak throughput, 31.13 TOPS/W energy efficiency, and 14.8 TOPS/mm$^2$ area efficiency, with power consumption ranging from 257 to 272 mW. The design enables on-device training within a sub-100KB on-chip SRAM budget (95KB in silicon).",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.15842|6be0014423de6e38b4a9f7cff7cc6a692ac66188|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "A mixture-of-experts (MoE) language model uses only a few experts per token, so a server can keep most expert weights in CPU memory and copy an expert to the GPU when the router requests it. Recent methods train the router to keep the same experts for several tokens, and treat fewer routing switches as a proxy for fewer copies. We measure the trade-off directly, in a harness that performs and times real CPU-to-GPU copies for OLMoE-1B-7B. On an L40S GPU, every tested policy that holds an expert set fixed and decodes faster than the least-recently-used (LRU) cache increases next-token loss by at least 0.067 nats. A change that leaves every routing decision intact does better: when the cache must evict an expert, evict the one whose next use lies farthest in the future. This rule copies 2.1x fewer experts than LRU at no loss in quality and is within 3.5% of the fewest copies possible. It needs future requests; the next sixteen tokens of demand recover 96% of its reduction, whereas a rule based on counts of past requests recovers 27%.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.DC主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.DC"
+    ]
   }
 }
