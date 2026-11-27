@@ -26866,5 +26866,180 @@
       "cs.AI",
       "cs.CL"
     ]
+  },
+  "arxiv:2611.33691|9f1fa5269816047433e9e458b324b374890ba18b|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-context inference is a rising demand for LLMs, especially for agent applications. Sparse attention (SpAt) and chiplet technology are promising solutions to reduce computations and scale hardware performance. However, deploying SpAt on distributed chiplets necessitates context parallelism for workload partitioning, introducing complex distributed attention. In this work, we present L2C2, a system optimization for distributed SpAt in long-context inference. During the partial-prefill stage, we propose a novel Split-Comm Attention mechanism that leverages the high-bandwidth interconnect of chiplets to trade communication overhead for reduced memory access. We combine it with conventional Ring Attention to form a Bi-Mode method that adapts to varying input sequence lengths. During the decoding stage, we analyze the cause of memory access imbalance and address it by static interleaved token assignment. Dynamic agile cache balancing is also proposed to adapt to SpAt skewness. Evaluations show our optimization can achieve 1.45$\\times$ and 1.53$\\times$ speedup in partial-prefill and decoding with SpAt on large-scale chiplets.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.34630|f55ca7acfbe9f8a9ea3756cc301a9f99a50560e8|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Large language models (LLMs) have become foundational to modern artificial intelligence. Driven by scaling laws, their rapid growth poses increasing computational and memory challenges for deployment. To accelerate the general matrix multiplication (GEMM) operations that dominate LLM computation, bit-slice architectures decompose quantized operands along the bit dimension, exposing slice-level sparsity and redundancy. However, existing bit-slice designs primarily exploit sparsity in high-order slices, while dense low-order slices still offer substantial untapped reuse opportunities.\n  We observe that bit-slice vectors (BSVs) are highly clustered in Hamming space, with many BSVs lying only a few bit flips away from a small set of representative patterns. Based on this observation, we propose ISTS, an algorithm-hardware co-designed accelerator that leverages representative BSV patterns as shared Steiner points to reuse partial sums across slices, substantially reducing computation. Specifically, the partial sum of each target BSV can be reconstructed from that of its assigned Steiner point using only a few additions or subtractions. On the algorithmic side, we propose Steiner Absorption Table Construction (SATC), which selects a compact set of Steiner points to absorb BSVs with only a few bidirectional bit flips, while FlipPrune selectively prunes flips to further expand the reusable BSV population. On the hardware side, we design a lightweight accelerator that supports Steiner reuse for static linear layer weights and runtime-generated attention K/V tensors. Comprehensive evaluations show that ISTS achieves average speedups of $3.09\\times$, $2.41\\times$, $2.18\\times$, $1.27\\times$, and $1.41\\times$ over the state-of-the-art accelerators ANT, BBS, LUT Tensor Core, Transitive Array, and MCBP-BRCR, respectively.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.34776|022fc3d1b07334f2777a7be6fb711a2b96ef65ff|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "To avoid the quadratic cost of dense attention over long contexts, models such as DeepSeek-V4 and Hy4 have turned natively sparse, and speculative decoding, which matters most where decoding is slowest, increasingly runs on them. Their drafters, however, still keep a context cache of their own, over the whole prompt or a sliding window. Beyond memory, such a cache costs prefill time, prefix-cache hits and decode concurrency. Drafters that read the target's cache avoid one of their own, but settle only which cache, not which positions, and still read everything or a recent window. Neither rule is made for the query at hand, and computing a selection per query in the drafter would cost more as the context grows. Yet a natively sparse target already picks positions for each query, over a cache it keeps anyway. Both of the drafter's choices are therefore already made, and paid for, by the target: its cache and its selection. We measure how far one selection carries: made a step early, it still covers close to nine tenths of what each later token selects on DS-V4.1-Flash. We present DFly2, a block-parallel drafter that shares the target's sparsity. Each draft layer reads the KV its paired target layer cached (KV sharing), at the positions that layer's indexer selected, a fixed number anywhere in the context (Index sharing). DFly2 thus runs no scoring pass and keeps no cache of its own. On DS-V4.1-Flash, GLM-5.3-Flash and Hy4~flash, whose sparse attention and architecture differ, it accepts more tokens per step than DFlash and DSpark trained on the same recipe, over general, long-context and agentic benchmarks. Its margin over the stronger baseline widens from 3.9%-10.5% on general workloads to 10.0%-31.5% on long-context and agentic ones. At high concurrency on DS-V4.1-Flash, at matched per-user decode speed, its throughput is 62% and 81% higher on two 64K sets.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.33625|ce5b99f98872d432408cf7ee8a65e89fb7dedb15|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Standard attention's key-value cache grows linearly with context length. Bounding it raises the question of what a sequence model should retain for long-context reasoning. We argue this choice should be learned, and introduce State Space Attention (SSA), which learns to keep a bounded set of past representations and reads them with standard attention. A learned scorer rescores every chunk against newly arriving context and the rest of memory. A fixed-context Transformer is then the special case that always keeps the most recent tokens. We train the scorer and reader jointly, either moving gradually from a differentiable soft weighting of memories to hard retention, or with hard retention from the start. To produce signal for the scorer, we generate supervised samples during training, a technique we call recovery. We compare SSA with recurrent models, bounded-memory attention methods, and full-attention Transformers across retrieval, variable tracking, multi-hop reasoning, and language modeling. On our retrieval and reasoning benchmarks, SSA matches or comes within a few points of full attention on most tasks, far outperforms a Transformer with the same readable budget on every long-context retrieval task we evaluate, and matches or outperforms one with about 4 times that budget, while using constant inference memory. The largest remaining gap to full attention at small language model scale is on RULER. SSA makes a fixed number of tokens useful over a longer context, and since it reads memory with standard attention, we propose that it can be stacked with KV cache eviction methods. We also pretrain and post-train 400M-parameter models and measure how SSA's training and inference costs scale with context length and model size. Together, these experiments examine the capabilities and limitations of learned memory retention for long-context sequence modeling.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.34147|dee7c980db53cfb398a731b89b3462e9eaa6ea71|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Agent harnesses today manage context on the model's behalf: when the window fills, the harness triggers a compaction that summarizes the history. We study the alternative, \\emph{model-driven} context management, in which the model itself decides when and what to compact through a context API. We gave models control over their own context in \\nooa, NVIDIA's open source agent harness, and compared the two strategies on document research and machine learning engineering across context budgets from 8K to 512K tokens. Models that use the context API effectively reach higher accuracy, often with fewer input tokens, especially at tight budgets: \\textbf{GPT 6.1 nearly triples its score at a 32K budget} on OfficeQA Pro v2 (21\\%~$\\rightarrow$~56\\%), and \\textbf{Kimi gains with up to 41\\% fewer input tokens}. Models differ widely, however, in how often they use the API, how aggressively they compact, and when they start compacting, and prompt changes shift that timing. Finally, we show that \\textbf{inference engines can make model-driven edits cheaper}: by reusing the KV cache of the unchanged suffix after an edit, \\textbf{we cut prefill compute by up to 15\\% per request with no measurable change in accuracy}. Together, these results point to a new co-design frontier: models trained to manage their own context, served by inference engines that support KV cache editing.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.33981|5455837ea53d7290afca45ff39cf4344c393a386|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Mobile agents and on-device intelligence increasingly demand more capable models on smartphones. Through sparse expert activation, Mixture-of-Experts (MoE) scales model capacity, yet growing numbers of fine-grained experts complicate loading and computation. Model compression complements expert offloading by reducing storage and computation costs. Among compression techniques, mixed-precision quantization assigns lower expert bitwidths to balance model quality and inference efficiency. However, existing offline metrics and routing scores fail to reflect expert quantization sensitivity, undermining precision assignment. Diverse bitwidths also complicate balanced expert allocation across GPUs and NPUs with distinct execution characteristics, while tile-wise dequantization underutilizes NPU vector parallelism. We present MixMoMo, an efficient mixed-precision inference runtime for extra-large MoE models on heterogeneous mobile SoCs. MixMoMo combines offline quantization-impact profiles with activation-based runtime risk estimates for quality-constrained expert bitwidth assignment. It further adopts precision-structured execution for balanced GPU-NPU expert allocation and HVX-parallel dequantization for efficient NPU vector utilization. Across three MoE models and five benchmarks on two mobile platforms, MixMoMo achieves average decoding speedups of 3.72x over uniform Q4_0 and 1.53x over the strongest mixed-precision MoE baseline.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AR主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.33983|0ba9e9fc556ebf7edd5a3fab0baf070cf92261f5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Standard Transformers allocate independent dense weight matrices to every feed-forward network (FFN) layer, coupling parameters linearly with depth (O(L)) and discarding prior compute when scaling capacity. Conversely, weight-tied Looped Transformers decouple depth from parameters (O(1)) but enforce time-homogeneous updates. We formulate the L-layer FFN stack as a 3D Tensor Cuboid and introduce QuatTucker-ZigZagGPT, unifying: (1) 4D Quaternion Hamilton GEMMs in bfloat16 (4x FFN compression), (2) 64x64 Block-Diagonal Tucker SwiGLU Cores for depth-specific rotations over a shared basis, (3) Braided ZigZag Diamond Routing (L0 -> L2 -> L1 -> L3) for zero-FLOP top-down refinement, and (4) Exact 2D Zero-Loss Continual Scaling in both width and depth. We also introduce Annealed Gated Bounce-Back Scaffolding (GatedBounce), which self-distills to 0.0% inference overhead. Across algorithmic tasks (8-bit Parity, 56-seed routing ablations, Mod-53 Grokking) and language modeling (TinyStories, FineWeb-Edu), our model outperforms standard Transformers at 2x-7.6x compression. On A100, QuatTucker-ZigZagGPT-12 (39.0M backbone) beats StandardGPT-12 (85.0M backbone) at 5/5 controlled checkpoints. Continually scaling one lineage across 6.00B tokens via zero-loss width growth (rank 6144 -> 8192), two bit-exact depth expansions (L = 12 -> 16 -> 20, 70.9M backbone, max_diff = 0.000000), and WSD cooldown reaches 3.3582 FineWeb-Edu loss (28.74 PPL) and 44.75% full-split zero-shot accuracy across 16,955 questions (ARC-Easy, HellaSwag, WinoGrande, BoolQ), matching GPT-3 Small (125M, 300B tokens) at 50x fewer tokens.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.33896|a19dca08bcdb12892157a8cda073abc387632355|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Looped language models can adapt computation for predicting a token without a proportional rescaling in unique model parameters by adjusting the number of loops. This property has been used for self-speculative decoding, taking shallow loops as fast drafters and deep loops as verifiers, which is effective since drafting still uses full parameters. In this paper, we show that shallow loops can be also predictive of several future tokens and leverage this to drastically accelerate the inference of looped language models. To that end, we present Floodgates, a simple self-speculative decoding method that appends a block of mask tokens as a suffix and learns via low-rank adaptation to draft these tokens in parallel. Across seven models, five benchmarks, a range of batch sizes, and both greedy and sampled decoding, Floodgates is the fastest lossless decoding method in most cases, attaining up to 7.5x acceleration. Through analysis, we show that this speedup is enabled by all-depth training of looped models, with the shallow drafter's ability to leverage full-depth computation by conditioning on deep prefix cache evaluated during verification.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.34923|1793a5133c97ab278f5162ddf097ccdd8df6f635|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Looped Transformers boost expressivity by reusing shared layers across loops, yet at the cost of efficiency. Pushing their expressivity-efficiency frontier requires rethinking the core mechanism connecting adjacent loops: What should be passed as a Transformer loops? We introduce Mixture-of-Loops Transformer (MoLT), whose Mixture-of-Loops Attention (MoLA) uses keys and values (KV) as memory for selective reuse across depths and loops. Under loop residual, MoLT-R retains the residual stream and reads local KV across loops for expressivity. Under loop KV, MoLT-KV instead restarts from embeddings and reads current-loop local KV with preceding-loop memory KV at earlier positions for efficiency. MoLT-KV eliminates same-position cross-loop dependence and, paired with loop forcing for parallel training, unlocks single-traversal Mixture-of-Loops (MoL) decoding beyond the training loop horizon. To balance efficiency and quality, we introduce U-shaped MoLT (U-MoLT), which separates memory construction from prediction readout and skips unused decoder traversals without changing predictions. In 400B-token pretraining, U-MoLT outperforms OLMo3 across 700M/1.5B dense and 3B MoE models, achieving 1.7x validation cross-entropy (CE) token efficiency at 700M while improving 3B MoE 10-domain perplexity by 0.75 and 10-task accuracy by 2.1 percentage points. In 100B-token continued pretraining of Qwen3.5-0.8B-Base, our U-MoLT adaptation lowers CE on all 11 domains over the matched baseline with 1.4x mean token efficiency. At inference, U-MoLT with MoL-Hybrid-2 matches non-looped OLMo3 latency at 996.6 vs. 1,000.6 ms on S-size (~113M) models. Code is available at https://github.com/hustvl/MoLT",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.34112|8051b1f9705168e164402904cebd1daf554d8f9a|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Executing monolithic neural weights, frontier foundation models, or entire multi-agent workflows uniformly on every input incurs substantial computational, latency, and monetary overhead. Conditional computation mitigates this cost by deciding dynamically which internal experts, model endpoints, or specialized agents to invoke per request. Yet token-level gating in sparse neural architectures, query-level model cascades, and task-level multi-agent coordination have largely progressed in disconnected research silos, obscuring recurring system failures and transferable fixes. In this systematic review, we synthesize 2,289 studies published between 2017 and September 2026 (selected from 13,884 unique records) across 20 methodological families under a unified two-step inspect-then-allocate framework. Discrete hard selection accounts for 70%, 83%, and 91% of token-, query-, and task-scale literature respectively, and computational overhead appears as a top operational bottleneck across every layer. Engineering safeguards remain sharply asymmetric: intra-layer gating prioritizes load balancing while rarely incorporating uncertainty estimation, whereas model selection and agent orchestration rely on confidence thresholds and budget rules while confronting miscalibration and cascading errors. At the same time, publication volume is accelerating fastest in agentic task delegation, where routing mechanisms are least often isolated experimentally and methodological bias risk is highest.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG",
+      "cs.MA"
+    ]
+  },
+  "arxiv:2611.33679|7ca17a1b01a3472af0332b05a81feef11b308863|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "When a large language model (LLM) evicts prompt keys and values at the end of prefill, it must decide what to keep before it sees the queries from subsequent decoding steps. Generating a draft continuation can approximate those queries at the cost of extra autoregressive steps. Can we use the embedding of the first output token, already available from the final prefill logits, to construct low-cost pseudo queries that approximate future decoding queries? We start with FTQ-8, which places eight copies of the first token ID at consecutive future positions and reads their attention to the prompt in one causal forward pass. Each copy sees a different prefix, but a generic opening such as the offers a poor literal guess for seven successive tokens. Faster and Better Query (FBQ) preserves the first embedding and learns an additive offset at each of the seven remaining positions. We train these offsets to predict the average prompt attention of a full-cache continuation. On LongBench, FBQ performs comparably to eight-step Lookahead Q-Cache at the same cache budget, using a single forward pass to compute all probe queries.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.33184|b8078cc9571ffbbada7de9bf9879769f4d9bf0ed|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Persistent textual memory can improve LLM agents, but repeated updates can erode task performance. We ask whether memory-store statistics warn before held-out accuracy declines. We registered mean pairwise cosine similarity ($ρ$) and 13 additional geometry, retrieval, and graph statistics on 805 snapshots from 13 memory methods across ALFWorld, AppWorld, ScienceWorld, WebShop, and two ARC-AGI settings. These methods store trajectories, rules, workflows, strategies, or linked records, using selective retrieval or whole-store prompting. No such statistic reliably predicted early signs of task accuracy decline, and $ρ$ had zero median lead. With the checkpoint after peak accuracy as a secondary decline point, measures of highly similar pairs and nearest-neighbor crowding changed earlier but did not consistently outperform stored-item count. We trained classifiers on this corpus and applied them unchanged to PropWorld runs of up to 5,000 crafting tasks. They falsely flagged 56.9% of checkpoints from size-limited stores with stable accuracy and detected only 18% of checkpoints after task success fell to zero. Thus, global semantic density did not provide a reliable warning, while local crowding did not transfer consistently across memory designs. In these long-horizon runs, size-limited stores remained stable, while the sole failure arose when unbounded whole-store prompting exceeded model input capacity, which token growth predicted directly.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.33973|10bce21423aa7ad1f3d1ecefd8bf27408dd61ec5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Open-weight large language models (LLMs) for register-transfer level (RTL) design are usually improved by fine-tuning on curated Verilog corpora, which needs large sets of verified designs and GPU training. We present Kolpona, an agentic framework that improves such models without gradient training. Its first component is neuron programming, a new form of weight-space programming (WSP) that writes single neurons in closed form into the weights to remove failure habits found on practice tasks, and keeps each edit only when testbench results on fresh tasks favour it. At inference time, tool-using agents propose designs, and a label-free selection stage delivers one design per task from the specification, the candidates and their simulations alone. On Qwen3.5-4B, edits to 16 neurons raise the VerilogEval v2 pass@1 of the model alone from 31.7% to 55.4%, and the full framework reaches 77.6%. On Qwen3.8-27B, Kolpona lifts pass@1 from 73.1% to 94.9% on VerilogEval v2 and from 66.0% to 92.0% on RTLLM v2.1 on a single 32 GB GPU, above every published system in our comparison. The RTL edits also carry over to Python and raise the pass@1 of the 4B model alone from 84.8% to 91.5% on HumanEval+ and from 67.7% to 77.5% on MBPP+.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG",
+      "cs.AI",
+      "cs.AR"
+    ]
+  },
+  "arxiv:2611.34276|449286a872a7cd11b639d6e3eb775873b4c6c283|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "arXiv:2611.34276v1 Announce Type: new \nAbstract: Looped Transformers decouple computational depth from parameter count, and prior studies have demonstrated promising performance gains with increased computation. However, systematic design principles for configuring these models under strict iso-parameter and iso-FLOP constraints remain scarce. We contribute to this direction by improving information flow in looped models and systematically studying loop parameter configurations. Specifically, we refine this information flow via gated inner-loop state updates and a cross-stage residual connection. Building on this design, controlled studies identify a configuration combining a single-pass Core depth of 25%-35% of the total unrolled depth with reallocating saved parameters into extra routed experts per layer, improving performance at zero extra compute while preserving compatibility with existing training infrastructure. Evaluated after 1T pre-training tokens, our 69B MLA and 51B KDA Mixture-of-Experts models outperform budget-matched non-recurrent baselines by an average of 1.16 and 2.29 percentage points across four benchmarks, respectively. Further reproduction experiments on a common backbone with a 200B-token training budget show that our method achieves lower perplexity than other looped methods. Code for these reproduction experiments is available at https://github.com/lxi01766/Scaling-Looped-MoE-Language-Models-under-Matched-Budgets-Information-Flow-and-Parameter-Allocation.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.34051|59b8a3980baf45eb59b8024410d85a9cd848c9e3|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Linear attention offers an efficient solution for long-sequence modeling via linear complexity and fixed-size recurrent states. Gated DeltaNet-2 (GDN-2) introduces independent channel-wise control over erasure and writing, enhancing state-update expressiveness and in-context retrieval, yet it suffers from training failures during long-context training. We trace these failures to the asymmetry between reading and modification directions during erasure, which yields non-normal erase operators whose directional gains accumulate across tokens, triggering exponential state growth even without new writes. To resolve this, we propose \\model{}, employing symmetric erasure to ensure non-expansive state propagation and decay-regulated residual writing to preserve writing flexibility. Theoretically, we establish an $O(\\sqrt{T})$ upper bound on recurrent state growth while retaining chunkwise parallel computation. Experiments on ~1.6B parameter models show that \\model{} achieves stable training alongside improved long-context retrieval. Compared to GDN-2, it boosts the 128K average RULER score by 6.80 points in the recurrent setting and average accuracy across nine downstream tasks by 0.62 points in the hybrid setting.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.33195|fb981b573a5f1e0742f900af39d385951ce3face|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Materials discovery is an iterative loop: experiments and calculations verify predictions, and each outcome can inform the next. Yet most predictors are specialized single-task models fixed after training. Large language models have recently emerged as predictors across heterogeneous tasks but generally underperform specialized models, and retrieval-augmented variants discard their own outcomes. Benchmarks also score queries in isolation, leaving improvement from outcomes untested. Here we construct MatMemBench, a sequential benchmark of 22 materials tasks that reveals outcomes only after prediction and tests online adaptation, memory retention and cross-task transfer. We present MatRecall, a framework that lets large language models store verified predictions, with evidence, outcome and error, as episodes and recall them without retraining. MatRecall improved median performance by 62% over a memory-free model, exceeded specialized models on 11 tasks, remained useful after feedback stopped and transferred between related tasks. Verified experience could become a reusable resource for self-improving discovery loops.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cond-mat.mtrl-sci主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cond-mat.mtrl-sci",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.33174|b6829e13608343ae57a5805712a7e273bc52f631|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Long-horizon Large Language Model (LLM) agents need persistent memory that surfaces the right past interaction at the right time across thousands of turns. Many systems index by invoking generative LLMs to rewrite history into summaries, facts, or knowledge graphs--a step that is (a) costly (thousands of generative calls per build), (b) non-deterministic (undermining reproducibility and giving inconsistent answers across runs), and (c) provenance-erasing (the reader sees synthesized text, not the original turn). We propose MGMem, a framework with no generative indexing calls that replaces this step with a deterministic discriminative-parser pipeline: recurring mentions across sessions are organized into an incidence graph, question mentions are resolved by a subject-conditioned three-stage resolver, and raw dialogue episodes are returned to the reader. On English multi-session dialogue QA, MGMem outperforms matched-protocol baselines on LoCoMo without generative indexing calls; on the full LongMemEval-S, it remains competitive overall and leads or ties on single-session types among local retrieval comparisons. Code: https://github.com/junhong-h/MGMem",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL"
+    ]
+  },
+  "arxiv:2611.34624|ea5948474c9a7e33ba5039b500fb35399cc1fef6|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "The behavior of memory systems for long-running AI assistants is governed by a harness, which consists of the code, prompts, and configurations for memory construction, maintenance, retrieval, and answer generation. However, optimizing the harness of a memory system remains largely manual, and unrestricted editing alone does not ensure structural improvements. In this paper, we introduce HoMe, an evaluation-driven framework that iteratively evaluates candidate harnesses and derives each new candidate from any previously evaluated harness by editing any part of it. HoMe combines session-level memory versioning with execution traces to identify shared failure mechanisms across cases and localize them to the responsible sessions and harness components. It encourages early structural exploration through candidate gating and reduces evaluation cost through smoke tests, adaptive sampling, and the reuse of constructed memory. We validate HoMe with the open-source memory system ReMe on two large-scale long-horizon memory benchmarks, LongMemEval-S and BEAM. With six formal candidate evaluations per benchmark, after a full initial evaluation, HoMe discovers harnesses that improve end-task performance over the originally strong harness while consuming far fewer query-time tokens. The code is available at https://github.com/agentscope-ai/ReMe.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.AI、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  "arxiv:2611.33919|20f6b97a6f9daf45a5c648830c6289a7501f1a36|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "Existing methods for adapting autoregressive (AR) language models to diffusion generation focus mainly on full-attention architectures. More efficient hybrid architectures remain underexplored. We introduce DiCALM, a recipe for converting the hybrid convolution-attention models of the LFM2 family (LFM2 and LFM2.5) from AR to masked-diffusion generation. DiCALM progressively extends LFM2's causal gated convolution so that it captures local context in both directions. It combines this extension with a masking warm-up and joint AR--diffusion training. In controlled experiments, DiCALM performs comparably to the corresponding fine-tuned LFM2.5-based AR models and delivers consistent speedups over them at both the 350M and 1.2B scales: over 1.4x on average and up to 1.79x.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.AI主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  "arxiv:2611.34725|62847f43a42e2bf9dc9cfd10b086ea9876aa98c5|gpt-5.4-mini|zh-Hans": {
+    "summary_zh": null,
+    "tldr": "We ask how much of a transformer's backbone the Chorus N-gram module replaces. Chorus adds hashed tables of token bigrams and trigrams to its input and attention. We train models of 16M to 349M parameters on 1.34 billion tokens of Polish printed before 1918 and find the size of a plain model with the same held-out loss. A separate learning-rate search for each kind of model cuts Chorus's gain at 47M by about a third. With tables about as large as the backbone, Chorus then matches a plain model 1.34 times its size at 16M and 1.16 to 1.20 times from 107M to 349M. With these tables, each added parameter replaces at most 0.31 backbone parameters. Chorus trains slower than a plain model of its size and faster than one of the same loss. On a fact quiz the two differ about as much as two seeds of one model. The results rest on one corpus, one 8,000-token vocabulary and a fifth of an epoch.",
+    "recommendation_reason": "推荐理由：这篇论文与您近期关注的cs.CL、cs.LG主题相近，且在今日候选中相关性较高。",
+    "keywords": [
+      "cs.CL",
+      "cs.LG"
+    ]
   }
 }
